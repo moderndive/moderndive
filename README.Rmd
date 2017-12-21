@@ -47,12 +47,13 @@ Furthermore
 ```{r, eval = FALSE}
 devtools::install_github("moderndive/moderndive")
 library(moderndive)
+library(tidyverse)
 
 # Regression tables
 get_regression_table(mpg ~ hp, data = mtcars)
 get_regression_table(mpg ~ hp + wt, data = mtcars, digits = 3, print = TRUE)
 
-# Regression points
+# Regression points. For residual analysis for example
 mtcars <- mtcars %>% 
   mutate(cyl = as.factor(cyl))
 get_regression_points(mpg ~ hp + cyl, data = mtcars)
