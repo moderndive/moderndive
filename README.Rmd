@@ -30,13 +30,27 @@ devtools::install_github("moderndive/moderndive")
 
 ## Demo
 
+The following three `get_regression_X()` functions are tidyverse-friendly wrappers meant for the novice
+user. They have intuitive function names than the appropriate `broom` commands:
+
+* `get_regression_table()`: a wrapper to `tidy()` to return the regression table
+* `get_regression_points()`: a wrapper to `augment()` to return a table of all regression points
+* `get_regression_summaries()`: a wrapper to `glance()` to return summary statistics about the regression
+
+Furthermore 
+
+* It eliminates all information not pertinent for simple analyses
+* You can set the output to be `knitr::kable()` suitable for R Markdown output
+* You can control the pseudoprecision
+
+
 ```{r, eval = FALSE}
 devtools::install_github("moderndive/moderndive")
 library(moderndive)
 
 # Regression tables
 get_regression_table(mpg ~ hp, data = mtcars)
-get_regression_table(mpg ~ hp, data = mtcars, digits = 3, print = TRUE)
+get_regression_table(mpg ~ hp + wt, data = mtcars, digits = 3, print = TRUE)
 
 # Regression points
 mtcars <- mtcars %>% 
