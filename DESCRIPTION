@@ -16,4 +16,12 @@ Encoding: UTF-8
 LazyData: true
 URL: https://github.com/ModernDive/moderndive_package
 BugReports: https://github.com/ModernDive/moderndive_package/issues
-VignetteBuilder: knitr
+Imports: magrittr,
+    dplyr,
+    tibble,
+    janitor,
+    broom,
+    formula.tools,
+    stringr,
+    knitr
+RoxygenNote: 6.0.1
