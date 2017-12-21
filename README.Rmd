@@ -38,7 +38,9 @@ get_regression_table(mpg ~ hp, data = mtcars)
 get_regression_table(mpg ~ hp, data = mtcars, digits = 3, print = TRUE)
 
 # Regression points
-get_regression_points(mpg ~ hp, data = mtcars)
+mtcars <- mtcars %>% 
+  mutate(cyl = as.factor(cyl))
+get_regression_points(mpg ~ hp + cyl, data = mtcars)
 
 # Regression summaries
 get_regression_summaries(mpg ~ hp, data = mtcars)
