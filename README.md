@@ -18,5 +18,5 @@ Or the development version from GitHub:
 ``` r
 # If you haven't installed devtools yet, do so:
 # install.packages("devtools")
-devtools::install_github("ModernDive/moderndive_package")
+devtools::install_github("moderndive/moderndive")
 ```
