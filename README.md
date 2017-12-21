@@ -43,7 +43,7 @@ library(tidyverse)
 
 # Regression tables
 get_regression_table(mpg ~ hp, data = mtcars)
-get_regression_table(mpg ~ hp + wt, data = mtcars, digits = 3, print = TRUE)
+get_regression_table(mpg ~ hp + wt, data = mtcars, digits = 4, print = TRUE)
 
 # Regression points. For residual analysis for example
 mtcars <- mtcars %>% 
