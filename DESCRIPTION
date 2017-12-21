@@ -20,7 +20,7 @@ Imports: magrittr,
     dplyr,
     tibble,
     janitor,
-    broom,
+    broom (>= 0.4.3),
     formula.tools,
     stringr,
     knitr
