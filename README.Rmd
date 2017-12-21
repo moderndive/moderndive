@@ -39,14 +39,6 @@ get_regression_table(mpg ~ hp, data = mtcars, digits = 3, print = TRUE)
 
 # Regression points
 get_regression_points(mpg ~ hp, data = mtcars, digits = 3)
-# Residual analysis
-get_regression_points(mpg ~ hp, data = mtcars, digits = 3) %>% 
-  ggplot(aes(x = hp, y = residual)) +
-  geom_point() +
-  labs(title = "Residual plot")
-get_regression_points(mpg ~ hp, data = mtcars, digits = 3) %>% 
-  ggplot(aes(x = residual)) +
-  geom_histogram(binwidth = 2.5)
 
 # Regression summaries
 get_regression_summaries(mpg ~ hp, data = mtcars, digits = 3)
