@@ -1,7 +1,6 @@
 library(tidyverse)
 library(broom)
 library(formula.tools)
-library(purrr)
 library(stringr)
 library(janitor)
 
