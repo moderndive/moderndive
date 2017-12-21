@@ -1,2 +1,11 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
+^\.travis\.yml$
+^cran-comments\.md$
+^\.httr-oauth$
+^README\.md$
+^README\.Rmd$
+^data-raw$
+^docs$
+^images$
+
