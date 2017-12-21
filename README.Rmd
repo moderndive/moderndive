@@ -34,13 +34,13 @@ devtools::install_github("moderndive/moderndive")
 devtools::install_github("moderndive/moderndive")
 
 # Regression tables
-get_regression_table(mpg ~ hp, data = mtcars, digits = 3)
+get_regression_table(mpg ~ hp, data = mtcars)
 get_regression_table(mpg ~ hp, data = mtcars, digits = 3, print = TRUE)
 
 # Regression points
-get_regression_points(mpg ~ hp, data = mtcars, digits = 3)
+get_regression_points(mpg ~ hp, data = mtcars)
 
 # Regression summaries
-get_regression_summaries(mpg ~ hp, data = mtcars, digits = 3)
-get_regression_summaries(mpg ~ hp, data = mtcars, digits = 3, print = TRUE)
+get_regression_summaries(mpg ~ hp, data = mtcars)
+get_regression_summaries(mpg ~ hp, data = mtcars, digits = 5, print = TRUE)
 ```
