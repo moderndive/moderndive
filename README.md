@@ -26,6 +26,7 @@ Demo
 
 ``` r
 devtools::install_github("moderndive/moderndive")
+library(moderndive)
 
 # Regression tables
 get_regression_table(mpg ~ hp, data = mtcars)

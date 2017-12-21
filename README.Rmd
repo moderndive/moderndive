@@ -32,6 +32,7 @@ devtools::install_github("moderndive/moderndive")
 
 ```{r, eval = FALSE}
 devtools::install_github("moderndive/moderndive")
+library(moderndive)
 
 # Regression tables
 get_regression_table(mpg ~ hp, data = mtcars)
