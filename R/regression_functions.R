@@ -52,6 +52,7 @@ get_regression_table <- function(formula, data, digits = 3, print = FALSE, ...){
 #'
 #' @return table
 #' @import dplyr
+#' @import rlang
 #' @importFrom stats lm
 #' @importFrom magrittr "%>%"
 #' @importFrom formula.tools lhs
@@ -72,7 +73,7 @@ get_regression_points <- function(formula, data, digits = 3, print = FALSE, ...)
   regression_points <- lm(formula = formula, data = data) %>%
     augment() %>%
     mutate_if(is.numeric, round, digits = digits) %>%
-    select_(.dots = c(outcome_variable, explanatory_variable, ".fitted", ".resid")) %>%
+    select(!!c(outcome_variable, explanatory_variable, ".fitted", ".resid")) %>% 
     rename_at(vars(".fitted"), ~str_c(outcome_variable, "_hat")) %>%
     rename(residual = .resid) %>%
     as_tibble() %>%
