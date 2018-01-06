@@ -1,14 +1,16 @@
 Package: moderndive
 Type: Package
-Title: Data and Functions Used in ModernDive
+Title: Accompaniment Package to ModernDive - An Introduction to Statistical and Data Sciences via R
 Version: 0.1.0
 Authors@R: c(
     person("Albert Y.", "Kim", email = "albert.ys.kim@gmail.com", role = "cre"),
     person("Chester", "Ismay", email = "chester.ismay@gmail.com", role = "aut")
     )
 Maintainer: Albert Y. Kim <albert.ys.kim@gmail.com>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: An accompaniment R package to ModernDive: An Introduction to
+    Statistical and Data Sciences via R available at <http://moderndive.com/>,
+    in particular wrapper functions targeted at novices to easily generate tidy
+    linear regression output.
 Depends:
     R (>= 3.2.4)
 License: MIT + file LICENSE
