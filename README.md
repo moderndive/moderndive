@@ -1,6 +1,8 @@
 
-ModernDive R Package <img src="images/hex_blue_text.png" align="right" width=125 />
------------------------------------------------------------------------------------
+ModernDive R Package <img src="https://github.com/moderndive/moderndive/blob/master/images/hex_blue_text.png?raw=true" align="right" width=125 />
+-------------------------------------------------------------------------------------------------------------------------------------------------
+
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive)
 
 R package accompanying ModernDive: An Introduction to Statistical and Data Sciences via R available at <http://moderndive.com/>.
 
@@ -32,7 +34,7 @@ The following three `get_regression_X()` functions are tidyverse-friendly wrappe
 
 Furthermore
 
--   It cleans the output format eliminates all information not pertinent for simple analyses
+-   It cleans the output format eliminating all information not pertinent for simple analyses
 -   You can set the output to be `knitr::kable()` suitable for R Markdown output via `print = TRUE`
 -   You can control the pseudoprecision via the `digits` argument
 
@@ -54,3 +56,7 @@ get_regression_points(mpg ~ hp + cyl, data = mtcars)
 get_regression_summaries(mpg ~ hp, data = mtcars)
 get_regression_summaries(mpg ~ hp, data = mtcars, digits = 5, print = TRUE)
 ```
+
+------------------------------------------------------------------------
+
+Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
