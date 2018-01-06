@@ -4,7 +4,7 @@
 \name{moderndive}
 \alias{moderndive}
 \alias{moderndive-package}
-\title{moderndive: Accompaniment Package to ModernDive - An Introduction to 
+\title{moderndive - Accompaniment Package to ModernDive: An Introduction to 
 Statistical and Data Sciences via R}
 \description{
 An accompaniment R package to ModernDive: An Introduction to Statistical and 

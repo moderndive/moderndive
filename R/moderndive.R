@@ -1,4 +1,4 @@
-#' moderndive: Accompaniment Package to ModernDive - An Introduction to 
+#' moderndive - Accompaniment Package to ModernDive: An Introduction to 
 #' Statistical and Data Sciences via R
 #'
 #' An accompaniment R package to ModernDive: An Introduction to Statistical and 
