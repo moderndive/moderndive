@@ -13,12 +13,12 @@ get_regression_points(formula, data, digits = 3, print = FALSE, ...)
 
 \item{digits}{number of digits precision in output table}
 
-\item{print}{If true, return in print format suitable for R Markdown}
+\item{print}{If TRUE, return in print format suitable for R Markdown}
 
 \item{...}{other arguments passed to lm()}
 }
 \value{
-table
+A tibble or nicely formatted table
 }
 \description{
 Wrapper for \code{lm()} regression function

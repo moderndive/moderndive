@@ -2,7 +2,7 @@
 % Please edit documentation in R/regression_functions.R
 \name{get_regression_summaries}
 \alias{get_regression_summaries}
-\title{Get regression points}
+\title{Get regression summary values}
 \usage{
 get_regression_summaries(formula, data, digits = 3, print = FALSE, ...)
 }
@@ -13,12 +13,12 @@ get_regression_summaries(formula, data, digits = 3, print = FALSE, ...)
 
 \item{digits}{number of digits precision in output table}
 
-\item{print}{If true, return in print format suitable for R Markdown}
+\item{print}{If TRUE, return in print format suitable for R Markdown}
 
 \item{...}{other arguments passed to lm()}
 }
 \value{
-table
+A tibble or nicely formatted table
 }
 \description{
 Wrapper for \code{lm()} regression function
