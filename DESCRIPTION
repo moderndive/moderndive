@@ -24,5 +24,7 @@ Imports: magrittr,
     broom (>= 0.4.3),
     formula.tools,
     stringr,
-    knitr
+    knitr,
+    assertive
 RoxygenNote: 6.0.1
+Suggests: testthat
