@@ -10,7 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive)
 
-R package accompanying ModernDive: An Introduction to Statistical and Data Sciences via R available at <http://moderndive.com/>.
+Accompaniment R Package to ModernDive - An Introduction to Statistical and Data Sciences via R available at <http://moderndive.com/>.
 
 
 ## Installation
@@ -32,24 +32,23 @@ devtools::install_github("moderndive/moderndive")
 
 ## Demo
 
-The following three `get_regression_X()` functions are tidyverse-friendly wrappers meant for the novice
-regression user. They have more intuitive/verb-like function names than the corresponding `broom` commands:
+The following three `get_regression_OUTPUT()` functions are tidyverse-friendly wrappers meant for the novice regression user. They have more intuitive/verb-like function names than the corresponding `broom` commands:
 
-* `get_regression_table()`: a wrapper to `tidy()` to return the regression table
+* `get_regression_table()`: a wrapper to `tidy()` to return the regression table.
 * `get_regression_points()`: a wrapper to `augment()` to return a table of all regression points
 * `get_regression_summaries()`: a wrapper to `glance()` to return summary statistics about the regression
 
 Furthermore 
 
+* The outputs are returned as tibbles
 * It cleans the output format eliminating all information not pertinent for simple analyses
 * You can set the output to be `knitr::kable()` suitable for R Markdown output via `print = TRUE`
 * You can control the pseudoprecision via the `digits` argument
 
 
-```{r, eval = FALSE}
-devtools::install_github("moderndive/moderndive")
+```{r, eval=TRUE, warning=FALSE, message=FALSE}
 library(moderndive)
-library(tidyverse)
+library(dplyr)
 
 # Regression tables
 get_regression_table(mpg ~ hp, data = mtcars)
