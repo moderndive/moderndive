@@ -5,7 +5,7 @@ Version: 0.1.0.9000
 Authors@R: c(
     person("Albert Y.", "Kim", email = "albert.ys.kim@gmail.com", role = "cre"),
     person("Chester", "Ismay", email = "chester.ismay@gmail.com", role = "aut"),
-    person("Andrew", "Bray", email = "abray@reed.edu", role = c("ctb")
+    person("Andrew", "Bray", email = "abray@reed.edu", role = "ctb")
     )
 Maintainer: Albert Y. Kim <albert.ys.kim@gmail.com>
 Description: An accompaniment R package to ModernDive: An Introduction to
