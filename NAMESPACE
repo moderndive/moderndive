@@ -3,6 +3,7 @@
 export(get_regression_points)
 export(get_regression_summaries)
 export(get_regression_table)
+export(rep_sample_n)
 import(dplyr)
 import(rlang)
 importFrom(broom,augment)
