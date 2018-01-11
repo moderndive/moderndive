@@ -21,13 +21,17 @@ Counting the number of red balls in 10 samples of size n = 50 balls from
 \url{https://github.com/ismayc/moderndiver-book/raw/master/images/sampling1.jpg}
 }
 \examples{
-# To convert data frame to tidy data (long) format, run:
 library(dplyr)
 library(ggplot2)
+
+# Compute proportion red
 red_ball_samples <- red_ball_samples \%>\%
   mutate(prop_red = red / n)
+  
+# Plot sampling distributions
 ggplot(red_ball_samples, aes(x = prop_red)) +
   geom_histogram(binwidth = 0.05) +
-  labs(x = expression(hat(p)), y = "Number of samples", title = "Sampling distribution of p_hat based on n = 50")
+  labs(x = expression(hat(p)), y = "Number of samples", 
+  title = "Sampling distribution of p_hat based 10 samples of size n = 50")
 }
 \keyword{datasets}
