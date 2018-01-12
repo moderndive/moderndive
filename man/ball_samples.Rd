@@ -7,7 +7,7 @@
 \format{A data frame 10 rows representing different groups of students' 
 samples of size n = 50 and 5 variables
 \describe{
-  \item{Group}{Group name}
+  \item{group}{Group name}
   \item{red}{Number of red balls sampled}
   \item{white}{Number of white balls sampled}
   \item{green}{Number of green balls sampled}
