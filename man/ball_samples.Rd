@@ -25,11 +25,11 @@ library(dplyr)
 library(ggplot2)
 
 # Compute proportion red
-red_ball_samples <- red_ball_samples \%>\%
+ball_samples <- ball_samples \%>\%
   mutate(prop_red = red / n)
   
 # Plot sampling distributions
-ggplot(red_ball_samples, aes(x = prop_red)) +
+ggplot(ball_samples, aes(x = prop_red)) +
   geom_histogram(binwidth = 0.05) +
   labs(x = expression(hat(p)), y = "Number of samples", 
   title = "Sampling distribution of p_hat based 10 samples of size n = 50")
