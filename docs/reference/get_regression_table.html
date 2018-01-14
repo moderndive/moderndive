@@ -87,21 +87,17 @@
     </div>
 
     
-    <p>Wrapper for <code>lm()</code> regression function</p>
+    <p>Wrapper for tidy <code>lm()</code> regression function output</p>
     
 
-    <pre class="usage"><span class='fu'>get_regression_table</span>(<span class='no'>formula</span>, <span class='no'>data</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>get_regression_table</span>(<span class='no'>model</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>formula</th>
-      <td><p>regression formula</p></td>
-    </tr>
-    <tr>
-      <th>data</th>
-      <td><p>data frame</p></td>
+      <th>model</th>
+      <td><p>a model object (Currently only <code>lm</code> is supported)</p></td>
     </tr>
     <tr>
       <th>digits</th>
@@ -123,12 +119,12 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>get_regression_table</span>(<span class='no'>mpg</span> ~ <span class='no'>cyl</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)</div><div class='output co'>#&gt; # A tibble: 3 x 7
+    <pre class="examples"><div class='input'><span class='no'>mpg_model</span> <span class='kw'>&lt;-</span> <span class='fu'>lm</span>(<span class='no'>mpg</span> ~ <span class='no'>cyl</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)
+<span class='fu'>get_regression_table</span>(<span class='no'>mpg_model</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 7
 #&gt;        term estimate std_error statistic p_value conf_low conf_high
 #&gt;       &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-#&gt; 1 intercept   26.664     0.972    27.437       0   24.676    28.651
-#&gt; 2      cyl6   -6.921     1.558    -4.441       0  -10.108    -3.734
-#&gt; 3      cyl8  -11.564     1.299    -8.905       0  -14.220    -8.908</div></pre>
+#&gt; 1 intercept   37.885     2.074    18.268       0   33.649    42.120
+#&gt; 2       cyl   -2.876     0.322    -8.920       0   -3.534    -2.217</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

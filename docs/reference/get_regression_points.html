@@ -87,21 +87,17 @@
     </div>
 
     
-    <p>Wrapper for <code>lm()</code> regression function</p>
+    <p>Wrapper for tidy <code>lm()</code> regression function fit output</p>
     
 
-    <pre class="usage"><span class='fu'>get_regression_points</span>(<span class='no'>formula</span>, <span class='no'>data</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>get_regression_points</span>(<span class='no'>model</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>formula</th>
-      <td><p>regression formula</p></td>
-    </tr>
-    <tr>
-      <th>data</th>
-      <td><p>data frame</p></td>
+      <th>model</th>
+      <td><p>a model object (Currently only <code>lm</code> is supported)</p></td>
     </tr>
     <tr>
       <th>digits</th>
@@ -123,19 +119,20 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>get_regression_points</span>(<span class='no'>mpg</span> ~ <span class='no'>cyl</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)</div><div class='output co'>#&gt; # A tibble: 32 x 4
-#&gt;      mpg    cyl mpg_hat residual
-#&gt;    &lt;dbl&gt; &lt;fctr&gt;   &lt;dbl&gt;    &lt;dbl&gt;
-#&gt;  1  21.0      6  19.743    1.257
-#&gt;  2  21.0      6  19.743    1.257
-#&gt;  3  22.8      4  26.664   -3.864
-#&gt;  4  21.4      6  19.743    1.657
-#&gt;  5  18.7      8  15.100    3.600
-#&gt;  6  18.1      6  19.743   -1.643
-#&gt;  7  14.3      8  15.100   -0.800
-#&gt;  8  24.4      4  26.664   -2.264
-#&gt;  9  22.8      4  26.664   -3.864
-#&gt; 10  19.2      6  19.743   -0.543
+    <pre class="examples"><div class='input'><span class='no'>mpg_model</span> <span class='kw'>&lt;-</span> <span class='fu'>lm</span>(<span class='no'>mpg</span> ~ <span class='no'>cyl</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)
+<span class='fu'>get_regression_points</span>(<span class='no'>mpg_model</span>)</div><div class='output co'>#&gt; # A tibble: 32 x 4
+#&gt;      mpg   cyl mpg_hat residual
+#&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+#&gt;  1  21.0     6  20.630    0.370
+#&gt;  2  21.0     6  20.630    0.370
+#&gt;  3  22.8     4  26.381   -3.581
+#&gt;  4  21.4     6  20.630    0.770
+#&gt;  5  18.7     8  14.878    3.822
+#&gt;  6  18.1     6  20.630   -2.530
+#&gt;  7  14.3     8  14.878   -0.578
+#&gt;  8  24.4     4  26.381   -1.981
+#&gt;  9  22.8     4  26.381   -3.581
+#&gt; 10  19.2     6  20.630   -1.430
 #&gt; # ... with 22 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
