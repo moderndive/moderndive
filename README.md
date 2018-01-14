@@ -18,9 +18,9 @@ install.packages("moderndive")
 Or the development version from GitHub:
 
 ``` r
-# If you haven't installed devtools yet, do so:
-# install.packages("devtools")
-devtools::install_github("moderndive/moderndive")
+# If you haven't installed remotes yet, do so:
+# install.packages("remotes")
+remotes::install_github("moderndive/moderndive")
 ```
 
 Demo
