@@ -1,8 +1,37 @@
-# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
+# Sample .travis.yml for R projects
 
-language: R
-sudo: false
+language: r
+r:
+#  - oldrel
+  - release
+#  - devel
+warnings_are_errors: true
+sudo: required
 cache: packages
+latex: false
+
+env:
+ global:
+   - CRAN: http://cran.rstudio.com
+
+notifications:
+  email:
+    on_success: change
+    on_failure: change
+
+r_github_packages:
+  - hadley/pkgdown
+  - moderndive/moderndive
+
+before_deploy:
+  - Rscript -e 'pkgdown::build_site()'
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  keep-history: true
+  local-dir: docs
+  github_token: $MODERNDIVE_GITHUB_PAT
+
 after_success:
   - Rscript -e 'covr::codecov()'
-
