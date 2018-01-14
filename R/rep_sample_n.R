@@ -22,9 +22,14 @@
 #' summarize(prop_red = mean(color == "red"))
 #' 
 #' ggplot(p_hats, aes(x = prop_red)) + 
-#' geom_histogram(binwidth = 0.05)
+#'     geom_histogram(binwidth = 0.05)
 rep_sample_n <- function(tbl, size, replace = FALSE, reps = 1)
 {
+  assertive::assert_is_data.frame(tbl)
+  assertive::assert_is_numeric(size)
+  assertive::assert_is_logical(replace)
+  assertive::assert_is_numeric(reps)
+  
   n <- nrow(tbl)
   i <- unlist(replicate(reps, sample.int(n, size, replace = replace), simplify = FALSE))
   
