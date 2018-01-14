@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Data and Functions Used in ModernDive • moderndive</title>
+<title>Accompaniment Package to ModernDive: An Introduction to Statistical and Data Sciences via R • moderndive</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
@@ -66,10 +66,10 @@
 <div class="contents">
 <div id="moderndive-r-package" class="section level2">
 <h2 class="hasAnchor">
-<a href="#moderndive-r-package" class="anchor"></a>ModernDive R Package <img src="https://github.com/moderndive/moderndive/blob/master/images/hex_blue_text.png?raw=true" align="right" width="125">
+<a href="#moderndive-r-package" class="anchor"></a>moderndive R Package <img src="https://github.com/moderndive/moderndive/blob/master/images/hex_blue_text.png?raw=true" align="right" width="125">
 </h2>
 
-<p>R package accompanying ModernDive: An Introduction to Statistical and Data Sciences via R available at <a href="http://moderndive.com/" class="uri">http://moderndive.com/</a>.</p>
+<p>Accompaniment R Package to ModernDive: An Introduction to Statistical and Data Sciences via R available at <a href="http://moderndive.com/" class="uri">http://moderndive.com/</a>.</p>
 </div>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
@@ -84,7 +84,7 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 <div id="demo" class="section level2">
 <h2 class="hasAnchor">
 <a href="#demo" class="anchor"></a>Demo</h2>
-<p>The following three <code>get_regression_X()</code> functions are tidyverse-friendly wrappers meant for the novice regression user. They have more intuitive/verb-like function names than the corresponding <code>broom</code> package commands:</p>
+<p>The following three <code>get_regression_OUTPUT()</code> functions are tidyverse-friendly wrapper functions meant for the novice regression user. They have more intuitive/verb-like function names than the corresponding <code>broom</code> package commands:</p>
 <ul>
 <li>
 <code><a href="reference/get_regression_table.html">get_regression_table()</a></code>: a wrapper to <code>tidy()</code> to return the regression table</li>
@@ -95,8 +95,10 @@ devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocument
 </ul>
 <p>Furthermore</p>
 <ul>
-<li>It cleans the output format eliminating all information not pertinent for simple analyses</li>
-<li>You can set the output to be <code><a href="http://www.rdocumentation.org/packages/knitr/topics/kable">knitr::kable()</a></code> suitable for R Markdown output via <code>print = TRUE</code>
+<li>The outputs are returned as <a href="https://blog.rstudio.com/2016/03/24/tibble-1-0-0/">tibbles</a>
+</li>
+<li>It cleans the output format by eliminating all information not pertinent to novice regression users</li>
+<li>You can set the output to be in <code><a href="http://www.rdocumentation.org/packages/knitr/topics/kable">knitr::kable()</a></code> markdown format, suitable for printing in R Markdown documents, via <code>print = TRUE</code>
 </li>
 <li>You can control the pseudoprecision via the <code>digits</code> argument</li>
 </ul>
@@ -162,6 +164,7 @@ mpg_mlr_model2 &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg <spa
 </table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Regression points. For residual analysis for example</span>
 <span class="kw"><a href="reference/get_regression_points.html">get_regression_points</a></span>(mpg_mlr_model2)</code></pre></div>
+
 <pre><code>## # A tibble: 32 x 5
 ##      mpg    hp    cyl mpg_hat residual
 ##    &lt;dbl&gt; &lt;dbl&gt; &lt;fctr&gt;   &lt;dbl&gt;    &lt;dbl&gt;
@@ -227,6 +230,7 @@ mpg_model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://cran.r-project.org/package=moderndive"><img src="http://www.r-pkg.org/badges/version/moderndive" alt="CRAN_Status_Badge"></a></li>
+<li><a href="https://travis-ci.org/moderndive/moderndive"><img src="https://travis-ci.org/moderndive/moderndive.svg?branch=master" alt="Travis-CI Build Status"></a></li>
 </ul>
 </div>
 

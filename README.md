@@ -1,10 +1,11 @@
 
-ModernDive R Package <img src="https://github.com/moderndive/moderndive/blob/master/images/hex_blue_text.png?raw=true" align="right" width=125 />
+moderndive R Package <img src="https://github.com/moderndive/moderndive/blob/master/images/hex_blue_text.png?raw=true" align="right" width=125 />
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive) <!--[![Coverage Status](https://img.shields.io/codecov/c/github/moderndive/moderndive/master.svg)](https://codecov.io/github/moderndive/moderndive?branch=master)-->
 
-R package accompanying ModernDive: An Introduction to Statistical and Data Sciences via R available at <http://moderndive.com/>.
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive) [![Travis-CI Build Status](https://travis-ci.org/moderndive/moderndive.svg?branch=master)](https://travis-ci.org/moderndive/moderndive) <!--[![Coverage Status](https://img.shields.io/codecov/c/github/moderndive/moderndive/master.svg)](https://codecov.io/github/moderndive/moderndive?branch=master)-->
+
+Accompaniment R Package to ModernDive: An Introduction to Statistical and Data Sciences via R available at <http://moderndive.com/>.
 
 Installation
 ------------
@@ -26,7 +27,7 @@ remotes::install_github("moderndive/moderndive")
 Demo
 ----
 
-The following three `get_regression_X()` functions are tidyverse-friendly wrappers meant for the novice regression user. They have more intuitive/verb-like function names than the corresponding `broom` package commands:
+The following three `get_regression_OUTPUT()` functions are tidyverse-friendly wrapper functions meant for the novice regression user. They have more intuitive/verb-like function names than the corresponding `broom` package commands:
 
 -   `get_regression_table()`: a wrapper to `tidy()` to return the regression table
 -   `get_regression_points()`: a wrapper to `augment()` to return a table of all regression points
@@ -34,8 +35,9 @@ The following three `get_regression_X()` functions are tidyverse-friendly wrappe
 
 Furthermore
 
--   It cleans the output format eliminating all information not pertinent for simple analyses
--   You can set the output to be `knitr::kable()` suitable for R Markdown output via `print = TRUE`
+-   The outputs are returned as [tibbles](https://blog.rstudio.com/2016/03/24/tibble-1-0-0/)
+-   It cleans the output format by eliminating all information not pertinent to novice regression users
+-   You can set the output to be in `knitr::kable()` markdown format, suitable for printing in R Markdown documents, via `print = TRUE`
 -   You can control the pseudoprecision via the `digits` argument
 
 ``` r

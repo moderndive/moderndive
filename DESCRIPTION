@@ -1,13 +1,17 @@
 Package: moderndive
 Type: Package
-Title: Data and Functions Used in ModernDive
+Title: Accompaniment Package to ModernDive: An Introduction to Statistical and Data Sciences via R
 Version: 0.2.0
 Authors@R: c(
     person("Albert Y.", "Kim", email = "albert.ys.kim@gmail.com", role = "cre"),
-    person("Chester", "Ismay", email = "chester.ismay@gmail.com", role = "aut")
+    person("Chester", "Ismay", email = "chester.ismay@gmail.com", role = "aut"),
+    person("Andrew", "Bray", email = "abray@reed.edu", role = "ctb")
     )
 Maintainer: Albert Y. Kim <albert.ys.kim@gmail.com>
-Description: The wrapper functions here are designed to help beginners work with regression without the need for long chains of analyses initially.
+Description: An accompaniment R package to ModernDive: An Introduction to
+    Statistical and Data Sciences via R available at <http://moderndive.com/>,
+    in particular wrapper functions targeted at novices to easily generate tidy
+    linear regression output.
 Depends:
     R (>= 3.2.4)
 License: MIT + file LICENSE
@@ -17,6 +21,7 @@ URL: https://github.com/ModernDive/moderndive_package
 BugReports: https://github.com/ModernDive/moderndive_package/issues
 Imports: magrittr,
     dplyr,
+    ggplot2,
     rlang,
     tibble,
     janitor,
