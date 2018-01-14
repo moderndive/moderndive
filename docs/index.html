@@ -77,9 +77,9 @@
 <p>Get the released version from CRAN:</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"moderndive"</span>)</code></pre></div>
 <p>Or the development version from GitHub:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># If you haven't installed devtools yet, do so:</span>
-<span class="co"># install.packages("devtools")</span>
-devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"moderndive/moderndive"</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># If you haven't installed remotes yet, do so:</span>
+<span class="co"># install.packages("remotes")</span>
+remotes<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"moderndive/moderndive"</span>)</code></pre></div>
 </div>
 <div id="demo" class="section level2">
 <h2 class="hasAnchor">
@@ -164,7 +164,6 @@ mpg_mlr_model2 &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg <spa
 </table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Regression points. For residual analysis for example</span>
 <span class="kw"><a href="reference/get_regression_points.html">get_regression_points</a></span>(mpg_mlr_model2)</code></pre></div>
-
 <pre><code>## # A tibble: 32 x 5
 ##      mpg    hp    cyl mpg_hat residual
 ##    &lt;dbl&gt; &lt;dbl&gt; &lt;fctr&gt;   &lt;dbl&gt;    &lt;dbl&gt;
@@ -226,11 +225,13 @@ mpg_model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw
 <ul class="list-unstyled">
 <li>Albert Y. Kim <br><small class="roles"> Maintainer </small> </li>
 <li>Chester Ismay <br><small class="roles"> Author </small> </li>
+<li><a href="authors.html">All authors...</a></li>
 </ul>
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://cran.r-project.org/package=moderndive"><img src="http://www.r-pkg.org/badges/version/moderndive" alt="CRAN_Status_Badge"></a></li>
 <li><a href="https://travis-ci.org/moderndive/moderndive"><img src="https://travis-ci.org/moderndive/moderndive.svg?branch=master" alt="Travis-CI Build Status"></a></li>
+<li><a href="https://codecov.io/github/moderndive/moderndive?branch=master"><img src="https://img.shields.io/codecov/c/github/moderndive/moderndive/master.svg" alt="Coverage Status"></a></li>
 </ul>
 </div>
 
