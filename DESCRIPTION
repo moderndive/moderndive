@@ -1,14 +1,13 @@
 Package: moderndive
 Type: Package
 Title: Data and Functions Used in ModernDive
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: c(
     person("Albert Y.", "Kim", email = "albert.ys.kim@gmail.com", role = "cre"),
     person("Chester", "Ismay", email = "chester.ismay@gmail.com", role = "aut")
     )
 Maintainer: Albert Y. Kim <albert.ys.kim@gmail.com>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
+Description: The wrapper functions here are designed to help beginners work with regression without the need for long chains of analyses initially.
 Depends:
     R (>= 3.2.4)
 License: MIT + file LICENSE
@@ -27,4 +26,5 @@ Imports: magrittr,
     knitr,
     assertive
 RoxygenNote: 6.0.1
-Suggests: testthat
+Suggests: testthat,
+    covr
