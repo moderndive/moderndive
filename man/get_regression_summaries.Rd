@@ -4,12 +4,10 @@
 \alias{get_regression_summaries}
 \title{Get regression summary values}
 \usage{
-get_regression_summaries(formula, data, digits = 3, print = FALSE, ...)
+get_regression_summaries(model, digits = 3, print = FALSE, ...)
 }
 \arguments{
-\item{formula}{regression formula}
-
-\item{data}{data frame}
+\item{model}{a model object (Currently only \code{lm} is supported)}
 
 \item{digits}{number of digits precision in output table}
 
@@ -21,8 +19,9 @@ get_regression_summaries(formula, data, digits = 3, print = FALSE, ...)
 A tibble or nicely formatted table
 }
 \description{
-Wrapper for \code{lm()} regression function
+Wrapper for \code{lm()} regression function fit summary data
 }
 \examples{
-get_regression_summaries(mpg ~ cyl, data = mtcars)
+mpg_model <- lm(mpg ~ cyl, data = mtcars)
+get_regression_summaries(mpg_model)
 }
