@@ -28,6 +28,13 @@ test_that("function inputs are valid", {
     print = "yes"
   ))
   
+  # Check `print` again
+  expect_silent(get_regression_points(
+    model = mpg_cyl,
+    digits = 4,
+    print = TRUE
+  ))
+  
   # Check `model`
   expect_error(get_regression_summaries(
     model = species_glm
