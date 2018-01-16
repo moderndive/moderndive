@@ -5,7 +5,8 @@ globalVariables(c(
   "BIC",
   "deviance",
   "df.residual",
-  "logLik"
+  "logLik",
+  "ID"
 ))
 
 #' Get regression table
@@ -100,8 +101,9 @@ get_regression_points <-
                  ".fitted", ".resid")) %>%
       rename_at(vars(".fitted"), ~ str_c(outcome_variable, "_hat")) %>%
       rename(residual = .resid) %>%
-      as_tibble() %>%
-      clean_names()
+      as_tibble() %>% 
+      mutate(ID = 1:n()) %>%
+      select(ID, everything())
     
     if(print) {
       regression_points <- regression_points %>%
