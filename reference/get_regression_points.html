@@ -120,19 +120,19 @@
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='no'>mpg_model</span> <span class='kw'>&lt;-</span> <span class='fu'>lm</span>(<span class='no'>mpg</span> ~ <span class='no'>cyl</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)
-<span class='fu'>get_regression_points</span>(<span class='no'>mpg_model</span>)</div><div class='output co'>#&gt; # A tibble: 32 x 4
-#&gt;      mpg   cyl mpg_hat residual
-#&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
-#&gt;  1  21.0  6.00    20.6    0.370
-#&gt;  2  21.0  6.00    20.6    0.370
-#&gt;  3  22.8  4.00    26.4   -3.58 
-#&gt;  4  21.4  6.00    20.6    0.770
-#&gt;  5  18.7  8.00    14.9    3.82 
-#&gt;  6  18.1  6.00    20.6   -2.53 
-#&gt;  7  14.3  8.00    14.9   -0.578
-#&gt;  8  24.4  4.00    26.4   -1.98 
-#&gt;  9  22.8  4.00    26.4   -3.58 
-#&gt; 10  19.2  6.00    20.6   -1.43 
+<span class='fu'>get_regression_points</span>(<span class='no'>mpg_model</span>)</div><div class='output co'>#&gt; # A tibble: 32 x 5
+#&gt;       ID   mpg   cyl mpg_hat residual
+#&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+#&gt;  1     1  21.0  6.00    20.6    0.370
+#&gt;  2     2  21.0  6.00    20.6    0.370
+#&gt;  3     3  22.8  4.00    26.4   -3.58 
+#&gt;  4     4  21.4  6.00    20.6    0.770
+#&gt;  5     5  18.7  8.00    14.9    3.82 
+#&gt;  6     6  18.1  6.00    20.6   -2.53 
+#&gt;  7     7  14.3  8.00    14.9   -0.578
+#&gt;  8     8  24.4  4.00    26.4   -1.98 
+#&gt;  9     9  22.8  4.00    26.4   -3.58 
+#&gt; 10    10  19.2  6.00    20.6   -1.43 
 #&gt; # ... with 22 more rows</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
