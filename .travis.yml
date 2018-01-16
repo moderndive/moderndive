@@ -2,9 +2,9 @@
 
 language: r
 r:
-#  - oldrel
+  - oldrel
   - release
-#  - devel
+  - devel
 warnings_are_errors: true
 sudo: required
 cache: packages
@@ -19,6 +19,9 @@ notifications:
     on_success: change
     on_failure: change
 
+r_packages:
+  - devtools
+  
 r_github_packages:
   - hadley/pkgdown
   - moderndive/moderndive
