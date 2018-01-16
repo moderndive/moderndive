@@ -4,12 +4,10 @@
 \alias{get_regression_points}
 \title{Get regression points}
 \usage{
-get_regression_points(formula, data, digits = 3, print = FALSE, ...)
+get_regression_points(model, digits = 3, print = FALSE, ...)
 }
 \arguments{
-\item{formula}{regression formula}
-
-\item{data}{data frame}
+\item{model}{a model object (Currently only \code{lm} is supported)}
 
 \item{digits}{number of digits precision in output table}
 
@@ -21,8 +19,9 @@ get_regression_points(formula, data, digits = 3, print = FALSE, ...)
 A tibble or nicely formatted table
 }
 \description{
-Wrapper for \code{lm()} regression function
+Wrapper for tidy \code{lm()} regression function fit output
 }
 \examples{
-get_regression_points(mpg ~ cyl, data = mtcars)
+mpg_model <- lm(mpg ~ cyl, data = mtcars)
+get_regression_points(mpg_model)
 }

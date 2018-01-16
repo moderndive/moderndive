@@ -8,8 +8,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## moderndive R Package <img src="https://github.com/moderndive/moderndive/blob/master/images/hex_blue_text.png?raw=true" align="right" width=125 />
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive)
-[![Travis-CI Build Status](https://travis-ci.org/moderndive/moderndive.svg?branch=master)](https://travis-ci.org/moderndive/moderndive)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive) [![Travis-CI Build Status](https://travis-ci.org/moderndive/moderndive.svg?branch=master)](https://travis-ci.org/moderndive/moderndive) [![Coverage Status](https://img.shields.io/codecov/c/github/moderndive/moderndive/master.svg)](https://codecov.io/github/moderndive/moderndive?branch=master)
 
 Accompaniment R Package to ModernDive: An Introduction to Statistical and Data Sciences via R available at <http://moderndive.com/>.
 
@@ -18,24 +17,25 @@ Accompaniment R Package to ModernDive: An Introduction to Statistical and Data S
 
 Get the released version from CRAN:
 
-```{r, eval = FALSE}
+```{r, eval=FALSE}
 install.packages("moderndive")
 ```
 
 Or the development version from GitHub:
 
-```{r, eval = FALSE}
-# If you haven't installed devtools yet, do so:
-# install.packages("devtools")
-devtools::install_github("moderndive/moderndive")
+```{r, eval=FALSE}
+# If you haven't installed remotes yet, do so:
+# install.packages("remotes")
+remotes::install_github("moderndive/moderndive")
 ```
 
 
 ## Demo
 
 The following three `get_regression_OUTPUT()` functions are tidyverse-friendly
-wrapper functions meant for the novice regression user. They have more intuitive
-verb-like function names than the corresponding `broom` commands:
+wrapper functions meant for the novice regression user. They have more intuitive/verb-like
+function names than the corresponding `broom` package commands:
+
 
 * `get_regression_table()`: a wrapper to `tidy()` to return the regression table
 * `get_regression_points()`: a wrapper to `augment()` to return a table of all regression points
@@ -49,23 +49,37 @@ Furthermore
 documents, via `print = TRUE`
 * You can control the pseudo-precision via the `digits` argument
 
+```{r eval=FALSE}
+devtools::install_github("moderndive/moderndive")
+```
 
-```{r, eval=TRUE, warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE}
 library(moderndive)
-library(dplyr)
+library(tidyverse)
+```
 
-# Regression tables
-get_regression_table(mpg ~ hp, data = mtcars)
-get_regression_table(mpg ~ hp + wt, data = mtcars, digits = 4, print = TRUE)
-
-# Regression points. For residual analysis for example
+```{r}
+# Convert cyl to factor variable
 mtcars <- mtcars %>% 
   mutate(cyl = as.factor(cyl))
-get_regression_points(mpg ~ hp + cyl, data = mtcars)
+
+# Regression models
+mpg_model <- lm(mpg ~ hp, data = mtcars)
+mpg_mlr_model <- lm(mpg ~ hp + wt, data = mtcars)
+mpg_mlr_model2 <- lm(mpg ~ hp + cyl, data = mtcars)
+
+# Regression tables
+get_regression_table(model = mpg_model)
+get_regression_table(mpg_mlr_model, digits = 4, print = TRUE)
+
+# Regression points. For residual analysis for example
+get_regression_points(mpg_mlr_model2)
 
 # Regression summaries
-get_regression_summaries(mpg ~ hp, data = mtcars)
-get_regression_summaries(mpg ~ hp, data = mtcars, digits = 5, print = TRUE)
+get_regression_summaries(mpg_model)
+
+# Can also use `%>%`
+mpg_model %>% get_regression_summaries(digits = 5, print = TRUE)
 ```
 
 ***

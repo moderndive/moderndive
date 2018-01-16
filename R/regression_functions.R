@@ -10,10 +10,9 @@ globalVariables(c(
 
 #' Get regression table
 #'
-#' Wrapper for \code{lm()} regression function
+#' Wrapper for tidy \code{lm()} regression function output
 #'
-#' @param formula regression formula
-#' @param data data frame
+#' @param model a model object (Currently only \code{lm} is supported)
 #' @param digits number of digits precision in output table
 #' @param print If TRUE, return in print format suitable for R Markdown
 #' @param ... other arguments passed to lm()
@@ -31,37 +30,27 @@ globalVariables(c(
 #' @export
 #'
 #' @examples
-#' get_regression_table(mpg ~ cyl, data = mtcars)
+#' mpg_model <- lm(mpg ~ cyl, data = mtcars)
+#' get_regression_table(mpg_model)
 get_regression_table <-
-  function(formula,
-           data,
+  function(model,
            digits = 3,
            print = FALSE,
            ...) {
     
-    assertive_input_checks(formula, data, digits, print)
+    input_checks(model, digits, print)
     
-    outcome_variable <- formula %>% lhs() %>% all.vars()
-    explanatory_variable <- formula %>% rhs() %>% all.vars()
-  
-    if(length(outcome_variable) != 1)
-      stop("This function expects only one variable on the lefthand side.")
+    outcome_variable <- formula(model) %>% lhs() %>% all.vars()
+    explanatory_variable <- formula(model) %>% rhs() %>% all.vars()
     
-    if(!(outcome_variable %in% names(data)))
-      stop("The variable on the lefthand side is not in the data frame.")
-    
-    if(!(assertive::is_subset(explanatory_variable, names(data))))
-      stop(paste("One or more of the variable(s) on the righthand side",
-                 "is/are not in the data frame."))
-    
-    regression_table <- lm(formula = formula, data = data, ...) %>%
+    regression_table <- model %>%
       tidy(conf.int = TRUE) %>%
       mutate_if(is.numeric, round, digits = digits) %>%
       mutate(term = ifelse(term == "(Intercept)", "intercept", term)) %>%
       as_tibble() %>%
       clean_names()
     
-    if (print) {
+    if(print) {
       regression_table <- regression_table %>%
         kable()
     }
@@ -72,14 +61,14 @@ get_regression_table <-
 
 #' Get regression points
 #'
-#' Wrapper for \code{lm()} regression function
+#' Wrapper for tidy \code{lm()} regression function fit output
 #'
 #' @inheritParams get_regression_table
 #'
 #' @return A tibble or nicely formatted table
 #' @import dplyr
 #' @import rlang
-#' @importFrom stats lm
+#' @importFrom stats formula 
 #' @importFrom magrittr "%>%"
 #' @importFrom formula.tools lhs
 #' @importFrom formula.tools rhs
@@ -91,30 +80,20 @@ get_regression_table <-
 #' @export
 #'
 #' @examples
-#' get_regression_points(mpg ~ cyl, data = mtcars)
+#' mpg_model <- lm(mpg ~ cyl, data = mtcars)
+#' get_regression_points(mpg_model)
 get_regression_points <-
-  function(formula,
-           data,
+  function(model,
            digits = 3,
            print = FALSE,
            ...) {
     
-    assertive_input_checks(formula, data, digits, print)
+    input_checks(model, digits, print)
     
-    outcome_variable <- formula %>% lhs() %>% all.vars()
-    explanatory_variable <- formula %>% rhs() %>% all.vars()
+    outcome_variable <- formula(model) %>% lhs() %>% all.vars()
+    explanatory_variable <- formula(model) %>% rhs() %>% all.vars()
     
-    if(length(outcome_variable) != 1)
-      stop("This function expects only one variable on the lefthand side.")
-    
-    if(!(outcome_variable %in% names(data)))
-      stop("The variable on the lefthand side is not in the data frame.")
-    
-    if(!(assertive::is_subset(explanatory_variable, names(data))))
-      stop(paste("One or more of the variable(s) on the righthand side",
-                 "is/are not in the data frame."))
-    
-    regression_points <- lm(formula = formula, data = data) %>%
+    regression_points <- model %>%
       augment() %>%
       mutate_if(is.numeric, round, digits = digits) %>%
       select(!!c(outcome_variable, explanatory_variable, 
@@ -124,7 +103,7 @@ get_regression_points <-
       as_tibble() %>%
       clean_names()
     
-    if (print) {
+    if(print) {
       regression_points <- regression_points %>%
         kable()
     }
@@ -136,13 +115,13 @@ get_regression_points <-
 
 #' Get regression summary values
 #'
-#' Wrapper for \code{lm()} regression function
+#' Wrapper for \code{lm()} regression function fit summary data
 #'
 #' @inheritParams get_regression_table
 #'
 #' @return A tibble or nicely formatted table
 #' @import dplyr
-#' @importFrom stats lm
+#' @importFrom stats formula
 #' @importFrom magrittr "%>%"
 #' @importFrom formula.tools lhs
 #' @importFrom formula.tools rhs
@@ -153,30 +132,20 @@ get_regression_points <-
 #' @export
 #'
 #' @examples
-#' get_regression_summaries(mpg ~ cyl, data = mtcars)
+#' mpg_model <- lm(mpg ~ cyl, data = mtcars)
+#' get_regression_summaries(mpg_model)
 get_regression_summaries <-
-  function(formula,
-           data,
+  function(model,
            digits = 3,
            print = FALSE,
            ...) {
     
-    assertive_input_checks(formula, data, digits, print)
+    input_checks(model, digits, print)
     
-    outcome_variable <- formula %>% lhs() %>% all.vars()
-    explanatory_variable <- formula %>% rhs() %>% all.vars()
+    outcome_variable <- formula(model) %>% lhs() %>% all.vars()
+    explanatory_variable <- formula(model) %>% rhs() %>% all.vars()
     
-    if(length(outcome_variable) != 1)
-      stop("This function expects only one variable on the lefthand side.")
-    
-    if(!(outcome_variable %in% names(data)))
-      stop("The variable on the lefthand side is not in the data frame.")
-    
-    if(!(assertive::is_subset(explanatory_variable, names(data))))
-      stop(paste("One or more of the variable(s) on the righthand side",
-                 "is/are not in the data frame."))
-    
-    regression_summaries <- lm(formula = formula, data = data) %>%
+    regression_summaries <- model %>%
       glance() %>%
       mutate_if(is.numeric, round, digits = digits) %>%
       select(-c(AIC, BIC, deviance, df.residual, logLik)) %>%
@@ -191,13 +160,16 @@ get_regression_summaries <-
     return(regression_summaries)
   }
 
-assertive_input_checks <- function(formula,
-                             data,
-                             digits = 3,
-                             print = FALSE,
-                             ...){
-  assertive::assert_is_data.frame(data)
-  assertive::assert_is_two_sided_formula(formula)
+input_checks <- function(model,
+                         digits = 3,
+                         print = FALSE,
+                         ...){
+  # Since the `"glm"` class also contains the `"lm"` class
+  if(length(class(model)) != 1 | !("lm" %in% class(model)) ){
+    stop(paste("Only simple and multiple linear regression",
+               "models are supported. Try again using `lm` for",
+               "your models as appropriate."))
+  }
   assertive::assert_is_numeric(digits)
   assertive::assert_is_logical(print)
 }

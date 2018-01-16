@@ -13,16 +13,21 @@
 #' library(moderndive)
 #' library(dplyr)
 #' 
+#' # Regression models
+#' mpg_model <- lm(mpg ~ hp, data = mtcars)
+#' mpg_mlr_model <- lm(mpg ~ hp + wt, data = mtcars)
+#' mpg_mlr_model2 <- lm(mpg ~ hp + cyl, data = mtcars)
+#'
 #' # Regression tables
-#' get_regression_table(mpg ~ hp, data = mtcars)
-#' get_regression_table(mpg ~ hp + wt, data = mtcars, digits = 4, print = TRUE)
-#' 
+#' get_regression_table(model = mpg_model)
+#' get_regression_table(mpg_mlr_model, digits = 4, print = TRUE)
+#'
 #' # Regression points. For residual analysis for example
-#' mtcars <- mtcars %>% 
-#'   mutate(cyl = as.factor(cyl))
-#' get_regression_points(mpg ~ hp + cyl, data = mtcars)
-#' 
+#' get_regression_points(mpg_mlr_model2)
+#'
 #' # Regression summaries
-#' get_regression_summaries(mpg ~ hp, data = mtcars)
-#' get_regression_summaries(mpg ~ hp, data = mtcars, digits = 5, print = TRUE)
+#' get_regression_summaries(mpg_model)
+#' 
+#' # Can also use `%>%`
+#' mpg_model %>% get_regression_summaries(digits = 5, print = TRUE)
 NULL

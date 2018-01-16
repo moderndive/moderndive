@@ -2,7 +2,7 @@
 moderndive R Package <img src="https://github.com/moderndive/moderndive/blob/master/images/hex_blue_text.png?raw=true" align="right" width=125 />
 -------------------------------------------------------------------------------------------------------------------------------------------------
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive) [![Travis-CI Build Status](https://travis-ci.org/moderndive/moderndive.svg?branch=master)](https://travis-ci.org/moderndive/moderndive)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive) [![Travis-CI Build Status](https://travis-ci.org/moderndive/moderndive.svg?branch=master)](https://travis-ci.org/moderndive/moderndive) [![Coverage Status](https://img.shields.io/codecov/c/github/moderndive/moderndive/master.svg)](https://codecov.io/github/moderndive/moderndive?branch=master)
 
 Accompaniment R Package to ModernDive: An Introduction to Statistical and Data Sciences via R available at <http://moderndive.com/>.
 
@@ -18,15 +18,15 @@ install.packages("moderndive")
 Or the development version from GitHub:
 
 ``` r
-# If you haven't installed devtools yet, do so:
-# install.packages("devtools")
-devtools::install_github("moderndive/moderndive")
+# If you haven't installed remotes yet, do so:
+# install.packages("remotes")
+remotes::install_github("moderndive/moderndive")
 ```
 
 Demo
 ----
 
-The following three `get_regression_OUTPUT()` functions are tidyverse-friendly wrapper functions meant for the novice regression user. They have more intuitive verb-like function names than the corresponding `broom` commands:
+The following three `get_regression_OUTPUT()` functions are tidyverse-friendly wrapper functions meant for the novice regression user. They have more intuitive/verb-like function names than the corresponding `broom` package commands:
 
 -   `get_regression_table()`: a wrapper to `tidy()` to return the regression table
 -   `get_regression_points()`: a wrapper to `augment()` to return a table of all regression points
@@ -40,11 +40,26 @@ Furthermore
 -   You can control the pseudoprecision via the `digits` argument
 
 ``` r
+devtools::install_github("moderndive/moderndive")
+```
+
+``` r
 library(moderndive)
-library(dplyr)
+library(tidyverse)
+```
+
+``` r
+# Convert cyl to factor variable
+mtcars <- mtcars %>% 
+  mutate(cyl = as.factor(cyl))
+
+# Regression models
+mpg_model <- lm(mpg ~ hp, data = mtcars)
+mpg_mlr_model <- lm(mpg ~ hp + wt, data = mtcars)
+mpg_mlr_model2 <- lm(mpg ~ hp + cyl, data = mtcars)
 
 # Regression tables
-get_regression_table(mpg ~ hp, data = mtcars)
+get_regression_table(model = mpg_model)
 ```
 
     ## # A tibble: 2 x 7
@@ -54,7 +69,7 @@ get_regression_table(mpg ~ hp, data = mtcars)
     ## 2        hp   -0.068     0.010    -6.742       0   -0.089    -0.048
 
 ``` r
-get_regression_table(mpg ~ hp + wt, data = mtcars, digits = 4, print = TRUE)
+get_regression_table(mpg_mlr_model, digits = 4, print = TRUE)
 ```
 
 | term      |  estimate|  std\_error|  statistic|  p\_value|  conf\_low|  conf\_high|
@@ -65,9 +80,7 @@ get_regression_table(mpg ~ hp + wt, data = mtcars, digits = 4, print = TRUE)
 
 ``` r
 # Regression points. For residual analysis for example
-mtcars <- mtcars %>% 
-  mutate(cyl = as.factor(cyl))
-get_regression_points(mpg ~ hp + cyl, data = mtcars)
+get_regression_points(mpg_mlr_model2)
 ```
 
     ## # A tibble: 32 x 5
@@ -87,7 +100,7 @@ get_regression_points(mpg ~ hp + cyl, data = mtcars)
 
 ``` r
 # Regression summaries
-get_regression_summaries(mpg ~ hp, data = mtcars)
+get_regression_summaries(mpg_model)
 ```
 
     ## # A tibble: 1 x 6
@@ -96,7 +109,8 @@ get_regression_summaries(mpg ~ hp, data = mtcars)
     ## 1     0.602         0.589 3.863     45.46       0     2
 
 ``` r
-get_regression_summaries(mpg ~ hp, data = mtcars, digits = 5, print = TRUE)
+# Can also use `%>%`
+mpg_model %>% get_regression_summaries(digits = 5, print = TRUE)
 ```
 
 |  r\_squared|  adj\_r\_squared|    sigma|  statistic|  p\_value|   df|

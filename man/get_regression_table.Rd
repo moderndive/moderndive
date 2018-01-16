@@ -4,12 +4,10 @@
 \alias{get_regression_table}
 \title{Get regression table}
 \usage{
-get_regression_table(formula, data, digits = 3, print = FALSE, ...)
+get_regression_table(model, digits = 3, print = FALSE, ...)
 }
 \arguments{
-\item{formula}{regression formula}
-
-\item{data}{data frame}
+\item{model}{a model object (Currently only \code{lm} is supported)}
 
 \item{digits}{number of digits precision in output table}
 
@@ -21,8 +19,9 @@ get_regression_table(formula, data, digits = 3, print = FALSE, ...)
 A tibble or nicely formatted table
 }
 \description{
-Wrapper for \code{lm()} regression function
+Wrapper for tidy \code{lm()} regression function output
 }
 \examples{
-get_regression_table(mpg ~ cyl, data = mtcars)
+mpg_model <- lm(mpg ~ cyl, data = mtcars)
+get_regression_table(mpg_model)
 }

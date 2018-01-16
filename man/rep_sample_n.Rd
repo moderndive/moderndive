@@ -39,5 +39,5 @@ group_by(replicate) \%>\%
 summarize(prop_red = mean(color == "red"))
 
 ggplot(p_hats, aes(x = prop_red)) + 
-geom_histogram(binwidth = 0.05)
+    geom_histogram(binwidth = 0.05)
 }
