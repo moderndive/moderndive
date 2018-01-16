@@ -54,7 +54,7 @@ devtools::install_github("moderndive/moderndive")
 
 ```{r warning=FALSE, message=FALSE}
 library(moderndive)
-library(tidyverse)
+library(dplyr)
 ```
 
 ```{r}
