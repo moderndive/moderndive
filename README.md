@@ -45,7 +45,7 @@ devtools::install_github("moderndive/moderndive")
 
 ``` r
 library(moderndive)
-library(tidyverse)
+library(dplyr)
 ```
 
 ``` r
@@ -83,19 +83,19 @@ get_regression_table(mpg_mlr_model, digits = 4, print = TRUE)
 get_regression_points(mpg_mlr_model2)
 ```
 
-    ## # A tibble: 32 x 5
-    ##      mpg    hp    cyl mpg_hat residual
-    ##    <dbl> <dbl> <fctr>   <dbl>    <dbl>
-    ##  1  21.0   110      6  20.038    0.962
-    ##  2  21.0   110      6  20.038    0.962
-    ##  3  22.8    93      4  26.415   -3.615
-    ##  4  21.4   110      6  20.038    1.362
-    ##  5  18.7   175      8  15.922    2.778
-    ##  6  18.1   105      6  20.158   -2.058
-    ##  7  14.3   245      8  14.240    0.060
-    ##  8  24.4    62      4  27.160   -2.760
-    ##  9  22.8    95      4  26.366   -3.566
-    ## 10  19.2   123      6  19.726   -0.526
+    ## # A tibble: 32 x 6
+    ##       ID   mpg    hp    cyl mpg_hat residual
+    ##    <int> <dbl> <dbl> <fctr>   <dbl>    <dbl>
+    ##  1     1  21.0   110      6  20.038    0.962
+    ##  2     2  21.0   110      6  20.038    0.962
+    ##  3     3  22.8    93      4  26.415   -3.615
+    ##  4     4  21.4   110      6  20.038    1.362
+    ##  5     5  18.7   175      8  15.922    2.778
+    ##  6     6  18.1   105      6  20.158   -2.058
+    ##  7     7  14.3   245      8  14.240    0.060
+    ##  8     8  24.4    62      4  27.160   -2.760
+    ##  9     9  22.8    95      4  26.366   -3.566
+    ## 10    10  19.2   123      6  19.726   -0.526
     ## # ... with 22 more rows
 
 ``` r

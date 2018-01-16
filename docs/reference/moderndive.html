@@ -53,7 +53,7 @@ Statistical and Data Sciences via R — moderndive • moderndive</title>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -120,19 +120,19 @@ regression output in Chapter 6: Data Modeling with Regression.</p>
 #&gt; |hp        |  -0.0318|    0.0090|   -3.5187|  0.0015|  -0.0502|   -0.0133|
 #&gt; |wt        |  -3.8778|    0.6327|   -6.1287|  0.0000|  -5.1719|   -2.5837|</div><div class='input'>
 <span class='co'># Regression points. For residual analysis for example</span>
-<span class='fu'><a href='get_regression_points.html'>get_regression_points</a></span>(<span class='no'>mpg_mlr_model2</span>)</div><div class='output co'>#&gt; # A tibble: 32 x 5
-#&gt;      mpg    hp   cyl mpg_hat residual
-#&gt;    &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
-#&gt;  1  21.0   110     6  21.217   -0.217
-#&gt;  2  21.0   110     6  21.217   -0.217
-#&gt;  3  22.8    93     4  26.071   -3.271
-#&gt;  4  21.4   110     6  21.217    0.183
-#&gt;  5  18.7   175     8  15.444    3.256
-#&gt;  6  18.1   105     6  21.312   -3.212
-#&gt;  7  14.3   245     8  14.106    0.194
-#&gt;  8  24.4    62     4  26.664   -2.264
-#&gt;  9  22.8    95     4  26.033   -3.233
-#&gt; 10  19.2   123     6  20.968   -1.768
+<span class='fu'><a href='get_regression_points.html'>get_regression_points</a></span>(<span class='no'>mpg_mlr_model2</span>)</div><div class='output co'>#&gt; # A tibble: 32 x 6
+#&gt;       ID   mpg    hp   cyl mpg_hat residual
+#&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+#&gt;  1     1  21.0   110     6  21.217   -0.217
+#&gt;  2     2  21.0   110     6  21.217   -0.217
+#&gt;  3     3  22.8    93     4  26.071   -3.271
+#&gt;  4     4  21.4   110     6  21.217    0.183
+#&gt;  5     5  18.7   175     8  15.444    3.256
+#&gt;  6     6  18.1   105     6  21.312   -3.212
+#&gt;  7     7  14.3   245     8  14.106    0.194
+#&gt;  8     8  24.4    62     4  26.664   -2.264
+#&gt;  9     9  22.8    95     4  26.033   -3.233
+#&gt; 10    10  19.2   123     6  20.968   -1.768
 #&gt; # ... with 22 more rows</div><div class='input'>
 <span class='co'># Regression summaries</span>
 <span class='fu'><a href='get_regression_summaries.html'>get_regression_summaries</a></span>(<span class='no'>mpg_model</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 6
@@ -162,7 +162,7 @@ regression output in Chapter 6: Data Modeling with Regression.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

@@ -29,7 +29,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
-  <a href="/index.html">
+  <a href="index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -104,10 +104,10 @@ remotes<span class="op">::</span><span class="kw"><a href="http://www.rdocumenta
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">devtools<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/devtools/topics/install_github">install_github</a></span>(<span class="st">"moderndive/moderndive"</span>)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(moderndive)
-<span class="kw">library</span>(tidyverse)</code></pre></div>
+<span class="kw">library</span>(dplyr)</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Convert cyl to factor variable</span>
 mtcars &lt;-<span class="st"> </span>mtcars <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">cyl =</span> <span class="kw">as.factor</span>(cyl))
+<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">cyl =</span> <span class="kw">as.factor</span>(cyl))
 
 <span class="co"># Regression models</span>
 mpg_model &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg <span class="op">~</span><span class="st"> </span>hp, <span class="dt">data =</span> mtcars)
@@ -164,19 +164,19 @@ mpg_mlr_model2 &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg <spa
 </table>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Regression points. For residual analysis for example</span>
 <span class="kw"><a href="reference/get_regression_points.html">get_regression_points</a></span>(mpg_mlr_model2)</code></pre></div>
-<pre><code>## # A tibble: 32 x 5
-##      mpg    hp    cyl mpg_hat residual
-##    &lt;dbl&gt; &lt;dbl&gt; &lt;fctr&gt;   &lt;dbl&gt;    &lt;dbl&gt;
-##  1  21.0   110      6  20.038    0.962
-##  2  21.0   110      6  20.038    0.962
-##  3  22.8    93      4  26.415   -3.615
-##  4  21.4   110      6  20.038    1.362
-##  5  18.7   175      8  15.922    2.778
-##  6  18.1   105      6  20.158   -2.058
-##  7  14.3   245      8  14.240    0.060
-##  8  24.4    62      4  27.160   -2.760
-##  9  22.8    95      4  26.366   -3.566
-## 10  19.2   123      6  19.726   -0.526
+<pre><code>## # A tibble: 32 x 6
+##       ID   mpg    hp    cyl mpg_hat residual
+##    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fctr&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+##  1     1  21.0   110      6  20.038    0.962
+##  2     2  21.0   110      6  20.038    0.962
+##  3     3  22.8    93      4  26.415   -3.615
+##  4     4  21.4   110      6  20.038    1.362
+##  5     5  18.7   175      8  15.922    2.778
+##  6     6  18.1   105      6  20.158   -2.058
+##  7     7  14.3   245      8  14.240    0.060
+##  8     8  24.4    62      4  27.160   -2.760
+##  9     9  22.8    95      4  26.366   -3.566
+## 10    10  19.2   123      6  19.726   -0.526
 ## # ... with 22 more rows</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Regression summaries</span>
 <span class="kw"><a href="reference/get_regression_summaries.html">get_regression_summaries</a></span>(mpg_model)</code></pre></div>
@@ -243,7 +243,7 @@ mpg_model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>

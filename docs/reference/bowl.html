@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A population of 800 pennies sampled in 2011 — pennies • moderndive</title>
+<title>A sampling bowl of red and white balls — bowl • moderndive</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -83,68 +83,53 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A population of 800 pennies sampled in 2011</h1>
+    <h1>A sampling bowl of red and white balls</h1>
     </div>
 
     
-    <p>A dataset of 800 pennies to be treated as a sampling population. Data on 
-these pennies were recorded in 2011.</p>
+    <p>A sampling bowl used as the population in a simulated sampling exercise. Also 
+known as the urn sampling framework <a href='https://en.wikipedia.org/wiki/Urn_problem'>https://en.wikipedia.org/wiki/Urn_problem</a>.</p>
     
 
-    <pre class="usage"><span class='no'>pennies</span></pre>
+    <pre class="usage"><span class='no'>bowl</span></pre>
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame 800 rows representing different pennies and 2 variables</p><dl class='dl-horizontal'>
-  <dt>year</dt><dd><p>Year of minting</p></dd>
-  <dt>age_in_2011</dt><dd><p>Age in 2011</p></dd>
+    <p>A data frame 2400 rows representing different balls in the bowl, of which
+900 are red and 1500 are white.</p><dl class='dl-horizontal'>
+  <dt>ball_ID</dt><dd><p>ID variable used to denote all balls. Note this value is not 
+  marked on the balls themselves</p></dd>
+  <dt>color</dt><dd><p>color of ball: red or white</p></dd>
 </dl>
-    
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
-
-    <p>StatCrunch <a href='https://www.statcrunch.com/app/index.php?dataid=301596'>https://www.statcrunch.com/app/index.php?dataid=301596</a></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
 <span class='fu'>library</span>(<span class='no'>ggplot2</span>)
 
-<span class='co'># Take 10 different samples of size n = 50 pennies from population</span>
-<span class='no'>many_samples</span> <span class='kw'>&lt;-</span> <span class='no'>pennies</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='rep_sample_n.html'>rep_sample_n</a></span>(<span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>reps</span> <span class='kw'>=</span> <span class='fl'>25</span>)
-<span class='no'>many_samples</span></div><div class='output co'>#&gt; # A tibble: 1,250 x 3
-#&gt; # Groups:   replicate [25]
-#&gt;    replicate  year age_in_2011
-#&gt;        &lt;int&gt; &lt;int&gt;       &lt;int&gt;
-#&gt;  1         1  1994          17
-#&gt;  2         1  2005           6
-#&gt;  3         1  1979          32
-#&gt;  4         1  1996          15
-#&gt;  5         1  1959          52
-#&gt;  6         1  1987          24
-#&gt;  7         1  2006           5
-#&gt;  8         1  1973          38
-#&gt;  9         1  1999          12
-#&gt; 10         1  1975          36
-#&gt; # ... with 1,240 more rows</div><div class='input'>
-<span class='co'># Compute mean year of minting for each sample</span>
-<span class='no'>sample_means</span> <span class='kw'>&lt;-</span> <span class='no'>many_samples</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>replicate</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span>(<span class='kw'>mean_year</span> <span class='kw'>=</span> <span class='fu'>mean</span>(<span class='no'>year</span>))
+<span class='co'># Take 10 different samples of size n = 50 balls from bowl</span>
+<span class='no'>bowl_samples_simulated</span> <span class='kw'>&lt;-</span> <span class='no'>bowl</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='rep_sample_n.html'>rep_sample_n</a></span>(<span class='fl'>50</span>, <span class='kw'>reps</span> <span class='kw'>=</span> <span class='fl'>10</span>)
+
+<span class='co'># Compute 10 different p_hats (prop red) based on 10 different samples of</span>
+<span class='co'># size n = 50</span>
+<span class='no'>p_hats</span> <span class='kw'>&lt;-</span> <span class='no'>bowl_samples_simulated</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>replicate</span>, <span class='no'>color</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span>(<span class='kw'>count</span> <span class='kw'>=</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/n.html'>n</a></span>()) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>proportion</span> <span class='kw'>=</span> <span class='no'>count</span>/<span class='fl'>50</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>color</span> <span class='kw'>==</span> <span class='st'>"red"</span>)
 
 <span class='co'># Plot sampling distribution</span>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>sample_means</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>mean_year</span>)) +
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_histogram'>geom_histogram</a></span>(<span class='kw'>binwidth</span> <span class='kw'>=</span> <span class='fl'>1</span>) +
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'>expression</span>(<span class='fu'>bar</span>(<span class='no'>x</span>)), <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Number of samples"</span>,
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Sampling distribution of x_bar based 25 samples of size n = 50"</span>)</div><div class='img'><img src='pennies-1.png' alt='' width='700' height='432.632880098887' /></div></pre>
+<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>p_hats</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>proportion</span>)) +
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_histogram'>geom_histogram</a></span>(<span class='kw'>binwidth</span> <span class='kw'>=</span> <span class='fl'>0.05</span>) +
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'>expression</span>(<span class='fu'>hat</span>(<span class='no'>p</span>)), <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Number of samples"</span>,
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Sampling distribution of p_hat based 10 samples of size n = 50"</span>)</div><div class='img'><img src='bowl-1.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       
       <li><a href="#format">Format</a></li>
-
-      <li><a href="#source">Source</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
