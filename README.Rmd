@@ -49,10 +49,6 @@ Furthermore
 documents, via `print = TRUE`
 * You can control the pseudo-precision via the `digits` argument
 
-```{r eval=FALSE}
-devtools::install_github("moderndive/moderndive")
-```
-
 ```{r warning=FALSE, message=FALSE}
 library(moderndive)
 library(dplyr)

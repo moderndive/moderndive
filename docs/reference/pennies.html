@@ -116,16 +116,16 @@ these pennies were recorded in 2011.</p>
 #&gt; # Groups:   replicate [25]
 #&gt;    replicate  year age_in_2011
 #&gt;        &lt;int&gt; &lt;int&gt;       &lt;int&gt;
-#&gt;  1         1  1994          17
-#&gt;  2         1  2005           6
-#&gt;  3         1  1979          32
-#&gt;  4         1  1996          15
-#&gt;  5         1  1959          52
-#&gt;  6         1  1987          24
-#&gt;  7         1  2006           5
-#&gt;  8         1  1973          38
-#&gt;  9         1  1999          12
-#&gt; 10         1  1975          36
+#&gt;  1         1  1983          28
+#&gt;  2         1  1990          21
+#&gt;  3         1  1994          17
+#&gt;  4         1  2004           7
+#&gt;  5         1  1979          32
+#&gt;  6         1  1982          29
+#&gt;  7         1  1959          52
+#&gt;  8         1  1998          13
+#&gt;  9         1  1980          31
+#&gt; 10         1  1995          16
 #&gt; # ... with 1,240 more rows</div><div class='input'>
 <span class='co'># Compute mean year of minting for each sample</span>
 <span class='no'>sample_means</span> <span class='kw'>&lt;-</span> <span class='no'>many_samples</span> <span class='kw'>%&gt;%</span>
@@ -136,7 +136,7 @@ these pennies were recorded in 2011.</p>
 <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>sample_means</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>mean_year</span>)) +
   <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_histogram'>geom_histogram</a></span>(<span class='kw'>binwidth</span> <span class='kw'>=</span> <span class='fl'>1</span>) +
   <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'>expression</span>(<span class='fu'>bar</span>(<span class='no'>x</span>)), <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Number of samples"</span>,
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Sampling distribution of x_bar based 25 samples of size n = 50"</span>)</div><div class='img'><img src='pennies-1.png' alt='' width='700' height='432.632880098887' /></div></pre>
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Sampling distribution of x_bar based 25 samples of size n = 50"</span>)</div><div class='img'><img src='pennies-2.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
