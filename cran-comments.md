@@ -12,7 +12,7 @@ based on feedback from CRAN
 
 * local OS X install, R 3.4.3
 * ubuntu 14.04.5 (on travis-ci), R 3.4.2
-* win-builder (devel and release)
+* Rhub: Windows Server 2008 R2 SP1, R-release, 32/64 bit
 
 ## R CMD check results
 
