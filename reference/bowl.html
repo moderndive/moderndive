@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sampling from a tub of balls — ball_samples • moderndive</title>
+<title>A sampling bowl of red and white balls — bowl • moderndive</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -52,7 +52,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="..//index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
@@ -83,45 +83,47 @@
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Sampling from a tub of balls</h1>
+    <h1>A sampling bowl of red and white balls</h1>
     </div>
 
     
-    <p>Counting the number of red balls in 10 samples of size n = 50 balls from
-<a href='https://github.com/ismayc/moderndiver-book/raw/master/images/sampling1.jpg'>https://github.com/ismayc/moderndiver-book/raw/master/images/sampling1.jpg</a></p>
+    <p>A sampling bowl used as the population in a simulated sampling exercise. Also 
+known as the urn sampling framework <a href='https://en.wikipedia.org/wiki/Urn_problem'>https://en.wikipedia.org/wiki/Urn_problem</a>.</p>
     
 
-    <pre class="usage"><span class='no'>ball_samples</span></pre>
+    <pre class="usage"><span class='no'>bowl</span></pre>
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame 10 rows representing different groups of students' 
-samples of size n = 50 and 5 variables</p><dl class='dl-horizontal'>
-  <dt>group</dt><dd><p>Group name</p></dd>
-  <dt>red</dt><dd><p>Number of red balls sampled</p></dd>
-  <dt>white</dt><dd><p>Number of white balls sampled</p></dd>
-  <dt>green</dt><dd><p>Number of green balls sampled</p></dd>
-  <dt>n</dt><dd><p>Total number of balls samples</p></dd>
+    <p>A data frame 2400 rows representing different balls in the bowl, of which
+900 are red and 1500 are white.</p><dl class='dl-horizontal'>
+  <dt>ball_ID</dt><dd><p>ID variable used to denote all balls. Note this value is not 
+  marked on the balls themselves</p></dd>
+  <dt>color</dt><dd><p>color of ball: red or white</p></dd>
 </dl>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
-#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
-#&gt; <span class='message'></span>
-#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='fu'>library</span>(<span class='no'>ggplot2</span>)</div><div class='output co'>#&gt; <span class='message'>Want to understand how all the pieces fit together? Buy the ggplot2</span>
-#&gt; <span class='message'>book: http://ggplot2.org/book/</span></div><div class='input'>
-<span class='co'># Compute proportion red</span>
-<span class='no'>ball_samples</span> <span class='kw'>&lt;-</span> <span class='no'>ball_samples</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>prop_red</span> <span class='kw'>=</span> <span class='no'>red</span> / <span class='no'>n</span>)
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
+<span class='fu'>library</span>(<span class='no'>ggplot2</span>)
 
-<span class='co'># Plot sampling distributions</span>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>ball_samples</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>prop_red</span>)) +
+<span class='co'># Take 10 different samples of size n = 50 balls from bowl</span>
+<span class='no'>bowl_samples_simulated</span> <span class='kw'>&lt;-</span> <span class='no'>bowl</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='rep_sample_n.html'>rep_sample_n</a></span>(<span class='fl'>50</span>, <span class='kw'>reps</span> <span class='kw'>=</span> <span class='fl'>10</span>)
+
+<span class='co'># Compute 10 different p_hats (prop red) based on 10 different samples of</span>
+<span class='co'># size n = 50</span>
+<span class='no'>p_hats</span> <span class='kw'>&lt;-</span> <span class='no'>bowl_samples_simulated</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>replicate</span>, <span class='no'>color</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span>(<span class='kw'>count</span> <span class='kw'>=</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/n.html'>n</a></span>()) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>proportion</span> <span class='kw'>=</span> <span class='no'>count</span>/<span class='fl'>50</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>color</span> <span class='kw'>==</span> <span class='st'>"red"</span>)
+
+<span class='co'># Plot sampling distribution</span>
+<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>p_hats</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>proportion</span>)) +
   <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_histogram'>geom_histogram</a></span>(<span class='kw'>binwidth</span> <span class='kw'>=</span> <span class='fl'>0.05</span>) +
   <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'>expression</span>(<span class='fu'>hat</span>(<span class='no'>p</span>)), <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Number of samples"</span>,
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Sampling distribution of p_hat based 10 samples of size n = 50"</span>)</div><div class='img'><img src='ball_samples-1.png' alt='' width='700' height='432.632880098887' /></div></pre>
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Sampling distribution of p_hat based 10 samples of size n = 50"</span>)</div><div class='img'><img src='bowl-1.png' alt='' width='700' height='432.632880098887' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -141,7 +143,7 @@ samples of size n = 50 and 5 variables</p><dl class='dl-horizontal'>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="http://hadley.github.io/pkgdown/">pkgdown</a>.</p>
+  <p>Site built with <a href="http://pkgdown.r-lib.org/">pkgdown</a>.</p>
 </div>
 
       </footer>
