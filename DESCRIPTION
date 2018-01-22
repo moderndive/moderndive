@@ -1,7 +1,7 @@
 Package: moderndive
 Type: Package
 Title: Accompaniment Package to ModernDive: An Introduction to Statistical and Data Sciences via R
-Version: 0.1.1
+Version: 0.1.1.9000
 Authors@R: c(
     person("Albert Y.", "Kim", email = "albert.ys.kim@gmail.com", role = "cre"),
     person("Chester", "Ismay", email = "chester.ismay@gmail.com", role = "aut"),
