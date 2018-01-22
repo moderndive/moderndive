@@ -28,7 +28,8 @@ Imports: magrittr,
     formula.tools,
     stringr,
     knitr,
-    assertive
+    assertive,
+    infer
 RoxygenNote: 6.0.1
 Suggests: testthat,
     covr,
