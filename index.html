@@ -164,18 +164,18 @@ mpg_mlr_model2 &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg ~<sp
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Regression points. For residual analysis for example</span>
 <span class="kw"><a href="reference/get_regression_points.html">get_regression_points</a></span>(mpg_mlr_model2)</code></pre></div>
 <pre><code>## # A tibble: 32 x 6
-##       ID   mpg    hp cyl    mpg_hat residual
-##    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fctr&gt;   &lt;dbl&gt;    &lt;dbl&gt;
-##  1     1  21.0 110   6         20.0   0.962 
-##  2     2  21.0 110   6         20.0   0.962 
-##  3     3  22.8  93.0 4         26.4  -3.62  
-##  4     4  21.4 110   6         20.0   1.36  
-##  5     5  18.7 175   8         15.9   2.78  
-##  6     6  18.1 105   6         20.2  -2.06  
-##  7     7  14.3 245   8         14.2   0.0600
-##  8     8  24.4  62.0 4         27.2  -2.76  
-##  9     9  22.8  95.0 4         26.4  -3.57  
-## 10    10  19.2 123   6         19.7  -0.526 
+##       ID   mpg    hp cyl   mpg_hat residual
+##    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+##  1     1  21.0 110   6        20.0   0.962 
+##  2     2  21.0 110   6        20.0   0.962 
+##  3     3  22.8  93.0 4        26.4  -3.62  
+##  4     4  21.4 110   6        20.0   1.36  
+##  5     5  18.7 175   8        15.9   2.78  
+##  6     6  18.1 105   6        20.2  -2.06  
+##  7     7  14.3 245   8        14.2   0.0600
+##  8     8  24.4  62.0 4        27.2  -2.76  
+##  9     9  22.8  95.0 4        26.4  -3.57  
+## 10    10  19.2 123   6        19.7  -0.526 
 ## # ... with 22 more rows</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Regression summaries</span>
 <span class="kw"><a href="reference/get_regression_summaries.html">get_regression_summaries</a></span>(mpg_model)</code></pre></div>
