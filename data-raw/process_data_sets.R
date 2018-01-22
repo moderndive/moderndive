@@ -1,7 +1,7 @@
 library(tidyverse)
 
 # 10 samples of size n=50 from
-# https://raw.githubusercontent.com/ismayc/moderndiver-book/master/images/sampling1.jpg
+# https://github.com/moderndive/moderndive_book/blob/master/images/sampling_bowl.jpeg
 bowl_samples <- read_csv("data-raw/sampling_responses.csv") %>% 
   mutate(n = red + white + green)
 devtools::use_data(bowl_samples, overwrite = TRUE)

@@ -18,7 +18,7 @@ bowl_samples
 }
 \description{
 Counting the number of red balls in 10 samples of size n = 50 balls from
-\url{https://github.com/ismayc/moderndiver-book/raw/master/images/sampling1.jpg}
+\url{https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg}
 }
 \examples{
 library(dplyr)

@@ -2,10 +2,13 @@
 
 This is a resubmission. In this version I have:
 
-* Changed the three `get_regression_` functions to not include the `lm` call
+* Based on CRAN's message from 2018/1/22 (UTC - 5)
+    + Updated the link to the image of the sampling tub
+* Based on CRAN's message from 2018/1/9 (UTC - 5)
+    + Changed the three `get_regression_` functions to not include the `lm` call
 based on feedback from CRAN
-* Added datasets relevant to sampling-based inference
-* Added testing
+    + Added datasets relevant to sampling-based inference
+    + Added testing
 
 
 ## Test environments

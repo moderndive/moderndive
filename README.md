@@ -59,10 +59,10 @@ get_regression_table(model = mpg_model)
 ```
 
     ## # A tibble: 2 x 7
-    ##   term      estimate std_error statistic p_value conf_low conf_high
-    ##   <chr>        <dbl>     <dbl>     <dbl>   <dbl>    <dbl>     <dbl>
-    ## 1 intercept  30.1       1.63       18.4        0  26.8      33.4   
-    ## 2 hp        - 0.0680    0.0100    - 6.74       0 - 0.0890  - 0.0480
+    ##        term estimate std_error statistic p_value conf_low conf_high
+    ##       <chr>    <dbl>     <dbl>     <dbl>   <dbl>    <dbl>     <dbl>
+    ## 1 intercept   30.099     1.634    18.421       0   26.762    33.436
+    ## 2        hp   -0.068     0.010    -6.742       0   -0.089    -0.048
 
 ``` r
 get_regression_table(mpg_mlr_model, digits = 4, print = TRUE)
@@ -80,18 +80,18 @@ get_regression_points(mpg_mlr_model2)
 ```
 
     ## # A tibble: 32 x 6
-    ##       ID   mpg    hp cyl   mpg_hat residual
-    ##    <int> <dbl> <dbl> <fct>   <dbl>    <dbl>
-    ##  1     1  21.0 110   6        20.0   0.962 
-    ##  2     2  21.0 110   6        20.0   0.962 
-    ##  3     3  22.8  93.0 4        26.4  -3.62  
-    ##  4     4  21.4 110   6        20.0   1.36  
-    ##  5     5  18.7 175   8        15.9   2.78  
-    ##  6     6  18.1 105   6        20.2  -2.06  
-    ##  7     7  14.3 245   8        14.2   0.0600
-    ##  8     8  24.4  62.0 4        27.2  -2.76  
-    ##  9     9  22.8  95.0 4        26.4  -3.57  
-    ## 10    10  19.2 123   6        19.7  -0.526 
+    ##       ID   mpg    hp    cyl mpg_hat residual
+    ##    <int> <dbl> <dbl> <fctr>   <dbl>    <dbl>
+    ##  1     1  21.0   110      6  20.038    0.962
+    ##  2     2  21.0   110      6  20.038    0.962
+    ##  3     3  22.8    93      4  26.415   -3.615
+    ##  4     4  21.4   110      6  20.038    1.362
+    ##  5     5  18.7   175      8  15.922    2.778
+    ##  6     6  18.1   105      6  20.158   -2.058
+    ##  7     7  14.3   245      8  14.240    0.060
+    ##  8     8  24.4    62      4  27.160   -2.760
+    ##  9     9  22.8    95      4  26.366   -3.566
+    ## 10    10  19.2   123      6  19.726   -0.526
     ## # ... with 22 more rows
 
 ``` r
@@ -102,7 +102,7 @@ get_regression_summaries(mpg_model)
     ## # A tibble: 1 x 6
     ##   r_squared adj_r_squared sigma statistic p_value    df
     ##       <dbl>         <dbl> <dbl>     <dbl>   <dbl> <dbl>
-    ## 1     0.602         0.589  3.86      45.5       0  2.00
+    ## 1     0.602         0.589 3.863     45.46       0     2
 
 ``` r
 # Can also use `%>%`
