@@ -1,5 +1,13 @@
 library(tidyverse)
 
+
+
+# evals data from: https://www.openintro.org/stat/data/?data=evals
+house_data <- read_csv("data-raw/kc_house_data.csv")
+devtools::use_data(house_data, overwrite = TRUE)
+
+
+
 # evals data from: https://www.openintro.org/stat/data/?data=evals
 load(url("http://www.openintro.org/stat/data/evals.RData"))
 evals <- evals %>% 
@@ -13,8 +21,6 @@ devtools::use_data(evals, overwrite = TRUE)
 
 
 
-
-
 # 10 samples of size n=50 from
 # https://github.com/moderndive/moderndive_book/blob/master/images/sampling_bowl.jpeg
 bowl_samples <- read_csv("data-raw/sampling_responses.csv") %>% 
@@ -23,14 +29,10 @@ devtools::use_data(bowl_samples, overwrite = TRUE)
 
 
 
-
-
 # Population of 800 pennies from
 # https://www.statcrunch.com/app/index.php?dataid=301596
 pennies <- read_csv("data-raw/population_of_pennies.csv")
 devtools::use_data(pennies, overwrite = TRUE)
-
-
 
 
 

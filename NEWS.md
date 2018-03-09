@@ -1,6 +1,7 @@
 # moderndive 0.1.1.9000
 
 * Import `infer::rep_sample_n()` instead of our own defined version, as this function is now in `infer` on CRAN
+* Added `evals` and `house_data` datasets
 
 # moderndive 0.1.1
 
