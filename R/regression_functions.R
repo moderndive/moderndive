@@ -6,7 +6,9 @@ globalVariables(c(
   "deviance",
   "df.residual",
   "logLik",
-  "ID"
+  "ID", 
+  "mse",
+  "residual"
 ))
 
 #' Get regression table
@@ -121,13 +123,14 @@ get_regression_points <-
 #'
 #' @inheritParams get_regression_table
 #'
-#' @return A tibble or nicely formatted table
+#' @return data frame with summaries
 #' @import dplyr
 #' @importFrom stats formula
 #' @importFrom magrittr "%>%"
 #' @importFrom formula.tools lhs
 #' @importFrom formula.tools rhs
 #' @importFrom broom glance
+#' @importFrom broom augment
 #' @importFrom tibble as_tibble
 #' @importFrom janitor clean_names
 #' @importFrom knitr kable
@@ -147,12 +150,21 @@ get_regression_summaries <-
     outcome_variable <- formula(model) %>% lhs() %>% all.vars()
     explanatory_variable <- formula(model) %>% rhs() %>% all.vars()
     
+    mse_and_rmse <- model %>%
+      augment() %>% 
+      select(!!c(outcome_variable, explanatory_variable, 
+                 ".fitted", ".resid")) %>%
+      rename_at(vars(".fitted"), ~ str_c(outcome_variable, "_hat")) %>%
+      rename(residual = .resid) %>% 
+      summarise(mse = mean(residual^2), rmse = sqrt(mse))
+      
     regression_summaries <- model %>%
       glance() %>%
       mutate_if(is.numeric, round, digits = digits) %>%
       select(-c(AIC, BIC, deviance, df.residual, logLik)) %>%
       as_tibble() %>%
-      clean_names()
+      clean_names() %>% 
+      bind_cols(mse_and_rmse)
     
     if (print) {
       regression_summaries <- regression_summaries %>%

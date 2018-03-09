@@ -16,7 +16,7 @@ get_regression_summaries(model, digits = 3, print = FALSE, ...)
 \item{...}{other arguments passed to lm()}
 }
 \value{
-A tibble or nicely formatted table
+data frame with summaries
 }
 \description{
 Wrapper for \code{lm()} regression function fit summary data

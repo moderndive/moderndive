@@ -2,6 +2,7 @@
 
 * Import `infer::rep_sample_n()` instead of our own defined version, as this function is now in `infer` on CRAN
 * Added `evals` and `house_data` datasets
+* Added mean squared error and root mean squared error to output of `get_regression_summaries()`
 
 # moderndive 0.1.1
 
