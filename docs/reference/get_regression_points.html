@@ -127,16 +127,16 @@
 <span class='fu'>get_regression_points</span>(<span class='no'>mpg_model</span>)</div><div class='output co'>#&gt; # A tibble: 32 x 5
 #&gt;       ID   mpg   cyl mpg_hat residual
 #&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
-#&gt;  1     1  21.0  6.00    20.6    0.370
-#&gt;  2     2  21.0  6.00    20.6    0.370
-#&gt;  3     3  22.8  4.00    26.4   -3.58 
-#&gt;  4     4  21.4  6.00    20.6    0.770
-#&gt;  5     5  18.7  8.00    14.9    3.82 
-#&gt;  6     6  18.1  6.00    20.6   -2.53 
-#&gt;  7     7  14.3  8.00    14.9   -0.578
-#&gt;  8     8  24.4  4.00    26.4   -1.98 
-#&gt;  9     9  22.8  4.00    26.4   -3.58 
-#&gt; 10    10  19.2  6.00    20.6   -1.43 
+#&gt;  1     1  21.0    6.    20.6    0.370
+#&gt;  2     2  21.0    6.    20.6    0.370
+#&gt;  3     3  22.8    4.    26.4   -3.58 
+#&gt;  4     4  21.4    6.    20.6    0.770
+#&gt;  5     5  18.7    8.    14.9    3.82 
+#&gt;  6     6  18.1    6.    20.6   -2.53 
+#&gt;  7     7  14.3    8.    14.9   -0.578
+#&gt;  8     8  24.4    4.    26.4   -1.98 
+#&gt;  9     9  22.8    4.    26.4   -3.58 
+#&gt; 10    10  19.2    6.    20.6   -1.43 
 #&gt; # ... with 22 more rows</div><div class='input'>
 <span class='co'># Convert rownames to column</span>
 <span class='fu'>data</span>(<span class='st'>"mtcars"</span>)
@@ -154,22 +154,22 @@
 <span class='fu'>get_regression_points</span>(<span class='no'>mpg_model_train</span>, <span class='kw'>newdata</span> <span class='kw'>=</span> <span class='no'>test_set</span>)</div><div class='output co'>#&gt; # A tibble: 16 x 3
 #&gt;      mpg   cyl mpg_hat
 #&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-#&gt;  1  21.0  6.00    15.5
-#&gt;  2  24.4  4.00    26.2
-#&gt;  3  17.8  6.00    20.8
-#&gt;  4  16.4  8.00    15.5
-#&gt;  5  15.2  8.00    20.8
-#&gt;  6  10.4  8.00    26.2
-#&gt;  7  10.4  8.00    20.8
-#&gt;  8  14.7  8.00    26.2
-#&gt;  9  32.4  4.00    15.5
-#&gt; 10  30.4  4.00    26.2
-#&gt; 11  15.5  8.00    15.5
-#&gt; 12  19.2  8.00    26.2
-#&gt; 13  26.0  4.00    15.5
-#&gt; 14  19.7  6.00    26.2
-#&gt; 15  15.0  8.00    15.5
-#&gt; 16  21.4  4.00    20.8</div></pre>
+#&gt;  1  21.0    6.    15.5
+#&gt;  2  24.4    4.    26.2
+#&gt;  3  17.8    6.    20.8
+#&gt;  4  16.4    8.    15.5
+#&gt;  5  15.2    8.    20.8
+#&gt;  6  10.4    8.    26.2
+#&gt;  7  10.4    8.    20.8
+#&gt;  8  14.7    8.    26.2
+#&gt;  9  32.4    4.    15.5
+#&gt; 10  30.4    4.    26.2
+#&gt; 11  15.5    8.    15.5
+#&gt; 12  19.2    8.    26.2
+#&gt; 13  26.0    4.    15.5
+#&gt; 14  19.7    6.    26.2
+#&gt; 15  15.0    8.    15.5
+#&gt; 16  21.4    4.    20.8</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

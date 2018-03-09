@@ -2,9 +2,9 @@ library(tidyverse)
 
 
 
-# evals data from: https://www.openintro.org/stat/data/?data=evals
-house_data <- read_csv("data-raw/kc_house_data.csv")
-devtools::use_data(house_data, overwrite = TRUE)
+# House price data from https://www.kaggle.com/harlfoxem/housesalesprediction
+house_prices <- read_csv("data-raw/kc_house_data.csv")
+devtools::use_data(house_prices, overwrite = TRUE)
 
 
 

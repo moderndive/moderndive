@@ -34,13 +34,13 @@
 #' library(dplyr)
 #' library(ggplot2)
 #' # Create variable log of house price
-#' house_data <- house_data %>% 
+#' house_prices <- house_prices %>% 
 #'   mutate(log_price = log(price))
 #' # Plot histogram of log of house price
-#' ggplot(house_data, aes(x = log_price)) +
+#' ggplot(house_prices, aes(x = log_price)) +
 #'   geom_histogram()
 #' 
-"house_data"
+"house_prices"
 
 
 
