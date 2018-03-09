@@ -116,10 +116,10 @@ mpg_mlr_model2 &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg <spa
 <span class="co"># Regression tables</span>
 <span class="kw"><a href="reference/get_regression_table.html">get_regression_table</a></span>(<span class="dt">model =</span> mpg_model)</code></pre></div>
 <pre><code>## # A tibble: 2 x 7
-##        term estimate std_error statistic p_value conf_low conf_high
-##       &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-## 1 intercept   30.099     1.634    18.421       0   26.762    33.436
-## 2        hp   -0.068     0.010    -6.742       0   -0.089    -0.048</code></pre>
+##   term      estimate std_error statistic p_value conf_low conf_high
+##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
+## 1 intercept  30.1       1.63       18.4        0  26.8      33.4   
+## 2 hp        - 0.0680    0.0100    - 6.74       0 - 0.0890  - 0.0480</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/get_regression_table.html">get_regression_table</a></span>(mpg_mlr_model, <span class="dt">digits =</span> <span class="dv">4</span>, <span class="dt">print =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <table class="table">
 <thead><tr class="header">
@@ -164,25 +164,25 @@ mpg_mlr_model2 &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg <spa
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Regression points. For residual analysis for example</span>
 <span class="kw"><a href="reference/get_regression_points.html">get_regression_points</a></span>(mpg_mlr_model2)</code></pre></div>
 <pre><code>## # A tibble: 32 x 6
-##       ID   mpg    hp    cyl mpg_hat residual
-##    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fctr&gt;   &lt;dbl&gt;    &lt;dbl&gt;
-##  1     1  21.0   110      6  20.038    0.962
-##  2     2  21.0   110      6  20.038    0.962
-##  3     3  22.8    93      4  26.415   -3.615
-##  4     4  21.4   110      6  20.038    1.362
-##  5     5  18.7   175      8  15.922    2.778
-##  6     6  18.1   105      6  20.158   -2.058
-##  7     7  14.3   245      8  14.240    0.060
-##  8     8  24.4    62      4  27.160   -2.760
-##  9     9  22.8    95      4  26.366   -3.566
-## 10    10  19.2   123      6  19.726   -0.526
+##       ID   mpg    hp cyl   mpg_hat residual
+##    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+##  1     1  21.0 110   6        20.0   0.962 
+##  2     2  21.0 110   6        20.0   0.962 
+##  3     3  22.8  93.0 4        26.4  -3.62  
+##  4     4  21.4 110   6        20.0   1.36  
+##  5     5  18.7 175   8        15.9   2.78  
+##  6     6  18.1 105   6        20.2  -2.06  
+##  7     7  14.3 245   8        14.2   0.0600
+##  8     8  24.4  62.0 4        27.2  -2.76  
+##  9     9  22.8  95.0 4        26.4  -3.57  
+## 10    10  19.2 123   6        19.7  -0.526 
 ## # ... with 22 more rows</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Regression summaries</span>
 <span class="kw"><a href="reference/get_regression_summaries.html">get_regression_summaries</a></span>(mpg_model)</code></pre></div>
 <pre><code>## # A tibble: 1 x 6
 ##   r_squared adj_r_squared sigma statistic p_value    df
 ##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-## 1     0.602         0.589 3.863     45.46       0     2</code></pre>
+## 1     0.602         0.589  3.86      45.5       0  2.00</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Can also use `%&gt;%`</span>
 mpg_model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="reference/get_regression_summaries.html">get_regression_summaries</a></span>(<span class="dt">digits =</span> <span class="dv">5</span>, <span class="dt">print =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <table class="table">
@@ -233,6 +233,7 @@ mpg_model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw
 <li><a href="https://cran.r-project.org/package=moderndive"><img src="http://www.r-pkg.org/badges/version/moderndive" alt="CRAN_Status_Badge"></a></li>
 <li><a href="https://travis-ci.org/moderndive/moderndive"><img src="https://travis-ci.org/moderndive/moderndive.svg?branch=master" alt="Travis-CI Build Status"></a></li>
 <li><a href="https://codecov.io/github/moderndive/moderndive?branch=master"><img src="https://img.shields.io/codecov/c/github/moderndive/moderndive/master.svg" alt="Coverage Status"></a></li>
+<li><a href="http://www.r-pkg.org/pkg/moderndive"><img src="http://cranlogs.r-pkg.org/badges/moderndive" alt="CRAN RStudio mirror downloads"></a></li>
 </ul>
 </div>
 
