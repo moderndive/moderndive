@@ -179,10 +179,10 @@ mpg_mlr_model2 &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg <spa
 ## # ... with 22 more rows</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Regression summaries</span>
 <span class="kw"><a href="reference/get_regression_summaries.html">get_regression_summaries</a></span>(mpg_model)</code></pre></div>
-<pre><code>## # A tibble: 1 x 6
-##   r_squared adj_r_squared sigma statistic p_value    df
-##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-## 1     0.602         0.589  3.86      45.5       0  2.00</code></pre>
+<pre><code>## # A tibble: 1 x 8
+##   r_squared adj_r_squared sigma statistic p_value    df   mse  rmse
+##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
+## 1     0.602         0.589  3.86      45.5       0  2.00  14.0  3.74</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Can also use `%&gt;%`</span>
 mpg_model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="reference/get_regression_summaries.html">get_regression_summaries</a></span>(<span class="dt">digits =</span> <span class="dv">5</span>, <span class="dt">print =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <table class="table">
@@ -193,6 +193,8 @@ mpg_model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw
 <th align="right">statistic</th>
 <th align="right">p_value</th>
 <th align="right">df</th>
+<th align="right">mse</th>
+<th align="right">rmse</th>
 </tr></thead>
 <tbody><tr class="odd">
 <td align="right">0.60244</td>
@@ -201,6 +203,8 @@ mpg_model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw
 <td align="right">45.4598</td>
 <td align="right">0</td>
 <td align="right">2</td>
+<td align="right">13.98982</td>
+<td align="right">3.740297</td>
 </tr></tbody>
 </table>
 <hr>

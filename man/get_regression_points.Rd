@@ -4,7 +4,7 @@
 \alias{get_regression_points}
 \title{Get regression points}
 \usage{
-get_regression_points(model, digits = 3, print = FALSE, ...)
+get_regression_points(model, digits = 3, print = FALSE, newdata = NULL)
 }
 \arguments{
 \item{model}{a model object (Currently only \code{lm} is supported)}
@@ -13,7 +13,7 @@ get_regression_points(model, digits = 3, print = FALSE, ...)
 
 \item{print}{If TRUE, return in print format suitable for R Markdown}
 
-\item{...}{other arguments passed to lm()}
+\item{newdata}{a new data frame to fit the regression to/make predictions on.}
 }
 \value{
 A tibble or nicely formatted table
@@ -22,6 +22,25 @@ A tibble or nicely formatted table
 Wrapper for tidy \code{lm()} regression function fit output
 }
 \examples{
+library(dplyr)
+library(tibble)
+
+# Get information on all points in regression
 mpg_model <- lm(mpg ~ cyl, data = mtcars)
 get_regression_points(mpg_model)
+
+# Convert rownames to column
+data("mtcars")
+mtcars <- mtcars \%>\% 
+  rownames_to_column(var = "model")
+
+# Create training and test set.
+training_set <- mtcars \%>\% 
+  sample_frac(0.5)
+test_set <- mtcars \%>\% 
+  anti_join(training_set, by = "model")
+
+# Fit model to training set, predict on test set
+mpg_model_train <- lm(mpg ~ cyl, data = training_set)
+get_regression_points(mpg_model_train, newdata = test_set)
 }

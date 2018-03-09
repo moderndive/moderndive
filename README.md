@@ -99,19 +99,19 @@ get_regression_points(mpg_mlr_model2)
 get_regression_summaries(mpg_model)
 ```
 
-    ## # A tibble: 1 x 6
-    ##   r_squared adj_r_squared sigma statistic p_value    df
-    ##       <dbl>         <dbl> <dbl>     <dbl>   <dbl> <dbl>
-    ## 1     0.602         0.589  3.86      45.5       0  2.00
+    ## # A tibble: 1 x 8
+    ##   r_squared adj_r_squared sigma statistic p_value    df   mse  rmse
+    ##       <dbl>         <dbl> <dbl>     <dbl>   <dbl> <dbl> <dbl> <dbl>
+    ## 1     0.602         0.589  3.86      45.5       0  2.00  14.0  3.74
 
 ``` r
 # Can also use `%>%`
 mpg_model %>% get_regression_summaries(digits = 5, print = TRUE)
 ```
 
-|  r\_squared|  adj\_r\_squared|    sigma|  statistic|  p\_value|   df|
-|-----------:|----------------:|--------:|----------:|---------:|----:|
-|     0.60244|          0.58919|  3.86296|    45.4598|         0|    2|
+|  r\_squared|  adj\_r\_squared|    sigma|  statistic|  p\_value|   df|       mse|      rmse|
+|-----------:|----------------:|--------:|----------:|---------:|----:|---------:|---------:|
+|     0.60244|          0.58919|  3.86296|    45.4598|         0|    2|  13.98982|  3.740297|
 
 ------------------------------------------------------------------------
 

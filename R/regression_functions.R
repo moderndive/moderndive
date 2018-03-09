@@ -67,6 +67,7 @@ get_regression_table <-
 #' Wrapper for tidy \code{lm()} regression function fit output
 #'
 #' @inheritParams get_regression_table
+#' @param newdata a new data frame to fit the regression to/make predictions on.
 #'
 #' @return A tibble or nicely formatted table
 #' @import dplyr
@@ -83,29 +84,59 @@ get_regression_table <-
 #' @export
 #'
 #' @examples
+#' library(dplyr)
+#' library(tibble)
+#' 
+#' # Get information on all points in regression
 #' mpg_model <- lm(mpg ~ cyl, data = mtcars)
 #' get_regression_points(mpg_model)
+#' 
+#' # Convert rownames to column
+#' data("mtcars")
+#' mtcars <- mtcars %>% 
+#'   rownames_to_column(var = "model")
+#'
+#' # Create training and test set.
+#' training_set <- mtcars %>% 
+#'   sample_frac(0.5)
+#' test_set <- mtcars %>% 
+#'   anti_join(training_set, by = "model")
+#' 
+#' # Fit model to training set, predict on test set
+#' mpg_model_train <- lm(mpg ~ cyl, data = training_set)
+#' get_regression_points(mpg_model_train, newdata = test_set)
 get_regression_points <-
   function(model,
            digits = 3,
            print = FALSE,
-           ...) {
+           newdata = NULL) {
     
     input_checks(model, digits, print)
     
     outcome_variable <- formula(model) %>% lhs() %>% all.vars()
     explanatory_variable <- formula(model) %>% rhs() %>% all.vars()
     
-    regression_points <- model %>%
-      augment() %>%
-      mutate_if(is.numeric, round, digits = digits) %>%
-      select(!!c(outcome_variable, explanatory_variable, 
-                 ".fitted", ".resid")) %>%
-      rename_at(vars(".fitted"), ~ str_c(outcome_variable, "_hat")) %>%
-      rename(residual = .resid) %>%
-      as_tibble() %>% 
-      mutate(ID = 1:n()) %>%
-      select(ID, everything())
+    if(is.null(newdata)){
+      # Get fitted values for all points used for regression
+      regression_points <- model %>%
+        augment() %>%
+        mutate_if(is.numeric, round, digits = digits) %>%
+        select(!!c(outcome_variable, explanatory_variable, 
+                   ".fitted", ".resid")) %>%
+        rename_at(vars(".fitted"), ~ str_c(outcome_variable, "_hat")) %>%
+        rename(residual = .resid) %>%
+        as_tibble() %>% 
+        mutate(ID = 1:n()) %>%
+        select(ID, everything())
+    } else {
+      # Get fitted values for newdata
+      regression_points <- model %>%
+        augment(newdata) %>%
+        mutate_if(is.numeric, round, digits = digits) %>%
+        select(!!c(outcome_variable, explanatory_variable, ".fitted")) %>%
+        rename_at(vars(".fitted"), ~ str_c(outcome_variable, "_hat")) %>%
+        as_tibble() 
+    }
     
     if(print) {
       regression_points <- regression_points %>%
