@@ -195,7 +195,8 @@ get_regression_summaries <-
       select(-c(AIC, BIC, deviance, df.residual, logLik)) %>%
       as_tibble() %>%
       clean_names() %>% 
-      bind_cols(mse_and_rmse)
+      bind_cols(mse_and_rmse) %>% 
+      select(r_squared, adj_r_squared, mse, rmse, everything())
     
     if (print) {
       regression_summaries <- regression_summaries %>%
