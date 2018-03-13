@@ -18,6 +18,8 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -25,6 +27,7 @@
 <script src="../pkgdown.js"></script>
   
   
+<meta property="og:title" content="All news" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -93,6 +96,11 @@
 <a href="#moderndive-0-1-1-9000" class="anchor"></a>moderndive 0.1.1.9000</h1>
 <ul>
 <li>Import <code><a href="http://www.rdocumentation.org/packages/infer/topics/rep_sample_n">infer::rep_sample_n()</a></code> instead of our own defined version, as this function is now in <code>infer</code> on CRAN</li>
+<li>Added <code>evals</code> and <code>house_prices</code> datasets</li>
+<li>Added mean squared error and root mean squared error to output of <code><a href="../reference/get_regression_summaries.html">get_regression_summaries()</a></code>
+</li>
+<li>Added <code>newdata</code> argument to <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code>
+</li>
 </ul>
 </div>
     <div id="moderndive-0-1-1" class="section level1">
@@ -147,3 +155,4 @@
 
   </body>
 </html>
+

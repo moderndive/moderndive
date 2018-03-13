@@ -18,6 +18,8 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -25,6 +27,10 @@
 <script src="../pkgdown.js"></script>
   
   
+<meta property="og:title" content="Get regression table — get_regression_table" />
+
+<meta property="og:description" content="Wrapper for tidy lm() regression function output" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -123,8 +129,8 @@
 <span class='fu'>get_regression_table</span>(<span class='no'>mpg_model</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 7
 #&gt;   term      estimate std_error statistic p_value conf_low conf_high
 #&gt;   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-#&gt; 1 intercept    37.9      2.07      18.3        0    33.6      42.1 
-#&gt; 2 cyl         - 2.88     0.322    - 8.92       0   - 3.53    - 2.22</div></pre>
+#&gt; 1 intercept    37.9      2.07      18.3       0.    33.6      42.1 
+#&gt; 2 cyl          -2.88     0.322     -8.92      0.    -3.53     -2.22</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -153,3 +159,4 @@
 
   </body>
 </html>
+

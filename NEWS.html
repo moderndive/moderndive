@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Authors • moderndive</title>
+<title>/home/travis/build/moderndive/moderndive/NEWS.md • moderndive</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -27,7 +27,7 @@
 <script src="pkgdown.js"></script>
   
   
-<meta property="og:title" content="Authors" />
+<meta property="og:title" content="/home/travis/build/moderndive/moderndive/NEWS.md" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -40,7 +40,7 @@
   </head>
 
   <body>
-    <div class="container template-authors">
+    <div class="container template-title-body">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -86,23 +86,45 @@
       <div class="row">
   <div class="contents col-md-12">
     <div class="page-header">
-      <h1>Authors</h1>
+      <h1>/home/travis/build/moderndive/moderndive/NEWS.md</h1>
     </div>
 
-    <ul class="list-unstyled">
-      <li>
-        <p><strong>Albert Y. Kim</strong>. Maintainer. 
-        </p>
-      </li>
-      <li>
-        <p><strong>Chester Ismay</strong>. Author. 
-        </p>
-      </li>
-      <li>
-        <p><strong>Andrew Bray</strong>. Contributor. 
-        </p>
-      </li>
-    </ul>
+
+<div id="moderndive-0-1-1-9000" class="section level1">
+<h1 class="hasAnchor">
+<a href="#moderndive-0-1-1-9000" class="anchor"></a>moderndive 0.1.1.9000</h1>
+<ul>
+<li>Import <code><a href="http://www.rdocumentation.org/packages/infer/topics/rep_sample_n">infer::rep_sample_n()</a></code> instead of our own defined version, as this function is now in <code>infer</code> on CRAN</li>
+<li>Added <code>evals</code> and <code>house_prices</code> datasets</li>
+<li>Added mean squared error and root mean squared error to output of <code><a href="reference/get_regression_summaries.html">get_regression_summaries()</a></code>
+</li>
+<li>Added <code>newdata</code> argument to <code><a href="reference/get_regression_points.html">get_regression_points()</a></code>
+</li>
+</ul>
+</div>
+<div id="moderndive-0-1-1" class="section level1">
+<h1 class="hasAnchor">
+<a href="#moderndive-0-1-1" class="anchor"></a>moderndive 0.1.1</h1>
+<p>Fixed broken url in <code><a href="reference/bowl_samples.html">?bowl_samples</a></code></p>
+</div>
+<div id="moderndive-0-1-0" class="section level1">
+<h1 class="hasAnchor">
+<a href="#moderndive-0-1-0" class="anchor"></a>moderndive 0.1.0</h1>
+<ul>
+<li>Added three <code>get_regression_*</code> functions meant for novice R users/regression fitters that process regression model outputs</li>
+<li>Added datasets:
+<ul>
+<li>
+<code>pennies</code>: 800 pennies to be treated as a population from which to simulate sampling a numerical variable from (<code>year</code> of minting)</li>
+<li>
+<code>bowl</code>: Bowl of 2400 balls of which 900 are red to be treated as a population from which to simulate sampling a categorical variable from (<code>color</code>). Also known as the urn sampling framework \url{<a href="https://en.wikipedia.org/wiki/Urn_problem" class="uri">https://en.wikipedia.org/wiki/Urn_problem</a>}.</li>
+<li>
+<code>bowl_samples</code>: data from tactile version of sampling from <code>bowl</code> done in class: 10 groups sampled n=50 balls from and counted the number red [ADD MODERNDIVE LINK]</li>
+</ul>
+</li>
+</ul>
+</div>
+
 
   </div>
 

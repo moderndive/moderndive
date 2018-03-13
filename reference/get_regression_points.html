@@ -18,6 +18,8 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -25,6 +27,10 @@
 <script src="../pkgdown.js"></script>
   
   
+<meta property="og:title" content="Get regression points — get_regression_points" />
+
+<meta property="og:description" content="Wrapper for tidy lm() regression function fit output" />
+<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -90,7 +96,7 @@
     <p>Wrapper for tidy <code>lm()</code> regression function fit output</p>
     
 
-    <pre class="usage"><span class='fu'>get_regression_points</span>(<span class='no'>model</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>get_regression_points</span>(<span class='no'>model</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>newdata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -108,8 +114,8 @@
       <td><p>If TRUE, return in print format suitable for R Markdown</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>other arguments passed to lm()</p></td>
+      <th>newdata</th>
+      <td><p>a new data frame to fit the regression to/make predictions on.</p></td>
     </tr>
     </table>
     
@@ -119,21 +125,57 @@
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>mpg_model</span> <span class='kw'>&lt;-</span> <span class='fu'>lm</span>(<span class='no'>mpg</span> ~ <span class='no'>cyl</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
+<span class='fu'>library</span>(<span class='no'>tibble</span>)
+
+<span class='co'># Get information on all points in regression</span>
+<span class='no'>mpg_model</span> <span class='kw'>&lt;-</span> <span class='fu'>lm</span>(<span class='no'>mpg</span> ~ <span class='no'>cyl</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)
 <span class='fu'>get_regression_points</span>(<span class='no'>mpg_model</span>)</div><div class='output co'>#&gt; # A tibble: 32 x 5
 #&gt;       ID   mpg   cyl mpg_hat residual
 #&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
-#&gt;  1     1  21.0  6.00    20.6    0.370
-#&gt;  2     2  21.0  6.00    20.6    0.370
-#&gt;  3     3  22.8  4.00    26.4   -3.58 
-#&gt;  4     4  21.4  6.00    20.6    0.770
-#&gt;  5     5  18.7  8.00    14.9    3.82 
-#&gt;  6     6  18.1  6.00    20.6   -2.53 
-#&gt;  7     7  14.3  8.00    14.9   -0.578
-#&gt;  8     8  24.4  4.00    26.4   -1.98 
-#&gt;  9     9  22.8  4.00    26.4   -3.58 
-#&gt; 10    10  19.2  6.00    20.6   -1.43 
-#&gt; # ... with 22 more rows</div></pre>
+#&gt;  1     1  21.0    6.    20.6    0.370
+#&gt;  2     2  21.0    6.    20.6    0.370
+#&gt;  3     3  22.8    4.    26.4   -3.58 
+#&gt;  4     4  21.4    6.    20.6    0.770
+#&gt;  5     5  18.7    8.    14.9    3.82 
+#&gt;  6     6  18.1    6.    20.6   -2.53 
+#&gt;  7     7  14.3    8.    14.9   -0.578
+#&gt;  8     8  24.4    4.    26.4   -1.98 
+#&gt;  9     9  22.8    4.    26.4   -3.58 
+#&gt; 10    10  19.2    6.    20.6   -1.43 
+#&gt; # ... with 22 more rows</div><div class='input'>
+<span class='co'># Convert rownames to column</span>
+<span class='fu'>data</span>(<span class='st'>"mtcars"</span>)
+<span class='no'>mtcars</span> <span class='kw'>&lt;-</span> <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/rownames'>rownames_to_column</a></span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"model"</span>)
+
+<span class='co'># Create training and test set.</span>
+<span class='no'>training_set</span> <span class='kw'>&lt;-</span> <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/sample.html'>sample_frac</a></span>(<span class='fl'>0.5</span>)
+<span class='no'>test_set</span> <span class='kw'>&lt;-</span> <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/join.html'>anti_join</a></span>(<span class='no'>training_set</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"model"</span>)
+
+<span class='co'># Fit model to training set, predict on test set</span>
+<span class='no'>mpg_model_train</span> <span class='kw'>&lt;-</span> <span class='fu'>lm</span>(<span class='no'>mpg</span> ~ <span class='no'>cyl</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>training_set</span>)
+<span class='fu'>get_regression_points</span>(<span class='no'>mpg_model_train</span>, <span class='kw'>newdata</span> <span class='kw'>=</span> <span class='no'>test_set</span>)</div><div class='output co'>#&gt; # A tibble: 16 x 3
+#&gt;      mpg   cyl mpg_hat
+#&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+#&gt;  1  21.0    6.    15.5
+#&gt;  2  24.4    4.    26.2
+#&gt;  3  17.8    6.    20.8
+#&gt;  4  16.4    8.    15.5
+#&gt;  5  15.2    8.    20.8
+#&gt;  6  10.4    8.    26.2
+#&gt;  7  10.4    8.    20.8
+#&gt;  8  14.7    8.    26.2
+#&gt;  9  32.4    4.    15.5
+#&gt; 10  30.4    4.    26.2
+#&gt; 11  15.5    8.    15.5
+#&gt; 12  19.2    8.    26.2
+#&gt; 13  26.0    4.    15.5
+#&gt; 14  19.7    6.    26.2
+#&gt; 15  15.0    8.    15.5
+#&gt; 16  21.4    4.    20.8</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -162,3 +204,4 @@
 
   </body>
 </html>
+

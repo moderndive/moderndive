@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A population of 800 pennies sampled in 2011 — pennies • moderndive</title>
+<title>Teaching evaluations at the UT Austin — evals • moderndive</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -27,10 +27,13 @@
 <script src="../pkgdown.js"></script>
   
   
-<meta property="og:title" content="A population of 800 pennies sampled in 2011 — pennies" />
+<meta property="og:title" content="Teaching evaluations at the UT Austin — evals" />
 
-<meta property="og:description" content="A dataset of 800 pennies to be treated as a sampling population. Data on 
-these pennies were recorded in 2011." />
+<meta property="og:description" content="The data are gathered from end of semester student evaluations for a large 
+sample of professors from the University of Texas at Austin. In addition, six 
+students rate the professors' physical appearance. The result is a data frame 
+where each row contains a different course and each column has information on 
+either the course or the professor https://www.openintro.org/stat/data/?data=evals" />
 <meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
@@ -90,60 +93,59 @@ these pennies were recorded in 2011." />
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A population of 800 pennies sampled in 2011</h1>
+    <h1>Teaching evaluations at the UT Austin</h1>
     </div>
 
     
-    <p>A dataset of 800 pennies to be treated as a sampling population. Data on 
-these pennies were recorded in 2011.</p>
+    <p>The data are gathered from end of semester student evaluations for a large 
+sample of professors from the University of Texas at Austin. In addition, six 
+students rate the professors' physical appearance. The result is a data frame 
+where each row contains a different course and each column has information on 
+either the course or the professor <a href='https://www.openintro.org/stat/data/?data=evals'>https://www.openintro.org/stat/data/?data=evals</a></p>
     
 
-    <pre class="usage"><span class='no'>pennies</span></pre>
+    <pre class="usage"><span class='no'>evals</span></pre>
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame 800 rows representing different pennies and 2 variables</p><dl class='dl-horizontal'>
-  <dt>year</dt><dd><p>Year of minting</p></dd>
-  <dt>age_in_2011</dt><dd><p>Age in 2011</p></dd>
+    <p>A data frame with 463 observations on the following 13 variables.</p><dl class='dl-horizontal'>
+  <dt>ID</dt><dd><p>Identification variable used to distinguish rows.</p></dd>
+  <dt>score</dt><dd><p>Average professor evaluation score: (1) very unsatisfactory - (5) excellent.</p></dd>
+  <dt>age</dt><dd><p>Age of professor.</p></dd>
+  <dt>bty_avg</dt><dd><p>Average beauty rating of professor.</p></dd>
+  <dt>gender</dt><dd><p>Gender of professor: female, male.</p></dd>
+  <dt>ethnicity</dt><dd><p>Ethnicity of professor: not minority, minority.</p></dd>
+  <dt>language</dt><dd><p>Language of school where professor received education: English or non-English.</p></dd>
+  <dt>rank</dt><dd><p>Rank of professor: teaching, tenure track, tenured.</p></dd>
+  <dt>pic_outfit</dt><dd><p>Outfit of professor in picture: not formal, formal.</p></dd>
+  <dt>pic_color</dt><dd><p>Color of professor’s picture: color, black &amp; white.</p></dd>
+  <dt>cls_did_eval</dt><dd><p>Number of students in class who completed evaluation.</p></dd>
+  <dt>cls_students</dt><dd><p>Total number of students in class.</p></dd>
+  <dt>cls_level</dt><dd><p>Class level: lower, upper.</p></dd>
 </dl>
     
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p>StatCrunch <a href='https://www.statcrunch.com/app/index.php?dataid=301596'>https://www.statcrunch.com/app/index.php?dataid=301596</a></p>
+    <p>Çetinkaya-Rundel M, Morgan KL, Stangl D. 2013. Looking Good on Course Evaluations. CHANCE 26(2). <a href='http://chance.amstat.org/2013/04/looking-good/'>http://chance.amstat.org/2013/04/looking-good/</a></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
-<span class='fu'>library</span>(<span class='no'>ggplot2</span>)
-
-<span class='co'># Take 10 different samples of size n = 50 pennies from population</span>
-<span class='no'>many_samples</span> <span class='kw'>&lt;-</span> <span class='no'>pennies</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/infer/topics/rep_sample_n'>rep_sample_n</a></span>(<span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>reps</span> <span class='kw'>=</span> <span class='fl'>25</span>)
-<span class='no'>many_samples</span></div><div class='output co'>#&gt; # A tibble: 1,250 x 3
-#&gt; # Groups:   replicate [25]
-#&gt;    replicate  year age_in_2011
-#&gt;        &lt;int&gt; &lt;int&gt;       &lt;int&gt;
-#&gt;  1         1  1996          15
-#&gt;  2         1  1989          22
-#&gt;  3         1  1995          16
-#&gt;  4         1  1996          15
-#&gt;  5         1  1999          12
-#&gt;  6         1  1985          26
-#&gt;  7         1  1984          27
-#&gt;  8         1  2002           9
-#&gt;  9         1  1986          25
-#&gt; 10         1  1963          48
-#&gt; # ... with 1,240 more rows</div><div class='input'>
-<span class='co'># Compute mean year of minting for each sample</span>
-<span class='no'>sample_means</span> <span class='kw'>&lt;-</span> <span class='no'>many_samples</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>replicate</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span>(<span class='kw'>mean_year</span> <span class='kw'>=</span> <span class='fu'>mean</span>(<span class='no'>year</span>))
-
-<span class='co'># Plot sampling distribution</span>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>sample_means</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>mean_year</span>)) +
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_histogram'>geom_histogram</a></span>(<span class='kw'>binwidth</span> <span class='kw'>=</span> <span class='fl'>1</span>) +
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'>expression</span>(<span class='fu'>bar</span>(<span class='no'>x</span>)), <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Number of samples"</span>,
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Sampling distribution of x_bar based 25 samples of size n = 50"</span>)</div><div class='img'><img src='pennies-1.png' alt='' width='700' height='432.632880098887' /></div></pre>
+<span class='fu'><a href='http://dplyr.tidyverse.org/reference/reexports.html'>glimpse</a></span>(<span class='no'>evals</span>)</div><div class='output co'>#&gt; Observations: 463
+#&gt; Variables: 13
+#&gt; $ ID           &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16,...
+#&gt; $ score        &lt;dbl&gt; 4.7, 4.1, 3.9, 4.8, 4.6, 4.3, 2.8, 4.1, 3.4, 4.5, 3.8,...
+#&gt; $ age          &lt;int&gt; 36, 36, 36, 36, 59, 59, 59, 51, 51, 40, 40, 40, 40, 40...
+#&gt; $ bty_avg      &lt;dbl&gt; 5.000, 5.000, 5.000, 5.000, 3.000, 3.000, 3.000, 3.333...
+#&gt; $ gender       &lt;fct&gt; female, female, female, female, male, male, male, male...
+#&gt; $ ethnicity    &lt;fct&gt; minority, minority, minority, minority, not minority, ...
+#&gt; $ language     &lt;fct&gt; english, english, english, english, english, english, ...
+#&gt; $ rank         &lt;fct&gt; tenure track, tenure track, tenure track, tenure track...
+#&gt; $ pic_outfit   &lt;fct&gt; not formal, not formal, not formal, not formal, not fo...
+#&gt; $ pic_color    &lt;fct&gt; color, color, color, color, color, color, color, color...
+#&gt; $ cls_did_eval &lt;int&gt; 24, 86, 76, 77, 17, 35, 39, 55, 111, 40, 24, 24, 17, 1...
+#&gt; $ cls_students &lt;int&gt; 43, 125, 125, 123, 20, 40, 44, 55, 195, 46, 27, 25, 20...
+#&gt; $ cls_level    &lt;fct&gt; upper, upper, upper, upper, upper, upper, upper, upper...</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

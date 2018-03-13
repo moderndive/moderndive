@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sampling from a tub of balls — bowl_samples • moderndive</title>
+<title>House Sales in King County, USA — house_data • moderndive</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -18,8 +18,6 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
-<!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -27,11 +25,6 @@
 <script src="../pkgdown.js"></script>
   
   
-<meta property="og:title" content="Sampling from a tub of balls — bowl_samples" />
-
-<meta property="og:description" content="Counting the number of red balls in 10 samples of size n = 50 balls from
-https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg" />
-<meta name="twitter:card" content="summary" />
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -90,47 +83,67 @@ https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Sampling from a tub of balls</h1>
+    <h1>House Sales in King County, USA</h1>
     </div>
 
     
-    <p>Counting the number of red balls in 10 samples of size n = 50 balls from
-<a href='https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg'>https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg</a></p>
+    <p>This dataset contains house sale prices for King County, which includes 
+Seattle. It includes homes sold between May 2014 and May 2015. This dataset
+was obtained from Kaggle.com <a href='https://www.kaggle.com/harlfoxem/housesalesprediction/data'>https://www.kaggle.com/harlfoxem/housesalesprediction/data</a></p>
     
 
-    <pre class="usage"><span class='no'>bowl_samples</span></pre>
+    <pre class="usage"><span class='no'>house_data</span></pre>
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame 10 rows representing different groups of students' 
-samples of size n = 50 and 5 variables</p><dl class='dl-horizontal'>
-  <dt>group</dt><dd><p>Group name</p></dd>
-  <dt>red</dt><dd><p>Number of red balls sampled</p></dd>
-  <dt>white</dt><dd><p>Number of white balls sampled</p></dd>
-  <dt>green</dt><dd><p>Number of green balls sampled</p></dd>
-  <dt>n</dt><dd><p>Total number of balls samples</p></dd>
+    <p>A data frame with 21613 observations on the following 21 variables.</p><dl class='dl-horizontal'>
+  <dt>id</dt><dd><p>a notation for a house</p></dd>
+  <dt>date</dt><dd><p>Date house was sold</p></dd>
+  <dt>price</dt><dd><p>Price is prediction target</p></dd>
+  <dt>bedrooms</dt><dd><p>Number of Bedrooms/House</p></dd>
+  <dt>bathrooms</dt><dd><p>Number of bathrooms/bedrooms</p></dd>
+  <dt>sqft_living</dt><dd><p>square footage of the home</p></dd>
+  <dt>sqft_lot</dt><dd><p>square footage of the lot</p></dd>
+  <dt>floors</dt><dd><p>Total floors (levels) in house</p></dd>
+  <dt>waterfront</dt><dd><p>House which has a view to a waterfront</p></dd>
+  <dt>view</dt><dd><p>Has been viewed</p></dd>
+  <dt>condition</dt><dd><p>How good the condition is (Overall)</p></dd>
+  <dt>grade</dt><dd><p>overall grade given to the housing unit, based on King County grading system</p></dd>
+  <dt>sqft_above</dt><dd><p>square footage of house apart from basement</p></dd>
+  <dt>sqft_basement</dt><dd><p>square footage of the basement</p></dd>
+  <dt>yr_built</dt><dd><p>Built Year</p></dd>
+  <dt>yr_renovated</dt><dd><p>Year when house was renovated</p></dd>
+  <dt>zipcode</dt><dd><p>zip code</p></dd>
+  <dt>lat</dt><dd><p>Latitude coordinate</p></dd>
+  <dt>long</dt><dd><p>Longitude coordinate</p></dd>
+  <dt>sqft_living15</dt><dd><p>Living room area in 2015 (implies-- some renovations) This might or might not have affected the lotsize area</p></dd>
+  <dt>sqft_lot15</dt><dd><p>lotSize area in 2015 (implies-- some renovations)</p></dd>
 </dl>
+    
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p>Kaggle <a href='https://www.kaggle.com/harlfoxem/housesalesprediction'>https://www.kaggle.com/harlfoxem/housesalesprediction</a>. 
+Note data is released under a CC0: Public Domain license.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
 <span class='fu'>library</span>(<span class='no'>ggplot2</span>)
-
-<span class='co'># Compute proportion red</span>
-<span class='no'>bowl_samples</span> <span class='kw'>&lt;-</span> <span class='no'>bowl_samples</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>prop_red</span> <span class='kw'>=</span> <span class='no'>red</span> / <span class='no'>n</span>)
-
-<span class='co'># Plot sampling distributions</span>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>bowl_samples</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>prop_red</span>)) +
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_histogram'>geom_histogram</a></span>(<span class='kw'>binwidth</span> <span class='kw'>=</span> <span class='fl'>0.05</span>) +
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'>expression</span>(<span class='fu'>hat</span>(<span class='no'>p</span>)), <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Number of samples"</span>,
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Sampling distribution of p_hat based 10 samples of size n = 50"</span>)</div><div class='img'><img src='bowl_samples-1.png' alt='' width='700' height='432.632880098887' /></div></pre>
+<span class='co'># Create variable log of house price</span>
+<span class='no'>house_data</span> <span class='kw'>&lt;-</span> <span class='no'>house_data</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>log_price</span> <span class='kw'>=</span> <span class='fu'>log</span>(<span class='no'>price</span>))
+<span class='co'># Plot histogram of log of house price</span>
+<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>house_data</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>log_price</span>)) +
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_histogram'>geom_histogram</a></span>()</div><div class='output co'>#&gt; <span class='message'>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></div><div class='img'><img src='house_data-1.png' alt='' width='700' height='432.632880098887' /></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       
       <li><a href="#format">Format</a></li>
+
+      <li><a href="#source">Source</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
@@ -152,4 +165,3 @@ samples of size n = 50 and 5 variables</p><dl class='dl-horizontal'>
 
   </body>
 </html>
-
