@@ -10,4 +10,4 @@
 ^images$
 ^CONDUCT\.md$
 ^codecov\.yml$
-
+^scratchpad\.R$

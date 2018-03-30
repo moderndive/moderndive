@@ -8,7 +8,10 @@ globalVariables(c(
   "logLik",
   "ID", 
   "mse",
-  "residual"
+  "rmse",
+  "residual",
+  "r_squared",
+  "adj_r_squared"
 ))
 
 #' Get regression table

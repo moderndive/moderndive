@@ -4,6 +4,7 @@
 * Added `evals` and `house_prices` datasets
 * Added mean squared error and root mean squared error to output of `get_regression_summaries()`
 * Added `newdata` argument to `get_regression_points()`
+* Removed `tidyverse` from Depends, Imports, or Suggests
 
 # moderndive 0.1.1
 

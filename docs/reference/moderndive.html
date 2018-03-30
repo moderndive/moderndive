@@ -136,15 +136,15 @@ regression output in Chapter 6: Data Modeling with Regression.</p>
 #&gt; # ... with 22 more rows</div><div class='input'>
 <span class='co'># Regression summaries</span>
 <span class='fu'><a href='get_regression_summaries.html'>get_regression_summaries</a></span>(<span class='no'>mpg_model</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 8
-#&gt;   r_squared adj_r_squared sigma statistic p_value    df   mse  rmse
-#&gt;       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1     0.602         0.589  3.86      45.5      0.    2.  14.0  3.74</div><div class='input'>
+#&gt;   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df
+#&gt;       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+#&gt; 1     0.602         0.589  14.0  3.74  3.86      45.5      0.    2.</div><div class='input'>
 <span class='co'># Can also use `%&gt;%`</span>
 <span class='no'>mpg_model</span> <span class='kw'>%&gt;%</span> <span class='fu'><a href='get_regression_summaries.html'>get_regression_summaries</a></span>(<span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>5</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; 
 #&gt; 
-#&gt; | r_squared| adj_r_squared|   sigma| statistic| p_value| df|      mse|     rmse|
-#&gt; |---------:|-------------:|-------:|---------:|-------:|--:|--------:|--------:|
-#&gt; |   0.60244|       0.58919| 3.86296|   45.4598|       0|  2| 13.98982| 3.740297|</div></pre>
+#&gt; | r_squared| adj_r_squared|      mse|     rmse|   sigma| statistic| p_value| df|
+#&gt; |---------:|-------------:|--------:|--------:|-------:|---------:|-------:|--:|
+#&gt; |   0.60244|       0.58919| 13.98982| 3.740297| 3.86296|   45.4598|       0|  2|</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
