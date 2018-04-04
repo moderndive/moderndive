@@ -1,6 +1,6 @@
 ## Resubmission
 
-This is a resubmission. In this version I have:
+This is a resubmission. In this version I have done:
 
 * Based on CRAN's message from 2018/1/22 (UTC - 5)
     + Updated the link to the image of the sampling tub
