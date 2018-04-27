@@ -25,6 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Get regression points — get_regression_points" />
 
 <meta property="og:description" content="Wrapper for tidy lm() regression function fit output" />
@@ -38,8 +41,6 @@
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
-
-
 
 
   </head>
@@ -97,13 +98,15 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get regression points</h1>
-    <small>Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/regression_functions.R'><code>R/regression_functions.R</code></a></small>
-    <p class="hidden name"><code>get_regression_points.Rd</code></p>
+    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/regression_functions.R'><code>R/regression_functions.R</code></a></small>
+    <div class="hidden name"><code>get_regression_points.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
     <p>Wrapper for tidy <code>lm()</code> regression function fit output</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>get_regression_points</span>(<span class='no'>model</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>newdata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
@@ -169,22 +172,22 @@
 <span class='fu'>get_regression_points</span>(<span class='no'>mpg_model_train</span>, <span class='kw'>newdata</span> <span class='kw'>=</span> <span class='no'>test_set</span>)</div><div class='output co'>#&gt; # A tibble: 16 x 3
 #&gt;      mpg   cyl mpg_hat
 #&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-#&gt;  1  21.0    6.    15.5
+#&gt;  1  21.0    6.    20.8
 #&gt;  2  24.4    4.    26.2
 #&gt;  3  17.8    6.    20.8
 #&gt;  4  16.4    8.    15.5
-#&gt;  5  15.2    8.    20.8
-#&gt;  6  10.4    8.    26.2
-#&gt;  7  10.4    8.    20.8
-#&gt;  8  14.7    8.    26.2
-#&gt;  9  32.4    4.    15.5
+#&gt;  5  15.2    8.    15.5
+#&gt;  6  10.4    8.    15.5
+#&gt;  7  10.4    8.    15.5
+#&gt;  8  14.7    8.    15.5
+#&gt;  9  32.4    4.    26.2
 #&gt; 10  30.4    4.    26.2
 #&gt; 11  15.5    8.    15.5
-#&gt; 12  19.2    8.    26.2
-#&gt; 13  26.0    4.    15.5
-#&gt; 14  19.7    6.    26.2
+#&gt; 12  19.2    8.    15.5
+#&gt; 13  26.0    4.    26.2
+#&gt; 14  19.7    6.    20.8
 #&gt; 15  15.0    8.    15.5
-#&gt; 16  21.4    4.    20.8</div></pre>
+#&gt; 16  21.4    4.    26.2</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
