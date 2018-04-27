@@ -134,7 +134,7 @@ get_regression_points <-
     } else {
       # Get fitted values for newdata
       regression_points <- model %>%
-        augment(newdata) %>%
+        augment(newdata = newdata) %>%
         mutate_if(is.numeric, round, digits = digits) %>%
         select(!!c(outcome_variable, explanatory_variable, ".fitted")) %>%
         rename_at(vars(".fitted"), ~ str_c(outcome_variable, "_hat")) %>%
