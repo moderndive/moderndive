@@ -127,8 +127,8 @@ mpg_mlr_model2 &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg ~<sp
 <pre><code>## # A tibble: 2 x 7
 ##   term      estimate std_error statistic p_value conf_low conf_high
 ##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-## 1 intercept  30.1       1.63       18.4       0.  26.8      33.4   
-## 2 hp         -0.0680    0.0100     -6.74      0.  -0.0890   -0.0480</code></pre>
+## 1 intercept   30.1        1.63     18.4        0   26.8      33.4  
+## 2 hp          -0.068      0.01     -6.74       0   -0.089    -0.048</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/get_regression_table.html">get_regression_table</a></span>(mpg_mlr_model, <span class="dt">digits =</span> <span class="dv">4</span>, <span class="dt">print =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <table class="table">
 <thead><tr class="header">
@@ -175,23 +175,23 @@ mpg_mlr_model2 &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg ~<sp
 <pre><code>## # A tibble: 32 x 6
 ##       ID   mpg    hp cyl   mpg_hat residual
 ##    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;   &lt;dbl&gt;    &lt;dbl&gt;
-##  1     1  21.0  110. 6        20.0   0.962 
-##  2     2  21.0  110. 6        20.0   0.962 
-##  3     3  22.8   93. 4        26.4  -3.62  
-##  4     4  21.4  110. 6        20.0   1.36  
-##  5     5  18.7  175. 8        15.9   2.78  
-##  6     6  18.1  105. 6        20.2  -2.06  
-##  7     7  14.3  245. 8        14.2   0.0600
-##  8     8  24.4   62. 4        27.2  -2.76  
-##  9     9  22.8   95. 4        26.4  -3.57  
-## 10    10  19.2  123. 6        19.7  -0.526 
+##  1     1  21     110 6        20.0    0.962
+##  2     2  21     110 6        20.0    0.962
+##  3     3  22.8    93 4        26.4   -3.62 
+##  4     4  21.4   110 6        20.0    1.36 
+##  5     5  18.7   175 8        15.9    2.78 
+##  6     6  18.1   105 6        20.2   -2.06 
+##  7     7  14.3   245 8        14.2    0.06 
+##  8     8  24.4    62 4        27.2   -2.76 
+##  9     9  22.8    95 4        26.4   -3.57 
+## 10    10  19.2   123 6        19.7   -0.526
 ## # ... with 22 more rows</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Regression summaries</span>
 <span class="kw"><a href="reference/get_regression_summaries.html">get_regression_summaries</a></span>(mpg_model)</code></pre></div>
 <pre><code>## # A tibble: 1 x 8
 ##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df
 ##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-## 1     0.602         0.589  14.0  3.74  3.86      45.5      0.    2.</code></pre>
+## 1     0.602         0.589  14.0  3.74  3.86      45.5       0     2</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Can also use `%&gt;%`</span>
 mpg_model %&gt;%<span class="st"> </span><span class="kw"><a href="reference/get_regression_summaries.html">get_regression_summaries</a></span>(<span class="dt">digits =</span> <span class="dv">5</span>, <span class="dt">print =</span> <span class="ot">TRUE</span>)</code></pre></div>
 <table class="table">
