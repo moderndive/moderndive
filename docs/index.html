@@ -8,8 +8,14 @@
 <title>Accompaniment Package to ModernDive: An Introduction to Statistical and Data Sciences via R • moderndive</title>
 <!-- jquery --><script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script><!-- Font Awesome icons --><link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-<!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<script src="jquery.sticky-kit.min.js"></script><script src="pkgdown.js"></script><meta property="og:title" content="Accompaniment Package to ModernDive: An Introduction to Statistical and Data Sciences via R">
+<meta property="og:description" content="An accompaniment R package to ModernDive: An Introduction to
+    Statistical and Data Sciences via R available at &lt;http://moderndive.com/&gt;,
+    in particular wrapper functions targeted at novices to easily generate tidy
+    linear regression output.">
+<meta name="twitter:card" content="summary">
+<!-- mathjax --><script src="https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
@@ -24,8 +30,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">moderndive</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="index.html">moderndive</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.1.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
 <li>
@@ -38,7 +48,7 @@
   <a href="reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="news/index.html">News</a>
+  <a href="news/index.html">Changelog</a>
 </li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
@@ -208,30 +218,41 @@ mpg_model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw
 </tr></tbody>
 </table>
 <hr>
-<p>Please note that this project is released with a <a href="CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
+<p>Please note that this project is released with a <a href="CONDUCT.html">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
 </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2 class="hasAnchor">
-<a href="#sidebar" class="anchor"></a>Links</h2>
+    <div class="links">
+<h2>Links</h2>
 <ul class="list-unstyled">
-<li>Download from CRAN at <br><a href="https://cran.r-project.org/package=moderndive">https://​cran.r-project.org/​package=moderndive</a>
+<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=moderndive">https://​cloud.r-project.org/​package=moderndive</a>
 </li>
 <li>Browse source code at <br><a href="https://github.com/ModernDive/moderndive_package">https://​github.com/​ModernDive/​moderndive_package</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/ModernDive/moderndive_package/issues">https://​github.com/​ModernDive/​moderndive_package/​issues</a>
 </li>
 </ul>
+</div>
+<div class="license">
 <h2>License</h2>
-<p><a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE.html">LICENSE</a></p>
+<ul class="list-unstyled">
+<li>
+<a href="https://opensource.org/licenses/mit-license.php">MIT</a> + file <a href="LICENSE-text.html">LICENSE</a>
+</li>
+</ul>
+</div>
+<div class="developers">
 <h2>Developers</h2>
 <ul class="list-unstyled">
-<li>Albert Y. Kim <br><small class="roles"> Maintainer </small> </li>
-<li>Chester Ismay <br><small class="roles"> Author </small> </li>
+<li>Albert Y. Kim <br><small class="roles"> Maintainer </small>  </li>
+<li>Chester Ismay <br><small class="roles"> Author </small>  </li>
 <li><a href="authors.html">All authors...</a></li>
 </ul>
+</div>
+
+      <div class="dev-status">
 <h2>Dev status</h2>
 <ul class="list-unstyled">
 <li><a href="https://cran.r-project.org/package=moderndive"><img src="http://www.r-pkg.org/badges/version/moderndive" alt="CRAN_Status_Badge"></a></li>
@@ -239,6 +260,7 @@ mpg_model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw
 <li><a href="https://codecov.io/github/moderndive/moderndive?branch=master"><img src="https://img.shields.io/codecov/c/github/moderndive/moderndive/master.svg" alt="Coverage Status"></a></li>
 <li><a href="http://www.r-pkg.org/pkg/moderndive"><img src="http://cranlogs.r-pkg.org/badges/moderndive" alt="CRAN RStudio mirror downloads"></a></li>
 </ul>
+</div>
 </div>
 
 </div>
