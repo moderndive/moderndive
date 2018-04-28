@@ -71,6 +71,11 @@ get_regression_table(mpg_mlr_model, digits = 4, print = TRUE)
 
 # Regression points. For residual analysis for example
 get_regression_points(mpg_mlr_model2)
+mtcars_new <- mtcars %>% 
+  slice(1:3)
+
+# Make predictions on newdata
+get_regression_points(mpg_mlr_model2, newdata = mtcars_new)
 
 # Regression summaries
 get_regression_summaries(mpg_model)

@@ -95,6 +95,21 @@ get_regression_points(mpg_mlr_model2)
     ## # ... with 22 more rows
 
 ``` r
+mtcars_new <- mtcars %>% 
+  slice(1:3)
+
+# Make predictions on newdata
+get_regression_points(mpg_mlr_model2, newdata = mtcars_new)
+```
+
+    ## # A tibble: 3 x 4
+    ##     mpg    hp cyl   mpg_hat
+    ##   <dbl> <dbl> <fct>   <dbl>
+    ## 1  21.0  110. 6        20.0
+    ## 2  21.0  110. 6        20.0
+    ## 3  22.8   93. 4        26.4
+
+``` r
 # Regression summaries
 get_regression_summaries(mpg_model)
 ```
