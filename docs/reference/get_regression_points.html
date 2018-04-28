@@ -18,13 +18,19 @@
 <!-- Font Awesome icons -->
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 
+<!-- clipboard.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js" integrity="sha384-cV+rhyOuRHc9Ub/91rihWcGmMmCXDeksTtCihMupQHSsi8GIIRDG0ThDc3HGQFJ3" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
-  
-  
+<meta property="og:title" content="Get regression points — get_regression_points" />
+
+<meta property="og:description" content="Wrapper for tidy lm() regression function fit output" />
+<meta name="twitter:card" content="summary" />
+
+
 <!-- mathjax -->
 <script src='https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -47,8 +53,12 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="../index.html">moderndive</a>
+      <span class="navbar-brand">
+        <a class="navbar-link" href="../index.html">moderndive</a>
+        <span class="label label-default" data-toggle="tooltip" data-placement="bottom" title="Released package">0.1.1.9000</span>
+      </span>
     </div>
+
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
@@ -61,7 +71,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li>
-  <a href="../news/index.html">News</a>
+  <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
       
@@ -84,6 +94,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get regression points</h1>
+    <small>Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/regression_functions.R'><code>R/regression_functions.R</code></a></small>
     </div>
 
     
@@ -92,7 +103,7 @@
 
     <pre class="usage"><span class='fu'>get_regression_points</span>(<span class='no'>model</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>newdata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
@@ -154,22 +165,22 @@
 <span class='fu'>get_regression_points</span>(<span class='no'>mpg_model_train</span>, <span class='kw'>newdata</span> <span class='kw'>=</span> <span class='no'>test_set</span>)</div><div class='output co'>#&gt; # A tibble: 16 x 3
 #&gt;      mpg   cyl mpg_hat
 #&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-#&gt;  1  21.0    6.    15.5
+#&gt;  1  21.0    6.    20.8
 #&gt;  2  24.4    4.    26.2
 #&gt;  3  17.8    6.    20.8
 #&gt;  4  16.4    8.    15.5
-#&gt;  5  15.2    8.    20.8
-#&gt;  6  10.4    8.    26.2
-#&gt;  7  10.4    8.    20.8
-#&gt;  8  14.7    8.    26.2
-#&gt;  9  32.4    4.    15.5
+#&gt;  5  15.2    8.    15.5
+#&gt;  6  10.4    8.    15.5
+#&gt;  7  10.4    8.    15.5
+#&gt;  8  14.7    8.    15.5
+#&gt;  9  32.4    4.    26.2
 #&gt; 10  30.4    4.    26.2
 #&gt; 11  15.5    8.    15.5
-#&gt; 12  19.2    8.    26.2
-#&gt; 13  26.0    4.    15.5
-#&gt; 14  19.7    6.    26.2
+#&gt; 12  19.2    8.    15.5
+#&gt; 13  26.0    4.    26.2
+#&gt; 14  19.7    6.    20.8
 #&gt; 15  15.0    8.    15.5
-#&gt; 16  21.4    4.    20.8</div></pre>
+#&gt; 16  21.4    4.    26.2</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -198,3 +209,4 @@
 
   </body>
 </html>
+
