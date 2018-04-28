@@ -59,6 +59,9 @@ test_that("README code works", {
   
   # Regression points. For residual analysis for example
   expect_silent(get_regression_points(mpg_mlr_model2))
+  expect_silent(get_regression_points(
+    mpg_mlr_model2,
+    newdata = slice(mtcars, 1:3)))
   
   # Regression summaries
   expect_silent(get_regression_summaries(mpg_model))
