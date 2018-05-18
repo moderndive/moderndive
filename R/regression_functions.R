@@ -136,7 +136,7 @@ get_regression_points <-
       regression_points <- model %>%
         augment(newdata = newdata) %>%
         mutate_if(is.numeric, round, digits = digits) %>%
-        select(!!c(outcome_variable, explanatory_variable, ".fitted")) %>%
+        select(!!c(explanatory_variable, ".fitted")) %>%
         rename_at(vars(".fitted"), ~ str_c(outcome_variable, "_hat")) %>%
         as_tibble() 
     }
