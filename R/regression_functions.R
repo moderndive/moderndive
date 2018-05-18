@@ -132,6 +132,8 @@ get_regression_points <-
         mutate(ID = 1:n()) %>%
         select(ID, everything())
     } else {
+      assertive::assert_is_data.frame(newdata)
+      
       # Get fitted values for newdata
       regression_points <- model %>%
         augment(newdata = newdata) %>%
