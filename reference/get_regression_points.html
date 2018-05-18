@@ -145,16 +145,16 @@
 <span class='fu'>get_regression_points</span>(<span class='no'>mpg_model</span>)</div><div class='output co'>#&gt; # A tibble: 32 x 5
 #&gt;       ID   mpg   cyl mpg_hat residual
 #&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
-#&gt;  1     1  21.0    6.    20.6    0.370
-#&gt;  2     2  21.0    6.    20.6    0.370
-#&gt;  3     3  22.8    4.    26.4   -3.58 
-#&gt;  4     4  21.4    6.    20.6    0.770
-#&gt;  5     5  18.7    8.    14.9    3.82 
-#&gt;  6     6  18.1    6.    20.6   -2.53 
-#&gt;  7     7  14.3    8.    14.9   -0.578
-#&gt;  8     8  24.4    4.    26.4   -1.98 
-#&gt;  9     9  22.8    4.    26.4   -3.58 
-#&gt; 10    10  19.2    6.    20.6   -1.43 
+#&gt;  1     1  21       6    20.6    0.37 
+#&gt;  2     2  21       6    20.6    0.37 
+#&gt;  3     3  22.8     4    26.4   -3.58 
+#&gt;  4     4  21.4     6    20.6    0.77 
+#&gt;  5     5  18.7     8    14.9    3.82 
+#&gt;  6     6  18.1     6    20.6   -2.53 
+#&gt;  7     7  14.3     8    14.9   -0.578
+#&gt;  8     8  24.4     4    26.4   -1.98 
+#&gt;  9     9  22.8     4    26.4   -3.58 
+#&gt; 10    10  19.2     6    20.6   -1.43 
 #&gt; # ... with 22 more rows</div><div class='input'>
 <span class='co'># Convert rownames to column</span>
 <span class='fu'>data</span>(<span class='st'>"mtcars"</span>)
@@ -169,25 +169,25 @@
 
 <span class='co'># Fit model to training set, predict on test set</span>
 <span class='no'>mpg_model_train</span> <span class='kw'>&lt;-</span> <span class='fu'>lm</span>(<span class='no'>mpg</span> ~ <span class='no'>cyl</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>training_set</span>)
-<span class='fu'>get_regression_points</span>(<span class='no'>mpg_model_train</span>, <span class='kw'>newdata</span> <span class='kw'>=</span> <span class='no'>test_set</span>)</div><div class='output co'>#&gt; # A tibble: 16 x 3
-#&gt;      mpg   cyl mpg_hat
-#&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-#&gt;  1  21.0    6.    20.8
-#&gt;  2  24.4    4.    26.2
-#&gt;  3  17.8    6.    20.8
-#&gt;  4  16.4    8.    15.5
-#&gt;  5  15.2    8.    15.5
-#&gt;  6  10.4    8.    15.5
-#&gt;  7  10.4    8.    15.5
-#&gt;  8  14.7    8.    15.5
-#&gt;  9  32.4    4.    26.2
-#&gt; 10  30.4    4.    26.2
-#&gt; 11  15.5    8.    15.5
-#&gt; 12  19.2    8.    15.5
-#&gt; 13  26.0    4.    26.2
-#&gt; 14  19.7    6.    20.8
-#&gt; 15  15.0    8.    15.5
-#&gt; 16  21.4    4.    26.2</div></pre>
+<span class='fu'>get_regression_points</span>(<span class='no'>mpg_model_train</span>, <span class='kw'>newdata</span> <span class='kw'>=</span> <span class='no'>test_set</span>)</div><div class='output co'>#&gt; # A tibble: 16 x 2
+#&gt;      cyl mpg_hat
+#&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+#&gt;  1     6    20.8
+#&gt;  2     4    26.2
+#&gt;  3     6    20.8
+#&gt;  4     8    15.5
+#&gt;  5     8    15.5
+#&gt;  6     8    15.5
+#&gt;  7     8    15.5
+#&gt;  8     8    15.5
+#&gt;  9     4    26.2
+#&gt; 10     4    26.2
+#&gt; 11     8    15.5
+#&gt; 12     8    15.5
+#&gt; 13     4    26.2
+#&gt; 14     6    20.8
+#&gt; 15     8    15.5
+#&gt; 16     4    26.2</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
