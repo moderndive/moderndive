@@ -34,6 +34,7 @@ The following three `get_regression_OUTPUT()` functions are tidyverse-friendly w
 
 Furthermore
 
+-   `get_regression_table()` returns confidence intervals (not just p-values) by default
 -   The outputs are returned as [tibbles](https://blog.rstudio.com/2016/03/24/tibble-1-0-0/)
 -   It cleans the output format by eliminating all information not pertinent to novice regression users
 -   You can set the output to be in `knitr::kable()` markdown format, suitable for printing in R Markdown documents, via `print = TRUE`
