@@ -113,35 +113,46 @@ get_regression_points <-
            digits = 3,
            print = FALSE,
            newdata = NULL) {
-    
     input_checks(model, digits, print)
     
     outcome_variable <- formula(model) %>% lhs() %>% all.vars()
+    outcome_variable_hat <- str_c(outcome_variable, "_hat")
     explanatory_variable <- formula(model) %>% rhs() %>% all.vars()
     
     if(is.null(newdata)){
       # Get fitted values for all points used for regression
       regression_points <- model %>%
         augment() %>%
-        mutate_if(is.numeric, round, digits = digits) %>%
-        select(!!c(outcome_variable, explanatory_variable, 
-                   ".fitted", ".resid")) %>%
-        rename_at(vars(".fitted"), ~ str_c(outcome_variable, "_hat")) %>%
-        rename(residual = .resid) %>%
-        as_tibble() %>% 
-        mutate(ID = 1:n()) %>%
-        select(ID, everything())
+        select(!!c(outcome_variable, explanatory_variable, ".fitted", ".resid")) %>%
+        rename_at(vars(".fitted"), ~ outcome_variable_hat) %>%
+        rename(residual = .resid) 
     } else {
       assertive::assert_is_data.frame(newdata)
       
-      # Get fitted values for newdata
-      regression_points <- model %>%
-        augment(newdata = newdata) %>%
-        mutate_if(is.numeric, round, digits = digits) %>%
-        select(!!c(explanatory_variable, ".fitted")) %>%
-        rename_at(vars(".fitted"), ~ str_c(outcome_variable, "_hat")) %>%
-        as_tibble() 
+      # Get fitted values for newdata depending on whether newdata already has 
+      # the outcome variable. If it does, include it and compute residuals.
+      if(outcome_variable %in% names(newdata)) {
+        regression_points <- newdata %>%
+          select(!!c(outcome_variable, explanatory_variable)) %>% 
+          # Get fitted/predicted values
+          mutate(y_hat = predict(model, newdata = newdata)) %>% 
+          rename_at(vars("y_hat"), ~ outcome_variable_hat) %>% 
+          # Compute residuals
+          mutate(residual := !!sym(outcome_variable) - !!sym(outcome_variable_hat))
+      } else {
+        regression_points <- model %>%
+          augment(newdata = newdata) %>%
+          select(!!c(explanatory_variable, ".fitted")) %>%
+          rename_at(vars(".fitted"), ~ str_c(outcome_variable, "_hat"))
+      }
     }
+    
+    # Final clean up
+    regression_points <- regression_points %>%
+      mutate_if(is.numeric, round, digits = digits) %>% 
+      mutate(ID = 1:n()) %>%
+      select(ID, everything()) %>% 
+      as_tibble()
     
     if(print) {
       regression_points <- regression_points %>%
@@ -193,7 +204,7 @@ get_regression_summaries <-
       rename_at(vars(".fitted"), ~ str_c(outcome_variable, "_hat")) %>%
       rename(residual = .resid) %>% 
       summarise(mse = mean(residual^2), rmse = sqrt(mse))
-      
+    
     regression_summaries <- model %>%
       glance() %>%
       mutate_if(is.numeric, round, digits = digits) %>%
