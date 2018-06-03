@@ -26,6 +26,7 @@ globalVariables(c(
 #' @return A tibble or nicely formatted table
 #' @import dplyr
 #' @importFrom stats lm
+#' @importFrom stats predict
 #' @importFrom magrittr "%>%"
 #' @importFrom formula.tools lhs
 #' @importFrom formula.tools rhs
@@ -84,6 +85,7 @@ get_regression_table <-
 #' @importFrom janitor clean_names
 #' @importFrom stringr str_c
 #' @importFrom knitr kable
+#' @importFrom rlang sym
 #' @export
 #'
 #' @examples
