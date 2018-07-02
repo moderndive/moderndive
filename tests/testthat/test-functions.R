@@ -59,9 +59,16 @@ test_that("README code works", {
   
   # Regression points. For residual analysis for example
   expect_silent(get_regression_points(mpg_mlr_model2))
-  expect_silent(get_regression_points(
-    mpg_mlr_model2,
-    newdata = slice(mtcars, 1:3)))
+  # Case when true observed outcome variable is included and hence we can
+  # compute fitted/predicted values and residuals
+  newcars <- slice(mtcars, 1:3)
+  expect_silent(get_regression_points(mpg_mlr_model2, newdata = newcars))
+  # Case when true observed outcome variable is NOT included and hence we 
+  # CANNOT compute fitted/predicted values and residuals
+  newcars <- slice(mtcars, 1:3) %>% 
+    select(-mpg)
+  expect_silent(get_regression_points(mpg_mlr_model2, newdata = newcars))
+
   
   # Regression summaries
   expect_silent(get_regression_summaries(mpg_model))
