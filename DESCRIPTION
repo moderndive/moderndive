@@ -1,6 +1,6 @@
 Package: moderndive
 Type: Package
-Title: Accompaniment Package to ModernDive: An Introduction to Statistical and Data Sciences via R
+Title: An R package for tidyverse-friendly introductory linear regression
 Version: 0.1.1.9000
 Authors@R: c(
     person("Albert Y.", "Kim", email = "albert.ys.kim@gmail.com", role = "cre"),
@@ -8,10 +8,7 @@ Authors@R: c(
     person("Andrew", "Bray", email = "abray@reed.edu", role = "ctb")
     )
 Maintainer: Albert Y. Kim <albert.ys.kim@gmail.com>
-Description: An accompaniment R package to ModernDive: An Introduction to
-    Statistical and Data Sciences via R available at <http://moderndive.com/>,
-    in particular wrapper functions targeted at novices to easily generate tidy
-    linear regression output.
+Description: An R package for tidyverse-friendly introductory linear regression used in ModernDive: An Introduction to Statistical and Data Sciences via R available at <http://moderndive.com/> and DataCamp's Modeling with Data in the Tidyverse available at <https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse>. In particular datasets and wrapper functions meant for novices to generate tidy linear regression outputs.
 Depends:
     R (>= 3.2.4)
 License: MIT + file LICENSE

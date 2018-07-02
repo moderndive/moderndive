@@ -4,34 +4,28 @@
 \name{moderndive}
 \alias{moderndive}
 \alias{moderndive-package}
-\title{moderndive - Accompaniment Package to ModernDive: An Introduction to 
-Statistical and Data Sciences via R}
+\title{moderndive - An R package for tidyverse-friendly introductory linear regression}
 \description{
-An accompaniment R package to ModernDive: An Introduction to Statistical and 
-Data Sciences via R available at \url{http://moderndive.com/}, in particular 
-wrapper functions targeted at novices to easily generate tidy linear 
-regression output in Chapter 6: Data Modeling with Regression.
+An R package for tidyverse-friendly introductory linear regression used in 
+ModernDive: An Introduction to Statistical and Data Sciences via R available 
+at \url{http://moderndive.com/} and DataCamp's Modeling with Data in the Tidyverse 
+available at 
+\url{https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse}. In 
+particular datasets and wrapper functions meant for novices to generate tidy 
+linear regression outputs.
 }
 \examples{
-# Example usage:
 library(moderndive)
-library(dplyr)
 
-# Regression models
+# Fit regression model:
 mpg_model <- lm(mpg ~ hp, data = mtcars)
-mpg_mlr_model <- lm(mpg ~ hp + wt, data = mtcars)
-mpg_mlr_model2 <- lm(mpg ~ hp + cyl, data = mtcars)
 
-# Regression tables
-get_regression_table(model = mpg_model)
-get_regression_table(mpg_mlr_model, digits = 4, print = TRUE)
+# Regression tables:
+get_regression_table(mpg_model)
 
-# Regression points. For residual analysis for example
-get_regression_points(mpg_mlr_model2)
+# Information on each point in a regression:
+get_regression_points(mpg_model)
 
 # Regression summaries
 get_regression_summaries(mpg_model)
-
-# Can also use `\%>\%`
-mpg_model \%>\% get_regression_summaries(digits = 5, print = TRUE)
 }

@@ -13,7 +13,7 @@ get_regression_points(model, digits = 3, print = FALSE, newdata = NULL)
 
 \item{print}{If TRUE, return in print format suitable for R Markdown}
 
-\item{newdata}{A new data frame of observations to apply \code{model} to 
+\item{newdata}{A new data frame of points/observations to apply \code{model} to 
 obtain new fitted values and/or predicted values y-hat. Note the format of 
 \code{newdata} must match the format of the original \code{data} used to fit
 \code{model}.}
@@ -23,7 +23,7 @@ A tibble-formatted regression table of outcome variable,
 all explanatory/predictor variables, the fitted/predicted value, and residual.
 }
 \description{
-Output information on each observation used in an \code{lm()} regression in 
+Output information on each point/observation used in an \code{lm()} regression in 
 "tidy" format. This function is a wrapper function for \code{broom::augment()} 
 and renames the variables to have more intuitive names.
 }

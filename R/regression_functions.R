@@ -11,7 +11,9 @@ globalVariables(c(
   "rmse",
   "residual",
   "r_squared",
-  "adj_r_squared"
+  "adj_r_squared",
+  "conf_low",
+  "conf_high"
 ))
 
 #' Get regression table
@@ -80,12 +82,12 @@ get_regression_table <-
 
 #' Get regression points
 #'
-#' Output information on each observation used in an \code{lm()} regression in 
+#' Output information on each point/observation used in an \code{lm()} regression in 
 #' "tidy" format. This function is a wrapper function for \code{broom::augment()} 
 #' and renames the variables to have more intuitive names.
 #'
 #' @inheritParams get_regression_table
-#' @param newdata A new data frame of observations to apply \code{model} to 
+#' @param newdata A new data frame of points/observations to apply \code{model} to 
 #' obtain new fitted values and/or predicted values y-hat. Note the format of 
 #' \code{newdata} must match the format of the original \code{data} used to fit
 #' \code{model}.
