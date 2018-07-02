@@ -1,7 +1,7 @@
 # moderndive 0.1.1.9000
 
 * Import `infer::rep_sample_n()` instead of our own defined version, as this function is now in `infer` on CRAN
-* Added `evals` and `house_prices` datasets
+* Added `evals`, `house_prices`, `tactile_prop_red` datasets
 * Added mean squared error and root mean squared error to output of `get_regression_summaries()`
 * Added `newdata` argument to `get_regression_points()`. When outcome variable is in `newdata`, output the outcome variable's observed value, fitted value, and residual (See Issue 17).
 * Removed `tidyverse` from Depends, Imports, or Suggests

@@ -1,7 +1,6 @@
 library(tidyverse)
 
 
-
 # House price data from https://www.kaggle.com/harlfoxem/housesalesprediction
 house_prices <- read_csv("data-raw/kc_house_data.csv") %>% 
   mutate(
@@ -32,6 +31,13 @@ devtools::use_data(evals, overwrite = TRUE)
 bowl_samples <- read_csv("data-raw/sampling_responses.csv") %>% 
   mutate(n = red + white + green)
 devtools::use_data(bowl_samples, overwrite = TRUE)
+
+
+
+# 33 tactile samples of size n=50 from
+# https://github.com/moderndive/moderndive_book/blob/master/images/sampling_bowl.jpeg
+tactile_prop_red <- read_csv("data-raw/sampling_red_balls.csv")
+devtools::use_data(tactile_prop_red, overwrite = TRUE)
 
 
 
