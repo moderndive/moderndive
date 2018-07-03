@@ -4,24 +4,31 @@
 \alias{get_regression_summaries}
 \title{Get regression summary values}
 \usage{
-get_regression_summaries(model, digits = 3, print = FALSE, ...)
+get_regression_summaries(model, digits = 3, print = FALSE)
 }
 \arguments{
-\item{model}{a model object (Currently only \code{lm} is supported)}
+\item{model}{an \code{lm()} model object}
 
 \item{digits}{number of digits precision in output table}
 
 \item{print}{If TRUE, return in print format suitable for R Markdown}
-
-\item{...}{other arguments passed to lm()}
 }
 \value{
-data frame with summaries
+A single-row tibble with regression summaries. Ex: \code{r_squared} and \code{mse}.
 }
 \description{
-Wrapper for \code{lm()} regression function fit summary data
+Output scalar summary statistics for an \code{lm()} regression in "tidy" 
+format. This function is a wrapper function for \code{broom::glance()}.
 }
 \examples{
+library(moderndive)
+
+# Fit lm() regression:
 mpg_model <- lm(mpg ~ cyl, data = mtcars)
+
+# Get regression summaries:
 get_regression_summaries(mpg_model)
+}
+\seealso{
+\code{\link[broom]{glance}}, \code{\link{get_regression_table}}, \code{\link{get_regression_points}}
 }

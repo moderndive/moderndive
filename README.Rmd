@@ -10,8 +10,12 @@ knitr::opts_chunk$set(echo = TRUE)
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive) [![Travis-CI Build Status](https://travis-ci.org/moderndive/moderndive.svg?branch=master)](https://travis-ci.org/moderndive/moderndive) [![Coverage Status](https://img.shields.io/codecov/c/github/moderndive/moderndive/master.svg)](https://codecov.io/github/moderndive/moderndive?branch=master)[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/moderndive)](http://www.r-pkg.org/pkg/moderndive)
 
+An R package for tidyverse-friendly introductory linear regression used in
 
-Accompaniment R Package to ModernDive: An Introduction to Statistical and Data Sciences via R available at <http://moderndive.com/>.
+- ModernDive: An Introduction to Statistical and Data Sciences via R available at [ModernDive.com](http://moderndive.com/)
+- DataCamp's [Modeling with Data in the Tidyverse](https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse)
+
+It includes datasets and wrapper functions meant for novices to generate tidy linear regression outputs.
 
 
 ## Installation
@@ -49,7 +53,6 @@ Furthermore
 * It cleans the output format by eliminating all information not pertinent to novice regression users
 * You can set the output to be in `knitr::kable()` markdown format, suitable for printing in R Markdown
 documents, via `print = TRUE`
-* You can control the pseudo-precision via the `digits` argument
 
 ```{r warning=FALSE, message=FALSE}
 library(moderndive)

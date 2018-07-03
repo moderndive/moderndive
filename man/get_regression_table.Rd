@@ -4,24 +4,34 @@
 \alias{get_regression_table}
 \title{Get regression table}
 \usage{
-get_regression_table(model, digits = 3, print = FALSE, ...)
+get_regression_table(model, digits = 3, print = FALSE)
 }
 \arguments{
-\item{model}{a model object (Currently only \code{lm} is supported)}
+\item{model}{an \code{lm()} model object}
 
 \item{digits}{number of digits precision in output table}
 
 \item{print}{If TRUE, return in print format suitable for R Markdown}
-
-\item{...}{other arguments passed to lm()}
 }
 \value{
-A tibble or nicely formatted table
+A tibble-formatted regression table along with lower and upper end 
+points of all confidence intervals for all parameters \code{lower_ci} and 
+\code{upper_ci}.
 }
 \description{
-Wrapper for tidy \code{lm()} regression function output
+Output regression table for an \code{lm()} regression in "tidy" format. This function
+is a wrapper function for \code{broom::tidy()} and includes confidence
+intervals in the output table by default.
 }
 \examples{
+library(moderndive)
+
+# Fit lm() regression:
 mpg_model <- lm(mpg ~ cyl, data = mtcars)
+
+# Get regression table:
 get_regression_table(mpg_model)
+}
+\seealso{
+\code{\link[broom]{tidy}}, \code{\link{get_regression_points}}, \code{\link{get_regression_summaries}}
 }
