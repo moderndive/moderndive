@@ -29,10 +29,8 @@ globalVariables(c(
 #' @return A tibble-formatted regression table along with lower and upper end 
 #' points of all confidence intervals for all parameters \code{lower_ci} and 
 #' \code{upper_ci}.
-#' @import dplyr
 #' @importFrom stats lm
 #' @importFrom stats predict
-#' @importFrom magrittr "%>%"
 #' @importFrom formula.tools lhs
 #' @importFrom formula.tools rhs
 #' @importFrom broom tidy
@@ -92,12 +90,17 @@ get_regression_table <-
 #' \code{newdata} must match the format of the original \code{data} used to fit
 #' \code{model}.
 #'
-#' @return A tibble-formatted regression table of outcome variable, 
+#' @return A tibble-formatted regression table of outcome/response variable, 
 #' all explanatory/predictor variables, the fitted/predicted value, and residual.
-#' @import dplyr
-#' @import rlang
+#' @importFrom dplyr select
+#' @importFrom dplyr rename_at
+#' @importFrom dplyr vars
+#' @importFrom dplyr rename
+#' @importFrom dplyr mutate
+#' @importFrom dplyr everything
+#' @importFrom dplyr mutate_if
+#' @importFrom dplyr summarise
 #' @importFrom stats formula 
-#' @importFrom magrittr "%>%"
 #' @importFrom formula.tools lhs
 #' @importFrom formula.tools rhs
 #' @importFrom broom augment
@@ -106,6 +109,7 @@ get_regression_table <-
 #' @importFrom stringr str_c
 #' @importFrom knitr kable
 #' @importFrom rlang sym
+#' @importFrom rlang ":="
 #' @export
 #' @seealso \code{\link[broom]{augment}}, \code{\link{get_regression_table}}, \code{\link{get_regression_summaries}}
 #'
@@ -148,14 +152,16 @@ get_regression_points <-
       # Get fitted values for all points used for regression
       regression_points <- model %>%
         augment() %>%
-        select(!!c(outcome_variable, explanatory_variable, ".fitted", ".resid")) %>%
+        select(!!c(outcome_variable, explanatory_variable, 
+                   ".fitted", ".resid")) %>%
         rename_at(vars(".fitted"), ~ outcome_variable_hat) %>%
         rename(residual = .resid) 
     } else {
       assertive::assert_is_data.frame(newdata)
       
       # Get fitted values for newdata depending on whether newdata already has 
-      # the outcome variable. If it does, include it and compute residuals.
+      # the outcome/response variable. If it does, include it and compute
+      # residuals.
       if(outcome_variable %in% names(newdata)) {
         regression_points <- newdata %>%
           select(!!c(outcome_variable, explanatory_variable)) %>% 
@@ -163,7 +169,9 @@ get_regression_points <-
           mutate(y_hat = predict(model, newdata = newdata)) %>% 
           rename_at(vars("y_hat"), ~ outcome_variable_hat) %>% 
           # Compute residuals
-          mutate(residual := !!sym(outcome_variable) - !!sym(outcome_variable_hat))
+          mutate(
+            residual := !!sym(outcome_variable) - !!sym(outcome_variable_hat)
+          )
       } else {
         regression_points <- model %>%
           augment(newdata = newdata) %>%
@@ -197,9 +205,17 @@ get_regression_points <-
 #' @inheritParams get_regression_table
 #'
 #' @return A single-row tibble with regression summaries. Ex: \code{r_squared} and \code{mse}.
-#' @import dplyr
+#' @importFrom dplyr select
+#' @importFrom dplyr rename_at
+#' @importFrom dplyr vars
+#' @importFrom dplyr rename
+#' @importFrom dplyr mutate
+#' @importFrom dplyr everything
+#' @importFrom dplyr mutate_if
+#' @importFrom dplyr summarise
+#' @importFrom dplyr bind_cols
+#' @importFrom dplyr n
 #' @importFrom stats formula
-#' @importFrom magrittr "%>%"
 #' @importFrom formula.tools lhs
 #' @importFrom formula.tools rhs
 #' @importFrom broom glance

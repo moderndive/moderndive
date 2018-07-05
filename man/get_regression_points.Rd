@@ -19,7 +19,7 @@ obtain new fitted values and/or predicted values y-hat. Note the format of
 \code{model}.}
 }
 \value{
-A tibble-formatted regression table of outcome variable, 
+A tibble-formatted regression table of outcome/response variable, 
 all explanatory/predictor variables, the fitted/predicted value, and residual.
 }
 \description{
