@@ -12,7 +12,6 @@
 #'   \item{prop_red}{Proportion red balls out of 50}
 #' }
 #' @examples
-#' library(dplyr)
 #' library(ggplot2)
 #' 
 #' # Plot sampling distributions
