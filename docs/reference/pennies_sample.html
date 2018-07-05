@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A population of 800 pennies sampled in 2011 — pennies • moderndive</title>
+<title>A sample of 40 pennies sampled in 2011 from the <code>pennies</code> data frame — pennies_sample • moderndive</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -28,9 +28,10 @@
 
 
 
-<meta property="og:title" content="A population of 800 pennies sampled in 2011 — pennies" />
+<meta property="og:title" content="A sample of 40 pennies sampled in 2011 from the <code>pennies</code> data frame — pennies_sample" />
 
-<meta property="og:description" content="A dataset of 800 pennies to be treated as a sampling population. Data on 
+<meta property="og:description" content="A dataset of 40 pennies to be treated as a sample with pennies acting
+as the population. Data on 
 these pennies were recorded in 2011." />
 <meta name="twitter:card" content="summary" />
 
@@ -98,23 +99,24 @@ these pennies were recorded in 2011." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A population of 800 pennies sampled in 2011</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/pennies.R'><code>R/pennies.R</code></a></small>
-    <div class="hidden name"><code>pennies.Rd</code></div>
+    <h1>A sample of 40 pennies sampled in 2011 from the <code>pennies</code> data frame</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/pennies_sample.R'><code>R/pennies_sample.R</code></a></small>
+    <div class="hidden name"><code>pennies_sample.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>A dataset of 800 pennies to be treated as a sampling population. Data on 
+    <p>A dataset of 40 pennies to be treated as a sample with <code>pennies</code> acting
+as the population. Data on 
 these pennies were recorded in 2011.</p>
     
     </div>
 
-    <pre class="usage"><span class='no'>pennies</span></pre>
+    <pre class="usage"><span class='no'>pennies_sample</span></pre>
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame of 800 rows representing different pennies and 2 variables</p><dl class='dl-horizontal'>
+    <p>A data frame of 40 rows representing different pennies and 2 variables</p><dl class='dl-horizontal'>
   <dt>year</dt><dd><p>Year of minting</p></dd>
   <dt>age_in_2011</dt><dd><p>Age in 2011</p></dd>
 </dl>
@@ -128,34 +130,34 @@ these pennies were recorded in 2011.</p>
     <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
 <span class='fu'>library</span>(<span class='no'>ggplot2</span>)
 
-<span class='co'># Take 25 different samples of size n = 50 pennies from population</span>
-<span class='no'>many_samples</span> <span class='kw'>&lt;-</span> <span class='no'>pennies</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/infer/topics/rep_sample_n'>rep_sample_n</a></span>(<span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>reps</span> <span class='kw'>=</span> <span class='fl'>25</span>)
-<span class='no'>many_samples</span></div><div class='output co'>#&gt; # A tibble: 1,250 x 3
-#&gt; # Groups:   replicate [25]
+<span class='co'># Take 50 different resamples/bootstraps from the original sample</span>
+<span class='no'>many_bootstraps</span> <span class='kw'>&lt;-</span> <span class='no'>pennies_sample</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='http://www.rdocumentation.org/packages/infer/topics/rep_sample_n'>rep_sample_n</a></span>(<span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>40</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>reps</span> <span class='kw'>=</span> <span class='fl'>50</span>)
+<span class='no'>many_bootstraps</span></div><div class='output co'>#&gt; # A tibble: 2,000 x 3
+#&gt; # Groups:   replicate [50]
 #&gt;    replicate  year age_in_2011
 #&gt;        &lt;int&gt; &lt;int&gt;       &lt;int&gt;
-#&gt;  1         1  1996          15
-#&gt;  2         1  1989          22
-#&gt;  3         1  1995          16
-#&gt;  4         1  1996          15
-#&gt;  5         1  1999          12
-#&gt;  6         1  1985          26
-#&gt;  7         1  1984          27
-#&gt;  8         1  2002           9
-#&gt;  9         1  1986          25
-#&gt; 10         1  1963          48
-#&gt; # ... with 1,240 more rows</div><div class='input'>
-<span class='co'># Compute mean year of minting for each sample</span>
-<span class='no'>sample_means</span> <span class='kw'>&lt;-</span> <span class='no'>many_samples</span> <span class='kw'>%&gt;%</span>
+#&gt;  1         1  1974          37
+#&gt;  2         1  1977          34
+#&gt;  3         1  1992          19
+#&gt;  4         1  1997          14
+#&gt;  5         1  1993          18
+#&gt;  6         1  1964          47
+#&gt;  7         1  1994          17
+#&gt;  8         1  1997          14
+#&gt;  9         1  1983          28
+#&gt; 10         1  1993          18
+#&gt; # ... with 1,990 more rows</div><div class='input'>
+<span class='co'># Compute mean year of minting for each bootstrap sample</span>
+<span class='no'>bootstrap_means</span> <span class='kw'>&lt;-</span> <span class='no'>many_bootstraps</span> <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>replicate</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='http://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span>(<span class='kw'>mean_year</span> <span class='kw'>=</span> <span class='fu'>mean</span>(<span class='no'>year</span>))
 
 <span class='co'># Plot sampling distribution</span>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>sample_means</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>mean_year</span>)) +
+<span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>bootstrap_means</span>, <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>mean_year</span>)) +
   <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/geom_histogram'>geom_histogram</a></span>(<span class='kw'>binwidth</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"white"</span>) +
   <span class='fu'><a href='http://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'>expression</span>(<span class='fu'>bar</span>(<span class='no'>x</span>)), <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Number of samples"</span>,
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Sampling distribution of x_bar based 25 samples of size n = 50"</span>)</div><div class='img'><img src='pennies-1.png' alt='' width='700' height='433' /></div></pre>
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Bootstrap distribution of x_bar based 50 resamples of size n = 40"</span>)</div><div class='img'><img src='pennies_sample-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
