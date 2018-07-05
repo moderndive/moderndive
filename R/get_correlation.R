@@ -28,11 +28,11 @@ get_correlation <- function(data, formula) {
   check_formula_args(data, formula, outcome_variable,
                      explanatory_variable)
   
-  correlation <- stats::cor(data[[as.character(outcome_variable)]],
-             data[[as.character(explanatory_variable)]])
+  correlation <- stats::cor(data[[outcome_variable]],
+             data[[explanatory_variable]])
   
   tibble::tibble(correlation)
-  }
+}
 
 check_correlation_args <- function(data, formula){
   if(!("data.frame" %in% class(data)))
@@ -46,11 +46,11 @@ check_formula_args <- function(data, formula,
                                outcome_variable,
                                explanatory_variable) {
   
-  if(is.null(f_lhs(formula)))
+  if(is.null(rlang::f_lhs(formula)))
     stop(paste("A variable name must be given for the left hand side",
                "of the `formula`."))
   
-  if(is.null(f_rhs(formula)))
+  if(is.null(rlang::f_rhs(formula)))
     stop(paste("A variable name must be given for the right hand side",
                "of the `formula`."))
   
