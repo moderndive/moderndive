@@ -25,9 +25,14 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Get regression points — get_regression_points" />
 
-<meta property="og:description" content="Wrapper for tidy lm() regression function fit output" />
+<meta property="og:description" content="Output information on each point/observation used in an lm() regression in 
+"tidy" format. This function is a wrapper function for broom::augment() 
+and renames the variables to have more intuitive names." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -83,6 +88,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -90,16 +96,21 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get regression points</h1>
-    <small>Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/regression_functions.R'><code>R/regression_functions.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/regression_functions.R'><code>R/regression_functions.R</code></a></small>
+    <div class="hidden name"><code>get_regression_points.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
-    <p>Wrapper for tidy <code>lm()</code> regression function fit output</p>
+    <p>Output information on each point/observation used in an <code>lm()</code> regression in 
+"tidy" format. This function is a wrapper function for <code><a href='http://www.rdocumentation.org/packages/broom/topics/augment'>broom::augment()</a></code> 
+and renames the variables to have more intuitive names.</p>
     
+    </div>
 
     <pre class="usage"><span class='fu'>get_regression_points</span>(<span class='no'>model</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>newdata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
@@ -108,7 +119,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>model</th>
-      <td><p>a model object (Currently only <code>lm</code> is supported)</p></td>
+      <td><p>an <code>lm()</code> model object</p></td>
     </tr>
     <tr>
       <th>digits</th>
@@ -120,67 +131,77 @@
     </tr>
     <tr>
       <th>newdata</th>
-      <td><p>a new data frame to fit the regression to/make predictions on.</p></td>
+      <td><p>A new data frame of points/observations to apply <code>model</code> to 
+obtain new fitted values and/or predicted values y-hat. Note the format of 
+<code>newdata</code> must match the format of the original <code>data</code> used to fit
+<code>model</code>.</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble or nicely formatted table</p>
+    <p>A tibble-formatted regression table of outcome variable, 
+all explanatory/predictor variables, the fitted/predicted value, and residual.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/broom/topics/augment'>augment</a></code>, <code><a href='get_regression_table.html'>get_regression_table</a></code>, <code><a href='get_regression_summaries.html'>get_regression_summaries</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>dplyr</span>)
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>moderndive</span>)
+<span class='fu'>library</span>(<span class='no'>dplyr</span>)
 <span class='fu'>library</span>(<span class='no'>tibble</span>)
 
-<span class='co'># Get information on all points in regression</span>
+<span class='co'># Fit lm() regression:</span>
 <span class='no'>mpg_model</span> <span class='kw'>&lt;-</span> <span class='fu'>lm</span>(<span class='no'>mpg</span> ~ <span class='no'>cyl</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)
+
+<span class='co'># Get information on all points in regression:</span>
 <span class='fu'>get_regression_points</span>(<span class='no'>mpg_model</span>)</div><div class='output co'>#&gt; # A tibble: 32 x 5
 #&gt;       ID   mpg   cyl mpg_hat residual
 #&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
-#&gt;  1     1  21.0    6.    20.6    0.370
-#&gt;  2     2  21.0    6.    20.6    0.370
-#&gt;  3     3  22.8    4.    26.4   -3.58 
-#&gt;  4     4  21.4    6.    20.6    0.770
-#&gt;  5     5  18.7    8.    14.9    3.82 
-#&gt;  6     6  18.1    6.    20.6   -2.53 
-#&gt;  7     7  14.3    8.    14.9   -0.578
-#&gt;  8     8  24.4    4.    26.4   -1.98 
-#&gt;  9     9  22.8    4.    26.4   -3.58 
-#&gt; 10    10  19.2    6.    20.6   -1.43 
+#&gt;  1     1  21       6    20.6    0.37 
+#&gt;  2     2  21       6    20.6    0.37 
+#&gt;  3     3  22.8     4    26.4   -3.58 
+#&gt;  4     4  21.4     6    20.6    0.77 
+#&gt;  5     5  18.7     8    14.9    3.82 
+#&gt;  6     6  18.1     6    20.6   -2.53 
+#&gt;  7     7  14.3     8    14.9   -0.578
+#&gt;  8     8  24.4     4    26.4   -1.98 
+#&gt;  9     9  22.8     4    26.4   -3.58 
+#&gt; 10    10  19.2     6    20.6   -1.43 
 #&gt; # ... with 22 more rows</div><div class='input'>
-<span class='co'># Convert rownames to column</span>
-<span class='fu'>data</span>(<span class='st'>"mtcars"</span>)
+<span class='co'># Create training and test set based on mtcars: </span>
 <span class='no'>mtcars</span> <span class='kw'>&lt;-</span> <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='http://www.rdocumentation.org/packages/tibble/topics/rownames'>rownames_to_column</a></span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"model"</span>)
-
-<span class='co'># Create training and test set.</span>
 <span class='no'>training_set</span> <span class='kw'>&lt;-</span> <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='http://dplyr.tidyverse.org/reference/sample.html'>sample_frac</a></span>(<span class='fl'>0.5</span>)
 <span class='no'>test_set</span> <span class='kw'>&lt;-</span> <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='http://dplyr.tidyverse.org/reference/join.html'>anti_join</a></span>(<span class='no'>training_set</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"model"</span>)
 
-<span class='co'># Fit model to training set, predict on test set</span>
+<span class='co'># Fit model to training set:</span>
 <span class='no'>mpg_model_train</span> <span class='kw'>&lt;-</span> <span class='fu'>lm</span>(<span class='no'>mpg</span> ~ <span class='no'>cyl</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>training_set</span>)
-<span class='fu'>get_regression_points</span>(<span class='no'>mpg_model_train</span>, <span class='kw'>newdata</span> <span class='kw'>=</span> <span class='no'>test_set</span>)</div><div class='output co'>#&gt; # A tibble: 16 x 3
-#&gt;      mpg   cyl mpg_hat
-#&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
-#&gt;  1  21.0    6.    20.8
-#&gt;  2  24.4    4.    26.2
-#&gt;  3  17.8    6.    20.8
-#&gt;  4  16.4    8.    15.5
-#&gt;  5  15.2    8.    15.5
-#&gt;  6  10.4    8.    15.5
-#&gt;  7  10.4    8.    15.5
-#&gt;  8  14.7    8.    15.5
-#&gt;  9  32.4    4.    26.2
-#&gt; 10  30.4    4.    26.2
-#&gt; 11  15.5    8.    15.5
-#&gt; 12  19.2    8.    15.5
-#&gt; 13  26.0    4.    26.2
-#&gt; 14  19.7    6.    20.8
-#&gt; 15  15.0    8.    15.5
-#&gt; 16  21.4    4.    26.2</div></pre>
+
+<span class='co'># Make predictions on test set:</span>
+<span class='fu'>get_regression_points</span>(<span class='no'>mpg_model_train</span>, <span class='kw'>newdata</span> <span class='kw'>=</span> <span class='no'>test_set</span>)</div><div class='output co'>#&gt; # A tibble: 16 x 5
+#&gt;       ID   mpg   cyl mpg_hat residual
+#&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+#&gt;  1     1  21       6    20.8    0.187
+#&gt;  2     2  24.4     4    26.2   -1.75 
+#&gt;  3     3  17.8     6    20.8   -3.01 
+#&gt;  4     4  16.4     8    15.5    0.929
+#&gt;  5     5  15.2     8    15.5   -0.271
+#&gt;  6     6  10.4     8    15.5   -5.07 
+#&gt;  7     7  10.4     8    15.5   -5.07 
+#&gt;  8     8  14.7     8    15.5   -0.771
+#&gt;  9     9  32.4     4    26.2    6.25 
+#&gt; 10    10  30.4     4    26.2    4.25 
+#&gt; 11    11  15.5     8    15.5    0.029
+#&gt; 12    12  19.2     8    15.5    3.73 
+#&gt; 13    13  26       4    26.2   -0.154
+#&gt; 14    14  19.7     6    20.8   -1.11 
+#&gt; 15    15  15       8    15.5   -0.471
+#&gt; 16    16  21.4     4    26.2   -4.75 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -188,6 +209,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
@@ -206,6 +229,8 @@
 
       </footer>
    </div>
+
+  
 
   </body>
 </html>
