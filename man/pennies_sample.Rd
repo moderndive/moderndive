@@ -3,8 +3,8 @@
 \docType{data}
 \name{pennies_sample}
 \alias{pennies_sample}
-\title{A sample of 40 pennies sampled in 2011 from the \code{pennies} data frame}
-\format{A data frame of 40 rows representing different pennies and 2 variables
+\title{A random sample of 40 pennies sampled from the \code{pennies} data frame}
+\format{A data frame of 40 rows representing 40 randomly sampled pennies from \code{\link{pennies}} and 2 variables
 \describe{
   \item{year}{Year of minting}
   \item{age_in_2011}{Age in 2011}
@@ -16,9 +16,8 @@ StatCrunch \url{https://www.statcrunch.com/app/index.php?dataid=301596}
 pennies_sample
 }
 \description{
-A dataset of 40 pennies to be treated as a sample with \code{pennies} acting
-as the population. Data on 
-these pennies were recorded in 2011.
+A dataset of 40 pennies to be treated as a random sample with \code{\link{pennies}} acting
+as the population. Data on these pennies were recorded in 2011.
 }
 \examples{
 library(dplyr)
@@ -39,5 +38,8 @@ ggplot(bootstrap_means, aes(x = mean_year)) +
   geom_histogram(binwidth = 1, color = "white") +
   labs(x = expression(bar(x)), y = "Number of samples", 
   title = "Bootstrap distribution of x_bar based 50 resamples of size n = 40")
+}
+\seealso{
+\code{\link{pennies}}
 }
 \keyword{datasets}
