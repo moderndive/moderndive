@@ -25,6 +25,9 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Changelog" />
 
 
@@ -80,6 +83,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -87,25 +91,35 @@
       
       </header>
 
-      <div class="row">
-
-  <div class="col-md-9">
+<div class="row">
+  <div class="col-md-9 contents">
     <div class="page-header">
       <h1>Changelog <small></small></h1>
       <small>Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div class="contents">
     <div id="moderndive-0-1-1-9000" class="section level1">
 <h1 class="page-header">
 <a href="#moderndive-0-1-1-9000" class="anchor"></a>moderndive 0.1.1.9000<small> Unreleased </small>
 </h1>
+<p>Updated package for:</p>
 <ul>
-<li>Import <code><a href="http://www.rdocumentation.org/packages/infer/topics/rep_sample_n">infer::rep_sample_n()</a></code> instead of our own defined version, as this function is now in <code>infer</code> on CRAN</li>
-<li>Added <code>evals</code> and <code>house_prices</code> datasets</li>
+<li>Use in DataCamp’s <a href="https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse">Modeling with Data in the Tidyverse</a>, in particular added <code>evals</code> and <code>house_prices</code> datasets and updated <code><a href="../reference/get_regression_table.html">get_regression_table()</a></code> and <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code> functions.</li>
+<li>v0.4.0 of <a href="https://moderndive.github.io/moderndive_book/">ModernDive</a> textbook</li>
+</ul>
+<p>Details:</p>
+<ul>
+<li>Import <code><a href="http://www.rdocumentation.org/packages/infer/topics/rep_sample_n">infer::rep_sample_n()</a></code> instead of our own defined version, as this function is <a href="https://github.com/andrewpbray/infer/pull/82">now included in <code>infer</code></a>
+</li>
+<li>Added <code>evals</code>, <code>house_prices</code>, <code>tactile_prop_red</code> datasets</li>
 <li>Added mean squared error and root mean squared error to output of <code><a href="../reference/get_regression_summaries.html">get_regression_summaries()</a></code>
 </li>
-<li>Added <code>newdata</code> argument to <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code>
+<li>Added <code>newdata</code> argument to <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code>. When:
+<ul>
+<li>Original outcome variable is included in <code>newdata</code>, output it as well as <code>residual</code> (See Issue 17).</li>
+<li>Otherwise omit <code>residual</code>
+</li>
+</ul>
 </li>
 <li>Removed <code>tidyverse</code> from Depends, Imports, or Suggests</li>
 </ul>
@@ -134,7 +148,6 @@
 </li>
 </ul>
 </div>
-    </div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -161,6 +174,8 @@
 
       </footer>
    </div>
+
+  
 
   </body>
 </html>

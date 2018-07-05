@@ -25,9 +25,14 @@
 <link href="../pkgdown.css" rel="stylesheet">
 <script src="../jquery.sticky-kit.min.js"></script>
 <script src="../pkgdown.js"></script>
+
+
+
 <meta property="og:title" content="Get regression table — get_regression_table" />
 
-<meta property="og:description" content="Wrapper for tidy lm() regression function output" />
+<meta property="og:description" content="Output regression table for an lm() regression in "tidy" format. This function
+is a wrapper function for broom::tidy() and includes confidence
+intervals in the output table by default." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -83,6 +88,7 @@
   </a>
 </li>
       </ul>
+      
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
 </div><!--/.navbar -->
@@ -90,25 +96,30 @@
       
       </header>
 
-      <div class="row">
+<div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get regression table</h1>
-    <small>Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/regression_functions.R'><code>R/regression_functions.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/regression_functions.R'><code>R/regression_functions.R</code></a></small>
+    <div class="hidden name"><code>get_regression_table.Rd</code></div>
     </div>
 
+    <div class="ref-description">
     
-    <p>Wrapper for tidy <code>lm()</code> regression function output</p>
+    <p>Output regression table for an <code>lm()</code> regression in "tidy" format. This function
+is a wrapper function for <code><a href='http://www.rdocumentation.org/packages/broom/topics/tidy'>broom::tidy()</a></code> and includes confidence
+intervals in the output table by default.</p>
     
+    </div>
 
-    <pre class="usage"><span class='fu'>get_regression_table</span>(<span class='no'>model</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>get_regression_table</span>(<span class='no'>model</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>model</th>
-      <td><p>a model object (Currently only <code>lm</code> is supported)</p></td>
+      <td><p>an <code>lm()</code> model object</p></td>
     </tr>
     <tr>
       <th>digits</th>
@@ -118,24 +129,31 @@
       <th>print</th>
       <td><p>If TRUE, return in print format suitable for R Markdown</p></td>
     </tr>
-    <tr>
-      <th>...</th>
-      <td><p>other arguments passed to lm()</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A tibble or nicely formatted table</p>
+    <p>A tibble-formatted regression table along with lower and upper end 
+points of all confidence intervals for all parameters <code>lower_ci</code> and 
+<code>upper_ci</code>.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='http://www.rdocumentation.org/packages/broom/topics/tidy'>tidy</a></code>, <code><a href='get_regression_points.html'>get_regression_points</a></code>, <code><a href='get_regression_summaries.html'>get_regression_summaries</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='no'>mpg_model</span> <span class='kw'>&lt;-</span> <span class='fu'>lm</span>(<span class='no'>mpg</span> ~ <span class='no'>cyl</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)
+    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>moderndive</span>)
+
+<span class='co'># Fit lm() regression:</span>
+<span class='no'>mpg_model</span> <span class='kw'>&lt;-</span> <span class='fu'>lm</span>(<span class='no'>mpg</span> ~ <span class='no'>cyl</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)
+
+<span class='co'># Get regression table:</span>
 <span class='fu'>get_regression_table</span>(<span class='no'>mpg_model</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 7
-#&gt;   term      estimate std_error statistic p_value conf_low conf_high
-#&gt;   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
-#&gt; 1 intercept    37.9      2.07      18.3       0.    33.6      42.1 
-#&gt; 2 cyl          -2.88     0.322     -8.92      0.    -3.53     -2.22</div></pre>
+#&gt;   term      estimate std_error statistic p_value lower_ci upper_ci
+#&gt;   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
+#&gt; 1 intercept    37.9      2.07      18.3        0    33.6     42.1 
+#&gt; 2 cyl          -2.88     0.322     -8.92       0    -3.53    -2.22</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -143,6 +161,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
@@ -161,6 +181,8 @@
 
       </footer>
    </div>
+
+  
 
   </body>
 </html>
