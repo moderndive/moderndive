@@ -60,3 +60,22 @@ bowl <-
     ball_ID = 1:N) %>% 
   select(ball_ID, everything())
 devtools::use_data(bowl, overwrite = TRUE)
+
+# A pseudorandom sample of the `pennies` tibble used
+# in explaining bootstrapping
+set.seed(2018)
+pennies_sample <- pennies %>% sample_n(40)
+devtools::use_data(pennies_sample, overwrite = TRUE)
+
+# Data derived from the results of a study conducted
+# on the Mythbusters television show on Discovery Network
+# investigating whether yawning is contagious
+# https://www.discovery.com/tv-shows/mythbusters/videos/is-yawning-contagious
+group <- c(rep("control", 12), rep("seed", 24), 
+           rep("control", 4), rep("seed", 10))
+yawn <- c(rep("no", 36), rep("yes", 14))
+mythbusters_yawn <- tibble::tibble(group, yawn) %>% 
+  sample_n(50) %>% 
+  mutate(subj = seq(1, 50)) %>% 
+  select(subj, group, yawn)
+devtools::use_data(mythbusters_yawn, overwrite = TRUE)
