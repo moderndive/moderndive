@@ -1,6 +1,6 @@
 Package: moderndive
 Type: Package
-Title: An R Package for Tidyverse-Friendly Introductory Linear Regression
+Title: Tidyverse-Friendly Introductory Linear Regression
 Version: 0.2.0
 Authors@R: c(
     person("Albert Y.", "Kim", email = "albert.ys.kim@gmail.com", role = "cre"),
