@@ -4,7 +4,7 @@
 \name{moderndive}
 \alias{moderndive}
 \alias{moderndive-package}
-\title{moderndive - An R Package for Tidyverse-Friendly Introductory Linear Regression}
+\title{moderndive - Tidyverse-Friendly Introductory Linear Regression}
 \description{
 An R package for tidyverse-friendly introductory linear regression used in 
 ModernDive: An Introduction to Statistical and Data Sciences via R available 

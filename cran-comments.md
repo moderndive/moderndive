@@ -1,4 +1,5 @@
 ## Resubmission
+
 This is a resubmission. I changed the package's title from "An R Package for Tidyverse-Friendly Introductory Linear Regression" to the less redundant "Tidyverse-Friendly Introductory Linear Regression"
 
 
