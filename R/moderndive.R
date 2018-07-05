@@ -1,4 +1,4 @@
-#' moderndive - An R package for tidyverse-friendly introductory linear regression
+#' moderndive - An R Package for Tidyverse-Friendly Introductory Linear Regression
 #'
 #' An R package for tidyverse-friendly introductory linear regression used in 
 #' ModernDive: An Introduction to Statistical and Data Sciences via R available 
