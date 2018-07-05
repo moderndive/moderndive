@@ -20,7 +20,6 @@ Counting the number of red balls in 33 tactile samples of size n = 50 balls from
 \url{https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg}
 }
 \examples{
-library(dplyr)
 library(ggplot2)
 
 # Plot sampling distributions
