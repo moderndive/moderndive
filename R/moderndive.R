@@ -1,6 +1,6 @@
 #' moderndive - Tidyverse-Friendly Introductory Linear Regression
 #'
-#' Datasets and wrapper functions for idyverse-friendly introductory linear
+#' Datasets and wrapper functions for tidyverse-friendly introductory linear
 #' regression, used in ModernDive: An Introduction to Statistical and Data
 #' Sciences via R available at \url{http://moderndive.com/} and DataCamp's
 #' Modeling with Data in the Tidyverse available at
