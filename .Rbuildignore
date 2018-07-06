@@ -11,3 +11,4 @@
 ^CONDUCT\.md$
 ^codecov\.yml$
 ^scratchpad\.R$
+^CRAN-RELEASE$
