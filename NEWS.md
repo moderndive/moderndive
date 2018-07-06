@@ -1,3 +1,7 @@
+# moderndive 0.2.0.9000
+
+
+
 # moderndive 0.2.0
 
 Updated package for:
@@ -7,7 +11,7 @@ Updated package for:
 
 Details:
 
-* Created `get_correlation()` function to omit `$ syntax and return a data frame
+* Created `get_correlation()` function to omit `$` syntax and return a data frame
 * Import `infer::rep_sample_n()` instead of our own defined version, as this function is [now included in `infer`](https://github.com/andrewpbray/infer/pull/82)
 * Added `evals`, `house_prices`, `tactile_prop_red`, `pennies_sample` and `mythbusters_yawn` datasets
 * Added mean squared error and root mean squared error to output of `get_regression_summaries()`
