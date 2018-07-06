@@ -1,12 +1,10 @@
 #' moderndive - Tidyverse-Friendly Introductory Linear Regression
 #'
-#' An R package for tidyverse-friendly introductory linear regression used in 
-#' ModernDive: An Introduction to Statistical and Data Sciences via R available 
-#' at \url{http://moderndive.com/} and DataCamp's Modeling with Data in the Tidyverse 
-#' available at 
-#' \url{https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse}. In 
-#' particular datasets and wrapper functions meant for novices to generate tidy 
-#' linear regression outputs.
+#' Datasets and wrapper functions for idyverse-friendly introductory linear
+#' regression, used in ModernDive: An Introduction to Statistical and Data
+#' Sciences via R available at \url{http://moderndive.com/} and DataCamp's
+#' Modeling with Data in the Tidyverse available at
+#' \url{https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse}.
 #'
 #' @docType package
 #' @name moderndive

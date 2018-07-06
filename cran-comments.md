@@ -1,6 +1,9 @@
 ## Resubmission
 
-This is a resubmission. I changed the package's title from "An R Package for Tidyverse-Friendly Introductory Linear Regression" to the less redundant "Tidyverse-Friendly Introductory Linear Regression"
+This is a resubmission.
+
+* Cchanged the package's title from "An R Package for Tidyverse-Friendly Introductory Linear Regression" to the less redundant "Tidyverse-Friendly Introductory Linear Regression"
+* Switch hyperlink in `mythbusters_yawn.Rd` for one that works globally, not just US
 
 
 ## Test environments

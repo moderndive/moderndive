@@ -1,7 +1,7 @@
 #' Data from Mythbusters' study on contagiousness of yawning
 #'
 #' From a study on whether yawning is contagious
-#' \url{https://www.discovery.com/tv-shows/mythbusters/videos/is-yawning-contagious}.
+#' \url{http://www.discovery.com/tv-shows/mythbusters/mythbusters-database/yawning-contagious/}.
 #' The data here was derived from the final proportions of yawns given
 #' in the show.
 #'

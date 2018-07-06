@@ -8,7 +8,7 @@ Authors@R: c(
     person("Andrew", "Bray", email = "abray@reed.edu", role = "ctb")
     )
 Maintainer: Albert Y. Kim <albert.ys.kim@gmail.com>
-Description: An R package for tidyverse-friendly introductory linear regression used in ModernDive: An Introduction to Statistical and Data Sciences via R available at <http://moderndive.com/> and DataCamp's Modeling with Data in the Tidyverse available at <https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse>. In particular datasets and wrapper functions meant for novices to generate tidy linear regression outputs.
+Description: Datasets and wrapper functions for tidyverse-friendly introductory linear regression, used in ModernDive: An Introduction to Statistical and Data Sciences via R available at <http://moderndive.com/> and DataCamp's Modeling with Data in the Tidyverse available at <https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse>.
 Depends:
     R (>= 3.2.4)
 License: MIT + file LICENSE

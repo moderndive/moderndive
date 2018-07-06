@@ -1,26 +1,16 @@
 
-## moderndive R Package <img src="https://github.com/moderndive/moderndive/blob/master/images/hex_blue_text.png?raw=true" align="right" width=125 />
+moderndive R Package <img src="https://github.com/moderndive/moderndive/blob/master/images/hex_blue_text.png?raw=true" align="right" width=125 />
+-------------------------------------------------------------------------------------------------------------------------------------------------
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive)
-[![Travis-CI Build
-Status](https://travis-ci.org/moderndive/moderndive.svg?branch=master)](https://travis-ci.org/moderndive/moderndive)
-[![Coverage
-Status](https://img.shields.io/codecov/c/github/moderndive/moderndive/master.svg)](https://codecov.io/github/moderndive/moderndive?branch=master)[![CRAN
-RStudio mirror
-downloads](http://cranlogs.r-pkg.org/badges/moderndive)](http://www.r-pkg.org/pkg/moderndive)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive) [![Travis-CI Build Status](https://travis-ci.org/moderndive/moderndive.svg?branch=master)](https://travis-ci.org/moderndive/moderndive) [![Coverage Status](https://img.shields.io/codecov/c/github/moderndive/moderndive/master.svg)](https://codecov.io/github/moderndive/moderndive?branch=master)[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/moderndive)](http://www.r-pkg.org/pkg/moderndive)
 
-An R package for tidyverse-friendly introductory linear regression used
-in
+An R package of datasets and wrapper functions for tidyverse-friendly introductory linear regression used in
 
-  - ModernDive: An Introduction to Statistical and Data Sciences via R
-    available at [ModernDive.com](http://moderndive.com/)
-  - DataCamp’s [Modeling with Data in the
-    Tidyverse](https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse)
+-   ModernDive: An Introduction to Statistical and Data Sciences via R available at [ModernDive.com](http://moderndive.com/)
+-   DataCamp's [Modeling with Data in the Tidyverse](https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse)
 
-It includes datasets and wrapper functions meant for novices to generate
-tidy linear regression outputs.
-
-## Installation
+Installation
+------------
 
 Get the released version from CRAN:
 
@@ -36,32 +26,21 @@ Or the development version from GitHub:
 remotes::install_github("moderndive/moderndive")
 ```
 
-## Demo
+Demo
+----
 
-The following three `get_regression_OUTPUT()` functions are
-tidyverse-friendly wrapper functions meant for the novice regression
-user. They have more intuitive/verb-like function names than the
-corresponding `broom` package commands:
+The following three `get_regression_OUTPUT()` functions are tidyverse-friendly wrapper functions meant for the novice regression user. They have more intuitive/verb-like function names than the corresponding `broom` package commands:
 
-  - `get_regression_table()`: a wrapper to `tidy()` to return the
-    regression table
-  - `get_regression_points()`: a wrapper to `augment()` to return a
-    table of all regression points
-  - `get_regression_summaries()`: a wrapper to `glance()` to return
-    summary statistics about the regression
+-   `get_regression_table()`: a wrapper to `tidy()` to return the regression table
+-   `get_regression_points()`: a wrapper to `augment()` to return a table of all regression points
+-   `get_regression_summaries()`: a wrapper to `glance()` to return summary statistics about the regression
 
 Furthermore
 
-  - `get_regression_table()` returns confidence intervals (not just
-    p-values) by default
-  - The outputs are returned as
-    [tibbles](https://blog.rstudio.com/2016/03/24/tibble-1-0-0/)
-  - It cleans the output format by eliminating all information not
-    pertinent to novice regression users
-  - You can set the output to be in `knitr::kable()` markdown format,
-    suitable for printing in R Markdown documents, via `print = TRUE`
-
-<!-- end list -->
+-   `get_regression_table()` returns confidence intervals (not just p-values) by default
+-   The outputs are returned as [tibbles](https://blog.rstudio.com/2016/03/24/tibble-1-0-0/)
+-   It cleans the output format by eliminating all information not pertinent to novice regression users
+-   You can set the output to be in `knitr::kable()` markdown format, suitable for printing in R Markdown documents, via `print = TRUE`
 
 ``` r
 library(moderndive)
@@ -92,11 +71,11 @@ get_regression_table(model = mpg_model)
 get_regression_table(mpg_mlr_model, digits = 4, print = TRUE)
 ```
 
-| term      | estimate | std\_error | statistic | p\_value | lower\_ci | upper\_ci |
-| :-------- | -------: | ---------: | --------: | -------: | --------: | --------: |
-| intercept |  37.2273 |     1.5988 |   23.2847 |   0.0000 |   33.9574 |   40.4972 |
-| hp        | \-0.0318 |     0.0090 |  \-3.5187 |   0.0015 |  \-0.0502 |  \-0.0133 |
-| wt        | \-3.8778 |     0.6327 |  \-6.1287 |   0.0000 |  \-5.1719 |  \-2.5837 |
+| term      |  estimate|  std\_error|  statistic|  p\_value|  lower\_ci|  upper\_ci|
+|:----------|---------:|-----------:|----------:|---------:|----------:|----------:|
+| intercept |   37.2273|      1.5988|    23.2847|    0.0000|    33.9574|    40.4972|
+| hp        |   -0.0318|      0.0090|    -3.5187|    0.0015|    -0.0502|    -0.0133|
+| wt        |   -3.8778|      0.6327|    -6.1287|    0.0000|    -5.1719|    -2.5837|
 
 ``` r
 # Regression points. For residual analysis for example
@@ -148,12 +127,10 @@ get_regression_summaries(mpg_model)
 mpg_model %>% get_regression_summaries(digits = 5, print = TRUE)
 ```
 
-| r\_squared | adj\_r\_squared |      mse |     rmse |   sigma | statistic | p\_value | df |
-| ---------: | --------------: | -------: | -------: | ------: | --------: | -------: | -: |
-|    0.60244 |         0.58919 | 13.98982 | 3.740297 | 3.86296 |   45.4598 |        0 |  2 |
+|  r\_squared|  adj\_r\_squared|       mse|      rmse|    sigma|  statistic|  p\_value|   df|
+|-----------:|----------------:|---------:|---------:|--------:|----------:|---------:|----:|
+|     0.60244|          0.58919|  13.98982|  3.740297|  3.86296|    45.4598|         0|    2|
 
------
+------------------------------------------------------------------------
 
-Please note that this project is released with a [Contributor Code of
-Conduct](CONDUCT.md). By participating in this project you agree to
-abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
