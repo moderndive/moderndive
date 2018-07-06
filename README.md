@@ -4,7 +4,7 @@ moderndive R Package <img src="https://github.com/moderndive/moderndive/blob/mas
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive) [![Travis-CI Build Status](https://travis-ci.org/moderndive/moderndive.svg?branch=master)](https://travis-ci.org/moderndive/moderndive) [![Coverage Status](https://img.shields.io/codecov/c/github/moderndive/moderndive/master.svg)](https://codecov.io/github/moderndive/moderndive?branch=master)[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/moderndive)](http://www.r-pkg.org/pkg/moderndive)
 
-An R package of datasets and wrapper functions for tidyverse-friendly introductory linear regression used in
+An R package of datasets and wrapper functions for [tidyverse](https://www.tidyverse.org/)-friendly introductory linear regression used in
 
 -   ModernDive: An Introduction to Statistical and Data Sciences via R available at [ModernDive.com](http://moderndive.com/)
 -   DataCamp's [Modeling with Data in the Tidyverse](https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse)
