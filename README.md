@@ -6,7 +6,7 @@ moderndive R Package <img src="https://github.com/moderndive/moderndive/blob/mas
 
 An R package of datasets and wrapper functions for [tidyverse](https://www.tidyverse.org/)-friendly introductory linear regression used in
 
--   ModernDive: An Introduction to Statistical and Data Sciences via R available at [ModernDive.com](http://moderndive.com/)
+-   ModernDive: An Introduction to Statistical and Data Sciences via R available at [ModernDive.com](https://moderndive.com/)
 -   DataCamp's [Modeling with Data in the Tidyverse](https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse)
 
 Installation

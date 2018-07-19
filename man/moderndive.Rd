@@ -8,7 +8,7 @@
 \description{
 Datasets and wrapper functions for tidyverse-friendly introductory linear
 regression, used in ModernDive: An Introduction to Statistical and Data
-Sciences via R available at \url{http://moderndive.com/} and DataCamp's
+Sciences via R available at \url{https://moderndive.com/} and DataCamp's
 Modeling with Data in the Tidyverse available at
 \url{https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse}.
 }
