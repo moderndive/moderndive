@@ -28,7 +28,10 @@ Imports:
     assertive,
     infer,
     rlang
-RoxygenNote: 6.0.1
-Suggests: testthat,
+RoxygenNote: 6.1.0
+Suggests: 
+    testthat,
     covr,
-    ggplot2
+    ggplot2,
+    rmarkdown
+VignetteBuilder: knitr

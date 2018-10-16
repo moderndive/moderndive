@@ -1,0 +1,214 @@
+---
+title: "Why should I use the `moderndive` package for intro linear regression?"
+author: "Albert Y. Kim & Chester Ismay"
+date: "`r Sys.Date()`"
+output: 
+  rmarkdown::html_vignette:
+#    css: mystyles.css
+#    fig_caption: yes
+#    df_print: kable    
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+knitr::opts_chunk$set(
+  echo=TRUE, message=FALSE, warning=FALSE,
+  fig.width=16/2, fig.height=9/2
+  )
+```
+
+Linear regression has long been a staple of introductory statistics courses. While the timing of when to introduce it may have changed (many argue that at least descriptive regression without statistical inference should be done ASAP), it's importance remains the same. This is ever more important with the increased prominence of machine learning and more general modeling.
+
+Here is an example. DETAILS
+
+```{r, eval=FALSE}
+library(tidyverse)
+library(moderndive)
+evals %>% 
+  sample_n(5)
+```
+```{r, echo=FALSE}
+library(tidyverse)
+library(moderndive)
+library(knitr)
+evals %>% 
+  sample_n(5) %>% 
+  kable()
+```
+
+Let's fit a regression model and consider its output "the good old fashioned way".
+
+```{r,  fig.cap = "Your figure caption."}
+score_model <- lm(score ~ age, data = evals)
+summary(score_model)
+```
+
+Here are some comments/questions we've heard over the years:
+
+1. "Wow! Look at those p-value stars! Stars are good, so I must get more stars somehow!"
+1. "How do I get all the values in the regression table?"
+1. "Where are the fitted/predicted values and residuals in this?
+1. "How do I apply this model to a new set of data to make predictions?"
+1. "What is all this other stuff around my table?"
+
+## Less p-value stars, more confidence intervals
+
+We argue that the above output is deficient in an intro stats setting because:
+
+* The `Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1` only encourage p-hacking
+* Confidence intervals, while not a silver bullet for solving misinterpretations of statistical inference results, at least give students a sense of the **practical significance** and not just the **statistical significance**.
+
+```{r}
+get_regression_table(score_model)
+```
+
+Furthermore, by piping this into a `knitr::kable()`, you can have aesthetically pleasing regression tables in R Markdown, instead of jarring computer output font:
+
+```{r}
+library(knitr)
+get_regression_table(score_model) %>% 
+  kable()
+```
+
+In case you are not convinced by our exposition of the perniciousness of p-hacking, perhaps comedian John Oliver can convince you:
+
+<center>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/0Rnq1NpHdmw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+</center>
+
+## Outputs as data frames
+
+While one might argue that extracting the intercept and slope coefficients can be simply done using `coefficients(score_model)`, what about the standard errors? A Google query of "extract standard error from lm in r" yields these non-personalized (while not logged in to gmail) top results:
+
+1. [From 2008](https://stat.ethz.ch/pipermail/r-help/2008-April/160538.html){target="_blank"}
+1. [From Crossvalidated](https://stats.stackexchange.com/questions/27511/extract-standard-errors-of-coefficient-linear-regression-r){target="_blank"}
+
+```{r}
+sqrt(diag(vcov(score_model)))
+```
+
+It shouldn't be this hard! However since `get_regression_table()` returns a data frame, you can easily extract all columns: 
+
+```{r}
+get_regression_table(score_model) %>% 
+  pull(std_error)
+```
+
+
+## Birds of a feather should flock together: $x$, $y$, $\hat{y}$, and residuals
+
+In all cases, let's limit the output to only the first 10 instructors
+
+```{r, eval=FALSE}
+fitted(score_model)
+```
+```{r, echo=FALSE}
+fitted(score_model)[1:10]
+```
+```{r, eval=FALSE}
+residuals(score_model)
+```
+```{r, echo=FALSE}
+residuals(score_model)[1:10]
+```
+
+But why have the original data `evals`, the fitted/predicted values, and residuals floating around in disparate pieces? Since each observation relates to the same instructor, wouldn't it make sense to organize them together? This is where `get_regression_points()`
+
+```{r, eval=FALSE}
+get_regression_points(score_model)
+```
+```{r, echo=FALSE}
+get_regression_points(score_model) %>% 
+  slice(1:10)
+```
+
+Note:
+
+* The original outcome variable `score` and explanatory/predictor variable `age` are now supplemented with the fitted/predicted value `score_hat`
+* The `residual` column is there, making emphasis that `residual = score - score_hat` easier
+* Since the output is a data frame, you can create custom residual analysis plots, instead of the default ones yielded by `plot(score_model)`
+
+
+```{r}
+score_model_points <- get_regression_points(score_model)
+
+# Histogram of residuals:
+ggplot(score_model_points, aes(x = residual)) +
+  geom_histogram(bins = 20)
+
+# Investigating patterns:
+ggplot(score_model_points, aes(x = age, y = residual)) +
+  geom_point()
+```
+
+
+
+## Making predictions
+
+With the rise of machine learning.
+
+```{r}
+new_evals <- evals %>% 
+  sample_n(4) %>% 
+  select(-score)
+new_evals
+
+get_regression_points(score_model, newdata = new_evals)
+```
+
+For example, using the Kaggle [House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques){target="_blank"}
+
+<center>
+![](kaggle.png){ width=800px }
+</center>
+
+**TODO**: allow user specification of an ID variable, so that the following works:
+
+Here is a 9-line "baby's first kaggle competition" submission.
+
+```{r, eval=FALSE}
+library(tidyverse)
+library(moderndive)
+train <- read_csv("train.csv")
+test <- read_csv("test.csv")
+house_model <- lm(SalePrice ~ YrSold, data = train)
+submission <- get_regression_points(house_model, newdata = test, ID = "ID") %>% 
+  select(ID, SalePrice_hat) %>% 
+  rename(SalePrice = SalePrice_hat)
+write_csv(submission, "submission.csv")
+```
+
+
+
+## What's all that other stuff at the bottom? Scalar summaries!
+
+We've added MSE and RMSE given their popularity in machine learning
+
+```{r}
+get_regression_summaries(score_model)
+```
+
+
+## Design principles
+
+broom package wrappers
+
+* `get_regression_table()` is a wrapper for `broom::tidy()`
+* `get_regression_points()` is a wrapper for `broom::augment()`
+* `get_regression_summaries` is a wrapper for `broom::glance()`
+
+Why this approach?
+
+* Names `tidy`, `augment`, `glance` don't mean anything to intro stats students
+* Little re-inventing the wheel necessary, just wrappers. See [source code](https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R){target="_blank"}
+* 
+
+
+
