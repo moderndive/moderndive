@@ -33,10 +33,17 @@ globalVariables(c(
 #'     log10_size = log10(sqft_living)
 #'   )
 #'   
-#' # Output parallel slopes plot
+#' # Output parallel slopes model plot:
 #' gg_parallel_slopes(y = "log10_price", num_x = "log10_size", cat_x = "condition",
-#'   data = house_prices, alpha = 0.1) +
+#'                    data = house_prices, alpha = 0.1) +
 #'   labs(x = "log10 square feet living space", y = "log10 price in USD",
+#'        title = "House prices in Seattle: Parallel slopes model")
+#'
+#' # Compare with interaction model plot:
+#' ggplot(house_prices, aes(x = log10_size, y = log10_price, col = condition)) +
+#'   geom_point(alpha = 0.1) +
+#'   geom_smooth(method = "lm", se = FALSE, size = 1) +
+#'   labs(x = "log10 square feet living space", y = "log10 price in USD", 
 #'        title = "House prices in Seattle: Interaction model")
 gg_parallel_slopes <- function(y, num_x, cat_x, data, alpha = 1){
   assertive::assert_is_a_string(y)
