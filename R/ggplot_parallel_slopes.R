@@ -34,24 +34,15 @@ globalVariables(c(
 #'   )
 #'   
 #' # Output parallel slopes plot
-#' plot <- gg_parallel_slopes(
-#'   y = "log10_price", num_x = "log10_size", cat_x = "condition", 
-#'   data = house_prices, alpha = 0.1
-#'   )
-#'   
-#' # Add axes labels and title
-#' plot <- plot +
-#'   labs(x = "log10 square feet living space", y = "log10 price in USD", 
+#' gg_parallel_slopes(y = "log10_price", num_x = "log10_size", cat_x = "condition",
+#'   data = house_prices, alpha = 0.1) +
+#'   labs(x = "log10 square feet living space", y = "log10 price in USD",
 #'        title = "House prices in Seattle: Interaction model")
-#'        
-#' # Display
-#' plot
 gg_parallel_slopes <- function(y, num_x, cat_x, data, alpha = 1){
   assertive::assert_is_a_string(y)
   assertive::assert_is_a_string(num_x)
   assertive::assert_is_a_string(cat_x)
   assertive::assert_is_data.frame(data)
-  
   
   # Define model formula and fitted/predicted value
   formula <- glue::glue(y, " ~ ", num_x, " + ", cat_x) %>% 
