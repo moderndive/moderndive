@@ -1,5 +1,6 @@
 # moderndive 0.2.0.9000
 
+* Added minimally viable parallel slopes model plotting function `gg_parallel_slopes()`
 
 
 # moderndive 0.2.0

@@ -1,4 +1,11 @@
 # Let's go!! Defining geom_parallel_slopes()
+y <- "log10_price"
+numerical_x <- "log10_size"
+categorical_x <- "condition"
+
+
+
+
 
 # https://cran.r-project.org/web/packages/ggplot2/vignettes/extending-ggplot2.html
 

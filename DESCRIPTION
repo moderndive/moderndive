@@ -19,6 +19,7 @@ BugReports: https://github.com/ModernDive/moderndive_package/issues
 Imports: 
     magrittr,
     dplyr,
+    ggplot2,
     tibble,
     janitor,
     broom (>= 0.4.3),
@@ -27,8 +28,8 @@ Imports:
     knitr,
     assertive,
     infer,
-    rlang
-RoxygenNote: 6.0.1
+    rlang,
+    glue
+RoxygenNote: 6.1.0
 Suggests: testthat,
-    covr,
-    ggplot2
+    covr
