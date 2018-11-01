@@ -89,6 +89,12 @@ get_regression_table <-
 #' obtain new fitted values and/or predicted values y-hat. Note the format of 
 #' \code{newdata} must match the format of the original \code{data} used to fit
 #' \code{model}.
+#' @param ID A string indicating which variable in either the original data used to fit
+#' \code{model} or \code{newdata} should be used as 
+#' an identification variable to distinguish the observational units 
+#' in each row. This variable will be the left-most variable in the output data 
+#' frame. If \code{ID} is unspecified, a column \code{ID} with values 1 through the number of
+#' rows is returned as the identification variable.
 #'
 #' @return A tibble-formatted regression table of outcome/response variable, 
 #' all explanatory/predictor variables, the fitted/predicted value, and residual.
@@ -97,6 +103,7 @@ get_regression_table <-
 #' @importFrom dplyr vars
 #' @importFrom dplyr rename
 #' @importFrom dplyr mutate
+#' @importFrom dplyr pull
 #' @importFrom dplyr everything
 #' @importFrom dplyr mutate_if
 #' @importFrom dplyr summarise
@@ -114,34 +121,37 @@ get_regression_table <-
 #' @seealso \code{\link[broom]{augment}}, \code{\link{get_regression_table}}, \code{\link{get_regression_summaries}}
 #'
 #' @examples
-#' library(moderndive)
 #' library(dplyr)
 #' library(tibble)
+#' 
+#' # Convert rownames to column
+#' mtcars <- mtcars %>% 
+#'   rownames_to_column(var = "automobile")
 #' 
 #' # Fit lm() regression:
 #' mpg_model <- lm(mpg ~ cyl, data = mtcars)
 #' 
 #' # Get information on all points in regression:
-#' get_regression_points(mpg_model)
+#' get_regression_points(mpg_model, ID = "automobile")
 #' 
 #' # Create training and test set based on mtcars: 
-#' mtcars <- mtcars %>% 
-#'   rownames_to_column(var = "model")
 #' training_set <- mtcars %>% 
 #'   sample_frac(0.5)
 #' test_set <- mtcars %>% 
-#'   anti_join(training_set, by = "model")
+#'   anti_join(training_set, by = "automobile")
 #' 
 #' # Fit model to training set:
 #' mpg_model_train <- lm(mpg ~ cyl, data = training_set)
 #' 
 #' # Make predictions on test set:
-#' get_regression_points(mpg_model_train, newdata = test_set)
+#' get_regression_points(mpg_model_train, newdata = test_set, ID = "automobile")
 get_regression_points <-
   function(model,
            digits = 3,
            print = FALSE,
-           newdata = NULL) {
+           newdata = NULL,
+           ID = NULL) {
+
     input_checks(model, digits, print)
     
     outcome_variable <- formula(model) %>% lhs() %>% all.vars()
@@ -180,11 +190,35 @@ get_regression_points <-
       }
     }
     
-    # Final clean up
-    regression_points <- regression_points %>%
+    # Create identification variable
+    if(is.null(ID)) {
+      # If none specified, set as 1 through number of rows
+      regression_points <- regression_points %>% 
+        mutate(ID = 1:n())
+      # Save name of identification variable:
+      ID_var_name <- "ID"
+    } else {
+      if(is.null(newdata)){
+        assertive::assert_is_character(ID)
+        # If no newdata, extract identification variable values from original data
+        identification_variable <- eval(model$call$data) %>% 
+          pull(!!ID)
+      } else {
+        # If there is newdata, extract identification variable values from it
+        identification_variable <- newdata %>% 
+          pull(!!ID)
+      }
+      regression_points <- regression_points %>% 
+        mutate(ID = identification_variable)
+      # Save name of identification variable:
+      ID_var_name <- ID
+    }
+    
+    # Final clean-up
+    regression_points <- regression_points  %>%
+      select(ID, everything()) %>%
+      rename_at(vars("ID"), ~ ID_var_name) %>% 
       mutate_if(is.numeric, round, digits = digits) %>% 
-      mutate(ID = 1:n()) %>%
-      select(ID, everything()) %>% 
       as_tibble()
     
     if(print) {
@@ -271,7 +305,8 @@ get_regression_summaries <-
 
 input_checks <- function(model,
                          digits = 3,
-                         print = FALSE){
+                         print = FALSE
+                         ){
   # Since the `"glm"` class also contains the `"lm"` class
   if(length(class(model)) != 1 | !("lm" %in% class(model)) ){
     stop(paste("Only simple and multiple linear regression",

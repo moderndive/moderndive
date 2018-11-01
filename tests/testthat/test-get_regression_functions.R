@@ -6,8 +6,11 @@ test_that("`model` is an `lm` object", {
 })
 
 library(dplyr)
+library(tibble)
 mpg_null <- lm(mpg ~ NULL, data = mtcars)
-mtcars <- mtcars %>% mutate(cyl = as.factor(cyl))
+mtcars <- mtcars %>% 
+  rownames_to_column(var = "automobile") %>% 
+  mutate(cyl = as.factor(cyl))
 mpg_cyl <- lm(mpg ~ cyl, data = mtcars)
 
 iris_binary <- iris %>% 

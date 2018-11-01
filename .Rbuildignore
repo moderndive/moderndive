@@ -12,3 +12,4 @@
 ^codecov\.yml$
 ^scratchpad\.R$
 ^CRAN-RELEASE$
+^Publish Document\.dcf$
