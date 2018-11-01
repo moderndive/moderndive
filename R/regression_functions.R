@@ -218,7 +218,7 @@ get_regression_points <-
     regression_points <- regression_points  %>%
       select(ID, everything()) %>%
       rename_at(vars("ID"), ~ ID_var_name) %>% 
-      mutate_if(is.numeric, round, digits = digits) %>% 
+      mutate_if(is.double, round, digits = digits) %>% 
       as_tibble()
     
     if(print) {
