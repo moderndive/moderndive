@@ -223,7 +223,7 @@ train <- read_csv("train.csv")
 test <- read_csv("test.csv")
 house_model <- lm(SalePrice ~ YrSold, data = train)
 submission <- get_regression_points(house_model, newdata = test, ID = "Id") %>% 
-  transmute(Id = as.integer(Id), SalePrice = SalePrice_hat)
+  select(Id, SalePrice = SalePrice_hat)
 write_csv(submission, "submission.csv")
 ```
 
