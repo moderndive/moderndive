@@ -206,9 +206,9 @@ get_regression_points(score_model, newdata = new_evals)
 
 `score_hat` are the predicted values! Let's do another example, this time using the Kaggle [House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques){target="_blank"} practice competition.
 
-<center>
-![](kaggle.png){ width=500px }
-</center>
+```{r, out.width = "500px", echo=FALSE, fig.align='center'}
+knitr::include_graphics("kaggle.png")
+```
 
 Say you've downloaded the `train.csv` and `test.csv` training and test data available on the above Kaggle page. Here is a 9-line "baby's first kaggle competition" submission that will:
 
@@ -216,21 +216,24 @@ Say you've downloaded the `train.csv` and `test.csv` training and test data avai
 1. Fit a naive model of house sale price as a function of year sold.
 1. Write a `submission.csv` file that can be submitted to Kaggle. Note the use of the `ID` argument to indicate that a variable identifying each observational unit/row should be included. 
 
-**TODO**: Implement [GitHub issue 31](https://github.com/moderndive/moderndive/issues/31){target="_blank"}
-
 ```{r, eval=FALSE}
 library(tidyverse)
 library(moderndive)
 train <- read_csv("train.csv")
 test <- read_csv("test.csv")
 house_model <- lm(SalePrice ~ YrSold, data = train)
-submission <- get_regression_points(house_model, newdata = test, ID = "ID") %>% 
-  select(ID, SalePrice_hat) %>% 
-  rename(SalePrice = SalePrice_hat)
+submission <- get_regression_points(house_model, newdata = test, ID = "Id") %>% 
+  transmute(Id = as.integer(Id), SalePrice = SalePrice_hat)
 write_csv(submission, "submission.csv")
 ```
 
+Submitting `submission.csv` to the leaderboard for this Kaggle competition we
+get a "root mean squared logarithmic error" score of 0.42918, where smaller
+scores are better:
 
+```{r, out.width = "100%", echo=FALSE}
+knitr::include_graphics("leaderboard.png")
+```
 
 ## 5. Scalar summaries of linear regression model fits
 
