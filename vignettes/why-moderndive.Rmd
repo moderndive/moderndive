@@ -24,7 +24,8 @@ knitr::opts_chunk$set(
   )
 
 # Needed packages
-library(tidyverse)
+library(dplyr)
+library(ggplot2)
 library(moderndive)
 library(knitr)
 library(patchwork)
