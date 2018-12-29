@@ -30,12 +30,29 @@ test_that("function inputs are valid", {
     digits = 5,
     print = "yes"
   ))
-  
+
   # Check `print` again
   expect_silent(get_regression_points(
     model = mpg_cyl,
     digits = 4,
     print = TRUE
+  ))
+  
+  # # Check ID
+  # expect_silent(get_regression_points(
+  #   model = mpg_cyl,
+  #   ID = "automobile",
+  #   newdata = NULL
+  # ))
+  
+  # Check newdata
+  expect_silent(get_regression_points(
+    model = mpg_cyl,
+    newdata = mtcars
+  ))
+  expect_silent(get_regression_points(
+    model = mpg_cyl,
+    newdata = NULL
   ))
   
   # Check `model`
