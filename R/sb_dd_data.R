@@ -1,0 +1,22 @@
+#' Dunkin Donuts vs Starbucks 
+#'
+#' Number of Starbucks, number of Dunkin Donuts, and median income in all 1024 
+#' census tracts in Eastern Massachusetts in 2016. Specifically the census tracts
+#' in Bristol, Essex, Middlesex, Norfolk, Plymouth, and Suffolk counties.
+#'
+#' @format A data frame of 1024 rows representing different census tracts and 2 variables
+#' \describe{
+#'   \item{Geo_COUNTY}{County Code}
+#'   \item{Geo_FIPS}{FIPS code}
+#'   \item{Geo_TRACT}{Tract code}
+#'   \item{med_inc}{median income}
+#'   \item{numDD}{Number of Dunkin Donuts}
+#'   \item{numSB}{Number of Starbucks}
+#'   \item{sbper1000}{Starbucks per 1000 residents}
+#'   \item{per1000}{Dunkin Donuts per 1000 residents}
+#' }
+#' @source Data collection code \url{https://github.com/DelaneyMoran/FinalProject}
+#' @examples
+#' library(dplyr)
+#' library(ggplot2)
+"sb_dd_data"
