@@ -1,7 +1,10 @@
 # moderndive 0.2.0.9000
 
 * Added `DD_vs_SB` dataset of Dunkin Donuts and Starbucks in Eastern Massachusetts collected by @DelaneyMoran
-
+* Updated `get_correlation()` to:
+    + Work with `group_by()`
+    + Handle missing values
+    + Handle more than two variables
 
 # moderndive 0.2.0
 
