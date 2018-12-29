@@ -1,6 +1,6 @@
 # moderndive 0.2.0.9000
 
-* Added Dunkin Donuts and Starbucks in Eastern Massachusetts data set by @DelaneyMoran
+* Added `DD_vs_SB` dataset of Dunkin Donuts and Starbucks in Eastern Massachusetts collected by @DelaneyMoran
 
 
 # moderndive 0.2.0

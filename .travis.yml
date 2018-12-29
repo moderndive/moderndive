@@ -29,12 +29,12 @@ r_github_packages:
 before_deploy:
   - Rscript -e 'pkgdown::build_site()'
 
-deploy:
-  provider: pages
-  skip-cleanup: true
-  keep-history: true
-  local-dir: docs
-  github_token: $MODERNDIVE_GITHUB_PAT
+#deploy:
+#  provider: pages
+#  skip-cleanup: true
+#  keep-history: true
+#  local-dir: docs
+#  github_token: $MODERNDIVE_GITHUB_PAT
 
 after_success:
   - Rscript -e 'covr::codecov()'

@@ -1,5 +1,31 @@
 library(tidyverse)
+library(stringr)
 library(devtools)
+library(usethis)
+
+
+# Dunkin Donuts and Starbucks counts in 2016 for 1024 Eastern Massachusetts census tracts
+DD_vs_SB <- 
+  # Read in eastern MA census tract population counts. Source:
+  # https://github.com/DelaneyMoran/FinalProject/blob/master/data/MAincomedata.csv
+  read_csv("data-raw/MAincomedata.csv") %>% 
+  select(Geo_FIPS, county = Geo_NAME, population = SE_T001_001) %>% 
+  mutate(Geo_FIPS = as.double(Geo_FIPS)) %>% 
+  separate(county, into = c("fluff", "county", "state"), sep = ",") %>% 
+  mutate(county = str_sub(county, 2,)) %>% 
+  separate(county, into = c("county", "fluff"), sep = " County") %>% 
+  select(-c(fluff, state)) %>% 
+  # Join with Dunkin Donuts and Starbucks counts
+  right_join(read_csv("data-raw/DD_vs_SB.csv"), by = "Geo_FIPS") %>% 
+  mutate(
+    FIPS_county = as.character(Geo_FIPS),
+    FIPS_county = str_sub(FIPS_county, 1, 5)
+    ) %>% 
+  select(county, FIPS = Geo_FIPS, median_income = med_inc, population, dunkin_donuts = numDD, starbucks = numSB) %>% 
+  gather(shop_type, shops, c(dunkin_donuts, starbucks)) %>% 
+  arrange(county, FIPS)
+usethis::use_data(DD_vs_SB, overwrite = TRUE)
+
 
 
 # House price data from https://www.kaggle.com/harlfoxem/housesalesprediction
@@ -67,6 +93,8 @@ devtools::use_data(bowl, overwrite = TRUE)
 set.seed(2018)
 pennies_sample <- pennies %>% sample_n(40)
 devtools::use_data(pennies_sample, overwrite = TRUE)
+
+
 
 # Data derived from the results of a study conducted
 # on the Mythbusters television show on Discovery Network
