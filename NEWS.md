@@ -1,8 +1,10 @@
 # moderndive 0.2.0.9000
 
+* Added ID argument to get_regression_points() to return a column that ID's the 
+observational units
+* Removed all `assertive::assert()`
 * Converted `house_prices$date` from `dttm` (date-time) to `date` per R4DS [comment](https://r4ds.had.co.nz/dates-and-times.html#creating-datetimes) on using simplest data type possible
 * Added `DD_vs_SB` dataset of Dunkin Donuts and Starbucks in Eastern Massachusetts collected by @DelaneyMoran
-
 
 # moderndive 0.2.0
 
