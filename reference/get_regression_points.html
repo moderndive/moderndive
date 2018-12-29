@@ -117,8 +117,7 @@ and renames the variables to have more intuitive names.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_regression_points</span>(<span class='no'>model</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>newdata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+    <pre class="usage"><span class='fu'>get_regression_points</span>(<span class='no'>model</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>newdata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ID</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -142,6 +141,15 @@ obtain new fitted values and/or predicted values y-hat. Note the format of
 <code>newdata</code> must match the format of the original <code>data</code> used to fit
 <code>model</code>.</p></td>
     </tr>
+    <tr>
+      <th>ID</th>
+      <td><p>A string indicating which variable in either the original data used to fit
+<code>model</code> or <code>newdata</code> should be used as 
+an identification variable to distinguish the observational units 
+in each row. This variable will be the left-most variable in the output data 
+frame. If <code>ID</code> is unspecified, a column <code>ID</code> with values 1 through the number of
+rows is returned as the identification variable.</p></td>
+    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
@@ -155,59 +163,60 @@ all explanatory/predictor variables, the fitted/predicted value, and residual.</
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>moderndive</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>dplyr</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>dplyr</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>tibble</span>)
+
+<span class='co'># Convert rownames to column</span>
+<span class='no'>mtcars</span> <span class='kw'>&lt;-</span> <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/tibble/topics/rownames'>rownames_to_column</a></span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"automobile"</span>)
 
 <span class='co'># Fit lm() regression:</span>
 <span class='no'>mpg_model</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>(<span class='no'>mpg</span> ~ <span class='no'>cyl</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)
 
 <span class='co'># Get information on all points in regression:</span>
-<span class='fu'>get_regression_points</span>(<span class='no'>mpg_model</span>)</div><div class='output co'>#&gt; # A tibble: 32 x 5
-#&gt;       ID   mpg   cyl mpg_hat residual
-#&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
-#&gt;  1     1  21       6    20.6    0.37 
-#&gt;  2     2  21       6    20.6    0.37 
-#&gt;  3     3  22.8     4    26.4   -3.58 
-#&gt;  4     4  21.4     6    20.6    0.77 
-#&gt;  5     5  18.7     8    14.9    3.82 
-#&gt;  6     6  18.1     6    20.6   -2.53 
-#&gt;  7     7  14.3     8    14.9   -0.578
-#&gt;  8     8  24.4     4    26.4   -1.98 
-#&gt;  9     9  22.8     4    26.4   -3.58 
-#&gt; 10    10  19.2     6    20.6   -1.43 
+<span class='fu'>get_regression_points</span>(<span class='no'>mpg_model</span>, <span class='kw'>ID</span> <span class='kw'>=</span> <span class='st'>"automobile"</span>)</div><div class='output co'>#&gt; # A tibble: 32 x 5
+#&gt;    automobile          mpg   cyl mpg_hat residual
+#&gt;    &lt;chr&gt;             &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+#&gt;  1 Mazda RX4          21       6    20.6    0.37 
+#&gt;  2 Mazda RX4 Wag      21       6    20.6    0.37 
+#&gt;  3 Datsun 710         22.8     4    26.4   -3.58 
+#&gt;  4 Hornet 4 Drive     21.4     6    20.6    0.77 
+#&gt;  5 Hornet Sportabout  18.7     8    14.9    3.82 
+#&gt;  6 Valiant            18.1     6    20.6   -2.53 
+#&gt;  7 Duster 360         14.3     8    14.9   -0.578
+#&gt;  8 Merc 240D          24.4     4    26.4   -1.98 
+#&gt;  9 Merc 230           22.8     4    26.4   -3.58 
+#&gt; 10 Merc 280           19.2     6    20.6   -1.43 
 #&gt; # ... with 22 more rows</div><div class='input'>
 <span class='co'># Create training and test set based on mtcars: </span>
-<span class='no'>mtcars</span> <span class='kw'>&lt;-</span> <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/tibble/topics/rownames'>rownames_to_column</a></span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"model"</span>)
 <span class='no'>training_set</span> <span class='kw'>&lt;-</span> <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='http://dplyr.tidyverse.org/reference/sample.html'>sample_frac</a></span>(<span class='fl'>0.5</span>)
 <span class='no'>test_set</span> <span class='kw'>&lt;-</span> <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/join.html'>anti_join</a></span>(<span class='no'>training_set</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"model"</span>)
+  <span class='fu'><a href='http://dplyr.tidyverse.org/reference/join.html'>anti_join</a></span>(<span class='no'>training_set</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"automobile"</span>)
 
 <span class='co'># Fit model to training set:</span>
 <span class='no'>mpg_model_train</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/lm'>lm</a></span>(<span class='no'>mpg</span> ~ <span class='no'>cyl</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>training_set</span>)
 
 <span class='co'># Make predictions on test set:</span>
-<span class='fu'>get_regression_points</span>(<span class='no'>mpg_model_train</span>, <span class='kw'>newdata</span> <span class='kw'>=</span> <span class='no'>test_set</span>)</div><div class='output co'>#&gt; # A tibble: 16 x 5
-#&gt;       ID   mpg   cyl mpg_hat residual
-#&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
-#&gt;  1     1  21       6    20.8    0.187
-#&gt;  2     2  24.4     4    26.2   -1.75 
-#&gt;  3     3  17.8     6    20.8   -3.01 
-#&gt;  4     4  16.4     8    15.5    0.929
-#&gt;  5     5  15.2     8    15.5   -0.271
-#&gt;  6     6  10.4     8    15.5   -5.07 
-#&gt;  7     7  10.4     8    15.5   -5.07 
-#&gt;  8     8  14.7     8    15.5   -0.771
-#&gt;  9     9  32.4     4    26.2    6.25 
-#&gt; 10    10  30.4     4    26.2    4.25 
-#&gt; 11    11  15.5     8    15.5    0.029
-#&gt; 12    12  19.2     8    15.5    3.73 
-#&gt; 13    13  26       4    26.2   -0.154
-#&gt; 14    14  19.7     6    20.8   -1.11 
-#&gt; 15    15  15       8    15.5   -0.471
-#&gt; 16    16  21.4     4    26.2   -4.75 </div></pre>
+<span class='fu'>get_regression_points</span>(<span class='no'>mpg_model_train</span>, <span class='kw'>newdata</span> <span class='kw'>=</span> <span class='no'>test_set</span>, <span class='kw'>ID</span> <span class='kw'>=</span> <span class='st'>"automobile"</span>)</div><div class='output co'>#&gt; # A tibble: 16 x 5
+#&gt;    automobile            mpg   cyl mpg_hat residual
+#&gt;    &lt;chr&gt;               &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
+#&gt;  1 Mazda RX4            21       6    20.8    0.187
+#&gt;  2 Merc 240D            24.4     4    26.2   -1.75 
+#&gt;  3 Merc 280C            17.8     6    20.8   -3.01 
+#&gt;  4 Merc 450SE           16.4     8    15.5    0.929
+#&gt;  5 Merc 450SLC          15.2     8    15.5   -0.271
+#&gt;  6 Cadillac Fleetwood   10.4     8    15.5   -5.07 
+#&gt;  7 Lincoln Continental  10.4     8    15.5   -5.07 
+#&gt;  8 Chrysler Imperial    14.7     8    15.5   -0.771
+#&gt;  9 Fiat 128             32.4     4    26.2    6.25 
+#&gt; 10 Honda Civic          30.4     4    26.2    4.25 
+#&gt; 11 Dodge Challenger     15.5     8    15.5    0.029
+#&gt; 12 Pontiac Firebird     19.2     8    15.5    3.73 
+#&gt; 13 Porsche 914-2        26       4    26.2   -0.154
+#&gt; 14 Ferrari Dino         19.7     6    20.8   -1.11 
+#&gt; 15 Maserati Bora        15       8    15.5   -0.471
+#&gt; 16 Volvo 142E           21.4     4    26.2   -4.75 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
