@@ -1,6 +1,7 @@
 context("get_regression")
 
-library(tidyverse)
+library(dplyr)
+library(tibble)
 
 # Modify mtcars and run two lm() models
 data(mtcars)
