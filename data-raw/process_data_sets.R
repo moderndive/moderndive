@@ -1,5 +1,6 @@
 library(tidyverse)
 library(stringr)
+library(lubridate)
 library(devtools)
 library(usethis)
 
@@ -31,12 +32,13 @@ usethis::use_data(DD_vs_SB, overwrite = TRUE)
 # House price data from https://www.kaggle.com/harlfoxem/housesalesprediction
 house_prices <- read_csv("data-raw/kc_house_data.csv") %>% 
   mutate(
+    date = ymd(date),
     condition = factor(condition),
     grade = factor(grade), 
     zipcode = factor(zipcode),
     waterfront = ifelse(waterfront == 0, FALSE, TRUE)
     )
-devtools::use_data(house_prices, overwrite = TRUE)
+usethis::use_data(house_prices, overwrite = TRUE)
 
 
 
