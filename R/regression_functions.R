@@ -201,12 +201,12 @@ get_regression_points <-
       if(is.null(newdata)){
         assertive::assert_is_character(ID)
         # If no newdata, extract identification variable values from original data
-        identification_variable <- eval(model$call$data) %>% 
-          pull(!!ID)
+        identification_variable <- eval(model$call$data)[[ID]] #%>% 
+  #        pull(!!ID)
       } else {
         # If there is newdata, extract identification variable values from it
-        identification_variable <- newdata %>% 
-          pull(!!ID)
+        identification_variable <- newdata[[ID]]# %>% 
+   #       pull(!!ID)
       }
       regression_points <- regression_points %>% 
         mutate(ID = identification_variable)
@@ -313,6 +313,22 @@ input_checks <- function(model,
                "models are supported. Try again using `lm` for",
                "your models as appropriate."))
   }
-  assertive::assert_is_numeric(digits)
-  assertive::assert_is_logical(print)
+  check_numeric(digits)
+  check_logical(print)
 }
+
+check_numeric <- function(input){
+  if(!(length(input) > 0))
+    stop("The inputted entry must have at least a length of 1.")
+  if(!is.numeric(input))
+    stop("The inputted entry must be numeric.")
+}
+
+check_logical <- function(input){
+  if(!(length(input) > 0))
+    stop("The inputted entry must have at least a length of 1.")
+  if(!is.logical(input))
+    stop("The inputted entry must be logical.")
+}
+
+

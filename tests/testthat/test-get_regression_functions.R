@@ -8,6 +8,7 @@ test_that("`model` is an `lm` object", {
 library(dplyr)
 library(tibble)
 mpg_null <- lm(mpg ~ NULL, data = mtcars)
+data(mtcars)
 mtcars <- mtcars %>% 
   rownames_to_column(var = "automobile") %>% 
   mutate(cyl = as.factor(cyl))
@@ -39,11 +40,11 @@ test_that("function inputs are valid", {
   ))
   
   # # Check ID
-  # expect_silent(get_regression_points(
-  #   model = mpg_cyl,
-  #   ID = "automobile",
-  #   newdata = NULL
-  # ))
+  expect_silent(get_regression_points(
+    model = mpg_cyl,
+    ID = "automobile",
+    newdata = NULL
+  ))
   
   # Check newdata
   expect_silent(get_regression_points(
