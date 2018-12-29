@@ -4,8 +4,7 @@
 \alias{get_regression_points}
 \title{Get regression points}
 \usage{
-get_regression_points(model, digits = 3, print = FALSE,
-  newdata = NULL, ID = NULL)
+get_regression_points(model, digits = 3, print = FALSE, newdata = NULL, ID = NULL)
 }
 \arguments{
 \item{model}{an \code{lm()} model object}
