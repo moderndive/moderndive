@@ -3,6 +3,7 @@
 ^\.travis\.yml$
 ^cran-comments\.md$
 ^\.httr-oauth$
+^\.covrignore$
 ^README\.md$
 ^README\.Rmd$
 ^data-raw$

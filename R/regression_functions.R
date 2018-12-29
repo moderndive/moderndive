@@ -48,34 +48,38 @@ globalVariables(c(
 #' 
 #' # Get regression table:
 #' get_regression_table(mpg_model)
-get_regression_table <-
-  function(model,
-           digits = 3,
-           print = FALSE) {
-    
-    input_checks(model, digits, print)
-    
-    outcome_variable <- formula(model) %>% lhs() %>% all.vars()
-    explanatory_variable <- formula(model) %>% rhs() %>% all.vars()
-    
-    regression_table <- model %>%
-      tidy(conf.int = TRUE) %>%
-      mutate_if(is.numeric, round, digits = digits) %>%
-      mutate(term = ifelse(term == "(Intercept)", "intercept", term)) %>%
-      as_tibble() %>%
-      clean_names() %>% 
-      rename(
-        lower_ci = conf_low,
-        upper_ci = conf_high
-      )
-    
-    if(print) {
-      regression_table <- regression_table %>%
-        kable()
-    }
-    
-    return(regression_table)
+get_regression_table <- function(model, digits = 3, print = FALSE) {
+  # Check inputs
+  input_checks(model, digits, print)
+  
+  # Define outcome and explanatory/predictor variables
+  outcome_variable <- formula(model) %>% 
+    lhs() %>% 
+    all.vars()
+  explanatory_variable <- formula(model) %>% 
+    rhs() %>% 
+    all.vars()
+  
+  # Create output tibble
+  regression_table <- model %>%
+    tidy(conf.int = TRUE) %>%
+    mutate_if(is.numeric, round, digits = digits) %>%
+    mutate(term = ifelse(term == "(Intercept)", "intercept", term)) %>%
+    as_tibble() %>%
+    clean_names() %>% 
+    rename(
+      lower_ci = conf_low,
+      upper_ci = conf_high
+    )
+  
+  # Transform to markdown
+  if(print) {
+    regression_table <- regression_table %>%
+      kable()
   }
+  
+  return(regression_table)
+}
 
 
 #' Get regression points
@@ -146,81 +150,91 @@ get_regression_table <-
 #' # Make predictions on test set:
 #' get_regression_points(mpg_model_train, newdata = test_set, ID = "automobile")
 get_regression_points <-
-  function(model,
-           digits = 3,
-           print = FALSE,
-           newdata = NULL,
-           ID = NULL) {
-
+  function(model, digits = 3, print = FALSE, newdata = NULL, ID = NULL) {
+    # Check inputs
     input_checks(model, digits, print)
+    if(!is.null(ID))
+      check_character(ID)
+    if(!is.null(newdata))
+      check_data_frame(newdata)
     
-    outcome_variable <- formula(model) %>% lhs() %>% all.vars()
+    # Define outcome and explanatory/predictor variables
+    outcome_variable <- formula(model) %>% 
+      lhs() %>% 
+      all.vars()
     outcome_variable_hat <- str_c(outcome_variable, "_hat")
-    explanatory_variable <- formula(model) %>% rhs() %>% all.vars()
+    explanatory_variable <- formula(model) %>% 
+      rhs() %>% 
+      all.vars()
     
+    # Compute all fitted/predicted values and residuals for three possible
+    # cases/scenarios
     if(is.null(newdata)){
-      # Get fitted values for all points used for regression
+      # Case 1: For the same data set used to fit model, compute fitted values
+      # and residuals
       regression_points <- model %>%
         augment() %>%
-        select(!!c(outcome_variable, explanatory_variable, 
-                   ".fitted", ".resid")) %>%
+        select(!!c(outcome_variable, explanatory_variable, ".fitted", ".resid")) %>%
         rename_at(vars(".fitted"), ~ outcome_variable_hat) %>%
         rename(residual = .resid) 
     } else {
-      assertive::assert_is_data.frame(newdata)
-      
-      # Get fitted values for newdata depending on whether newdata already has 
-      # the outcome/response variable. If it does, include it and compute
-      # residuals.
+      # Two cases when we wanted to return point information on a new data set,
+      # newdata, different than the one used to fit the model with:
       if(outcome_variable %in% names(newdata)) {
+        # Case 2.a) If outcome variable is included, we can compute both fitted
+        # values and residuals.
         regression_points <- newdata %>%
           select(!!c(outcome_variable, explanatory_variable)) %>% 
-          # Get fitted/predicted values
+          # Compute fitted values
           mutate(y_hat = predict(model, newdata = newdata)) %>% 
           rename_at(vars("y_hat"), ~ outcome_variable_hat) %>% 
           # Compute residuals
-          mutate(
-            residual := !!sym(outcome_variable) - !!sym(outcome_variable_hat)
-          )
+          mutate(residual := !!sym(outcome_variable) - !!sym(outcome_variable_hat))
       } else {
+        # Case 2.b) If outcome variable is not included, we can only return
+        # predicted values and not the residuals. This corresponds to typical
+        # prediction scenario.
         regression_points <- model %>%
+          # Compute fitted values:
           augment(newdata = newdata) %>%
           select(!!c(explanatory_variable, ".fitted")) %>%
           rename_at(vars(".fitted"), ~ str_c(outcome_variable, "_hat"))
       }
     }
     
-    # Create identification variable
+    # Set identification variable for three possible cases/scenarios
     if(is.null(ID)) {
-      # If none specified, set as 1 through number of rows
+      # Case 1: If ID argument is not specified, set as ID variable as 1 through
+      # number of rows
       regression_points <- regression_points %>% 
-        mutate(ID = 1:n())
-      # Save name of identification variable:
-      ID_var_name <- "ID"
+        mutate(ID = 1:n()) %>% 
+        select(ID, everything())
     } else {
+      # Two cases when ID argument is specified:
       if(is.null(newdata)){
-        assertive::assert_is_character(ID)
-        # If no newdata, extract identification variable values from original data
-        identification_variable <- eval(model$call$data)[[ID]] #%>% 
-  #        pull(!!ID)
+        # Case 2.a) When computing fitted values and residuals for the same data
+        # used to fit the model, extract ID variable from original model fit.
+        identification_variable <- eval(model$call$data, environment(formula(model))) %>% 
+          pull(!!ID)
       } else {
-        # If there is newdata, extract identification variable values from it
-        identification_variable <- newdata[[ID]]# %>% 
-   #       pull(!!ID)
+        # Case 2.b) When computing predicted values for a new dataset newdata than
+        # the one used to fit the model, extract ID variable from newdata.
+        identification_variable <- newdata %>% 
+          pull(!!ID)
       }
+      # Set ID variable
       regression_points <- regression_points %>% 
-        mutate(ID = identification_variable)
-      # Save name of identification variable:
-      ID_var_name <- ID
+        mutate(ID = identification_variable) %>% 
+        select(ID, everything()) %>%
+        rename_at(vars("ID"), ~ ID)
     }
     
     # Final clean-up
     regression_points <- regression_points  %>%
-      select(ID, everything()) %>%
-      rename_at(vars("ID"), ~ ID_var_name) %>% 
       mutate_if(is.double, round, digits = digits) %>% 
       as_tibble()
     
+    # Transform to markdown
     if(print) {
       regression_points <- regression_points %>%
         kable()
@@ -269,23 +283,27 @@ get_regression_points <-
 #' # Get regression summaries:
 #' get_regression_summaries(mpg_model)
 get_regression_summaries <-
-  function(model,
-           digits = 3,
-           print = FALSE) {
-    
+  function(model, digits = 3, print = FALSE) {
+    # Check inputs
     input_checks(model, digits, print)
     
-    outcome_variable <- formula(model) %>% lhs() %>% all.vars()
-    explanatory_variable <- formula(model) %>% rhs() %>% all.vars()
+    # Define outcome and explanatory/predictor variables
+    outcome_variable <- formula(model) %>% 
+      lhs() %>% 
+      all.vars()
+    explanatory_variable <- formula(model) %>% 
+      rhs() %>% 
+      all.vars()
     
+    # Compute mean-squared error and root mean-squared error
     mse_and_rmse <- model %>%
       augment() %>% 
-      select(!!c(outcome_variable, explanatory_variable, 
-                 ".fitted", ".resid")) %>%
+      select(!!c(outcome_variable, explanatory_variable, ".fitted", ".resid")) %>%
       rename_at(vars(".fitted"), ~ str_c(outcome_variable, "_hat")) %>%
       rename(residual = .resid) %>% 
       summarise(mse = mean(residual^2), rmse = sqrt(mse))
     
+    # Create output tibble
     regression_summaries <- model %>%
       glance() %>%
       mutate_if(is.numeric, round, digits = digits) %>%
@@ -295,7 +313,8 @@ get_regression_summaries <-
       bind_cols(mse_and_rmse) %>% 
       select(r_squared, adj_r_squared, mse, rmse, everything())
     
-    if (print) {
+    # Transform to markdown
+    if(print) {
       regression_summaries <- regression_summaries %>%
         kable()
     }
@@ -303,10 +322,11 @@ get_regression_summaries <-
     return(regression_summaries)
   }
 
-input_checks <- function(model,
-                         digits = 3,
-                         print = FALSE
-                         ){
+
+
+
+# Check input functions ----
+input_checks <- function(model, digits = 3, print = FALSE){
   # Since the `"glm"` class also contains the `"lm"` class
   if(length(class(model)) != 1 | !("lm" %in% class(model)) ){
     stop(paste("Only simple and multiple linear regression",
@@ -318,17 +338,21 @@ input_checks <- function(model,
 }
 
 check_numeric <- function(input){
-  if(!(length(input) > 0))
-    stop("The inputted entry must have at least a length of 1.")
   if(!is.numeric(input))
-    stop("The inputted entry must be numeric.")
+    stop("The input entry must be numeric.")
 }
 
 check_logical <- function(input){
-  if(!(length(input) > 0))
-    stop("The inputted entry must have at least a length of 1.")
   if(!is.logical(input))
-    stop("The inputted entry must be logical.")
+    stop("The input must be logical.")
 }
 
+check_character <- function(input){
+  if(!is.character(input))
+    stop("The input must be a character.")
+}
 
+check_data_frame <- function(input){
+  if(!is.data.frame(input))
+    stop("The input must be a data frame.")
+}

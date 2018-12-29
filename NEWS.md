@@ -2,6 +2,7 @@
 
 * Added ID argument to get_regression_points() to return a column that ID's the 
 observational units
+* Removed all `assertive::assert()`
 
 # moderndive 0.2.0
 

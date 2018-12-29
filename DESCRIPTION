@@ -25,7 +25,6 @@ Imports:
     formula.tools,
     stringr,
     knitr,
-    assertive,
     infer,
     rlang
 RoxygenNote: 6.1.0
