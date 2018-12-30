@@ -450,7 +450,7 @@
 <div id="the-details" class="section level2">
 <h2 class="hasAnchor">
 <a href="#the-details" class="anchor"></a>The Details</h2>
-<p>The three <code>get_regression_X()</code> functions are merely wrappers of functions from the <a href="https://CRAN.R-project.org/package=broom/vignettes/broom.html" target="_blank"><code>broom</code></a> package for converting statistical analysis objects into tidy tibbles:</p>
+<p>The three <code>get_regression</code> functions are wrappers of functions from the <a href="https://CRAN.R-project.org/package=broom/vignettes/broom.html" target="_blank"><code>broom</code></a> package for converting statistical analysis objects into tidy tibbles along with a few added tweaks:</p>
 <ol style="list-style-type: decimal">
 <li>
 <code><a href="../reference/get_regression_table.html">get_regression_table()</a></code> is a wrapper for <code><a href="https://www.rdocumentation.org/packages/broom/topics/reexports">broom::tidy()</a></code>
@@ -465,7 +465,7 @@
 <p>Why did we take this approach to address the 5 common student questions/comments at the outset of the article?</p>
 <ul>
 <li>By writing wrappers to pre-existing functions, instead of creating new custom functions, there is minimal “re-inventing the wheel” necessary.</li>
-<li>The <code>broom</code> package function names <code>tidy()</code>, <code>augment()</code>, and <code>glance()</code> don’t mean anything to intro stats students, where as the <code>moderndive</code> package function names <code><a href="../reference/get_regression_table.html">get_regression_table()</a></code>, <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code>, and <code><a href="../reference/get_regression_summaries.html">get_regression_summaries()</a></code> have clear meanings.</li>
+<li>The <code>broom</code> package function names <code>tidy()</code>, <code>augment()</code>, and <code>glance()</code> don’t mean anything to intro stats students, where as the <code>moderndive</code> package function names <code><a href="../reference/get_regression_table.html">get_regression_table()</a></code>, <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code>, and <code><a href="../reference/get_regression_summaries.html">get_regression_summaries()</a></code> are more intuitive.</li>
 <li>The default column/variable names in the outputs of the above 3 functions are a little daunting for intro stats students to interpret. We cut out some of them and renamed many of them with more intuitive names. For example, compare the outputs of the <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code> wrapper function and the parent <code><a href="https://www.rdocumentation.org/packages/broom/topics/reexports">broom::augment()</a></code> function.</li>
 </ul>
 <div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" data-line-number="1"><span class="kw"><a href="../reference/get_regression_points.html">get_regression_points</a></span>(score_model)</a>
