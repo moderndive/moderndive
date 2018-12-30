@@ -160,10 +160,10 @@ error” leaderboard score of
 
 ## The Details
 
-The three `get_regression` functions are merely wrappers of functions
-from the
+The three `get_regression` functions are wrappers of functions from the
 [`broom`](https://CRAN.R-project.org/package=broom/vignettes/broom.html)
-package for converting statistical analysis objects into tidy tibbles:
+package for converting statistical analysis objects into tidy tibbles
+along with a few added tweaks:
 
 1.  `get_regression_table()` is a wrapper for `broom::tidy()`
 2.  `get_regression_points()` is a wrapper for `broom::augment()`
@@ -174,8 +174,8 @@ Why did we create these wrappers?
   - The `broom` package function names `tidy()`, `augment()`, and
     `glance()` don’t mean anything to intro stats students, where as the
     `moderndive` package function names `get_regression_table()`,
-    `get_regression_points()`, and `get_regression_summaries()` have
-    more intuitive names.
+    `get_regression_points()`, and `get_regression_summaries()` are more
+    intuitive.
   - The default column/variable names in the outputs of the above 3
     functions are a little daunting for intro stats students to
     interpret. We cut out some of them and renamed many of them with
