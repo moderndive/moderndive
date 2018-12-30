@@ -325,7 +325,7 @@ broom::augment(score_model)
 
 If you're curious to see how we designed these 3 functions, take a look at the source code on  [GitHub](https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R){target="_blank"}!
 
-Many thanks to Max Kuhn [\@topepo](https://github.com/topepo){target="_blank"} for his helpful feedback for this vignette.
+Many thanks to Max Kuhn [\@topepo](https://github.com/topepo){target="_blank"} and Jenny Smetzer [\@smetzer180](https://github.com/smetzer180){target="_blank"} for their helpful feedback for this vignette.
 
 
 

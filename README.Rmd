@@ -73,7 +73,7 @@ get_regression_summaries(score_model)
 
 #### 1. Print markdown friendly tables
 
-Want to output cleanly formated tables in an R Markdown document? Just add `print = TRUE` to any of the three `get_regression_` functions.
+Want to output cleanly formatted tables in an R Markdown document? Just add `print = TRUE` to any of the three `get_regression_` functions.
 
 ```{r}
 get_regression_table(score_model, print = TRUE)
@@ -102,7 +102,7 @@ submission <- get_regression_points(house_model, newdata = test, ID = "Id") %>%
 write_csv(submission, "submission.csv")
 ```
 
-The resulting `submission.csv` is formatted such that in can be submitted on Kaggle, resulting in a "root mean squared logarithmic error" leaderboard score of 0.42919.
+The resulting `submission.csv` is formatted such that it can be submitted on Kaggle, resulting in a "root mean squared logarithmic error" leaderboard score of 0.42918.
 
 ```{r echo=FALSE}
 knitr::include_graphics("https://github.com/moderndive/moderndive/raw/master/vignettes/leaderboard_orig.png")
