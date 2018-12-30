@@ -120,18 +120,24 @@ get_regression_points(score_model, newdata = new_evals)
 ## ---- out.width = "500px", echo=FALSE, fig.align='center'----------------
 knitr::include_graphics("kaggle.png")
 
-## ---- message=FALSE------------------------------------------------------
-library(tidyverse)
-library(moderndive)
-train <- read_csv("train.csv")
-test <- read_csv("test.csv")
-house_model <- lm(SalePrice ~ YrSold, data = train)
-submission <- get_regression_points(house_model, newdata = test, ID = "Id") %>% 
-  select(Id, SalePrice = SalePrice_hat)
-write_csv(submission, "submission.csv")
+## ---- eval=FALSE---------------------------------------------------------
+#  library(tidyverse)
+#  library(moderndive)
+#  
+#  # Load in training and test set
+#  train <- read_csv("https://github.com/moderndive/moderndive/raw/master/vignettes/train.csv")
+#  test <- read_csv("https://github.com/moderndive/moderndive/raw/master/vignettes/test.csv")
+#  
+#  # Fit model
+#  house_model <- lm(SalePrice ~ YrSold, data = train)
+#  
+#  # Make and submit predictions
+#  submission <- get_regression_points(house_model, newdata = test, ID = "Id") %>%
+#    select(Id, SalePrice = SalePrice_hat)
+#  write_csv(submission, "submission.csv")
 
 ## ---- out.width = "100%", echo=FALSE-------------------------------------
-knitr::include_graphics("leaderboard.png")
+knitr::include_graphics("leaderboard_orig.png")
 
 ## ------------------------------------------------------------------------
 get_regression_summaries(score_model)

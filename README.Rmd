@@ -35,56 +35,100 @@ remotes::install_github("moderndive/moderndive")
 
 ## Demo
 
-The following three `get_regression_OUTPUT()` functions are tidyverse-friendly
-wrapper functions meant for the novice regression user. They have more intuitive/verb-like
-function names than the corresponding `broom` package commands:
-
-
-* `get_regression_table()`: a wrapper to `tidy()` to return the regression table
-* `get_regression_points()`: a wrapper to `augment()` to return a table of all regression points
-* `get_regression_summaries()`: a wrapper to `glance()` to return summary statistics about the regression
-
-Furthermore 
-
-* `get_regression_table()` returns confidence intervals (not just p-values) by default
-* The outputs are returned as [tibbles](https://blog.rstudio.com/2016/03/24/tibble-1-0-0/)
-* It cleans the output format by eliminating all information not pertinent to novice regression users
-* You can set the output to be in `knitr::kable()` markdown format, suitable for printing in R Markdown
-documents, via `print = TRUE`
-
-```{r warning=FALSE, message=FALSE}
-library(moderndive)
-library(dplyr)
-```
+Let's fit a simple linear regression of teaching `score` (as evaluated by students) over instructor age for 463 instructors at the UT Austin:
 
 ```{r}
-# Convert cyl to factor variable
-mtcars <- mtcars %>% 
-  mutate(cyl = as.factor(cyl))
-
-# Regression models
-mpg_model <- lm(mpg ~ hp, data = mtcars)
-mpg_mlr_model <- lm(mpg ~ hp + wt, data = mtcars)
-mpg_mlr_model2 <- lm(mpg ~ hp + cyl, data = mtcars)
-
-# Regression tables
-get_regression_table(model = mpg_model)
-get_regression_table(mpg_mlr_model, digits = 4, print = TRUE)
-
-# Regression points. For residual analysis for example
-get_regression_points(mpg_mlr_model2)
-mtcars_new <- mtcars %>% 
-  slice(1:3)
-
-# Make predictions on newdata
-get_regression_points(mpg_mlr_model2, newdata = mtcars_new)
-
-# Regression summaries
-get_regression_summaries(mpg_model)
-
-# Can also use `%>%`
-mpg_model %>% get_regression_summaries(digits = 5, print = TRUE)
+library(moderndive)
+score_model <- lm(score ~ age, data = evals)
 ```
+
+Among the many useful features of the `moderndive` package outlined in our essay ["Why should you use the moderndive package for intro linear regression?"](https://moderndive.github.io/moderndive/articles/why-moderndive.html) we highlight three functions in particular:
+
+#### 1. Regression tables
+
+Get a tidy regression table **with** confidence intervals:
+```{r}
+get_regression_table(score_model)
+```
+
+#### 2. Fitted/predicted values and residuals
+
+Get information on each point/observation in your regression, including fitted/predicted values & residuals, organized in a single data frame with intuitive variable names:
+
+```{r}
+get_regression_points(score_model)
+```
+
+
+#### 3. Regression fit summaries
+
+Get all the scalar summaries of a regression fit included in `summary(score_model)` along with the mean-squared error and root mean-squared error:
+
+```{r}
+get_regression_summaries(score_model)
+```
+
+
+## Other features
+
+#### 1. Print markdown friendly tables
+
+Want to output cleanly formated tables in an R Markdown document? Just add `print = TRUE` to any of the three `get_regression_` functions.
+
+```{r}
+get_regression_table(score_model, print = TRUE)
+```
+
+#### 2. Predictions on new data
+
+Want to apply your fitted model on new data to make predictions? No problem! Include a `newdata` data frame argument to `get_regression_points()`. 
+
+For example, the Kaggle.com practice competition [House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques){target="_blank"} requires you to fit/train a model to the provided `train.csv` training set to make predictions of house prices in the provided `test.csv` test set. The following code performs these steps and outputs the predictions in `submission.csv`:
+
+```{r, eval=FALSE}
+library(tidyverse)
+library(moderndive)
+
+# Load in training and test set
+train <- read_csv("https://github.com/moderndive/moderndive/raw/master/vignettes/train.csv")
+test <- read_csv("https://github.com/moderndive/moderndive/raw/master/vignettes/test.csv")
+
+# Fit model
+house_model <- lm(SalePrice ~ YrSold, data = train)
+
+# Make and submit predictions
+submission <- get_regression_points(house_model, newdata = test, ID = "Id") %>% 
+  select(Id, SalePrice = SalePrice_hat)
+write_csv(submission, "submission.csv")
+```
+
+The resulting `submission.csv` is formatted such that in can be submitted on Kaggle, resulting in a "root mean squared logarithmic error" leaderboard score of 0.42919.
+
+```{r echo=FALSE}
+knitr::include_graphics("https://github.com/moderndive/moderndive/raw/master/vignettes/leaderboard_orig.png")
+```
+
+
+## The Details
+
+The three `get_regression` functions are merely wrappers of functions from the [`broom`](https://CRAN.R-project.org/package=broom/vignettes/broom.html){target="_blank"} package for converting statistical analysis objects into tidy tibbles:
+
+1. `get_regression_table()` is a wrapper for `broom::tidy()`
+1. `get_regression_points()` is a wrapper for `broom::augment()`
+1. `get_regression_summaries` is a wrapper for `broom::glance()`
+
+Why did we create these wrappers?
+
+* The `broom` package function names `tidy()`, `augment()`, and `glance()` don't mean anything to intro stats students, where as the `moderndive` package function names `get_regression_table()`, `get_regression_points()`, and `get_regression_summaries()` have more intuitive names.
+* The default column/variable names in the outputs of the above 3 functions are a little daunting for intro stats students to interpret. We cut out some of them and renamed many of them with more intuitive names. For example, compare the outputs of the `get_regression_points()` wrapper function and the parent `broom::augment()` function.
+
+```{r}
+get_regression_points(score_model)
+library(broom)
+broom::augment(score_model)
+```
+
+
 
 ***
 

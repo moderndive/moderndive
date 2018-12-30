@@ -32,6 +32,8 @@ library(broom)
 set.seed(76)
 ```
 
+## Intro
+
 Linear regression has long been a staple of introductory statistics courses. While the timing of when to introduce it may have changed (many argue that descriptive regression should be done ASAP and then revisited later after statistical inference has been covered), it's overall importance in the intro stats curriculum remains the same.
 
 Let's consider data gathered from end of semester student evaluations for 463 professors from the University of Texas at Austin (see [openintro.org](https://www.openintro.org/stat/data/?data=evals){target="_blank"} for more details). Here is a random sample of 5 instructors and a subset of 8 of the 13 variables included, where the outcome variable of interest is the teaching evaluation `score` out of 5 as given by students: 
@@ -76,7 +78,7 @@ To address these comments/questions, we've included three functions in the `mode
     ```{r}
     get_regression_table(score_model)
     ```
-2. Get information on each point/observation, including fitted/predicted values & residuals, in a single data frame:
+2. Get information on each point/observation in your regression, including fitted/predicted values & residuals, in a single data frame:
     ```{r}
     get_regression_points(score_model)
     ```
@@ -91,6 +93,7 @@ To address these comments/questions, we've included three functions in the `mode
 We think that these three functions included in the `moderndive` package are effective pedagogical tools that can help address the above five common student comments/questions. Why now argue why.
 
 
+------
 
 
 ## 1. Less p-value stars, more confidence intervals
@@ -111,6 +114,9 @@ get_regression_table(score_model)
 ```
 
 Confidence intervals! By including them in the output, we can easily emphasize to students that they "surround" the point estimates in the `estimate` column. Note the confidence level is defaulted to 95%. 
+
+
+------
 
 
 ## 2. Outputs as tidy tibbles!
@@ -144,6 +150,10 @@ or equivalently you can use the `$` sign operator from base R:
 ```{r}
 get_regression_table(score_model)$std_error
 ```
+
+
+------
+
 
 ## 3. Birds of a feather should flock together: Fitted values & residuals
 
@@ -215,6 +225,9 @@ p1 + p2
 ```
 
 
+------
+
+
 ## 4. Baby's first Kaggle predictive modeling competition submission!
 
 The fourth common student comment/question:
@@ -240,18 +253,24 @@ get_regression_points(score_model, newdata = new_evals)
 knitr::include_graphics("kaggle.png")
 ```
 
-Say you've downloaded the `train.csv` and `test.csv` training and test data available on the above Kaggle page. Here is a 9-line "baby's first kaggle competition" submission that will:
+This Kaggle competition requires you to fit/train a model to the provided `train.csv` training set to make predictions of house prices in the provided `test.csv` test set. Here is code for a "baby's first Kaggle competition" submission that will:
 
-1. Read in the training and test data.
+1. Read in the training and test data (that we posted on GitHub).
 1. Fit a naive model of house sale price as a function of year sold.
 1. Write a `submission.csv` file that can be submitted to Kaggle. Note the use of the `ID` argument to indicate that a variable identifying each observational unit/row should be included. 
 
-```{r, message=FALSE}
+```{r, eval=FALSE}
 library(tidyverse)
 library(moderndive)
-train <- read_csv("train.csv")
-test <- read_csv("test.csv")
+
+# Load in training and test set
+train <- read_csv("https://github.com/moderndive/moderndive/raw/master/vignettes/train.csv")
+test <- read_csv("https://github.com/moderndive/moderndive/raw/master/vignettes/test.csv")
+
+# Fit model
 house_model <- lm(SalePrice ~ YrSold, data = train)
+
+# Make and submit predictions
 submission <- get_regression_points(house_model, newdata = test, ID = "Id") %>% 
   select(Id, SalePrice = SalePrice_hat)
 write_csv(submission, "submission.csv")
@@ -262,8 +281,12 @@ get a "root mean squared logarithmic error" score of 0.42918, where smaller
 scores are better:
 
 ```{r, out.width = "100%", echo=FALSE}
-knitr::include_graphics("leaderboard.png")
+knitr::include_graphics("leaderboard_orig.png")
 ```
+
+
+------
+
 
 ## 5. Scalar summaries of linear regression model fits
 
@@ -278,13 +301,16 @@ get_regression_summaries(score_model)
 ```
 
 
+------
+
+
 ## The Details
 
 The three `get_regression_X()` functions are merely wrappers of functions from the [`broom`](https://CRAN.R-project.org/package=broom/vignettes/broom.html){target="_blank"} package for converting statistical analysis objects into tidy tibbles:
 
-* `get_regression_table()` is a wrapper for `broom::tidy()`
-* `get_regression_points()` is a wrapper for `broom::augment()`
-* `get_regression_summaries` is a wrapper for `broom::glance()`
+1. `get_regression_table()` is a wrapper for `broom::tidy()`
+1. `get_regression_points()` is a wrapper for `broom::augment()`
+1. `get_regression_summaries` is a wrapper for `broom::glance()`
 
 Why did we take this approach to address the 5 common student questions/comments at the outset of the article?
 
