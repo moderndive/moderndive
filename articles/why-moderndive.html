@@ -92,6 +92,9 @@
 
     
     
+<div id="intro" class="section level2">
+<h2 class="hasAnchor">
+<a href="#intro" class="anchor"></a>Intro</h2>
 <p>Linear regression has long been a staple of introductory statistics courses. While the timing of when to introduce it may have changed (many argue that descriptive regression should be done ASAP and then revisited later after statistical inference has been covered), it’s overall importance in the intro stats curriculum remains the same.</p>
 <p>Let’s consider data gathered from end of semester student evaluations for 463 professors from the University of Texas at Austin (see <a href="https://www.openintro.org/stat/data/?data=evals" target="_blank">openintro.org</a> for more details). Here is a random sample of 5 instructors and a subset of 8 of the 13 variables included, where the outcome variable of interest is the teaching evaluation <code>score</code> out of 5 as given by students:</p>
 <table class="table">
@@ -208,7 +211,7 @@
 <a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 2 age         -0.006     0.003     -2.31   0.021   -0.011   -0.001</span></a></code></pre></div>
 </li>
 <li>
-<p>Get information on each point/observation, including fitted/predicted values &amp; residuals, in a single data frame:</p>
+<p>Get information on each point/observation in your regression, including fitted/predicted values &amp; residuals, in a single data frame:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="../reference/get_regression_points.html">get_regression_points</a></span>(score_model)</a>
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#&gt; # A tibble: 463 x 5</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="co">#&gt;       ID score   age score_hat residual</span></a>
@@ -239,6 +242,8 @@
 <h3 class="hasAnchor">
 <a href="#why-should-you-use-the-moderndive-package" class="anchor"></a>Why should you use the <code>moderndive</code> package?</h3>
 <p>We think that these three functions included in the <code>moderndive</code> package are effective pedagogical tools that can help address the above five common student comments/questions. Why now argue why.</p>
+<hr>
+</div>
 </div>
 <div id="less-p-value-stars-more-confidence-intervals" class="section level2">
 <h2 class="hasAnchor">
@@ -261,6 +266,7 @@
 <a class="sourceLine" id="cb6-5" data-line-number="5"><span class="co">#&gt; 1 intercept    4.46      0.127     35.2    0        4.21     4.71 </span></a>
 <a class="sourceLine" id="cb6-6" data-line-number="6"><span class="co">#&gt; 2 age         -0.006     0.003     -2.31   0.021   -0.011   -0.001</span></a></code></pre></div>
 <p>Confidence intervals! By including them in the output, we can easily emphasize to students that they “surround” the point estimates in the <code>estimate</code> column. Note the confidence level is defaulted to 95%.</p>
+<hr>
 </div>
 <div id="outputs-as-tidy-tibbles" class="section level2">
 <h2 class="hasAnchor">
@@ -314,6 +320,7 @@
 <p>or equivalently you can use the <code>$</code> sign operator from base R:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="../reference/get_regression_table.html">get_regression_table</a></span>(score_model)<span class="op">$</span>std_error</a>
 <a class="sourceLine" id="cb10-2" data-line-number="2"><span class="co">#&gt; [1] 0.127 0.003</span></a></code></pre></div>
+<hr>
 </div>
 <div id="birds-of-a-feather-should-flock-together-fitted-values-residuals" class="section level2">
 <h2 class="hasAnchor">
@@ -366,6 +373,7 @@
 <a class="sourceLine" id="cb17-10" data-line-number="10"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb17-11" data-line-number="11"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">title =</span> <span class="st">"Residuals over age"</span>)</a></code></pre></div>
 <p><img src="why-moderndive_files/figure-html/unnamed-chunk-20-1.png" width="698.181818181818"></p>
+<hr>
 </div>
 <div id="babys-first-kaggle-predictive-modeling-competition-submission" class="section level2">
 <h2 class="hasAnchor">
@@ -400,22 +408,29 @@
 <a class="sourceLine" id="cb18-22" data-line-number="22"><span class="co">#&gt; 4     4    52      4.15</span></a></code></pre></div>
 <p><code>score_hat</code> are the predicted values! Let’s do another example, this time using the Kaggle <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques" target="_blank">House Prices: Advanced Regression Techniques</a> practice competition.</p>
 <p><img src="kaggle.png" width="500px" style="display: block; margin: auto;"></p>
-<p>Say you’ve downloaded the <code>train.csv</code> and <code>test.csv</code> training and test data available on the above Kaggle page. Here is a 9-line “baby’s first kaggle competition” submission that will:</p>
+<p>This Kaggle competition requires you to fit/train a model to the provided <code>train.csv</code> training set to make predictions of house prices in the provided <code>test.csv</code> test set. Here is code for a “baby’s first Kaggle competition” submission that will:</p>
 <ol style="list-style-type: decimal">
-<li>Read in the training and test data.</li>
+<li>Read in the training and test data (that we posted on GitHub).</li>
 <li>Fit a naive model of house sale price as a function of year sold.</li>
 <li>Write a <code>submission.csv</code> file that can be submitted to Kaggle. Note the use of the <code>ID</code> argument to indicate that a variable identifying each observational unit/row should be included.</li>
 </ol>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyverse)</a>
 <a class="sourceLine" id="cb19-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(moderndive)</a>
-<a class="sourceLine" id="cb19-3" data-line-number="3">train &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">"train.csv"</span>)</a>
-<a class="sourceLine" id="cb19-4" data-line-number="4">test &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">"test.csv"</span>)</a>
-<a class="sourceLine" id="cb19-5" data-line-number="5">house_model &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/lm">lm</a></span>(SalePrice <span class="op">~</span><span class="st"> </span>YrSold, <span class="dt">data =</span> train)</a>
-<a class="sourceLine" id="cb19-6" data-line-number="6">submission &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_regression_points.html">get_regression_points</a></span>(house_model, <span class="dt">newdata =</span> test, <span class="dt">ID =</span> <span class="st">"Id"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb19-7" data-line-number="7"><span class="st">  </span><span class="kw">select</span>(Id, <span class="dt">SalePrice =</span> SalePrice_hat)</a>
-<a class="sourceLine" id="cb19-8" data-line-number="8"><span class="kw">write_csv</span>(submission, <span class="st">"submission.csv"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb19-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb19-4" data-line-number="4"><span class="co"># Load in training and test set</span></a>
+<a class="sourceLine" id="cb19-5" data-line-number="5">train &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">"https://github.com/moderndive/moderndive/raw/master/vignettes/train.csv"</span>)</a>
+<a class="sourceLine" id="cb19-6" data-line-number="6">test &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">"https://github.com/moderndive/moderndive/raw/master/vignettes/test.csv"</span>)</a>
+<a class="sourceLine" id="cb19-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb19-8" data-line-number="8"><span class="co"># Fit model</span></a>
+<a class="sourceLine" id="cb19-9" data-line-number="9">house_model &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/lm">lm</a></span>(SalePrice <span class="op">~</span><span class="st"> </span>YrSold, <span class="dt">data =</span> train)</a>
+<a class="sourceLine" id="cb19-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb19-11" data-line-number="11"><span class="co"># Make and submit predictions</span></a>
+<a class="sourceLine" id="cb19-12" data-line-number="12">submission &lt;-<span class="st"> </span><span class="kw"><a href="../reference/get_regression_points.html">get_regression_points</a></span>(house_model, <span class="dt">newdata =</span> test, <span class="dt">ID =</span> <span class="st">"Id"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb19-13" data-line-number="13"><span class="st">  </span><span class="kw">select</span>(Id, <span class="dt">SalePrice =</span> SalePrice_hat)</a>
+<a class="sourceLine" id="cb19-14" data-line-number="14"><span class="kw">write_csv</span>(submission, <span class="st">"submission.csv"</span>)</a></code></pre></div>
 <p>Submitting <code>submission.csv</code> to the leaderboard for this Kaggle competition we get a “root mean squared logarithmic error” score of 0.42918, where smaller scores are better:</p>
-<p><img src="leaderboard.png" width="100%"></p>
+<p><img src="leaderboard_orig.png" width="100%"></p>
+<hr>
 </div>
 <div id="scalar-summaries-of-linear-regression-model-fits" class="section level2">
 <h2 class="hasAnchor">
@@ -430,12 +445,13 @@
 <a class="sourceLine" id="cb20-3" data-line-number="3"><span class="co">#&gt;   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df</span></a>
 <a class="sourceLine" id="cb20-4" data-line-number="4"><span class="co">#&gt;       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></a>
 <a class="sourceLine" id="cb20-5" data-line-number="5"><span class="co">#&gt; 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     2</span></a></code></pre></div>
+<hr>
 </div>
 <div id="the-details" class="section level2">
 <h2 class="hasAnchor">
 <a href="#the-details" class="anchor"></a>The Details</h2>
 <p>The three <code>get_regression_X()</code> functions are merely wrappers of functions from the <a href="https://CRAN.R-project.org/package=broom/vignettes/broom.html" target="_blank"><code>broom</code></a> package for converting statistical analysis objects into tidy tibbles:</p>
-<ul>
+<ol style="list-style-type: decimal">
 <li>
 <code><a href="../reference/get_regression_table.html">get_regression_table()</a></code> is a wrapper for <code><a href="https://www.rdocumentation.org/packages/broom/topics/reexports">broom::tidy()</a></code>
 </li>
@@ -445,7 +461,7 @@
 <li>
 <code>get_regression_summaries</code> is a wrapper for <code><a href="https://www.rdocumentation.org/packages/broom/topics/reexports">broom::glance()</a></code>
 </li>
-</ul>
+</ol>
 <p>Why did we take this approach to address the 5 common student questions/comments at the outset of the article?</p>
 <ul>
 <li>By writing wrappers to pre-existing functions, instead of creating new custom functions, there is minimal “re-inventing the wheel” necessary.</li>
@@ -492,7 +508,8 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#less-p-value-stars-more-confidence-intervals">1. Less p-value stars, more confidence intervals</a></li>
+<li><a href="#intro">Intro</a></li>
+      <li><a href="#less-p-value-stars-more-confidence-intervals">1. Less p-value stars, more confidence intervals</a></li>
       <li><a href="#outputs-as-tidy-tibbles">2. Outputs as tidy tibbles!</a></li>
       <li><a href="#birds-of-a-feather-should-flock-together-fitted-values-residuals">3. Birds of a feather should flock together: Fitted values &amp; residuals</a></li>
       <li><a href="#babys-first-kaggle-predictive-modeling-competition-submission">4. Baby’s first Kaggle predictive modeling competition submission!</a></li>
