@@ -29,6 +29,11 @@ Imports:
     infer,
     rlang
 RoxygenNote: 6.1.0
-Suggests: testthat,
+Suggests: 
+    testthat,
     covr,
-    ggplot2
+    ggplot2,
+    rmarkdown,
+    tidyverse,
+    patchwork
+VignetteBuilder: knitr

@@ -1,5 +1,6 @@
 # moderndive 0.2.0.9000
 
+* Added "Why `moderndive`?" vignette
 * Added ID argument to get_regression_points() to return a column that ID's the 
 observational units
 * Removed all `assertive::assert()`
