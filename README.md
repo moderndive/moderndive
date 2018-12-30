@@ -49,7 +49,7 @@ our essay [“Why should you use the moderndive package for intro linear
 regression?”](https://moderndive.github.io/moderndive/articles/why-moderndive.html)
 we highlight three functions in particular:
 
-#### 1\. Regression tables
+#### 1\. Get regression tables
 
 Get a tidy regression table **with** confidence intervals:
 
@@ -63,7 +63,7 @@ get_regression_table(score_model)
     ## 1 intercept    4.46      0.127     35.2    0        4.21     4.71 
     ## 2 age         -0.006     0.003     -2.31   0.021   -0.011   -0.001
 
-#### 2\. Fitted/predicted values and residuals
+#### 2\. Get fitted/predicted values and residuals
 
 Get information on each point/observation in your regression, including
 fitted/predicted values & residuals, organized in a single data frame
@@ -88,7 +88,7 @@ get_regression_points(score_model)
     ## 10    10   4.5    40      4.22    0.276
     ## # ... with 453 more rows
 
-#### 3\. Regression fit summaries
+#### 3\. Get regression fit summaries
 
 Get all the scalar summaries of a regression fit included in
 `summary(score_model)` along with the mean-squared error and root
@@ -107,7 +107,7 @@ get_regression_summaries(score_model)
 
 #### 1\. Print markdown friendly tables
 
-Want to output cleanly formated tables in an R Markdown document? Just
+Want to output cleanly formatted tables in an R Markdown document? Just
 add `print = TRUE` to any of the three `get_regression_`
 functions.
 
@@ -151,10 +151,10 @@ submission <- get_regression_points(house_model, newdata = test, ID = "Id") %>%
 write_csv(submission, "submission.csv")
 ```
 
-The resulting `submission.csv` is formatted such that in can be
+The resulting `submission.csv` is formatted such that it can be
 submitted on Kaggle, resulting in a “root mean squared logarithmic
 error” leaderboard score of
-0.42919.
+0.42918.
 
 ![](https://github.com/moderndive/moderndive/raw/master/vignettes/leaderboard_orig.png)<!-- -->
 
