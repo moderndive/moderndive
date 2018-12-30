@@ -1,19 +1,16 @@
 ---
-title: "Why should you use the `moderndive` package for intro linear regression?"
+title: "Why should you use the moderndive package for intro linear regression?"
 author: "Albert Y. Kim & Chester Ismay"
 date: "`r Sys.Date()`"
-output: 
-  rmarkdown::html_vignette:
-#    css: mystyles.css
-#    fig_caption: yes
-#    df_print: kable    
+output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Why should you use the moderndive package for intro linear regression?}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, include = FALSE}
+
+```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
@@ -48,15 +45,22 @@ evals %>%
   kable()
 ```
 
-The data is included in `evals` dataset in the [`moderndive`](https://moderndive.github.io/moderndive/){target="_blank"} R package for tidyverse-friendly introductory linear regression. Let's fit a regression model of teaching `score` as a function of instructor `age` and analyze the output "the good old fashioned way", using `summary.lm()`:
+The data is included in `evals` dataset in the [`moderndive`](https://moderndive.github.io/moderndive/){target="_blank"} R package for tidyverse-friendly introductory linear regression. Let's fit a regression model of teaching `score` as a function of instructor `age`:
 
-```{r,  fig.cap = "Your figure caption."}
+```{r}
 library(moderndive)
 score_model <- lm(score ~ age, data = evals)
+```
+
+### Regression analysis the "good old-fashioned" way
+
+Let's analyze the output of the fitted model `score_model` "the good old fashioned way": using `summary.lm()`.
+
+```{r}
 summary(score_model)
 ```
 
-Here are five common student comments/questions we've heard over the years in our intro stats courses:
+Here are five common student comments/questions we've heard over the years in our intro stats courses based on this output:
 
 1. "Wow! Look at those p-value stars! Stars are good, so I must get more stars somehow."
 1. "How do extract the values in the regression table?"
@@ -64,7 +68,29 @@ Here are five common student comments/questions we've heard over the years in ou
 1. "How do I apply this model to a new set of data to make predictions?"
 1. "What is all this other stuff at the bottom?"
 
-**We think that the functions included in the `moderndive` package are effective pedagogical tools that can help address these five common student comments/questions. Why now argue why.**
+### Regression analysis the tidyverse-friendly way
+
+To address these comments/questions, we've included three functions in the `moderndive` package that takes as a fitted model as input (in this case `score_model`) and returns the same information as `summary(score_model)` but in a tidyverse-friendly way:
+
+1. Get a tidy regression table **with** confidence intervals:
+    ```{r}
+    get_regression_table(score_model)
+    ```
+2. Get information on each point/observation, including fitted/predicted values & residuals, in a single data frame:
+    ```{r}
+    get_regression_points(score_model)
+    ```
+3. Get scalar summaries of a regression fit including $R^2$ and $R^2_{adj}$ but also the (root) mean-squared error:
+    ```{r}
+    get_regression_summaries(score_model)
+    ```
+
+
+### Why should you use the `moderndive` package?
+
+We think that these three functions included in the `moderndive` package are effective pedagogical tools that can help address the above five common student comments/questions. Why now argue why.
+
+
 
 
 ## 1. Less p-value stars, more confidence intervals
@@ -75,7 +101,7 @@ The first common student comment/question:
 
 We argue that the `summary()` output is deficient in an intro stats setting because:
 
-* The `Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1` only encourage **p-hacking**. In case you have not yet been convinced of the perniciousness of p-hacking, perhaps comedian [John Oliver can convince you](https://www.youtube.com/embed/0Rnq1NpHdmw){target="_blank"}.  
+* The `Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1` only encourage **p-hacking**. In case you have not yet been convinced of the perniciousness of p-hacking, perhaps comedian [John Oliver can convince you](https://www.youtube.com/watch?v=0Rnq1NpHdmw){target="_blank"}.  
 * While not a silver bullet for eliminating misinterpretations of statistical inference results, confidence intervals at least give students a sense of the practical significance and not just the statistical significance of the results. These should be included in the regression table output.
 
 Instead of `summary()`, let's use the `get_regression_table()` function in the `moderndive` package:
@@ -152,7 +178,10 @@ get_regression_points(score_model) %>%
 
 Observe that the original outcome variable `score` and explanatory/predictor variable `age` are now supplemented with the fitted/predicted value `score_hat` and `residual` columns. By putting the fitted/predicted values and the residuals next to the original data, we argue that the computation of these values is less opaque. For example in class, instructors can write out by hand how all the values in the first row, corresponding to the first instructor, are computed. 
 
-Furthermore, recall that all outputs in the `moderndive` package are data frames/tidy tibbles, thus you can easily create custom residual analysis plots, instead of the default ones yielded by `plot(score_model)`:
+Furthermore, recall that all outputs in the `moderndive` package are data frames/tidy tibbles, thus you can easily create custom residual analysis plots, instead of the default ones yielded by `plot(score_model)`. For example, we create:
+
+* A histogram of all residuals to investigate normality.
+* A *partial residual plot* of the relationship of the residuals vs all explanatory/predictor variables to investigate the presence of heteroskedasticity; in this case a scatterplot of the residuals over `age`.  
 
 ```{r, eval=FALSE}
 score_model_points <- get_regression_points(score_model)
@@ -217,7 +246,7 @@ Say you've downloaded the `train.csv` and `test.csv` training and test data avai
 1. Fit a naive model of house sale price as a function of year sold.
 1. Write a `submission.csv` file that can be submitted to Kaggle. Note the use of the `ID` argument to indicate that a variable identifying each observational unit/row should be included. 
 
-```{r}
+```{r, message=FALSE}
 library(tidyverse)
 library(moderndive)
 train <- read_csv("train.csv")
@@ -251,7 +280,7 @@ get_regression_summaries(score_model)
 
 ## The Details
 
-The three `get_regression_X()` functions are merely wrappers of functions from the [`broom`](https://cran.r-project.org/web/packages/broom/vignettes/broom.html){target="_blank"} package for converting statistical analysis objects into tidy tibbles:
+The three `get_regression_X()` functions are merely wrappers of functions from the [`broom`](https://CRAN.R-project.org/package=broom/vignettes/broom.html){target="_blank"} package for converting statistical analysis objects into tidy tibbles:
 
 * `get_regression_table()` is a wrapper for `broom::tidy()`
 * `get_regression_points()` is a wrapper for `broom::augment()`
@@ -260,8 +289,8 @@ The three `get_regression_X()` functions are merely wrappers of functions from t
 Why did we take this approach to address the 5 common student questions/comments at the outset of the article?
 
 * By writing wrappers to pre-existing functions, instead of creating new custom functions, there is minimal "re-inventing the wheel" necessary. 
-* The `broom` package function names `tidy()`, `augment()`, and `glance()` don't mean anything to intro stats students, where as the `moderndive` package function names `get_regression_table()`,`get_regression_points()`, and `get_regression_summaries()` have clear meanings.
-* The default column/variable names in the outputs of the above 3 functions are a little daunting for intro stats students to interpret. We cut out some of them and renamed them. For example, compare the outputs of the `get_regression_points()` wrapper function and the parent `broom::augment()` function.
+* The `broom` package function names `tidy()`, `augment()`, and `glance()` don't mean anything to intro stats students, where as the `moderndive` package function names `get_regression_table()`, `get_regression_points()`, and `get_regression_summaries()` have clear meanings.
+* The default column/variable names in the outputs of the above 3 functions are a little daunting for intro stats students to interpret. We cut out some of them and renamed many of them with more intuitive names. For example, compare the outputs of the `get_regression_points()` wrapper function and the parent `broom::augment()` function.
 
 ```{r}
 get_regression_points(score_model)
@@ -269,6 +298,8 @@ broom::augment(score_model)
 ```
 
 If you're curious to see how we designed these 3 functions, take a look at the source code on  [GitHub](https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R){target="_blank"}!
+
+Many thanks to Max Kuhn [\@topepo](https://github.com/topepo){target="_blank"} for his helpful feedback for this vignette.
 
 
 
