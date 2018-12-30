@@ -113,9 +113,9 @@
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(moderndive)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2">score_model &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/lm">lm</a></span>(score <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> evals)</a></code></pre></div>
 <p>Among the many useful features of the <code>moderndive</code> package outlined in our essay <a href="https://moderndive.github.io/moderndive/articles/why-moderndive.html">“Why should you use the moderndive package for intro linear regression?”</a> we highlight three functions in particular:</p>
-<div id="regression-tables" class="section level4">
+<div id="get-regression-tables" class="section level4">
 <h4 class="hasAnchor">
-<a href="#regression-tables" class="anchor"></a>1. Regression tables</h4>
+<a href="#get-regression-tables" class="anchor"></a>1. Get regression tables</h4>
 <p>Get a tidy regression table <strong>with</strong> confidence intervals:</p>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="reference/get_regression_table.html">get_regression_table</a></span>(score_model)</a></code></pre></div>
 <pre><code>## # A tibble: 2 x 7
@@ -124,9 +124,9 @@
 ## 1 intercept    4.46      0.127     35.2    0        4.21     4.71 
 ## 2 age         -0.006     0.003     -2.31   0.021   -0.011   -0.001</code></pre>
 </div>
-<div id="fittedpredicted-values-and-residuals" class="section level4">
+<div id="get-fittedpredicted-values-and-residuals" class="section level4">
 <h4 class="hasAnchor">
-<a href="#fittedpredicted-values-and-residuals" class="anchor"></a>2. Fitted/predicted values and residuals</h4>
+<a href="#get-fittedpredicted-values-and-residuals" class="anchor"></a>2. Get fitted/predicted values and residuals</h4>
 <p>Get information on each point/observation in your regression, including fitted/predicted values &amp; residuals, organized in a single data frame with intuitive variable names:</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="reference/get_regression_points.html">get_regression_points</a></span>(score_model)</a></code></pre></div>
 <pre><code>## # A tibble: 463 x 5
@@ -144,9 +144,9 @@
 ## 10    10   4.5    40      4.22    0.276
 ## # ... with 453 more rows</code></pre>
 </div>
-<div id="regression-fit-summaries" class="section level4">
+<div id="get-regression-fit-summaries" class="section level4">
 <h4 class="hasAnchor">
-<a href="#regression-fit-summaries" class="anchor"></a>3. Regression fit summaries</h4>
+<a href="#get-regression-fit-summaries" class="anchor"></a>3. Get regression fit summaries</h4>
 <p>Get all the scalar summaries of a regression fit included in <code><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary(score_model)</a></code> along with the mean-squared error and root mean-squared error:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="reference/get_regression_summaries.html">get_regression_summaries</a></span>(score_model)</a></code></pre></div>
 <pre><code>## # A tibble: 1 x 8
