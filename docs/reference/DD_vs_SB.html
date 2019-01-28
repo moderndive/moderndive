@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>moderndive - Tidyverse-Friendly Introductory Linear Regression — moderndive • moderndive</title>
+<title>Dunkin Donuts vs Starbucks — DD_vs_SB • moderndive</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -30,13 +30,10 @@
 
 
 
-<meta property="og:title" content="moderndive - Tidyverse-Friendly Introductory Linear Regression — moderndive" />
+<meta property="og:title" content="Dunkin Donuts vs Starbucks — DD_vs_SB" />
 
-<meta property="og:description" content="Datasets and wrapper functions for tidyverse-friendly introductory linear
-regression, used in ModernDive: An Introduction to Statistical and Data
-Sciences via R available at https://moderndive.com/ and DataCamp's
-Modeling with Data in the Tidyverse available at
-https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse." />
+<meta property="og:description" content="Number of Dunkin Donuts &amp;amp; Starbucks, median income, and population in 1024 
+census tracts in eastern Massachusetts in 2016." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -116,60 +113,64 @@ https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>moderndive - Tidyverse-Friendly Introductory Linear Regression</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/moderndive.R'><code>R/moderndive.R</code></a></small>
-    <div class="hidden name"><code>moderndive.Rd</code></div>
+    <h1>Dunkin Donuts vs Starbucks</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/DD_vs_SB.R'><code>R/DD_vs_SB.R</code></a></small>
+    <div class="hidden name"><code>DD_vs_SB.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Datasets and wrapper functions for tidyverse-friendly introductory linear
-regression, used in ModernDive: An Introduction to Statistical and Data
-Sciences via R available at <a href='https://moderndive.com/'>https://moderndive.com/</a> and DataCamp's
-Modeling with Data in the Tidyverse available at
-<a href='https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse'>https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse</a>.</p>
+    <p>Number of Dunkin Donuts &amp; Starbucks, median income, and population in 1024 
+census tracts in eastern Massachusetts in 2016.</p>
     
     </div>
 
+    <pre class="usage"><span class='no'>DD_vs_SB</span></pre>
         
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
+
+    <p>A data frame of 1024 rows representing census tracts and 6 variables</p><dl class='dl-horizontal'>
+  <dt>county</dt><dd><p>County where census tract is located. Either Bristol, Essex, Middlesex, Norfolk, Plymouth, or Suffolk county</p></dd>
+  <dt>FIPS</dt><dd><p>Federal Information Processing Standards code identifying census tract</p></dd>
+  <dt>median_income</dt><dd><p>Median income of census tract</p></dd>
+  <dt>population</dt><dd><p>Population of census tract</p></dd>
+  <dt>shop_type</dt><dd><p>Coffee shop type: Dunkin Donuts or Starbucks</p></dd>
+  <dt>shops</dt><dd><p>Number of shops</p></dd>
+</dl>
+    
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p>US Census Bureau. Code used to scrape data available at <a href='https://github.com/DelaneyMoran/FinalProject'>https://github.com/DelaneyMoran/FinalProject</a></p>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'>library</span>(<span class='no'>moderndive</span>)
-
-<span class='co'># Fit regression model:</span>
-<span class='no'>mpg_model</span> <span class='kw'>&lt;-</span> <span class='fu'>lm</span>(<span class='no'>mpg</span> ~ <span class='no'>hp</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)
-
-<span class='co'># Regression tables:</span>
-<span class='fu'><a href='get_regression_table.html'>get_regression_table</a></span>(<span class='no'>mpg_model</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 7
-#&gt;   term      estimate std_error statistic p_value lower_ci upper_ci
-#&gt;   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-#&gt; 1 intercept   30.1        1.63     18.4        0   26.8     33.4  
-#&gt; 2 hp          -0.068      0.01     -6.74       0   -0.089   -0.048</div><div class='input'>
-<span class='co'># Information on each point in a regression:</span>
-<span class='fu'><a href='get_regression_points.html'>get_regression_points</a></span>(<span class='no'>mpg_model</span>)</div><div class='output co'>#&gt; # A tibble: 32 x 5
-#&gt;       ID   mpg    hp mpg_hat residual
-#&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;
-#&gt;  1     1  21     110    22.6   -1.59 
-#&gt;  2     2  21     110    22.6   -1.59 
-#&gt;  3     3  22.8    93    23.8   -0.954
-#&gt;  4     4  21.4   110    22.6   -1.19 
-#&gt;  5     5  18.7   175    18.2    0.541
-#&gt;  6     6  18.1   105    22.9   -4.84 
-#&gt;  7     7  14.3   245    13.4    0.917
-#&gt;  8     8  24.4    62    25.9   -1.47 
-#&gt;  9     9  22.8    95    23.6   -0.817
-#&gt; 10    10  19.2   123    21.7   -2.51 
-#&gt; # ... with 22 more rows</div><div class='input'>
-<span class='co'># Regression summaries</span>
-<span class='fu'><a href='get_regression_summaries.html'>get_regression_summaries</a></span>(<span class='no'>mpg_model</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 8
-#&gt;   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df
-#&gt;       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1     0.602         0.589  14.0  3.74  3.86      45.5       0     2</div></pre>
+    <pre class="examples"><div class='input'><span class='co'># Compute correlation between a census tract's median income and number of cafes of</span>
+<span class='co'># each type after removing two cases where median_income is missing</span>
+<span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:testthat’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    matches</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='no'>DD_vs_SB</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>shops_per_1000</span> <span class='kw'>=</span> <span class='fl'>1000</span> * <span class='no'>shops</span>/<span class='no'>population</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(!<span class='fu'>is.na</span>(<span class='no'>median_income</span>)) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>shop_type</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span>(<span class='kw'>cor</span> <span class='kw'>=</span> <span class='fu'>cor</span>(<span class='no'>median_income</span>, <span class='no'>shops_per_1000</span>))</div><div class='output co'>#&gt; # A tibble: 2 x 2
+#&gt;   shop_type         cor
+#&gt;   &lt;chr&gt;           &lt;dbl&gt;
+#&gt; 1 dunkin_donuts -0.0575
+#&gt; 2 starbucks      0.0980</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-            
+      
+      <li><a href="#format">Format</a></li>
+
+      <li><a href="#source">Source</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

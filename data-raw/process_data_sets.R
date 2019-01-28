@@ -110,3 +110,11 @@ mythbusters_yawn <- tibble::tibble(group, yawn) %>%
   mutate(subj = seq(1, 50)) %>% 
   select(subj, group, yawn)
 devtools::use_data(mythbusters_yawn, overwrite = TRUE)
+
+
+
+# Alaska Airlines flights only
+library(nycflights13)
+alaska_flights <- flights %>% 
+  filter(carrier == "AS")
+usethis::use_data(alaska_flights, overwrite = TRUE)
