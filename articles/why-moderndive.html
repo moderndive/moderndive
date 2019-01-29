@@ -83,7 +83,7 @@
       <h1>Why should you use the moderndive package for intro linear regression?</h1>
                         <h4 class="author">Albert Y. Kim &amp; Chester Ismay</h4>
             
-            <h4 class="date">2018-12-30</h4>
+            <h4 class="date">2019-01-29</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ModernDive/moderndive_package/blob/master/vignettes/why-moderndive.Rmd"><code>vignettes/why-moderndive.Rmd</code></a></small>
       <div class="hidden name"><code>why-moderndive.Rmd</code></div>
@@ -226,7 +226,7 @@
 <a class="sourceLine" id="cb4-12" data-line-number="12"><span class="co">#&gt;  8     8   4.1    51      4.16   -0.059</span></a>
 <a class="sourceLine" id="cb4-13" data-line-number="13"><span class="co">#&gt;  9     9   3.4    51      4.16   -0.759</span></a>
 <a class="sourceLine" id="cb4-14" data-line-number="14"><span class="co">#&gt; 10    10   4.5    40      4.22    0.276</span></a>
-<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt; # ... with 453 more rows</span></a></code></pre></div>
+<a class="sourceLine" id="cb4-15" data-line-number="15"><span class="co">#&gt; # … with 453 more rows</span></a></code></pre></div>
 </li>
 <li>
 <p>Get scalar summaries of a regression fit including <span class="math inline">\(R^2\)</span> and <span class="math inline">\(R^2_{adj}\)</span> but also the (root) mean-squared error:</p>
@@ -313,7 +313,7 @@
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/MathFun">sqrt</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/diag">diag</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/vcov">vcov</a></span>(score_model)))</a>
 <a class="sourceLine" id="cb8-2" data-line-number="2"><span class="co">#&gt; (Intercept)         age </span></a>
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="co">#&gt; 0.126778499 0.002569157</span></a></code></pre></div>
-<p>Say what?!? It shouldn’t be this hard! However since <code><a href="../reference/get_regression_table.html">get_regression_table()</a></code> returns a data frame/tidy tibble, you can easily extract columns using <code><a href="http://dplyr.tidyverse.org/reference/pull.html">dplyr::pull()</a></code>:</p>
+<p>Say what?!? It shouldn’t be this hard! However since <code><a href="../reference/get_regression_table.html">get_regression_table()</a></code> returns a data frame/tidy tibble, you can easily extract columns using <code><a href="https://dplyr.tidyverse.org/reference/pull.html">dplyr::pull()</a></code>:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw"><a href="../reference/get_regression_table.html">get_regression_table</a></span>(score_model) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span><span class="kw">pull</span>(std_error)</a>
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#&gt; [1] 0.127 0.003</span></a></code></pre></div>
@@ -395,7 +395,7 @@
 <a class="sourceLine" id="cb18-9" data-line-number="9"><span class="co">#&gt; 2   140    34    7.83 female not mino… english  tenu… not formal color    </span></a>
 <a class="sourceLine" id="cb18-10" data-line-number="10"><span class="co">#&gt; 3   334    50    7.17 male   not mino… english  tenu… not formal color    </span></a>
 <a class="sourceLine" id="cb18-11" data-line-number="11"><span class="co">#&gt; 4   148    52    4.83 male   minority  non-eng… tenu… formal     color    </span></a>
-<a class="sourceLine" id="cb18-12" data-line-number="12"><span class="co">#&gt; # ... with 3 more variables: cls_did_eval &lt;int&gt;, cls_students &lt;int&gt;,</span></a>
+<a class="sourceLine" id="cb18-12" data-line-number="12"><span class="co">#&gt; # … with 3 more variables: cls_did_eval &lt;int&gt;, cls_students &lt;int&gt;,</span></a>
 <a class="sourceLine" id="cb18-13" data-line-number="13"><span class="co">#&gt; #   cls_level &lt;fct&gt;</span></a>
 <a class="sourceLine" id="cb18-14" data-line-number="14"></a>
 <a class="sourceLine" id="cb18-15" data-line-number="15"><span class="kw"><a href="../reference/get_regression_points.html">get_regression_points</a></span>(score_model, <span class="dt">newdata =</span> new_evals)</a>
@@ -482,11 +482,11 @@
 <a class="sourceLine" id="cb21-12" data-line-number="12"><span class="co">#&gt;  8     8   4.1    51      4.16   -0.059</span></a>
 <a class="sourceLine" id="cb21-13" data-line-number="13"><span class="co">#&gt;  9     9   3.4    51      4.16   -0.759</span></a>
 <a class="sourceLine" id="cb21-14" data-line-number="14"><span class="co">#&gt; 10    10   4.5    40      4.22    0.276</span></a>
-<a class="sourceLine" id="cb21-15" data-line-number="15"><span class="co">#&gt; # ... with 453 more rows</span></a>
+<a class="sourceLine" id="cb21-15" data-line-number="15"><span class="co">#&gt; # … with 453 more rows</span></a>
 <a class="sourceLine" id="cb21-16" data-line-number="16">broom<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/broom/topics/reexports">augment</a></span>(score_model)</a>
 <a class="sourceLine" id="cb21-17" data-line-number="17"><span class="co">#&gt; # A tibble: 463 x 9</span></a>
 <a class="sourceLine" id="cb21-18" data-line-number="18"><span class="co">#&gt;    score   age .fitted .se.fit  .resid    .hat .sigma   .cooksd .std.resid</span></a>
-<a class="sourceLine" id="cb21-19" data-line-number="19"><span class="co">#&gt;  * &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb21-19" data-line-number="19"><span class="co">#&gt;    &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;</span></a>
 <a class="sourceLine" id="cb21-20" data-line-number="20"><span class="co">#&gt;  1   4.7    36    4.25  0.0405  0.452  0.00560  0.542 0.00197        0.837</span></a>
 <a class="sourceLine" id="cb21-21" data-line-number="21"><span class="co">#&gt;  2   4.1    36    4.25  0.0405 -0.148  0.00560  0.542 0.000212      -0.274</span></a>
 <a class="sourceLine" id="cb21-22" data-line-number="22"><span class="co">#&gt;  3   3.9    36    4.25  0.0405 -0.348  0.00560  0.542 0.00117       -0.645</span></a>
@@ -497,7 +497,7 @@
 <a class="sourceLine" id="cb21-27" data-line-number="27"><span class="co">#&gt;  8   4.1    51    4.16  0.0261 -0.0591 0.00232  0.542 0.0000139     -0.109</span></a>
 <a class="sourceLine" id="cb21-28" data-line-number="28"><span class="co">#&gt;  9   3.4    51    4.16  0.0261 -0.759  0.00232  0.541 0.00229       -1.40 </span></a>
 <a class="sourceLine" id="cb21-29" data-line-number="29"><span class="co">#&gt; 10   4.5    40    4.22  0.0331  0.276  0.00374  0.542 0.000488       0.510</span></a>
-<a class="sourceLine" id="cb21-30" data-line-number="30"><span class="co">#&gt; # ... with 453 more rows</span></a></code></pre></div>
+<a class="sourceLine" id="cb21-30" data-line-number="30"><span class="co">#&gt; # … with 453 more rows</span></a></code></pre></div>
 <p>If you’re curious to see how we designed these 3 functions, take a look at the source code on <a href="https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R" target="_blank">GitHub</a>!</p>
 <p>Many thanks to Max Kuhn <a href="https://github.com/topepo" target="_blank">@topepo</a> and Jenny Smetzer <a href="https://github.com/smetzer180" target="_blank">@smetzer180</a> for their helpful feedback for this vignette.</p>
 </div>

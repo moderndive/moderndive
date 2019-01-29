@@ -142,7 +142,7 @@
 ##  8     8   4.1    51      4.16   -0.059
 ##  9     9   3.4    51      4.16   -0.759
 ## 10    10   4.5    40      4.22    0.276
-## # ... with 453 more rows</code></pre>
+## # … with 453 more rows</code></pre>
 </div>
 <div id="get-regression-fit-summaries" class="section level4">
 <h4 class="hasAnchor">
@@ -252,12 +252,12 @@
 ##  8     8   4.1    51      4.16   -0.059
 ##  9     9   3.4    51      4.16   -0.759
 ## 10    10   4.5    40      4.22    0.276
-## # ... with 453 more rows</code></pre>
+## # … with 453 more rows</code></pre>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(broom)</a>
 <a class="sourceLine" id="cb14-2" data-line-number="2">broom<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/broom/topics/reexports">augment</a></span>(score_model)</a></code></pre></div>
 <pre><code>## # A tibble: 463 x 9
 ##    score   age .fitted .se.fit  .resid    .hat .sigma   .cooksd .std.resid
-##  * &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+##    &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
 ##  1   4.7    36    4.25  0.0405  0.452  0.00560  0.542 0.00197        0.837
 ##  2   4.1    36    4.25  0.0405 -0.148  0.00560  0.542 0.000212      -0.274
 ##  3   3.9    36    4.25  0.0405 -0.348  0.00560  0.542 0.00117       -0.645
@@ -268,7 +268,7 @@
 ##  8   4.1    51    4.16  0.0261 -0.0591 0.00232  0.542 0.0000139     -0.109
 ##  9   3.4    51    4.16  0.0261 -0.759  0.00232  0.541 0.00229       -1.40 
 ## 10   4.5    40    4.22  0.0331  0.276  0.00374  0.542 0.000488       0.510
-## # ... with 453 more rows</code></pre>
+## # … with 453 more rows</code></pre>
 <hr>
 <p>Please note that this project is released with a <a href="CONDUCT.html">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
