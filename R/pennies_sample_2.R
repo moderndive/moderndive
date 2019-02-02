@@ -1,7 +1,7 @@
 #' A sample of 50 pennies
 #'
 #' A sample of 50 pennies contained in a 50 cent roll from Florence Bank on
-#' Friday February 1, 2019 in downtown Northampton, Massachusetts, USA \url{https://goo.gl/maps/cko18WXRfVs}.
+#' Friday February 1, 2019 in downtown Northampton, Massachusetts, USA \url{https://goo.gl/maps/AF88fpvVfm12}.
 #'
 #' @format A data frame of 40 rows representing 40 randomly sampled pennies from \code{\link{pennies}} and 2 variables
 #' \describe{
