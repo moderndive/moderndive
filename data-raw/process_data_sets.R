@@ -5,6 +5,7 @@ library(devtools)
 library(usethis)
 
 
+#----
 # Dunkin Donuts and Starbucks counts in 2016 for 1024 Eastern Massachusetts census tracts
 DD_vs_SB <- 
   # Read in eastern MA census tract population counts. Source:
@@ -29,6 +30,7 @@ usethis::use_data(DD_vs_SB, overwrite = TRUE)
 
 
 
+#----
 # House price data from https://www.kaggle.com/harlfoxem/housesalesprediction
 house_prices <- read_csv("data-raw/kc_house_data.csv") %>% 
   mutate(
@@ -42,6 +44,7 @@ usethis::use_data(house_prices, overwrite = TRUE)
 
 
 
+#----
 # evals data from: https://www.openintro.org/stat/data/?data=evals
 load(url("http://www.openintro.org/stat/data/evals.RData"))
 evals <- evals %>% 
@@ -51,32 +54,36 @@ evals <- evals %>%
   select(-c(cls_perc_eval, cls_credits, cls_profs)) %>% 
   mutate(ID = 1:n()) %>% 
   select(ID, score, age, bty_avg, gender, ethnicity, language, rank, starts_with("pic_"), everything())
-devtools::use_data(evals, overwrite = TRUE)
+use_this::use_data(evals, overwrite = TRUE)
 
 
 
-# 10 samples of size n=50 from
-# https://github.com/moderndive/moderndive_book/blob/master/images/sampling_bowl.jpeg
-bowl_samples <- read_csv("data-raw/sampling_responses.csv") %>% 
-  mutate(n = red + white + green)
-devtools::use_data(bowl_samples, overwrite = TRUE)
-
-
-
-# 33 tactile samples of size n=50 from
-# https://github.com/moderndive/moderndive_book/blob/master/images/sampling_bowl.jpeg
-tactile_prop_red <- read_csv("data-raw/sampling_red_balls.csv")
-devtools::use_data(tactile_prop_red, overwrite = TRUE)
-
-
-
+#----
 # Population of 800 pennies from
 # https://www.statcrunch.com/app/index.php?dataid=301596
 pennies <- read_csv("data-raw/population_of_pennies.csv")
-devtools::use_data(pennies, overwrite = TRUE)
+use_this::use_data(pennies, overwrite = TRUE)
+
+
+# A pseudorandom sample of the `pennies` tibble used
+# in explaining bootstrapping
+set.seed(2018)
+pennies_sample <- pennies %>% sample_n(40)
+use_this::use_data(pennies_sample, overwrite = TRUE)
+
+# Sample of 50 pennies from Florence Bank at the corner of Main Street and
+# Pleasant/King Street in Northampton MA on Friday 2019/2/1
+pennies_sample_2 <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vRtLeHU6j9PRTAJ0bRcUF2uVc1TzYeXd9cC0lwCRfBREy8POx6MgfVeK2CJU6emRKFn_51H-Z8H5YlS/pub?gid=0&single=true&output=csv" %>% 
+  read_csv() %>% 
+  mutate(ID = 1:n()) %>% 
+  select(ID, year)
+usethis::use_data(pennies_sample_2, overwrite = TRUE)
+  
 
 
 
+
+#----
 # Sampling bowl used in class http://www.qualitytng.com/sampling-bowls/
 set.seed(76)
 N <- 2400
@@ -88,16 +95,24 @@ bowl <-
   mutate(
     ball_ID = 1:N) %>% 
   select(ball_ID, everything())
-devtools::use_data(bowl, overwrite = TRUE)
-
-# A pseudorandom sample of the `pennies` tibble used
-# in explaining bootstrapping
-set.seed(2018)
-pennies_sample <- pennies %>% sample_n(40)
-devtools::use_data(pennies_sample, overwrite = TRUE)
+use_this::use_data(bowl, overwrite = TRUE)
 
 
+# 10 samples of size n=50 from
+# https://github.com/moderndive/moderndive_book/blob/master/images/sampling_bowl.jpeg
+bowl_samples <- read_csv("data-raw/sampling_responses.csv") %>% 
+  mutate(n = red + white + green)
+use_this::use_data(bowl_samples, overwrite = TRUE)
 
+
+# 33 tactile samples of size n=50 from
+# https://github.com/moderndive/moderndive_book/blob/master/images/sampling_bowl.jpeg
+tactile_prop_red <- read_csv("data-raw/sampling_red_balls.csv")
+use_this::use_data(tactile_prop_red, overwrite = TRUE)
+
+
+
+#----
 # Data derived from the results of a study conducted
 # on the Mythbusters television show on Discovery Network
 # investigating whether yawning is contagious
@@ -109,10 +124,11 @@ mythbusters_yawn <- tibble::tibble(group, yawn) %>%
   sample_n(50) %>% 
   mutate(subj = seq(1, 50)) %>% 
   select(subj, group, yawn)
-devtools::use_data(mythbusters_yawn, overwrite = TRUE)
+use_this::use_data(mythbusters_yawn, overwrite = TRUE)
 
 
 
+#----
 # Alaska Airlines flights only
 library(nycflights13)
 alaska_flights <- flights %>% 
