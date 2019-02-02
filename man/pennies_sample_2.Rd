@@ -14,7 +14,7 @@ pennies_sample_2
 }
 \description{
 A sample of 50 pennies contained in a 50 cent roll from Florence Bank on
-Friday February 1, 2019 in downtown Northampton, Massachusetts, USA \url{https://goo.gl/maps/cko18WXRfVs}.
+Friday February 1, 2019 in downtown Northampton, Massachusetts, USA \url{https://goo.gl/maps/AF88fpvVfm12}.
 }
 \examples{
 library(dplyr)
