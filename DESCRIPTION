@@ -27,7 +27,7 @@ Imports:
     stringr,
     knitr,
     infer,
-    rlang
+    rlang (>= 0.2.0)
 RoxygenNote: 6.1.0
 Suggests: 
     testthat,
