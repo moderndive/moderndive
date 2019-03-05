@@ -73,7 +73,7 @@ get_regression_summaries(score_model)
 
 #### 1. Print markdown friendly tables
 
-Want to output cleanly formatted tables in an R Markdown document? Just add `print = TRUE` to any of the three `get_regression_` functions.
+Want to output cleanly formatted tables in an R Markdown document? Just add `print = TRUE` to any of the three `get_regression_*()` functions.
 
 ```{r}
 get_regression_table(score_model, print = TRUE)
@@ -115,7 +115,7 @@ The three `get_regression` functions are wrappers of functions from the [`broom`
 
 1. `get_regression_table()` is a wrapper for `broom::tidy()`
 1. `get_regression_points()` is a wrapper for `broom::augment()`
-1. `get_regression_summaries` is a wrapper for `broom::glance()`
+1. `get_regression_summaries()` is a wrapper for `broom::glance()`
 
 Why did we create these wrappers?
 
