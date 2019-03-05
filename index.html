@@ -161,7 +161,7 @@
 <div id="print-markdown-friendly-tables" class="section level4">
 <h4 class="hasAnchor">
 <a href="#print-markdown-friendly-tables" class="anchor"></a>1. Print markdown friendly tables</h4>
-<p>Want to output cleanly formatted tables in an R Markdown document? Just add <code>print = TRUE</code> to any of the three <code>get_regression_</code> functions.</p>
+<p>Want to output cleanly formatted tables in an R Markdown document? Just add <code>print = TRUE</code> to any of the three <code>get_regression_*()</code> functions.</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="reference/get_regression_table.html">get_regression_table</a></span>(score_model, <span class="dt">print =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <table class="table table">
 <thead><tr class="header">
@@ -230,7 +230,7 @@
 <code><a href="reference/get_regression_points.html">get_regression_points()</a></code> is a wrapper for <code><a href="https://www.rdocumentation.org/packages/broom/topics/reexports">broom::augment()</a></code>
 </li>
 <li>
-<code>get_regression_summaries</code> is a wrapper for <code><a href="https://www.rdocumentation.org/packages/broom/topics/reexports">broom::glance()</a></code>
+<code><a href="reference/get_regression_summaries.html">get_regression_summaries()</a></code> is a wrapper for <code><a href="https://www.rdocumentation.org/packages/broom/topics/reexports">broom::glance()</a></code>
 </li>
 </ol>
 <p>Why did we create these wrappers?</p>
