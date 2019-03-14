@@ -25,7 +25,6 @@ library(dplyr)
 library(ggplot2)
 library(moderndive)
 library(knitr)
-library(patchwork)
 library(broom)
 
 # https://www.youtube.com/watch?v=xjJ7FheCkCU
@@ -207,21 +206,17 @@ ggplot(score_model_points, aes(x = age, y = residual)) +
   labs(title = "Residuals over age")
 ```
 ```{r, echo=FALSE, eval=TRUE, fig.width=16/2.2, fig.height=9/2.2}
-library(patchwork)
 score_model_points <- get_regression_points(score_model)
 
 # Histogram of residuals:
-p1 <- ggplot(score_model_points, aes(x = residual)) +
+ggplot(score_model_points, aes(x = residual)) +
   geom_histogram(bins = 20) +
   labs(title = "Histogram of residuals")
 
 # Investigating patterns:
-p2 <- ggplot(score_model_points, aes(x = age, y = residual)) +
+ggplot(score_model_points, aes(x = age, y = residual)) +
   geom_point() +
   labs(title = "Residuals over age")
-
-# plot patchwork
-p1 + p2
 ```
 
 
