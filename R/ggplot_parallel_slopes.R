@@ -46,11 +46,6 @@ globalVariables(c(
 #'   labs(x = "log10 square feet living space", y = "log10 price in USD", 
 #'        title = "House prices in Seattle: Interaction model")
 gg_parallel_slopes <- function(y, num_x, cat_x, data, alpha = 1){
-  assertive::assert_is_a_string(y)
-  assertive::assert_is_a_string(num_x)
-  assertive::assert_is_a_string(cat_x)
-  assertive::assert_is_data.frame(data)
-  
   # Define model formula and fitted/predicted value
   formula <- glue::glue(y, " ~ ", num_x, " + ", cat_x) %>% 
     as.formula()
