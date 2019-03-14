@@ -5,7 +5,7 @@
 \title{Get regression points}
 \usage{
 get_regression_points(model, digits = 3, print = FALSE,
-  newdata = NULL)
+  newdata = NULL, ID = NULL)
 }
 \arguments{
 \item{model}{an \code{lm()} model object}
@@ -18,6 +18,13 @@ get_regression_points(model, digits = 3, print = FALSE,
 obtain new fitted values and/or predicted values y-hat. Note the format of 
 \code{newdata} must match the format of the original \code{data} used to fit
 \code{model}.}
+
+\item{ID}{A string indicating which variable in either the original data used to fit
+\code{model} or \code{newdata} should be used as 
+an identification variable to distinguish the observational units 
+in each row. This variable will be the left-most variable in the output data 
+frame. If \code{ID} is unspecified, a column \code{ID} with values 1 through the number of
+rows is returned as the identification variable.}
 }
 \value{
 A tibble-formatted regression table of outcome/response variable, 
@@ -29,29 +36,30 @@ Output information on each point/observation used in an \code{lm()} regression i
 and renames the variables to have more intuitive names.
 }
 \examples{
-library(moderndive)
 library(dplyr)
 library(tibble)
+
+# Convert rownames to column
+mtcars <- mtcars \%>\% 
+  rownames_to_column(var = "automobile")
 
 # Fit lm() regression:
 mpg_model <- lm(mpg ~ cyl, data = mtcars)
 
 # Get information on all points in regression:
-get_regression_points(mpg_model)
+get_regression_points(mpg_model, ID = "automobile")
 
 # Create training and test set based on mtcars: 
-mtcars <- mtcars \%>\% 
-  rownames_to_column(var = "model")
 training_set <- mtcars \%>\% 
   sample_frac(0.5)
 test_set <- mtcars \%>\% 
-  anti_join(training_set, by = "model")
+  anti_join(training_set, by = "automobile")
 
 # Fit model to training set:
 mpg_model_train <- lm(mpg ~ cyl, data = training_set)
 
 # Make predictions on test set:
-get_regression_points(mpg_model_train, newdata = test_set)
+get_regression_points(mpg_model_train, newdata = test_set, ID = "automobile")
 }
 \seealso{
 \code{\link[broom]{augment}}, \code{\link{get_regression_table}}, \code{\link{get_regression_summaries}}

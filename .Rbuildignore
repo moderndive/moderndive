@@ -3,6 +3,7 @@
 ^\.travis\.yml$
 ^cran-comments\.md$
 ^\.httr-oauth$
+^\.covrignore$
 ^README\.md$
 ^README\.Rmd$
 ^data-raw$
@@ -12,3 +13,4 @@
 ^codecov\.yml$
 ^scratchpad\.R$
 ^CRAN-RELEASE$
+^Publish Document\.dcf$

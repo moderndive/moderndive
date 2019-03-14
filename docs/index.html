@@ -44,6 +44,18 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Articles
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+<li>
+      <a href="articles/why-moderndive.html">Why should you use the moderndive package for intro linear regression?</a>
+    </li>
+  </ul>
+</li>
 <li>
   <a href="news/index.html">Changelog</a>
 </li>
@@ -87,53 +99,69 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>Get the released version from CRAN:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">"moderndive"</span>)</code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">"moderndive"</span>)</a></code></pre></div>
 <p>Or the development version from GitHub:</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># If you haven't installed remotes yet, do so:</span>
-<span class="co"># install.packages("remotes")</span>
-remotes<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"moderndive/moderndive"</span>)</code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># If you haven't installed remotes yet, do so:</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co"># install.packages("remotes")</span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">remotes<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"moderndive/moderndive"</span>)</a></code></pre></div>
 </div>
 <div id="demo" class="section level2">
 <h2 class="hasAnchor">
 <a href="#demo" class="anchor"></a>Demo</h2>
-<p>The following three <code>get_regression_OUTPUT()</code> functions are tidyverse-friendly wrapper functions meant for the novice regression user. They have more intuitive/verb-like function names than the corresponding <code>broom</code> package commands:</p>
-<ul>
-<li>
-<code><a href="reference/get_regression_table.html">get_regression_table()</a></code>: a wrapper to <code>tidy()</code> to return the regression table</li>
-<li>
-<code><a href="reference/get_regression_points.html">get_regression_points()</a></code>: a wrapper to <code>augment()</code> to return a table of all regression points</li>
-<li>
-<code><a href="reference/get_regression_summaries.html">get_regression_summaries()</a></code>: a wrapper to <code>glance()</code> to return summary statistics about the regression</li>
-</ul>
-<p>Furthermore</p>
-<ul>
-<li>
-<code><a href="reference/get_regression_table.html">get_regression_table()</a></code> returns confidence intervals (not just p-values) by default</li>
-<li>The outputs are returned as <a href="https://blog.rstudio.com/2016/03/24/tibble-1-0-0/">tibbles</a>
-</li>
-<li>It cleans the output format by eliminating all information not pertinent to novice regression users</li>
-<li>You can set the output to be in <code><a href="http://www.rdocumentation.org/packages/knitr/topics/kable">knitr::kable()</a></code> markdown format, suitable for printing in R Markdown documents, via <code>print = TRUE</code>
-</li>
-</ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(moderndive)
-<span class="kw">library</span>(dplyr)</code></pre></div>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Convert cyl to factor variable</span>
-mtcars &lt;-<span class="st"> </span>mtcars <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="dt">cyl =</span> <span class="kw">as.factor</span>(cyl))
-
-<span class="co"># Regression models</span>
-mpg_model &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg <span class="op">~</span><span class="st"> </span>hp, <span class="dt">data =</span> mtcars)
-mpg_mlr_model &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg <span class="op">~</span><span class="st"> </span>hp <span class="op">+</span><span class="st"> </span>wt, <span class="dt">data =</span> mtcars)
-mpg_mlr_model2 &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg <span class="op">~</span><span class="st"> </span>hp <span class="op">+</span><span class="st"> </span>cyl, <span class="dt">data =</span> mtcars)
-
-<span class="co"># Regression tables</span>
-<span class="kw"><a href="reference/get_regression_table.html">get_regression_table</a></span>(<span class="dt">model =</span> mpg_model)</code></pre></div>
+<p>Let’s fit a simple linear regression of teaching <code>score</code> (as evaluated by students) over instructor age for 463 instructors at the UT Austin:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw">library</span>(moderndive)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">score_model &lt;-<span class="st"> </span><span class="kw">lm</span>(score <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> evals)</a></code></pre></div>
+<p>Among the many useful features of the <code>moderndive</code> package outlined in our essay <a href="https://moderndive.github.io/moderndive/articles/why-moderndive.html">“Why should you use the moderndive package for intro linear regression?”</a> we highlight three functions in particular:</p>
+<div id="get-regression-tables" class="section level4">
+<h4 class="hasAnchor">
+<a href="#get-regression-tables" class="anchor"></a>1. Get regression tables</h4>
+<p>Get a tidy regression table <strong>with</strong> confidence intervals:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="kw"><a href="reference/get_regression_table.html">get_regression_table</a></span>(score_model)</a></code></pre></div>
 <pre><code>## # A tibble: 2 x 7
 ##   term      estimate std_error statistic p_value lower_ci upper_ci
 ##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;
-## 1 intercept   30.1        1.63     18.4        0   26.8     33.4  
-## 2 hp          -0.068      0.01     -6.74       0   -0.089   -0.048</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw"><a href="reference/get_regression_table.html">get_regression_table</a></span>(mpg_mlr_model, <span class="dt">digits =</span> <span class="dv">4</span>, <span class="dt">print =</span> <span class="ot">TRUE</span>)</code></pre></div>
+## 1 intercept    4.46      0.127     35.2    0        4.21     4.71 
+## 2 age         -0.006     0.003     -2.31   0.021   -0.011   -0.001</code></pre>
+</div>
+<div id="get-fittedpredicted-values-and-residuals" class="section level4">
+<h4 class="hasAnchor">
+<a href="#get-fittedpredicted-values-and-residuals" class="anchor"></a>2. Get fitted/predicted values and residuals</h4>
+<p>Get information on each point/observation in your regression, including fitted/predicted values &amp; residuals, organized in a single data frame with intuitive variable names:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw"><a href="reference/get_regression_points.html">get_regression_points</a></span>(score_model)</a></code></pre></div>
+<pre><code>## # A tibble: 463 x 5
+##       ID score   age score_hat residual
+##    &lt;int&gt; &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+##  1     1   4.7    36      4.25    0.452
+##  2     2   4.1    36      4.25   -0.148
+##  3     3   3.9    36      4.25   -0.348
+##  4     4   4.8    36      4.25    0.552
+##  5     5   4.6    59      4.11    0.488
+##  6     6   4.3    59      4.11    0.188
+##  7     7   2.8    59      4.11   -1.31 
+##  8     8   4.1    51      4.16   -0.059
+##  9     9   3.4    51      4.16   -0.759
+## 10    10   4.5    40      4.22    0.276
+## # … with 453 more rows</code></pre>
+</div>
+<div id="get-regression-fit-summaries" class="section level4">
+<h4 class="hasAnchor">
+<a href="#get-regression-fit-summaries" class="anchor"></a>3. Get regression fit summaries</h4>
+<p>Get all the scalar summaries of a regression fit included in <code>summary(score_model)</code> along with the mean-squared error and root mean-squared error:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="reference/get_regression_summaries.html">get_regression_summaries</a></span>(score_model)</a></code></pre></div>
+<pre><code>## # A tibble: 1 x 8
+##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df
+##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
+## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     2</code></pre>
+</div>
+</div>
+<div id="other-features" class="section level2">
+<h2 class="hasAnchor">
+<a href="#other-features" class="anchor"></a>Other features</h2>
+<div id="print-markdown-friendly-tables" class="section level4">
+<h4 class="hasAnchor">
+<a href="#print-markdown-friendly-tables" class="anchor"></a>1. Print markdown friendly tables</h4>
+<p>Want to output cleanly formatted tables in an R Markdown document? Just add <code>print = TRUE</code> to any of the three <code>get_regression_</code> functions.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw"><a href="reference/get_regression_table.html">get_regression_table</a></span>(score_model, <span class="dt">print =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">term</th>
@@ -147,90 +175,99 @@ mpg_mlr_model2 &lt;-<span class="st"> </span><span class="kw">lm</span>(mpg <spa
 <tbody>
 <tr class="odd">
 <td align="left">intercept</td>
-<td align="right">37.2273</td>
-<td align="right">1.5988</td>
-<td align="right">23.2847</td>
-<td align="right">0.0000</td>
-<td align="right">33.9574</td>
-<td align="right">40.4972</td>
+<td align="right">4.462</td>
+<td align="right">0.127</td>
+<td align="right">35.195</td>
+<td align="right">0.000</td>
+<td align="right">4.213</td>
+<td align="right">4.711</td>
 </tr>
 <tr class="even">
-<td align="left">hp</td>
-<td align="right">-0.0318</td>
-<td align="right">0.0090</td>
-<td align="right">-3.5187</td>
-<td align="right">0.0015</td>
-<td align="right">-0.0502</td>
-<td align="right">-0.0133</td>
-</tr>
-<tr class="odd">
-<td align="left">wt</td>
-<td align="right">-3.8778</td>
-<td align="right">0.6327</td>
-<td align="right">-6.1287</td>
-<td align="right">0.0000</td>
-<td align="right">-5.1719</td>
-<td align="right">-2.5837</td>
+<td align="left">age</td>
+<td align="right">-0.006</td>
+<td align="right">0.003</td>
+<td align="right">-2.311</td>
+<td align="right">0.021</td>
+<td align="right">-0.011</td>
+<td align="right">-0.001</td>
 </tr>
 </tbody>
 </table>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Regression points. For residual analysis for example</span>
-<span class="kw"><a href="reference/get_regression_points.html">get_regression_points</a></span>(mpg_mlr_model2)</code></pre></div>
-<pre><code>## # A tibble: 32 x 6
-##       ID   mpg    hp cyl   mpg_hat residual
-##    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;   &lt;dbl&gt;    &lt;dbl&gt;
-##  1     1  21     110 6        20.0    0.962
-##  2     2  21     110 6        20.0    0.962
-##  3     3  22.8    93 4        26.4   -3.62 
-##  4     4  21.4   110 6        20.0    1.36 
-##  5     5  18.7   175 8        15.9    2.78 
-##  6     6  18.1   105 6        20.2   -2.06 
-##  7     7  14.3   245 8        14.2    0.06 
-##  8     8  24.4    62 4        27.2   -2.76 
-##  9     9  22.8    95 4        26.4   -3.57 
-## 10    10  19.2   123 6        19.7   -0.526
-## # ... with 22 more rows</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">mtcars_new &lt;-<span class="st"> </span>mtcars <span class="op">%&gt;%</span><span class="st"> </span>
-<span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/slice.html">slice</a></span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)
-
-<span class="co"># Make predictions on newdata</span>
-<span class="kw"><a href="reference/get_regression_points.html">get_regression_points</a></span>(mpg_mlr_model2, <span class="dt">newdata =</span> mtcars_new)</code></pre></div>
-<pre><code>## # A tibble: 3 x 6
-##      ID   mpg    hp cyl   mpg_hat residual
-##   &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;fct&gt;   &lt;dbl&gt;    &lt;dbl&gt;
-## 1     1  21     110 6        20.0    0.962
-## 2     2  21     110 6        20.0    0.962
-## 3     3  22.8    93 4        26.4   -3.62</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Regression summaries</span>
-<span class="kw"><a href="reference/get_regression_summaries.html">get_regression_summaries</a></span>(mpg_model)</code></pre></div>
-<pre><code>## # A tibble: 1 x 8
-##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df
-##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-## 1     0.602         0.589  14.0  3.74  3.86      45.5       0     2</code></pre>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Can also use `%&gt;%`</span>
-mpg_model <span class="op">%&gt;%</span><span class="st"> </span><span class="kw"><a href="reference/get_regression_summaries.html">get_regression_summaries</a></span>(<span class="dt">digits =</span> <span class="dv">5</span>, <span class="dt">print =</span> <span class="ot">TRUE</span>)</code></pre></div>
-<table class="table">
-<thead><tr class="header">
-<th align="right">r_squared</th>
-<th align="right">adj_r_squared</th>
-<th align="right">mse</th>
-<th align="right">rmse</th>
-<th align="right">sigma</th>
-<th align="right">statistic</th>
-<th align="right">p_value</th>
-<th align="right">df</th>
-</tr></thead>
-<tbody><tr class="odd">
-<td align="right">0.60244</td>
-<td align="right">0.58919</td>
-<td align="right">13.98982</td>
-<td align="right">3.740297</td>
-<td align="right">3.86296</td>
-<td align="right">45.4598</td>
-<td align="right">0</td>
-<td align="right">2</td>
-</tr></tbody>
-</table>
+</div>
+<div id="predictions-on-new-data" class="section level4">
+<h4 class="hasAnchor">
+<a href="#predictions-on-new-data" class="anchor"></a>2. Predictions on new data</h4>
+<p>Want to apply your fitted model on new data to make predictions? No problem! Include a <code>newdata</code> data frame argument to <code><a href="reference/get_regression_points.html">get_regression_points()</a></code>.</p>
+<p>For example, the Kaggle.com practice competition <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques" target="_blank">House Prices: Advanced Regression Techniques</a> requires you to fit/train a model to the provided <code>train.csv</code> training set to make predictions of house prices in the provided <code>test.csv</code> test set. The following code performs these steps and outputs the predictions in <code>submission.csv</code>:</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw">library</span>(moderndive)</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co"># Load in training and test set</span></a>
+<a class="sourceLine" id="cb11-5" data-line-number="5">train &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">"https://github.com/moderndive/moderndive/raw/master/vignettes/train.csv"</span>)</a>
+<a class="sourceLine" id="cb11-6" data-line-number="6">test &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">"https://github.com/moderndive/moderndive/raw/master/vignettes/test.csv"</span>)</a>
+<a class="sourceLine" id="cb11-7" data-line-number="7"></a>
+<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co"># Fit model</span></a>
+<a class="sourceLine" id="cb11-9" data-line-number="9">house_model &lt;-<span class="st"> </span><span class="kw">lm</span>(SalePrice <span class="op">~</span><span class="st"> </span>YrSold, <span class="dt">data =</span> train)</a>
+<a class="sourceLine" id="cb11-10" data-line-number="10"></a>
+<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="co"># Make and submit predictions</span></a>
+<a class="sourceLine" id="cb11-12" data-line-number="12">submission &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_regression_points.html">get_regression_points</a></span>(house_model, <span class="dt">newdata =</span> test, <span class="dt">ID =</span> <span class="st">"Id"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="st">  </span><span class="kw">select</span>(Id, <span class="dt">SalePrice =</span> SalePrice_hat)</a>
+<a class="sourceLine" id="cb11-14" data-line-number="14"><span class="kw">write_csv</span>(submission, <span class="st">"submission.csv"</span>)</a></code></pre></div>
+<p>The resulting <code>submission.csv</code> is formatted such that it can be submitted on Kaggle, resulting in a “root mean squared logarithmic error” leaderboard score of 0.42918.</p>
+<p><img src="https://github.com/moderndive/moderndive/raw/master/vignettes/leaderboard_orig.png"><!-- --></p>
+</div>
+</div>
+<div id="the-details" class="section level2">
+<h2 class="hasAnchor">
+<a href="#the-details" class="anchor"></a>The Details</h2>
+<p>The three <code>get_regression</code> functions are wrappers of functions from the <a href="https://CRAN.R-project.org/package=broom/vignettes/broom.html" target="_blank"><code>broom</code></a> package for converting statistical analysis objects into tidy tibbles along with a few added tweaks:</p>
+<ol style="list-style-type: decimal">
+<li>
+<code><a href="reference/get_regression_table.html">get_regression_table()</a></code> is a wrapper for <code><a href="http://www.rdocumentation.org/packages/broom/topics/tidy">broom::tidy()</a></code>
+</li>
+<li>
+<code><a href="reference/get_regression_points.html">get_regression_points()</a></code> is a wrapper for <code><a href="http://www.rdocumentation.org/packages/broom/topics/augment">broom::augment()</a></code>
+</li>
+<li>
+<code>get_regression_summaries</code> is a wrapper for <code><a href="http://www.rdocumentation.org/packages/broom/topics/glance">broom::glance()</a></code>
+</li>
+</ol>
+<p>Why did we create these wrappers?</p>
+<ul>
+<li>The <code>broom</code> package function names <code><a href="http://www.rdocumentation.org/packages/broom/topics/tidy">tidy()</a></code>, <code><a href="http://www.rdocumentation.org/packages/broom/topics/augment">augment()</a></code>, and <code><a href="http://www.rdocumentation.org/packages/broom/topics/glance">glance()</a></code> don’t mean anything to intro stats students, where as the <code>moderndive</code> package function names <code><a href="reference/get_regression_table.html">get_regression_table()</a></code>, <code><a href="reference/get_regression_points.html">get_regression_points()</a></code>, and <code><a href="reference/get_regression_summaries.html">get_regression_summaries()</a></code> are more intuitive.</li>
+<li>The default column/variable names in the outputs of the above 3 functions are a little daunting for intro stats students to interpret. We cut out some of them and renamed many of them with more intuitive names. For example, compare the outputs of the <code><a href="reference/get_regression_points.html">get_regression_points()</a></code> wrapper function and the parent <code><a href="http://www.rdocumentation.org/packages/broom/topics/augment">broom::augment()</a></code> function.</li>
+</ul>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="reference/get_regression_points.html">get_regression_points</a></span>(score_model)</a></code></pre></div>
+<pre><code>## # A tibble: 463 x 5
+##       ID score   age score_hat residual
+##    &lt;int&gt; &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;
+##  1     1   4.7    36      4.25    0.452
+##  2     2   4.1    36      4.25   -0.148
+##  3     3   3.9    36      4.25   -0.348
+##  4     4   4.8    36      4.25    0.552
+##  5     5   4.6    59      4.11    0.488
+##  6     6   4.3    59      4.11    0.188
+##  7     7   2.8    59      4.11   -1.31 
+##  8     8   4.1    51      4.16   -0.059
+##  9     9   3.4    51      4.16   -0.759
+## 10    10   4.5    40      4.22    0.276
+## # … with 453 more rows</code></pre>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw">library</span>(broom)</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">broom<span class="op">::</span><span class="kw"><a href="http://www.rdocumentation.org/packages/broom/topics/augment">augment</a></span>(score_model)</a></code></pre></div>
+<pre><code>## # A tibble: 463 x 9
+##    score   age .fitted .se.fit  .resid    .hat .sigma   .cooksd .std.resid
+##    &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
+##  1   4.7    36    4.25  0.0405  0.452  0.00560  0.542 0.00197        0.837
+##  2   4.1    36    4.25  0.0405 -0.148  0.00560  0.542 0.000212      -0.274
+##  3   3.9    36    4.25  0.0405 -0.348  0.00560  0.542 0.00117       -0.645
+##  4   4.8    36    4.25  0.0405  0.552  0.00560  0.541 0.00294        1.02 
+##  5   4.6    59    4.11  0.0371  0.488  0.00471  0.541 0.00193        0.904
+##  6   4.3    59    4.11  0.0371  0.188  0.00471  0.542 0.000288       0.349
+##  7   2.8    59    4.11  0.0371 -1.31   0.00471  0.538 0.0139        -2.43 
+##  8   4.1    51    4.16  0.0261 -0.0591 0.00232  0.542 0.0000139     -0.109
+##  9   3.4    51    4.16  0.0261 -0.759  0.00232  0.541 0.00229       -1.40 
+## 10   4.5    40    4.22  0.0331  0.276  0.00374  0.542 0.000488       0.510
+## # … with 453 more rows</code></pre>
 <hr>
 <p>Please note that this project is released with a <a href="CONDUCT.html">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms.</p>
 </div>
