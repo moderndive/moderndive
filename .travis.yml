@@ -25,7 +25,6 @@ r_packages:
 r_github_packages:
   - hadley/pkgdown
   - moderndive/moderndive
-  - thomasp85/patchwork
 
 before_deploy:
   - Rscript -e 'pkgdown::build_site()'

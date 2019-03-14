@@ -1,18 +1,6 @@
 globalVariables(c(
-  "term",
-  ".resid",
-  "AIC",
-  "BIC",
-  "deviance",
-  "df.residual",
-  "logLik",
-  "ID", 
-  "mse",
-  "rmse",
-  "residual",
-  "r_squared",
-  "adj_r_squared",
-  "conf_low",
+  "term", ".resid", "AIC", "BIC", "deviance", "df.residual", "logLik", "ID", 
+  "mse", "rmse", "residual", "r_squared", "adj_r_squared", "conf_low",
   "conf_high"
 ))
 

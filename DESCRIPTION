@@ -11,7 +11,7 @@ Authors@R: c(
 Maintainer: Albert Y. Kim <albert.ys.kim@gmail.com>
 Description: Datasets and wrapper functions for tidyverse-friendly introductory linear regression, used in ModernDive: An Introduction to Statistical and Data Sciences via R available at <http://moderndive.com/> and DataCamp's Modeling with Data in the Tidyverse available at <https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse>.
 Depends:
-    R (>= 3.2.4)
+    R (>= 3.4.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -20,6 +20,7 @@ BugReports: https://github.com/ModernDive/moderndive_package/issues
 Imports: 
     magrittr,
     dplyr,
+    ggplot2,
     tibble,
     janitor,
     broom (>= 0.4.3),
@@ -27,13 +28,12 @@ Imports:
     stringr,
     knitr,
     infer,
-    rlang (>= 0.2.0)
-RoxygenNote: 6.1.0
-Suggests: 
-    testthat,
+    rlang (>= 0.2.0),
+    glue,
+    nycflights13
+RoxygenNote: 6.1.1
+Suggests: testthat,
     covr,
-    ggplot2,
     rmarkdown,
-    tidyverse,
-    patchwork
+    tidyverse
 VignetteBuilder: knitr

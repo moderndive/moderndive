@@ -1,5 +1,6 @@
 # moderndive 0.2.0.9000
 
+* Added minimally viable parallel slopes model plotting function `gg_parallel_slopes()`. To do in future: define a new `ggplot2` geom layer `geom_parallel_slopes()`.
 * Added "Why `moderndive`?" vignette
 * Added ID argument to get_regression_points() to return a column that ID's the 
 observational units
