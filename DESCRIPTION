@@ -29,7 +29,8 @@ Imports:
     knitr,
     infer,
     rlang (>= 0.2.0),
-    glue
+    glue,
+    nycflights13
 RoxygenNote: 6.1.1
 Suggests: testthat,
     covr,
