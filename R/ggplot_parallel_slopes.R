@@ -61,7 +61,7 @@ gg_parallel_slopes <- function(y, num_x, cat_x, data, alpha = 1){
     ggplot(data, aes_string(x = num_x, y = y, col = cat_x)) +
     geom_point(alpha = alpha) +
     # Add parallel slopes lines. Note the data and aes(y = ) override:
-    geom_line(data = model_points, aes_string(y = y_hat), show.legend = FALSE) +
+    geom_line(data = model_points, aes_string(y = y_hat), size = 1, show.legend = FALSE) +
     guides(colour = guide_legend(override.aes = list(alpha = 1)))
   
   return(plot)
