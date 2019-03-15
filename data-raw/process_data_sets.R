@@ -27,7 +27,7 @@ MA_schools <-
   filter(x11_enrollment > 0 & x12_enrollment > 0) %>% 
   # 58 schools has NA's for average_sat_math, we remove them:
   filter(!is.na(average_sat_math)) %>% 
-  select(school_name, average_sat_math, percent_economically_disadvantaged, school_size)
+  select(school_name, average_sat_math, percent_disadvantaged = percent_economically_disadvantaged, school_size)
 usethis::use_data(MA_schools, overwrite = TRUE)
 
 
