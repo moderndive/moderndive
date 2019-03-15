@@ -17,7 +17,7 @@ MA_schools <-
   mutate(school_size = cut_number(total_enrollment, n = 3)) %>% 
   # For aesthetic purposes we changed the levels of the school_size variable to be
   # small, medium, and large
-  mutate(school_size = recode_factor(school_size, 
+  mutate(size = recode_factor(school_size, 
                                      "[0,341]" = "small", 
                                      "(341,541]" = "medium", 
                                      "(541,4.26e+03]" = "large")) %>% 
@@ -27,7 +27,7 @@ MA_schools <-
   filter(x11_enrollment > 0 & x12_enrollment > 0) %>% 
   # 58 schools has NA's for average_sat_math, we remove them:
   filter(!is.na(average_sat_math)) %>% 
-  select(school_name, average_sat_math, percent_disadvantaged = percent_economically_disadvantaged, school_size)
+  select(school_name, average_sat_math, perc_disadvan = percent_economically_disadvantaged, size)
 usethis::use_data(MA_schools, overwrite = TRUE)
 
 

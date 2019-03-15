@@ -8,8 +8,8 @@
 \describe{
   \item{school_name}{High school name.}
   \item{average_sat_math}{Average SAT math score. Note 58 of the original 390 values of this variable were missing; these rows were dropped from consideration.}
-  \item{percent_disadvantaged}{Percent of the student body that are considered economically disadvantaged.}
-  \item{school_size}{Size of school enrollment; small 13-341 students, medium 342-541 students, large 542-4264 students.}
+  \item{perc_disadvan}{Percent of the student body that are considered economically disadvantaged.}
+  \item{size}{Size of school enrollment; small 13-341 students, medium 342-541 students, large 542-4264 students.}
 }}
 \source{
 The original source of the data are Massachusetts Department of 
@@ -24,10 +24,9 @@ Data on Massachusetts public high schools in 2017
 }
 \examples{
 library(ggplot2)
-ggplot(MA_schools, aes(x = percent_disadvantaged, 
-                       y = average_sat_math, color = school_size)) +
+ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
   geom_point() +
   geom_smooth(method = "lm", se = FALSE) +
-  labs(y = "Math SAT Score", x = "Percentage of Economically Disadvantaged Students")
+  labs(y = "Math SAT score", x = "Percentage economically disadvantaged", color = "School size")
 }
 \keyword{datasets}
