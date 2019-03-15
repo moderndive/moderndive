@@ -21,7 +21,7 @@
   \item{cls_level}{Class level: lower, upper.}
 }}
 \source{
-Çetinkaya-Rundel M, Morgan KL, Stangl D. 2013. Looking Good on Course Evaluations. CHANCE 26(2). \url{http://chance.amstat.org/2013/04/looking-good/}
+Çetinkaya-Rundel M, Morgan KL, Stangl D. 2013. Looking Good on Course Evaluations. CHANCE 26(2). \url{https://chance.amstat.org/2013/04/looking-good/}
 }
 \usage{
 evals
