@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A population of 800 pennies sampled in 2011 — pennies • moderndive</title>
+<title>Massachusetts Public High Schools Data — MA_schools • moderndive</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -31,10 +31,9 @@
 
 
 
-<meta property="og:title" content="A population of 800 pennies sampled in 2011 — pennies" />
+<meta property="og:title" content="Massachusetts Public High Schools Data — MA_schools" />
 
-<meta property="og:description" content="A dataset of 800 pennies to be treated as a sampling population. Data on 
-these pennies were recorded in 2011." />
+<meta property="og:description" content="Data on Massachusetts public high schools in 2017" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -116,64 +115,42 @@ these pennies were recorded in 2011." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A population of 800 pennies sampled in 2011</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/pennies.R'><code>R/pennies.R</code></a></small>
-    <div class="hidden name"><code>pennies.Rd</code></div>
+    <h1>Massachusetts Public High Schools Data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/MA_schools.R'><code>R/MA_schools.R</code></a></small>
+    <div class="hidden name"><code>MA_schools.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>A dataset of 800 pennies to be treated as a sampling population. Data on 
-these pennies were recorded in 2011.</p>
+    <p>Data on Massachusetts public high schools in 2017</p>
     
     </div>
 
-    <pre class="usage"><span class='no'>pennies</span></pre>
+    <pre class="usage"><span class='no'>MA_schools</span></pre>
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame of 800 rows representing different pennies and 2 variables</p><dl class='dl-horizontal'>
-  <dt>year</dt><dd><p>Year of minting</p></dd>
-  <dt>age_in_2011</dt><dd><p>Age in 2011</p></dd>
+    <p>A data frame of 332 rows representing Massachusetts high schools and 4 variables</p><dl class='dl-horizontal'>
+  <dt>school_name</dt><dd><p>High school name.</p></dd>
+  <dt>average_sat_math</dt><dd><p>Average SAT math score. Note 58 of the original 390 values of this variable were missing; these rows were dropped from consideration.</p></dd>
+  <dt>percent_economically_disadvantaged</dt><dd><p>Percent of the student body that are considered economically disadvantaged.</p></dd>
+  <dt>school_size</dt><dd><p>Size of school enrollment; small 0-341 students, medium 342-541 students, large 542-4264 students.</p></dd>
 </dl>
     
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p>StatCrunch <a href='https://www.statcrunch.com/app/index.php?dataid=301596'>https://www.statcrunch.com/app/index.php?dataid=301596</a></p>
+    <p>The original source of the data are Massachusetts Department of 
+Education reports <a href='http://profiles.doe.mass.edu/state_report/'>http://profiles.doe.mass.edu/state_report/</a>, however 
+the data wad downloaded from Kaggle at <a href='https://www.kaggle.com/ndalziel/massachusetts-public-schools-data'>https://www.kaggle.com/ndalziel/massachusetts-public-schools-data</a></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>ggplot2</span>)
-
-<span class='co'># Take 25 different samples of size n = 50 pennies from population</span>
-<span class='no'>many_samples</span> <span class='kw'>&lt;-</span> <span class='no'>pennies</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/infer/topics/rep_sample_n'>rep_sample_n</a></span>(<span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>reps</span> <span class='kw'>=</span> <span class='fl'>25</span>)
-<span class='no'>many_samples</span></div><div class='output co'>#&gt; # A tibble: 1,250 x 3
-#&gt; # Groups:   replicate [25]
-#&gt;    replicate  year age_in_2011
-#&gt;        &lt;int&gt; &lt;int&gt;       &lt;int&gt;
-#&gt;  1         1  1996          15
-#&gt;  2         1  1989          22
-#&gt;  3         1  1995          16
-#&gt;  4         1  1996          15
-#&gt;  5         1  1999          12
-#&gt;  6         1  1985          26
-#&gt;  7         1  1984          27
-#&gt;  8         1  2002           9
-#&gt;  9         1  1986          25
-#&gt; 10         1  1963          48
-#&gt; # … with 1,240 more rows</div><div class='input'>
-<span class='co'># Compute mean year of minting for each sample</span>
-<span class='no'>sample_means</span> <span class='kw'>&lt;-</span> <span class='no'>many_samples</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>replicate</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span>(<span class='kw'>mean_year</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/mean'>mean</a></span>(<span class='no'>year</span>))
-
-<span class='co'># Plot sampling distribution</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>sample_means</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>mean_year</span>)) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span>(<span class='kw'>binwidth</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"white"</span>) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/expression'>expression</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/grDevices/topics/plotmath'>bar</a></span>(<span class='no'>x</span>)), <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Number of samples"</span>,
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Sampling distribution of x_bar based 25 samples of size n = 50"</span>)</div><div class='img'><img src='pennies-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>ggplot2</span>)
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>MA_schools</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>percent_economically_disadvantaged</span>,
+                       <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>average_sat_math</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>school_size</span>)) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>() +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span>(<span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"lm"</span>, <span class='kw'>se</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Math SAT Score"</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"Percentage of Economically Disadvantaged Students"</span>)</div><div class='img'><img src='MA_schools-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
