@@ -3,6 +3,32 @@ library(stringr)
 library(lubridate)
 library(devtools)
 library(usethis)
+library(janitor)
+
+#----
+# Massachusetts Public Schools Data: Student body, funding levels, and outcomes 
+# (SAT, MCAS, APs, college attendance) from Kaggle:
+# https://www.kaggle.com/ndalziel/massachusetts-public-schools-data
+MA_schools <- 
+  read_csv("data-raw/MA_Public_Schools_2017.csv") %>% 
+  clean_names() %>% 
+  # This converts the numerical variable total_enrollment into a categorical one
+  # school_size by cutting it into three chunks:
+  mutate(school_size = cut_number(total_enrollment, n = 3)) %>% 
+  # For aesthetic purposes we changed the levels of the school_size variable to be
+  # small, medium, and large
+  mutate(school_size = recode_factor(school_size, 
+                                     "[0,341]" = "small", 
+                                     "(341,541]" = "medium", 
+                                     "(541,4.26e+03]" = "large")) %>% 
+  # Next we filtered to only include schools that had 11th and 12th grade
+  # students. We do this because students in the 11th and 12th grade take the math
+  # SAT.
+  filter(x11_enrollment > 0 & x12_enrollment > 0) %>% 
+  # 58 schools has NA's for average_sat_math, we remove them:
+  filter(!is.na(average_sat_math)) %>% 
+  select(school_name, average_sat_math, percent_economically_disadvantaged, school_size)
+usethis::use_data(MA_schools, overwrite = TRUE)
 
 
 #----
