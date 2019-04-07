@@ -28,4 +28,7 @@ ggplot(tactile_prop_red, aes(x = prop_red)) +
   labs(x = expression(hat(p)), y = "Number of samples", 
   title = "Sampling distribution of p_hat based 33 samples of size n = 50")
 }
+\seealso{
+\code{\link{bowl}}
+}
 \keyword{datasets}

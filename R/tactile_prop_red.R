@@ -11,6 +11,7 @@
 #'   \item{red_balls}{Number of red balls sampled out of 50}
 #'   \item{prop_red}{Proportion red balls out of 50}
 #' }
+#' @seealso \code{\link{bowl}}
 #' @examples
 #' library(ggplot2)
 #' 

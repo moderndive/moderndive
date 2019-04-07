@@ -3,7 +3,7 @@
 \docType{data}
 \name{bowl_samples}
 \alias{bowl_samples}
-\title{Sampling from a tub of balls}
+\title{Sampling from a bowl of balls}
 \format{A data frame 10 rows representing different groups of students' 
 samples of size n = 50 and 5 variables
 \describe{
@@ -33,5 +33,8 @@ ggplot(bowl_samples, aes(x = prop_red)) +
   geom_histogram(binwidth = 0.05) +
   labs(x = expression(hat(p)), y = "Number of samples", 
   title = "Sampling distribution of p_hat based 10 samples of size n = 50")
+}
+\seealso{
+\code{\link{bowl}}
 }
 \keyword{datasets}

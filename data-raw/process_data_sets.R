@@ -80,7 +80,7 @@ evals <- evals %>%
   select(-c(cls_perc_eval, cls_credits, cls_profs)) %>% 
   mutate(ID = 1:n()) %>% 
   select(ID, score, age, bty_avg, gender, ethnicity, language, rank, starts_with("pic_"), everything())
-use_this::use_data(evals, overwrite = TRUE)
+usethis::use_data(evals, overwrite = TRUE)
 
 
 
@@ -88,14 +88,14 @@ use_this::use_data(evals, overwrite = TRUE)
 # Population of 800 pennies from
 # https://www.statcrunch.com/app/index.php?dataid=301596
 pennies <- read_csv("data-raw/population_of_pennies.csv")
-use_this::use_data(pennies, overwrite = TRUE)
+usethis::use_data(pennies, overwrite = TRUE)
 
 
 # A pseudorandom sample of the `pennies` tibble used
 # in explaining bootstrapping
 set.seed(2018)
 pennies_sample <- pennies %>% sample_n(40)
-use_this::use_data(pennies_sample, overwrite = TRUE)
+usethis::use_data(pennies_sample, overwrite = TRUE)
 
 # Sample of 50 pennies from Florence Bank at the corner of Main Street and
 # Pleasant/King Street in Northampton MA on Friday 2019/2/1
@@ -121,20 +121,28 @@ bowl <-
   mutate(
     ball_ID = 1:N) %>% 
   select(ball_ID, everything())
-use_this::use_data(bowl, overwrite = TRUE)
+usethis::use_data(bowl, overwrite = TRUE)
 
 
 # 10 samples of size n=50 from
 # https://github.com/moderndive/moderndive_book/blob/master/images/sampling_bowl.jpeg
 bowl_samples <- read_csv("data-raw/sampling_responses.csv") %>% 
   mutate(n = red + white + green)
-use_this::use_data(bowl_samples, overwrite = TRUE)
+usethis::use_data(bowl_samples, overwrite = TRUE)
 
 
 # 33 tactile samples of size n=50 from
 # https://github.com/moderndive/moderndive_book/blob/master/images/sampling_bowl.jpeg
 tactile_prop_red <- read_csv("data-raw/sampling_red_balls.csv")
-use_this::use_data(tactile_prop_red, overwrite = TRUE)
+usethis::use_data(tactile_prop_red, overwrite = TRUE)
+
+
+# Ilyas and Yohan's shovel sample in Chapter 9 case study:
+set.seed(76)
+tactile_shovel_1 <- c(rep("red", 21), rep("white", 50 - 21)) %>% 
+  sample() %>% 
+  tibble::tibble(color = .)
+usethis::use_data(tactile_shovel_1, overwrite = TRUE)
 
 
 
@@ -150,7 +158,7 @@ mythbusters_yawn <- tibble::tibble(group, yawn) %>%
   sample_n(50) %>% 
   mutate(subj = seq(1, 50)) %>% 
   select(subj, group, yawn)
-use_this::use_data(mythbusters_yawn, overwrite = TRUE)
+usethis::use_data(mythbusters_yawn, overwrite = TRUE)
 
 
 
