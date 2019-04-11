@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Massachusetts Public High Schools Data — MA_schools • moderndive</title>
+<title>Bank manager recommendations based on (binary) gender — promotions • moderndive</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -31,9 +31,9 @@
 
 
 
-<meta property="og:title" content="Massachusetts Public High Schools Data — MA_schools" />
+<meta property="og:title" content="Bank manager recommendations based on (binary) gender — promotions" />
 
-<meta property="og:description" content="Data on Massachusetts public high schools in 2017" />
+<meta property="og:description" content="Data from a 1970's study on whether gender influences hiring recommendations." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -115,41 +115,44 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Massachusetts Public High Schools Data</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/MA_schools.R'><code>R/MA_schools.R</code></a></small>
-    <div class="hidden name"><code>MA_schools.Rd</code></div>
+    <h1>Bank manager recommendations based on (binary) gender</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/promotions.R'><code>R/promotions.R</code></a></small>
+    <div class="hidden name"><code>promotions.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Data on Massachusetts public high schools in 2017</p>
+    <p>Data from a 1970's study on whether gender influences hiring recommendations.</p>
     
     </div>
 
-    <pre class="usage"><span class='no'>MA_schools</span></pre>
+    <pre class="usage"><span class='no'>promotions</span></pre>
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame of 332 rows representing Massachusetts high schools and 4 variables</p><dl class='dl-horizontal'>
-  <dt>school_name</dt><dd><p>High school name.</p></dd>
-  <dt>average_sat_math</dt><dd><p>Average SAT math score. Note 58 of the original 390 values of this variable were missing; these rows were dropped from consideration.</p></dd>
-  <dt>perc_disadvan</dt><dd><p>Percent of the student body that are considered economically disadvantaged.</p></dd>
-  <dt>size</dt><dd><p>Size of school enrollment; small 13-341 students, medium 342-541 students, large 542-4264 students.</p></dd>
+    <p>A data frame with 463 observations on the following 13 variables.</p><dl class='dl-horizontal'>
+  <dt>id</dt><dd><p>Identification variable used to distinguish rows.</p></dd>
+  <dt>gender</dt><dd><p>(binary) gender: a factor with two levels `male` and `female`</p></dd>
+  <dt>decision</dt><dd><p>a factor with two levels: `promoted` and `not`</p></dd>
 </dl>
     
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p>The original source of the data are Massachusetts Department of 
-Education reports <a href='http://profiles.doe.mass.edu/state_report/'>http://profiles.doe.mass.edu/state_report/</a>, however 
-the data wad downloaded from Kaggle at <a href='https://www.kaggle.com/ndalziel/massachusetts-public-schools-data'>https://www.kaggle.com/ndalziel/massachusetts-public-schools-data</a></p>
+    <p>Rosen B and Jerdee T. 1974. Influence of sex role stereotypes on personnel 
+decisions. Journal of Applied Psychology 59(1):9-14.</p>
+    
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p>The data in `gender_promotions` is a tidyverse-frienly transformation of <code>gender.discrimination</code>.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>ggplot2</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>MA_schools</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>perc_disadvan</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>average_sat_math</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>size</span>)) +
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>() +
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/geom_smooth'>geom_smooth</a></span>(<span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"lm"</span>, <span class='kw'>se</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>) +
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Math SAT score"</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"Percentage economically disadvantaged"</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"School size"</span>)</div><div class='img'><img src='MA_schools-1.png' alt='' width='700' height='433' /></div></pre>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>dplyr</span>)
+<span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>glimpse</a></span>(<span class='no'>promotions</span>)</div><div class='output co'>#&gt; Observations: 48
+#&gt; Variables: 3
+#&gt; $ id       &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…
+#&gt; $ decision &lt;fct&gt; not, not, not, not, not, not, not, not, not, not, not, not, …
+#&gt; $ gender   &lt;fct&gt; male, male, male, female, female, female, female, female, fe…</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -158,6 +161,8 @@ the data wad downloaded from Kaggle at <a href='https://www.kaggle.com/ndalziel/
       <li><a href="#format">Format</a></li>
 
       <li><a href="#source">Source</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

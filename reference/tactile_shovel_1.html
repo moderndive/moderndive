@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Massachusetts Public High Schools Data — MA_schools • moderndive</title>
+<title>Tactile sample of size 50 from a bowl of balls — tactile_shovel_1 • moderndive</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -31,9 +31,10 @@
 
 
 
-<meta property="og:title" content="Massachusetts Public High Schools Data — MA_schools" />
+<meta property="og:title" content="Tactile sample of size 50 from a bowl of balls — tactile_shovel_1" />
 
-<meta property="og:description" content="Data on Massachusetts public high schools in 2017" />
+<meta property="og:description" content="A single tactile sample of size n = 50 balls from
+https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -115,41 +116,38 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Massachusetts Public High Schools Data</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/MA_schools.R'><code>R/MA_schools.R</code></a></small>
-    <div class="hidden name"><code>MA_schools.Rd</code></div>
+    <h1>Tactile sample of size 50 from a bowl of balls</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/tactile_shovel_1.R'><code>R/tactile_shovel_1.R</code></a></small>
+    <div class="hidden name"><code>tactile_shovel_1.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Data on Massachusetts public high schools in 2017</p>
+    <p>A single tactile sample of size n = 50 balls from
+<a href='https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg'>https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg</a></p>
     
     </div>
 
-    <pre class="usage"><span class='no'>MA_schools</span></pre>
+    <pre class="usage"><span class='no'>tactile_shovel_1</span></pre>
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame of 332 rows representing Massachusetts high schools and 4 variables</p><dl class='dl-horizontal'>
-  <dt>school_name</dt><dd><p>High school name.</p></dd>
-  <dt>average_sat_math</dt><dd><p>Average SAT math score. Note 58 of the original 390 values of this variable were missing; these rows were dropped from consideration.</p></dd>
-  <dt>perc_disadvan</dt><dd><p>Percent of the student body that are considered economically disadvantaged.</p></dd>
-  <dt>size</dt><dd><p>Size of school enrollment; small 13-341 students, medium 342-541 students, large 542-4264 students.</p></dd>
+    <p>A data frame of 50 rows representing different balls and 1 variable.</p><dl class='dl-horizontal'>
+  <dt>color</dt><dd><p>Color of ball sampled</p></dd>
 </dl>
     
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>The original source of the data are Massachusetts Department of 
-Education reports <a href='http://profiles.doe.mass.edu/state_report/'>http://profiles.doe.mass.edu/state_report/</a>, however 
-the data wad downloaded from Kaggle at <a href='https://www.kaggle.com/ndalziel/massachusetts-public-schools-data'>https://www.kaggle.com/ndalziel/massachusetts-public-schools-data</a></p>
+    <div class='dont-index'><p><code><a href='bowl.html'>bowl</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>ggplot2</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>MA_schools</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>perc_disadvan</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>average_sat_math</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>size</span>)) +
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/geom_point'>geom_point</a></span>() +
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/geom_smooth'>geom_smooth</a></span>(<span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"lm"</span>, <span class='kw'>se</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>) +
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Math SAT score"</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"Percentage economically disadvantaged"</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"School size"</span>)</div><div class='img'><img src='MA_schools-1.png' alt='' width='700' height='433' /></div></pre>
+
+<span class='co'># Barplot of distribution of balls in sample</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/ggplot'>ggplot</a></span>(<span class='no'>tactile_shovel_1</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/aes'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>color</span>)) +
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/geom_bar'>geom_bar</a></span>() +
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/labs'>labs</a></span>(<span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"50 sampled bals from bowl"</span>)</div><div class='img'><img src='tactile_shovel_1-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -157,7 +155,7 @@ the data wad downloaded from Kaggle at <a href='https://www.kaggle.com/ndalziel/
       
       <li><a href="#format">Format</a></li>
 
-      <li><a href="#source">Source</a></li>
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
