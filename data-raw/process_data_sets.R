@@ -4,6 +4,24 @@ library(lubridate)
 library(devtools)
 library(usethis)
 library(janitor)
+library(openintro)
+
+
+
+#----
+# evals data from:
+# https://cran.r-project.org/web/packages/openintro/openintro.pdf#page=66
+set.seed(76)
+promotions <- gender.discrimination %>%
+  as_tibble() %>% 
+  mutate(decision = factor(decision, levels = c("promoted", "not")),
+         gender = factor(gender, levels = c("male", "female"))) %>% 
+  arrange(desc(decision), gender) %>% 
+  mutate(id = 1:n()) %>% 
+  select(id, decision, gender) 
+usethis::use_data(promotions, overwrite = TRUE)
+
+
 
 #----
 # Massachusetts Public Schools Data: Student body, funding levels, and outcomes 
@@ -99,7 +117,8 @@ usethis::use_data(pennies_sample, overwrite = TRUE)
 
 # Sample of 50 pennies from Florence Bank at the corner of Main Street and
 # Pleasant/King Street in Northampton MA on Friday 2019/2/1
-pennies_sample_2 <- "https://docs.google.com/spreadsheets/d/e/2PACX-1vRtLeHU6j9PRTAJ0bRcUF2uVc1TzYeXd9cC0lwCRfBREy8POx6MgfVeK2CJU6emRKFn_51H-Z8H5YlS/pub?gid=0&single=true&output=csv" %>% 
+pennies_sample_2 <- 
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRtLeHU6j9PRTAJ0bRcUF2uVc1TzYeXd9cC0lwCRfBREy8POx6MgfVeK2CJU6emRKFn_51H-Z8H5YlS/pub?gid=0&single=true&output=csv" %>% 
   read_csv() %>% 
   mutate(ID = 1:n()) %>% 
   select(ID, year)

@@ -9,6 +9,7 @@ observational units
 * Added `DD_vs_SB` dataset of Dunkin Donuts and Starbucks in Eastern Massachusetts collected by @DelaneyMoran
 * Added `alaska_flights` of only Alaska Airlines flights from `nycflights13::flights` for use in Chapter 3 of moderndive
 * Added `pennies_sample_2` sample of 50 pennies from bank in Northampton, MA, USA on 2019/2/1
+* Added `promtions` data frame: tibble version of `openintro::gender.discrimination`
 
 # moderndive 0.2.0
 
