@@ -8,7 +8,9 @@ library(openintro)
 
 
 
-#----
+#-------------------------------------------------------------------------------
+# Datasets: Documented in R/datasets.R
+#-------------------------------------------------------------------------------
 # evals data from:
 # https://cran.r-project.org/web/packages/openintro/openintro.pdf#page=66
 set.seed(76)
@@ -22,8 +24,6 @@ promotions <- gender.discrimination %>%
 usethis::use_data(promotions, overwrite = TRUE)
 
 
-
-#----
 # Massachusetts Public Schools Data: Student body, funding levels, and outcomes 
 # (SAT, MCAS, APs, college attendance) from Kaggle:
 # https://www.kaggle.com/ndalziel/massachusetts-public-schools-data
@@ -49,7 +49,6 @@ MA_schools <-
 usethis::use_data(MA_schools, overwrite = TRUE)
 
 
-#----
 # Dunkin Donuts and Starbucks counts in 2016 for 1024 Eastern Massachusetts census tracts
 DD_vs_SB <- 
   # Read in eastern MA census tract population counts. Source:
@@ -73,8 +72,6 @@ DD_vs_SB <-
 usethis::use_data(DD_vs_SB, overwrite = TRUE)
 
 
-
-#----
 # House price data from https://www.kaggle.com/harlfoxem/housesalesprediction
 house_prices <- read_csv("data-raw/kc_house_data.csv") %>% 
   mutate(
@@ -87,10 +84,8 @@ house_prices <- read_csv("data-raw/kc_house_data.csv") %>%
 usethis::use_data(house_prices, overwrite = TRUE)
 
 
-
-#----
 # evals data from: https://www.openintro.org/stat/data/?data=evals
-load(url("http://www.openintro.org/stat/data/evals.RData"))
+load("data-raw/evals.RData")
 evals <- evals %>% 
   as_tibble() %>% 
   select(-starts_with("bty_m")) %>% 
@@ -101,35 +96,24 @@ evals <- evals %>%
 usethis::use_data(evals, overwrite = TRUE)
 
 
-
-#----
-# Population of 800 pennies from
-# https://www.statcrunch.com/app/index.php?dataid=301596
-pennies <- read_csv("data-raw/population_of_pennies.csv")
-usethis::use_data(pennies, overwrite = TRUE)
-
-
-# A pseudorandom sample of the `pennies` tibble used
-# in explaining bootstrapping
-set.seed(2018)
-orig_pennies_sample <- pennies %>% 
-  sample_n(40)
-usethis::use_data(orig_pennies_sample, overwrite = TRUE)
-
-# Sample of 50 pennies from Florence Bank at the corner of Main Street and
-# Pleasant/King Street in Northampton MA on Friday 2019/2/1
-pennies_sample <- 
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRtLeHU6j9PRTAJ0bRcUF2uVc1TzYeXd9cC0lwCRfBREy8POx6MgfVeK2CJU6emRKFn_51H-Z8H5YlS/pub?gid=0&single=true&output=csv" %>% 
-  read_csv() %>% 
-  mutate(ID = 1:n()) %>% 
-  select(ID, year)
-usethis::use_data(pennies_sample, overwrite = TRUE)
-  
+# Data derived from the results of a study conducted
+# on the Mythbusters television show on Discovery Network
+# investigating whether yawning is contagious
+# https://www.discovery.com/tv-shows/mythbusters/videos/is-yawning-contagious
+group <- c(rep("control", 12), rep("seed", 24), 
+           rep("control", 4), rep("seed", 10))
+yawn <- c(rep("no", 36), rep("yes", 14))
+mythbusters_yawn <- tibble::tibble(group, yawn) %>% 
+  sample_n(50) %>% 
+  mutate(subj = seq(1, 50)) %>% 
+  select(subj, group, yawn)
+usethis::use_data(mythbusters_yawn, overwrite = TRUE)
 
 
 
-
-#----
+#-------------------------------------------------------------------------------
+# Sampling bowl: Documented in R/bowl.R
+#-------------------------------------------------------------------------------
 # Sampling bowl used in class http://www.qualitytng.com/sampling-bowls/
 set.seed(76)
 N <- 2400
@@ -166,25 +150,26 @@ usethis::use_data(tactile_shovel_1, overwrite = TRUE)
 
 
 
-#----
-# Data derived from the results of a study conducted
-# on the Mythbusters television show on Discovery Network
-# investigating whether yawning is contagious
-# https://www.discovery.com/tv-shows/mythbusters/videos/is-yawning-contagious
-group <- c(rep("control", 12), rep("seed", 24), 
-           rep("control", 4), rep("seed", 10))
-yawn <- c(rep("no", 36), rep("yes", 14))
-mythbusters_yawn <- tibble::tibble(group, yawn) %>% 
-  sample_n(50) %>% 
-  mutate(subj = seq(1, 50)) %>% 
-  select(subj, group, yawn)
-usethis::use_data(mythbusters_yawn, overwrite = TRUE)
+#-------------------------------------------------------------------------------
+# Pennies: Documented in R/pennie.R
+#-------------------------------------------------------------------------------
+# Population of 800 pennies from
+# https://www.statcrunch.com/app/index.php?dataid=301596
+pennies <- read_csv("data-raw/population_of_pennies.csv")
+usethis::use_data(pennies, overwrite = TRUE)
 
+# A pseudorandom sample of the `pennies` tibble used
+# in explaining bootstrapping
+set.seed(2018)
+orig_pennies_sample <- pennies %>% 
+  sample_n(40)
+usethis::use_data(orig_pennies_sample, overwrite = TRUE)
 
-
-#----
-# Alaska Airlines flights only
-library(nycflights13)
-alaska_flights <- flights %>% 
-  filter(carrier == "AS")
-usethis::use_data(alaska_flights, overwrite = TRUE)
+# Sample of 50 pennies from Florence Bank at the corner of Main Street and
+# Pleasant/King Street in Northampton MA on Friday 2019/2/1
+pennies_sample <- 
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vRtLeHU6j9PRTAJ0bRcUF2uVc1TzYeXd9cC0lwCRfBREy8POx6MgfVeK2CJU6emRKFn_51H-Z8H5YlS/pub?gid=0&single=true&output=csv" %>% 
+  read_csv() %>% 
+  mutate(ID = 1:n()) %>% 
+  select(ID, year)
+usethis::use_data(pennies_sample, overwrite = TRUE)

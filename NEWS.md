@@ -2,14 +2,17 @@
 
 * Added minimally viable parallel slopes model plotting function `gg_parallel_slopes()`. To do in future: define a new `ggplot2` geom layer `geom_parallel_slopes()`.
 * Added "Why `moderndive`?" vignette
-* Added ID argument to get_regression_points() to return a column that ID's the 
+* Added ID argument to `get_regression_points()` to return a column that ID's the 
 observational units
 * Removed all `assertive::assert()`
 * Converted `house_prices$date` from `dttm` (date-time) to `date` per R4DS [comment](https://r4ds.had.co.nz/dates-and-times.html#creating-datetimes) on using simplest data type possible
 * Added `DD_vs_SB` dataset of Dunkin Donuts and Starbucks in Eastern Massachusetts collected by @DelaneyMoran
-* Added `alaska_flights` of only Alaska Airlines flights from `nycflights13::flights` for use in Chapter 3 of moderndive
 * Original `pennies_sample` sample of 40 pennies from `pennies` has been renamed `orig_pennies_sample`. New `pennies_sample` consists of 50 pennies sampled from bank in Northampton, MA, USA on 2019/2/1.
-* Added `promtions` data frame: tibble version of `openintro::gender.discrimination`
+* Added `promotions` data frame: tibble version of `openintro::gender.discrimination`
+
+
+***
+
 
 # moderndive 0.2.0
 
@@ -29,9 +32,17 @@ Details:
     - Otherwise omit `residual`
 * Removed `tidyverse` from Depends, Imports, or Suggests
 
+
+***
+
+
 # moderndive 0.1.1
 
 Fixed broken url in `?bowl_samples`
+
+
+***
+
 
 # moderndive 0.1.0
 
