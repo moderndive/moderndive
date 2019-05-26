@@ -112,17 +112,18 @@ usethis::use_data(pennies, overwrite = TRUE)
 # A pseudorandom sample of the `pennies` tibble used
 # in explaining bootstrapping
 set.seed(2018)
-pennies_sample <- pennies %>% sample_n(40)
+pennies_sample <- pennies %>% 
+  sample_n(40)
 usethis::use_data(pennies_sample, overwrite = TRUE)
 
 # Sample of 50 pennies from Florence Bank at the corner of Main Street and
 # Pleasant/King Street in Northampton MA on Friday 2019/2/1
-pennies_sample_2 <- 
+sample_pennies <- 
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vRtLeHU6j9PRTAJ0bRcUF2uVc1TzYeXd9cC0lwCRfBREy8POx6MgfVeK2CJU6emRKFn_51H-Z8H5YlS/pub?gid=0&single=true&output=csv" %>% 
   read_csv() %>% 
   mutate(ID = 1:n()) %>% 
   select(ID, year)
-usethis::use_data(pennies_sample_2, overwrite = TRUE)
+usethis::use_data(sample_pennies, overwrite = TRUE)
   
 
 

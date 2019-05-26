@@ -1,4 +1,4 @@
-#' A sample of 50 pennies
+#' A sample of 50 US pennies
 #'
 #' A sample of 50 pennies contained in a 50 cent roll from Florence Bank on
 #' Friday February 1, 2019 in downtown Northampton, Massachusetts, USA \url{https://goo.gl/maps/AF88fpvVfm12}.
@@ -8,11 +8,10 @@
 #'   \item{ID}{Variable used to uniquely identify each penny.}
 #'   \item{year}{Year of minting.}
 #' }
-#' @seealso \code{\link{pennies}}, \code{\link{pennies_sample}}
 #' @examples
 #' library(dplyr)
 #' library(ggplot2)
 #' 
-#' ggplot(pennies_sample_2, aes(x = year)) +
+#' ggplot(sample_pennies, aes(x = year)) +
 #'  geom_histogram(binwidth = 5, boundary = 2000)
-"pennies_sample_2"
+"sample_pennies"
