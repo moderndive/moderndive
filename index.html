@@ -9,7 +9,7 @@
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous">
-<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
+<!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
 <script src="pkgdown.js"></script><meta property="og:title" content="Tidyverse-Friendly Introductory Linear Regression">
 <meta property="og:description" content="Datasets and wrapper functions for tidyverse-friendly introductory linear regression, used in ModernDive: An Introduction to Statistical and Data Sciences via R available at &lt;http://moderndive.com/&gt; and DataCamp's Modeling with Data in the Tidyverse available at &lt;https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse&gt;.">
 <meta name="twitter:card" content="summary">
@@ -101,18 +101,18 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>Get the released version from CRAN:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/install.packages">install.packages</a></span>(<span class="st">"moderndive"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"moderndive"</span>)</a></code></pre></div>
 <p>Or the development version from GitHub:</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="co"># If you haven't installed remotes yet, do so:</span></a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co"># install.packages("remotes")</span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">remotes<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/remotes/topics/install_github">install_github</a></span>(<span class="st">"moderndive/moderndive"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb2-3" data-line-number="3">remotes<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/remotes/man/install_github.html">install_github</a></span>(<span class="st">"moderndive/moderndive"</span>)</a></code></pre></div>
 </div>
 <div id="demo" class="section level2">
 <h2 class="hasAnchor">
 <a href="#demo" class="anchor"></a>Demo</h2>
 <p>Let’s fit a simple linear regression of teaching <code>score</code> (as evaluated by students) over instructor age for 463 instructors at the UT Austin:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(moderndive)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2">score_model &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/lm">lm</a></span>(score <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> evals)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(moderndive)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2">score_model &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span>(score <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> evals)</a></code></pre></div>
 <p>Among the many useful features of the <code>moderndive</code> package outlined in our essay <a href="https://moderndive.github.io/moderndive/articles/why-moderndive.html">“Why should you use the moderndive package for intro linear regression?”</a> we highlight three functions in particular:</p>
 <div id="get-regression-tables" class="section level4">
 <h4 class="hasAnchor">
@@ -148,7 +148,7 @@
 <div id="get-regression-fit-summaries" class="section level4">
 <h4 class="hasAnchor">
 <a href="#get-regression-fit-summaries" class="anchor"></a>3. Get regression fit summaries</h4>
-<p>Get all the scalar summaries of a regression fit included in <code><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary(score_model)</a></code> along with the mean-squared error and root mean-squared error:</p>
+<p>Get all the scalar summaries of a regression fit included in <code><a href="https://rdrr.io/r/base/summary.html">summary(score_model)</a></code> along with the mean-squared error and root mean-squared error:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="kw"><a href="reference/get_regression_summaries.html">get_regression_summaries</a></span>(score_model)</a></code></pre></div>
 <pre><code>## # A tibble: 1 x 8
 ##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df
@@ -201,15 +201,15 @@
 <a href="#predictions-on-new-data" class="anchor"></a>2. Predictions on new data</h4>
 <p>Want to apply your fitted model on new data to make predictions? No problem! Include a <code>newdata</code> data frame argument to <code><a href="reference/get_regression_points.html">get_regression_points()</a></code>.</p>
 <p>For example, the Kaggle.com practice competition <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques" target="_blank">House Prices: Advanced Regression Techniques</a> requires you to fit/train a model to the provided <code>train.csv</code> training set to make predictions of house prices in the provided <code>test.csv</code> test set. The following code performs these steps and outputs the predictions in <code>submission.csv</code>:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(tidyverse)</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(moderndive)</a>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidyverse)</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(moderndive)</a>
 <a class="sourceLine" id="cb11-3" data-line-number="3"></a>
 <a class="sourceLine" id="cb11-4" data-line-number="4"><span class="co"># Load in training and test set</span></a>
 <a class="sourceLine" id="cb11-5" data-line-number="5">train &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">"https://github.com/moderndive/moderndive/raw/master/vignettes/train.csv"</span>)</a>
 <a class="sourceLine" id="cb11-6" data-line-number="6">test &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">"https://github.com/moderndive/moderndive/raw/master/vignettes/test.csv"</span>)</a>
 <a class="sourceLine" id="cb11-7" data-line-number="7"></a>
 <a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co"># Fit model</span></a>
-<a class="sourceLine" id="cb11-9" data-line-number="9">house_model &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/stats/topics/lm">lm</a></span>(SalePrice <span class="op">~</span><span class="st"> </span>YrSold, <span class="dt">data =</span> train)</a>
+<a class="sourceLine" id="cb11-9" data-line-number="9">house_model &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span>(SalePrice <span class="op">~</span><span class="st"> </span>YrSold, <span class="dt">data =</span> train)</a>
 <a class="sourceLine" id="cb11-10" data-line-number="10"></a>
 <a class="sourceLine" id="cb11-11" data-line-number="11"><span class="co"># Make and submit predictions</span></a>
 <a class="sourceLine" id="cb11-12" data-line-number="12">submission &lt;-<span class="st"> </span><span class="kw"><a href="reference/get_regression_points.html">get_regression_points</a></span>(house_model, <span class="dt">newdata =</span> test, <span class="dt">ID =</span> <span class="st">"Id"</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
@@ -225,19 +225,19 @@
 <p>The three <code>get_regression</code> functions are wrappers of functions from the <a href="https://CRAN.R-project.org/package=broom/vignettes/broom.html" target="_blank"><code>broom</code></a> package for converting statistical analysis objects into tidy tibbles along with a few added tweaks:</p>
 <ol style="list-style-type: decimal">
 <li>
-<code><a href="reference/get_regression_table.html">get_regression_table()</a></code> is a wrapper for <code><a href="https://www.rdocumentation.org/packages/broom/topics/reexports">broom::tidy()</a></code>
+<code><a href="reference/get_regression_table.html">get_regression_table()</a></code> is a wrapper for <code><a href="https://rdrr.io/pkg/broom/man/reexports.html">broom::tidy()</a></code>
 </li>
 <li>
-<code><a href="reference/get_regression_points.html">get_regression_points()</a></code> is a wrapper for <code><a href="https://www.rdocumentation.org/packages/broom/topics/reexports">broom::augment()</a></code>
+<code><a href="reference/get_regression_points.html">get_regression_points()</a></code> is a wrapper for <code><a href="https://rdrr.io/pkg/broom/man/reexports.html">broom::augment()</a></code>
 </li>
 <li>
-<code><a href="reference/get_regression_summaries.html">get_regression_summaries()</a></code> is a wrapper for <code><a href="https://www.rdocumentation.org/packages/broom/topics/reexports">broom::glance()</a></code>
+<code><a href="reference/get_regression_summaries.html">get_regression_summaries()</a></code> is a wrapper for <code><a href="https://rdrr.io/pkg/broom/man/reexports.html">broom::glance()</a></code>
 </li>
 </ol>
 <p>Why did we create these wrappers?</p>
 <ul>
-<li>The <code>broom</code> package function names <code><a href="https://www.rdocumentation.org/packages/broom/topics/reexports">tidy()</a></code>, <code><a href="https://www.rdocumentation.org/packages/broom/topics/reexports">augment()</a></code>, and <code><a href="https://www.rdocumentation.org/packages/broom/topics/reexports">glance()</a></code> don’t mean anything to intro stats students, where as the <code>moderndive</code> package function names <code><a href="reference/get_regression_table.html">get_regression_table()</a></code>, <code><a href="reference/get_regression_points.html">get_regression_points()</a></code>, and <code><a href="reference/get_regression_summaries.html">get_regression_summaries()</a></code> are more intuitive.</li>
-<li>The default column/variable names in the outputs of the above 3 functions are a little daunting for intro stats students to interpret. We cut out some of them and renamed many of them with more intuitive names. For example, compare the outputs of the <code><a href="reference/get_regression_points.html">get_regression_points()</a></code> wrapper function and the parent <code><a href="https://www.rdocumentation.org/packages/broom/topics/reexports">broom::augment()</a></code> function.</li>
+<li>The <code>broom</code> package function names <code><a href="https://rdrr.io/pkg/broom/man/reexports.html">tidy()</a></code>, <code><a href="https://rdrr.io/pkg/broom/man/reexports.html">augment()</a></code>, and <code><a href="https://rdrr.io/pkg/broom/man/reexports.html">glance()</a></code> don’t mean anything to intro stats students, where as the <code>moderndive</code> package function names <code><a href="reference/get_regression_table.html">get_regression_table()</a></code>, <code><a href="reference/get_regression_points.html">get_regression_points()</a></code>, and <code><a href="reference/get_regression_summaries.html">get_regression_summaries()</a></code> are more intuitive.</li>
+<li>The default column/variable names in the outputs of the above 3 functions are a little daunting for intro stats students to interpret. We cut out some of them and renamed many of them with more intuitive names. For example, compare the outputs of the <code><a href="reference/get_regression_points.html">get_regression_points()</a></code> wrapper function and the parent <code><a href="https://rdrr.io/pkg/broom/man/reexports.html">broom::augment()</a></code> function.</li>
 </ul>
 <div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1"><span class="kw"><a href="reference/get_regression_points.html">get_regression_points</a></span>(score_model)</a></code></pre></div>
 <pre><code>## # A tibble: 463 x 5
@@ -254,8 +254,8 @@
 ##  9     9   3.4    51      4.16   -0.759
 ## 10    10   4.5    40      4.22    0.276
 ## # … with 453 more rows</code></pre>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(broom)</a>
-<a class="sourceLine" id="cb14-2" data-line-number="2">broom<span class="op">::</span><span class="kw"><a href="https://www.rdocumentation.org/packages/broom/topics/reexports">augment</a></span>(score_model)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(broom)</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">broom<span class="op">::</span><span class="kw"><a href="https://rdrr.io/pkg/broom/man/reexports.html">augment</a></span>(score_model)</a></code></pre></div>
 <pre><code>## # A tibble: 463 x 9
 ##    score   age .fitted .se.fit  .resid    .hat .sigma   .cooksd .std.resid
 ##    &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;
@@ -323,7 +323,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
       </footer>
 </div>

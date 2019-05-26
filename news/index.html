@@ -22,8 +22,9 @@
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -128,8 +129,8 @@
 </li>
 <li>Converted <code>house_prices$date</code> from <code>dttm</code> (date-time) to <code>date</code> per R4DS <a href="https://r4ds.had.co.nz/dates-and-times.html#creating-datetimes">comment</a> on using simplest data type possible</li>
 <li>Added <code>DD_vs_SB</code> dataset of Dunkin Donuts and Starbucks in Eastern Massachusetts collected by <a href='https://github.com/DelaneyMoran'>@DelaneyMoran</a></li>
-<li>Added <code>alaska_flights</code> of only Alaska Airlines flights from <code><a href="https://www.rdocumentation.org/packages/nycflights13/topics/flights">nycflights13::flights</a></code> for use in Chapter 3 of moderndive</li>
-<li>Added <code>pennies_sample_2</code> sample of 50 pennies from bank in Northampton, MA, USA on 2019/2/1</li>
+<li>Added <code>alaska_flights</code> of only Alaska Airlines flights from <code><a href="https://rdrr.io/pkg/nycflights13/man/flights.html">nycflights13::flights</a></code> for use in Chapter 3 of moderndive</li>
+<li>Original <code>pennies_sample</code> sample of 40 pennies from <code>pennies</code> has been renamed <code>orig_pennies_sample</code>. New <code>pennies_sample</code> consists of 50 pennies sampled from bank in Northampton, MA, USA on 2019/2/1.</li>
 <li>Added <code>promtions</code> data frame: tibble version of <code>openintro::gender.discrimination</code>
 </li>
 </ul>
@@ -146,7 +147,7 @@
 <p>Details:</p>
 <ul>
 <li>Created <code><a href="../reference/get_correlation.html">get_correlation()</a></code> function to omit <code>$</code> syntax and return a data frame</li>
-<li>Import <code><a href="https://www.rdocumentation.org/packages/infer/topics/rep_sample_n">infer::rep_sample_n()</a></code> instead of our own defined version, as this function is <a href="https://github.com/andrewpbray/infer/pull/82">now included in <code>infer</code></a>
+<li>Import <code><a href="https://rdrr.io/pkg/infer/man/rep_sample_n.html">infer::rep_sample_n()</a></code> instead of our own defined version, as this function is <a href="https://github.com/andrewpbray/infer/pull/82">now included in <code>infer</code></a>
 </li>
 <li>Added <code>evals</code>, <code>house_prices</code>, <code>tactile_prop_red</code>, <code>pennies_sample</code> and <code>mythbusters_yawn</code> datasets</li>
 <li>Added mean squared error and root mean squared error to output of <code><a href="../reference/get_regression_summaries.html">get_regression_summaries()</a></code>
@@ -207,7 +208,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
       </footer>
    </div>
