@@ -114,7 +114,7 @@ usethis::use_data(mythbusters_yawn, overwrite = TRUE)
 #-------------------------------------------------------------------------------
 # Sampling bowl: Documented in R/bowl.R
 #-------------------------------------------------------------------------------
-# Sampling bowl used in class http://www.qualitytng.com/sampling-bowls/
+# Sampling bowl used at Amherst College http://www.qualitytng.com/sampling-bowls/
 set.seed(76)
 N <- 2400
 bowl <- 
@@ -149,6 +149,24 @@ tactile_shovel_1 <- c(rep("red", 21), rep("white", 50 - 21)) %>%
 usethis::use_data(tactile_shovel_1, overwrite = TRUE)
 
 
+# Tactile samples from bowl
+# Original Google Sheet here:
+# https://docs.google.com/spreadsheets/d/1KgJYLiKZ7yhXUAvL4Xacchz3H_aNfCPmrFdFsmeb1VE/
+bowl_samples <- 
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vSEzMpfzZ-VC2sEUpc97d3IdzqEyMANrgG0jbzzRwpiNPJu1sNgO_oWopl5yctUzmn0N-8yHPcmjfIh/pub?gid=36230158&single=true&output=csv" %>% 
+  read_csv() %>% 
+  mutate(replicate = 1:n()) %>% 
+  select(replicate, name = Name, 
+         num_red = `How many of the balls in your shovel were red?`, everything()) %>% 
+  # Transform
+  gather(ID, color, -c(replicate, name, num_red)) %>% 
+  select(-c(num_red, ID)) %>% 
+  arrange(name) %>% 
+  mutate(color = tolower(color))
+usethis::use_data(bowl_samples, overwrite = TRUE)
+
+
+
 
 #-------------------------------------------------------------------------------
 # Pennies: Documented in R/pennie.R
@@ -167,6 +185,8 @@ usethis::use_data(orig_pennies_sample, overwrite = TRUE)
 
 # Sample of 50 pennies from Florence Bank at the corner of Main Street and
 # Pleasant/King Street in Northampton MA on Friday 2019/2/1
+# Original Google Sheet here:
+# https://docs.google.com/spreadsheets/d/1kG_s7LhGVusL-oFqWPHygX6cebOTzSERxbJXT3I2xoo/
 pennies_sample <- 
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vRtLeHU6j9PRTAJ0bRcUF2uVc1TzYeXd9cC0lwCRfBREy8POx6MgfVeK2CJU6emRKFn_51H-Z8H5YlS/pub?gid=0&single=true&output=csv" %>% 
   read_csv() %>% 
@@ -177,7 +197,7 @@ usethis::use_data(pennies_sample, overwrite = TRUE)
 
 # Resamples of pennies_sample
 # Original Google Sheet here:
-# https://docs.google.com/spreadsheets/d/1y3kOsU_wDrDd5eiJbEtLeHT9L5SvpZb_TrzwFBsouk0/edit#gid=0
+# https://docs.google.com/spreadsheets/d/1y3kOsU_wDrDd5eiJbEtLeHT9L5SvpZb_TrzwFBsouk0/
 pennies_resamples <- 
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vS-8hCHL4Gt6KvtjlSlA42CC4eNPhN4tg7yM4NVQ1MRa1mIA0EUf3t0NThNrw5ctlBWjKUbQPYuevS6/pub?gid=0&single=true&output=csv" %>% 
   read_csv() %>% 
