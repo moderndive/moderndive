@@ -173,3 +173,22 @@ pennies_sample <-
   mutate(ID = 1:n()) %>% 
   select(ID, year)
 usethis::use_data(pennies_sample, overwrite = TRUE)
+
+
+# Resamples of pennies_sample
+# Original Google Sheet here:
+# https://docs.google.com/spreadsheets/d/1y3kOsU_wDrDd5eiJbEtLeHT9L5SvpZb_TrzwFBsouk0/edit#gid=0
+pennies_resamples <- 
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vS-8hCHL4Gt6KvtjlSlA42CC4eNPhN4tg7yM4NVQ1MRa1mIA0EUf3t0NThNrw5ctlBWjKUbQPYuevS6/pub?gid=0&single=true&output=csv" %>% 
+  read_csv() %>% 
+  select(-`Resampled penny #`) %>% 
+  gather(name, year) %>% 
+  group_by(name) %>% 
+  nest() %>% 
+  mutate(replicate = 1:n()) %>% 
+  select(replicate, everything()) %>% 
+  unnest()
+usethis::use_data(pennies_resamples, overwrite = TRUE)
+
+
+  
