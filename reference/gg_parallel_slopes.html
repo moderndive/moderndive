@@ -51,6 +51,7 @@ regression line for each level of the categorical variable" />
 <![endif]-->
 
 
+
   </head>
 
   <body>
@@ -113,6 +114,7 @@ regression line for each level of the categorical variable" />
 </div><!--/.navbar -->
 
       
+
       </header>
 
 <div class="row">
@@ -166,7 +168,7 @@ in <code>data</code></p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>A <code><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></code> object.</p>
+    <p>A <code><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></code> object.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -184,13 +186,13 @@ in <code>data</code></p></td>
 <span class='co'># Output parallel slopes model plot:</span>
 <span class='fu'>gg_parallel_slopes</span>(<span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"log10_price"</span>, <span class='kw'>num_x</span> <span class='kw'>=</span> <span class='st'>"log10_size"</span>, <span class='kw'>cat_x</span> <span class='kw'>=</span> <span class='st'>"condition"</span>,
                    <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>house_prices</span>, <span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>0.1</span>) +
-  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"log10 square feet living space"</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"log10 price in USD"</span>,
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"log10 square feet living space"</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"log10 price in USD"</span>,
        <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"House prices in Seattle: Parallel slopes model"</span>)</div><div class='img'><img src='gg_parallel_slopes-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># Compare with interaction model plot:</span>
-<span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/ggplot.html'>ggplot</a></span>(<span class='no'>house_prices</span>, <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>log10_size</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>log10_price</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='no'>condition</span>)) +
-  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_point.html'>geom_point</a></span>(<span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>0.1</span>) +
-  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/geom_smooth.html'>geom_smooth</a></span>(<span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"lm"</span>, <span class='kw'>se</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1</span>) +
-  <span class='fu'><a href='https://rdrr.io/pkg/ggplot2/man/labs.html'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"log10 square feet living space"</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"log10 price in USD"</span>,
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>house_prices</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>log10_size</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>log10_price</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='no'>condition</span>)) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>(<span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>0.1</span>) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span>(<span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"lm"</span>, <span class='kw'>se</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1</span>) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"log10 square feet living space"</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"log10 price in USD"</span>,
        <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"House prices in Seattle: Interaction model"</span>)</div><div class='img'><img src='gg_parallel_slopes-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -206,6 +208,7 @@ in <code>data</code></p></td>
   </div>
 </div>
 
+
       <footer>
       <div class="copyright">
   <p>Developed by Albert Y. Kim, Chester Ismay.</p>
@@ -214,11 +217,14 @@ in <code>data</code></p></td>
 <div class="pkgdown">
   <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
+
       </footer>
    </div>
 
   
 
+
   </body>
 </html>
+
 
