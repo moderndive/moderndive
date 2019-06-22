@@ -107,10 +107,10 @@
 #' library(ggplot2)
 #' 
 #' # Barplot of distribution of balls in sample
-#' ggplot(tactile_shovel_1, aes(x = color)) +
+#' ggplot(bowl_sample_1, aes(x = color)) +
 #'   geom_bar() +
 #'   labs(title = "50 sampled bals from bowl")
-"tactile_shovel_1"
+"bowl_sample_1"
 
 
 

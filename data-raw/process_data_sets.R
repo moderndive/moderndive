@@ -143,10 +143,10 @@ usethis::use_data(tactile_prop_red, overwrite = TRUE)
 
 # Ilyas and Yohan's shovel sample in Chapter 9 case study:
 set.seed(76)
-tactile_shovel_1 <- c(rep("red", 21), rep("white", 50 - 21)) %>% 
+bowl_sample_1 <- c(rep("red", 21), rep("white", 50 - 21)) %>% 
   sample() %>% 
   tibble::tibble(color = .)
-usethis::use_data(tactile_shovel_1, overwrite = TRUE)
+usethis::use_data(bowl_sample_1, overwrite = TRUE)
 
 
 # Tactile samples from bowl
