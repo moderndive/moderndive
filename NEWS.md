@@ -10,9 +10,12 @@ observational units
 * Original `pennies_sample` sample of 40 pennies from `pennies` has been renamed `orig_pennies_sample`. New `pennies_sample` consists of 50 pennies sampled from bank in Northampton, MA, USA on 2019/2/1.
 * Added `pennies_resamples` data of 35 bootstrap resamples of new `pennies_sample`
 * Added `promotions` data frame: tibble version of `openintro::gender.discrimination`
+* Added `movies_genre` data frame: random sample of 32 action and 36 romance movies from `ggplot2movies::movies`
+
 
 
 ***
+
 
 
 # moderndive 0.2.0

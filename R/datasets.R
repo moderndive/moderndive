@@ -179,4 +179,28 @@
 
 
 
+#' Random sample of 68 action and romance movies
+#'
+#' A random sample of 32 action movies and 36 romance movies from 
+#' \url{https://www.imdb.com/} and their ratings.
+#'
+#' @format A data frame of 68 rows movies.
+#' \describe{
+#'   \item{title}{Movie title}
+#'   \item{year}{Year released}
+#'   \item{rating}{IMDb rating out of 10 stars}
+#'   \item{genre}{Action or Romance}
+#' }
+#' @examples
+#' @seealso This data was sampled from the `movies` data frame in \code{\link[ggplot2movies]{movies}}.
+#' library(ggplot2)
+#' 
+#' # Visualize relationship between rating and genre
+#' ggplot(data = movies_sample, aes(x = genre, y = rating)) +
+#'   geom_boxplot() +
+#'   labs(x = "Genre: Action or Romance", y = "IMDb rating")
+"movies_sample"
+
+
+
 

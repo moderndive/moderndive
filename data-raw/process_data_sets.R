@@ -5,6 +5,7 @@ library(devtools)
 library(usethis)
 library(janitor)
 library(openintro)
+library(ggplot2movies)
 
 
 
@@ -209,6 +210,27 @@ pennies_resamples <-
   select(replicate, everything()) %>% 
   unnest()
 usethis::use_data(pennies_resamples, overwrite = TRUE)
+
+
+# sample of action and romance movies from ggplot2movies::movies
+set.seed(2017)
+movies_sample <- movies %>% 
+  select(title, year, rating, Action, Romance) %>%
+  # Remove movies that were both action and romance at the same time
+  filter(!(Action == 1 & Romance == 1)) %>%
+  # Set genre
+  mutate(genre = case_when(
+    Action == 1 ~ "Action",
+    Romance == 1 ~ "Romance",
+    TRUE ~ "Neither")
+  ) %>%
+  filter(genre != "Neither") %>%
+  select(-Action, -Romance) %>% 
+  # Sample 68
+  sample_n(68)
+usethis::use_data(movies_sample, overwrite = TRUE)
+
+
 
 
   
