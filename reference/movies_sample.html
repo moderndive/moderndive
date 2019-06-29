@@ -144,14 +144,16 @@ https://www.imdb.com/ and their ratings." />
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p>This data was sampled from the `movies` data frame in <code>movies</code>.
-library(ggplot2)</p>
-<p># Visualize relationship between rating and genre
-ggplot(data = movies_sample, aes(x = genre, y = rating)) +
-  geom_boxplot() +
-  labs(x = "Genre: Action or Romance", y = "IMDb rating")</p></div>
+    <div class='dont-index'><p>This data was sampled from the `movies` data frame in <code>movies</code>.</p></div>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
+
+<span class='co'># Visualize relationship between rating and genre</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>movies_sample</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>genre</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>rating</span>)) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span>() +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"Genre: Action or Romance"</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"IMDb rating"</span>)</div><div class='img'><img src='movies_sample-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -160,7 +162,9 @@ ggplot(data = movies_sample, aes(x = genre, y = rating)) +
       <li><a href="#format">Format</a></li>
 
       <li><a href="#see-also">See also</a></li>
-          </ul>
+      
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>
