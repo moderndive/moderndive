@@ -8,10 +8,36 @@ library(openintro)
 library(ggplot2movies)
 
 
-
 #-------------------------------------------------------------------------------
 # Datasets: Documented in R/datasets.R
 #-------------------------------------------------------------------------------
+# Random sample of 68 action and romance movies from ggplot2movies::movies.
+
+# Set random number generator seed value for reproducible/replicable random
+# sampling:
+set.seed(2017)
+movies_sample <- ggplot2movies::movies %>% 
+  select(title, year, rating, Action, Romance) %>%
+  # Note that Action & Romance variables are binary. To remove any movies 
+  # that are both Action & Romance, we will remove them:
+  filter(!(Action == 1 & Romance == 1)) %>%
+  # Create a new variable genre that specifies whether a movie is
+  # "Action", "Romance", or "Neither":
+  mutate(genre = case_when(
+    Action == 1 ~ "Action",
+    Romance == 1 ~ "Romance",
+    TRUE ~ "Neither")
+  ) %>%
+  # We aren't really interested "Neither", so remove these rows:
+  filter(genre != "Neither") %>%
+  # Action & Romance columns variables are not needed anymore since info is in
+  # genre column, so remove these columns
+  select(-Action, -Romance) %>% 
+  # Sample 68 rows
+  sample_n(68)
+usethis::use_data(movies_sample, overwrite = TRUE)
+
+
 # evals data from:
 # https://cran.r-project.org/web/packages/openintro/openintro.pdf#page=66
 set.seed(76)
@@ -210,25 +236,6 @@ pennies_resamples <-
   select(replicate, everything()) %>% 
   unnest()
 usethis::use_data(pennies_resamples, overwrite = TRUE)
-
-
-# sample of action and romance movies from ggplot2movies::movies
-set.seed(2017)
-movies_sample <- movies %>% 
-  select(title, year, rating, Action, Romance) %>%
-  # Remove movies that were both action and romance at the same time
-  filter(!(Action == 1 & Romance == 1)) %>%
-  # Set genre
-  mutate(genre = case_when(
-    Action == 1 ~ "Action",
-    Romance == 1 ~ "Romance",
-    TRUE ~ "Neither")
-  ) %>%
-  filter(genre != "Neither") %>%
-  select(-Action, -Romance) %>% 
-  # Sample 68
-  sample_n(68)
-usethis::use_data(movies_sample, overwrite = TRUE)
 
 
 
