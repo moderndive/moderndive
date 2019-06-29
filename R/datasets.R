@@ -191,8 +191,8 @@
 #'   \item{rating}{IMDb rating out of 10 stars}
 #'   \item{genre}{Action or Romance}
 #' }
-#' @examples
 #' @seealso This data was sampled from the `movies` data frame in \code{\link[ggplot2movies]{movies}}.
+#' @examples
 #' library(ggplot2)
 #' 
 #' # Visualize relationship between rating and genre
