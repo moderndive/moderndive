@@ -2,7 +2,7 @@
 #'
 #' Data from a 1970's study on whether gender influences hiring recommendations.
 #' 
-#' @format A data frame with 463 observations on the following 13 variables.
+#' @format A data frame with 48 observations on the following 3 variables.
 #' \describe{
 #'   \item{id}{Identification variable used to distinguish rows.}
 #'   \item{gender}{(binary) gender: a factor with two levels `male` and `female`}
@@ -16,6 +16,23 @@
 #' glimpse(promotions)
 "promotions"
 
+
+#' One permutation/shuffle of promotions
+#'
+#' Shuffled/permuted data from a 1970's study on whether gender influences hiring recommendations.
+#' 
+#' @format A data frame with 48 observations on the following 3 variables.
+#' \describe{
+#'   \item{id}{Identification variable used to distinguish rows.}
+#'   \item{gender}{shuffled/permuted (binary) gender: a factor with two levels `male` and `female`}
+#'   \item{decision}{a factor with two levels: `promoted` and `not`}
+#' }
+#' @seealso \code{\link{promotions}}.
+#' @examples
+#' library(dplyr)
+#' glimpse(promotions)
+#' glimpse(promotions_shuffled)
+"promotions_shuffled"
 
 
 #' Massachusetts Public High Schools Data

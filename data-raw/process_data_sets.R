@@ -43,12 +43,19 @@ usethis::use_data(movies_sample, overwrite = TRUE)
 set.seed(76)
 promotions <- gender.discrimination %>%
   as_tibble() %>% 
-  mutate(decision = factor(decision, levels = c("promoted", "not")),
+  mutate(decision = factor(decision, levels = c("not", "promoted")),
          gender = factor(gender, levels = c("male", "female"))) %>% 
   arrange(desc(decision), gender) %>% 
   mutate(id = 1:n()) %>% 
   select(id, decision, gender) 
 usethis::use_data(promotions, overwrite = TRUE)
+
+# one shuffle of promotions
+set.seed(2019)
+promotions_shuffled <- promotions %>%
+  mutate(gender = sample(gender))
+usethis::use_data(promotions_shuffled, overwrite = TRUE)
+
 
 
 # Massachusetts Public Schools Data: Student body, funding levels, and outcomes 

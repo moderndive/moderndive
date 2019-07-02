@@ -4,7 +4,7 @@
 \name{promotions}
 \alias{promotions}
 \title{Bank manager recommendations based on (binary) gender}
-\format{A data frame with 463 observations on the following 13 variables.
+\format{A data frame with 48 observations on the following 3 variables.
 \describe{
   \item{id}{Identification variable used to distinguish rows.}
   \item{gender}{(binary) gender: a factor with two levels `male` and `female`}
