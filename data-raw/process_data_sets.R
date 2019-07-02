@@ -125,8 +125,19 @@ evals <- evals %>%
   select(-starts_with("bty_m")) %>% 
   select(-starts_with("bty_f")) %>% 
   select(-c(cls_perc_eval, cls_credits, cls_profs)) %>% 
-  mutate(ID = 1:n()) %>% 
-  select(ID, score, age, bty_avg, gender, ethnicity, language, rank, starts_with("pic_"), everything())
+  mutate(ID = 1:n()) 
+
+# ID 94 unique profs in this data. 94 value confirmed here:
+# https://chance.amstat.org/2013/04/looking-good/
+unique_profs <- evals %>% 
+  select(rank, ethnicity, gender, language, age, bty_avg) %>% 
+  distinct() %>% 
+  mutate(prof_ID = 1:n())
+
+# join
+evals <- evals %>% 
+  left_join(unique_profs, by = c("rank", "ethnicity", "gender", "language", "age", "bty_avg")) %>% 
+  select(ID, prof_ID, score, age, bty_avg, gender, ethnicity, language, rank, starts_with("pic_"), everything())
 usethis::use_data(evals, overwrite = TRUE)
 
 

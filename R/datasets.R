@@ -137,15 +137,16 @@
 
 #' Teaching evaluations at the UT Austin
 #'
-#' The data are gathered from end of semester student evaluations for a large 
-#' sample of professors from the University of Texas at Austin. In addition, six 
+#' The data are gathered from end of semester student evaluations for a sample of 463 courses taught by  
+#' 94 professors from the University of Texas at Austin. In addition, six 
 #' students rate the professors' physical appearance. The result is a data frame 
 #' where each row contains a different course and each column has information on 
 #' either the course or the professor \url{https://www.openintro.org/stat/data/?data=evals}
 #' 
-#' @format A data frame with 463 observations on the following 13 variables.
+#' @format A data frame with 463 observations corresponding to courses on the following 13 variables.
 #' \describe{
-#'   \item{ID}{Identification variable used to distinguish rows.}
+#'   \item{ID}{Identification variable for course.}
+#'   \item{prof_ID}{Identification variable for professor. Many professors are included more than once in this dataset.}
 #'   \item{score}{Average professor evaluation score: (1) very unsatisfactory - (5) excellent.}
 #'   \item{age}{Age of professor.}
 #'   \item{bty_avg}{Average beauty rating of professor.}
