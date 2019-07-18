@@ -124,20 +124,13 @@
 <a href="#moderndive-0-2-0-9000" class="anchor"></a>moderndive 0.2.0.9000<small> Unreleased </small>
 </h1>
 <ul>
-<li>Added minimally viable parallel slopes model plotting function <code><a href="../reference/gg_parallel_slopes.html">gg_parallel_slopes()</a></code>. To do in future: define a new <code>ggplot2</code> geom layer <code>geom_parallel_slopes()</code>.</li>
+<li>Added minimally viable “parallel slopes” regression model plotting function <code><a href="../reference/gg_parallel_slopes.html">gg_parallel_slopes()</a></code>. In the future we hope to define a new <code>ggplot2</code> geom.</li>
 <li>Added “Why <code>moderndive</code>?” vignette</li>
-<li>Added ID argument to <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code> to return a column that ID’s the observational units</li>
-<li>Removed all <code>assertive::assert()</code>
+<li>Added ID argument to <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code> to return a column that identifies the observational units/rows</li>
+<li>Datasets: + Added <code>DD_vs_SB</code>: Dunkin Donuts and Starbucks in Eastern Massachusetts data collected by <a href='https://github.com/DelaneyMoran'>@DelaneyMoran</a> + Added <code>promotions</code>: tibble version of <code>openintro::gender.discrimination</code> used to illustrate permutation test. + Added <code>MA_schools</code>: Relationship between SAT scores and socio-economic status for Massachusetts high schools. + Added <code>mythbusters_yawn</code>: Data from study on Mythbusters show on whether yawning is + Added <code>promotions_shuffled</code>: one instance of <code>promotions</code> with <code>gender</code> permuted/shuffled + Original <code>pennies_sample</code> sample of 40 pennies from <code>pennies</code> has been renamed <code>orig_pennies_sample</code>. New <code>pennies_sample</code> consists of 50 pennies sampled from bank in Northampton, MA, USA on 2019/2/1. + Added <code>pennies_resamples</code>: 35 bootstrap resamples of new <code>pennies_sample</code> + Added <code>movies_genre</code>: random sample of 32 action and 36 romance movies from <code>ggplot2movies::movies</code><br>
 </li>
+<li>Removed all <code>assertive::assert()</code> code</li>
 <li>Converted <code>house_prices$date</code> from <code>dttm</code> (date-time) to <code>date</code> per R4DS <a href="https://r4ds.had.co.nz/dates-and-times.html#creating-datetimes">comment</a> on using simplest data type possible</li>
-<li>Added <code>DD_vs_SB</code> dataset of Dunkin Donuts and Starbucks in Eastern Massachusetts collected by <a href='https://github.com/DelaneyMoran'>@DelaneyMoran</a></li>
-<li>Original <code>pennies_sample</code> sample of 40 pennies from <code>pennies</code> has been renamed <code>orig_pennies_sample</code>. New <code>pennies_sample</code> consists of 50 pennies sampled from bank in Northampton, MA, USA on 2019/2/1.</li>
-<li>Added <code>pennies_resamples</code> data of 35 bootstrap resamples of new <code>pennies_sample</code>
-</li>
-<li>Added <code>promotions</code> data frame (tibble version of <code>openintro::gender.discrimination</code>) and <code>promotions_shuffled</code>
-</li>
-<li>Added <code>movies_genre</code> data frame: random sample of 32 action and 36 romance movies from <code>ggplot2movies::movies</code>
-</li>
 </ul>
 <hr>
 </div>
@@ -152,7 +145,7 @@
 </ul>
 <p>Details:</p>
 <ul>
-<li>Created <code><a href="../reference/get_correlation.html">get_correlation()</a></code> function to omit <code>$</code> syntax and return a data frame</li>
+<li>Created <code><a href="../reference/get_correlation.html">get_correlation()</a></code> function to omit <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> syntax and return a data frame</li>
 <li>Import <code><a href="https://rdrr.io/pkg/infer/man/rep_sample_n.html">infer::rep_sample_n()</a></code> instead of our own defined version, as this function is <a href="https://github.com/andrewpbray/infer/pull/82">now included in <code>infer</code></a>
 </li>
 <li>Added <code>evals</code>, <code>house_prices</code>, <code>tactile_prop_red</code>, <code>pennies_sample</code> and <code>mythbusters_yawn</code> datasets</li>
