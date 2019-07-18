@@ -27,7 +27,7 @@ in \code{data}}
 A \code{\link[ggplot2]{ggplot}} object.
 }
 \description{
-Output a visualizaiton of linear regression when you have one numerical 
+Output a visualization of linear regression when you have one numerical 
 and one categorical explanatory/predictor variable: a separate colored 
 regression line for each level of the categorical variable
 }

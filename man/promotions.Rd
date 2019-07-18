@@ -19,12 +19,13 @@ promotions
 }
 \description{
 Data from a 1970's study on whether gender influences hiring recommendations.
+Originally used in OpenIntro.org.
 }
 \examples{
 library(dplyr)
 glimpse(promotions)
 }
 \seealso{
-The data in `gender_promotions` is a tidyverse-frienly transformation of \code{\link[openintro]{gender.discrimination}}.
+The data in `gender_promotions` is a tidyverse-friendly transformation of \code{\link[openintro]{gender.discrimination}}.
 }
 \keyword{datasets}

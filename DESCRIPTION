@@ -1,7 +1,7 @@
 Package: moderndive
 Type: Package
 Title: Tidyverse-Friendly Introductory Linear Regression
-Version: 0.2.0.9000
+Version: 0.3.0
 Authors@R: c(
     person("Albert Y.", "Kim", email = "albert.ys.kim@gmail.com", role = "cre"),
     person("Chester", "Ismay", email = "chester.ismay@gmail.com", role = "aut"),
@@ -29,11 +29,9 @@ Imports:
     knitr,
     infer,
     rlang (>= 0.2.0),
-    glue,
-    nycflights13
+    glue
 RoxygenNote: 6.1.1
 Suggests: testthat,
     covr,
-    rmarkdown,
-    tidyverse
+    rmarkdown
 VignetteBuilder: knitr

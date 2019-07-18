@@ -1,6 +1,7 @@
 #' Bank manager recommendations based on (binary) gender
 #'
 #' Data from a 1970's study on whether gender influences hiring recommendations.
+#' Originally used in OpenIntro.org.
 #' 
 #' @format A data frame with 48 observations on the following 3 variables.
 #' \describe{
@@ -10,7 +11,7 @@
 #' }
 #' @source Rosen B and Jerdee T. 1974. Influence of sex role stereotypes on personnel 
 #' decisions. Journal of Applied Psychology 59(1):9-14.
-#' @seealso The data in `gender_promotions` is a tidyverse-frienly transformation of \code{\link[openintro]{gender.discrimination}}.
+#' @seealso The data in `gender_promotions` is a tidyverse-friendly transformation of \code{\link[openintro]{gender.discrimination}}.
 #' @examples
 #' library(dplyr)
 #' glimpse(promotions)
