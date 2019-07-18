@@ -26,6 +26,6 @@ library(dplyr)
 glimpse(promotions)
 }
 \seealso{
-The data in `gender_promotions` is a tidyverse-frienly transformation of \code{\link[openintro]{gender.discrimination}}.
+The data in `gender_promotions` is a tidyverse-friendly transformation of \code{\link[openintro]{gender.discrimination}}.
 }
 \keyword{datasets}

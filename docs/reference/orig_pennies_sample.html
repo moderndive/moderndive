@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A population of 800 pennies sampled in 2011 — pennies • moderndive</title>
+<title>A random sample of 40 pennies sampled from the <code>pennies</code> data frame — orig_pennies_sample • moderndive</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,10 @@
 
 
 
-<meta property="og:title" content="A population of 800 pennies sampled in 2011 — pennies" />
+<meta property="og:title" content="A random sample of 40 pennies sampled from the <code>pennies</code> data frame — orig_pennies_sample" />
 
-<meta property="og:description" content="A dataset of 800 pennies to be treated as a sampling population. Data on 
-these pennies were recorded in 2011." />
+<meta property="og:description" content="A dataset of 40 pennies to be treated as a random sample with pennies acting
+as the population. Data on these pennies were recorded in 2011." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -115,23 +115,23 @@ these pennies were recorded in 2011." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>A population of 800 pennies sampled in 2011</h1>
+    <h1>A random sample of 40 pennies sampled from the <code>pennies</code> data frame</h1>
     <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/pennies.R'><code>R/pennies.R</code></a></small>
-    <div class="hidden name"><code>pennies.Rd</code></div>
+    <div class="hidden name"><code>orig_pennies_sample.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>A dataset of 800 pennies to be treated as a sampling population. Data on 
-these pennies were recorded in 2011.</p>
+    <p>A dataset of 40 pennies to be treated as a random sample with <code><a href='pennies.html'>pennies</a></code> acting
+as the population. Data on these pennies were recorded in 2011.</p>
     
     </div>
 
-    <pre class="usage"><span class='no'>pennies</span></pre>
+    <pre class="usage"><span class='no'>orig_pennies_sample</span></pre>
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame of 800 rows representing different pennies and 2 variables</p><dl class='dl-horizontal'>
+    <p>A data frame of 40 rows representing 40 randomly sampled pennies from <code><a href='pennies.html'>pennies</a></code> and 2 variables</p><dl class='dl-horizontal'>
   <dt>year</dt><dd><p>Year of minting</p></dd>
   <dt>age_in_2011</dt><dd><p>Age in 2011</p></dd>
 </dl>
@@ -140,39 +140,43 @@ these pennies were recorded in 2011.</p>
 
     <p>StatCrunch <a href='https://www.statcrunch.com/app/index.php?dataid=301596'>https://www.statcrunch.com/app/index.php?dataid=301596</a></p>
     
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
+
+    <div class='dont-index'><p><code><a href='pennies.html'>pennies</a></code></p></div>
+    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>dplyr</span>)
 <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>ggplot2</span>)
 
-<span class='co'># Take 25 different samples of size n = 50 pennies from population</span>
-<span class='no'>many_samples</span> <span class='kw'>&lt;-</span> <span class='no'>pennies</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://www.rdocumentation.org/packages/infer/topics/rep_sample_n'>rep_sample_n</a></span>(<span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>50</span>, <span class='kw'>reps</span> <span class='kw'>=</span> <span class='fl'>25</span>)
-<span class='no'>many_samples</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1,250 x 3</span><span>
-#&gt; </span><span style='color: #555555;'># Groups:   replicate [25]</span><span>
+<span class='co'># Take 50 different resamples/bootstraps from the original sample</span>
+<span class='no'>many_bootstraps</span> <span class='kw'>&lt;-</span> <span class='no'>orig_pennies_sample</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/infer/topics/rep_sample_n'>rep_sample_n</a></span>(<span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>40</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>reps</span> <span class='kw'>=</span> <span class='fl'>50</span>)
+<span class='no'>many_bootstraps</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 2,000 x 3</span><span>
+#&gt; </span><span style='color: #555555;'># Groups:   replicate [50]</span><span>
 #&gt;    replicate  year age_in_2011
-#&gt;        </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span>         1  </span><span style='text-decoration: underline;'>1</span><span>996          15
-#&gt; </span><span style='color: #555555;'> 2</span><span>         1  </span><span style='text-decoration: underline;'>2</span><span>004           7
-#&gt; </span><span style='color: #555555;'> 3</span><span>         1  </span><span style='text-decoration: underline;'>2</span><span>005           6
-#&gt; </span><span style='color: #555555;'> 4</span><span>         1  </span><span style='text-decoration: underline;'>1</span><span>990          21
-#&gt; </span><span style='color: #555555;'> 5</span><span>         1  </span><span style='text-decoration: underline;'>1</span><span>993          18
-#&gt; </span><span style='color: #555555;'> 6</span><span>         1  </span><span style='text-decoration: underline;'>1</span><span>984          27
-#&gt; </span><span style='color: #555555;'> 7</span><span>         1  </span><span style='text-decoration: underline;'>1</span><span>986          25
-#&gt; </span><span style='color: #555555;'> 8</span><span>         1  </span><span style='text-decoration: underline;'>2</span><span>000          11
-#&gt; </span><span style='color: #555555;'> 9</span><span>         1  </span><span style='text-decoration: underline;'>1</span><span>980          31
-#&gt; </span><span style='color: #555555;'>10</span><span>         1  </span><span style='text-decoration: underline;'>1</span><span>982          29
-#&gt; </span><span style='color: #555555;'># … with 1,240 more rows</span><span></div><div class='input'>
-<span class='co'># Compute mean year of minting for each sample</span>
-<span class='no'>sample_means</span> <span class='kw'>&lt;-</span> <span class='no'>many_samples</span> <span class='kw'>%&gt;%</span>
+#&gt;        </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span>         1  </span><span style='text-decoration: underline;'>1</span><span>986          25
+#&gt; </span><span style='color: #555555;'> 2</span><span>         1  </span><span style='text-decoration: underline;'>1</span><span>974          37
+#&gt; </span><span style='color: #555555;'> 3</span><span>         1  </span><span style='text-decoration: underline;'>1</span><span>997          14
+#&gt; </span><span style='color: #555555;'> 4</span><span>         1  </span><span style='text-decoration: underline;'>1</span><span>993          18
+#&gt; </span><span style='color: #555555;'> 5</span><span>         1  </span><span style='text-decoration: underline;'>1</span><span>988          23
+#&gt; </span><span style='color: #555555;'> 6</span><span>         1  </span><span style='text-decoration: underline;'>1</span><span>996          15
+#&gt; </span><span style='color: #555555;'> 7</span><span>         1  </span><span style='text-decoration: underline;'>2</span><span>004           7
+#&gt; </span><span style='color: #555555;'> 8</span><span>         1  </span><span style='text-decoration: underline;'>2</span><span>004           7
+#&gt; </span><span style='color: #555555;'> 9</span><span>         1  </span><span style='text-decoration: underline;'>1</span><span>985          26
+#&gt; </span><span style='color: #555555;'>10</span><span>         1  </span><span style='text-decoration: underline;'>1</span><span>961          50
+#&gt; </span><span style='color: #555555;'># … with 1,990 more rows</span><span></div><div class='input'>
+<span class='co'># Compute mean year of minting for each bootstrap sample</span>
+<span class='no'>bootstrap_means</span> <span class='kw'>&lt;-</span> <span class='no'>many_bootstraps</span> <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>replicate</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span>(<span class='kw'>mean_year</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/mean'>mean</a></span>(<span class='no'>year</span>))
 
 <span class='co'># Plot sampling distribution</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>sample_means</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>mean_year</span>)) +
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>bootstrap_means</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>mean_year</span>)) +
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span>(<span class='kw'>binwidth</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"white"</span>) +
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/expression'>expression</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/grDevices/topics/plotmath'>bar</a></span>(<span class='no'>x</span>)), <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Number of samples"</span>,
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Sampling distribution of x_bar based 25 samples of size n = 50"</span>)</div><div class='img'><img src='pennies-1.png' alt='' width='700' height='433' /></div></span></pre>
+  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Bootstrap distribution of x_bar based 50 resamples of size n = 40"</span>)</div><div class='img'><img src='orig_pennies_sample-1.png' alt='' width='700' height='433' /></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
@@ -181,6 +185,8 @@ these pennies were recorded in 2011.</p>
       <li><a href="#format">Format</a></li>
 
       <li><a href="#source">Source</a></li>
+
+      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

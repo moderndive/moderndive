@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Sampling from a bowl of balls — bowl_samples • moderndive</title>
+<title>One permutation/shuffle of promotions — promotions_shuffled • moderndive</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,9 @@
 
 
 
-<meta property="og:title" content="Sampling from a bowl of balls — bowl_samples" />
+<meta property="og:title" content="One permutation/shuffle of promotions — promotions_shuffled" />
 
-<meta property="og:description" content="Counting the number of red balls in 10 samples of size n = 50 balls from
-https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg" />
+<meta property="og:description" content="Shuffled/permuted data from a 1970's study on whether gender influences hiring recommendations." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -115,49 +114,43 @@ https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Sampling from a bowl of balls</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/bowl.R'><code>R/bowl.R</code></a></small>
-    <div class="hidden name"><code>bowl_samples.Rd</code></div>
+    <h1>One permutation/shuffle of promotions</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/datasets.R'><code>R/datasets.R</code></a></small>
+    <div class="hidden name"><code>promotions_shuffled.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Counting the number of red balls in 10 samples of size n = 50 balls from
-<a href='https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg'>https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg</a></p>
+    <p>Shuffled/permuted data from a 1970's study on whether gender influences hiring recommendations.</p>
     
     </div>
 
-    <pre class="usage"><span class='no'>bowl_samples</span></pre>
+    <pre class="usage"><span class='no'>promotions_shuffled</span></pre>
         
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame 10 rows representing different groups of students' 
-samples of size n = 50 and 5 variables</p><dl class='dl-horizontal'>
-  <dt>group</dt><dd><p>Group name</p></dd>
-  <dt>red</dt><dd><p>Number of red balls sampled</p></dd>
-  <dt>white</dt><dd><p>Number of white balls sampled</p></dd>
-  <dt>green</dt><dd><p>Number of green balls sampled</p></dd>
-  <dt>n</dt><dd><p>Total number of balls samples</p></dd>
+    <p>A data frame with 48 observations on the following 3 variables.</p><dl class='dl-horizontal'>
+  <dt>id</dt><dd><p>Identification variable used to distinguish rows.</p></dd>
+  <dt>gender</dt><dd><p>shuffled/permuted (binary) gender: a factor with two levels `male` and `female`</p></dd>
+  <dt>decision</dt><dd><p>a factor with two levels: `promoted` and `not`</p></dd>
 </dl>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='bowl.html'>bowl</a></code></p></div>
+    <div class='dont-index'><p><code><a href='promotions.html'>promotions</a></code>.</p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>ggplot2</span>)
-
-<span class='co'># Compute proportion red</span>
-<span class='no'>bowl_samples</span> <span class='kw'>&lt;-</span> <span class='no'>bowl_samples</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>prop_red</span> <span class='kw'>=</span> <span class='no'>red</span> / <span class='no'>n</span>)
-
-<span class='co'># Plot sampling distributions</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>bowl_samples</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>prop_red</span>)) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span>(<span class='kw'>binwidth</span> <span class='kw'>=</span> <span class='fl'>0.05</span>) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/expression'>expression</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/influence.measures'>hat</a></span>(<span class='no'>p</span>)), <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Number of samples"</span>,
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Sampling distribution of p_hat based 10 samples of size n = 50"</span>)</div><div class='img'><img src='bowl_samples-1.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>glimpse</a></span>(<span class='no'>promotions</span>)</div><div class='output co'>#&gt; Observations: 48
+#&gt; Variables: 3
+#&gt; $ id       <span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…
+#&gt; $ decision </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> promoted, promoted, promoted, promoted, promoted, promoted, …
+#&gt; $ gender   </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> male, male, male, male, male, male, male, male, male, male, …</div><div class='input'><span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>glimpse</a></span>(<span class='no'>promotions_shuffled</span>)</div><div class='output co'>#&gt; Observations: 48
+#&gt; Variables: 3
+#&gt; $ id       </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…
+#&gt; $ decision </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> promoted, promoted, promoted, promoted, promoted, promoted, …
+#&gt; $ gender   </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> female, female, male, female, male, male, male, female, male…</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

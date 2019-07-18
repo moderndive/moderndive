@@ -175,7 +175,7 @@ residuals(score_model)
 residuals(score_model)[1:10]
 ```
 
-But why have the original explantory/predictor `age` and outcome variable `score` in `evals`, the fitted/predicted values `score_hat`, and `residual` floating around in separate pieces? Since each observation relates to the same instructor, wouldn't it make sense to organize them together? This is where `get_regression_points()` shines!
+But why have the original explanatory/predictor `age` and outcome variable `score` in `evals`, the fitted/predicted values `score_hat`, and `residual` floating around in separate pieces? Since each observation relates to the same instructor, wouldn't it make sense to organize them together? This is where `get_regression_points()` shines!
 
 ```{r, eval=FALSE}
 get_regression_points(score_model)
@@ -229,7 +229,7 @@ The fourth common student comment/question:
 
 > "How do I apply this model to a new set of data to make predictions?"
 
-With the fields of machine learning and artifical intelligence gaining prominence, the importance of predictive modeling cannot be understated. Therefore, we've designed the `get_regression_points()` function to allow for a `newdata` argument to quickly apply a previously fitted model to "new" observations. 
+With the fields of machine learning and artificial intelligence gaining prominence, the importance of predictive modeling cannot be understated. Therefore, we've designed the `get_regression_points()` function to allow for a `newdata` argument to quickly apply a previously fitted model to "new" observations. 
 
 Let's create an artificial "new" dataset which is a subset of the original `evals` data with the outcome variable `score` removed and use it as the `newdata` argument:
 

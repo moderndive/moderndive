@@ -11,7 +11,7 @@
 #' }
 #' @source Rosen B and Jerdee T. 1974. Influence of sex role stereotypes on personnel 
 #' decisions. Journal of Applied Psychology 59(1):9-14.
-#' @seealso The data in `gender_promotions` is a tidyverse-frienly transformation of \code{\link[openintro]{gender.discrimination}}.
+#' @seealso The data in `gender_promotions` is a tidyverse-friendly transformation of \code{\link[openintro]{gender.discrimination}}.
 #' @examples
 #' library(dplyr)
 #' glimpse(promotions)
