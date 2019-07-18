@@ -1,6 +1,7 @@
 #' Bank manager recommendations based on (binary) gender
 #'
 #' Data from a 1970's study on whether gender influences hiring recommendations.
+#' Originally used in OpenIntro.org.
 #' 
 #' @format A data frame with 48 observations on the following 3 variables.
 #' \describe{

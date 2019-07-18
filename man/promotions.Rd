@@ -19,6 +19,7 @@ promotions
 }
 \description{
 Data from a 1970's study on whether gender influences hiring recommendations.
+Originally used in OpenIntro.org.
 }
 \examples{
 library(dplyr)
