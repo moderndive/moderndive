@@ -1,3 +1,11 @@
+# moderndive 0.3.0.9000
+
+
+
+***
+
+
+
 # moderndive 0.3.0
 
 * Added minimally viable "parallel slopes" regression model plotting function `gg_parallel_slopes()`. In the future we hope to define a new `ggplot2` geom.
