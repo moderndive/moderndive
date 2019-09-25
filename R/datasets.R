@@ -49,7 +49,7 @@
 #' }
 #' @source The original source of the data are Massachusetts Department of 
 #' Education reports \url{http://profiles.doe.mass.edu/state_report/}, however 
-#' the data wad downloaded from Kaggle at \url{https://www.kaggle.com/ndalziel/massachusetts-public-schools-data}
+#' the data was downloaded from Kaggle at \url{https://www.kaggle.com/ndalziel/massachusetts-public-schools-data}
 #' @examples
 #' library(ggplot2)
 #' ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
