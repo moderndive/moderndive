@@ -10,10 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive) [![Travis-CI Build Status](https://travis-ci.org/moderndive/moderndive.svg?branch=master)](https://travis-ci.org/moderndive/moderndive) [![Coverage Status](https://img.shields.io/codecov/c/github/moderndive/moderndive/master.svg)](https://codecov.io/github/moderndive/moderndive?branch=master)[![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/moderndive)](http://www.r-pkg.org/pkg/moderndive)
 
-An R package of datasets and wrapper functions for [tidyverse](https://www.tidyverse.org/)-friendly introductory linear regression used in 
-
-- ModernDive: An Introduction to Statistical and Data Sciences via R available at [ModernDive.com](https://moderndive.com/)
-- DataCamp's [Modeling with Data in the Tidyverse](https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse)
+An R package of datasets and wrapper functions for [tidyverse](https://www.tidyverse.org/)-friendly introductory linear regression used in "Statistical Inference via Data Science: A ModernDive into R and the tidyverse" available at [ModernDive.com](https://moderndive.com/).
 
 
 ## Installation
@@ -35,7 +32,7 @@ remotes::install_github("moderndive/moderndive")
 
 ## Demo
 
-Let's fit a simple linear regression of teaching `score` (as evaluated by students) over instructor age for 463 instructors at the UT Austin:
+Let's fit a simple linear regression of teaching `score` (as evaluated by students) over instructor age for 463 courses taught by 94 instructors at the UT Austin:
 
 ```{r}
 library(moderndive)
@@ -66,6 +63,18 @@ Get all the scalar summaries of a regression fit included in `summary(score_mode
 
 ```{r}
 get_regression_summaries(score_model)
+```
+
+
+#### 4. Plot parallel slopes models
+
+Plot parallel slopes regression models involving one categorical and one numerical explanatory/predictor variable (something you cannot do using `ggplot2::geom_smooth()`).
+
+```{r}
+library(ggplot2)
+ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
+  geom_point() +
+  geom_parallel_slopes(se = FALSE)
 ```
 
 

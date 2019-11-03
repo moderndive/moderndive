@@ -4,7 +4,8 @@ globalVariables(c(
 
 #' Plot parallel slopes model
 #' 
-#' Output a visualization of linear regression when you have one numerical 
+#' NOTE: THIS FUNCTION WILL SOON BE DEPRECATED; PLEASE USE \code{{geom_parallel_slopes()}} 
+#' INSTEAD. Output a visualization of linear regression when you have one numerical 
 #' and one categorical explanatory/predictor variable: a separate colored 
 #' regression line for each level of the categorical variable
 #' 
@@ -15,6 +16,7 @@ globalVariables(c(
 #' @param cat_x Character string of categorical explanatory/predictor variable
 #'   in \code{data}
 #' @param alpha Transparency of points
+#' @seealso \code{\link{geom_parallel_slopes}}
 #' @return A \code{\link[ggplot2]{ggplot}} object.
 #' @importFrom glue glue
 #' @importFrom stats as.formula
@@ -63,6 +65,11 @@ gg_parallel_slopes <- function(y, num_x, cat_x, data, alpha = 1){
     # Add parallel slopes lines. Note the data and aes(y = ) override:
     geom_line(data = model_points, aes_string(y = y_hat), size = 1, show.legend = FALSE) +
     guides(colour = guide_legend(override.aes = list(alpha = 1)))
+  
+  message_wrap("Plotting parallel slopes models is now much easier using the 
+  `geom_parallel_slopes()` function. We suggest you use `geom_parallel_slopes()` instead
+  of `gg_parallel_slopes()`; read the help file by running `?geom_parallel_slopes` to 
+               learn how.")
   
   return(plot)
 }

@@ -8,9 +8,7 @@
 \description{
 Datasets and wrapper functions for tidyverse-friendly introductory linear
 regression, used in "Statistical Inference via Data Science: A ModernDive 
-into R and the tidyverse" available at \url{https://moderndive.com/} and 
-DataCamp's Modeling with Data in the Tidyverse course available at
-\url{https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse}.
+into R and the tidyverse" available at \url{https://moderndive.com/}.
 }
 \examples{
 library(moderndive)
@@ -26,4 +24,10 @@ get_regression_points(mpg_model)
 
 # Regression summaries
 get_regression_summaries(mpg_model)
+
+# Plotting parallel slopes models
+library(ggplot2)
+ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
+  geom_point() +
+  geom_parallel_slopes(se = FALSE)
 }
