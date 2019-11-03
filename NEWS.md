@@ -5,7 +5,7 @@
 * Added student names (permission obtained in all cases) to `pennies_resamples` data frame columns
 * `get_correlation()` now:
     + Respects `dplyr::group_by()` grouping
-    + Can handle missing data by either passing `na.rm = TRUE` argument or by passing standard `stats:cor(use = "complete.obs")` argument
+    + Can handle missing data by either passing `na.rm = TRUE` argument or by passing standard `stats:cor(use = "complete.obs")` argument via `...`
 
 
 ***
