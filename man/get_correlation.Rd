@@ -24,4 +24,15 @@ library(moderndive)
 # Compute correlation between mpg and cyl:
 mtcars \%>\% 
    get_correlation(formula = mpg ~ cyl)
+   
+# Group by one variable:
+library(dplyr)
+mtcars \%>\% 
+  group_by(am) \%>\% 
+  get_correlation(formula = mpg ~ cyl)
+  
+# Group by two variables:
+mtcars \%>\% 
+  group_by(am, gear) \%>\% 
+  get_correlation(formula = mpg ~ cyl)
 }

@@ -10,6 +10,10 @@
 #' @importFrom magrittr "%>%"
 #' @importFrom formula.tools lhs
 #' @importFrom formula.tools rhs
+#' @importFrom dplyr group_vars
+#' @importFrom dplyr select
+#' @importFrom dplyr summarize
+#' @importFrom stats cor
 #' @export
 #'
 #' @examples
@@ -18,18 +22,46 @@
 #' # Compute correlation between mpg and cyl:
 #' mtcars %>% 
 #'    get_correlation(formula = mpg ~ cyl)
+#'    
+#' # Group by one variable:
+#' library(dplyr)
+#' mtcars %>% 
+#'   group_by(am) %>% 
+#'   get_correlation(formula = mpg ~ cyl)
+#'   
+#' # Group by two variables:
+#' mtcars %>% 
+#'   group_by(am, gear) %>% 
+#'   get_correlation(formula = mpg ~ cyl)
 get_correlation <- function(data, formula) {
     
   check_correlation_args(data, formula)
   
-  outcome_variable <- formula %>% lhs() %>% all.vars()
-  explanatory_variable <- formula %>% rhs() %>% all.vars()
+  outcome_variable <- formula %>% 
+    lhs() %>% 
+    all.vars()
+  explanatory_variable <- formula %>% 
+    rhs() %>% 
+    all.vars()
+  grouping_variables <- data %>% 
+    group_vars()
 
   check_formula_args(data, formula, outcome_variable,
                      explanatory_variable)
   
-  correlation <- stats::cor(data[[outcome_variable]],
-             data[[explanatory_variable]])
+  # select only the two numerical variables of interest (and if applicable grouping
+  # variables)
+  if(length(grouping_variables) == 0){
+    correlation <- data %>% 
+      select(outcome_variable, explanatory_variable) 
+  } else {
+    correlation <- data %>% 
+      select(outcome_variable, explanatory_variable, grouping_variables) 
+  }
+    
+  # Compute correlations
+  correlation <- data %>% 
+    summarize(cor = cor(!!sym(outcome_variable), !!sym(explanatory_variable)))
   
   tibble::tibble(correlation)
 }

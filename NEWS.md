@@ -1,3 +1,8 @@
+# moderndive 0.4.0
+
+* `get_correlation()` now respects `dplyr::group_by()` grouping
+
+
 # moderndive 0.2.0.9000
 
 * Added ID argument to get_regression_points() to return a column that ID's the 
