@@ -1,17 +1,18 @@
 Package: moderndive
 Type: Package
 Title: Tidyverse-Friendly Introductory Linear Regression
-Version: 0.2.0.9000
+Version: 0.3.0.9000
 Authors@R: c(
-    person("Albert Y.", "Kim", email = "albert.ys.kim@gmail.com", role = "cre"),
+    person("Albert Y.", "Kim", email = "albert.ys.kim@gmail.com", role = c("aut", "cre")),
     person("Chester", "Ismay", email = "chester.ismay@gmail.com", role = "aut"),
     person("Andrew", "Bray", email = "abray@reed.edu", role = "ctb"),
-    person("Delaney", "Moran", email = "dmoran@middlebury.edu", role = "ctb")
+    person("Delaney", "Moran", email = "dmoran@middlebury.edu", role = "ctb"),
+    person("Evgeni", "Chasnovski", email = "evgeni.chasnovski@gmail.com", role = "ctb")
     )
 Maintainer: Albert Y. Kim <albert.ys.kim@gmail.com>
 Description: Datasets and wrapper functions for tidyverse-friendly introductory linear regression, used in ModernDive: An Introduction to Statistical and Data Sciences via R available at <http://moderndive.com/> and DataCamp's Modeling with Data in the Tidyverse available at <https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse>.
 Depends:
-    R (>= 3.2.4)
+    R (>= 3.4.0)
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -20,6 +21,7 @@ BugReports: https://github.com/ModernDive/moderndive_package/issues
 Imports: 
     magrittr,
     dplyr,
+    ggplot2,
     tibble,
     janitor,
     broom (>= 0.4.3),
@@ -27,8 +29,11 @@ Imports:
     stringr,
     knitr,
     infer,
-    rlang
-RoxygenNote: 6.1.0
+    rlang (>= 0.2.0),
+    glue
+RoxygenNote: 6.1.1
 Suggests: testthat,
     covr,
-    ggplot2
+    rmarkdown,
+    vdiffr
+VignetteBuilder: knitr

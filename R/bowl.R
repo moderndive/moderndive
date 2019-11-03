@@ -35,6 +35,82 @@
 
 
 
+#' Sampling from a bowl of balls
+#'
+#' Counting the number of red balls in 10 samples of size n = 50 balls from
+#' \url{https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg}
+#'
+#' @format A data frame 10 rows representing different groups of students' 
+#' samples of size n = 50 and 5 variables
+#' \describe{
+#'   \item{group}{Group name}
+#'   \item{red}{Number of red balls sampled}
+#'   \item{white}{Number of white balls sampled}
+#'   \item{green}{Number of green balls sampled}
+#'   \item{n}{Total number of balls samples}
+#' }
+#' @seealso \code{\link{bowl}}
+#' @examples
+#' library(dplyr)
+#' library(ggplot2)
+#' 
+#' # Compute proportion red
+#' bowl_samples <- bowl_samples %>%
+#'   mutate(prop_red = red / n)
+#'   
+#' # Plot sampling distributions
+#' ggplot(bowl_samples, aes(x = prop_red)) +
+#'   geom_histogram(binwidth = 0.05) +
+#'   labs(x = expression(hat(p)), y = "Number of samples", 
+#'   title = "Sampling distribution of p_hat based 10 samples of size n = 50")
+"bowl_samples"
+
+
+
+#' Tactile sampling from a tub of balls
+#'
+#' Counting the number of red balls in 33 tactile samples of size n = 50 balls from
+#' \url{https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg}
+#'
+#' @format A data frame of 33 rows representing different groups of students' 
+#' samples of size n = 50 and 4 variables
+#' \describe{
+#'   \item{group}{Group members}
+#'   \item{replicate}{Replicate number}
+#'   \item{red_balls}{Number of red balls sampled out of 50}
+#'   \item{prop_red}{Proportion red balls out of 50}
+#' }
+#' @seealso \code{\link{bowl}}
+#' @examples
+#' library(ggplot2)
+#' 
+#' # Plot sampling distributions
+#' ggplot(tactile_prop_red, aes(x = prop_red)) +
+#'   geom_histogram(binwidth = 0.025) +
+#'   labs(x = expression(hat(p)), y = "Number of samples", 
+#'   title = "Sampling distribution of p_hat based 33 samples of size n = 50")
+"tactile_prop_red"
+
+
+
+#' Tactile sample of size 50 from a bowl of balls
+#'
+#' A single tactile sample of size n = 50 balls from
+#' \url{https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg}
+#'
+#' @format A data frame of 50 rows representing different balls and 1 variable.
+#' \describe{
+#'   \item{color}{Color of ball sampled}
+#' }
+#' @seealso \code{\link{bowl}}
+#' @examples
+#' library(ggplot2)
+#' 
+#' # Barplot of distribution of balls in sample
+#' ggplot(bowl_sample_1, aes(x = color)) +
+#'   geom_bar() +
+#'   labs(title = "50 sampled bals from bowl")
+"bowl_sample_1"
 
 
 

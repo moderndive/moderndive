@@ -1,10 +1,15 @@
 # Sample .travis.yml for R projects
 
 language: r
-r:
-  - oldrel
-  - release
-  - devel
+
+matrix:
+  include:
+  - r: oldrel
+    # Don't use vdiffr on old R release
+    env: VDIFFR_RUN_TESTS=false
+  - r: release
+  - r: devel
+
 warnings_are_errors: true
 sudo: required
 cache: packages
@@ -13,6 +18,8 @@ latex: false
 env:
  global:
    - CRAN: http://cran.rstudio.com
+   # Use vdiffr by default
+   - VDIFFR_RUN_TESTS: true
 
 notifications:
   email:

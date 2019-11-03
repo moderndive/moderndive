@@ -36,119 +36,193 @@ remotes::install_github("moderndive/moderndive")
 
 ## Demo
 
-The following three `get_regression_OUTPUT()` functions are
-tidyverse-friendly wrapper functions meant for the novice regression
-user. They have more intuitive/verb-like function names than the
-corresponding `broom` package commands:
-
-  - `get_regression_table()`: a wrapper to `tidy()` to return the
-    regression table
-  - `get_regression_points()`: a wrapper to `augment()` to return a
-    table of all regression points
-  - `get_regression_summaries()`: a wrapper to `glance()` to return
-    summary statistics about the regression
-
-Furthermore
-
-  - `get_regression_table()` returns confidence intervals (not just
-    p-values) by default
-  - The outputs are returned as
-    [tibbles](https://blog.rstudio.com/2016/03/24/tibble-1-0-0/)
-  - It cleans the output format by eliminating all information not
-    pertinent to novice regression users
-  - You can set the output to be in `knitr::kable()` markdown format,
-    suitable for printing in R Markdown documents, via `print = TRUE`
-
-<!-- end list -->
+Let’s fit a simple linear regression of teaching `score` (as evaluated
+by students) over instructor age for 463 instructors at the UT Austin:
 
 ``` r
 library(moderndive)
-library(dplyr)
+score_model <- lm(score ~ age, data = evals)
 ```
 
+Among the many useful features of the `moderndive` package outlined in
+our essay [“Why should you use the moderndive package for intro linear
+regression?”](https://moderndive.github.io/moderndive/articles/why-moderndive.html)
+we highlight three functions in particular:
+
+#### 1\. Get regression tables
+
+Get a tidy regression table **with** confidence intervals:
+
 ``` r
-# Convert cyl to factor variable
-mtcars <- mtcars %>% 
-  mutate(cyl = as.factor(cyl))
-
-# Regression models
-mpg_model <- lm(mpg ~ hp, data = mtcars)
-mpg_mlr_model <- lm(mpg ~ hp + wt, data = mtcars)
-mpg_mlr_model2 <- lm(mpg ~ hp + cyl, data = mtcars)
-
-# Regression tables
-get_regression_table(model = mpg_model)
+get_regression_table(score_model)
 ```
 
     ## # A tibble: 2 x 7
     ##   term      estimate std_error statistic p_value lower_ci upper_ci
     ##   <chr>        <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
-    ## 1 intercept   30.1        1.63     18.4        0   26.8     33.4  
-    ## 2 hp          -0.068      0.01     -6.74       0   -0.089   -0.048
+    ## 1 intercept    4.46      0.127     35.2    0        4.21     4.71 
+    ## 2 age         -0.006     0.003     -2.31   0.021   -0.011   -0.001
+
+#### 2\. Get fitted/predicted values and residuals
+
+Get information on each point/observation in your regression, including
+fitted/predicted values & residuals, organized in a single data frame
+with intuitive variable names:
 
 ``` r
-get_regression_table(mpg_mlr_model, digits = 4, print = TRUE)
+get_regression_points(score_model)
 ```
 
-| term      | estimate | std\_error | statistic | p\_value | lower\_ci | upper\_ci |
-| :-------- | -------: | ---------: | --------: | -------: | --------: | --------: |
-| intercept |  37.2273 |     1.5988 |   23.2847 |   0.0000 |   33.9574 |   40.4972 |
-| hp        | \-0.0318 |     0.0090 |  \-3.5187 |   0.0015 |  \-0.0502 |  \-0.0133 |
-| wt        | \-3.8778 |     0.6327 |  \-6.1287 |   0.0000 |  \-5.1719 |  \-2.5837 |
+    ## # A tibble: 463 x 5
+    ##       ID score   age score_hat residual
+    ##    <int> <dbl> <int>     <dbl>    <dbl>
+    ##  1     1   4.7    36      4.25    0.452
+    ##  2     2   4.1    36      4.25   -0.148
+    ##  3     3   3.9    36      4.25   -0.348
+    ##  4     4   4.8    36      4.25    0.552
+    ##  5     5   4.6    59      4.11    0.488
+    ##  6     6   4.3    59      4.11    0.188
+    ##  7     7   2.8    59      4.11   -1.31 
+    ##  8     8   4.1    51      4.16   -0.059
+    ##  9     9   3.4    51      4.16   -0.759
+    ## 10    10   4.5    40      4.22    0.276
+    ## # ... with 453 more rows
+
+#### 3\. Get regression fit summaries
+
+Get all the scalar summaries of a regression fit included in
+`summary(score_model)` along with the mean-squared error and root
+mean-squared error:
 
 ``` r
-# Regression points. For residual analysis for example
-get_regression_points(mpg_mlr_model2)
-```
-
-    ## # A tibble: 32 x 6
-    ##       ID   mpg    hp cyl   mpg_hat residual
-    ##    <int> <dbl> <dbl> <fct>   <dbl>    <dbl>
-    ##  1     1  21     110 6        20.0    0.962
-    ##  2     2  21     110 6        20.0    0.962
-    ##  3     3  22.8    93 4        26.4   -3.62 
-    ##  4     4  21.4   110 6        20.0    1.36 
-    ##  5     5  18.7   175 8        15.9    2.78 
-    ##  6     6  18.1   105 6        20.2   -2.06 
-    ##  7     7  14.3   245 8        14.2    0.06 
-    ##  8     8  24.4    62 4        27.2   -2.76 
-    ##  9     9  22.8    95 4        26.4   -3.57 
-    ## 10    10  19.2   123 6        19.7   -0.526
-    ## # ... with 22 more rows
-
-``` r
-mtcars_new <- mtcars %>% 
-  slice(1:3)
-
-# Make predictions on newdata
-get_regression_points(mpg_mlr_model2, newdata = mtcars_new)
-```
-
-    ## # A tibble: 3 x 6
-    ##      ID   mpg    hp cyl   mpg_hat residual
-    ##   <int> <dbl> <dbl> <fct>   <dbl>    <dbl>
-    ## 1     1  21     110 6        20.0    0.962
-    ## 2     2  21     110 6        20.0    0.962
-    ## 3     3  22.8    93 4        26.4   -3.62
-
-``` r
-# Regression summaries
-get_regression_summaries(mpg_model)
+get_regression_summaries(score_model)
 ```
 
     ## # A tibble: 1 x 8
     ##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df
     ##       <dbl>         <dbl> <dbl> <dbl> <dbl>     <dbl>   <dbl> <dbl>
-    ## 1     0.602         0.589  14.0  3.74  3.86      45.5       0     2
+    ## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     2
+
+## Other features
+
+#### 1\. Print markdown friendly tables
+
+Want to output cleanly formatted tables in an R Markdown document? Just
+add `print = TRUE` to any of the three `get_regression_`
+functions.
 
 ``` r
-# Can also use `%>%`
-mpg_model %>% get_regression_summaries(digits = 5, print = TRUE)
+get_regression_table(score_model, print = TRUE)
 ```
 
-| r\_squared | adj\_r\_squared |      mse |     rmse |   sigma | statistic | p\_value | df |
-| ---------: | --------------: | -------: | -------: | ------: | --------: | -------: | -: |
-|    0.60244 |         0.58919 | 13.98982 | 3.740297 | 3.86296 |   45.4598 |        0 |  2 |
+| term      | estimate | std\_error | statistic | p\_value | lower\_ci | upper\_ci |
+| :-------- | -------: | ---------: | --------: | -------: | --------: | --------: |
+| intercept |    4.462 |      0.127 |    35.195 |    0.000 |     4.213 |     4.711 |
+| age       |  \-0.006 |      0.003 |   \-2.311 |    0.021 |   \-0.011 |   \-0.001 |
+
+#### 2\. Predictions on new data
+
+Want to apply your fitted model on new data to make predictions? No
+problem\! Include a `newdata` data frame argument to
+`get_regression_points()`.
+
+For example, the Kaggle.com practice competition [House Prices: Advanced
+Regression
+Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
+requires you to fit/train a model to the provided `train.csv` training
+set to make predictions of house prices in the provided `test.csv` test
+set. The following code performs these steps and outputs the predictions
+in `submission.csv`:
+
+``` r
+library(tidyverse)
+library(moderndive)
+
+# Load in training and test set
+train <- read_csv("https://github.com/moderndive/moderndive/raw/master/vignettes/train.csv")
+test <- read_csv("https://github.com/moderndive/moderndive/raw/master/vignettes/test.csv")
+
+# Fit model
+house_model <- lm(SalePrice ~ YrSold, data = train)
+
+# Make and submit predictions
+submission <- get_regression_points(house_model, newdata = test, ID = "Id") %>% 
+  select(Id, SalePrice = SalePrice_hat)
+write_csv(submission, "submission.csv")
+```
+
+The resulting `submission.csv` is formatted such that it can be
+submitted on Kaggle, resulting in a “root mean squared logarithmic
+error” leaderboard score of
+0.42918.
+
+![](https://github.com/moderndive/moderndive/raw/master/vignettes/leaderboard_orig.png)<!-- -->
+
+## The Details
+
+The three `get_regression` functions are wrappers of functions from the
+[`broom`](https://CRAN.R-project.org/package=broom/vignettes/broom.html)
+package for converting statistical analysis objects into tidy tibbles
+along with a few added tweaks:
+
+1.  `get_regression_table()` is a wrapper for `broom::tidy()`
+2.  `get_regression_points()` is a wrapper for `broom::augment()`
+3.  `get_regression_summaries` is a wrapper for `broom::glance()`
+
+Why did we create these wrappers?
+
+  - The `broom` package function names `tidy()`, `augment()`, and
+    `glance()` don’t mean anything to intro stats students, where as the
+    `moderndive` package function names `get_regression_table()`,
+    `get_regression_points()`, and `get_regression_summaries()` are more
+    intuitive.
+  - The default column/variable names in the outputs of the above 3
+    functions are a little daunting for intro stats students to
+    interpret. We cut out some of them and renamed many of them with
+    more intuitive names. For example, compare the outputs of the
+    `get_regression_points()` wrapper function and the parent
+    `broom::augment()` function.
+
+<!-- end list -->
+
+``` r
+get_regression_points(score_model)
+```
+
+    ## # A tibble: 463 x 5
+    ##       ID score   age score_hat residual
+    ##    <int> <dbl> <int>     <dbl>    <dbl>
+    ##  1     1   4.7    36      4.25    0.452
+    ##  2     2   4.1    36      4.25   -0.148
+    ##  3     3   3.9    36      4.25   -0.348
+    ##  4     4   4.8    36      4.25    0.552
+    ##  5     5   4.6    59      4.11    0.488
+    ##  6     6   4.3    59      4.11    0.188
+    ##  7     7   2.8    59      4.11   -1.31 
+    ##  8     8   4.1    51      4.16   -0.059
+    ##  9     9   3.4    51      4.16   -0.759
+    ## 10    10   4.5    40      4.22    0.276
+    ## # ... with 453 more rows
+
+``` r
+library(broom)
+broom::augment(score_model)
+```
+
+    ## # A tibble: 463 x 9
+    ##    score   age .fitted .se.fit  .resid    .hat .sigma   .cooksd .std.resid
+    ##  * <dbl> <int>   <dbl>   <dbl>   <dbl>   <dbl>  <dbl>     <dbl>      <dbl>
+    ##  1   4.7    36    4.25  0.0405  0.452  0.00560  0.542 0.00197        0.837
+    ##  2   4.1    36    4.25  0.0405 -0.148  0.00560  0.542 0.000212      -0.274
+    ##  3   3.9    36    4.25  0.0405 -0.348  0.00560  0.542 0.00117       -0.645
+    ##  4   4.8    36    4.25  0.0405  0.552  0.00560  0.541 0.00294        1.02 
+    ##  5   4.6    59    4.11  0.0371  0.488  0.00471  0.541 0.00193        0.904
+    ##  6   4.3    59    4.11  0.0371  0.188  0.00471  0.542 0.000288       0.349
+    ##  7   2.8    59    4.11  0.0371 -1.31   0.00471  0.538 0.0139        -2.43 
+    ##  8   4.1    51    4.16  0.0261 -0.0591 0.00232  0.542 0.0000139     -0.109
+    ##  9   3.4    51    4.16  0.0261 -0.759  0.00232  0.541 0.00229       -1.40 
+    ## 10   4.5    40    4.22  0.0331  0.276  0.00374  0.542 0.000488       0.510
+    ## # ... with 453 more rows
 
 -----
 
