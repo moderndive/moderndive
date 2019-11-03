@@ -34,7 +34,8 @@ remotes::install_github("moderndive/moderndive")
 ## Demo
 
 Let’s fit a simple linear regression of teaching `score` (as evaluated
-by students) over instructor age for 463 instructors at the UT Austin:
+by students) over instructor age for 463 courses taught by 94
+instructors at the UT Austin:
 
 ``` r
 library(moderndive)
@@ -99,6 +100,21 @@ get_regression_summaries(score_model)
     ##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df
     ##       <dbl>         <dbl> <dbl> <dbl> <dbl>     <dbl>   <dbl> <dbl>
     ## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     2
+
+#### 4\. Plot parallel slopes models
+
+Plot parallel slopes regression models involving one categorical and one
+numerical explanatory/predictor variable (something you cannot do using
+`ggplot2::geom_smooth()`).
+
+``` r
+library(ggplot2)
+ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
+  geom_point() +
+  geom_parallel_slopes(se = FALSE)
+```
+
+![](README_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
 
 ## Other features
 
