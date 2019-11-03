@@ -11,8 +11,8 @@ downloads](http://cranlogs.r-pkg.org/badges/moderndive)](http://www.r-pkg.org/pk
 
 An R package of datasets and wrapper functions for
 [tidyverse](https://www.tidyverse.org/)-friendly introductory linear
-regression used "“Statistical Inference via Data Science: A ModernDive
-\#’ into R and the tidyverse”" available at
+regression used in “Statistical Inference via Data Science: A ModernDive
+into R and the tidyverse” available at
 [ModernDive.com](https://moderndive.com/).
 
 ## Installation
