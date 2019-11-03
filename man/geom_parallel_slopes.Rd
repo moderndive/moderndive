@@ -64,20 +64,25 @@ the default plot specification, e.g. \code{\link[=borders]{borders()}}.}
 output(s) to a \code{ggplot} object. Basically, it fits a unified model with
 intercepts varying between groups (which should be supplied as standard
 {ggplot2} grouping aesthetics: \code{group}, \code{color}, \code{fill},
-etc.).
+etc.). This function has the same nature as \code{geom_smooth()} from
+{ggplot2} package, but provides functionality that \code{geom_smooth()}
+currently doesn't have.
 }
 \examples{
+library(dplyr)
+library(ggplot2)
+
 example_df <- house_prices \%>\%
-  dplyr::slice(1:1000) \%>\% 
-  dplyr::mutate(
+  slice(1:1000) \%>\% 
+  mutate(
     log10_price = log10(price),
     log10_size = log10(sqft_living)
   )
-ggplot_viz <- ggplot2::ggplot(
-  example_df,
-  ggplot2::aes(x = log10_size, y = log10_price, color = condition)
+ggplot_viz <- ggplot(
+  data = example_df,
+  mapping = aes(x = log10_size, y = log10_price, color = condition)
 ) +
-  ggplot2::geom_point(alpha = 0.1)
+  geom_point(alpha = 0.1)
 
 # Basic usage
 ggplot_viz + geom_parallel_slopes()
@@ -90,11 +95,8 @@ ggplot_viz + geom_parallel_slopes(size = 4)
 ggplot_viz + geom_parallel_slopes(formula = y ~ poly(x, 2))
 
 # Different grouping
-ggplot2::ggplot(
-  example_df,
-  ggplot2::aes(x = log10_size, y = log10_price)
-) +
-  ggplot2::geom_point(alpha = 0.1) +
-  geom_parallel_slopes(ggplot2::aes(fill = condition))
+ggplot(example_df, aes(x = log10_size, y = log10_price)) +
+  geom_point(alpha = 0.1) +
+  geom_parallel_slopes(aes(fill = condition))
 
 }
