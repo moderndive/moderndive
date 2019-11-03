@@ -1,4 +1,7 @@
-# moderndive 0.3.0.9000
+# moderndive 0.4.0
+
+* Added `geom_parallel_slopes()` geom extension to `ggplot2` package to plot parallel slopes regression models with one numerical and one categorical variable (this is not possible using `ggplot2::geom_smooth()`). Note this renders `gg_parallel_slopes()` function added in v0.3.0 obsolete.
+* Added example of `geom_parallel_slopes()` to "Why `moderndive`?" vignette
 
 
 
