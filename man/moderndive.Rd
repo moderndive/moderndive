@@ -7,9 +7,9 @@
 \title{moderndive - Tidyverse-Friendly Introductory Linear Regression}
 \description{
 Datasets and wrapper functions for tidyverse-friendly introductory linear
-regression, used in ModernDive: An Introduction to Statistical and Data
-Sciences via R available at \url{https://moderndive.com/} and DataCamp's
-Modeling with Data in the Tidyverse available at
+regression, used in "Statistical Inference via Data Science: A ModernDive 
+into R and the tidyverse" available at \url{https://moderndive.com/} and 
+DataCamp's Modeling with Data in the Tidyverse course available at
 \url{https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse}.
 }
 \examples{
