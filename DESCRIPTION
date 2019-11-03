@@ -6,7 +6,8 @@ Authors@R: c(
     person("Albert Y.", "Kim", email = "albert.ys.kim@gmail.com", role = c("aut", "cre")),
     person("Chester", "Ismay", email = "chester.ismay@gmail.com", role = "aut"),
     person("Andrew", "Bray", email = "abray@reed.edu", role = "ctb"),
-    person("Delaney", "Moran", email = "dmoran@middlebury.edu", role = "ctb")
+    person("Delaney", "Moran", email = "dmoran@middlebury.edu", role = "ctb"),
+    person("Evgeni", "Chasnovski", email = "evgeni.chasnovski@gmail.com", role = "ctb")
     )
 Maintainer: Albert Y. Kim <albert.ys.kim@gmail.com>
 Description: Datasets and wrapper functions for tidyverse-friendly introductory linear regression, used in ModernDive: An Introduction to Statistical and Data Sciences via R available at <http://moderndive.com/> and DataCamp's Modeling with Data in the Tidyverse available at <https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse>.
@@ -33,5 +34,6 @@ Imports:
 RoxygenNote: 6.1.1
 Suggests: testthat,
     covr,
-    rmarkdown
+    rmarkdown,
+    vdiffr
 VignetteBuilder: knitr
