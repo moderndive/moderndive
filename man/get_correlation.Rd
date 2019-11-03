@@ -4,12 +4,18 @@
 \alias{get_correlation}
 \title{Get correlation value in a tidy way}
 \usage{
-get_correlation(data, formula)
+get_correlation(data, formula, na.rm = FALSE, ...)
 }
 \arguments{
 \item{data}{a data frame object}
 
-\item{formula}{a formula with the response variable name on the left and the explanatory variable name on the right}
+\item{formula}{a formula with the response variable name on the left and 
+the explanatory variable name on the right}
+
+\item{na.rm}{a logical value indicating whether NA values should be stripped 
+before the computation proceeds.}
+
+\item{...}{further arguments passed to \code{\link[stats]{cor}}}
 }
 \value{
 A 1x1 data frame storing the correlation value

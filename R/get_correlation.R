@@ -4,7 +4,11 @@
 #' a data frame using pipeable and formula-friendly syntax
 #'
 #' @param data a data frame object
-#' @param formula a formula with the response variable name on the left and the explanatory variable name on the right
+#' @param formula a formula with the response variable name on the left and 
+#' the explanatory variable name on the right
+#' @param na.rm a logical value indicating whether NA values should be stripped 
+#' before the computation proceeds.
+#' @param ... further arguments passed to \code{\link[stats]{cor}}
 #' 
 #' @return A 1x1 data frame storing the correlation value
 #' @importFrom magrittr "%>%"
@@ -33,7 +37,7 @@
 #' mtcars %>% 
 #'   group_by(am, gear) %>% 
 #'   get_correlation(formula = mpg ~ cyl)
-get_correlation <- function(data, formula) {
+get_correlation <- function(data, formula, na.rm = FALSE, ...) {
     
   check_correlation_args(data, formula)
   
@@ -46,8 +50,7 @@ get_correlation <- function(data, formula) {
   grouping_variables <- data %>% 
     group_vars()
 
-  check_formula_args(data, formula, outcome_variable,
-                     explanatory_variable)
+  check_formula_args(data, formula, outcome_variable, explanatory_variable)
   
   # select only the two numerical variables of interest (and if applicable grouping
   # variables)
@@ -58,12 +61,18 @@ get_correlation <- function(data, formula) {
     correlation <- data %>% 
       select(outcome_variable, explanatory_variable, grouping_variables) 
   }
-    
-  # Compute correlations
-  correlation <- data %>% 
-    summarize(cor = cor(!!sym(outcome_variable), !!sym(explanatory_variable)))
   
-  tibble::tibble(correlation)
+  # handle missing data
+  if(na.rm == FALSE){
+    correlation <- correlation %>% 
+      summarize(cor = cor(!!sym(outcome_variable), !!sym(explanatory_variable), ...))
+  } else {
+    correlation <- correlation %>% 
+      summarize(cor = cor(!!sym(outcome_variable), !!sym(explanatory_variable), 
+                          use = "complete.obs", ...))
+  }
+  
+  correlation
 }
 
 check_correlation_args <- function(data, formula){

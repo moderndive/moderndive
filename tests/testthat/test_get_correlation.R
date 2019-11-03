@@ -1,19 +1,24 @@
 context("get_correlation")
+library(tibble)
 
-vec <- 1:10
-vec2 <- seq(from = 5, to = 50, by = 5)
-df <- tibble::tibble(vec, vec2)
+df <- tibble(
+  vec1 = 1:10, 
+  vec2 = seq(from = 5, to = 50, by = 5),
+  vec3 = c(1:9, NA)
+)
+
+
 
 test_that("arguments are appropriate", {
-
+  
   expect_error(
-    get_correlation(vec,
-                    formula = vec ~ NULL)
+    get_correlation(vec1,
+                    formula = vec1 ~ NULL)
   )
   
   expect_error(
     df %>% 
-      get_correlation(formula = vec ~ NULL)
+      get_correlation(formula = vec1 ~ NULL)
   )
   
   expect_error(
@@ -54,4 +59,28 @@ test_that("variables are in data frame", {
       get_correlation(formula = mpg ~ disp + hp)
   )
   
+})
+
+
+test_that("missing data handled correctly", {
+  expect_true(
+    df %>% 
+      get_correlation(formula = vec1 ~ vec3) %>% 
+      pull(cor) %>% 
+      is.na()
+  )
+  
+  expect_equal(
+    df %>% 
+      get_correlation(formula = vec1 ~ vec3, na.rm = TRUE) %>% 
+      pull(cor),
+    1
+  )
+  
+  expect_equal(
+    df %>% 
+      get_correlation(formula = vec1 ~ vec3, use = "complete.obs") %>% 
+      pull(cor),
+    1
+  )
 })
