@@ -22,6 +22,7 @@
 #' get_regression_summaries(mpg_model)
 #' 
 #' # Plotting parallel slopes models
+#' library(ggplot2)
 #' ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 #'   geom_point() +
 #'   geom_parallel_slopes(se = FALSE)
