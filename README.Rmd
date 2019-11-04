@@ -3,7 +3,7 @@ output: github_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, fig.path = "man/figures/")
 ```
 
 ## moderndive R Package <img src="https://github.com/moderndive/moderndive/blob/master/images/hex_blue_text.png?raw=true" align="right" width=125 />
@@ -72,11 +72,15 @@ get_regression_summaries(score_model)
 
 Plot parallel slopes regression models involving one categorical and one numerical explanatory/predictor variable (something you cannot do using `ggplot2::geom_smooth()`).
 
-```{r}
+```{r plot-example, eval=FALSE}
 library(ggplot2)
 ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
   geom_parallel_slopes(se = FALSE)
+```
+
+```{r echo=FALSE}
+knitr::include_graphics("man/figures/plot-example-1.png")
 ```
 
 
@@ -138,8 +142,6 @@ get_regression_points(score_model)
 library(broom)
 augment(score_model)
 ```
-
-
 
 ***
 

@@ -130,6 +130,14 @@
 <li>Added <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> geom extension to <code>ggplot2</code> package to plot parallel slopes regression models with one numerical and one categorical variable (this is not possible using <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">ggplot2::geom_smooth()</a></code>). Note this renders <code><a href="../reference/gg_parallel_slopes.html">gg_parallel_slopes()</a></code> function added in v0.3.0 obsolete.</li>
 <li>Added example of <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> to “Why <code>moderndive</code>?” vignette</li>
 <li>Added student names (permission obtained in all cases) to <code>pennies_resamples</code> data frame columns</li>
+<li>
+<code><a href="../reference/get_correlation.html">get_correlation()</a></code> now:
+<ul>
+<li>Respects <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">dplyr::group_by()</a></code> grouping</li>
+<li>Can handle missing data by either passing <code>na.rm = TRUE</code> argument or by passing standard <code>stats:cor(use = "complete.obs")</code> argument via <code>...</code>
+</li>
+</ul>
+</li>
 </ul>
 <hr>
 </div>

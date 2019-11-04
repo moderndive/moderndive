@@ -45,7 +45,9 @@ score_model <- lm(score ~ age, data = evals)
 Among the many useful features of the `moderndive` package outlined in
 our essay [“Why should you use the moderndive package for intro linear
 regression?”](https://moderndive.github.io/moderndive/articles/why-moderndive.html)
-we highlight three functions in particular:
+we highlight three functions in particular as covered there.
+
+We also mention the `geom_parallel_slopes()` function as **\#4**.
 
 #### 1\. Get regression tables
 
@@ -114,7 +116,7 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_parallel_slopes(se = FALSE)
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](man/figures/plot-example-1.png)<!-- -->
 
 ## Other features
 
@@ -219,7 +221,7 @@ get_regression_points(score_model)
 
 ``` r
 library(broom)
-broom::augment(score_model)
+augment(score_model)
 ```
 
     ## # A tibble: 463 x 9
