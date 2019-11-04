@@ -70,7 +70,7 @@ a data frame using pipeable and formula-friendly syntax" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">moderndive</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -131,7 +131,7 @@ a data frame using pipeable and formula-friendly syntax" />
 a data frame using pipeable and formula-friendly syntax</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_correlation</span>(<span class='no'>data</span>, <span class='no'>formula</span>)</pre>
+    <pre class="usage"><span class='fu'>get_correlation</span>(<span class='no'>data</span>, <span class='no'>formula</span>, <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -142,7 +142,17 @@ a data frame using pipeable and formula-friendly syntax</p>
     </tr>
     <tr>
       <th>formula</th>
-      <td><p>a formula with the response variable name on the left and the explanatory variable name on the right</p></td>
+      <td><p>a formula with the response variable name on the left and 
+the explanatory variable name on the right</p></td>
+    </tr>
+    <tr>
+      <th>na.rm</th>
+      <td><p>a logical value indicating whether NA values should be stripped 
+before the computation proceeds.</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>further arguments passed to <code><a href='https://rdrr.io/r/stats/cor.html'>cor</a></code></p></td>
     </tr>
     </table>
 
@@ -155,10 +165,28 @@ a data frame using pipeable and formula-friendly syntax</p>
 
 <span class='co'># Compute correlation between mpg and cyl:</span>
 <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
-   <span class='fu'>get_correlation</span>(<span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>mpg</span> ~ <span class='no'>cyl</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 1
-#&gt;   correlation
-#&gt;         &lt;dbl&gt;
-#&gt; 1      -0.852</div></pre>
+   <span class='fu'>get_correlation</span>(<span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>mpg</span> ~ <span class='no'>cyl</span>)</div><div class='output co'>#&gt;         cor
+#&gt; 1 -0.852162</div><div class='input'>
+<span class='co'># Group by one variable:</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
+<span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>am</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>get_correlation</span>(<span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>mpg</span> ~ <span class='no'>cyl</span>)</div><div class='output co'>#&gt; # A tibble: 2 x 2
+#&gt;      am    cor
+#&gt;   &lt;dbl&gt;  &lt;dbl&gt;
+#&gt; 1     0 -0.796
+#&gt; 2     1 -0.826</div><div class='input'>
+<span class='co'># Group by two variables:</span>
+<span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>am</span>, <span class='no'>gear</span>) <span class='kw'>%&gt;%</span>
+  <span class='fu'>get_correlation</span>(<span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>mpg</span> ~ <span class='no'>cyl</span>)</div><div class='output co'>#&gt; # A tibble: 4 x 3
+#&gt; # Groups:   am [2]
+#&gt;      am  gear    cor
+#&gt;   &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+#&gt; 1     0     3 -0.645
+#&gt; 2     0     4 -0.959
+#&gt; 3     1     4 -0.601
+#&gt; 4     1     5 -0.961</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -1,6 +1,6 @@
 pandoc: '2.2'
 pkgdown: 1.4.1.9000
-pkgdown_sha: ee5b75b6f4455613fa72811a7f4fdf790b5a61b8
+pkgdown_sha: dfae44ecfcc5b0ac51f9489993ddd79ad6c707c3
 articles:
   why-moderndive: why-moderndive.html
 

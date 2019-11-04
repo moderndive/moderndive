@@ -67,7 +67,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">moderndive</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -122,10 +122,23 @@
       <small>Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="moderndive-0-3-0-9000" class="section level1">
+    <div id="moderndive-0-4-0" class="section level1">
 <h1 class="page-header">
-<a href="#moderndive-0-3-0-9000" class="anchor"></a>moderndive 0.3.0.9000<small> Unreleased </small>
+<a href="#moderndive-0-4-0" class="anchor"></a>moderndive 0.4.0<small> Unreleased </small>
 </h1>
+<ul>
+<li>Added <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> geom extension to <code>ggplot2</code> package to plot parallel slopes regression models with one numerical and one categorical variable (this is not possible using <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">ggplot2::geom_smooth()</a></code>). Note this renders <code><a href="../reference/gg_parallel_slopes.html">gg_parallel_slopes()</a></code> function added in v0.3.0 obsolete.</li>
+<li>Added example of <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> to “Why <code>moderndive</code>?” vignette</li>
+<li>Added student names (permission obtained in all cases) to <code>pennies_resamples</code> data frame columns</li>
+<li>
+<code><a href="../reference/get_correlation.html">get_correlation()</a></code> now:
+<ul>
+<li>Respects <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">dplyr::group_by()</a></code> grouping</li>
+<li>Can handle missing data by either passing <code>na.rm = TRUE</code> argument or by passing standard <code>stats:cor(use = "complete.obs")</code> argument via <code>...</code>
+</li>
+</ul>
+</li>
+</ul>
 <hr>
 </div>
     <div id="moderndive-0-3-0" class="section level1">
@@ -136,7 +149,19 @@
 <li>Added minimally viable “parallel slopes” regression model plotting function <code><a href="../reference/gg_parallel_slopes.html">gg_parallel_slopes()</a></code>. In the future we hope to define a new <code>ggplot2</code> geom.</li>
 <li>Added “Why <code>moderndive</code>?” vignette</li>
 <li>Added ID argument to <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code> to return a column that identifies the observational units/rows</li>
-<li>Datasets: + Added <code>DD_vs_SB</code>: Dunkin Donuts and Starbucks in Eastern Massachusetts data collected by <a href='https://github.com/DelaneyMoran'>@DelaneyMoran</a> + Added <code>promotions</code>: tibble version of <code>openintro::gender.discrimination</code> used to illustrate permutation test. + Added <code>MA_schools</code>: Relationship between SAT scores and socio-economic status for Massachusetts high schools. + Added <code>mythbusters_yawn</code>: Data from study on Mythbusters show on whether yawning is + Added <code>promotions_shuffled</code>: one instance of <code>promotions</code> with <code>gender</code> permuted/shuffled + Original <code>pennies_sample</code> sample of 40 pennies from <code>pennies</code> has been renamed <code>orig_pennies_sample</code>. New <code>pennies_sample</code> consists of 50 pennies sampled from bank in Northampton, MA, USA on 2019/2/1. + Added <code>pennies_resamples</code>: 35 bootstrap resamples of new <code>pennies_sample</code> + Added <code>movies_genre</code>: random sample of 32 action and 36 romance movies from <code>ggplot2movies::movies</code><br>
+<li>Datasets:
+<ul>
+<li>Added <code>DD_vs_SB</code>: Dunkin Donuts and Starbucks in Eastern Massachusetts data collected by <a href='https://github.com/DelaneyMoran'>@DelaneyMoran</a></li>
+<li>Added <code>promotions</code>: tibble version of <code>openintro::gender.discrimination</code> used to illustrate permutation test.</li>
+<li>Added <code>MA_schools</code>: Relationship between SAT scores and socio-economic status for Massachusetts high schools.</li>
+<li>Added <code>mythbusters_yawn</code>: Data from study on Mythbusters show on whether yawning is</li>
+<li>Added <code>promotions_shuffled</code>: one instance of <code>promotions</code> with <code>gender</code> permuted/shuffled</li>
+<li>Original <code>pennies_sample</code> sample of 40 pennies from <code>pennies</code> has been renamed <code>orig_pennies_sample</code>. New <code>pennies_sample</code> consists of 50 pennies sampled from bank in Northampton, MA, USA on 2019/2/1.</li>
+<li>Added <code>pennies_resamples</code>: 35 bootstrap resamples of new <code>pennies_sample</code>
+</li>
+<li>Added <code>movies_genre</code>: random sample of 32 action and 36 romance movies from <code>ggplot2movies::movies</code><br>
+</li>
+</ul>
 </li>
 <li>Removed all <code>assertive::assert()</code> code</li>
 <li>Converted <code>house_prices$date</code> from <code>dttm</code> (date-time) to <code>date</code> per R4DS <a href="https://r4ds.had.co.nz/dates-and-times.html#creating-datetimes">comment</a> on using simplest data type possible</li>
@@ -202,7 +227,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#moderndive-0-3-0-9000">0.3.0.9000</a></li>
+        <li><a href="#moderndive-0-4-0">0.4.0</a></li>
         <li><a href="#moderndive-0-3-0">0.3.0</a></li>
         <li><a href="#moderndive-0-2-0">0.2.0</a></li>
         <li><a href="#moderndive-0-1-1">0.1.1</a></li>

@@ -38,9 +38,7 @@
 <meta property="og:title" content="moderndive - Tidyverse-Friendly Introductory Linear Regression — moderndive" />
 <meta property="og:description" content="Datasets and wrapper functions for tidyverse-friendly introductory linear
 regression, used in &quot;Statistical Inference via Data Science: A ModernDive 
-into R and the tidyverse&quot; available at https://moderndive.com/ and 
-DataCamp's Modeling with Data in the Tidyverse course available at
-https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse." />
+into R and the tidyverse&quot; available at https://moderndive.com/." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -73,7 +71,7 @@ https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">moderndive</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.3.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0</span>
       </span>
     </div>
 
@@ -132,9 +130,7 @@ https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse." />
     <div class="ref-description">
     <p>Datasets and wrapper functions for tidyverse-friendly introductory linear
 regression, used in "Statistical Inference via Data Science: A ModernDive 
-into R and the tidyverse" available at <a href='https://moderndive.com/'>https://moderndive.com/</a> and 
-DataCamp's Modeling with Data in the Tidyverse course available at
-<a href='https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse'>https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse</a>.</p>
+into R and the tidyverse" available at <a href='https://moderndive.com/'>https://moderndive.com/</a>.</p>
     </div>
 
 
@@ -171,7 +167,12 @@ DataCamp's Modeling with Data in the Tidyverse course available at
 <span class='fu'><a href='get_regression_summaries.html'>get_regression_summaries</a></span>(<span class='no'>mpg_model</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 8
 #&gt;   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df
 #&gt;       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;
-#&gt; 1     0.602         0.589  14.0  3.74  3.86      45.5       0     2</div></pre>
+#&gt; 1     0.602         0.589  14.0  3.74  3.86      45.5       0     2</div><div class='input'>
+<span class='co'># Plotting parallel slopes models</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>evals</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>age</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>score</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>ethnicity</span>)) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>() +
+  <span class='fu'><a href='geom_parallel_slopes.html'>geom_parallel_slopes</a></span>(<span class='kw'>se</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='img'><img src='moderndive-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
