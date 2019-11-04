@@ -1,5 +1,11 @@
-# moderndive 0.3.0.9000
+# moderndive 0.4.0
 
+* Added `geom_parallel_slopes()` geom extension to `ggplot2` package to plot parallel slopes regression models with one numerical and one categorical variable (this is not possible using `ggplot2::geom_smooth()`). Note this renders `gg_parallel_slopes()` function added in v0.3.0 obsolete.
+* Added example of `geom_parallel_slopes()` to "Why `moderndive`?" vignette
+* Added student names (permission obtained in all cases) to `pennies_resamples` data frame columns
+* `get_correlation()` now:
+    + Respects `dplyr::group_by()` grouping
+    + Can handle missing data by either passing `na.rm = TRUE` argument or by passing standard `stats:cor(use = "complete.obs")` argument via `...`
 
 
 ***
@@ -13,14 +19,14 @@
 * Added ID argument to `get_regression_points()` to return a column that identifies the 
 observational units/rows
 * Datasets:
-        + Added `DD_vs_SB`: Dunkin Donuts and Starbucks in Eastern Massachusetts data collected by @DelaneyMoran
-        + Added  `promotions`: tibble version of `openintro::gender.discrimination` used to illustrate permutation test.
-        + Added `MA_schools`: Relationship between SAT scores and socio-economic status for Massachusetts high schools.
-        + Added `mythbusters_yawn`: Data from study on Mythbusters show on whether yawning is
-        + Added  `promotions_shuffled`: one instance of `promotions` with `gender` permuted/shuffled
-        + Original `pennies_sample` sample of 40 pennies from `pennies` has been renamed `orig_pennies_sample`. New `pennies_sample` consists of 50 pennies sampled from bank in Northampton, MA, USA on 2019/2/1.
-        + Added  `pennies_resamples`: 35 bootstrap resamples of new `pennies_sample`
-        + Added  `movies_genre`: random sample of 32 action and 36 romance movies from `ggplot2movies::movies`        
+    + Added `DD_vs_SB`: Dunkin Donuts and Starbucks in Eastern Massachusetts data collected by @DelaneyMoran
+    + Added `promotions`: tibble version of `openintro::gender.discrimination` used to illustrate permutation test.
+    + Added `MA_schools`: Relationship between SAT scores and socio-economic status for Massachusetts high schools.
+    + Added `mythbusters_yawn`: Data from study on Mythbusters show on whether yawning is
+    + Added `promotions_shuffled`: one instance of `promotions` with `gender` permuted/shuffled
+    + Original `pennies_sample` sample of 40 pennies from `pennies` has been renamed `orig_pennies_sample`. New `pennies_sample` consists of 50 pennies sampled from bank in Northampton, MA, USA on 2019/2/1.
+    + Added `pennies_resamples`: 35 bootstrap resamples of new `pennies_sample`
+    + Added `movies_genre`: random sample of 32 action and 36 romance movies from `ggplot2movies::movies`        
 * Removed all `assertive::assert()` code
 * Converted `house_prices$date` from `dttm` (date-time) to `date` per R4DS [comment](https://r4ds.had.co.nz/dates-and-times.html#creating-datetimes) on using simplest data type possible
 

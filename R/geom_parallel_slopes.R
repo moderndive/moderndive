@@ -20,33 +20,38 @@
 #' library(dplyr)
 #' library(ggplot2)
 #' 
+#' ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
+#'   geom_point() +
+#'   geom_parallel_slopes(se = FALSE)
+#' 
+#' # Basic usage
+#' ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
+#'   geom_point() +
+#'   geom_parallel_slopes()
+#' ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
+#'   geom_point() +
+#'   geom_parallel_slopes(se = FALSE)
+#' 
+#' # Supply custom aesthetics
+#' ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
+#'   geom_point() +
+#'   geom_parallel_slopes(se = FALSE, size = 4)
+#' 
+#' # Fit non-linear model 
 #' example_df <- house_prices %>%
-#'   slice(1:1000) %>% 
+#'   slice(1:1000) %>%
 #'   mutate(
 #'     log10_price = log10(price),
 #'     log10_size = log10(sqft_living)
 #'   )
-#' ggplot_viz <- ggplot(
-#'   data = example_df,
-#'   mapping = aes(x = log10_size, y = log10_price, color = condition)
-#' ) +
-#'   geom_point(alpha = 0.1)
-#' 
-#' # Basic usage
-#' ggplot_viz + geom_parallel_slopes()
-#' ggplot_viz + geom_parallel_slopes(se = FALSE)
-#' 
-#' # Supply custom aesthetics
-#' ggplot_viz + geom_parallel_slopes(size = 4)
-#' 
-#' # Fit non-linear model
-#' ggplot_viz + geom_parallel_slopes(formula = y ~ poly(x, 2))
+#' ggplot(example_df, aes(x = log10_size, y = log10_price, color = condition)) +
+#'   geom_point(alpha = 0.1) + 
+#'   geom_parallel_slopes(formula = y ~ poly(x, 2))
 #' 
 #' # Different grouping
 #' ggplot(example_df, aes(x = log10_size, y = log10_price)) +
 #'   geom_point(alpha = 0.1) +
 #'   geom_parallel_slopes(aes(fill = condition))
-#' 
 #' @export
 geom_parallel_slopes <- function(mapping = NULL, data = NULL,
                                  position = "identity", ...,

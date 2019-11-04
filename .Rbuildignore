@@ -8,6 +8,7 @@
 ^\.covrignore$
 ^README\.md$
 ^README\.Rmd$
+^README_files$
 ^data-raw$
 ^docs$
 ^images$

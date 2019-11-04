@@ -11,12 +11,9 @@ downloads](http://cranlogs.r-pkg.org/badges/moderndive)](http://www.r-pkg.org/pk
 
 An R package of datasets and wrapper functions for
 [tidyverse](https://www.tidyverse.org/)-friendly introductory linear
-regression used in
-
-  - ModernDive: An Introduction to Statistical and Data Sciences via R
-    available at [ModernDive.com](https://moderndive.com/)
-  - DataCamp’s [Modeling with Data in the
-    Tidyverse](https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse)
+regression used in “Statistical Inference via Data Science: A ModernDive
+into R and the Tidyverse” available at
+[ModernDive.com](https://moderndive.com/).
 
 ## Installation
 
@@ -37,7 +34,8 @@ remotes::install_github("moderndive/moderndive")
 ## Demo
 
 Let’s fit a simple linear regression of teaching `score` (as evaluated
-by students) over instructor age for 463 instructors at the UT Austin:
+by students) over instructor age for 463 courses taught by 94
+instructors at the UT Austin:
 
 ``` r
 library(moderndive)
@@ -47,7 +45,9 @@ score_model <- lm(score ~ age, data = evals)
 Among the many useful features of the `moderndive` package outlined in
 our essay [“Why should you use the moderndive package for intro linear
 regression?”](https://moderndive.github.io/moderndive/articles/why-moderndive.html)
-we highlight three functions in particular:
+we highlight three functions in particular as covered there.
+
+We also mention the `geom_parallel_slopes()` function as **\#4**.
 
 #### 1\. Get regression tables
 
@@ -86,7 +86,7 @@ get_regression_points(score_model)
     ##  8     8   4.1    51      4.16   -0.059
     ##  9     9   3.4    51      4.16   -0.759
     ## 10    10   4.5    40      4.22    0.276
-    ## # ... with 453 more rows
+    ## # … with 453 more rows
 
 #### 3\. Get regression fit summaries
 
@@ -103,12 +103,27 @@ get_regression_summaries(score_model)
     ##       <dbl>         <dbl> <dbl> <dbl> <dbl>     <dbl>   <dbl> <dbl>
     ## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     2
 
+#### 4\. Plot parallel slopes models
+
+Plot parallel slopes regression models involving one categorical and one
+numerical explanatory/predictor variable (something you cannot do using
+`ggplot2::geom_smooth()`).
+
+``` r
+library(ggplot2)
+ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
+  geom_point() +
+  geom_parallel_slopes(se = FALSE)
+```
+
+![](man/figures/plot-example-1.png)<!-- -->
+
 ## Other features
 
 #### 1\. Print markdown friendly tables
 
 Want to output cleanly formatted tables in an R Markdown document? Just
-add `print = TRUE` to any of the three `get_regression_`
+add `print = TRUE` to any of the three `get_regression_*()`
 functions.
 
 ``` r
@@ -167,7 +182,7 @@ along with a few added tweaks:
 
 1.  `get_regression_table()` is a wrapper for `broom::tidy()`
 2.  `get_regression_points()` is a wrapper for `broom::augment()`
-3.  `get_regression_summaries` is a wrapper for `broom::glance()`
+3.  `get_regression_summaries()` is a wrapper for `broom::glance()`
 
 Why did we create these wrappers?
 
@@ -202,16 +217,16 @@ get_regression_points(score_model)
     ##  8     8   4.1    51      4.16   -0.059
     ##  9     9   3.4    51      4.16   -0.759
     ## 10    10   4.5    40      4.22    0.276
-    ## # ... with 453 more rows
+    ## # … with 453 more rows
 
 ``` r
 library(broom)
-broom::augment(score_model)
+augment(score_model)
 ```
 
     ## # A tibble: 463 x 9
     ##    score   age .fitted .se.fit  .resid    .hat .sigma   .cooksd .std.resid
-    ##  * <dbl> <int>   <dbl>   <dbl>   <dbl>   <dbl>  <dbl>     <dbl>      <dbl>
+    ##    <dbl> <int>   <dbl>   <dbl>   <dbl>   <dbl>  <dbl>     <dbl>      <dbl>
     ##  1   4.7    36    4.25  0.0405  0.452  0.00560  0.542 0.00197        0.837
     ##  2   4.1    36    4.25  0.0405 -0.148  0.00560  0.542 0.000212      -0.274
     ##  3   3.9    36    4.25  0.0405 -0.348  0.00560  0.542 0.00117       -0.645
@@ -222,7 +237,7 @@ broom::augment(score_model)
     ##  8   4.1    51    4.16  0.0261 -0.0591 0.00232  0.542 0.0000139     -0.109
     ##  9   3.4    51    4.16  0.0261 -0.759  0.00232  0.541 0.00229       -1.40 
     ## 10   4.5    40    4.22  0.0331  0.276  0.00374  0.542 0.000488       0.510
-    ## # ... with 453 more rows
+    ## # … with 453 more rows
 
 -----
 

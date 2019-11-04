@@ -317,9 +317,9 @@ get_regression_summaries <-
 input_checks <- function(model, digits = 3, print = FALSE){
   # Since the `"glm"` class also contains the `"lm"` class
   if(length(class(model)) != 1 | !("lm" %in% class(model)) ){
-    stop(paste("Only simple and multiple linear regression",
-               "models are supported. Try again using `lm` for",
-               "your models as appropriate."))
+    stop(paste("Only simple linear regression",
+               "models are supported. Try again using only `lm()`",
+               "models as appropriate."))
   }
   check_numeric(digits)
   check_logical(print)
