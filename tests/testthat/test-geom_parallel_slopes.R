@@ -10,13 +10,13 @@ test_df <- dplyr::bind_rows(
   tibble::tibble(a = runif(15, 0.1, 0.3), gr = 2),
   tibble::tibble(a = runif(20, 0.4, 1), gr = 3)
 ) %>%
-  mutate(
-    pan = factor(sample(1:3, n(), replace = TRUE)),
+  dplyr::mutate(
+    pan = factor(sample(1:3, dplyr::n(), replace = TRUE)),
     gr = factor(gr),
     # Slope depends on panel, intercept on group
-    b = as.integer(pan)*a + as.integer(gr) + runif(n(), max = 0.1),
+    b = as.integer(pan)*a + as.integer(gr) + runif(dplyr::n(), max = 0.1),
     # Quadratic curves
-    c = as.integer(pan)*a^2 + as.integer(gr) + runif(n(), max = 0.1),
+    c = as.integer(pan)*a^2 + as.integer(gr) + runif(dplyr::n(), max = 0.1),
   )
 
 viz <- ggplot(test_df, aes(a, b, colour = gr)) + geom_point()
