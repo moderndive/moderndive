@@ -41,12 +41,12 @@ observational units/rows
 Updated package for:
 
 - Use in DataCamp's [Modeling with Data in the Tidyverse](https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse), in particular added `evals` and `house_prices` datasets and updated `get_regression_table()` and `get_regression_points()` functions. 
-- v0.4.0 of [ModernDive](https://moderndive.github.io/moderndive_book/) textbook
+- v0.4.0 of [ModernDive](https://moderndive.com/) textbook
 
 Details:
 
 * Created `get_correlation()` function to omit `$` syntax and return a data frame
-* Import `infer::rep_sample_n()` instead of our own defined version, as this function is [now included in `infer`](https://github.com/andrewpbray/infer/pull/82)
+* Import `infer::rep_sample_n()` instead of our own defined version, as this function is [now included in `infer`](https://github.com/tidymodels/infer/pull/82)
 * Added `evals`, `house_prices`, `tactile_prop_red`, `pennies_sample` and `mythbusters_yawn` datasets
 * Added mean squared error and root mean squared error to output of `get_regression_summaries()`
 * Added `newdata` argument to `get_regression_points()`. When:
