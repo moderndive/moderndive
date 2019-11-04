@@ -14,6 +14,5 @@
 ^images$
 ^CONDUCT\.md$
 ^codecov\.yml$
-^scratchpad\.R$
 ^CRAN-RELEASE$
 ^Publish Document\.dcf$
