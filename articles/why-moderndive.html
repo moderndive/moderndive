@@ -98,7 +98,7 @@
 <h2 class="hasAnchor">
 <a href="#intro" class="anchor"></a>Intro</h2>
 <p>Linear regression has long been a staple of introductory statistics courses. While the timing of when to introduce it may have changed (many argue that descriptive regression should be done ASAP and then revisited later after statistical inference has been covered), it’s overall importance in the intro stats curriculum remains the same.</p>
-<p>Let’s consider data gathered from end of semester student evaluations for 463 courses (taught by unique 94 professors) from the University of Texas at Austin (see <a href="https://www.openintro.org/stat/data/?data=evals" target="_blank">openintro.org</a> for more details). Here is a random sample of 5 courses and a subset of 8 of the 13 variables included, where the outcome variable of interest is the teaching evaluation <code>score</code> out of 5 as given by students:</p>
+<p>Let’s consider data gathered from end of semester student evaluations for 463 courses (taught by 94 unique professors) from the University of Texas at Austin (see <a href="https://www.openintro.org/stat/data/?data=evals" target="_blank">openintro.org</a> for more details). Here is a random sample of 5 courses and a subset of 8 of the 13 variables included, where the outcome variable of interest is the teaching evaluation <code>score</code> out of 5 as given by students:</p>
 <table class="table">
 <thead><tr class="header">
 <th align="right">ID</th>
@@ -112,50 +112,50 @@
 </tr></thead>
 <tbody>
 <tr class="odd">
-<td align="right">129</td>
-<td align="right">3.7</td>
-<td align="right">62</td>
-<td align="right">3.000</td>
+<td align="right">290</td>
+<td align="right">3.6</td>
+<td align="right">34</td>
+<td align="right">6.667</td>
 <td align="left">male</td>
 <td align="left">not minority</td>
+<td align="left">english</td>
+<td align="left">tenure track</td>
+</tr>
+<tr class="even">
+<td align="right">341</td>
+<td align="right">4.9</td>
+<td align="right">43</td>
+<td align="right">3.500</td>
+<td align="left">male</td>
+<td align="left">not minority</td>
+<td align="left">english</td>
+<td align="left">tenure track</td>
+</tr>
+<tr class="odd">
+<td align="right">199</td>
+<td align="right">3.3</td>
+<td align="right">47</td>
+<td align="right">2.333</td>
+<td align="left">male</td>
+<td align="left">minority</td>
 <td align="left">english</td>
 <td align="left">tenured</td>
 </tr>
 <tr class="even">
-<td align="right">109</td>
-<td align="right">4.7</td>
-<td align="right">46</td>
-<td align="right">4.333</td>
+<td align="right">47</td>
+<td align="right">4.4</td>
+<td align="right">33</td>
+<td align="right">4.667</td>
 <td align="left">female</td>
 <td align="left">not minority</td>
 <td align="left">english</td>
-<td align="left">tenured</td>
+<td align="left">tenure track</td>
 </tr>
 <tr class="odd">
-<td align="right">28</td>
-<td align="right">4.8</td>
-<td align="right">62</td>
-<td align="right">5.500</td>
-<td align="left">male</td>
-<td align="left">not minority</td>
-<td align="left">english</td>
-<td align="left">tenured</td>
-</tr>
-<tr class="even">
-<td align="right">434</td>
-<td align="right">2.8</td>
-<td align="right">62</td>
-<td align="right">2.000</td>
-<td align="left">male</td>
-<td align="left">not minority</td>
-<td align="left">english</td>
-<td align="left">tenured</td>
-</tr>
-<tr class="odd">
-<td align="right">330</td>
-<td align="right">4.0</td>
-<td align="right">64</td>
-<td align="right">2.333</td>
+<td align="right">215</td>
+<td align="right">4.7</td>
+<td align="right">60</td>
+<td align="right">3.667</td>
 <td align="left">male</td>
 <td align="left">not minority</td>
 <td align="left">english</td>
@@ -204,7 +204,7 @@
 <p>To address these comments/questions, we’ve included three functions in the <code>moderndive</code> package that takes as a fitted model as input (in this case <code>score_model</code>) and returns the same information as <code><a href="https://rdrr.io/r/base/summary.html">summary(score_model)</a></code> but in a tidyverse-friendly way:</p>
 <ol style="list-style-type: decimal">
 <li>
-<p>Get a tidy regression table <strong>with</strong> confidence intervals:</p>
+<p>Get a tidy regression table <strong>with confidence intervals</strong>:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="../reference/get_regression_table.html">get_regression_table</a></span>(score_model)</a>
 <a class="sourceLine" id="cb3-2" data-line-number="2"><span class="co">#&gt; # A tibble: 2 x 7</span></a>
 <a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;   term      estimate std_error statistic p_value lower_ci upper_ci</span></a>
@@ -417,10 +417,10 @@
 <a class="sourceLine" id="cb21-5" data-line-number="5"><span class="co">#&gt; # A tibble: 4 x 13</span></a>
 <a class="sourceLine" id="cb21-6" data-line-number="6"><span class="co">#&gt;      ID prof_ID   age bty_avg gender ethnicity language rank  pic_outfit</span></a>
 <a class="sourceLine" id="cb21-7" data-line-number="7"><span class="co">#&gt;   &lt;int&gt;   &lt;int&gt; &lt;int&gt;   &lt;dbl&gt; &lt;fct&gt;  &lt;fct&gt;     &lt;fct&gt;    &lt;fct&gt; &lt;fct&gt;     </span></a>
-<a class="sourceLine" id="cb21-8" data-line-number="8"><span class="co">#&gt; 1   272      51    57    5.67 male   not mino… english  tenu… not formal</span></a>
-<a class="sourceLine" id="cb21-9" data-line-number="9"><span class="co">#&gt; 2   239      45    33    7    male   not mino… english  tenu… formal    </span></a>
-<a class="sourceLine" id="cb21-10" data-line-number="10"><span class="co">#&gt; 3    87      16    45    4.17 male   not mino… english  tenu… not formal</span></a>
-<a class="sourceLine" id="cb21-11" data-line-number="11"><span class="co">#&gt; 4   108      19    46    4.33 female not mino… english  tenu… not formal</span></a>
+<a class="sourceLine" id="cb21-8" data-line-number="8"><span class="co">#&gt; 1   354      71    50    3.33 male   minority  english  teac… not formal</span></a>
+<a class="sourceLine" id="cb21-9" data-line-number="9"><span class="co">#&gt; 2   140      25    34    7.83 female not mino… english  tenu… not formal</span></a>
+<a class="sourceLine" id="cb21-10" data-line-number="10"><span class="co">#&gt; 3   334      67    50    7.17 male   not mino… english  tenu… not formal</span></a>
+<a class="sourceLine" id="cb21-11" data-line-number="11"><span class="co">#&gt; 4   148      27    52    4.83 male   minority  non-eng… tenu… formal    </span></a>
 <a class="sourceLine" id="cb21-12" data-line-number="12"><span class="co">#&gt; # … with 4 more variables: pic_color &lt;fct&gt;, cls_did_eval &lt;int&gt;,</span></a>
 <a class="sourceLine" id="cb21-13" data-line-number="13"><span class="co">#&gt; #   cls_students &lt;int&gt;, cls_level &lt;fct&gt;</span></a>
 <a class="sourceLine" id="cb21-14" data-line-number="14"></a>
@@ -428,10 +428,10 @@
 <a class="sourceLine" id="cb21-16" data-line-number="16"><span class="co">#&gt; # A tibble: 4 x 3</span></a>
 <a class="sourceLine" id="cb21-17" data-line-number="17"><span class="co">#&gt;      ID   age score_hat</span></a>
 <a class="sourceLine" id="cb21-18" data-line-number="18"><span class="co">#&gt;   &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;</span></a>
-<a class="sourceLine" id="cb21-19" data-line-number="19"><span class="co">#&gt; 1     1    57      4.12</span></a>
-<a class="sourceLine" id="cb21-20" data-line-number="20"><span class="co">#&gt; 2     2    33      4.27</span></a>
-<a class="sourceLine" id="cb21-21" data-line-number="21"><span class="co">#&gt; 3     3    45      4.20</span></a>
-<a class="sourceLine" id="cb21-22" data-line-number="22"><span class="co">#&gt; 4     4    46      4.19</span></a></code></pre></div>
+<a class="sourceLine" id="cb21-19" data-line-number="19"><span class="co">#&gt; 1     1    50      4.16</span></a>
+<a class="sourceLine" id="cb21-20" data-line-number="20"><span class="co">#&gt; 2     2    34      4.26</span></a>
+<a class="sourceLine" id="cb21-21" data-line-number="21"><span class="co">#&gt; 3     3    50      4.16</span></a>
+<a class="sourceLine" id="cb21-22" data-line-number="22"><span class="co">#&gt; 4     4    52      4.15</span></a></code></pre></div>
 <p><code>score_hat</code> are the predicted values! Let’s do another example, this time using the Kaggle <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques" target="_blank">House Prices: Advanced Regression Techniques</a> practice competition.</p>
 <p><img src="kaggle.png" width="500px" style="display: block; margin: auto;"></p>
 <p>This Kaggle competition requires you to fit/train a model to the provided <code>train.csv</code> training set to make predictions of house prices in the provided <code>test.csv</code> test set. Here is code for a “baby’s first Kaggle competition” submission that will:</p>
@@ -781,7 +781,7 @@
 <div id="acknowledgements" class="section level3">
 <h3 class="hasAnchor">
 <a href="#acknowledgements" class="anchor"></a>Acknowledgements</h3>
-<p>Many thanks to Max Kuhn <a href="https://github.com/topepo" target="_blank">@topepo</a> and Jenny Smetzer <a href="https://github.com/smetzer180" target="_blank">@smetzer180</a> for their helpful feedback for this vignette and to Evgeni Chasnovski [@echasnovski]](<a href="https://github.com/echasnovski" class="uri">https://github.com/echasnovski</a>){target="_blank"} for contributing the <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> function via GitHub <a href="https://github.com/moderndive/moderndive/pull/55" target="_blank">pull request</a>.</p>
+<p>Many thanks to Max Kuhn <a href="https://github.com/topepo" target="_blank">@topepo</a> and Jenny Smetzer <a href="https://github.com/smetzer180" target="_blank">@smetzer180</a> for their helpful feedback for this vignette and to Evgeni Chasnovski <a href="https://github.com/echasnovski" target="_blank">@echasnovski</a> for contributing the <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> function via GitHub <a href="https://github.com/moderndive/moderndive/pull/55" target="_blank">pull request</a>.</p>
 </div>
 </div>
   </div>
