@@ -73,7 +73,7 @@ Here are five common student comments/questions we've heard over the years in ou
 
 To address these comments/questions, we've included three functions in the `moderndive` package that takes as a fitted model as input (in this case `score_model`) and returns the same information as `summary(score_model)` but in a tidyverse-friendly way:
 
-1. Get a tidy regression table **with** confidence intervals:
+1. Get a tidy regression table **with confidence intervals**:
     ```{r}
     get_regression_table(score_model)
     ```
@@ -469,7 +469,7 @@ If you're curious to see how Evgeni did this for `geom_parallel_slopes()`, take 
 
 ### Acknowledgements
 
-Many thanks to Max Kuhn [\@topepo](https://github.com/topepo){target="_blank"} and Jenny Smetzer [\@smetzer180](https://github.com/smetzer180){target="_blank"} for their helpful feedback for this vignette and to Evgeni Chasnovski [\@echasnovski]](https://github.com/echasnovski){target="_blank"} for contributing the `geom_parallel_slopes()` function via GitHub [pull request](https://github.com/moderndive/moderndive/pull/55){target="_blank"}.
+Many thanks to Max Kuhn [\@topepo](https://github.com/topepo){target="_blank"} and Jenny Smetzer [\@smetzer180](https://github.com/smetzer180){target="_blank"} for their helpful feedback for this vignette and to Evgeni Chasnovski [\@echasnovski](https://github.com/echasnovski){target="_blank"} for contributing the `geom_parallel_slopes()` function via GitHub [pull request](https://github.com/moderndive/moderndive/pull/55){target="_blank"}.
 
 
 
