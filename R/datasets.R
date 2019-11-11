@@ -6,7 +6,7 @@
 #' @format A data frame with 48 observations on the following 3 variables.
 #' \describe{
 #'   \item{id}{Identification variable used to distinguish rows.}
-#'   \item{gender}{(binary) gender: a factor with two levels `male` and `female`}
+#'   \item{gender}{gender (collected as a binary variable at the time of the study): a factor with two levels `male` and `female`}
 #'   \item{decision}{a factor with two levels: `promoted` and `not`}
 #' }
 #' @source Rosen B and Jerdee T. 1974. Influence of sex role stereotypes on personnel 
@@ -151,7 +151,7 @@
 #'   \item{score}{Average professor evaluation score: (1) very unsatisfactory - (5) excellent.}
 #'   \item{age}{Age of professor.}
 #'   \item{bty_avg}{Average beauty rating of professor.}
-#'   \item{gender}{Gender of professor: female, male.}
+#'   \item{gender}{Gender of professor (collected as a binary variable at the time of the study): female, male.}
 #'   \item{ethnicity}{Ethnicity of professor: not minority, minority.}
 #'   \item{language}{Language of school where professor received education: English or non-English.}
 #'   \item{rank}{Rank of professor: teaching, tenure track, tenured.}
