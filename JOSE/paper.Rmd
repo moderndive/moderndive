@@ -23,14 +23,14 @@ affiliations:
 date: "`r Sys.Date()`"
 bibliography: paper.bib
 output:
-  pdf_document: 
-    fig_caption: yes
   html_document: 
     df_print: default
     highlight: tango
     theme: cosmo
     keep_md: yes
     number_sections: yes
+  pdf_document: 
+    fig_caption: yes
 ---
 
 ```{r, include = FALSE}
@@ -57,7 +57,9 @@ library(patchwork)
 # https://www.youtube.com/watch?v=xjJ7FheCkCU
 set.seed(76)
 
-scale_fill_discrete <- function(...) scale_fill_brewer(... ,  type = "div", palette="Set1", na.value = "grey50")
+scale_fill_discrete <- function(...){
+  scale_fill_brewer(... ,  type = "div", palette="Set1", na.value = "grey50")
+}
 ```
 
 
@@ -125,8 +127,8 @@ Using `geom_smooth(method = "lm", se = FALSE)` from the `ggplot2` package yields
 library(ggplot2)
 ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
-  labs(x = "Instructor age", y = "Teaching score", color = "Instructor\nEthnicity",
-       title = "Interaction model") +
+  labs(x = "Instructor age", y = "Teaching score", 
+       color = "Instructor\nEthnicity", title = "Interaction model") +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
@@ -139,8 +141,8 @@ library(ggplot2)
 library(moderndive)
 ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
-  labs(x = "Instructor age", y = "Teaching score", color = "Instructor\nEthnicity",
-       title = "Parallel slopes model") + 
+  labs(x = "Instructor age", y = "Teaching score", 
+       color = "Instructor\nEthnicity", title = "Parallel slopes model") + 
   geom_parallel_slopes(se = FALSE)
 ```
 
@@ -306,14 +308,19 @@ library(tidyverse)
 library(moderndive)
 
 # Load in training and test set
-train <- read_csv("https://github.com/moderndive/moderndive/raw/master/vignettes/train.csv")
-test <- read_csv("https://github.com/moderndive/moderndive/raw/master/vignettes/test.csv")
+train <- 
+  "https://github.com/moderndive/moderndive/raw/master/vignettes/train.csv" %>% 
+  read_csv()
+test <- 
+  "https://github.com/moderndive/moderndive/raw/master/vignettes/test.csv"
+  read_csv()
 
 # Fit model
 house_model <- lm(SalePrice ~ YrSold, data = train)
 
 # Make and submit predictions
-submission <- get_regression_points(house_model, newdata = test, ID = "Id") %>% 
+submission <- get_regression_points(house_model, newdata = test, 
+                                    ID = "Id") %>% 
   select(Id, SalePrice = SalePrice_hat)
 write_csv(submission, "submission.csv")
 ```
@@ -355,14 +362,14 @@ For example, recall the above comparison of the visualization of the interaction
 ```{r interaction-and-parallel-slopes-model, echo=FALSE, fig.width=16/2.2, fig.height=9/2.2}
 p1 <- ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
-  labs(x = "Instructor age", y = "Teaching score", color = "Instructor\nEthnicity",
-       title = "Interaction model") +
+  labs(x = "Instructor age", y = "Teaching score", 
+       color = "Instructor\nEthnicity", title = "Interaction model") +
   geom_smooth(method = "lm", se = FALSE) +
   theme(legend.position = "none")
 p2 <- ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
-  labs(x = "Instructor age", y = "Teaching score", color = "Instructor\nEthnicity",
-       title = "Interaction model") +
+  labs(x = "Instructor age", y = "Teaching score", 
+       color = "Instructor\nEthnicity", title = "Interaction model") +
   geom_parallel_slopes(se = FALSE) + 
   theme(axis.title.y = element_blank())
 p1 + p2
@@ -396,13 +403,15 @@ While the interaction model is "more complex" as evidenced by it's regression ta
 Here is a contrasting example, this time from [ModernDive 6.3.1](https://moderndive.com/6-multiple-regression.html#model-selection) involving Massachusetts USA public high schools (read the help file by running `?MA_schools` for more details). Let's plot both the interaction and parallel slopes models: 
 
 ```{r, eval=FALSE}
-ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
+ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, 
+                       color = size)) +
   geom_point(alpha = 0.25) +
   labs(x = "Percent economically disadvantaged", y = "Math SAT Score", 
        color = "School size", title = "Interaction model") + 
   geom_smooth(method = "lm", se = FALSE)
 
-ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
+ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, 
+                       color = size)) +
   geom_point(alpha = 0.25) +
   labs(x = "Percent economically disadvantaged", y = "Math SAT Score", 
        color = "School size", title = "Interaction model") +
@@ -411,14 +420,16 @@ ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
 
 ```{r ma-schools, echo=FALSE, fig.width=16/2.2, fig.height=9/2.2}
 p1 <- ggplot(MA_schools, 
-             aes(x = perc_disadvan, y = average_sat_math, color = size)) +
+             aes(x = perc_disadvan, y = average_sat_math, 
+                 color = size)) +
   geom_point(alpha = 0.25) +
   geom_smooth(method = "lm", se = FALSE) +
   labs(x = "Percent economically disadvantaged", y = "Math SAT Score", 
        color = "School size", title = "Interaction model") + 
   theme(legend.position = "none")
 p2 <- ggplot(MA_schools, 
-       aes(x = perc_disadvan, y = average_sat_math, color = size)) +
+       aes(x = perc_disadvan, y = average_sat_math, 
+           color = size)) +
   geom_point(alpha = 0.25) +
   geom_parallel_slopes(se = FALSE) + 
   labs(x = "Percent economically disadvantaged", y = "Math SAT Score", 
@@ -432,20 +443,24 @@ Here the additional complexity of the interaction model is *not* warranted since
 In terms of the corresponding regression tables, observe that the corresponding regression table for the parallel slopes model has 4 rows as opposed to the 6 for the interaction model, reflecting its higher degree of "model simplicity."
 
 ```{r, eval=FALSE}
-interaction_MA <- lm(average_sat_math ~ perc_disadvan * size, data = MA_schools)
+interaction_MA <- lm(average_sat_math ~ perc_disadvan * size, 
+                     data = MA_schools)
 get_regression_table(interaction_MA)
 ```
 ```{r, echo=FALSE}
-interaction_MA <- lm(average_sat_math ~ perc_disadvan * size, data = MA_schools)
+interaction_MA <- lm(average_sat_math ~ perc_disadvan * size, 
+                     data = MA_schools)
 get_regression_table(interaction_MA) %>% 
   knitr::kable()
 ```
 ```{r, eval=FALSE}
-parallel_slopes_MA <- lm(average_sat_math ~ perc_disadvan + size, data = MA_schools)
+parallel_slopes_MA <- lm(average_sat_math ~ perc_disadvan + size, 
+                         data = MA_schools)
 get_regression_table(parallel_slopes_MA)
 ```
 ```{r, echo=FALSE}
-parallel_slopes_MA <- lm(average_sat_math ~ perc_disadvan + size, data = MA_schools)
+parallel_slopes_MA <- lm(average_sat_math ~ perc_disadvan + size, 
+                         data = MA_schools)
 get_regression_table(parallel_slopes_MA) %>% 
   knitr::kable()
 ```

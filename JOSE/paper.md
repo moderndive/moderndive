@@ -147,8 +147,8 @@ Using `geom_smooth(method = "lm", se = FALSE)` from the `ggplot2` package yields
 library(ggplot2)
 ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
-  labs(x = "Instructor age", y = "Teaching score", color = "Instructor\nEthnicity",
-       title = "Interaction model") +
+  labs(x = "Instructor age", y = "Teaching score", 
+       color = "Instructor\nEthnicity", title = "Interaction model") +
   geom_smooth(method = "lm", se = FALSE)
 ```
 
@@ -164,8 +164,8 @@ library(ggplot2)
 library(moderndive)
 ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
-  labs(x = "Instructor age", y = "Teaching score", color = "Instructor\nEthnicity",
-       title = "Parallel slopes model") + 
+  labs(x = "Instructor age", y = "Teaching score", 
+       color = "Instructor\nEthnicity", title = "Parallel slopes model") + 
   geom_parallel_slopes(se = FALSE)
 ```
 
@@ -401,14 +401,19 @@ library(tidyverse)
 library(moderndive)
 
 # Load in training and test set
-train <- read_csv("https://github.com/moderndive/moderndive/raw/master/vignettes/train.csv")
-test <- read_csv("https://github.com/moderndive/moderndive/raw/master/vignettes/test.csv")
+train <- 
+  "https://github.com/moderndive/moderndive/raw/master/vignettes/train.csv" %>% 
+  read_csv()
+test <- 
+  "https://github.com/moderndive/moderndive/raw/master/vignettes/test.csv"
+  read_csv()
 
 # Fit model
 house_model <- lm(SalePrice ~ YrSold, data = train)
 
 # Make and submit predictions
-submission <- get_regression_points(house_model, newdata = test, ID = "Id") %>% 
+submission <- get_regression_points(house_model, newdata = test, 
+                                    ID = "Id") %>% 
   select(Id, SalePrice = SalePrice_hat)
 write_csv(submission, "submission.csv")
 ```
@@ -486,13 +491,15 @@ Here is a contrasting example, this time from [ModernDive 6.3.1](https://modernd
 
 
 ```r
-ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
+ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, 
+                       color = size)) +
   geom_point(alpha = 0.25) +
   labs(x = "Percent economically disadvantaged", y = "Math SAT Score", 
        color = "School size", title = "Interaction model") + 
   geom_smooth(method = "lm", se = FALSE)
 
-ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
+ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, 
+                       color = size)) +
   geom_point(alpha = 0.25) +
   labs(x = "Percent economically disadvantaged", y = "Math SAT Score", 
        color = "School size", title = "Interaction model") +
@@ -507,7 +514,8 @@ In terms of the corresponding regression tables, observe that the corresponding 
 
 
 ```r
-interaction_MA <- lm(average_sat_math ~ perc_disadvan * size, data = MA_schools)
+interaction_MA <- lm(average_sat_math ~ perc_disadvan * size, 
+                     data = MA_schools)
 get_regression_table(interaction_MA)
 ```
 
@@ -521,7 +529,8 @@ perc_disadvan:sizemedium       0.146       0.371       0.393     0.694     -0.58
 perc_disadvan:sizelarge        0.189       0.323       0.586     0.559     -0.446      0.824
 
 ```r
-parallel_slopes_MA <- lm(average_sat_math ~ perc_disadvan + size, data = MA_schools)
+parallel_slopes_MA <- lm(average_sat_math ~ perc_disadvan + size, 
+                         data = MA_schools)
 get_regression_table(parallel_slopes_MA)
 ```
 
