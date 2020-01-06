@@ -1,6 +1,14 @@
 ---
 title: "Why should you use the `moderndive` R package for intro linear regression?"
-date: "`r Sys.Date()`"
+tags:
+  - R
+  - Rstats
+  - tidyverse
+  - regression
+  - moderndive
+  - modeling
+  - modelling
+  - kaggle
 authors:
   - name: Albert Y. Kim
     orcid: 0000-0001-7824-306X
@@ -12,33 +20,17 @@ affiliations:
    index: 1
  - name: Data Science Evangelist, DataRobot, Portland, OR, USA.
    index: 2
+date: "`r Sys.Date()`"
+bibliography: paper.bib
 output:
   html_document: 
     df_print: default
     highlight: tango
+    theme: cosmo
     keep_md: yes
     number_sections: yes
-    theme: cosmo
-    toc: yes
-    toc_depth: 2
-    toc_float:
-      collapsed: no
-      smooth_scroll: yes
   pdf_document: 
     fig_caption: yes
-fontsize: 12pt
-bibliography: bibliography.bib
-urlcolor: blue
-tags:
-  - R
-  - Rstats
-  - tidyverse
-  - regression
-  - moderndive
-  - modeling
-  - modelling
-  - kaggle
-  - broom
 ---
 
 ```{r, include = FALSE}
