@@ -23,14 +23,14 @@ affiliations:
 date: "`r Sys.Date()`"
 bibliography: paper.bib
 output:
+  pdf_document: 
+    fig_caption: yes
   html_document: 
     df_print: default
     highlight: tango
     theme: cosmo
     keep_md: yes
     number_sections: yes
-  pdf_document: 
-    fig_caption: yes
 ---
 
 ```{r, include = FALSE}
@@ -351,7 +351,8 @@ Finally, the last common student comment/question, brought to our attention by [
 
 For example, recall the above comparison of the visualization of the interaction model (using `geom_smooth()`) with that of the parallel slopes model (using `geom_parallel_slopes()`) for teaching score as a function of age and ethnicity:
 
-```{r interaction-and-parallel-slopes-model, out.width = "100%", echo=FALSE, fig.align='center'}
+
+```{r interaction-and-parallel-slopes-model, echo=FALSE, fig.width=16/2.2, fig.height=9/2.2}
 p1 <- ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
   labs(x = "Instructor age", y = "Teaching score", color = "Instructor\nEthnicity",
@@ -407,7 +408,8 @@ ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
        color = "School size", title = "Interaction model") +
   geom_smooth(method = "lm", se = FALSE)
 ```
-```{r ma-schools, out.width = "100%", echo=FALSE, fig.align='center'}
+
+```{r ma-schools, echo=FALSE, fig.width=16/2.2, fig.height=9/2.2}
 p1 <- ggplot(MA_schools, 
              aes(x = perc_disadvan, y = average_sat_math, color = size)) +
   geom_point(alpha = 0.25) +

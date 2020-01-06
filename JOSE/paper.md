@@ -449,7 +449,8 @@ Finally, the last common student comment/question, brought to our attention by [
 
 For example, recall the above comparison of the visualization of the interaction model (using `geom_smooth()`) with that of the parallel slopes model (using `geom_parallel_slopes()`) for teaching score as a function of age and ethnicity:
 
-<img src="Figures/interaction-and-parallel-slopes-model-1.png" width="100%" style="display: block; margin: auto;" />
+
+![](Figures/interaction-and-parallel-slopes-model-1.png)<!-- -->
 
 Students might be wondering "Why would you use the parallel slopes model when the data clearly form an "X" pattern as seen in the interaction model?"
 
@@ -497,7 +498,8 @@ ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
        color = "School size", title = "Interaction model") +
   geom_smooth(method = "lm", se = FALSE)
 ```
-<img src="Figures/ma-schools-1.png" width="100%" style="display: block; margin: auto;" />
+
+![](Figures/ma-schools-1.png)<!-- -->
 
 Here the additional complexity of the interaction model is *not* warranted since the 3 three regression lines are already somewhat parallel. Therefore the simpler parallel slopes model should be favored. 
 
