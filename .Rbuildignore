@@ -11,6 +11,7 @@
 ^README_files$
 ^data-raw$
 ^docs$
+^JOSE$
 ^images$
 ^CONDUCT\.md$
 ^codecov\.yml$
