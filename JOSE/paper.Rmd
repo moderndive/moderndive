@@ -65,6 +65,8 @@ scale_fill_discrete <- function(...){
 
 # Intro
 
+Testing [@ASA_guidelines_2014]. [@cobb_2015; @nolan_lang_2010; @PCMI_2016]
+
 Linear regression has long been a staple of introductory statistics courses. While the timing of when to introduce it may have changed (many argue that descriptive regression should be done ASAP and then revisited later after statistical inference has been covered), it's overall importance in the intro stats curriculum remains the same.
 
 Let's consider data gathered from end of semester student evaluations for 463 courses (taught by 94 unique professors) from the University of Texas at Austin (see [openintro.org](https://www.openintro.org/stat/data/?data=evals){target="_blank"} for more details). Here is a random sample of 5 courses and a subset of 8 of the 13 variables included, where the outcome variable of interest is the teaching evaluation `score` out of 5 as given by students: 
@@ -504,11 +506,10 @@ As for `geom_parallel_slopes()`, this is a custom built `geom` extension to the 
 If you're curious to see how Evgeni did this for `geom_parallel_slopes()`, take a look at the source code on  [GitHub](https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R){target="_blank"}!
 
 
-## Acknowledgements
+# Acknowledgements
 
 Many thanks to Max Kuhn [\@topepo](https://github.com/topepo){target="_blank"} and Jenny Smetzer [\@smetzer180](https://github.com/smetzer180){target="_blank"} for their helpful feedback for this vignette and to Evgeni Chasnovski [\@echasnovski](https://github.com/echasnovski){target="_blank"} for contributing the `geom_parallel_slopes()` function via GitHub [pull request](https://github.com/moderndive/moderndive/pull/55){target="_blank"}.
 
 
-
-
+# References
 
