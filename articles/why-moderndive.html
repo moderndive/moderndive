@@ -85,7 +85,7 @@
       <h1>Why should you use the moderndive package for intro linear regression?</h1>
                         <h4 class="author">Albert Y. Kim &amp; Chester Ismay</h4>
             
-            <h4 class="date">2019-11-11</h4>
+            <h4 class="date">2020-01-08</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ModernDive/moderndive_package/blob/master/vignettes/why-moderndive.Rmd"><code>vignettes/why-moderndive.Rmd</code></a></small>
       <div class="hidden name"><code>why-moderndive.Rmd</code></div>
@@ -480,7 +480,7 @@
 <p>“When would you ever use a parallel slopes model?”</p>
 </blockquote>
 <p>For example, recall the above comparison of the visualization of the interaction model (using <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code>) with that of the parallel slopes model (using <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code>) for teaching score as a function of age and ethnicity:</p>
-<p><img src="evals.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="why-moderndive_files/figure-html/unnamed-chunk-27-1.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Students might be wondering “Why would you use the parallel slopes model when the data clearly form an”X" pattern as seen in the interaction model?"</p>
 <p>This is an excellent opportunity to gently introduce the notion of <em>model selection</em> and <em>Occam’s Razor</em>: an interaction model should only be used over a parallel slopes model <strong>if the additional complexity of the interaction model is warranted</strong>. Here, we define model “complexity vs simplicity” in terms of the number of parameters in the corresponding regression tables:</p>
 <div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" data-line-number="1">interaction_evals &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span>(score <span class="op">~</span><span class="st"> </span>age <span class="op">*</span><span class="st"> </span>ethnicity, <span class="dt">data =</span> evals)</a>
@@ -589,7 +589,7 @@
 <a class="sourceLine" id="cb26-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="dt">x =</span> <span class="st">"Percent economically disadvantaged"</span>, <span class="dt">y =</span> <span class="st">"Math SAT Score"</span>, </a>
 <a class="sourceLine" id="cb26-10" data-line-number="10">       <span class="dt">color =</span> <span class="st">"School size"</span>, <span class="dt">title =</span> <span class="st">"Interaction model"</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb26-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span>(<span class="dt">method =</span> <span class="st">"lm"</span>, <span class="dt">se =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<p><img src="MA_schools.png" width="100%" style="display: block; margin: auto;"></p>
+<p><img src="why-moderndive_files/figure-html/unnamed-chunk-33-1.png" width="100%" style="display: block; margin: auto;"></p>
 <p>Here the additional complexity of the interaction model is <em>not</em> warranted since the 3 three regression lines are already somewhat parallel. Therefore the simpler parallel slopes model should be favored.</p>
 <p>In terms of the corresponding regression tables, observe that the corresponding regression table for the parallel slopes model has 4 rows as opposed to the 6 for the interaction model, reflecting its higher degree of “model simplicity.”</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">interaction_MA &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span>(average_sat_math <span class="op">~</span><span class="st"> </span>perc_disadvan <span class="op">*</span><span class="st"> </span>size, <span class="dt">data =</span> MA_schools)</a>
@@ -786,7 +786,7 @@
 </div>
   </div>
 
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
 
         <div id="tocnav">
       <h2 class="hasAnchor">
