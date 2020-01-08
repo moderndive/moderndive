@@ -24,6 +24,7 @@ Imports:
     ggplot2,
     tibble,
     janitor,
+    patchwork,
     broom (>= 0.4.3),
     formula.tools,
     stringr,
@@ -31,7 +32,7 @@ Imports:
     infer,
     rlang (>= 0.2.0),
     glue
-RoxygenNote: 6.1.1
+RoxygenNote: 7.0.2
 Suggests: testthat,
     covr,
     rmarkdown,

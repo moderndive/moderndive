@@ -1,6 +1,6 @@
 # moderndive 0.4.0.9000
 
-* 
+* "Why ModernDive?" vignette now loads `patchwork` package from CRAN
 
 
 
