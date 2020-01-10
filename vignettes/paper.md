@@ -46,7 +46,7 @@ output:
 
 
 
-# Intro
+# Introduction
 
 Linear regression has long been a staple of introductory statistics courses. While the timing of when to introduce it may have changed (many argue that descriptive regression should be done ASAP and then revisited later after statistical inference has been covered), it's overall importance in the intro stats curriculum remains the same.
 
@@ -197,7 +197,7 @@ We think that these functions included in the `moderndive` package are effective
 
 # Features
 
-## Less p-value stars, more confidence intervals
+## 1. Less p-value stars, more confidence intervals
 
 The first common student comment/question:
 
@@ -223,10 +223,7 @@ get_regression_table(score_model)
 Confidence intervals! By including them in the output, we can easily emphasize to students that they "surround" the point estimates in the `estimate` column. Note the confidence level is defaulted to 95%. 
 
 
-
-
-
-## Outputs as tidy tibbles!
+## 2. Outputs as tidy tibbles!
 
 All the functions in the `moderndive` package return tidy tibbles! So for example, by piping the above `get_regression_table(score_model)` output into the `kable()` function from the `knitr` package, you can have aesthetically pleasing regression tables in R Markdown documents, instead of jarring computer output font:
 
@@ -274,10 +271,7 @@ get_regression_table(score_model)$std_error
 ```
 
 
-
-
-
-## Birds of a feather should flock together: Fitted values & residuals
+## 3. Birds of a feather should flock together: Fitted values & residuals
 
 The third common student comment/question:
 
@@ -361,10 +355,7 @@ ggplot(score_model_points, aes(x = age, y = residual)) +
 ![](Figures/residuals-2.png)<!-- -->
 
 
-
-
-
-## Baby's first Kaggle predictive modeling competition submission!
+## 4. A quick-and-easy Kaggle predictive modeling competition submission!
 
 The fourth common student comment/question:
 
@@ -440,10 +431,7 @@ scores are better:
 <img src="leaderboard_orig.png" width="100%" />
 
 
-
-
-
-## Scalar summaries of linear regression model fits
+## 5. Scalar summaries of linear regression model fits
 
 The fifth common student comment/question:
 
@@ -461,14 +449,13 @@ get_regression_summaries(score_model)
 ```
 
 
-## Plot parallel slopes regression models
+## 6. Plot parallel slopes regression models
 
 Finally, the last common student comment/question, brought to our attention by [Jenny Smetzer](https://github.com/smetzer180){target="_blank"}:
 
 > "When would you ever use a parallel slopes model?"
 
 For example, recall the above comparison of the visualization of the interaction model (using `geom_smooth()`) with that of the parallel slopes model (using `geom_parallel_slopes()`) for teaching score as a function of age and ethnicity:
-
 
 ![](Figures/interaction-and-parallel-slopes-model-1.png)<!-- -->
 
@@ -566,7 +553,7 @@ While many students will inevitably find these results depressing, in our opinio
 
 # The Details
 
-## Three wrapper functions
+## Three wrappers to `broom` functions
 
 The three `get_regression` functions are wrappers of functions from the [`broom`](https://CRAN.R-project.org/package=broom/vignettes/broom.html){target="_blank"} package for converting statistical analysis objects into tidy tibbles along with a few added tweaks [@R-broom]:
 
