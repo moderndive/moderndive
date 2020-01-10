@@ -1,12 +1,45 @@
 ---
-title: "Why should you use the moderndive package for intro linear regression?"
-author: "Albert Y. Kim & Chester Ismay"
+title: "Why should you use the `moderndive` R package for intro linear regression?"
+author: "Albert Y. Kim, Chester Ismay, and Max Kuhn"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Why should you use the moderndive package for intro linear regression?}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+tags:
+  - R
+  - Rstats
+  - tidyverse
+  - regression
+  - moderndive
+  - modeling
+  - modelling
+  - kaggle
+authors:
+  - name: Albert Y. Kim
+    orcid: 0000-0001-7824-306X
+    affiliation: 1 
+  - name: Chester Ismay
+    orcid: 0000-0003-2820-2547
+    affiliation: 2
+  - name: Max Kuhn
+    orcid: 0000-0003-2402-136X
+    affiliation: 3   
+affiliations:
+ - name: Assistant Professor of Statistical and Data Sciences, Smith College, Northampton, MA, USA.
+   index: 1
+ - name: Data Science Evangelist, DataRobot, Portland, OR, USA.
+   index: 2
+ - name: Software Engineer, RStudio, USA.
+   index: 3
+bibliography: paper.bib
+output:
+  rmarkdown::html_vignette:
+    keep_md: yes
+    df_print: default
+    number_sections: yes
+  pdf_document: 
+    fig_caption: yes
 ---
 
 

@@ -10,11 +10,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<meta name="author" content="Albert Y. Kim &amp; Chester Ismay" />
+<meta name="author" content="Albert Y. Kim, Chester Ismay, and Max Kuhn" />
 
-<meta name="date" content="2020-01-05" />
+<meta name="date" content="2020-01-10" />
 
-<title>Why should you use the moderndive package for intro linear regression?</title>
+<title>Why should you use the moderndive R package for intro linear regression?</title>
 
 
 
@@ -301,14 +301,14 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 
 
-<h1 class="title toc-ignore">Why should you use the moderndive package for intro linear regression?</h1>
-<h4 class="author">Albert Y. Kim &amp; Chester Ismay</h4>
-<h4 class="date">2020-01-05</h4>
+<h1 class="title toc-ignore">Why should you use the <code>moderndive</code> R package for intro linear regression?</h1>
+<h4 class="author">Albert Y. Kim, Chester Ismay, and Max Kuhn</h4>
+<h4 class="date">2020-01-10</h4>
 
 
 
 <div id="intro" class="section level2">
-<h2>Intro</h2>
+<h2><span class="header-section-number">0.1</span> Intro</h2>
 <p>Linear regression has long been a staple of introductory statistics courses. While the timing of when to introduce it may have changed (many argue that descriptive regression should be done ASAP and then revisited later after statistical inference has been covered), it’s overall importance in the intro stats curriculum remains the same.</p>
 <p>Let’s consider data gathered from end of semester student evaluations for 463 courses (taught by 94 unique professors) from the University of Texas at Austin (see <a href="https://www.openintro.org/stat/data/?data=evals" target="_blank">openintro.org</a> for more details). Here is a random sample of 5 courses and a subset of 8 of the 13 variables included, where the outcome variable of interest is the teaching evaluation <code>score</code> out of 5 as given by students:</p>
 <table>
@@ -381,7 +381,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">library</span>(moderndive)</a>
 <a class="sourceLine" id="cb1-2" data-line-number="2">score_model &lt;-<span class="st"> </span><span class="kw">lm</span>(score <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> evals)</a></code></pre></div>
 <div id="regression-analysis-the-good-old-fashioned-way" class="section level3">
-<h3>Regression analysis the “good old-fashioned” way</h3>
+<h3><span class="header-section-number">0.1.1</span> Regression analysis the “good old-fashioned” way</h3>
 <p>Let’s analyze the output of the fitted model <code>score_model</code> “the good old fashioned way”: using <code>summary.lm()</code>.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">summary</span>(score_model)</a>
 <a class="sourceLine" id="cb2-2" data-line-number="2"><span class="co">#&gt; </span></a>
@@ -412,7 +412,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 </ol>
 </div>
 <div id="regression-analysis-the-tidyverse-friendly-way" class="section level3">
-<h3>Regression analysis the tidyverse-friendly way</h3>
+<h3><span class="header-section-number">0.1.2</span> Regression analysis the tidyverse-friendly way</h3>
 <p>To address these comments/questions, we’ve included three functions in the <code>moderndive</code> package that takes as a fitted model as input (in this case <code>score_model</code>) and returns the same information as <code>summary(score_model)</code> but in a tidyverse-friendly way:</p>
 <ol style="list-style-type: decimal">
 <li><p>Get a tidy regression table <strong>with confidence intervals</strong>:</p>
@@ -447,7 +447,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 </ol>
 </div>
 <div id="visualizing-parallel-slopes-models" class="section level3">
-<h3>Visualizing parallel slopes models</h3>
+<h3><span class="header-section-number">0.1.3</span> Visualizing parallel slopes models</h3>
 <p>Say you are plotting a scatterplot with a categorical variable mapped to the <code>color</code> aesthetic. Using <code>geom_smooth(method = &quot;lm&quot;, se = FALSE)</code> from the <code>ggplot2</code> package yields a visualization of an <em>interaction model</em> (different intercepts and different slopes):</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">library</span>(ggplot2)</a>
 <a class="sourceLine" id="cb6-2" data-line-number="2"><span class="kw">ggplot</span>(evals, <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> score, <span class="dt">color =</span> ethnicity)) <span class="op">+</span></a>
@@ -469,13 +469,13 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <p>At this point however, students will inevitably ask a sixth question: “When would you ever use a parallel slopes model?”</p>
 </div>
 <div id="why-should-you-use-the-moderndive-package" class="section level3">
-<h3>Why should you use the <code>moderndive</code> package?</h3>
+<h3><span class="header-section-number">0.1.4</span> Why should you use the <code>moderndive</code> package?</h3>
 <p>We think that these functions included in the <code>moderndive</code> package are effective pedagogical tools that can help address the above six common student comments/questions. We now argue why.</p>
 <hr />
 </div>
 </div>
 <div id="less-p-value-stars-more-confidence-intervals" class="section level2">
-<h2>1. Less p-value stars, more confidence intervals</h2>
+<h2><span class="header-section-number">0.2</span> 1. Less p-value stars, more confidence intervals</h2>
 <p>The first common student comment/question:</p>
 <blockquote>
 <p>“Wow! Look at those p-value stars! Stars are good, so I must get more stars somehow.”</p>
@@ -497,7 +497,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <hr />
 </div>
 <div id="outputs-as-tidy-tibbles" class="section level2">
-<h2>2. Outputs as tidy tibbles!</h2>
+<h2><span class="header-section-number">0.3</span> 2. Outputs as tidy tibbles!</h2>
 <p>All the functions in the <code>moderndive</code> package return tidy tibbles! So for example, by piping the above <code>get_regression_table(score_model)</code> output into the <code>kable()</code> function from the <code>knitr</code> package, you can have aesthetically pleasing regression tables in R Markdown documents, instead of jarring computer output font:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">get_regression_table</span>(score_model) <span class="op">%&gt;%</span><span class="st"> </span></a>
 <a class="sourceLine" id="cb9-2" data-line-number="2"><span class="st">  </span>knitr<span class="op">::</span><span class="kw">kable</span>()</a></code></pre></div>
@@ -552,7 +552,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <hr />
 </div>
 <div id="birds-of-a-feather-should-flock-together-fitted-values-residuals" class="section level2">
-<h2>3. Birds of a feather should flock together: Fitted values &amp; residuals</h2>
+<h2><span class="header-section-number">0.4</span> 3. Birds of a feather should flock together: Fitted values &amp; residuals</h2>
 <p>The third common student comment/question:</p>
 <blockquote>
 <p>“Where are the fitted/predicted values and residuals?”</p>
@@ -605,7 +605,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <hr />
 </div>
 <div id="babys-first-kaggle-predictive-modeling-competition-submission" class="section level2">
-<h2>4. Baby’s first Kaggle predictive modeling competition submission!</h2>
+<h2><span class="header-section-number">0.5</span> 4. Baby’s first Kaggle predictive modeling competition submission!</h2>
 <p>The fourth common student comment/question:</p>
 <blockquote>
 <p>“How do I apply this model to a new set of data to make predictions?”</p>
@@ -661,7 +661,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <hr />
 </div>
 <div id="scalar-summaries-of-linear-regression-model-fits" class="section level2">
-<h2>5. Scalar summaries of linear regression model fits</h2>
+<h2><span class="header-section-number">0.6</span> 5. Scalar summaries of linear regression model fits</h2>
 <p>The fifth common student comment/question:</p>
 <blockquote>
 <p>“What is all this other stuff at the bottom?”</p>
@@ -674,7 +674,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb23-5" data-line-number="5"><span class="co">#&gt; 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     2</span></a></code></pre></div>
 </div>
 <div id="plot-parallel-slopes-regression-models" class="section level2">
-<h2>6. Plot parallel slopes regression models</h2>
+<h2><span class="header-section-number">0.7</span> 6. Plot parallel slopes regression models</h2>
 <p>Finally, the last common student comment/question, brought to our attention by <a href="https://github.com/smetzer180" target="_blank">Jenny Smetzer</a>:</p>
 <blockquote>
 <p>“When would you ever use a parallel slopes model?”</p>
@@ -925,9 +925,9 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <hr />
 </div>
 <div id="the-details" class="section level2">
-<h2>The Details</h2>
+<h2><span class="header-section-number">0.8</span> The Details</h2>
 <div id="three-wrapper-functions" class="section level3">
-<h3>Three wrapper functions</h3>
+<h3><span class="header-section-number">0.8.1</span> Three wrapper functions</h3>
 <p>The three <code>get_regression</code> functions are wrappers of functions from the <a href="https://CRAN.R-project.org/package=broom/vignettes/broom.html" target="_blank"><code>broom</code></a> package for converting statistical analysis objects into tidy tibbles along with a few added tweaks:</p>
 <ol style="list-style-type: decimal">
 <li><code>get_regression_table()</code> is a wrapper for <code>broom::tidy()</code></li>
@@ -973,12 +973,12 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <p>If you’re curious to see how we designed these 3 functions, take a look at the source code on <a href="https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R" target="_blank">GitHub</a>!</p>
 </div>
 <div id="custom-geom" class="section level3">
-<h3>Custom geom</h3>
+<h3><span class="header-section-number">0.8.2</span> Custom geom</h3>
 <p>As for <code>geom_parallel_slopes()</code>, this is a custom built <code>geom</code> extension to the <code>ggplot2</code> package. For example, the <code>ggplot2</code> webpage page gives <a href="https://ggplot2.tidyverse.org/articles/extending-ggplot2.html" target="_blank">instructions</a> on how to create such extensions.</p>
 <p>If you’re curious to see how Evgeni did this for <code>geom_parallel_slopes()</code>, take a look at the source code on <a href="https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R" target="_blank">GitHub</a>!</p>
 </div>
 <div id="acknowledgements" class="section level3">
-<h3>Acknowledgements</h3>
+<h3><span class="header-section-number">0.8.3</span> Acknowledgements</h3>
 <p>Many thanks to Max Kuhn <a href="https://github.com/topepo" target="_blank">@topepo</a> and Jenny Smetzer <a href="https://github.com/smetzer180" target="_blank">@smetzer180</a> for their helpful feedback for this vignette and to Evgeni Chasnovski <a href="https://github.com/echasnovski" target="_blank">@echasnovski</a> for contributing the <code>geom_parallel_slopes()</code> function via GitHub <a href="https://github.com/moderndive/moderndive/pull/55" target="_blank">pull request</a>.</p>
 </div>
 </div>
