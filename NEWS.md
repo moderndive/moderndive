@@ -1,7 +1,7 @@
 # moderndive 0.4.0.9000
 
-* 
 * Added [Journal of Open Source Education](https://jose.theoj.org/) paper in `JOSE/`
+* "Why ModernDive?" vignette now loads `patchwork` package from CRAN
 
 
 

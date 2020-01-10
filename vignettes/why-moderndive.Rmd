@@ -26,6 +26,7 @@ library(ggplot2)
 library(moderndive)
 library(knitr)
 library(broom)
+library(patchwork)
 
 # https://www.youtube.com/watch?v=xjJ7FheCkCU
 set.seed(76)
@@ -321,9 +322,7 @@ Finally, the last common student comment/question, brought to our attention by [
 
 For example, recall the above comparison of the visualization of the interaction model (using `geom_smooth()`) with that of the parallel slopes model (using `geom_parallel_slopes()`) for teaching score as a function of age and ethnicity:
 
-```{r, echo=FALSE, eval = FALSE}
-# eval set to FALSE b/c patchwork does not exist on CRAN
-library(patchwork)
+```{r, out.width = "100%", echo=FALSE, fig.align='center'}
 p1 <- ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
   labs(x = "Instructor age", y = "Teaching score", color = "Instructor\nEthnicity",
@@ -336,10 +335,7 @@ p2 <- ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
        title = "Interaction model") +
   geom_parallel_slopes(se = FALSE) + 
   theme(axis.title.y = element_blank())
-ggsave(p1 + p2,  filename = "vignettes/evals.png", width = 8, height = 4)
-```
-```{r, out.width = "100%", echo=FALSE, fig.align='center'}
-knitr::include_graphics("evals.png")
+p1 + p2
 ```
 
 Students might be wondering "Why would you use the parallel slopes model when the data clearly form an "X" pattern as seen in the interaction model?"
@@ -382,9 +378,7 @@ ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
        color = "School size", title = "Interaction model") +
   geom_smooth(method = "lm", se = FALSE)
 ```
-```{r, echo=FALSE, eval = FALSE}
-# eval set to FALSE b/c patchwork does not exist on CRAN
-library(patchwork)
+```{r, out.width = "100%", echo=FALSE, fig.align='center'}
 p1 <- ggplot(MA_schools, 
              aes(x = perc_disadvan, y = average_sat_math, color = size)) +
   geom_point(alpha = 0.25) +
@@ -399,10 +393,7 @@ p2 <- ggplot(MA_schools,
   labs(x = "Percent economically disadvantaged", y = "Math SAT Score", 
        color = "School size", title = "Parallel slopes model")  +
   theme(axis.title.y = element_blank())
-ggsave(p1 + p2,  filename = "vignettes/MA_schools.png", width = 8, height = 4)
-```
-```{r, out.width = "100%", echo=FALSE, fig.align='center'}
-knitr::include_graphics("MA_schools.png")
+p1 + p2
 ```
 
 Here the additional complexity of the interaction model is *not* warranted since the 3 three regression lines are already somewhat parallel. Therefore the simpler parallel slopes model should be favored. 
