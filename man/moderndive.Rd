@@ -3,7 +3,6 @@
 \docType{package}
 \name{moderndive}
 \alias{moderndive}
-\alias{moderndive-package}
 \title{moderndive - Tidyverse-Friendly Introductory Linear Regression}
 \description{
 Datasets and wrapper functions for tidyverse-friendly introductory linear

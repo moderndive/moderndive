@@ -7,7 +7,7 @@
 \format{A data frame with 48 observations on the following 3 variables.
 \describe{
   \item{id}{Identification variable used to distinguish rows.}
-  \item{gender}{(binary) gender: a factor with two levels `male` and `female`}
+  \item{gender}{gender (collected as a binary variable at the time of the study): a factor with two levels `male` and `female`}
   \item{decision}{a factor with two levels: `promoted` and `not`}
 }}
 \source{
