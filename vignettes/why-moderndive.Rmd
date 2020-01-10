@@ -38,8 +38,6 @@ output:
     keep_md: yes
     df_print: default
     number_sections: yes
-  pdf_document: 
-    fig_caption: yes
 ---
 
 ```{r, include = FALSE}
@@ -527,7 +525,6 @@ If you're curious to see how Evgeni did this for `geom_parallel_slopes()`, take 
 # Acknowledgements
 
 Many thanks to Jenny Smetzer [\@smetzer180](https://github.com/smetzer180){target="_blank"} for her helpful feedback for this vignette and to Evgeni Chasnovski [\@echasnovski](https://github.com/echasnovski){target="_blank"} for contributing the `geom_parallel_slopes()` function via GitHub [pull request](https://github.com/moderndive/moderndive/pull/55){target="_blank"}.
-
 
 
 
