@@ -1,5 +1,6 @@
 context("get_correlation")
 library(tibble)
+library(dplyr)
 
 df <- tibble(
   vec1 = 1:10, 
@@ -49,9 +50,11 @@ test_that("variables are in data frame", {
       get_correlation(formula = mpg ~ disp2)    
   )
   
-  expect_silent(
-    mtcars %>% 
-      get_correlation(formula = mpg ~ disp)
+  expect_equal(
+    object = mtcars %>% 
+      get_correlation(formula = mpg ~ disp) %>% 
+      pull(),
+    expected = cor(mtcars$mpg, mtcars$disp)
   )
   
   expect_error(
