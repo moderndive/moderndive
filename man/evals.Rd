@@ -11,7 +11,7 @@
   \item{score}{Average professor evaluation score: (1) very unsatisfactory - (5) excellent.}
   \item{age}{Age of professor.}
   \item{bty_avg}{Average beauty rating of professor.}
-  \item{gender}{Gender of professor: female, male.}
+  \item{gender}{Gender of professor (collected as a binary variable at the time of the study): female, male.}
   \item{ethnicity}{Ethnicity of professor: not minority, minority.}
   \item{language}{Language of school where professor received education: English or non-English.}
   \item{rank}{Rank of professor: teaching, tenure track, tenured.}
