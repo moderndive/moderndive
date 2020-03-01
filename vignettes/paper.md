@@ -174,7 +174,7 @@ To address these comments and questions, we've included three functions in the `
 
 ## Bonus: Visualizing parallel slopes models with `moderndive`
 
-Furthermore, say you would like to visualize the relationship between two numerical variables and a third categorical variable with $k$ levels using a colored scatterplot using the `ggplot2` package for data visualization [@R-ggplot2]. Using `geom_smooth(method = "lm", se = FALSE)` yields a visualization of an *interaction model* where each of the $k$ regression lines has their own intercept and slope. For example in the next figure, we extend our previous regression model by now mapping the categorical variable `ethnicity` to the `color` aesthetic. 
+Furthermore, say you would like to visualize the relationship between two numerical variables and a third categorical variable with $k$ levels using a colored scatterplot using the `ggplot2` package for data visualization [@R-ggplot2]. Using `geom_smooth(method = "lm", se = FALSE)` yields a visualization of an *interaction model* where each of the $k$ regression lines has their own intercept and slope. For example in \autoref{fig:interaction-model}, we extend our previous regression model by now mapping the categorical variable `ethnicity` to the `color` aesthetic. 
 
 
 ```r
@@ -230,11 +230,6 @@ are effective pedagogical tools that can help address the above six common stude
 1. "When would you ever use a parallel slopes model over an interaction model?"
 
 We now argue why.
-
-
-
-<!-- Add horizontal line of html output-->
-***
 
 
 

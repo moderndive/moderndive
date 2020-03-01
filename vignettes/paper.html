@@ -464,7 +464,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 </div>
 <div id="bonus-visualizing-parallel-slopes-models-with-moderndive" class="section level2">
 <h2><span class="header-section-number">1.3</span> Bonus: Visualizing parallel slopes models with <code>moderndive</code></h2>
-<p>Furthermore, say you would like to visualize the relationship between two numerical variables and a third categorical variable with <span class="math inline">\(k\)</span> levels using a colored scatterplot using the <code>ggplot2</code> package for data visualization <span class="citation">(Wickham, Chang, et al. 2019)</span>. Using <code>geom_smooth(method = &quot;lm&quot;, se = FALSE)</code> yields a visualization of an <em>interaction model</em> where each of the <span class="math inline">\(k\)</span> regression lines has their own intercept and slope. For example in the next figure, we extend our previous regression model by now mapping the categorical variable <code>ethnicity</code> to the <code>color</code> aesthetic.</p>
+<p>Furthermore, say you would like to visualize the relationship between two numerical variables and a third categorical variable with <span class="math inline">\(k\)</span> levels using a colored scatterplot using the <code>ggplot2</code> package for data visualization <span class="citation">(Wickham, Chang, et al. 2019)</span>. Using <code>geom_smooth(method = &quot;lm&quot;, se = FALSE)</code> yields a visualization of an <em>interaction model</em> where each of the <span class="math inline">\(k\)</span> regression lines has their own intercept and slope. For example in , we extend our previous regression model by now mapping the categorical variable <code>ethnicity</code> to the <code>color</code> aesthetic.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="co"># Code to visualize interaction model:</span></a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">ggplot</span>(evals, <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> score, <span class="dt">color =</span> ethnicity)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb7-3" data-line-number="3"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
@@ -510,8 +510,6 @@ Visualization of parallel slopes model.
 <li>“When would you ever use a parallel slopes model over an interaction model?”</li>
 </ol>
 <p>We now argue why.</p>
-<!-- Add horizontal line of html output-->
-<hr />
 </div>
 </div>
 <div id="features" class="section level1">
