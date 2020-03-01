@@ -110,8 +110,8 @@ In Table \ref{tab:random-sample-courses} we present a subset of `r ncol(evals_sa
 ```{r random-sample-courses, echo=FALSE}
 evals_sample %>% 
   kable(
-    digits = 3,
-    caption = "Random sample of 5 out of 463 courses at UT Austin." #,
+    # digits = 3,
+    # caption = "Random sample of 5 out of 463 courses at UT Austin.",
     # linesep = "",
     # booktabs = TRUE
   ) # %>% 

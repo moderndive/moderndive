@@ -64,7 +64,6 @@ In Table \ref{tab:random-sample-courses} we present a subset of 9 of the 14 vari
 1. The remaining variables are demographic variables describing that course's instructor, including `bty_avg` average "beauty" score for that professor as given by a panel of 6 students.^[Note that `gender` was collected as a binary variable at the time of the study (2005).]
 
 <table>
-<caption>Random sample of 5 out of 463 courses at UT Austin.</caption>
  <thead>
   <tr>
    <th style="text-align:right;"> ID </th>
