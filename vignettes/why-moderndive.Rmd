@@ -80,7 +80,7 @@ scale_fill_discrete <- function(...){
   scale_fill_brewer(... ,  type = "div", palette="Set1", na.value = "grey50")
 }
 
-options(width = 75)
+options(width = 70)
 ```
 
 
@@ -449,14 +449,16 @@ We now present a contrasting example, this time from [ModernDive 6.3.1](https://
 
 ```{r, eval=FALSE}
 # Code to plot interaction and parallel slopes models for MA_schools
-ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
+ggplot(MA_schools, 
+       aes(x = perc_disadvan, y = average_sat_math, color = size)) +
   geom_point(alpha = 0.25) +
   labs(x = "% economically disadvantaged", 
        y = "Math SAT Score", 
        color = "School size") + 
   geom_smooth(method = "lm", se = FALSE)
 
-ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
+ggplot(MA_schools, 
+       aes(x = perc_disadvan, y = average_sat_math, color = size)) +
   geom_point(alpha = 0.25) +
   labs(x = "% economically disadvantaged", 
        y = "Math SAT Score", 

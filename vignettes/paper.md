@@ -339,10 +339,10 @@ fitted(score_model)
 ```
 
 ```
-##        1        2        3        4        5        6        7        8 
-## 4.248156 4.248156 4.248156 4.248156 4.111577 4.111577 4.111577 4.159083 
-##        9       10 
-## 4.159083 4.224403
+##        1        2        3        4        5        6        7 
+## 4.248156 4.248156 4.248156 4.248156 4.111577 4.111577 4.111577 
+##        8        9       10 
+## 4.159083 4.159083 4.224403
 ```
 
 ```r
@@ -350,10 +350,10 @@ residuals(score_model)
 ```
 
 ```
-##           1           2           3           4           5           6 
-##  0.45184376 -0.14815624 -0.34815624  0.55184376  0.48842294  0.18842294 
-##           7           8           9          10 
-## -1.31157706 -0.05908286 -0.75908286  0.27559666
+##           1           2           3           4           5 
+##  0.45184376 -0.14815624 -0.34815624  0.55184376  0.48842294 
+##           6           7           8           9          10 
+##  0.18842294 -1.31157706 -0.05908286 -0.75908286  0.27559666
 ```
 
 But why have the original explanatory/predictor `age` and outcome variable `score` in `evals`, the fitted and predicted values `score_hat`, and `residual` floating around in separate vectors? Since each observation relates to the same course, we argue it makes more sense to organize them together in the same data frame using `get_regression_points()`:
@@ -573,22 +573,22 @@ Students might be wonder "Why would you use the parallel slopes model on the rig
 interaction_evals <- lm(score ~ age * ethnicity, data = evals)
 get_regression_table(interaction_evals)
 ## # A tibble: 4 x 7
-##   term               estimate std_error statistic p_value lower_ci upper_ci
-##   <chr>                 <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
-## 1 intercept             2.61      0.518      5.04   0        1.59     3.63 
-## 2 age                   0.032     0.011      2.84   0.005    0.01     0.054
-## 3 ethnicitynot mino~    2.00      0.534      3.74   0        0.945    3.04 
-## 4 age:ethnicitynot ~   -0.04      0.012     -3.51   0       -0.063   -0.018
+##   term          estimate std_error statistic p_value lower_ci upper_ci
+##   <chr>            <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
+## 1 intercept        2.61      0.518      5.04   0        1.59     3.63 
+## 2 age              0.032     0.011      2.84   0.005    0.01     0.054
+## 3 ethnicitynot~    2.00      0.534      3.74   0        0.945    3.04 
+## 4 age:ethnicit~   -0.04      0.012     -3.51   0       -0.063   -0.018
 
 # Regression table for parallel slopes model:
 parallel_slopes_evals <- lm(score ~ age + ethnicity, data = evals)
 get_regression_table(parallel_slopes_evals)
 ## # A tibble: 3 x 7
-##   term               estimate std_error statistic p_value lower_ci upper_ci
-##   <chr>                 <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
-## 1 intercept             4.37      0.136     32.1    0        4.1      4.63 
-## 2 age                  -0.006     0.003     -2.5    0.013   -0.012   -0.001
-## 3 ethnicitynot mino~    0.138     0.073      1.89   0.059   -0.005    0.282
+##   term          estimate std_error statistic p_value lower_ci upper_ci
+##   <chr>            <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
+## 1 intercept        4.37      0.136     32.1    0        4.1      4.63 
+## 2 age             -0.006     0.003     -2.5    0.013   -0.012   -0.001
+## 3 ethnicitynot~    0.138     0.073      1.89   0.059   -0.005    0.282
 ```
 
 The interaction model is "more complex" as evidenced by its regression table involving 4 rows of parameter estimates whereas the parallel slopes model is "simpler" as evidenced by its regression table involving only 3 parameter estimates. In can be argued however that this additional complexity is warranted given the clearly different slopes in left-hand plot of \autoref{fig:interaction-and-parallel-slopes-model-1}.
@@ -598,14 +598,16 @@ We now present a contrasting example, this time from [ModernDive 6.3.1](https://
 
 ```r
 # Code to plot interaction and parallel slopes models for MA_schools
-ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
+ggplot(MA_schools, 
+       aes(x = perc_disadvan, y = average_sat_math, color = size)) +
   geom_point(alpha = 0.25) +
   labs(x = "% economically disadvantaged", 
        y = "Math SAT Score", 
        color = "School size") + 
   geom_smooth(method = "lm", se = FALSE)
 
-ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
+ggplot(MA_schools, 
+       aes(x = perc_disadvan, y = average_sat_math, color = size)) +
   geom_point(alpha = 0.25) +
   labs(x = "% economically disadvantaged", 
        y = "Math SAT Score", 
@@ -631,14 +633,14 @@ interaction_MA <-
   lm(average_sat_math ~ perc_disadvan * size, data = MA_schools)
 get_regression_table(interaction_MA)
 ## # A tibble: 6 x 7
-##   term               estimate std_error statistic p_value lower_ci upper_ci
-##   <chr>                 <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
-## 1 intercept           594.       13.3      44.7     0      568.     620.   
-## 2 perc_disadvan        -2.93      0.294    -9.96    0       -3.51    -2.35 
-## 3 sizemedium          -17.8      15.8      -1.12    0.263  -48.9     13.4  
-## 4 sizelarge           -13.3      13.8      -0.962   0.337  -40.5     13.9  
-## 5 perc_disadvan:siz~    0.146     0.371     0.393   0.694   -0.585    0.877
-## 6 perc_disadvan:siz~    0.189     0.323     0.586   0.559   -0.446    0.824
+##   term          estimate std_error statistic p_value lower_ci upper_ci
+##   <chr>            <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
+## 1 intercept      594.       13.3      44.7     0      568.     620.   
+## 2 perc_disadvan   -2.93      0.294    -9.96    0       -3.51    -2.35 
+## 3 sizemedium     -17.8      15.8      -1.12    0.263  -48.9     13.4  
+## 4 sizelarge      -13.3      13.8      -0.962   0.337  -40.5     13.9  
+## 5 perc_disadva~    0.146     0.371     0.393   0.694   -0.585    0.877
+## 6 perc_disadva~    0.189     0.323     0.586   0.559   -0.446    0.824
 
 # Regression table for parallel slopes model:
 parallel_slopes_MA <- 
@@ -696,19 +698,19 @@ get_regression_points(score_model)
 ## # ... with 453 more rows
 broom::augment(score_model)
 ## # A tibble: 463 x 9
-##    score   age .fitted .se.fit  .resid    .hat .sigma   .cooksd .std.resid
-##    <dbl> <int>   <dbl>   <dbl>   <dbl>   <dbl>  <dbl>     <dbl>      <dbl>
-##  1   4.7    36    4.25  0.0405  0.452  0.00560  0.542 0.00197        0.837
-##  2   4.1    36    4.25  0.0405 -0.148  0.00560  0.542 0.000212      -0.274
-##  3   3.9    36    4.25  0.0405 -0.348  0.00560  0.542 0.00117       -0.645
-##  4   4.8    36    4.25  0.0405  0.552  0.00560  0.541 0.00294        1.02 
-##  5   4.6    59    4.11  0.0371  0.488  0.00471  0.541 0.00193        0.904
-##  6   4.3    59    4.11  0.0371  0.188  0.00471  0.542 0.000288       0.349
-##  7   2.8    59    4.11  0.0371 -1.31   0.00471  0.538 0.0139        -2.43 
-##  8   4.1    51    4.16  0.0261 -0.0591 0.00232  0.542 0.0000139     -0.109
-##  9   3.4    51    4.16  0.0261 -0.759  0.00232  0.541 0.00229       -1.40 
-## 10   4.5    40    4.22  0.0331  0.276  0.00374  0.542 0.000488       0.510
-## # ... with 453 more rows
+##    score   age .fitted .se.fit  .resid    .hat .sigma .cooksd
+##    <dbl> <int>   <dbl>   <dbl>   <dbl>   <dbl>  <dbl>   <dbl>
+##  1   4.7    36    4.25  0.0405  0.452  0.00560  0.542 1.97e-3
+##  2   4.1    36    4.25  0.0405 -0.148  0.00560  0.542 2.12e-4
+##  3   3.9    36    4.25  0.0405 -0.348  0.00560  0.542 1.17e-3
+##  4   4.8    36    4.25  0.0405  0.552  0.00560  0.541 2.94e-3
+##  5   4.6    59    4.11  0.0371  0.488  0.00471  0.541 1.93e-3
+##  6   4.3    59    4.11  0.0371  0.188  0.00471  0.542 2.88e-4
+##  7   2.8    59    4.11  0.0371 -1.31   0.00471  0.538 1.39e-2
+##  8   4.1    51    4.16  0.0261 -0.0591 0.00232  0.542 1.39e-5
+##  9   3.4    51    4.16  0.0261 -0.759  0.00232  0.541 2.29e-3
+## 10   4.5    40    4.22  0.0331  0.276  0.00374  0.542 4.88e-4
+## # ... with 453 more rows, and 1 more variable: .std.resid <dbl>
 ```
 
 The source code for these three `get_regression` functions can be found  [GitHub](https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R){target="_blank"}.
