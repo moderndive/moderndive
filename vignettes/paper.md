@@ -34,9 +34,9 @@ affiliations:
    index: 3
 bibliography: paper.bib
 output:
-  rticles::joss_article:
-    keep_md: yes
-    number_sections: yes
+  # rticles::joss_article:
+  #   keep_md: yes
+  #   number_sections: yes
   rmarkdown::html_vignette:
     keep_md: yes
     df_print: default
@@ -63,23 +63,79 @@ In Table \ref{tab:random-sample-courses} we present a subset of 9 of the 14 vari
 1. `score` is the outcome variable of interest: average professor evaluation score out of 5 as given by the students in this course.
 1. The remaining variables are demographic variables describing that course's instructor, including `bty_avg` average "beauty" score for that professor as given by a panel of 6 students.^[Note that `gender` was collected as a binary variable at the time of the study (2005).]
 
-\begin{table}[!h]
-
-\caption{\label{tab:random-sample-courses}Random sample of 5 out of 463 courses at UT Austin.}
-\centering
-\fontsize{10}{12}\selectfont
-\begin{tabular}[t]{rrrrrllll}
-\toprule
-ID & prof\_ID & score & age & bty\_avg & gender & ethnicity & language & rank\\
-\midrule
-129 & 23 & 3.7 & 62 & 3.000 & male & not minority & english & tenured\\
-109 & 19 & 4.7 & 46 & 4.333 & female & not minority & english & tenured\\
-28 & 6 & 4.8 & 62 & 5.500 & male & not minority & english & tenured\\
-434 & 88 & 2.8 & 62 & 2.000 & male & not minority & english & tenured\\
-330 & 66 & 4.0 & 64 & 2.333 & male & not minority & english & tenured\\
-\bottomrule
-\end{tabular}
-\end{table}
+<table class="table" style="font-size: 16px; margin-left: auto; margin-right: auto;">
+<caption style="font-size: initial !important;">Random sample of 5 out of 463 courses at UT Austin.</caption>
+ <thead>
+  <tr>
+   <th style="text-align:right;"> ID </th>
+   <th style="text-align:right;"> prof_ID </th>
+   <th style="text-align:right;"> score </th>
+   <th style="text-align:right;"> age </th>
+   <th style="text-align:right;"> bty_avg </th>
+   <th style="text-align:left;"> gender </th>
+   <th style="text-align:left;"> ethnicity </th>
+   <th style="text-align:left;"> language </th>
+   <th style="text-align:left;"> rank </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:right;"> 129 </td>
+   <td style="text-align:right;"> 23 </td>
+   <td style="text-align:right;"> 3.7 </td>
+   <td style="text-align:right;"> 62 </td>
+   <td style="text-align:right;"> 3.000 </td>
+   <td style="text-align:left;"> male </td>
+   <td style="text-align:left;"> not minority </td>
+   <td style="text-align:left;"> english </td>
+   <td style="text-align:left;"> tenured </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 109 </td>
+   <td style="text-align:right;"> 19 </td>
+   <td style="text-align:right;"> 4.7 </td>
+   <td style="text-align:right;"> 46 </td>
+   <td style="text-align:right;"> 4.333 </td>
+   <td style="text-align:left;"> female </td>
+   <td style="text-align:left;"> not minority </td>
+   <td style="text-align:left;"> english </td>
+   <td style="text-align:left;"> tenured </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 28 </td>
+   <td style="text-align:right;"> 6 </td>
+   <td style="text-align:right;"> 4.8 </td>
+   <td style="text-align:right;"> 62 </td>
+   <td style="text-align:right;"> 5.500 </td>
+   <td style="text-align:left;"> male </td>
+   <td style="text-align:left;"> not minority </td>
+   <td style="text-align:left;"> english </td>
+   <td style="text-align:left;"> tenured </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 434 </td>
+   <td style="text-align:right;"> 88 </td>
+   <td style="text-align:right;"> 2.8 </td>
+   <td style="text-align:right;"> 62 </td>
+   <td style="text-align:right;"> 2.000 </td>
+   <td style="text-align:left;"> male </td>
+   <td style="text-align:left;"> not minority </td>
+   <td style="text-align:left;"> english </td>
+   <td style="text-align:left;"> tenured </td>
+  </tr>
+  <tr>
+   <td style="text-align:right;"> 330 </td>
+   <td style="text-align:right;"> 66 </td>
+   <td style="text-align:right;"> 4.0 </td>
+   <td style="text-align:right;"> 64 </td>
+   <td style="text-align:right;"> 2.333 </td>
+   <td style="text-align:left;"> male </td>
+   <td style="text-align:left;"> not minority </td>
+   <td style="text-align:left;"> english </td>
+   <td style="text-align:left;"> tenured </td>
+  </tr>
+</tbody>
+</table>
 
 
 ## Regression analysis the "good old-fashioned" way
@@ -166,7 +222,7 @@ To address these comments and questions, we've included three functions in the `
     ##  8     8   4.1    51      4.16   -0.059
     ##  9     9   3.4    51      4.16   -0.759
     ## 10    10   4.5    40      4.22    0.276
-    ## # ... with 453 more rows
+    ## # … with 453 more rows
     ```
 3. Get scalar summaries of a regression fit including $R^2$ and $R^2_{adj}$ but also the (root) mean-squared error:
     
@@ -197,14 +253,10 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   labs(x = "Age", y = "Teaching score", color = "Ethnicity")
 ```
 
-\begin{figure}
-
-{\centering \includegraphics[width=\textwidth]{Figures/interaction-model-1} 
-
-}
-
-\caption{Visualization of interaction model.}\label{fig:interaction-model}
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="Figures/interaction-model-1.png" alt="Visualization of interaction model." width="\textwidth" />
+<p class="caption">Visualization of interaction model.</p>
+</div>
 
 However, many introductory statistics courses start with the easier to teach "common slope, different intercepts" regression model, also known as the *parallel slopes* model. However, no such method exists with `geom_smooth()`
 
@@ -219,14 +271,10 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   labs(x = "Age", y = "Teaching score", color = "Ethnicity")
 ```
 
-\begin{figure}
-
-{\centering \includegraphics[width=\textwidth]{Figures/parallel-slopes-model-1} 
-
-}
-
-\caption{Visualization of parallel slopes model.}\label{fig:parallel-slopes-model}
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="Figures/parallel-slopes-model-1.png" alt="Visualization of parallel slopes model." width="\textwidth" />
+<p class="caption">Visualization of parallel slopes model.</p>
+</div>
 
 At this point however, students will inevitably ask a sixth question: "When would you ever use a parallel slopes model?"
 
@@ -338,16 +386,39 @@ get_regression_table(score_model) %>%
   kable()
 ```
 
-
-\begin{tabular}{l|r|r|r|r|r|r}
-\hline
-term & estimate & std\_error & statistic & p\_value & lower\_ci & upper\_ci\\
-\hline
-intercept & 4.462 & 0.127 & 35.195 & 0.000 & 4.213 & 4.711\\
-\hline
-age & -0.006 & 0.003 & -2.311 & 0.021 & -0.011 & -0.001\\
-\hline
-\end{tabular}
+<table>
+ <thead>
+  <tr>
+   <th style="text-align:left;"> term </th>
+   <th style="text-align:right;"> estimate </th>
+   <th style="text-align:right;"> std_error </th>
+   <th style="text-align:right;"> statistic </th>
+   <th style="text-align:right;"> p_value </th>
+   <th style="text-align:right;"> lower_ci </th>
+   <th style="text-align:right;"> upper_ci </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style="text-align:left;"> intercept </td>
+   <td style="text-align:right;"> 4.462 </td>
+   <td style="text-align:right;"> 0.127 </td>
+   <td style="text-align:right;"> 35.195 </td>
+   <td style="text-align:right;"> 0.000 </td>
+   <td style="text-align:right;"> 4.213 </td>
+   <td style="text-align:right;"> 4.711 </td>
+  </tr>
+  <tr>
+   <td style="text-align:left;"> age </td>
+   <td style="text-align:right;"> -0.006 </td>
+   <td style="text-align:right;"> 0.003 </td>
+   <td style="text-align:right;"> -2.311 </td>
+   <td style="text-align:right;"> 0.021 </td>
+   <td style="text-align:right;"> -0.011 </td>
+   <td style="text-align:right;"> -0.001 </td>
+  </tr>
+</tbody>
+</table>
 
 
 ## 3. Birds of a feather should flock together: Fitted values & residuals
@@ -419,14 +490,10 @@ ggplot(score_model_points, aes(x = residual)) +
   labs(x = "Residual", y = "Count")
 ```
 
-\begin{figure}
-
-{\centering \includegraphics[width=\textwidth]{Figures/residuals-1-1} 
-
-}
-
-\caption{Histogram visualizing distribution of residuals.}\label{fig:residuals-1}
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="Figures/residuals-1-1.png" alt="Histogram visualizing distribution of residuals." width="\textwidth" />
+<p class="caption">Histogram visualizing distribution of residuals.</p>
+</div>
 
 As another example, we can investigate potential relationships between the residuals and all explanatory/predictor variables and the presence of heteroskedasticity using partial residual plots, like the partial residual plot over age shown in Figure \ref{fig:residuals-2}.
 
@@ -438,14 +505,10 @@ ggplot(score_model_points, aes(x = age, y = residual)) +
   labs(x = "Age", y = "Residual")
 ```
 
-\begin{figure}
-
-{\centering \includegraphics[width=\textwidth]{Figures/residuals-2-1} 
-
-}
-
-\caption{Partial residual residual plot over age.}\label{fig:residuals-2}
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="Figures/residuals-2-1.png" alt="Partial residual residual plot over age." width="\textwidth" />
+<p class="caption">Partial residual residual plot over age.</p>
+</div>
 
 
 ## 4. A quick-and-easy Kaggle predictive modeling competition submission!
@@ -474,14 +537,10 @@ get_regression_points(score_model, newdata = new_prof)
 
 Let's do another example, this time using the Kaggle [House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques){target="_blank"} practice competition (Figure \ref{fig:kaggle-1} displays the homepage for this competition). 
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.95\linewidth]{kaggle} 
-
-}
-
-\caption{House prices Kaggle competition homepage.}\label{fig:kaggle-1}
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="kaggle.png" alt="House prices Kaggle competition homepage." width="95%" />
+<p class="caption">House prices Kaggle competition homepage.</p>
+</div>
 
 This Kaggle competition requires you to fit/train a model to the provided `train.csv` training set to make predictions of house prices in the provided `test.csv` test set. We present an application of the `get_regression_points()` function allowing students to participate in this Kaggle competition. It will:
 
@@ -522,14 +581,10 @@ obtain a "root mean squared logarithmic error" (RMSLE) score of 0.42918 as seen 
 knitr::include_graphics("leaderboard_orig.png")
 ```
 
-\begin{figure}
-
-{\centering \includegraphics[width=\textwidth]{leaderboard_orig} 
-
-}
-
-\caption{Resulting Kaggle RMSLE score.}\label{fig:kaggle-2}
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="leaderboard_orig.png" alt="Resulting Kaggle RMSLE score." width="\textwidth" />
+<p class="caption">Resulting Kaggle RMSLE score.</p>
+</div>
 
 
 ## 5. Scalar summaries of linear regression model fits
@@ -587,14 +642,10 @@ Finally, the last common student comment and question:
 
 For example, recall the earlier visualizations of the interaction and parallel slopes models for teaching score as a function of age and ethnicity we saw in Figures \ref{fig:interaction-model} and \ref{fig:parallel-slopes-model}. Let's present both visualizations side-by-side in Figure \ref{fig:interaction-and-parallel-slopes-model-1}.
 
-\begin{figure}
-
-{\centering \includegraphics[width=\textwidth]{Figures/interaction-and-parallel-slopes-model-1-1} 
-
-}
-
-\caption{Interaction (left) and parallel slopes (right) models.}\label{fig:interaction-and-parallel-slopes-model-1}
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="Figures/interaction-and-parallel-slopes-model-1-1.png" alt="Interaction (left) and parallel slopes (right) models." width="\textwidth" />
+<p class="caption">Interaction (left) and parallel slopes (right) models.</p>
+</div>
 
 Students might be wonder "Why would you use the parallel slopes model on the right when the data clearly form an "X" pattern as seen in the interaction model on the right?" This is an excellent opportunity to gently introduce the notion of *model selection* and *Occam's Razor*. That an interaction model should only be used over a parallel slopes model **if the additional complexity of the interaction model is warranted**. Here, we define model "complexity/simplicity" in terms of the number of parameters in the corresponding regression tables: 
 
@@ -607,12 +658,12 @@ get_regression_table(interaction_evals)
 
 ```
 ## # A tibble: 4 x 7
-##   term               estimate std_error statistic p_value lower_ci upper_ci
-##   <chr>                 <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
-## 1 intercept             2.61      0.518      5.04   0        1.59     3.63 
-## 2 age                   0.032     0.011      2.84   0.005    0.01     0.054
-## 3 ethnicitynot mino~    2.00      0.534      3.74   0        0.945    3.04 
-## 4 age:ethnicitynot ~   -0.04      0.012     -3.51   0       -0.063   -0.018
+##   term                    estimate std_error statistic p_value lower_ci upper_ci
+##   <chr>                      <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
+## 1 intercept                  2.61      0.518      5.04   0        1.59     3.63 
+## 2 age                        0.032     0.011      2.84   0.005    0.01     0.054
+## 3 ethnicitynot minority      2.00      0.534      3.74   0        0.945    3.04 
+## 4 age:ethnicitynot minor…   -0.04      0.012     -3.51   0       -0.063   -0.018
 ```
 
 ```r
@@ -623,11 +674,11 @@ get_regression_table(parallel_slopes_evals)
 
 ```
 ## # A tibble: 3 x 7
-##   term               estimate std_error statistic p_value lower_ci upper_ci
-##   <chr>                 <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
-## 1 intercept             4.37      0.136     32.1    0        4.1      4.63 
-## 2 age                  -0.006     0.003     -2.5    0.013   -0.012   -0.001
-## 3 ethnicitynot mino~    0.138     0.073      1.89   0.059   -0.005    0.282
+##   term                  estimate std_error statistic p_value lower_ci upper_ci
+##   <chr>                    <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
+## 1 intercept                4.37      0.136     32.1    0        4.1      4.63 
+## 2 age                     -0.006     0.003     -2.5    0.013   -0.012   -0.001
+## 3 ethnicitynot minority    0.138     0.073      1.89   0.059   -0.005    0.282
 ```
 
 The interaction model is "more complex" as evidenced by its regression table involving 4 rows of parameter estimates whereas the parallel slopes model is "simpler" as evidenced by its regression table involving only 3 parameter estimates. In can be argued however that this additional complexity is warranted given the clearly different slopes in left-hand plot of Figure \ref{fig:interaction-and-parallel-slopes-model}.
@@ -652,14 +703,10 @@ ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
   geom_parallel_slopes( se = FALSE)
 ```
 
-\begin{figure}
-
-{\centering \includegraphics[width=\textwidth]{Figures/interaction-and-parallel-slopes-model-2-1} 
-
-}
-
-\caption{Interaction (left) and parallel slopes (right) models.}\label{fig:interaction-and-parallel-slopes-model-2}
-\end{figure}
+<div class="figure" style="text-align: center">
+<img src="Figures/interaction-and-parallel-slopes-model-2-1.png" alt="Interaction (left) and parallel slopes (right) models." width="\textwidth" />
+<p class="caption">Interaction (left) and parallel slopes (right) models.</p>
+</div>
 
 In terms of the corresponding regression tables, observe that the corresponding regression table for the parallel slopes model has 4 rows as opposed to the 6 for the interaction model, reflecting its higher degree of "model simplicity."
 
@@ -673,14 +720,14 @@ get_regression_table(interaction_MA)
 
 ```
 ## # A tibble: 6 x 7
-##   term               estimate std_error statistic p_value lower_ci upper_ci
-##   <chr>                 <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
-## 1 intercept           594.       13.3      44.7     0      568.     620.   
-## 2 perc_disadvan        -2.93      0.294    -9.96    0       -3.51    -2.35 
-## 3 sizemedium          -17.8      15.8      -1.12    0.263  -48.9     13.4  
-## 4 sizelarge           -13.3      13.8      -0.962   0.337  -40.5     13.9  
-## 5 perc_disadvan:siz~    0.146     0.371     0.393   0.694   -0.585    0.877
-## 6 perc_disadvan:siz~    0.189     0.323     0.586   0.559   -0.446    0.824
+##   term                    estimate std_error statistic p_value lower_ci upper_ci
+##   <chr>                      <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
+## 1 intercept                594.       13.3      44.7     0      568.     620.   
+## 2 perc_disadvan             -2.93      0.294    -9.96    0       -3.51    -2.35 
+## 3 sizemedium               -17.8      15.8      -1.12    0.263  -48.9     13.4  
+## 4 sizelarge                -13.3      13.8      -0.962   0.337  -40.5     13.9  
+## 5 perc_disadvan:sizemedi…    0.146     0.371     0.393   0.694   -0.585    0.877
+## 6 perc_disadvan:sizelarge    0.189     0.323     0.586   0.559   -0.446    0.824
 ```
 
 ```r
@@ -743,7 +790,7 @@ get_regression_points(score_model)
 ##  8     8   4.1    51      4.16   -0.059
 ##  9     9   3.4    51      4.16   -0.759
 ## 10    10   4.5    40      4.22    0.276
-## # ... with 453 more rows
+## # … with 453 more rows
 ```
 
 ```r
@@ -764,7 +811,7 @@ broom::augment(score_model)
 ##  8   4.1    51    4.16  0.0261 -0.0591 0.00232  0.542 0.0000139     -0.109
 ##  9   3.4    51    4.16  0.0261 -0.759  0.00232  0.541 0.00229       -1.40 
 ## 10   4.5    40    4.22  0.0331  0.276  0.00374  0.542 0.000488       0.510
-## # ... with 453 more rows
+## # … with 453 more rows
 ```
 
 The source code for these three `get_regression` functions can be found  [GitHub](https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R){target="_blank"}.
