@@ -34,12 +34,12 @@ affiliations:
    index: 3
 bibliography: paper.bib
 output:
-  rticles::joss_article:
-    keep_md: yes
-    number_sections: yes
   rmarkdown::html_vignette:
     keep_md: yes
     df_print: default
+    number_sections: yes
+  rticles::joss_article:
+    keep_md: yes
     number_sections: yes
 ---
 
@@ -68,7 +68,6 @@ knitr::opts_chunk$set(
 library(dplyr)
 library(ggplot2)
 library(knitr)
-library(kableExtra)
 library(broom)
 library(patchwork)
 library(moderndive)
@@ -357,7 +356,8 @@ This Kaggle competition requires you to fit/train a model to the provided `train
 1. Make predictions on the test data and write them to a `submission.csv` file that can be submitted to Kaggle using `get_regression_points()`. Note the use of the `ID` argument to use the `id` variable in `test` to identify the rows (a requirement of Kaggle competition submissions).
 
 ```{r, eval=FALSE}
-library(tidyverse)
+library(readr)
+library(dplyr)
 library(moderndive)
 
 # Load in training and test set
@@ -365,7 +365,7 @@ train <-
   "https://github.com/moderndive/moderndive/raw/master/vignettes/train.csv" %>% 
   read_csv()
 test <- 
-  "https://github.com/moderndive/moderndive/raw/master/vignettes/test.csv"
+  "https://github.com/moderndive/moderndive/raw/master/vignettes/test.csv" %>% 
   read_csv()
 
 # Fit model:
@@ -383,7 +383,7 @@ write_csv(submission, "submission.csv")
 After submitting `submission.csv` to the leaderboard for this Kaggle competition, we
 obtain a "root mean squared logarithmic error" (RMSLE) score of 0.42918 as seen in \autoref{fig:kaggle-2}.
 
-```{r kaggle-2, fig.cap="Resulting Kaggle RMSLE score."}
+```{r kaggle-2, echo=FALSE, fig.cap="Resulting Kaggle RMSLE score."}
 knitr::include_graphics("leaderboard_orig.png")
 ```
 
