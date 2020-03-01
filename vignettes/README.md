@@ -13,7 +13,7 @@ The `why-moderndive.Rmd` file is the source for a [Journal of Open Source Educat
 1. Ensure in `why-moderndive.Rmd` -> YAML `output:` section (about line 36) -> YAML code relating to `rmarkdown::html_vignette` is commented out
 1. From Terminal -> `vignettes/` folder -> run `./_build.sh` (see comments in `_build.sh` for more details)
 1. This will produce the `paper.md` file necessary for JOSE submission
-1. Test the submission [here](Whedon paper preview service) by setting:
+1. Test the submission [here](https://whedon.theoj.org/) by setting:
     1. Paper repository address: <https://github.com/moderndive/moderndive>
     1. Custom branch (optional): jose-paper
     1. Compile paper for: JOSE
