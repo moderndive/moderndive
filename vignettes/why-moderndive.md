@@ -72,6 +72,18 @@ In the following table, we present a subset of 9 of the 14 variables included fo
  434        88     2.8    62     2.000  male     not minority   english    tenured 
  330        66     4.0    64     2.333  male     not minority   english    tenured 
 
+Before we proceed, let's load all the packages we are going to need.
+
+
+```r
+library(moderndive)
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(knitr)
+library(broom)
+```
+
 
 ## Regression analysis the "good old-fashioned" way
 
@@ -79,7 +91,6 @@ Let's fit a simple linear regression model of teaching `score` as a function of 
 
 
 ```r
-library(moderndive)
 score_model <- lm(score ~ age, data = evals)
 ```
 
@@ -167,8 +178,6 @@ Furthermore, say you would like to visualize the relationship between two numeri
 
 
 ```r
-library(ggplot2)
-
 # Code to visualize interaction model:
 ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
@@ -221,10 +230,6 @@ are effective pedagogical tools that can help address the above six common stude
 1. "When would you ever use a parallel slopes model over an interaction model?"
 
 We now argue why.
-
-
-
-
 
 
 
@@ -292,7 +297,6 @@ Furthermore, by piping the above `get_regression_table(score_model)` output into
 
 
 ```r
-library(knitr)
 get_regression_table(score_model) %>% 
   kable()
 ```

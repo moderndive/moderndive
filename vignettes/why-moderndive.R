@@ -1,5 +1,5 @@
 ## ---- include = FALSE-----------------------------------------------
-# # knitr settings
+# knitr settings
 knitr::opts_chunk$set(
   # Code output:
   warning = FALSE,
@@ -18,22 +18,26 @@ knitr::opts_chunk$set(
   # tidy = FALSE
 )
 
-
-# Needed packages
-library(dplyr)
+# Needed packages in vignette
+library(moderndive)
 library(ggplot2)
+library(dplyr)
+library(readr)
 library(knitr)
 library(broom)
-library(patchwork)
-library(moderndive)
 
-# https://www.youtube.com/watch?v=xjJ7FheCkCU
+# Needed packages internally
+library(patchwork)
+
+# Random number generator seed value
 set.seed(76)
 
+# Set ggplot defaults:
 scale_fill_discrete <- function(...){
   scale_fill_brewer(... ,  type = "div", palette="Set1", na.value = "grey50")
 }
 
+# Set output width for JOSE paper:
 options(width = 70)
 
 ## ---- echo=FALSE----------------------------------------------------
@@ -43,19 +47,17 @@ evals_sample <- evals %>%
 
 ## ----random-sample-courses, echo=FALSE------------------------------
 evals_sample %>% 
-  kable(
-    # digits = 3,
-    # caption = "Random sample of 5 out of 463 courses at UT Austin.",
-    # linesep = "",
-    # booktabs = TRUE
-  ) # %>% 
-  # kable_styling(
-  #   font_size = ifelse(knitr:::is_latex_output(), 10, 16),
-  #   latex_options = c("hold_position")
-  # )
+  kable() 
 
 ## -------------------------------------------------------------------
 library(moderndive)
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(knitr)
+library(broom)
+
+## -------------------------------------------------------------------
 score_model <- lm(score ~ age, data = evals)
 
 ## -------------------------------------------------------------------
@@ -71,8 +73,6 @@ get_regression_points(score_model)
 get_regression_summaries(score_model)
 
 ## ----interaction-model, fig.cap="Visualization of interaction model."----
-library(ggplot2)
-
 # Code to visualize interaction model:
 ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
@@ -100,7 +100,6 @@ get_regression_table(score_model) %>%
 get_regression_table(score_model)$std_error
 
 ## -------------------------------------------------------------------
-library(knitr)
 get_regression_table(score_model) %>% 
   kable()
 
