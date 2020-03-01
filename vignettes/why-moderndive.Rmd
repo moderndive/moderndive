@@ -1,11 +1,11 @@
 ---
-title: "Why should you use the `moderndive` R package for intro linear regression?"
+title: "Using the `moderndive` R package for introductory linear regression"
 author: "Albert Y. Kim, Chester Ismay, and Max Kuhn"
 date: "`r Sys.Date()`"
 vignette: >
   %\VignetteIndexEntry{Why should you use the moderndive package for intro linear regression?}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
 tags:
   - R
   - Rstats
@@ -34,6 +34,9 @@ affiliations:
    index: 3
 bibliography: paper.bib
 output:
+  rticles::joss_article:
+    keep_md: yes    
+    number_sections: yes
   rmarkdown::html_vignette:
     keep_md: yes
     df_print: default
@@ -41,25 +44,38 @@ output:
 ---
 
 ```{r, include = FALSE}
+if(knitr:::is_html_output())
+  options(width = 80)
+if(knitr:::is_latex_output())
+  options(width = 75)
+
 # knitr settings
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "Figures/",
+  # Code output:
   warning = FALSE,
   message = FALSE,
   echo = TRUE,
-  fig.width=16/2, 
-  fig.height=9/2
+  # Figure:
+  out.width = '\\textwidth', 
+  fig.path = "Figures/",
+  fig.width = 16/2.5, 
+  fig.height = 9/2.5,
+  fig.align = "center",
+  fig.show = "hold",
+  # Etc:
+  # collapse = TRUE,
+  comment = "##",
+  tidy = FALSE
 )
 
 # Needed packages
 library(dplyr)
 library(ggplot2)
-library(moderndive)
 library(knitr)
+library(kableExtra)
 library(broom)
 library(patchwork)
+library(moderndive)
 
 # https://www.youtube.com/watch?v=xjJ7FheCkCU
 set.seed(76)
@@ -75,20 +91,37 @@ scale_fill_discrete <- function(...){
 
 # Introduction
 
-Linear regression has long been a staple of introductory statistics courses. While the timing of when to introduce it may have changed (many argue that descriptive regression should be done ASAP and then revisited later after statistical inference has been covered), it's overall importance in the intro stats curriculum remains the same.
+Linear regression has long been a staple of introductory statistics courses. While the timing of when to introduce it may have changed (many argue that descriptive regression should be done earlier in the curriculum and then revisited later after statistical inference has been covered), its overall importance in the introductory statistics curriculum remains the same.
 
-Let's consider data gathered from end of semester student evaluations for 463 courses (taught by 94 unique professors) from the University of Texas at Austin (see [openintro.org](https://www.openintro.org/stat/data/?data=evals){target="_blank"} for more details) [@diez2015openintro]. Here is a random sample of 5 courses and a subset of 8 of the 13 variables included, where the outcome variable of interest is the teaching evaluation `score` out of 5 as given by students: 
+Let's consider data gathered from end of semester student evaluations for a sample of 463 courses taught by 94 professors from the University of Texas at Austin from [openintro.org](https://www.openintro.org/data/index.php?data=evals){target="_blank"} [@diez2015openintro]. This data is included in `evals` data frame from the [`moderndive`](https://moderndive.github.io/moderndive/){target="_blank"} R package for tidyverse-friendly introductory linear regression, an R package designed to supplement the book "Statistical Inference via Data Science: A ModernDive into R and the Tidyverse" [@ismay2019moderndive].
 
 ```{r, echo=FALSE}
-library(moderndive)
-library(knitr)
-evals %>% 
-  select(ID, score, age, bty_avg, gender, ethnicity, language, rank) %>% 
-  sample_n(5) %>% 
-  kable()
+evals_sample <- evals %>% 
+  select(ID, prof_ID, score, age, bty_avg, gender, ethnicity, language, rank) %>% 
+  sample_n(5)
 ```
 
-The data is included in `evals` dataset in the [`moderndive`](https://moderndive.github.io/moderndive/){target="_blank"} R package for tidyverse-friendly introductory linear regression [@tidyverse2019]. Let's fit a regression model of teaching `score` as a function of instructor `age`:
+In Table \ref{tab:random-sample-courses} we present a subset of `r ncol(evals_sample)` of the `r ncol(evals)` variables included for a random sample of `r nrow(evals_sample)` courses^[For details on the remaining `r ncol(evals) - ncol(evals_sample)` variables, see the help file by running `?evals`.]. These include:
+
+1. `ID` uniquely identifies the course whereas `prof_ID` identifies the professor who taught this course. This distinction is important since many professors are included more than once in this dataset.
+1. `score` is the outcome variable of interest: average professor evaluation score out of 5 as given by the students in this course.
+1. The remaining variables are demographic variables describing that course's instructor, including `bty_avg` average "beauty" score for that professor as given by a panel of 6 students.^[Note that `gender` was collected as a binary variable at the time of the study (2005).]
+
+```{r random-sample-courses, echo=FALSE}
+evals_sample %>% 
+  kable(
+    digits = 3,
+    caption = "Random sample of 5 out of 463 courses at UT Austin.",
+    linesep = "",
+    booktabs = TRUE
+  ) %>% 
+  kable_styling(
+    font_size = ifelse(knitr:::is_latex_output(), 10, 16),
+    latex_options = c("hold_position")
+  )
+```
+
+Let's fit a simple linear regression model of teaching `score` as a function of instructor `age` using the `lm()` function.
 
 ```{r}
 library(moderndive)
@@ -96,7 +129,7 @@ score_model <- lm(score ~ age, data = evals)
 ```
 
 
-## Regression analysis the "good old-fashioned" way
+## Common approaches to teaching regression
 
 Let's analyze the output of the fitted model `score_model` "the good old fashioned way": using `summary.lm()`.
 
@@ -104,24 +137,31 @@ Let's analyze the output of the fitted model `score_model` "the good old fashion
 summary(score_model)
 ```
 
-Here are five common student comments/questions we've heard over the years in our intro stats courses based on this output:
 
-1. "Wow! Look at those p-value stars! Stars are good, so I must get more stars somehow."
+
+
+
+
+## Regression analysis the "good old-fashioned" way
+
+Here are five common student questions we've heard over the years in our introductory statistics courses based on this output. 
+
+1. "Wow! Look at those p-value stars! Stars are good, so I should try to get many stars, right?"
 1. "How do extract the values in the regression table?"
-1. "Where are the fitted/predicted values and residuals?"
+1. "Where are the fitted and predicted values and residuals?"
 1. "How do I apply this model to a new set of data to make predictions?"
 1. "What is all this other stuff at the bottom?"
 
 
 ## Regression analysis the tidyverse-friendly way
 
-To address these comments/questions, we've included three functions in the `moderndive` package that takes as a fitted model as input (in this case `score_model`) and returns the same information as `summary(score_model)` but in a tidyverse-friendly way:
+To address these comments and questions, we've included three functions in the `moderndive` package that take a fitted model object as input and return the same information as `summary.lm()`, but output in tidyverse-friendly format [@tidyverse2019]. As we'll discuss in Section \ref{broom-wrappers}, these three functions are merely wrappers to existing functions in the `broom` package for converting statistical objects into tidy tibbles, but with the introductory statistics student in mind [@R-broom].
 
 1. Get a tidy regression table **with confidence intervals**:
     ```{r}
     get_regression_table(score_model)
     ```
-2. Get information on each point/observation in your regression, including fitted/predicted values & residuals, in a single data frame:
+2. Get information on each point/observation in your regression, including fitted and predicted values & residuals, in a single data frame:
     ```{r}
     get_regression_points(score_model)
     ```
@@ -133,30 +173,28 @@ To address these comments/questions, we've included three functions in the `mode
 
 ## Visualizing parallel slopes models
 
-Say you are plotting a scatterplot with a categorical variable mapped to the `color` aesthetic.
-Using `geom_smooth(method = "lm", se = FALSE)` from the `ggplot2` package yields a visualization of an *interaction model* (different intercepts and different slopes):
+Furthermore, say you would like to visualize the relationship between two numerical variables and a third categorical variable with $k$ levels using a colored scatterplot using the `ggplot2` package for data visualization [@R-ggplot2]. Using `geom_smooth(method = "lm", se = FALSE)` yields a visualization of an *interaction model* where each of the $k$ regression lines has their own intercept and slope. For example in Figure \ref{fig:interaction-model}, we extend our previous regression model by now mapping the categorical variable `ethnicity` to the `color` aesthetic. 
 
-```{r interaction-model, echo=TRUE, eval=TRUE, fig.width=16/2.2, fig.height=9/2.2}
+```{r interaction-model, fig.cap="Visualization of interaction model."}
 library(ggplot2)
+
+# Code to visualize interaction model:
 ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
-  labs(x = "Instructor age", y = "Teaching score", 
-       color = "Instructor\nEthnicity", title = "Interaction model") +
-  geom_smooth(method = "lm", se = FALSE)
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(x = "Age", y = "Teaching score", color = "Ethnicity")
 ```
 
-However, say you want to plot a *parallel slopes model*. For example, many introductory statistics textbooks start with the simpler-to-teach "common slope, different intercepts" regression model. Alas however, you can't visualize such models using `geom_smooth()`.
+However, many introductory statistics courses start with the easier to teach "common slope, different intercepts" regression model, also known as the *parallel slopes* model. However, no such method exists with `geom_smooth()`
 
-[Evgeni Chasnovski](https://github.com/echasnovski){target="_blank"} thus wrote a custom `geom_` extension to `ggplot2` called `geom_parallel_slopes()`. You use it just as you would any `geom_`etric object in `ggplot2`, but you need to have the `moderndive` package loaded as well:
+[Evgeni Chasnovski](https://github.com/echasnovski){target="_blank"} thus wrote a custom `geom_` extension to `ggplot2` called `geom_parallel_slopes()`; this extension is included in the `moderndive` package. Much like `geom_smooth()` from the `ggplot2` package, you merely add a `geom_parallel_slopes` layer to your plot as seen in Figure \ref{fig:parallel-slopes-model}.
 
-```{r parallel-slopes-model, echo=TRUE, eval=TRUE, fig.width=16/2.2, fig.height=9/2.2}
-library(ggplot2)
-library(moderndive)
+```{r parallel-slopes-model, fig.cap="Visualization of parallel slopes model."}
+# Code to visualize parallel slopes model:
 ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
-  labs(x = "Instructor age", y = "Teaching score", 
-       color = "Instructor\nEthnicity", title = "Parallel slopes model") + 
-  geom_parallel_slopes(se = FALSE)
+  geom_parallel_slopes(se = FALSE) +
+  labs(x = "Age", y = "Teaching score", color = "Ethnicity")
 ```
 
 At this point however, students will inevitably ask a sixth question: "When would you ever use a parallel slopes model?"
@@ -164,7 +202,25 @@ At this point however, students will inevitably ask a sixth question: "When woul
 
 ## Why should you use the `moderndive` package?
 
-We think that these functions included in the `moderndive` package are effective pedagogical tools that can help address the above six common student comments/questions. We now argue why.
+To recap this introduction, we believe that that the following functions included in the `moderndive` package:
+
+1. `get_regression_table()`
+1. `get_regression_points()`
+1. `get_regression_summaries()`
+1. `geom_parallel_slopes()`
+
+are effective pedagogical tools that can help address the above six common student comments and questions relating to introductory linear regression performed in R:
+
+1. "Wow! Look at those p-value stars! Stars are good, so I should try to get many stars, right?"
+1. "How do extract the values in the regression table?"
+1. "Where are the fitted and predicted values and residuals?"
+1. "How do I apply this model to a new set of data to make predictions?"
+1. "What is all this other stuff at the bottom?"
+1. "When would you ever use a parallel slopes model over an interaction model?"
+
+We now argue why.
+
+
 
 
 
@@ -174,14 +230,14 @@ We think that these functions included in the `moderndive` package are effective
 
 ## 1. Less p-value stars, more confidence intervals
 
-The first common student comment/question:
+The first common student comment and question:
 
-> "Wow! Look at those p-value stars! Stars are good, so I must get more stars somehow."
+> "Wow! Look at those p-value stars! Stars are good, so I should try to get many stars, right?"
 
-We argue that the `summary()` output is deficient in an intro stats setting because:
+We argue that the `summary.lm()` output is deficient in an introductory statistics setting because:
 
-* The `Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1` only encourage **p-hacking**. In case you have not yet been convinced of the perniciousness of p-hacking, perhaps comedian [John Oliver can convince you](https://www.youtube.com/watch?v=0Rnq1NpHdmw){target="_blank"}.  
-* While not a silver bullet for eliminating misinterpretations of statistical inference results, confidence intervals at least give students a sense of the practical significance and not just the statistical significance of the results. These should be included in the regression table output.
+1. The `Signif. codes:  0 '' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1` only encourage **p-hacking**. In case you have not yet been convinced of the perniciousness of p-hacking, perhaps comedian [John Oliver can convince you](https://www.youtube.com/watch?v=0Rnq1NpHdmw){target="_blank"}.  
+1. While not a silver bullet for eliminating misinterpretations of statistical inference results, confidence intervals present students with a sense of the practical significance as well as the statistical significance of any results. These are not included by default in the output. 
 
 Instead of `summary()`, let's use the `get_regression_table()` function in the `moderndive` package:
 
@@ -189,19 +245,12 @@ Instead of `summary()`, let's use the `get_regression_table()` function in the `
 get_regression_table(score_model)
 ```
 
-Confidence intervals! By including them in the output, we can easily emphasize to students that they "surround" the point estimates in the `estimate` column. Note the confidence level is defaulted to 95%. 
+Observe how the p-value stars are omitted and confidence intervals for the point estimates of all regression parameters are included by default. By including them in the output, we can easily emphasize to students that they "surround" the point estimates in the `estimate` column. Note the confidence level is defaulted to 95%. 
 
 
-## 2. Outputs as tidy tibbles!
+## 2. Outputs as tibbles
 
-All the functions in the `moderndive` package return tidy tibbles! So for example, by piping the above `get_regression_table(score_model)` output into the `kable()` function from the `knitr` package, you can have aesthetically pleasing regression tables in R Markdown documents, instead of jarring computer output font:
-
-```{r}
-get_regression_table(score_model) %>% 
-  knitr::kable()
-```
-
-Now let's address the second common student comment/question:
+The second common student comment and question:
 
 > "How do extract the values in the regression table?"
 
@@ -211,7 +260,7 @@ While one might argue that extracting the intercept and slope coefficients can b
 sqrt(diag(vcov(score_model)))
 ```
 
-Say what?!? It shouldn't be this hard! However since `get_regression_table()` returns a data frame/tidy tibble, you can easily extract columns using `dplyr::pull()`:
+We argue that it shouldn't be this hard, especially in an introductory statistics setting. To rectify this, the three `get_regression` functions in the `moderndive` package all return data frames in tibble format [@R-tibble]. Therefore you can easily extract columns using the `pull` from the `dplyr` package [@R-dplyr]:
 
 ```{r}
 get_regression_table(score_model) %>% 
@@ -224,14 +273,22 @@ or equivalently you can use the `$` sign operator from base R:
 get_regression_table(score_model)$std_error
 ```
 
+Furthermore, by piping the above `get_regression_table(score_model)` output into the `kable()` function from the `knitr` package [@R-knitr], you can obtain aesthetically pleasing regression tables in R Markdown documents, instead of jarring computer output font:
+
+```{r}
+library(knitr)
+get_regression_table(score_model) %>% 
+  kable()
+```
+
 
 ## 3. Birds of a feather should flock together: Fitted values & residuals
 
-The third common student comment/question:
+The third common student comment and question:
 
-> "Where are the fitted/predicted values and residuals?"
+> "Where are the fitted and predicted values and residuals?"
 
-How can we extract point-by-point information from a regression model, such as the fitted/predicted values and the residuals? (Note we'll only display the first 10 of such values, and not all n = 463, for brevity's sake)
+How can we extract point-by-point information from a regression model, such as the fitted and predicted values and the residuals? (Note we only display the first 10 out of 463 of such values for brevity's sake.)
 
 ```{r, eval=FALSE}
 fitted(score_model)
@@ -246,68 +303,67 @@ residuals(score_model)
 residuals(score_model)[1:10]
 ```
 
-But why have the original explanatory/predictor `age` and outcome variable `score` in `evals`, the fitted/predicted values `score_hat`, and `residual` floating around in separate pieces? Since each observation relates to the same instructor, wouldn't it make sense to organize them together? This is where `get_regression_points()` shines!
+But why have the original explanatory/predictor `age` and outcome variable `score` in `evals`, the fitted and predicted values `score_hat`, and `residual` floating around in separate vectors? Since each observation relates to the same course, we argue it makes more sense to organize them together in the same data frame using `get_regression_points()`:
 
 ```{r, eval=FALSE}
-get_regression_points(score_model)
+score_model_points <- get_regression_points(score_model)
+score_model_points
 ```
 ```{r, echo=FALSE}
-get_regression_points(score_model) %>% 
+score_model_points <- get_regression_points(score_model)
+score_model_points %>% 
   slice(1:10)
 ```
 
-Observe that the original outcome variable `score` and explanatory/predictor variable `age` are now supplemented with the fitted/predicted value `score_hat` and `residual` columns. By putting the fitted/predicted values and the residuals next to the original data, we argue that the computation of these values is less opaque. For example in class, instructors can write out by hand how all the values in the first row, corresponding to the first instructor, are computed. 
+Observe that the original outcome variable `score` and explanatory/predictor variable `age` are now supplemented with the fitted and predicted values `score_hat` and `residual` columns. By putting the fitted values, predicted values, and residuals next to the original data, we argue that the computation of these values is less opaque. For example in class, instructors can write out by hand how all the values in the first row corresponding to the first instructor are computed. 
 
-Furthermore, recall that all outputs in the `moderndive` package are data frames/tidy tibbles, thus you can easily create custom residual analysis plots, instead of the default ones yielded by `plot(score_model)`. For example, we create:
+Furthermore, recall that since all outputs in the `moderndive` package are tibble data frames, custom residual analysis plots can be created instead of relying on the default plots yielded by `plot.lm()`. For example, we can check for the noramality of residuals using the histogram of residuals shown in Figure \ref{fig:residuals-1}.
 
-* A histogram of all residuals to investigate normality.
-* A *partial residual plot* of the relationship of the residuals vs all explanatory/predictor variables to investigate the presence of heteroskedasticity; in this case a scatterplot of the residuals over `age`.  
+* A *partial residual plot* of the ; in this case a scatterplot of the residuals over `age`.  
 
-```{r residuals, echo=TRUE, eval=TRUE, fig.width=16/2.2, fig.height=9/2.2}
-score_model_points <- get_regression_points(score_model)
-
-# Histogram of residuals:
+```{r residuals-1, fig.cap="Histogram visualizing distribution of residuals."}
+# Code to visualize distribution of residuals:
 ggplot(score_model_points, aes(x = residual)) +
   geom_histogram(bins = 20) +
-  labs(title = "Histogram of residuals")
+  labs(x = "Residual", y = "Count")
+```
 
-# Investigating patterns:
+As another example, we can investigate potential relationships between the residuals and all explanatory/predictor variables and the presence of heteroskedasticity using partial residual plots, like the partial residual plot over age shown in Figure \ref{fig:residuals-2}.
+
+```{r residuals-2, fig.cap="Partial residual residual plot over age."}
+# Code to visualize partial residual plot over age:
 ggplot(score_model_points, aes(x = age, y = residual)) +
   geom_point() +
-  labs(title = "Residuals over age")
+  labs(x = "Age", y = "Residual")
 ```
 
 
 ## 4. A quick-and-easy Kaggle predictive modeling competition submission!
 
-The fourth common student comment/question:
+The fourth common student comment and question:
 
 > "How do I apply this model to a new set of data to make predictions?"
 
-With the fields of machine learning and artificial intelligence gaining prominence, the importance of predictive modeling cannot be understated. Therefore, we've designed the `get_regression_points()` function to allow for a `newdata` argument to quickly apply a previously fitted model to "new" observations. 
+With the fields of machine learning and artificial intelligence gaining prominence, the importance of predictive modeling cannot be understated. Therefore, we've designed the `get_regression_points()` function to allow for a `newdata` argument to quickly apply a previously fitted model to new observations. 
 
-Let's create an artificial "new" dataset which is a subset of the original `evals` data with the outcome variable `score` removed and use it as the `newdata` argument:
+Let's create an artificial "new" dataset consisting of two instructors of age 39 and 42 and save it in a data framed called `new_prof`. We then set the `newdata` argument to `get_regression_points()` to apply our previously fitted model `score_model` to this new data, where `score_hat` are the corresponding fitted/predicted values. 
 
 ```{r}
-new_evals <- evals %>% 
-  sample_n(4) %>% 
-  select(-score)
-new_evals
-
-get_regression_points(score_model, newdata = new_evals)
+new_prof <- tibble(age = c(39, 42))
+get_regression_points(score_model, newdata = new_prof)
 ```
 
-`score_hat` are the predicted values! Let's do another example, this time using the Kaggle [House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques){target="_blank"} practice competition.
+Let's do another example, this time using the Kaggle [House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques){target="_blank"} practice competition (Figure \ref{fig:kaggle-1} displays the homepage for this competition). 
 
-```{r, out.width = "500px", echo=FALSE, fig.align='center'}
+```{r kaggle-1, echo=FALSE, fig.align='center', fig.cap="House prices Kaggle competition homepage.", out.width='95%', purl=FALSE}
 knitr::include_graphics("kaggle.png")
 ```
 
-This Kaggle competition requires you to fit/train a model to the provided `train.csv` training set to make predictions of house prices in the provided `test.csv` test set. Here is code for a "baby's first Kaggle competition" submission that will:
+This Kaggle competition requires you to fit/train a model to the provided `train.csv` training set to make predictions of house prices in the provided `test.csv` test set. We present an application of the `get_regression_points()` function allowing students to participate in this Kaggle competition. It will:
 
-1. Read in the training and test data (that we posted on GitHub).
-1. Fit a naive model of house sale price as a function of year sold.
-1. Write a `submission.csv` file that can be submitted to Kaggle. Note the use of the `ID` argument to indicate that a variable identifying each observational unit/row should be included. 
+1. Read in the training and test data.
+1. Fit a naive model of house sale price as a function of year sold to the training data.
+1. Make predictions on the test data and write them to a `submission.csv` file that can be submitted to Kaggle using `get_regression_points()`. Note the use of the `ID` argument to use the `id` variable in `test` to identify the rows (a requirement of Kaggle competition submissions).
 
 ```{r, eval=FALSE}
 library(tidyverse)
@@ -321,165 +377,147 @@ test <-
   "https://github.com/moderndive/moderndive/raw/master/vignettes/test.csv"
   read_csv()
 
-# Fit model
+# Fit model:
 house_model <- lm(SalePrice ~ YrSold, data = train)
 
-# Make and submit predictions
-submission <- get_regression_points(house_model, newdata = test, 
-                                    ID = "Id") %>% 
+# Make predictions and save in appropriate data frame format:
+submission <- house_model %>% 
+  get_regression_points(newdata = test, ID = "Id") %>% 
   select(Id, SalePrice = SalePrice_hat)
+
+# Write predictions to csv:
 write_csv(submission, "submission.csv")
 ```
 
-Submitting `submission.csv` to the leaderboard for this Kaggle competition we
-get a "root mean squared logarithmic error" score of 0.42918, where smaller
-scores are better:
+After submitting `submission.csv` to the leaderboard for this Kaggle competition, we
+obtain a "root mean squared logarithmic error" (RMSLE) score of 0.42918 as seen in Figure \ref{fig:kaggle-2}.
 
-```{r, out.width = "100%", echo=FALSE}
+```{r kaggle-2, fig.cap="Resulting Kaggle RMSLE score."}
 knitr::include_graphics("leaderboard_orig.png")
 ```
 
 
 ## 5. Scalar summaries of linear regression model fits
 
-The fifth common student comment/question:
+The fifth common student comment and question:
 
 > "What is all this other stuff at the bottom?"
 
-Going back to the `summary()` from above, we figured it would be nice to be able to extract all the scalar summaries linear regression model fits. We've supplemented the standard scalar summaries output yielded by `summary()` with the mean squared error `mse` and root mean squared error `rmse` given their popularity in machine learning settings:
+Recall the output of the standard `summary.lm()` from earlier:
+
+```{r, echo=FALSE}
+summary(score_model)
+```
+
+Say we wanted to extract the scalar model summaries at the bottom of this output, such as $R^2$, $R^2_{adj}$, and the $F$-statistic. We can do so using the `get_regression_summaries()` function. 
 
 ```{r}
 get_regression_summaries(score_model)
 ```
 
+We've supplemented the standard scalar summaries output yielded by `summary()` with the mean squared error `mse` and root mean squared error `rmse` given their popularity in machine learning settings.
+
 
 ## 6. Plot parallel slopes regression models
 
-Finally, the last common student comment/question, brought to our attention by [Jenny Smetzer](https://github.com/smetzer180){target="_blank"}:
+Finally, the last common student comment and question:
 
 > "When would you ever use a parallel slopes model?"
 
-For example, recall the above comparison of the visualization of the interaction model (using `geom_smooth()`) with that of the parallel slopes model (using `geom_parallel_slopes()`) for teaching score as a function of age and ethnicity:
+For example, recall the earlier visualizations of the interaction and parallel slopes models for teaching score as a function of age and ethnicity we saw in Figures \ref{fig:interaction-model} and \ref{fig:parallel-slopes-model}. Let's present both visualizations side-by-side in Figure \ref{fig:interaction-and-parallel-slopes-model-1}.
 
-```{r interaction-and-parallel-slopes-model, echo=FALSE, fig.width=16/2.2, fig.height=9/2.2}
+```{r interaction-and-parallel-slopes-model-1, echo=FALSE, fig.cap = "Interaction (left) and parallel slopes (right) models."}
 p1 <- ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
-  labs(x = "Instructor age", y = "Teaching score", 
-       color = "Instructor\nEthnicity", title = "Interaction model") +
+  labs(x = "Age", y = "Teaching score", color = "Ethnicity") +
   geom_smooth(method = "lm", se = FALSE) +
   theme(legend.position = "none")
 p2 <- ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
-  labs(x = "Instructor age", y = "Teaching score", 
-       color = "Instructor\nEthnicity", title = "Interaction model") +
+  labs(x = "Age", y = "Teaching score", color = "Ethnicity") +
   geom_parallel_slopes(se = FALSE) + 
   theme(axis.title.y = element_blank())
 p1 + p2
 ```
 
-Students might be wondering "Why would you use the parallel slopes model when the data clearly form an "X" pattern as seen in the interaction model?"
+Students might be wonder "Why would you use the parallel slopes model on the right when the data clearly form an "X" pattern as seen in the interaction model on the right?" This is an excellent opportunity to gently introduce the notion of *model selection* and *Occam's Razor*. That an interaction model should only be used over a parallel slopes model **if the additional complexity of the interaction model is warranted**. Here, we define model "complexity/simplicity" in terms of the number of parameters in the corresponding regression tables: 
 
-This is an excellent opportunity to gently introduce the notion of *model selection* and *Occam's Razor*: an interaction model should only be used over a parallel slopes model **if the additional complexity of the interaction model is warranted**. Here, we define model "complexity vs simplicity" in terms of the number of parameters in the corresponding regression tables: 
-
-```{r, eval=FALSE}
+```{r, eval=TRUE}
+# Regression table for interaction model:
 interaction_evals <- lm(score ~ age * ethnicity, data = evals)
 get_regression_table(interaction_evals)
-```
-```{r, echo=FALSE}
-interaction_evals <- lm(score ~ age * ethnicity, data = evals)
-get_regression_table(interaction_evals) %>% 
-  knitr::kable()
-```
-```{r, eval=FALSE}
+
+# Regression table for parallel slopes model:
 parallel_slopes_evals <- lm(score ~ age + ethnicity, data = evals)
 get_regression_table(parallel_slopes_evals)
 ```
-```{r, echo=FALSE}
-parallel_slopes_evals <- lm(score ~ age + ethnicity, data = evals)
-get_regression_table(parallel_slopes_evals) %>% 
-  knitr::kable()
-```
 
-While the interaction model is "more complex" as evidenced by it's regression table involving 4 parameters/rows, as opposed to the 3 parameters of the parallel slopes model, it can be argued that this additional complexity is necessary and warranted given the clearly different slopes in the visualization of the interaction model.
+The interaction model is "more complex" as evidenced by its regression table involving 4 rows of parameter estimates whereas the parallel slopes model is "simpler" as evidenced by its regression table involving only 3 parameter estimates. In can be argued however that this additional complexity is warranted given the clearly different slopes in left-hand plot of Figure \ref{fig:interaction-and-parallel-slopes-model}.
 
-Here is a contrasting example, this time from [ModernDive 6.3.1](https://moderndive.com/6-multiple-regression.html#model-selection) involving Massachusetts USA public high schools (read the help file by running `?MA_schools` for more details). Let's plot both the interaction and parallel slopes models: 
+We now present a contrasting example, this time from [ModernDive 6.3.1](https://moderndive.com/6-multiple-regression.html#model-selection) involving Massachusetts USA public high schools. Read the help file by running `?MA_schools` for more details. Let's plot both the interaction and parallel slopes models in Figure \ref{fig:interaction-and-parallel-slopes-model-2}.
 
 ```{r, eval=FALSE}
-ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, 
-                       color = size)) +
+# Code to plot interaction and parallel slopes models for MA_schools
+ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
   geom_point(alpha = 0.25) +
-  labs(x = "Percent economically disadvantaged", y = "Math SAT Score", 
-       color = "School size", title = "Interaction model") + 
+  labs(x = "% economically disadvantaged", 
+       y = "Math SAT Score", 
+       color = "School size") + 
   geom_smooth(method = "lm", se = FALSE)
 
-ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, 
-                       color = size)) +
+ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
   geom_point(alpha = 0.25) +
-  labs(x = "Percent economically disadvantaged", y = "Math SAT Score", 
-       color = "School size", title = "Interaction model") +
-  geom_smooth(method = "lm", se = FALSE)
+  labs(x = "% economically disadvantaged", 
+       y = "Math SAT Score", 
+       color = "School size") +
+  geom_parallel_slopes( se = FALSE)
 ```
 
-```{r ma-schools, echo=FALSE, fig.width=16/2.2, fig.height=9/2.2}
-p1 <- ggplot(MA_schools, 
-             aes(x = perc_disadvan, y = average_sat_math, 
-                 color = size)) +
+```{r interaction-and-parallel-slopes-model-2, echo=FALSE, fig.cap = "Interaction (left) and parallel slopes (right) models."}
+p1 <- ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
   geom_point(alpha = 0.25) +
   geom_smooth(method = "lm", se = FALSE) +
-  labs(x = "Percent economically disadvantaged", y = "Math SAT Score", 
-       color = "School size", title = "Interaction model") + 
+  labs(x = "% economically disadvantaged", 
+       y = "Math SAT Score", 
+       color = "School size") + 
   theme(legend.position = "none")
-p2 <- ggplot(MA_schools, 
-       aes(x = perc_disadvan, y = average_sat_math, 
-           color = size)) +
+p2 <- ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
   geom_point(alpha = 0.25) +
   geom_parallel_slopes(se = FALSE) + 
-  labs(x = "Percent economically disadvantaged", y = "Math SAT Score", 
-       color = "School size", title = "Parallel slopes model")  +
+  labs(x = "% economically disadvantaged", 
+       y = "Math SAT Score", 
+       color = "School size") + 
   theme(axis.title.y = element_blank())
 p1 + p2
 ```
 
-Here the additional complexity of the interaction model is *not* warranted since the 3 three regression lines are already somewhat parallel. Therefore the simpler parallel slopes model should be favored. 
-
 In terms of the corresponding regression tables, observe that the corresponding regression table for the parallel slopes model has 4 rows as opposed to the 6 for the interaction model, reflecting its higher degree of "model simplicity."
 
-```{r, eval=FALSE}
-interaction_MA <- lm(average_sat_math ~ perc_disadvan * size, 
-                     data = MA_schools)
+```{r}
+# Regression table for interaction model:
+interaction_MA <- 
+  lm(average_sat_math ~ perc_disadvan * size, data = MA_schools)
 get_regression_table(interaction_MA)
-```
-```{r, echo=FALSE}
-interaction_MA <- lm(average_sat_math ~ perc_disadvan * size, 
-                     data = MA_schools)
-get_regression_table(interaction_MA) %>% 
-  knitr::kable()
-```
-```{r, eval=FALSE}
-parallel_slopes_MA <- lm(average_sat_math ~ perc_disadvan + size, 
-                         data = MA_schools)
+
+# Regression table for parallel slopes model:
+parallel_slopes_MA <- 
+  lm(average_sat_math ~ perc_disadvan + size, data = MA_schools)
 get_regression_table(parallel_slopes_MA)
 ```
-```{r, echo=FALSE}
-parallel_slopes_MA <- lm(average_sat_math ~ perc_disadvan + size, 
-                         data = MA_schools)
-get_regression_table(parallel_slopes_MA) %>% 
-  knitr::kable()
-```
 
-Going one step further, it could be argued from the visualization of the parallel slopes model, that the additional model complexity induced by introducing the categorical variable school `size` is not warranted given that the intercepts are similar! Therefore, an even simpler model of only using `perc_disadvan`: percent of the student body that are economically disadvantaged.
+Unlike our earlier comparison of interaction and parallel slopes models in Figure \ref{fig:interaction-and-parallel-slopes-model-1}, in this case it could be argued that the additional complexity of the interaction model is *not* warranted since the 3 three regression lines in the left-hand interaction are already somewhat parallel. Therefore the simpler parallel slopes model should be favored. 
+
+Going one step further, it could be argued from the visualization of the parallel slopes model in the right-hand plot of \ref{fig:interaction-and-parallel-slopes-model-2} that the additional model complexity induced by introducing the categorical variable school `size` is not warranted given that the intercepts are similar! Therefore, it could be argued that a simple linear regression model using only `perc_disadvan` percent of the student body that are economically disadvantaged should be favored.
 
 While many students will inevitably find these results depressing, in our opinion it is important to additionally emphasize that such regression analyses can be used as an empowering tool to bring to light inequities in access to education and inform policy decisions.
 
 
 
-
-
 # The Details
 
-## Three wrappers to `broom` functions
+## Three wrappers to `broom` functions {#broom-wrappers}
 
-The three `get_regression` functions are wrappers of functions from the [`broom`](https://CRAN.R-project.org/package=broom/vignettes/broom.html){target="_blank"} package for converting statistical analysis objects into tidy tibbles along with a few added tweaks [@R-broom]:
+As we mentionned earlier, the three `get_regression` functions are merely wrappers of functions from the `broom` package for converting statistical analysis objects into tidy tibbles along with a few added tweaks, but with the introductory statistics student in mind [@R-broom]:
 
 1. `get_regression_table()` is a wrapper for `broom::tidy()`
 1. `get_regression_points()` is a wrapper for `broom::augment()`
@@ -487,23 +525,23 @@ The three `get_regression` functions are wrappers of functions from the [`broom`
 
 Why did we take this approach to address the 5 common student questions/comments at the outset of the article?
 
-* By writing wrappers to pre-existing functions, instead of creating new custom functions, there is minimal "re-inventing the wheel" necessary. 
-* The `broom` package function names `tidy()`, `augment()`, and `glance()` don't mean anything to intro stats students, where as the `moderndive` package function names `get_regression_table()`, `get_regression_points()`, and `get_regression_summaries()` are more intuitive.
-* The default column/variable names in the outputs of the above 3 functions are a little daunting for intro stats students to interpret. We cut out some of them and renamed many of them with more intuitive names. For example, compare the outputs of the `get_regression_points()` wrapper function and the parent `broom::augment()` function.
+1. By writing wrappers to pre-existing functions, instead of creating new custom functions, there is minimal re-inventing the wheel necessary. 
+1. In our experience, novice R users had a hard time understanding the `broom` package function names `tidy()`, `augment()`, and `glance()`. The make them more user-friendly, the `moderndive` package wrappers have much more intuitively named `get_regression_table()`, `get_regression_points()`, and `get_regression_summaries()`.
+1. The variables included in the outputs of the above 3 `broom` functions are not all applicable to an introductory statistics students and of those that were we found them to be unintuitively named. We thereforme cut out some of the variables from the output and renamed some of the remaining variables. For example, compare the outputs of the `get_regression_points()` wrapper function and the parent `broom::augment()` function.
 
 ```{r}
 get_regression_points(score_model)
 broom::augment(score_model)
 ```
 
-If you're curious to see how we designed these 3 functions, take a look at the source code on  [GitHub](https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R){target="_blank"}!
+The source code for these three `get_regression` functions can be found  [GitHub](https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R){target="_blank"}.
 
 
-## Custom geom
+## Custom geometries
 
-As for `geom_parallel_slopes()`, this is a custom built `geom` extension to the `ggplot2` package. For example, the `ggplot2` webpage page gives [instructions](https://ggplot2.tidyverse.org/articles/extending-ggplot2.html){target="_blank"} on how to create such extensions. 
+The `geom_parallel_slopes()` is a custom built `geom` extension to the `ggplot2` package. For example, the `ggplot2` webpage page gives [instructions](https://ggplot2.tidyverse.org/articles/extending-ggplot2.html){target="_blank"} on how to create such extensions. The source code for `geom_parallel_slopes()` written by [Evgeni Chasnovski](https://github.com/echasnovski){target="_blank"} can be found  [GitHub](https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R){target="_blank"}. 
 
-If you're curious to see how Evgeni did this for `geom_parallel_slopes()`, take a look at the source code on  [GitHub](https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R){target="_blank"}!
+
 
 
 
@@ -512,6 +550,9 @@ If you're curious to see how Evgeni did this for `geom_parallel_slopes()`, take 
 # Acknowledgements
 
 Many thanks to Jenny Smetzer [\@smetzer180](https://github.com/smetzer180){target="_blank"} for her helpful feedback for this vignette and to Evgeni Chasnovski [\@echasnovski](https://github.com/echasnovski){target="_blank"} for contributing the `geom_parallel_slopes()` function via GitHub [pull request](https://github.com/moderndive/moderndive/pull/55){target="_blank"}.
+
+
+
 
 
 
