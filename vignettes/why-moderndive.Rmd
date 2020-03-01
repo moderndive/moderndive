@@ -51,7 +51,7 @@ knitr::opts_chunk$set(
   message = FALSE,
   echo = TRUE,
   # Figure:
-  out.width = '\\textwidth',
+  out.width = "100%",
   fig.path = "Figures/",
   fig.width = 16/2.5,
   fig.height = 9/2.5,
@@ -79,6 +79,8 @@ set.seed(76)
 scale_fill_discrete <- function(...){
   scale_fill_brewer(... ,  type = "div", palette="Set1", na.value = "grey50")
 }
+
+options(width = 75)
 ```
 
 
@@ -415,7 +417,7 @@ Finally, the last common student comment and question:
 
 For example, recall the earlier visualizations of the interaction and parallel slopes models for teaching score as a function of age and ethnicity we saw in Figures \ref{fig:interaction-model} and \ref{fig:parallel-slopes-model}. Let's present both visualizations side-by-side in \autoref{fig:interaction-and-parallel-slopes-model-1}.
 
-```{r interaction-and-parallel-slopes-model-1, echo=FALSE, fig.cap = "Interaction (left) and parallel slopes (right) models."}
+```{r interaction-and-parallel-slopes-model-1, echo=FALSE, fig.height = 9/3, fig.cap = "Interaction (left) and parallel slopes (right) models.", }
 p1 <- ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
   labs(x = "Age", y = "Teaching score", color = "Ethnicity") +
@@ -462,7 +464,7 @@ ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
   geom_parallel_slopes( se = FALSE)
 ```
 
-```{r interaction-and-parallel-slopes-model-2, echo=FALSE, fig.cap = "Interaction (left) and parallel slopes (right) models."}
+```{r interaction-and-parallel-slopes-model-2, echo=FALSE, fig.height = 9/3, fig.cap = "Interaction (left) and parallel slopes (right) models."}
 p1 <- ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
   geom_point(alpha = 0.25) +
   geom_smooth(method = "lm", se = FALSE) +

@@ -186,7 +186,7 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 
 \begin{figure}
 
-{\centering \includegraphics[width=\textwidth]{Figures/interaction-model-1} 
+{\centering \includegraphics[width=1\linewidth]{Figures/interaction-model-1} 
 
 }
 
@@ -208,7 +208,7 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 
 \begin{figure}
 
-{\centering \includegraphics[width=\textwidth]{Figures/parallel-slopes-model-1} 
+{\centering \includegraphics[width=1\linewidth]{Figures/parallel-slopes-model-1} 
 
 }
 
@@ -396,7 +396,7 @@ ggplot(score_model_points, aes(x = residual)) +
 
 \begin{figure}
 
-{\centering \includegraphics[width=\textwidth]{Figures/residuals-1-1} 
+{\centering \includegraphics[width=1\linewidth]{Figures/residuals-1-1} 
 
 }
 
@@ -415,7 +415,7 @@ ggplot(score_model_points, aes(x = age, y = residual)) +
 
 \begin{figure}
 
-{\centering \includegraphics[width=\textwidth]{Figures/residuals-2-1} 
+{\centering \includegraphics[width=1\linewidth]{Figures/residuals-2-1} 
 
 }
 
@@ -496,7 +496,7 @@ knitr::include_graphics("leaderboard_orig.png")
 
 \begin{figure}
 
-{\centering \includegraphics[width=\textwidth]{leaderboard_orig} 
+{\centering \includegraphics[width=1\linewidth]{leaderboard_orig} 
 
 }
 
@@ -558,7 +558,7 @@ For example, recall the earlier visualizations of the interaction and parallel s
 
 \begin{figure}
 
-{\centering \includegraphics[width=\textwidth]{Figures/interaction-and-parallel-slopes-model-1-1} 
+{\centering \includegraphics[width=1\linewidth]{Figures/interaction-and-parallel-slopes-model-1-1} 
 
 }
 
@@ -573,22 +573,22 @@ Students might be wonder "Why would you use the parallel slopes model on the rig
 interaction_evals <- lm(score ~ age * ethnicity, data = evals)
 get_regression_table(interaction_evals)
 ## # A tibble: 4 x 7
-##   term                    estimate std_error statistic p_value lower_ci upper_ci
-##   <chr>                      <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
-## 1 intercept                  2.61      0.518      5.04   0        1.59     3.63 
-## 2 age                        0.032     0.011      2.84   0.005    0.01     0.054
-## 3 ethnicitynot minority      2.00      0.534      3.74   0        0.945    3.04 
-## 4 age:ethnicitynot minor~   -0.04      0.012     -3.51   0       -0.063   -0.018
+##   term               estimate std_error statistic p_value lower_ci upper_ci
+##   <chr>                 <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
+## 1 intercept             2.61      0.518      5.04   0        1.59     3.63 
+## 2 age                   0.032     0.011      2.84   0.005    0.01     0.054
+## 3 ethnicitynot mino~    2.00      0.534      3.74   0        0.945    3.04 
+## 4 age:ethnicitynot ~   -0.04      0.012     -3.51   0       -0.063   -0.018
 
 # Regression table for parallel slopes model:
 parallel_slopes_evals <- lm(score ~ age + ethnicity, data = evals)
 get_regression_table(parallel_slopes_evals)
 ## # A tibble: 3 x 7
-##   term                  estimate std_error statistic p_value lower_ci upper_ci
-##   <chr>                    <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
-## 1 intercept                4.37      0.136     32.1    0        4.1      4.63 
-## 2 age                     -0.006     0.003     -2.5    0.013   -0.012   -0.001
-## 3 ethnicitynot minority    0.138     0.073      1.89   0.059   -0.005    0.282
+##   term               estimate std_error statistic p_value lower_ci upper_ci
+##   <chr>                 <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
+## 1 intercept             4.37      0.136     32.1    0        4.1      4.63 
+## 2 age                  -0.006     0.003     -2.5    0.013   -0.012   -0.001
+## 3 ethnicitynot mino~    0.138     0.073      1.89   0.059   -0.005    0.282
 ```
 
 The interaction model is "more complex" as evidenced by its regression table involving 4 rows of parameter estimates whereas the parallel slopes model is "simpler" as evidenced by its regression table involving only 3 parameter estimates. In can be argued however that this additional complexity is warranted given the clearly different slopes in left-hand plot of \autoref{fig:interaction-and-parallel-slopes-model-1}.
@@ -615,7 +615,7 @@ ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
 
 \begin{figure}
 
-{\centering \includegraphics[width=\textwidth]{Figures/interaction-and-parallel-slopes-model-2-1} 
+{\centering \includegraphics[width=1\linewidth]{Figures/interaction-and-parallel-slopes-model-2-1} 
 
 }
 
@@ -631,14 +631,14 @@ interaction_MA <-
   lm(average_sat_math ~ perc_disadvan * size, data = MA_schools)
 get_regression_table(interaction_MA)
 ## # A tibble: 6 x 7
-##   term                    estimate std_error statistic p_value lower_ci upper_ci
-##   <chr>                      <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
-## 1 intercept                594.       13.3      44.7     0      568.     620.   
-## 2 perc_disadvan             -2.93      0.294    -9.96    0       -3.51    -2.35 
-## 3 sizemedium               -17.8      15.8      -1.12    0.263  -48.9     13.4  
-## 4 sizelarge                -13.3      13.8      -0.962   0.337  -40.5     13.9  
-## 5 perc_disadvan:sizemedi~    0.146     0.371     0.393   0.694   -0.585    0.877
-## 6 perc_disadvan:sizelarge    0.189     0.323     0.586   0.559   -0.446    0.824
+##   term               estimate std_error statistic p_value lower_ci upper_ci
+##   <chr>                 <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
+## 1 intercept           594.       13.3      44.7     0      568.     620.   
+## 2 perc_disadvan        -2.93      0.294    -9.96    0       -3.51    -2.35 
+## 3 sizemedium          -17.8      15.8      -1.12    0.263  -48.9     13.4  
+## 4 sizelarge           -13.3      13.8      -0.962   0.337  -40.5     13.9  
+## 5 perc_disadvan:siz~    0.146     0.371     0.393   0.694   -0.585    0.877
+## 6 perc_disadvan:siz~    0.189     0.323     0.586   0.559   -0.446    0.824
 
 # Regression table for parallel slopes model:
 parallel_slopes_MA <- 
