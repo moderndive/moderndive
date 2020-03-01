@@ -57,7 +57,7 @@ Let's consider data gathered from end of semester student evaluations for a samp
 
 
 
-In Table \ref{tab:random-sample-courses} we present a subset of 9 of the 14 variables included for a random sample of 5 courses^[For details on the remaining 5 variables, see the help file by running `?evals`.]. These include:
+In the following table, we present a subset of 9 of the 14 variables included for a random sample of 5 courses^[For details on the remaining 5 variables, see the help file by running `?evals`.]. These include:
 
 1. `ID` uniquely identifies the course whereas `prof_ID` identifies the professor who taught this course. This distinction is important since many professors are included more than once in this dataset.
 1. `score` is the outcome variable of interest: average professor evaluation score out of 5 as given by the students in this course.
@@ -171,7 +171,7 @@ To address these comments and questions, we've included three functions in the `
 
 ## Bonus: Visualizing parallel slopes models with `moderndive`
 
-Furthermore, say you would like to visualize the relationship between two numerical variables and a third categorical variable with $k$ levels using a colored scatterplot using the `ggplot2` package for data visualization [@R-ggplot2]. Using `geom_smooth(method = "lm", se = FALSE)` yields a visualization of an *interaction model* where each of the $k$ regression lines has their own intercept and slope. For example in Figure \autoref{fig:interaction-model}, we extend our previous regression model by now mapping the categorical variable `ethnicity` to the `color` aesthetic. 
+Furthermore, say you would like to visualize the relationship between two numerical variables and a third categorical variable with $k$ levels using a colored scatterplot using the `ggplot2` package for data visualization [@R-ggplot2]. Using `geom_smooth(method = "lm", se = FALSE)` yields a visualization of an *interaction model* where each of the $k$ regression lines has their own intercept and slope. For example in \autoref{fig:interaction-model}, we extend our previous regression model by now mapping the categorical variable `ethnicity` to the `color` aesthetic. 
 
 
 ```r
@@ -195,7 +195,7 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 
 However, many introductory statistics courses start with the easier to teach "common slope, different intercepts" regression model, also known as the *parallel slopes* model. However, no such method exists with `geom_smooth()`
 
-[Evgeni Chasnovski](https://github.com/echasnovski){target="_blank"} thus wrote a custom `geom_` extension to `ggplot2` called `geom_parallel_slopes()`; this extension is included in the `moderndive` package. Much like `geom_smooth()` from the `ggplot2` package, you merely add a `geom_parallel_slopes` layer to your plot as seen in Figure \ref{fig:parallel-slopes-model}.
+[Evgeni Chasnovski](https://github.com/echasnovski){target="_blank"} thus wrote a custom `geom_` extension to `ggplot2` called `geom_parallel_slopes()`; this extension is included in the `moderndive` package. Much like `geom_smooth()` from the `ggplot2` package, you merely add a `geom_parallel_slopes` layer to your plot as seen in \autoref{fig:parallel-slopes-model}.
 
 
 ```r
@@ -382,7 +382,7 @@ score_model_points
 
 Observe that the original outcome variable `score` and explanatory/predictor variable `age` are now supplemented with the fitted and predicted values `score_hat` and `residual` columns. By putting the fitted values, predicted values, and residuals next to the original data, we argue that the computation of these values is less opaque. For example in class, instructors can write out by hand how all the values in the first row corresponding to the first instructor are computed. 
 
-Furthermore, recall that since all outputs in the `moderndive` package are tibble data frames, custom residual analysis plots can be created instead of relying on the default plots yielded by `plot.lm()`. For example, we can check for the normality of residuals using the histogram of residuals shown in Figure \ref{fig:residuals-1}.
+Furthermore, recall that since all outputs in the `moderndive` package are tibble data frames, custom residual analysis plots can be created instead of relying on the default plots yielded by `plot.lm()`. For example, we can check for the normality of residuals using the histogram of residuals shown in \autoref{fig:residuals-1}.
 
 * A *partial residual plot* of the ; in this case a scatterplot of the residuals over `age`.  
 
@@ -403,7 +403,7 @@ ggplot(score_model_points, aes(x = residual)) +
 \caption{Histogram visualizing distribution of residuals.}\label{fig:residuals-1}
 \end{figure}
 
-As another example, we can investigate potential relationships between the residuals and all explanatory/predictor variables and the presence of heteroskedasticity using partial residual plots, like the partial residual plot over age shown in Figure \ref{fig:residuals-2}.
+As another example, we can investigate potential relationships between the residuals and all explanatory/predictor variables and the presence of heteroskedasticity using partial residual plots, like the partial residual plot over age shown in \autoref{fig:residuals-2}.
 
 
 ```r
@@ -444,7 +444,7 @@ get_regression_points(score_model, newdata = new_prof)
 ## 2     2    42      4.21
 ```
 
-Let's do another example, this time using the Kaggle [House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques){target="_blank"} practice competition (Figure \ref{fig:kaggle-1} displays the homepage for this competition). 
+Let's do another example, this time using the Kaggle [House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques){target="_blank"} practice competition (\autoref{fig:kaggle-1} displays the homepage for this competition). 
 
 \begin{figure}
 
@@ -487,7 +487,7 @@ write_csv(submission, "submission.csv")
 ```
 
 After submitting `submission.csv` to the leaderboard for this Kaggle competition, we
-obtain a "root mean squared logarithmic error" (RMSLE) score of 0.42918 as seen in Figure \ref{fig:kaggle-2}.
+obtain a "root mean squared logarithmic error" (RMSLE) score of 0.42918 as seen in \autoref{fig:kaggle-2}.
 
 
 ```r
@@ -554,7 +554,7 @@ Finally, the last common student comment and question:
 
 > "When would you ever use a parallel slopes model?"
 
-For example, recall the earlier visualizations of the interaction and parallel slopes models for teaching score as a function of age and ethnicity we saw in Figures \ref{fig:interaction-model} and \ref{fig:parallel-slopes-model}. Let's present both visualizations side-by-side in Figure \ref{fig:interaction-and-parallel-slopes-model-1}.
+For example, recall the earlier visualizations of the interaction and parallel slopes models for teaching score as a function of age and ethnicity we saw in Figures \ref{fig:interaction-model} and \ref{fig:parallel-slopes-model}. Let's present both visualizations side-by-side in \autoref{fig:interaction-and-parallel-slopes-model-1}.
 
 \begin{figure}
 
@@ -591,9 +591,9 @@ get_regression_table(parallel_slopes_evals)
 ## 3 ethnicitynot minority    0.138     0.073      1.89   0.059   -0.005    0.282
 ```
 
-The interaction model is "more complex" as evidenced by its regression table involving 4 rows of parameter estimates whereas the parallel slopes model is "simpler" as evidenced by its regression table involving only 3 parameter estimates. In can be argued however that this additional complexity is warranted given the clearly different slopes in left-hand plot of Figure \ref{fig:interaction-and-parallel-slopes-model}.
+The interaction model is "more complex" as evidenced by its regression table involving 4 rows of parameter estimates whereas the parallel slopes model is "simpler" as evidenced by its regression table involving only 3 parameter estimates. In can be argued however that this additional complexity is warranted given the clearly different slopes in left-hand plot of \autoref{fig:interaction-and-parallel-slopes-model-1}.
 
-We now present a contrasting example, this time from [ModernDive 6.3.1](https://moderndive.com/6-multiple-regression.html#model-selection) involving Massachusetts USA public high schools. Read the help file by running `?MA_schools` for more details. Let's plot both the interaction and parallel slopes models in Figure \ref{fig:interaction-and-parallel-slopes-model-2}.
+We now present a contrasting example, this time from [ModernDive 6.3.1](https://moderndive.com/6-multiple-regression.html#model-selection) involving Massachusetts USA public high schools. Read the help file by running `?MA_schools` for more details. Let's plot both the interaction and parallel slopes models in \autoref{fig:interaction-and-parallel-slopes-model-2}.
 
 
 ```r
@@ -653,7 +653,7 @@ get_regression_table(parallel_slopes_MA)
 ## 4 sizelarge        -6.36     6.92     -0.919   0.359   -20.0      7.26
 ```
 
-Unlike our earlier comparison of interaction and parallel slopes models in Figure \ref{fig:interaction-and-parallel-slopes-model-1}, in this case it could be argued that the additional complexity of the interaction model is *not* warranted since the 3 three regression lines in the left-hand interaction are already somewhat parallel. Therefore the simpler parallel slopes model should be favored. 
+Unlike our earlier comparison of interaction and parallel slopes models in \autoref{fig:interaction-and-parallel-slopes-model-1}, in this case it could be argued that the additional complexity of the interaction model is *not* warranted since the 3 three regression lines in the left-hand interaction are already somewhat parallel. Therefore the simpler parallel slopes model should be favored. 
 
 Going one step further, it could be argued from the visualization of the parallel slopes model in the right-hand plot of \ref{fig:interaction-and-parallel-slopes-model-2} that the additional model complexity induced by introducing the categorical variable school `size` is not warranted given that the intercepts are similar! Therefore, it could be argued that a simple linear regression model using only `perc_disadvan` percent of the student body that are economically disadvantaged should be favored.
 
