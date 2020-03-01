@@ -34,6 +34,9 @@ affiliations:
    index: 3
 bibliography: paper.bib
 output:
+  rticles::joss_article:
+    keep_md: yes
+    number_sections: yes
   rmarkdown::html_vignette:
     keep_md: yes
     df_print: default
@@ -42,35 +45,24 @@ output:
 
 ```{r, include = FALSE}
 # # knitr settings
-# knitr::opts_chunk$set(
-#   # Code output:
-#   warning = FALSE,
-#   message = FALSE,
-#   echo = TRUE,
-#   # Figure:
-#   out.width = '\\textwidth', 
-#   fig.path = "Figures/",
-#   fig.width = 16/2.5, 
-#   fig.height = 9/2.5,
-#   fig.align = "center",
-#   fig.show = "hold",
-#   # Etc:
-#   collapse = TRUE,
-#   comment = "##"
-#   # tidy = FALSE
-# )
-
-
 knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "Figures/",
+  # Code output:
   warning = FALSE,
   message = FALSE,
   echo = TRUE,
-  fig.width=16/2, 
-  fig.height=9/2
+  # Figure:
+  out.width = '\\textwidth',
+  fig.path = "Figures/",
+  fig.width = 16/2.5,
+  fig.height = 9/2.5,
+  fig.align = "center",
+  fig.show = "hold",
+  # Etc:
+  collapse = TRUE,
+  comment = "##"
+  # tidy = FALSE
 )
+
 
 # Needed packages
 library(dplyr)

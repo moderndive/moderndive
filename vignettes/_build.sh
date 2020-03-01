@@ -4,4 +4,3 @@
 # chmod +x ./_build.sh
 
 Rscript -e 'rmarkdown::render(input = "why-moderndive.Rmd", output_file = "paper")'
-rm why-moderndive.log
