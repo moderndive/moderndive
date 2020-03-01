@@ -34,9 +34,6 @@ affiliations:
    index: 3
 bibliography: paper.bib
 output:
-  # rticles::joss_article:
-  #   keep_md: yes
-  #   number_sections: yes
   rmarkdown::html_vignette:
     keep_md: yes
     df_print: default
@@ -44,28 +41,35 @@ output:
 ---
 
 ```{r, include = FALSE}
-if(knitr:::is_html_output())
-  options(width = 80)
-if(knitr:::is_latex_output())
-  options(width = 75)
+# # knitr settings
+# knitr::opts_chunk$set(
+#   # Code output:
+#   warning = FALSE,
+#   message = FALSE,
+#   echo = TRUE,
+#   # Figure:
+#   out.width = '\\textwidth', 
+#   fig.path = "Figures/",
+#   fig.width = 16/2.5, 
+#   fig.height = 9/2.5,
+#   fig.align = "center",
+#   fig.show = "hold",
+#   # Etc:
+#   collapse = TRUE,
+#   comment = "##"
+#   # tidy = FALSE
+# )
 
-# knitr settings
+
 knitr::opts_chunk$set(
-  # Code output:
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "Figures/",
   warning = FALSE,
   message = FALSE,
   echo = TRUE,
-  # Figure:
-  out.width = '\\textwidth', 
-  fig.path = "Figures/",
-  fig.width = 16/2.5, 
-  fig.height = 9/2.5,
-  fig.align = "center",
-  fig.show = "hold",
-  # Etc:
-  collapse = TRUE,
-  comment = "##"
-  # tidy = FALSE
+  fig.width=16/2, 
+  fig.height=9/2
 )
 
 # Needed packages
