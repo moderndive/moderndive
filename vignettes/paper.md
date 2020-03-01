@@ -63,8 +63,8 @@ In Table \ref{tab:random-sample-courses} we present a subset of 9 of the 14 vari
 1. `score` is the outcome variable of interest: average professor evaluation score out of 5 as given by the students in this course.
 1. The remaining variables are demographic variables describing that course's instructor, including `bty_avg` average "beauty" score for that professor as given by a panel of 6 students.^[Note that `gender` was collected as a binary variable at the time of the study (2005).]
 
-<table class="table" style="font-size: 16px; margin-left: auto; margin-right: auto;">
-<caption style="font-size: initial !important;">Random sample of 5 out of 463 courses at UT Austin.</caption>
+<table>
+<caption>Random sample of 5 out of 463 courses at UT Austin.</caption>
  <thead>
   <tr>
    <th style="text-align:right;"> ID </th>
@@ -153,9 +153,6 @@ Let's now study the output of the fitted model `score_model` "the good old fashi
 
 ```r
 summary(score_model)
-```
-
-```
 ## 
 ## Call:
 ## lm(formula = score ~ age, data = evals)
@@ -193,9 +190,6 @@ To address these comments and questions, we've included three functions in the `
     
     ```r
     get_regression_table(score_model)
-    ```
-    
-    ```
     ## # A tibble: 2 x 7
     ##   term      estimate std_error statistic p_value lower_ci upper_ci
     ##   <chr>        <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
@@ -206,9 +200,6 @@ To address these comments and questions, we've included three functions in the `
     
     ```r
     get_regression_points(score_model)
-    ```
-    
-    ```
     ## # A tibble: 463 x 5
     ##       ID score   age score_hat residual
     ##    <int> <dbl> <int>     <dbl>    <dbl>
@@ -228,9 +219,6 @@ To address these comments and questions, we've included three functions in the `
     
     ```r
     get_regression_summaries(score_model)
-    ```
-    
-    ```
     ## # A tibble: 1 x 8
     ##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df
     ##       <dbl>         <dbl> <dbl> <dbl> <dbl>     <dbl>   <dbl> <dbl>
@@ -323,9 +311,6 @@ Instead of `summary()`, let's use the `get_regression_table()` function in the `
 
 ```r
 get_regression_table(score_model)
-```
-
-```
 ## # A tibble: 2 x 7
 ##   term      estimate std_error statistic p_value lower_ci upper_ci
 ##   <chr>        <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
@@ -347,9 +332,6 @@ While one might argue that extracting the intercept and slope coefficients can b
 
 ```r
 sqrt(diag(vcov(score_model)))
-```
-
-```
 ## (Intercept)         age 
 ## 0.126778499 0.002569157
 ```
@@ -360,9 +342,6 @@ We argue that it shouldn't be this hard, especially in an introductory statistic
 ```r
 get_regression_table(score_model) %>% 
   pull(std_error)
-```
-
-```
 ## [1] 0.127 0.003
 ```
 
@@ -371,9 +350,6 @@ or equivalently you can use the `$` sign operator from base R:
 
 ```r
 get_regression_table(score_model)$std_error
-```
-
-```
 ## [1] 0.127 0.003
 ```
 
@@ -525,9 +501,6 @@ Let's create an artificial "new" dataset consisting of two instructors of age 39
 ```r
 new_prof <- tibble(age = c(39, 42))
 get_regression_points(score_model, newdata = new_prof)
-```
-
-```
 ## # A tibble: 2 x 3
 ##      ID   age score_hat
 ##   <int> <dbl>     <dbl>
@@ -622,9 +595,6 @@ Say we wanted to extract the scalar model summaries at the bottom of this output
 
 ```r
 get_regression_summaries(score_model)
-```
-
-```
 ## # A tibble: 1 x 8
 ##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df
 ##       <dbl>         <dbl> <dbl> <dbl> <dbl>     <dbl>   <dbl> <dbl>
@@ -654,9 +624,6 @@ Students might be wonder "Why would you use the parallel slopes model on the rig
 # Regression table for interaction model:
 interaction_evals <- lm(score ~ age * ethnicity, data = evals)
 get_regression_table(interaction_evals)
-```
-
-```
 ## # A tibble: 4 x 7
 ##   term                    estimate std_error statistic p_value lower_ci upper_ci
 ##   <chr>                      <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
@@ -664,15 +631,10 @@ get_regression_table(interaction_evals)
 ## 2 age                        0.032     0.011      2.84   0.005    0.01     0.054
 ## 3 ethnicitynot minority      2.00      0.534      3.74   0        0.945    3.04 
 ## 4 age:ethnicitynot minor…   -0.04      0.012     -3.51   0       -0.063   -0.018
-```
 
-```r
 # Regression table for parallel slopes model:
 parallel_slopes_evals <- lm(score ~ age + ethnicity, data = evals)
 get_regression_table(parallel_slopes_evals)
-```
-
-```
 ## # A tibble: 3 x 7
 ##   term                  estimate std_error statistic p_value lower_ci upper_ci
 ##   <chr>                    <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
@@ -716,9 +678,6 @@ In terms of the corresponding regression tables, observe that the corresponding 
 interaction_MA <- 
   lm(average_sat_math ~ perc_disadvan * size, data = MA_schools)
 get_regression_table(interaction_MA)
-```
-
-```
 ## # A tibble: 6 x 7
 ##   term                    estimate std_error statistic p_value lower_ci upper_ci
 ##   <chr>                      <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
@@ -728,16 +687,11 @@ get_regression_table(interaction_MA)
 ## 4 sizelarge                -13.3      13.8      -0.962   0.337  -40.5     13.9  
 ## 5 perc_disadvan:sizemedi…    0.146     0.371     0.393   0.694   -0.585    0.877
 ## 6 perc_disadvan:sizelarge    0.189     0.323     0.586   0.559   -0.446    0.824
-```
 
-```r
 # Regression table for parallel slopes model:
 parallel_slopes_MA <- 
   lm(average_sat_math ~ perc_disadvan + size, data = MA_schools)
 get_regression_table(parallel_slopes_MA)
-```
-
-```
 ## # A tibble: 4 x 7
 ##   term          estimate std_error statistic p_value lower_ci upper_ci
 ##   <chr>            <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
@@ -774,9 +728,6 @@ Why did we take this approach to address the 5 common student questions/comments
 
 ```r
 get_regression_points(score_model)
-```
-
-```
 ## # A tibble: 463 x 5
 ##       ID score   age score_hat residual
 ##    <int> <dbl> <int>     <dbl>    <dbl>
@@ -791,13 +742,7 @@ get_regression_points(score_model)
 ##  9     9   3.4    51      4.16   -0.759
 ## 10    10   4.5    40      4.22    0.276
 ## # … with 453 more rows
-```
-
-```r
 broom::augment(score_model)
-```
-
-```
 ## # A tibble: 463 x 9
 ##    score   age .fitted .se.fit  .resid    .hat .sigma   .cooksd .std.resid
 ##    <dbl> <int>   <dbl>   <dbl>   <dbl>   <dbl>  <dbl>     <dbl>      <dbl>

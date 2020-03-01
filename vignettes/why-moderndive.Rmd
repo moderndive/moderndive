@@ -63,9 +63,9 @@ knitr::opts_chunk$set(
   fig.align = "center",
   fig.show = "hold",
   # Etc:
-  # collapse = TRUE,
-  comment = "##",
-  tidy = FALSE
+  collapse = TRUE,
+  comment = "##"
+  # tidy = FALSE
 )
 
 # Needed packages
@@ -111,14 +111,14 @@ In Table \ref{tab:random-sample-courses} we present a subset of `r ncol(evals_sa
 evals_sample %>% 
   kable(
     digits = 3,
-    caption = "Random sample of 5 out of 463 courses at UT Austin.",
-    linesep = "",
-    booktabs = TRUE
-  ) %>% 
-  kable_styling(
-    font_size = ifelse(knitr:::is_latex_output(), 10, 16),
-    latex_options = c("hold_position")
-  )
+    caption = "Random sample of 5 out of 463 courses at UT Austin." #,
+    # linesep = "",
+    # booktabs = TRUE
+  ) # %>% 
+  # kable_styling(
+  #   font_size = ifelse(knitr:::is_latex_output(), 10, 16),
+  #   latex_options = c("hold_position")
+  # )
 ```
 
 
