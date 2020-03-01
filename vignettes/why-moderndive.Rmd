@@ -44,7 +44,7 @@ output:
 ---
 
 ```{r, include = FALSE}
-# # knitr settings
+# knitr settings
 knitr::opts_chunk$set(
   # Code output:
   warning = FALSE,
@@ -63,22 +63,26 @@ knitr::opts_chunk$set(
   # tidy = FALSE
 )
 
-
-# Needed packages
-library(dplyr)
+# Needed packages in vignette
+library(moderndive)
 library(ggplot2)
+library(dplyr)
+library(readr)
 library(knitr)
 library(broom)
-library(patchwork)
-library(moderndive)
 
-# https://www.youtube.com/watch?v=xjJ7FheCkCU
+# Needed packages internally
+library(patchwork)
+
+# Random number generator seed value
 set.seed(76)
 
+# Set ggplot defaults:
 scale_fill_discrete <- function(...){
   scale_fill_brewer(... ,  type = "div", palette="Set1", na.value = "grey50")
 }
 
+# Set output width for JOSE paper:
 options(width = 70)
 ```
 
@@ -106,16 +110,18 @@ In the following table, we present a subset of `r ncol(evals_sample)` of the `r 
 
 ```{r random-sample-courses, echo=FALSE}
 evals_sample %>% 
-  kable(
-    # digits = 3,
-    # caption = "Random sample of 5 out of 463 courses at UT Austin.",
-    # linesep = "",
-    # booktabs = TRUE
-  ) # %>% 
-  # kable_styling(
-  #   font_size = ifelse(knitr:::is_latex_output(), 10, 16),
-  #   latex_options = c("hold_position")
-  # )
+  kable() 
+```
+
+Before we proceed, let's load all the packages we are going to need.
+
+```{r}
+library(moderndive)
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(knitr)
+library(broom)
 ```
 
 
@@ -124,7 +130,6 @@ evals_sample %>%
 Let's fit a simple linear regression model of teaching `score` as a function of instructor `age` using the `lm()` function.
 
 ```{r}
-library(moderndive)
 score_model <- lm(score ~ age, data = evals)
 ```
 
@@ -163,11 +168,9 @@ To address these comments and questions, we've included three functions in the `
 
 ## Bonus: Visualizing parallel slopes models with `moderndive`
 
-Furthermore, say you would like to visualize the relationship between two numerical variables and a third categorical variable with $k$ levels using a colored scatterplot using the `ggplot2` package for data visualization [@R-ggplot2]. Using `geom_smooth(method = "lm", se = FALSE)` yields a visualization of an *interaction model* where each of the $k$ regression lines has their own intercept and slope. For example in \autoref{fig:interaction-model}, we extend our previous regression model by now mapping the categorical variable `ethnicity` to the `color` aesthetic. 
+Furthermore, say you would like to visualize the relationship between two numerical variables and a third categorical variable with $k$ levels using a colored scatterplot using the `ggplot2` package for data visualization [@R-ggplot2]. Using `geom_smooth(method = "lm", se = FALSE)` yields a visualization of an *interaction model* where each of the $k$ regression lines has their own intercept and slope. For example in `r if_else(is_html_output(), "the next figure", "\autoref{fig:interaction-model}")`, we extend our previous regression model by now mapping the categorical variable `ethnicity` to the `color` aesthetic. 
 
 ```{r interaction-model, fig.cap="Visualization of interaction model."}
-library(ggplot2)
-
 # Code to visualize interaction model:
 ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
@@ -212,7 +215,8 @@ We now argue why.
 
 
 
-
+<!-- Add horizontal line if html output-->
+`r if_else(is_html_output(), "***", "")`
 
 
 
@@ -266,7 +270,6 @@ get_regression_table(score_model)$std_error
 Furthermore, by piping the above `get_regression_table(score_model)` output into the `kable()` function from the `knitr` package [@R-knitr], you can obtain aesthetically pleasing regression tables in R Markdown documents, instead of jarring computer output font:
 
 ```{r}
-library(knitr)
 get_regression_table(score_model) %>% 
   kable()
 ```
