@@ -34,10 +34,10 @@ affiliations:
    index: 3
 bibliography: paper.bib
 output:
-  rmarkdown::html_vignette:
-    keep_md: yes
-    df_print: default
-    number_sections: yes
+  # rmarkdown::html_vignette:
+  #   keep_md: yes
+  #   df_print: default
+  #   number_sections: yes
   rticles::joss_article:
     keep_md: yes
     number_sections: yes

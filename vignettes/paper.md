@@ -34,10 +34,10 @@ affiliations:
    index: 3
 bibliography: paper.bib
 output:
-  rmarkdown::html_vignette:
-    keep_md: yes
-    df_print: default
-    number_sections: yes
+  # rmarkdown::html_vignette:
+  #   keep_md: yes
+  #   df_print: default
+  #   number_sections: yes
   rticles::joss_article:
     keep_md: yes
     number_sections: yes
@@ -159,7 +159,7 @@ To address these comments and questions, we've included three functions in the `
     ##  8     8   4.1    51      4.16   -0.059
     ##  9     9   3.4    51      4.16   -0.759
     ## 10    10   4.5    40      4.22    0.276
-    ## # … with 453 more rows
+    ## # ... with 453 more rows
     ```
 3. Get scalar summaries of a regression fit including $R^2$ and $R^2_{adj}$ but also the (root) mean-squared error:
     
@@ -185,10 +185,14 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   labs(x = "Age", y = "Teaching score", color = "Ethnicity")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="Figures/interaction-model-1.png" alt="Visualization of interaction model." width="100%" />
-<p class="caption">Visualization of interaction model.</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{Figures/interaction-model-1} 
+
+}
+
+\caption{Visualization of interaction model.}\label{fig:interaction-model}
+\end{figure}
 
 However, many introductory statistics courses start with the easier to teach "common slope, different intercepts" regression model, also known as the *parallel slopes* model. However, no such method exists with `geom_smooth()`
 
@@ -203,10 +207,14 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   labs(x = "Age", y = "Teaching score", color = "Ethnicity")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="Figures/parallel-slopes-model-1.png" alt="Visualization of parallel slopes model." width="100%" />
-<p class="caption">Visualization of parallel slopes model.</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{Figures/parallel-slopes-model-1} 
+
+}
+
+\caption{Visualization of parallel slopes model.}\label{fig:parallel-slopes-model}
+\end{figure}
 
 At this point however, students will inevitably ask a sixth question: "When would you ever use a parallel slopes model?"
 
@@ -378,10 +386,14 @@ ggplot(score_model_points, aes(x = residual)) +
   labs(x = "Residual", y = "Count")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="Figures/residuals-1-1.png" alt="Histogram visualizing distribution of residuals." width="100%" />
-<p class="caption">Histogram visualizing distribution of residuals.</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{Figures/residuals-1-1} 
+
+}
+
+\caption{Histogram visualizing distribution of residuals.}\label{fig:residuals-1}
+\end{figure}
 
 As another example, we can investigate potential relationships between the residuals and all explanatory/predictor variables and the presence of heteroskedasticity using partial residual plots, like the partial residual plot over age shown in \autoref{fig:residuals-2}.
 
@@ -393,10 +405,14 @@ ggplot(score_model_points, aes(x = age, y = residual)) +
   labs(x = "Age", y = "Residual")
 ```
 
-<div class="figure" style="text-align: center">
-<img src="Figures/residuals-2-1.png" alt="Partial residual residual plot over age." width="100%" />
-<p class="caption">Partial residual residual plot over age.</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{Figures/residuals-2-1} 
+
+}
+
+\caption{Partial residual residual plot over age.}\label{fig:residuals-2}
+\end{figure}
 
 
 ## 4. A quick-and-easy Kaggle predictive modeling competition submission!
@@ -422,10 +438,14 @@ get_regression_points(score_model, newdata = new_prof)
 
 Let's do another example, this time using the Kaggle [House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques){target="_blank"} practice competition (\autoref{fig:kaggle-1} displays the homepage for this competition). 
 
-<div class="figure" style="text-align: center">
-<img src="kaggle.png" alt="House prices Kaggle competition homepage." width="95%" />
-<p class="caption">House prices Kaggle competition homepage.</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=0.95\linewidth]{kaggle} 
+
+}
+
+\caption{House prices Kaggle competition homepage.}\label{fig:kaggle-1}
+\end{figure}
 
 This Kaggle competition requires you to fit/train a model to the provided `train.csv` training set to make predictions of house prices in the provided `test.csv` test set. We present an application of the `get_regression_points()` function allowing students to participate in this Kaggle competition. It will:
 
@@ -462,10 +482,14 @@ write_csv(submission, "submission.csv")
 After submitting `submission.csv` to the leaderboard for this Kaggle competition, we
 obtain a "root mean squared logarithmic error" (RMSLE) score of 0.42918 as seen in \autoref{fig:kaggle-2}.
 
-<div class="figure" style="text-align: center">
-<img src="leaderboard_orig.png" alt="Resulting Kaggle RMSLE score." width="100%" />
-<p class="caption">Resulting Kaggle RMSLE score.</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{leaderboard_orig} 
+
+}
+
+\caption{Resulting Kaggle RMSLE score.}\label{fig:kaggle-2}
+\end{figure}
 
 
 ## 5. Scalar summaries of linear regression model fits
@@ -520,10 +544,14 @@ Finally, the last common student comment and question:
 
 For example, recall the earlier visualizations of the interaction and parallel slopes models for teaching score as a function of age and ethnicity we saw in Figures \ref{fig:interaction-model} and \ref{fig:parallel-slopes-model}. Let's present both visualizations side-by-side in \autoref{fig:interaction-and-parallel-slopes-model-1}.
 
-<div class="figure" style="text-align: center">
-<img src="Figures/interaction-and-parallel-slopes-model-1-1.png" alt="Interaction (left) and parallel slopes (right) models." width="100%" />
-<p class="caption">Interaction (left) and parallel slopes (right) models.</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{Figures/interaction-and-parallel-slopes-model-1-1} 
+
+}
+
+\caption{Interaction (left) and parallel slopes (right) models.}\label{fig:interaction-and-parallel-slopes-model-1}
+\end{figure}
 
 Students might be wonder "Why would you use the parallel slopes model on the right when the data clearly form an "X" pattern as seen in the interaction model on the right?" This is an excellent opportunity to gently introduce the notion of *model selection* and *Occam's Razor*. That an interaction model should only be used over a parallel slopes model **if the additional complexity of the interaction model is warranted**. Here, we define model "complexity/simplicity" in terms of the number of parameters in the corresponding regression tables: 
 
@@ -537,8 +565,8 @@ get_regression_table(interaction_evals)
 ##   <chr>            <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
 ## 1 intercept        2.61      0.518      5.04   0        1.59     3.63 
 ## 2 age              0.032     0.011      2.84   0.005    0.01     0.054
-## 3 ethnicitynot…    2.00      0.534      3.74   0        0.945    3.04 
-## 4 age:ethnicit…   -0.04      0.012     -3.51   0       -0.063   -0.018
+## 3 ethnicitynot~    2.00      0.534      3.74   0        0.945    3.04 
+## 4 age:ethnicit~   -0.04      0.012     -3.51   0       -0.063   -0.018
 
 # Regression table for parallel slopes model:
 parallel_slopes_evals <- lm(score ~ age + ethnicity, data = evals)
@@ -548,7 +576,7 @@ get_regression_table(parallel_slopes_evals)
 ##   <chr>            <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
 ## 1 intercept        4.37      0.136     32.1    0        4.1      4.63 
 ## 2 age             -0.006     0.003     -2.5    0.013   -0.012   -0.001
-## 3 ethnicitynot…    0.138     0.073      1.89   0.059   -0.005    0.282
+## 3 ethnicitynot~    0.138     0.073      1.89   0.059   -0.005    0.282
 ```
 
 The interaction model is "more complex" as evidenced by its regression table involving 4 rows of parameter estimates whereas the parallel slopes model is "simpler" as evidenced by its regression table involving only 3 parameter estimates. In can be argued however that this additional complexity is warranted given the clearly different slopes in left-hand plot of \autoref{fig:interaction-and-parallel-slopes-model-1}.
@@ -575,10 +603,14 @@ ggplot(MA_schools,
   geom_parallel_slopes( se = FALSE)
 ```
 
-<div class="figure" style="text-align: center">
-<img src="Figures/interaction-and-parallel-slopes-model-2-1.png" alt="Interaction (left) and parallel slopes (right) models." width="100%" />
-<p class="caption">Interaction (left) and parallel slopes (right) models.</p>
-</div>
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{Figures/interaction-and-parallel-slopes-model-2-1} 
+
+}
+
+\caption{Interaction (left) and parallel slopes (right) models.}\label{fig:interaction-and-parallel-slopes-model-2}
+\end{figure}
 
 In terms of the corresponding regression tables, observe that the corresponding regression table for the parallel slopes model has 4 rows as opposed to the 6 for the interaction model, reflecting its higher degree of "model simplicity."
 
@@ -595,8 +627,8 @@ get_regression_table(interaction_MA)
 ## 2 perc_disadvan   -2.93      0.294    -9.96    0       -3.51    -2.35 
 ## 3 sizemedium     -17.8      15.8      -1.12    0.263  -48.9     13.4  
 ## 4 sizelarge      -13.3      13.8      -0.962   0.337  -40.5     13.9  
-## 5 perc_disadva…    0.146     0.371     0.393   0.694   -0.585    0.877
-## 6 perc_disadva…    0.189     0.323     0.586   0.559   -0.446    0.824
+## 5 perc_disadva~    0.146     0.371     0.393   0.694   -0.585    0.877
+## 6 perc_disadva~    0.189     0.323     0.586   0.559   -0.446    0.824
 
 # Regression table for parallel slopes model:
 parallel_slopes_MA <- 
@@ -651,7 +683,7 @@ get_regression_points(score_model)
 ##  8     8   4.1    51      4.16   -0.059
 ##  9     9   3.4    51      4.16   -0.759
 ## 10    10   4.5    40      4.22    0.276
-## # … with 453 more rows
+## # ... with 453 more rows
 broom::augment(score_model)
 ## # A tibble: 463 x 9
 ##    score   age .fitted .se.fit  .resid    .hat .sigma .cooksd
@@ -666,7 +698,7 @@ broom::augment(score_model)
 ##  8   4.1    51    4.16  0.0261 -0.0591 0.00232  0.542 1.39e-5
 ##  9   3.4    51    4.16  0.0261 -0.759  0.00232  0.541 2.29e-3
 ## 10   4.5    40    4.22  0.0331  0.276  0.00374  0.542 4.88e-4
-## # … with 453 more rows, and 1 more variable: .std.resid <dbl>
+## # ... with 453 more rows, and 1 more variable: .std.resid <dbl>
 ```
 
 The source code for these three `get_regression` functions can be found  [GitHub](https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R){target="_blank"}.
