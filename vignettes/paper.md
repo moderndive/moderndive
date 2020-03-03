@@ -456,9 +456,6 @@ This Kaggle competition requires you to fit/train a model to the provided `train
 1. Fit a naive model of house sale price as a function of year sold to the training data.
 1. Make predictions on the test data and write them to a `submission.csv` file that can be submitted to Kaggle using `get_regression_points()`. Note the use of the `ID` argument to use the `id` variable in `test` to identify the rows (a requirement of Kaggle competition submissions).
 
-<!-- CHESTER: How about uploading these files to moderndive.com instead via the
-release branch? Maybe a bit nitpicky but long URLs always scare me and the length here makes the code float into the margin too. -->
-
 
 ```r
 library(readr)
@@ -466,12 +463,8 @@ library(dplyr)
 library(moderndive)
 
 # Load in training and test set
-train <- 
-  "https://github.com/moderndive/moderndive/raw/master/vignettes/train.csv" %>% 
-  read_csv()
-test <- 
-  "https://github.com/moderndive/moderndive/raw/master/vignettes/test.csv" %>% 
-  read_csv()
+train <- read_csv("https://moderndive.com/data/train.csv")
+test <- read_csv("https://moderndive.com/data/test.csv")
 
 # Fit model:
 house_model <- lm(SalePrice ~ YrSold, data = train)
