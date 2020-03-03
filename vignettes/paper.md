@@ -1,7 +1,7 @@
 ---
-title: "Using the `moderndive` R package for introductory linear regression"
+title: "Take a `moderndive` into introductory linear regression with R"
 author: "Albert Y. Kim, Chester Ismay, and Max Kuhn"
-date: "2020-03-01"
+date: "2020-03-02"
 vignette: >
   %\VignetteIndexEntry{Why should you use the moderndive package for intro linear regression?}
   %\VignetteEncoding{UTF-8}
@@ -53,7 +53,8 @@ output:
 
 Linear regression has long been a staple of introductory statistics courses. While the timing of when to introduce it may have changed (many argue that descriptive regression should be done earlier in the curriculum and then revisited later after statistical inference has been covered), its overall importance in the introductory statistics curriculum remains the same.
 
-Let's consider data gathered from end of semester student evaluations for a sample of 463 courses taught by 94 professors from the University of Texas at Austin from [openintro.org](https://www.openintro.org/data/index.php?data=evals){target="_blank"} [@diez2015openintro]. This data is included in `evals` data frame from the [`moderndive`](https://moderndive.github.io/moderndive/){target="_blank"} R package for tidyverse-friendly introductory linear regression, an R package designed to supplement the book "Statistical Inference via Data Science: A ModernDive into R and the Tidyverse" [@ismay2019moderndive].
+Let's consider data gathered from end of semester student evaluations for a sample of 463 courses taught by 94 professors from the University of Texas at Austin from [openintro.org](https://www.openintro.org/data/index.php?data=evals){target="_blank"} [@diez2015openintro]. This data is included in the `evals` data frame from the [`moderndive`](https://moderndive.github.io/moderndive/){target="_blank"} R package for [tidyverse](https://www.tidyverse.org/)-friendly introductory linear regression, an R package designed to supplement the book "Statistical Inference via Data Science: A ModernDive into R and the Tidyverse" [@ismay2019moderndive]. Note that the book is also available online at https://www.moderndive.com and is referred to as "ModernDive" for short.
+
 
 
 
@@ -61,7 +62,7 @@ In the following table, we present a subset of 9 of the 14 variables included fo
 
 1. `ID` uniquely identifies the course whereas `prof_ID` identifies the professor who taught this course. This distinction is important since many professors are included more than once in this dataset.
 1. `score` is the outcome variable of interest: average professor evaluation score out of 5 as given by the students in this course.
-1. The remaining variables are demographic variables describing that course's instructor, including `bty_avg` average "beauty" score for that professor as given by a panel of 6 students.^[Note that `gender` was collected as a binary variable at the time of the study (2005).]
+1. The remaining variables are demographic variables describing that course's instructor, including `bty_avg` (average "beauty" score) for that professor as given by a panel of 6 students.^[Note that `gender` was collected as a binary variable at the time of the study (2005).]
 
 
   ID   prof_ID   score   age   bty_avg  gender   ethnicity      language   rank    
@@ -72,7 +73,7 @@ In the following table, we present a subset of 9 of the 14 variables included fo
  434        88     2.8    62     2.000  male     not minority   english    tenured 
  330        66     4.0    64     2.333  male     not minority   english    tenured 
 
-Before we proceed, let's load all the packages we are going to need.
+Before we proceed, let's load all the R packages we are going to need.
 
 
 ```r
@@ -94,7 +95,7 @@ Let's fit a simple linear regression model of teaching `score` as a function of 
 score_model <- lm(score ~ age, data = evals)
 ```
 
-Let's now study the output of the fitted model `score_model` "the good old fashioned way": using `summary.lm()`.
+Let's now study the output of the fitted model `score_model` "the good old-fashioned way": using `summary()` (which calls `summary.lm()` behind the scenes and we'll refer to them interchangeably throughout this paper).
 
 
 ```r
@@ -119,10 +120,10 @@ summary(score_model)
 ## F-statistic: 5.342 on 1 and 461 DF,  p-value: 0.02125
 ```
 
-Here are five common student questions we've heard over the years in our introductory statistics courses based on this output. 
+Here are 5 common student questions we've heard over the years in our introductory statistics courses based on this output. 
 
 1. "Wow! Look at those p-value stars! Stars are good, so I should try to get many stars, right?"
-1. "How do extract the values in the regression table?"
+1. "How do we extract the values in the regression table?"
 1. "Where are the fitted and predicted values and residuals?"
 1. "How do I apply this model to a new set of data to make predictions?"
 1. "What is all this other stuff at the bottom?"
@@ -142,7 +143,7 @@ To address these comments and questions, we've included three functions in the `
     ## 1 intercept    4.46      0.127     35.2    0        4.21     4.71 
     ## 2 age         -0.006     0.003     -2.31   0.021   -0.011   -0.001
     ```
-2. Get information on each point/observation in your regression, including fitted and predicted values & residuals, in a single data frame:
+2. Get information on each point/observation in your regression, including fitted and predicted values and residuals, in a single data frame:
     
     ```r
     get_regression_points(score_model)
@@ -174,7 +175,7 @@ To address these comments and questions, we've included three functions in the `
 
 ## Bonus: Visualizing parallel slopes models with `moderndive`
 
-Furthermore, say you would like to visualize the relationship between two numerical variables and a third categorical variable with $k$ levels using a colored scatterplot using the `ggplot2` package for data visualization [@R-ggplot2]. Using `geom_smooth(method = "lm", se = FALSE)` yields a visualization of an *interaction model* where each of the $k$ regression lines has their own intercept and slope. For example in \autoref{fig:interaction-model}, we extend our previous regression model by now mapping the categorical variable `ethnicity` to the `color` aesthetic. 
+Furthermore, say you would like to visualize the relationship between two numerical variables and a third categorical variable with $k$ levels. Let's create this using a colored scatterplot via the `ggplot2` package for data visualization [@R-ggplot2]. Using `geom_smooth(method = "lm", se = FALSE)` yields a visualization of an *interaction model* where each of the $k$ regression lines has their own intercept and slope. For example in \autoref{fig:interaction-model}, we extend our previous regression model by now mapping the categorical variable `ethnicity` to the `color` aesthetic.
 
 
 ```r
@@ -194,7 +195,7 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 \caption{Visualization of interaction model.}\label{fig:interaction-model}
 \end{figure}
 
-However, many introductory statistics courses start with the easier to teach "common slope, different intercepts" regression model, also known as the *parallel slopes* model. However, no such method exists with `geom_smooth()`
+However, many introductory statistics courses start with the easier to teach "common slope, different intercepts" regression model, also known as the *parallel slopes* model. However, no such method exists with `geom_smooth()`.
 
 [Evgeni Chasnovski](https://github.com/echasnovski){target="_blank"} thus wrote a custom `geom_` extension to `ggplot2` called `geom_parallel_slopes()`; this extension is included in the `moderndive` package. Much like `geom_smooth()` from the `ggplot2` package, you merely add a `geom_parallel_slopes` layer to your plot as seen in \autoref{fig:parallel-slopes-model}.
 
@@ -216,19 +217,19 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 \caption{Visualization of parallel slopes model.}\label{fig:parallel-slopes-model}
 \end{figure}
 
-At this point however, students will inevitably ask a sixth question: "When would you ever use a parallel slopes model?"
+At this point however, students will inevitably ask a sixth question: "When would you ever use a parallel slopes model?" We'll discuss an answer to this later in the paper.
 
 
 ## Why should you use the `moderndive` package?
 
-To recap this introduction, we believe that that the following functions included in the `moderndive` package:
+To recap this introduction, we believe that that the following functions included in the `moderndive` package
 
 1. `get_regression_table()`
 1. `get_regression_points()`
 1. `get_regression_summaries()`
 1. `geom_parallel_slopes()`
 
-are effective pedagogical tools that can help address the above six common student comments and questions relating to introductory linear regression performed in R:
+are effective pedagogical tools that can help address and build intuition for students to think further about the above six common student comments and questions relating to introductory linear regression performed in R:
 
 1. "Wow! Look at those p-value stars! Stars are good, so I should try to get many stars, right?"
 1. "How do extract the values in the regression table?"
@@ -252,7 +253,7 @@ The first common student comment and question:
 We argue that the `summary.lm()` output is deficient in an introductory statistics setting because:
 
 1. The `Signif. codes:  0 '' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1` only encourage **p-hacking**. In case you have not yet been convinced of the perniciousness of p-hacking, perhaps comedian [John Oliver can convince you](https://www.youtube.com/watch?v=0Rnq1NpHdmw){target="_blank"}.  
-1. While not a silver bullet for eliminating misinterpretations of statistical inference results, confidence intervals present students with a sense of the practical significance as well as the statistical significance of any results. These are not included by default in the output. 
+1. While not a silver bullet for eliminating misinterpretations of statistical inference results, confidence intervals present students with a sense of the practical significance as well as the statistical significance of any results. These are not included by default in the output of `summary.lm()`. 
 
 Instead of `summary()`, let's use the `get_regression_table()` function in the `moderndive` package:
 
@@ -273,7 +274,7 @@ Observe how the p-value stars are omitted and confidence intervals for the point
 
 The second common student comment and question:
 
-> "How do extract the values in the regression table?"
+> "How do we extract the values in the regression table?"
 
 While one might argue that extracting the intercept and slope coefficients can be simply done using `coefficients(score_model)`, what about the standard errors? A Google query of "_how do I extract standard errors from lm in r_" yields results from [the R mailing list](https://stat.ethz.ch/pipermail/r-help/2008-April/160538.html){target="_blank"} and from [crossvalidated](https://stats.stackexchange.com/questions/27511/extract-standard-errors-of-coefficient-linear-regression-r){target="_blank"} suggesting we run:
 
@@ -284,7 +285,8 @@ sqrt(diag(vcov(score_model)))
 ## 0.126778499 0.002569157
 ```
 
-We argue that it shouldn't be this hard, especially in an introductory statistics setting. To rectify this, the three `get_regression` functions in the `moderndive` package all return data frames in tibble format [@R-tibble]. Therefore you can easily extract columns using the `pull` from the `dplyr` package [@R-dplyr]:
+We argue that it shouldn't be this hard, especially in an introductory statistics setting. To rectify this, the three `get_regression` functions in the `moderndive` package all return data frames in the tidyverse-style tibble (tidy table) format [@R-tibble]. Therefore you can easily extract columns using the `pull()` function from the `dplyr` package [@R-dplyr]:
+
 
 
 ```r
@@ -376,7 +378,7 @@ Observe that the original outcome variable `score` and explanatory/predictor var
 
 Furthermore, recall that since all outputs in the `moderndive` package are tibble data frames, custom residual analysis plots can be created instead of relying on the default plots yielded by `plot.lm()`. For example, we can check for the normality of residuals using the histogram of residuals shown in \autoref{fig:residuals-1}.
 
-* A *partial residual plot* of the ; in this case a scatterplot of the residuals over `age`.  
+* A *partial residual plot* for the model; in this case a scatterplot of the residuals over `age`.    
 
 
 ```r
@@ -395,7 +397,7 @@ ggplot(score_model_points, aes(x = residual)) +
 \caption{Histogram visualizing distribution of residuals.}\label{fig:residuals-1}
 \end{figure}
 
-As another example, we can investigate potential relationships between the residuals and all explanatory/predictor variables and the presence of heteroskedasticity using partial residual plots, like the partial residual plot over age shown in \autoref{fig:residuals-2}.
+As another example, we can investigate potential relationships between the residuals and all explanatory/predictor variables and the presence of heteroskedasticity using partial residual plots, like the partial residual plot over age shown in \autoref{fig:residuals-2}. If the term "heteroskedasicity" is new to you, it corresponds to the variability of one variable being unequal across the range of values of another variable. It's a common phenomenon in statistics to check for.
 
 
 ```r
@@ -423,7 +425,8 @@ The fourth common student comment and question:
 
 With the fields of machine learning and artificial intelligence gaining prominence, the importance of predictive modeling cannot be understated. Therefore, we've designed the `get_regression_points()` function to allow for a `newdata` argument to quickly apply a previously fitted model to new observations. 
 
-Let's create an artificial "new" dataset consisting of two instructors of age 39 and 42 and save it in a data framed called `new_prof`. We then set the `newdata` argument to `get_regression_points()` to apply our previously fitted model `score_model` to this new data, where `score_hat` are the corresponding fitted/predicted values. 
+Let's create an artificial "new" dataset consisting of two instructors of age 39 and 42 and save it in a tibble data frame called `new_prof`. We then set the `newdata` argument to `get_regression_points()` to apply our previously fitted model `score_model` to this new data, where `score_hat` holds the corresponding fitted/predicted values. 
+
 
 
 ```r
@@ -452,6 +455,9 @@ This Kaggle competition requires you to fit/train a model to the provided `train
 1. Read in the training and test data.
 1. Fit a naive model of house sale price as a function of year sold to the training data.
 1. Make predictions on the test data and write them to a `submission.csv` file that can be submitted to Kaggle using `get_regression_points()`. Note the use of the `ID` argument to use the `id` variable in `test` to identify the rows (a requirement of Kaggle competition submissions).
+
+<!-- CHESTER: How about uploading these files to moderndive.com instead via the
+release branch? Maybe a bit nitpicky but long URLs always scare me and the length here makes the code float into the margin too. -->
 
 
 ```r
@@ -553,7 +559,7 @@ For example, recall the earlier visualizations of the interaction and parallel s
 \caption{Interaction (left) and parallel slopes (right) models.}\label{fig:interaction-and-parallel-slopes-model-1}
 \end{figure}
 
-Students might be wonder "Why would you use the parallel slopes model on the right when the data clearly form an "X" pattern as seen in the interaction model on the right?" This is an excellent opportunity to gently introduce the notion of *model selection* and *Occam's Razor*. That an interaction model should only be used over a parallel slopes model **if the additional complexity of the interaction model is warranted**. Here, we define model "complexity/simplicity" in terms of the number of parameters in the corresponding regression tables: 
+Students might be wondering "Why would you use the parallel slopes model on the right when the data clearly form an "X" pattern as seen in the interaction model on the right?" This is an excellent opportunity to gently introduce the notion of *model selection* and *Occam's Razor*:  an interaction model should only be used over a parallel slopes model **if the additional complexity of the interaction model is warranted**. Here, we define model "complexity/simplicity" in terms of the number of parameters in the corresponding regression tables: 
 
 
 ```r
@@ -579,9 +585,9 @@ get_regression_table(parallel_slopes_evals)
 ## 3 ethnicitynot~    0.138     0.073      1.89   0.059   -0.005    0.282
 ```
 
-The interaction model is "more complex" as evidenced by its regression table involving 4 rows of parameter estimates whereas the parallel slopes model is "simpler" as evidenced by its regression table involving only 3 parameter estimates. In can be argued however that this additional complexity is warranted given the clearly different slopes in left-hand plot of \autoref{fig:interaction-and-parallel-slopes-model-1}.
+The interaction model is "more complex" as evidenced by its regression table involving 4 rows of parameter estimates whereas the parallel slopes model is "simpler" as evidenced by its regression table involving only 3 parameter estimates. It can be argued however that this additional complexity is warranted given the clearly different slopes in the left-hand plot of \autoref{fig:interaction-and-parallel-slopes-model-1}.
 
-We now present a contrasting example, this time from [ModernDive 6.3.1](https://moderndive.com/6-multiple-regression.html#model-selection) involving Massachusetts USA public high schools. Read the help file by running `?MA_schools` for more details. Let's plot both the interaction and parallel slopes models in \autoref{fig:interaction-and-parallel-slopes-model-2}.
+We now present a contrasting example, this time from Chapter 6 of the online version of [ModernDive Subsection 6.3.1](https://moderndive.com/6-multiple-regression.html#model-selection) involving Massachusetts USA public high schools. Read the help file by running `?MA_schools` for more details. Let's plot both the interaction and parallel slopes models in \autoref{fig:interaction-and-parallel-slopes-model-2}.
 
 
 ```r
@@ -645,27 +651,26 @@ get_regression_table(parallel_slopes_MA)
 
 Unlike our earlier comparison of interaction and parallel slopes models in \autoref{fig:interaction-and-parallel-slopes-model-1}, in this case it could be argued that the additional complexity of the interaction model is *not* warranted since the 3 three regression lines in the left-hand interaction are already somewhat parallel. Therefore the simpler parallel slopes model should be favored. 
 
-Going one step further, it could be argued from the visualization of the parallel slopes model in the right-hand plot of \ref{fig:interaction-and-parallel-slopes-model-2} that the additional model complexity induced by introducing the categorical variable school `size` is not warranted given that the intercepts are similar! Therefore, it could be argued that a simple linear regression model using only `perc_disadvan` percent of the student body that are economically disadvantaged should be favored.
+Going one step further, it could be argued from the visualization of the parallel slopes model in the right-hand plot of \autoref{fig:interaction-and-parallel-slopes-model-2} that the additional model complexity induced by introducing the categorical variable school `size` is not warranted given that the intercepts are similar! Therefore, it could be argued that a simple linear regression model using only `perc_disadvan` percent of the student body that are economically disadvantaged should be favored.
 
-While many students will inevitably find these results depressing, in our opinion it is important to additionally emphasize that such regression analyses can be used as an empowering tool to bring to light inequities in access to education and inform policy decisions.
-
+While many students will inevitably find these results depressing, in our opinion, it is important to additionally emphasize that such regression analyses can be used as an empowering tool to bring to light inequities in access to education and inform policy decisions.
 
 
 # The Details
 
 ## Three wrappers to `broom` functions {#broom-wrappers}
 
-As we mentioned earlier, the three `get_regression` functions are merely wrappers of functions from the `broom` package for converting statistical analysis objects into tidy tibbles along with a few added tweaks, but with the introductory statistics student in mind [@R-broom]:
+As we mentioned earlier, the three `get_regression_*` functions are merely wrappers of functions from the `broom` package for converting statistical analysis objects into tidy tibbles along with a few added tweaks, but with the introductory statistics student in mind [@R-broom]:
 
-1. `get_regression_table()` is a wrapper for `broom::tidy()`
-1. `get_regression_points()` is a wrapper for `broom::augment()`
-1. `get_regression_summaries` is a wrapper for `broom::glance()`
+1. `get_regression_table()` is a wrapper for `broom::tidy()`.
+1. `get_regression_points()` is a wrapper for `broom::augment()`.
+1. `get_regression_summaries` is a wrapper for `broom::glance()`.
 
-Why did we take this approach to address the 5 common student questions/comments at the outset of the article?
+Why did we take this approach to address the initial 5 common student questions/comments at the outset of the article?
 
-1. By writing wrappers to pre-existing functions, instead of creating new custom functions, there is minimal re-inventing the wheel necessary. 
-1. In our experience, novice R users had a hard time understanding the `broom` package function names `tidy()`, `augment()`, and `glance()`. The make them more user-friendly, the `moderndive` package wrappers have much more intuitively named `get_regression_table()`, `get_regression_points()`, and `get_regression_summaries()`.
-1. The variables included in the outputs of the above 3 `broom` functions are not all applicable to an introductory statistics students and of those that were we found them to be unintuitively named. We therefore cut out some of the variables from the output and renamed some of the remaining variables. For example, compare the outputs of the `get_regression_points()` wrapper function and the parent `broom::augment()` function.
+1. By writing wrappers to pre-existing functions, instead of creating new custom functions, there is minimal re-inventing of the wheel necessary. 
+1. In our experience, novice R users had a hard time understanding the `broom` package function names `tidy()`, `augment()`, and `glance()`. To make them more user-friendly, the `moderndive` package wrappers have much more intuitively named `get_regression_table()`, `get_regression_points()`, and `get_regression_summaries()`.
+1. The variables included in the outputs of the above 3 `broom` functions are not all applicable to an introductory statistics students and, of those that were, we found them to be unintuitively named. We therefore cut out some of the variables from the output and renamed some of the remaining variables. For example, compare the outputs of the `get_regression_points()` wrapper function and the parent `broom::augment()` function.
 
 
 ```r
@@ -701,12 +706,12 @@ broom::augment(score_model)
 ## # ... with 453 more rows, and 1 more variable: .std.resid <dbl>
 ```
 
-The source code for these three `get_regression` functions can be found  [GitHub](https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R){target="_blank"}.
+The source code for these three `get_regression_*` functions can be found on [GitHub](https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R){target="_blank"}.
 
 
 ## Custom geometries
 
-The `geom_parallel_slopes()` is a custom built `geom` extension to the `ggplot2` package. For example, the `ggplot2` webpage page gives [instructions](https://ggplot2.tidyverse.org/articles/extending-ggplot2.html){target="_blank"} on how to create such extensions. The source code for `geom_parallel_slopes()` written by [Evgeni Chasnovski](https://github.com/echasnovski){target="_blank"} can be found  [GitHub](https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R){target="_blank"}. 
+The `geom_parallel_slopes()` is a custom built `geom` extension to the `ggplot2` package. For example, the `ggplot2` webpage page gives [instructions](https://ggplot2.tidyverse.org/articles/extending-ggplot2.html){target="_blank"} on how to create such extensions. The source code for `geom_parallel_slopes()` written by [Evgeni Chasnovski](https://github.com/echasnovski){target="_blank"} can be found on [GitHub](https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R){target="_blank"}.
 
 
 
