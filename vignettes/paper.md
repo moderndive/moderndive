@@ -132,7 +132,7 @@ Here are 5 common student questions we've heard over the years in our introducto
 
 ## Regression analysis using `moderndive`
 
-To address these questions, we've included three functions in the `moderndive` package that take a fitted model object as input and return the same information as `summary.lm()`, but output them in tidyverse-friendly format [@tidyverse2019]. As we'll see in \autoref{broom-wrappers}, while these three functions are merely wrappers to existing functions in the `broom` package for converting statistical objects into tidy tibbles, we modified them with the introductory statistics student in mind [@R-broom].
+To address these questions, we've included three functions in the `moderndive` package that take a fitted model object as input and return the same information as `summary.lm()`, but output them in tidyverse-friendly format [@tidyverse2019]. As we'll see later, while these three functions are merely wrappers to existing functions in the `broom` package for converting statistical objects into tidy tibbles, we modified them with the introductory statistics student in mind [@R-broom].
 
 1. Get a tidy regression table **with confidence intervals**:
     
