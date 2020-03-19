@@ -12,7 +12,7 @@
 ^data-raw$
 ^docs$
 ^images$
-^CONDUCT\.md$
+^CODE_OF_CONDUCT\.md$
 ^codecov\.yml$
 ^CRAN-RELEASE$
 ^Publish Document\.dcf$

@@ -142,7 +142,7 @@
 #' 94 professors from the University of Texas at Austin. In addition, six 
 #' students rate the professors' physical appearance. The result is a data frame 
 #' where each row contains a different course and each column has information on 
-#' either the course or the professor \url{https://www.openintro.org/stat/data/?data=evals}
+#' either the course or the professor \url{https://www.openintro.org/data/index.php?data=evals}
 #' 
 #' @format A data frame with 463 observations corresponding to courses on the following 13 variables.
 #' \describe{
