@@ -40,6 +40,14 @@ scale_fill_discrete <- function(...){
 # Set output width for JOSE paper:
 options(width = 70)
 
+## -------------------------------------------------------------------
+library(moderndive)
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(knitr)
+library(broom)
+
 ## ---- echo=FALSE----------------------------------------------------
 evals_sample <- evals %>% 
   select(ID, prof_ID, score, age, bty_avg, gender, ethnicity, language, rank) %>% 
@@ -48,14 +56,6 @@ evals_sample <- evals %>%
 ## ----random-sample-courses, echo=FALSE------------------------------
 evals_sample %>% 
   kable() 
-
-## -------------------------------------------------------------------
-library(moderndive)
-library(ggplot2)
-library(dplyr)
-library(readr)
-library(knitr)
-library(broom)
 
 ## -------------------------------------------------------------------
 score_model <- lm(score ~ age, data = evals)
@@ -146,12 +146,8 @@ get_regression_points(score_model, newdata = new_prof)
 #  library(moderndive)
 #  
 #  # Load in training and test set
-#  train <-
-#    "https://github.com/moderndive/moderndive/raw/master/vignettes/train.csv" %>%
-#    read_csv()
-#  test <-
-#    "https://github.com/moderndive/moderndive/raw/master/vignettes/test.csv" %>%
-#    read_csv()
+#  train <- read_csv("https://moderndive.com/data/train.csv")
+#  test <- read_csv("https://moderndive.com/data/test.csv")
 #  
 #  # Fit model:
 #  house_model <- lm(SalePrice ~ YrSold, data = train)
