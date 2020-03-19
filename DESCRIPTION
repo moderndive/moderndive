@@ -30,6 +30,7 @@ Imports:
     formula.tools,
     stringr,
     knitr,
+    viridis,
     infer,
     rlang (>= 0.2.0),
     glue
