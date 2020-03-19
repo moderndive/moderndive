@@ -1,229 +1,249 @@
-## ---- include = FALSE---------------------------------------------------------
+## ---- include = FALSE-----------------------------------------------
+# knitr settings
 knitr::opts_chunk$set(
+  # Code output:
+  warning = FALSE,
+  message = FALSE,
+  echo = TRUE,
+  # Figure:
+  out.width = "100%",
+  fig.path = "Figures/",
+  fig.width = 16/2.5,
+  fig.height = 9/2.5,
+  fig.align = "center",
+  fig.show = "hold",
+  # Etc:
   collapse = TRUE,
-  comment = "#>"
+  comment = "##"
+  # tidy = FALSE
 )
-knitr::opts_chunk$set(
-  echo=TRUE, message=FALSE, warning=FALSE,
-  fig.width=16/2, fig.height=9/2
-  )
 
-# Needed packages
-library(dplyr)
-library(ggplot2)
+# Needed packages in vignette
 library(moderndive)
+library(ggplot2)
+library(dplyr)
+library(readr)
 library(knitr)
 library(broom)
+library(viridis)
+
+# Needed packages internally
 library(patchwork)
 
-# https://www.youtube.com/watch?v=xjJ7FheCkCU
+# Random number generator seed value
 set.seed(76)
 
-## ---- echo=FALSE--------------------------------------------------------------
-library(moderndive)
-library(knitr)
-evals %>% 
-  select(ID, score, age, bty_avg, gender, ethnicity, language, rank) %>% 
-  sample_n(5) %>% 
-  kable()
+# Set ggplot defaults for JOSE output:
+if(!knitr::is_html_output()){
+  # Grey theme:
+  theme_set(theme_light())
+  
+  scale_colour_discrete <- scale_colour_viridis_d
 
-## -----------------------------------------------------------------------------
+}
+
+
+# Set output width for JOSE paper:
+options(width = 70)
+
+## -------------------------------------------------------------------
 library(moderndive)
+library(ggplot2)
+library(dplyr)
+library(readr)
+library(knitr)
+library(broom)
+
+## ---- echo=FALSE----------------------------------------------------
+evals_sample <- evals %>% 
+  select(ID, prof_ID, score, age, bty_avg, gender, ethnicity, language, rank) %>% 
+  sample_n(5)
+
+## ----random-sample-courses, echo=FALSE------------------------------
+evals_sample %>% 
+  kable() 
+
+## -------------------------------------------------------------------
 score_model <- lm(score ~ age, data = evals)
 
-## -----------------------------------------------------------------------------
+## -------------------------------------------------------------------
 summary(score_model)
 
-## -----------------------------------------------------------------------------
+## -------------------------------------------------------------------
 get_regression_table(score_model)
 
-## -----------------------------------------------------------------------------
+## -------------------------------------------------------------------
 get_regression_points(score_model)
 
-## -----------------------------------------------------------------------------
+## -------------------------------------------------------------------
 get_regression_summaries(score_model)
 
-## ---- echo=TRUE, eval=TRUE, fig.width=16/2.2, fig.height=9/2.2----------------
-library(ggplot2)
+## ----interaction-model, fig.cap="Visualization of interaction model."----
+# Code to visualize interaction model:
 ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
-  labs(x = "Instructor age", y = "Teaching score", color = "Instructor\nEthnicity",
-       title = "Interaction model") +
-  geom_smooth(method = "lm", se = FALSE)
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(x = "Age", y = "Teaching score", color = "Ethnicity")
 
-## ---- echo=TRUE, eval=TRUE, fig.width=16/2.2, fig.height=9/2.2----------------
-library(ggplot2)
-library(moderndive)
+## ----parallel-slopes-model, fig.cap="Visualization of parallel slopes model."----
+# Code to visualize parallel slopes model:
 ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
-  labs(x = "Instructor age", y = "Teaching score", color = "Instructor\nEthnicity",
-       title = "Parallel slopes model") + 
-  geom_parallel_slopes(se = FALSE)
+  geom_parallel_slopes(se = FALSE) +
+  labs(x = "Age", y = "Teaching score", color = "Ethnicity")
 
-## -----------------------------------------------------------------------------
+## -------------------------------------------------------------------
 get_regression_table(score_model)
 
-## -----------------------------------------------------------------------------
-get_regression_table(score_model) %>% 
-  knitr::kable()
-
-## -----------------------------------------------------------------------------
+## -------------------------------------------------------------------
 sqrt(diag(vcov(score_model)))
 
-## -----------------------------------------------------------------------------
+## -------------------------------------------------------------------
 get_regression_table(score_model) %>% 
   pull(std_error)
 
-## -----------------------------------------------------------------------------
+## -------------------------------------------------------------------
 get_regression_table(score_model)$std_error
 
-## ---- eval=FALSE--------------------------------------------------------------
+## -------------------------------------------------------------------
+get_regression_table(score_model) %>% 
+  kable()
+
+## ---- eval=FALSE----------------------------------------------------
 #  fitted(score_model)
 
-## ---- echo=FALSE--------------------------------------------------------------
+## ---- echo=FALSE----------------------------------------------------
 fitted(score_model)[1:10]
 
-## ---- eval=FALSE--------------------------------------------------------------
+## ---- eval=FALSE----------------------------------------------------
 #  residuals(score_model)
 
-## ---- echo=FALSE--------------------------------------------------------------
+## ---- echo=FALSE----------------------------------------------------
 residuals(score_model)[1:10]
 
-## ---- eval=FALSE--------------------------------------------------------------
-#  get_regression_points(score_model)
+## ---- eval=FALSE----------------------------------------------------
+#  score_model_points <- get_regression_points(score_model)
+#  score_model_points
 
-## ---- echo=FALSE--------------------------------------------------------------
-get_regression_points(score_model) %>% 
+## ---- echo=FALSE----------------------------------------------------
+score_model_points <- get_regression_points(score_model)
+score_model_points %>% 
   slice(1:10)
 
-## ---- echo=TRUE, eval=TRUE, fig.width=16/2.2, fig.height=9/2.2----------------
-score_model_points <- get_regression_points(score_model)
-
-# Histogram of residuals:
+## ----residuals-1, fig.cap="Histogram visualizing distribution of residuals."----
+# Code to visualize distribution of residuals:
 ggplot(score_model_points, aes(x = residual)) +
   geom_histogram(bins = 20) +
-  labs(title = "Histogram of residuals")
+  labs(x = "Residual", y = "Count")
 
-# Investigating patterns:
+## ----residuals-2, fig.cap="Partial residual residual plot over age."----
+# Code to visualize partial residual plot over age:
 ggplot(score_model_points, aes(x = age, y = residual)) +
   geom_point() +
-  labs(title = "Residuals over age")
+  labs(x = "Age", y = "Residual")
 
-## -----------------------------------------------------------------------------
-new_evals <- evals %>% 
-  sample_n(4) %>% 
-  select(-score)
-new_evals
+## -------------------------------------------------------------------
+new_prof <- tibble(age = c(39, 42))
+get_regression_points(score_model, newdata = new_prof)
 
-get_regression_points(score_model, newdata = new_evals)
-
-## ---- out.width = "500px", echo=FALSE, fig.align='center'---------------------
-knitr::include_graphics("kaggle.png")
-
-## ---- eval=FALSE--------------------------------------------------------------
-#  library(tidyverse)
+## ---- eval=FALSE----------------------------------------------------
+#  library(readr)
+#  library(dplyr)
 #  library(moderndive)
 #  
 #  # Load in training and test set
-#  train <- read_csv("https://github.com/moderndive/moderndive/raw/master/vignettes/train.csv")
-#  test <- read_csv("https://github.com/moderndive/moderndive/raw/master/vignettes/test.csv")
+#  train <- read_csv("https://moderndive.com/data/train.csv")
+#  test <- read_csv("https://moderndive.com/data/test.csv")
 #  
-#  # Fit model
+#  # Fit model:
 #  house_model <- lm(SalePrice ~ YrSold, data = train)
 #  
-#  # Make and submit predictions
-#  submission <- get_regression_points(house_model, newdata = test, ID = "Id") %>%
+#  # Make predictions and save in appropriate data frame format:
+#  submission <- house_model %>%
+#    get_regression_points(newdata = test, ID = "Id") %>%
 #    select(Id, SalePrice = SalePrice_hat)
+#  
+#  # Write predictions to csv:
 #  write_csv(submission, "submission.csv")
 
-## ---- out.width = "100%", echo=FALSE------------------------------------------
+## ----kaggle-2, echo=FALSE, fig.cap="Resulting Kaggle RMSLE score."----
 knitr::include_graphics("leaderboard_orig.png")
 
-## -----------------------------------------------------------------------------
+## ---- echo=FALSE----------------------------------------------------
+summary(score_model)
+
+## -------------------------------------------------------------------
 get_regression_summaries(score_model)
 
-## ---- out.width = "100%", echo=FALSE, fig.align='center'----------------------
+## ----interaction-and-parallel-slopes-model-1, echo=FALSE, fig.height = 9/3, fig.cap = "Interaction (left) and parallel slopes (right) models."----
 p1 <- ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
-  labs(x = "Instructor age", y = "Teaching score", color = "Instructor\nEthnicity",
-       title = "Interaction model") +
+  labs(x = "Age", y = "Teaching score", color = "Ethnicity") +
   geom_smooth(method = "lm", se = FALSE) +
   theme(legend.position = "none")
 p2 <- ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
-  labs(x = "Instructor age", y = "Teaching score", color = "Instructor\nEthnicity",
-       title = "Interaction model") +
+  labs(x = "Age", y = "Teaching score", color = "Ethnicity") +
   geom_parallel_slopes(se = FALSE) + 
   theme(axis.title.y = element_blank())
 p1 + p2
 
-## ---- eval=FALSE--------------------------------------------------------------
-#  interaction_evals <- lm(score ~ age * ethnicity, data = evals)
-#  get_regression_table(interaction_evals)
-
-## ---- echo=FALSE--------------------------------------------------------------
+## ---- eval=TRUE-----------------------------------------------------
+# Regression table for interaction model:
 interaction_evals <- lm(score ~ age * ethnicity, data = evals)
-get_regression_table(interaction_evals) %>% 
-  knitr::kable()
+get_regression_table(interaction_evals)
 
-## ---- eval=FALSE--------------------------------------------------------------
-#  parallel_slopes_evals <- lm(score ~ age + ethnicity, data = evals)
-#  get_regression_table(parallel_slopes_evals)
-
-## ---- echo=FALSE--------------------------------------------------------------
+# Regression table for parallel slopes model:
 parallel_slopes_evals <- lm(score ~ age + ethnicity, data = evals)
-get_regression_table(parallel_slopes_evals) %>% 
-  knitr::kable()
+get_regression_table(parallel_slopes_evals)
 
-## ---- eval=FALSE--------------------------------------------------------------
-#  ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
+## ---- eval=FALSE----------------------------------------------------
+#  # Code to plot interaction and parallel slopes models for MA_schools
+#  ggplot(MA_schools,
+#         aes(x = perc_disadvan, y = average_sat_math, color = size)) +
 #    geom_point(alpha = 0.25) +
-#    labs(x = "Percent economically disadvantaged", y = "Math SAT Score",
-#         color = "School size", title = "Interaction model") +
+#    labs(x = "% economically disadvantaged",
+#         y = "Math SAT Score",
+#         color = "School size") +
 #    geom_smooth(method = "lm", se = FALSE)
 #  
-#  ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
+#  ggplot(MA_schools,
+#         aes(x = perc_disadvan, y = average_sat_math, color = size)) +
 #    geom_point(alpha = 0.25) +
-#    labs(x = "Percent economically disadvantaged", y = "Math SAT Score",
-#         color = "School size", title = "Interaction model") +
-#    geom_smooth(method = "lm", se = FALSE)
+#    labs(x = "% economically disadvantaged",
+#         y = "Math SAT Score",
+#         color = "School size") +
+#    geom_parallel_slopes(se = FALSE)
 
-## ---- out.width = "100%", echo=FALSE, fig.align='center'----------------------
-p1 <- ggplot(MA_schools, 
-             aes(x = perc_disadvan, y = average_sat_math, color = size)) +
+## ----interaction-and-parallel-slopes-model-2, echo=FALSE, fig.height = 9/3, fig.cap = "Interaction (left) and parallel slopes (right) models."----
+p1 <- ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
   geom_point(alpha = 0.25) +
   geom_smooth(method = "lm", se = FALSE) +
-  labs(x = "Percent economically disadvantaged", y = "Math SAT Score", 
-       color = "School size", title = "Interaction model") + 
+  labs(x = "% economically disadvantaged", 
+       y = "Math SAT Score", 
+       color = "School size") + 
   theme(legend.position = "none")
-p2 <- ggplot(MA_schools, 
-       aes(x = perc_disadvan, y = average_sat_math, color = size)) +
+p2 <- ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
   geom_point(alpha = 0.25) +
   geom_parallel_slopes(se = FALSE) + 
-  labs(x = "Percent economically disadvantaged", y = "Math SAT Score", 
-       color = "School size", title = "Parallel slopes model")  +
+  labs(x = "% economically disadvantaged", 
+       y = "Math SAT Score", 
+       color = "School size") + 
   theme(axis.title.y = element_blank())
 p1 + p2
 
-## ---- eval=FALSE--------------------------------------------------------------
-#  interaction_MA <- lm(average_sat_math ~ perc_disadvan * size, data = MA_schools)
-#  get_regression_table(interaction_MA)
+## -------------------------------------------------------------------
+# Regression table for interaction model:
+interaction_MA <- 
+  lm(average_sat_math ~ perc_disadvan * size, data = MA_schools)
+get_regression_table(interaction_MA)
 
-## ---- echo=FALSE--------------------------------------------------------------
-interaction_MA <- lm(average_sat_math ~ perc_disadvan * size, data = MA_schools)
-get_regression_table(interaction_MA) %>% 
-  knitr::kable()
+# Regression table for parallel slopes model:
+parallel_slopes_MA <- 
+  lm(average_sat_math ~ perc_disadvan + size, data = MA_schools)
+get_regression_table(parallel_slopes_MA)
 
-## ---- eval=FALSE--------------------------------------------------------------
-#  parallel_slopes_MA <- lm(average_sat_math ~ perc_disadvan + size, data = MA_schools)
-#  get_regression_table(parallel_slopes_MA)
-
-## ---- echo=FALSE--------------------------------------------------------------
-parallel_slopes_MA <- lm(average_sat_math ~ perc_disadvan + size, data = MA_schools)
-get_regression_table(parallel_slopes_MA) %>% 
-  knitr::kable()
-
-## -----------------------------------------------------------------------------
+## -------------------------------------------------------------------
 get_regression_points(score_model)
 broom::augment(score_model)
 
