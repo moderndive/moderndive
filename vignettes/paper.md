@@ -277,7 +277,7 @@ sqrt(diag(vcov(score_model)))
 ## 0.126778499 0.002569157
 ```
 
-We argue that this task shouldn't be this hard, especially in an introductory statistics setting. To rectify this, the three `get_regression_X()` functions  all return data frames in the tidyverse-style tibble (tidy table) format [@R-tibble]. Therefore you can easily extract columns using the `pull()` function from the `dplyr` package [@R-dplyr]:
+We argue that this task shouldn't be this hard, especially in an introductory statistics setting. To rectify this, the three `get_regression_*` functions  all return data frames in the tidyverse-style tibble (tidy table) format [@R-tibble]. Therefore you can easily extract columns using the `pull()` function from the `dplyr` package [@R-dplyr]:
 
 
 
