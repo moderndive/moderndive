@@ -25,6 +25,7 @@ library(dplyr)
 library(readr)
 library(knitr)
 library(broom)
+library(viridis)
 
 # Needed packages internally
 library(patchwork)
@@ -32,10 +33,15 @@ library(patchwork)
 # Random number generator seed value
 set.seed(76)
 
-# Set ggplot defaults:
-scale_fill_discrete <- function(...){
-  scale_fill_brewer(... ,  type = "div", palette="Set1", na.value = "grey50")
+# Set ggplot defaults for JOSE output:
+if(!knitr::is_html_output()){
+  # Grey theme:
+  theme_set(theme_light())
+  
+  scale_colour_discrete <- scale_colour_viridis_d
+
 }
+
 
 # Set output width for JOSE paper:
 options(width = 70)
@@ -207,7 +213,7 @@ get_regression_table(parallel_slopes_evals)
 #    labs(x = "% economically disadvantaged",
 #         y = "Math SAT Score",
 #         color = "School size") +
-#    geom_parallel_slopes( se = FALSE)
+#    geom_parallel_slopes(se = FALSE)
 
 ## ----interaction-and-parallel-slopes-model-2, echo=FALSE, fig.height = 9/3, fig.cap = "Interaction (left) and parallel slopes (right) models."----
 p1 <- ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
