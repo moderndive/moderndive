@@ -17,3 +17,4 @@
 ^CRAN-RELEASE$
 ^Publish Document\.dcf$
 ^.*\.log$
+^\.github$
