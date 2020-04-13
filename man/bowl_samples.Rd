@@ -4,7 +4,8 @@
 \name{bowl_samples}
 \alias{bowl_samples}
 \title{Sampling from a bowl of balls}
-\format{A data frame 10 rows representing different groups of students' 
+\format{
+A data frame 10 rows representing different groups of students' 
 samples of size n = 50 and 5 variables
 \describe{
   \item{group}{Group name}
@@ -12,7 +13,8 @@ samples of size n = 50 and 5 variables
   \item{white}{Number of white balls sampled}
   \item{green}{Number of green balls sampled}
   \item{n}{Total number of balls samples}
-}}
+}
+}
 \usage{
 bowl_samples
 }

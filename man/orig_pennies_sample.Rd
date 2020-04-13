@@ -4,11 +4,13 @@
 \name{orig_pennies_sample}
 \alias{orig_pennies_sample}
 \title{A random sample of 40 pennies sampled from the \code{pennies} data frame}
-\format{A data frame of 40 rows representing 40 randomly sampled pennies from \code{\link{pennies}} and 2 variables
+\format{
+A data frame of 40 rows representing 40 randomly sampled pennies from \code{\link{pennies}} and 2 variables
 \describe{
   \item{year}{Year of minting}
   \item{age_in_2011}{Age in 2011}
-}}
+}
+}
 \source{
 StatCrunch \url{https://www.statcrunch.com/app/index.php?dataid=301596}
 }

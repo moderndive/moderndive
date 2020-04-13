@@ -34,9 +34,12 @@ Imports:
     infer,
     rlang (>= 0.2.0),
     glue
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Suggests: testthat,
     covr,
     rmarkdown,
-    vdiffr
+    vdiffr,
+    rticles,
+    ggplot2movies,
+    openintro
 VignetteBuilder: knitr

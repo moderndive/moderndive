@@ -4,13 +4,15 @@
 \name{movies_sample}
 \alias{movies_sample}
 \title{Random sample of 68 action and romance movies}
-\format{A data frame of 68 rows movies.
+\format{
+A data frame of 68 rows movies.
 \describe{
   \item{title}{Movie title}
   \item{year}{Year released}
   \item{rating}{IMDb rating out of 10 stars}
   \item{genre}{Action or Romance}
-}}
+}
+}
 \usage{
 movies_sample
 }
