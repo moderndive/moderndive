@@ -39,11 +39,31 @@ jobs:
       - name: Install XQuartz on MacOS
         if: runner.os == 'macOS'
         run: brew cask install xquartz
-        
+
+      - name: Install freetype on MacOS
+        if: runner.os == 'macOS'
+        run: |
+          brew install freetype
+          brew link --overwrite freetype
+          
+      - name: Install cairo on MacOS for xml2
+        if: runner.os == 'macOS'
+        run: |
+          brew install cairo
+          
+      - name: Install XML2 on MacOS
+        if: runner.os == 'macOS'
+        run: |
+          brew install libxml2
+          brew link --force libxml2
+          xml2-config --cflags
+          
       - name: Query dependencies
         run: |
           install.packages('remotes')
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
+          install.packages('devtools')
+          install.packages('vdiffr')
         shell: Rscript {0}
 
       - name: Cache R packages
@@ -62,13 +82,10 @@ jobs:
           Rscript -e "remotes::install_github('r-hub/sysreqs')"
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           sudo -s eval "$sysreqs"
-
       - name: Install dependencies
         run: |
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
-          install.packages("tinytex")
-          tinytex::install_tinytex()
         shell: Rscript {0}
 
       - name: Check
