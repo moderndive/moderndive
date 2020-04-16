@@ -36,6 +36,12 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@master
 
+      - name: Install tinytex
+        run: |
+          install.packages('tinytex')
+          tinytex::install_tinytex()
+        shell: Rscript {0}
+      
       - name: Install XQuartz on MacOS
         if: runner.os == 'macOS'
         run: brew cask install xquartz
