@@ -43,3 +43,4 @@ Suggests: testthat,
     viridis,
     readr
 VignetteBuilder: knitr
+Remotes: r-lib/xml2 
