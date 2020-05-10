@@ -117,7 +117,7 @@ test <- read_csv("https://github.com/moderndive/moderndive/raw/master/vignettes/
 house_model <- lm(SalePrice ~ YrSold, data = train)
 
 # Make and submit predictions
-submission <- get_regression_points(house_model, newdata = test, ID = "Id") %>% 
+submission <- get_regression_points(house_model, newdata = test, ID = "Id") %>%
   select(Id, SalePrice = SalePrice_hat)
 write_csv(submission, "submission.csv")
 ```

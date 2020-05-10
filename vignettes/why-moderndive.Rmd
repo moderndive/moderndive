@@ -52,8 +52,8 @@ knitr::opts_chunk$set(
   # Figure:
   out.width = "100%",
   fig.path = "Figures/",
-  fig.width = 16/2.5,
-  fig.height = 9/2.5,
+  fig.width = 16 / 2.5,
+  fig.height = 9 / 2.5,
   fig.align = "center",
   fig.show = "hold",
   # Etc:
@@ -78,12 +78,11 @@ library(patchwork)
 set.seed(76)
 
 # Set ggplot defaults for JOSE output:
-if(!knitr::is_html_output()){
+if (!knitr::is_html_output()) {
   # Grey theme:
   theme_set(theme_light())
-  
-  scale_colour_discrete <- scale_colour_viridis_d
 
+  scale_colour_discrete <- scale_colour_viridis_d
 }
 
 
@@ -115,8 +114,8 @@ library(broom)
 Let's consider data gathered from end of semester student evaluations for a sample of 463 courses taught by 94 professors from the University of Texas at Austin [@diez2015openintro]. This data is included in the `evals` data frame from the `moderndive` package.
 
 ```{r, echo=FALSE}
-evals_sample <- evals %>% 
-  select(ID, prof_ID, score, age, bty_avg, gender, ethnicity, language, rank) %>% 
+evals_sample <- evals %>%
+  select(ID, prof_ID, score, age, bty_avg, gender, ethnicity, language, rank) %>%
   sample_n(5)
 ```
 
@@ -127,8 +126,8 @@ In the following table, we present a subset of `r ncol(evals_sample)` of the `r 
 1. The remaining variables are demographic variables describing that course's instructor, including `bty_avg` (average "beauty" score) for that professor as given by a panel of 6 students.^[Note that `gender` was collected as a binary variable at the time of the study (2005).]
 
 ```{r random-sample-courses, echo=FALSE}
-evals_sample %>% 
-  kable() 
+evals_sample %>%
+  kable()
 ```
 
 
@@ -162,15 +161,15 @@ To address these questions, we've included three functions in the `moderndive` p
 
 1. Get a tidy regression table **with confidence intervals**:
     ```{r}
-    get_regression_table(score_model)
+get_regression_table(score_model)
     ```
 2. Get information on each point/observation in your regression, including fitted/predicted values and residuals, in a single data frame:
     ```{r}
-    get_regression_points(score_model)
+get_regression_points(score_model)
     ```
 3. Get scalar summaries of a regression fit including $R^2$ and $R^2_{adj}$ but also the (root) mean-squared error:
     ```{r}
-    get_regression_summaries(score_model)
+get_regression_summaries(score_model)
     ```
 
 
@@ -252,7 +251,7 @@ We argue that this task shouldn't be this hard, especially in an introductory st
 
 
 ```{r}
-get_regression_table(score_model) %>% 
+get_regression_table(score_model) %>%
   pull(std_error)
 ```
 
@@ -265,7 +264,7 @@ get_regression_table(score_model)$std_error
 Furthermore, by piping the above `get_regression_table(score_model)` output into the `kable()` function from the `knitr` package [@R-knitr], you can obtain aesthetically pleasing regression tables in R Markdown documents, instead of tables written in jarring computer output font:
 
 ```{r}
-get_regression_table(score_model) %>% 
+get_regression_table(score_model) %>%
   kable()
 ```
 
@@ -299,7 +298,7 @@ score_model_points
 ```
 ```{r, echo=FALSE}
 score_model_points <- get_regression_points(score_model)
-score_model_points %>% 
+score_model_points %>%
   slice(1:10)
 ```
 
@@ -365,8 +364,8 @@ test <- read_csv("https://moderndive.com/data/test.csv")
 house_model <- lm(SalePrice ~ YrSold, data = train)
 
 # Make predictions and save in appropriate data frame format:
-submission <- house_model %>% 
-  get_regression_points(newdata = test, ID = "Id") %>% 
+submission <- house_model %>%
+  get_regression_points(newdata = test, ID = "Id") %>%
   select(Id, SalePrice = SalePrice_hat)
 
 # Write predictions to csv:
@@ -419,7 +418,7 @@ p1 <- ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 p2 <- ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
   labs(x = "Age", y = "Teaching score", color = "Ethnicity") +
-  geom_parallel_slopes(se = FALSE) + 
+  geom_parallel_slopes(se = FALSE) +
   theme(axis.title.y = element_blank())
 p1 + p2
 ```
@@ -442,20 +441,28 @@ We now present a contrasting example, this time from Chapter 6 of the online ver
 
 ```{r, eval=FALSE}
 # Code to plot interaction and parallel slopes models for MA_schools
-ggplot(MA_schools, 
-       aes(x = perc_disadvan, y = average_sat_math, color = size)) +
+ggplot(
+  MA_schools,
+  aes(x = perc_disadvan, y = average_sat_math, color = size)
+) +
   geom_point(alpha = 0.25) +
-  labs(x = "% economically disadvantaged", 
-       y = "Math SAT Score", 
-       color = "School size") + 
+  labs(
+    x = "% economically disadvantaged",
+    y = "Math SAT Score",
+    color = "School size"
+  ) +
   geom_smooth(method = "lm", se = FALSE)
 
-ggplot(MA_schools, 
-       aes(x = perc_disadvan, y = average_sat_math, color = size)) +
+ggplot(
+  MA_schools,
+  aes(x = perc_disadvan, y = average_sat_math, color = size)
+) +
   geom_point(alpha = 0.25) +
-  labs(x = "% economically disadvantaged", 
-       y = "Math SAT Score", 
-       color = "School size") +
+  labs(
+    x = "% economically disadvantaged",
+    y = "Math SAT Score",
+    color = "School size"
+  ) +
   geom_parallel_slopes(se = FALSE)
 ```
 
@@ -463,16 +470,20 @@ ggplot(MA_schools,
 p1 <- ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
   geom_point(alpha = 0.25) +
   geom_smooth(method = "lm", se = FALSE) +
-  labs(x = "% economically disadvantaged", 
-       y = "Math SAT Score", 
-       color = "School size") + 
+  labs(
+    x = "% economically disadvantaged",
+    y = "Math SAT Score",
+    color = "School size"
+  ) +
   theme(legend.position = "none")
 p2 <- ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
   geom_point(alpha = 0.25) +
-  geom_parallel_slopes(se = FALSE) + 
-  labs(x = "% economically disadvantaged", 
-       y = "Math SAT Score", 
-       color = "School size") + 
+  geom_parallel_slopes(se = FALSE) +
+  labs(
+    x = "% economically disadvantaged",
+    y = "Math SAT Score",
+    color = "School size"
+  ) +
   theme(axis.title.y = element_blank())
 p1 + p2
 ```
@@ -481,12 +492,12 @@ In terms of the corresponding regression tables, observe that the corresponding 
 
 ```{r}
 # Regression table for interaction model:
-interaction_MA <- 
+interaction_MA <-
   lm(average_sat_math ~ perc_disadvan * size, data = MA_schools)
 get_regression_table(interaction_MA)
 
 # Regression table for parallel slopes model:
-parallel_slopes_MA <- 
+parallel_slopes_MA <-
   lm(average_sat_math ~ perc_disadvan + size, data = MA_schools)
 get_regression_table(parallel_slopes_MA)
 ```
