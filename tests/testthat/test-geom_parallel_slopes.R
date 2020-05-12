@@ -74,6 +74,13 @@ test_that("geom_parallel_slopes works", {
       geom_parallel_slopes(aes(fill = gr)) +
       labs(title = "geom_parallel_slopes() with `fill` aesthetics grouping")
   )
+  
+  vdiffr::expect_doppelganger(
+    "geom_parallel_slopes-fullrange",
+    viz + geom_parallel_slopes(fullrange=TRUE) +
+      xlim(c(-1,2)) +
+      labs(title = "geom_parallel_slopes() with fullrange=TRUE")
+  )
 })
 
 test_that("geom_parallel_slopes works in edge cases", {

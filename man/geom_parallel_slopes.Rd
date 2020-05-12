@@ -114,3 +114,6 @@ ggplot(example_df, aes(x = log10_size, y = log10_price)) +
   geom_point(alpha = 0.1) +
   geom_parallel_slopes(aes(fill = condition))
 }
+\seealso{
+See \code{\link[ggplot2]{stat_smooth}} for more potential arguments to the underlying stat (e.g., fullrange)
+}

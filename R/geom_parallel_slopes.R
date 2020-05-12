@@ -16,6 +16,7 @@
 #' @inheritParams ggplot2::layer
 #' @inheritParams ggplot2::geom_smooth
 #'
+#' @seealso See \code{\link[ggplot2]{stat_smooth}} for more potential arguments to the underlying stat (e.g., fullrange)
 #' @examples
 #' library(dplyr)
 #' library(ggplot2)
@@ -85,7 +86,7 @@ StatParallelSlopes <- ggplot2::ggproto(
   
   required_aes = c("x", "y"),
   
-  compute_panel = function(data, scales, se = TRUE, formula = y ~ x, n = 100) {
+  compute_panel = function(data, scales, se = TRUE, formula = y ~ x, n = 100, fullrange=FALSE) {
     if (nrow(data) == 0) {
       return(data[integer(0), ])
     }
@@ -98,11 +99,17 @@ StatParallelSlopes <- ggplot2::ggproto(
     # Fit model
     model <- stats::lm(formula = formula, data = data)
     
+    if (fullrange) {
+      support <- scales$x$dimension()
+    } else {
+      support <- quote(range(group_df$x, na.rm = TRUE))
+    }
+    
     # Compute prediction from model based on sequence of x-values defined for
     # every group separately
     stats <- lapply(
       X = split(data, data$group), FUN = predict_per_group,
-      model = model, se = se, n = n
+      model = model, se = se, n = n, support=support
     )
     
     # Combine predictions into one data frame
@@ -129,11 +136,12 @@ compute_model_info <- function(data, formula) {
   list(formula = formula, data = data)
 }
 
-predict_per_group <- function(group_df, model, se, n) {
+predict_per_group <- function(group_df, model, se, n, support) {
   # This code is a modified version of `ggplot2:::predictdf.default`
   
   # Create a data on which to perform prediction
-  x_seq <- seq(min(group_df$x), max(group_df$x), length.out = n)
+  x_support <- eval(support)
+  x_seq <- seq(x_support[1], x_support[2], length.out = n)
   group_seq <- rep(group_df$group[1], n)
   new_data <- data.frame(x = x_seq, group = group_seq)
   
