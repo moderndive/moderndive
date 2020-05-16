@@ -1,8 +1,10 @@
+
+
 # moderndive 0.4.0.9000
 
 * Modified `vignettes/why-moderndive.Rmd` to act as submission to [Journal of Open Source Education](https://jose.theoj.org/) 
 * "Why ModernDive?" vignette now loads `patchwork` package from CRAN
-
+* Allow geom_parallel_slopes to draw regression lines over the entire support of the x-axis by setting fullrange=TRUE, by @wjhopper
 
 
 ***
