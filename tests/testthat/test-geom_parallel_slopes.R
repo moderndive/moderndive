@@ -81,6 +81,12 @@ test_that("geom_parallel_slopes works", {
       xlim(c(-1,2)) +
       labs(title = "geom_parallel_slopes() with fullrange=TRUE")
   )
+  
+  vdiffr::expect_doppelganger(
+    "geom_parallel_slopes-level",
+    viz + geom_parallel_slopes(level=0.25) +
+      labs(title = "geom_parallel_slopes() with level=0.25")
+  )
 })
 
 test_that("geom_parallel_slopes works in edge cases", {
