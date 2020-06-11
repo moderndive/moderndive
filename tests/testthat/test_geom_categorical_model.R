@@ -43,3 +43,18 @@ test_that("geom_categorical_model works", {
     )
   }
 )
+
+test_that("geom_parallel_slopes works in edge cases", {
+
+  # Warns and doesn't draw anything when x axis is numeric
+  expect_warning(
+    vdiffr::expect_doppelganger(
+      "geom_parallel_slopes-numeric-x",
+      ggplot(mpg, aes(x=displ, y=hwy)) +
+        geom_point() +
+        geom_categorical_model() +
+        labs(title = "geom_categorical_model() does nothing with numeric x")
+    ),
+    regexp = "*only works with a discrete x axis variable"
+  )
+})

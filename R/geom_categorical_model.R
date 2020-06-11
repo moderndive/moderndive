@@ -32,7 +32,7 @@ geom_categorical_model <- function(mapping = NULL, data = NULL,
   dots <- list(...)
   if ("method" %in% names(dots)) {
     warning(
-      "`geom_catergorical_model()` doesn't need a `method` argument ",
+      "`geom_categorical_model()` doesn't need a `method` argument ",
       '("lm" is used).',
       call. = FALSE
     )
@@ -59,6 +59,13 @@ StatCategoricalModel <- ggplot2::ggproto("StatCategoricalModel", ggplot2::Stat,
   
   compute_panel = function(data, scales, se = TRUE, formula = y ~ x, n = 100, level=.95) {
     if (nrow(data) == 0) {
+      return(data[integer(0), ])
+    }
+    
+    if (!scales$x$is_discrete()) {
+      warning("`geom_categorical_model()` only works with a discrete x axis variable",
+              call. = FALSE
+      )
       return(data[integer(0), ])
     }
     
