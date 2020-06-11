@@ -27,6 +27,13 @@ test_that("geom_categorical_model works", {
       geom_categorical_model(size = 3) +
       labs(title = "geom_categorical_model() with extra aesthetics")
     )
+  
+  vdiffr::expect_doppelganger(
+    "geom_categorical_model-linetype-override",
+    viz %+% aes(linetype=drv) +
+      geom_categorical_model() +
+      labs(title = "geom_categorical_model() with linetype mapped")
+  )
 
   vdiffr::expect_doppelganger(
     "geom_categorical_model-faceted",

@@ -102,15 +102,19 @@ compute_group_new_categorical_data <- function(group_df, scales, n) {
   x_seq <- seq(support[1], support[2], length.out = n)
   group_seq <- rep(group_df$group[1], n)
   
-  if (as.numeric(group_df$x[1]) == 1) {
-    linetype = 1 
-  } else {
-    linetype = 2
-  }
+  new_data <- data.frame(x = x_seq, group = group_df$group[1],
+                         x_orig = group_df$x[1]
+                         )
   
-  data.frame(x = x_seq, group = group_df$group[1],
-             x_orig = group_df$x[1], linetype=linetype
-             )
+  if (!("linetype" %in% colnames(group_df))) {
+    if (as.numeric(group_df$x[1]) == 1) {
+      new_data$linetype = 1 
+    } else {
+      new_data$linetype = 2
+    }
+  }
+
+  return(new_data)
 }
 
 predict_categorical_df <- function(model, data, se, level) {
