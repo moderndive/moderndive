@@ -1,32 +1,43 @@
-#' Parallel slopes model
+#' Categorical bivariate regression model
 #' 
-#' \code{geom_catergorical_model()} fits parallel slopes model and adds its line
-#' output(s) to a \code{ggplot} object. Basically, it fits a unified model with
-#' intercepts varying between groups (which should be supplied as standard
-#' {ggplot2} grouping aesthetics: \code{group}, \code{color}, \code{fill},
-#' etc.). This function has the same nature as \code{geom_smooth()} from
-#' {ggplot2} package, but provides functionality that \code{geom_smooth()}
+#' \code{geom_catergorical_model()} fits a regression model using the categorical
+#' x axis as the explanatory variable, and visualizes the model's fitted values 
+#' as piecewise horizontal line segments. Confidence interval bands can be
+#' included in the visualization of the model. Like \code{geom_parallel_slopes},
+#' this function has the same nature as \code{geom_smooth()} from
+#' the {ggplot2} package, but provides functionality that \code{geom_smooth()}
 #' currently doesn't have.
 #'
 #' @param se Display confidence interval around model lines? \code{TRUE} by
 #'   default.
-#' @param formula Formula to use per group in parallel slopes model. Basic
-#'   linear \code{y ~ x} by default.
-#' @param n Number of points per group at which to evaluate model.
+#'
+#' @param level Level of confidence interval to use (0.95 by default).
+#'
 #' @inheritParams ggplot2::layer
 #' @inheritParams ggplot2::geom_smooth
-#' @inheritParams ggplot2::stat_smooth
 #'
 #' @examples
 #' library(dplyr)
 #' library(ggplot2)
 #' 
+#' p <- ggplot(mpg, aes(x=drv, y=hwy)) +
+#'   geom_point() +
+#'   geom_categorical_model()
+#' p
+#' 
+#' # You can use different colors for each categorical level
+#' p %+% aes(color=drv)
+#' 
+#' # But mapping the color aesthetic doesn't change the model that is fit
+#' p %+% aes(color=class)
+#'   
 #' @export
+#' 
 geom_categorical_model <- function(mapping = NULL, data = NULL,
                                    position = "identity", ...,
-                                   se = TRUE, formula = y ~ x, n = 100,
-                                   level = 0.95, na.rm = FALSE,
-                                   show.legend = NA, inherit.aes = TRUE
+                                   se = TRUE, level = 0.95,
+                                   na.rm = FALSE, show.legend = NA,
+                                   inherit.aes = TRUE
                                    ) {
   # Possibly warn about not needing to pass `method` argument
   dots <- list(...)
@@ -41,8 +52,7 @@ geom_categorical_model <- function(mapping = NULL, data = NULL,
   }
   
   # Construct layer params
-  stat_params <- c(na.rm = na.rm, se = se, formula = formula,
-                   level = level, n = n)
+  stat_params <- list(na.rm = na.rm, se = se, level = level)
   
   params <- c(stat_params, dots)
   
@@ -57,7 +67,7 @@ StatCategoricalModel <- ggplot2::ggproto("StatCategoricalModel", ggplot2::Stat,
   
   required_aes = c("x", "y"),
   
-  compute_panel = function(data, scales, se = TRUE, formula = y ~ x, n = 100, level=.95) {
+  compute_panel = function(data, scales, se = TRUE, level = .95) {
     if (nrow(data) == 0) {
       return(data[integer(0), ])
     }
@@ -72,15 +82,14 @@ StatCategoricalModel <- ggplot2::ggproto("StatCategoricalModel", ggplot2::Stat,
     data$x <- factor(data$x)
     
     # Fit model
-    model <- stats::lm(formula = formula, data = data)
+    model <- stats::lm(formula = y ~ x, data = data)
     
     # Compute prediction from model based on sequence of x-values defined for
     # every group
     groups <- split(data, data$group)
     
-    groups_new_data <- lapply(X = groups, FUN = compute_group_new_categorical_data,
-                              scales = scales, n = n
-                              )
+    groups_new_data <- lapply(X = groups, FUN = compute_group_new_categorical_data)
+    
     stats <- lapply(X = groups, FUN = predict_categorical_df,
                     model = model, se = se, level = level
                     )
@@ -95,15 +104,31 @@ StatCategoricalModel <- ggplot2::ggproto("StatCategoricalModel", ggplot2::Stat,
     
     # Combine predictions into one data frame
     stats <- dplyr::bind_rows(stats)
+    
+    # Remove color if it doesn't map to levels of the explanatory variable
+    if ("colour" %in% names(stats)) {
+      
+      n_levels <- nrow(dplyr::distinct(stats, x_orig))
+      n_color_groups <- nrow(dplyr::distinct(stats, x_orig, colour))
+      
+      if (n_levels != n_color_groups) {
+        stats <- stats[setdiff(names(stats), "colour")]
+      }
+      
+    }
+
+    # x_orig has served it's purpose, goodbye
     stats <- stats[setdiff(names(stats), "x_orig")]
+    
     return(stats)
     
   }
 )
 
 
-compute_group_new_categorical_data <- function(group_df, scales, n) {
+compute_group_new_categorical_data <- function(group_df) {
 
+  n <- 100
   support <- as.numeric(as.character(group_df$x[1])) + c(-.5, .5)
   
   x_seq <- seq(support[1], support[2], length.out = n)
@@ -142,20 +167,4 @@ predict_categorical_df <- function(model, data, se, level) {
   } else {
     data.frame(x = data$x[1], y = as.vector(pred))
   }
-}
-
-# Combination of source code from `ggplot2::StatSmooth$compute_panel` and
-# `ggplot2:::uniquecols`
-restore_unique_cols <- function(new, old) {
-  is_unique <- sapply(old, has_unique_value)
-  unique_df <- old[1, is_unique, drop = FALSE]
-  rownames(unique_df) <- seq_len(nrow(unique_df))
-  
-  missing <- !(names(unique_df) %in% names(new))
-  
-  cbind(new, unique_df[rep(1, nrow(new)), missing, drop = FALSE])
-}
-
-has_unique_value <- function(x) {
-  length(unique(x)) <= 1
 }

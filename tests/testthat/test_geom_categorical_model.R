@@ -44,7 +44,7 @@ test_that("geom_categorical_model works", {
   }
 )
 
-test_that("geom_parallel_slopes works in edge cases", {
+test_that("geom_categorical_model works in edge cases", {
 
   # Warns and doesn't draw anything when x axis is numeric
   expect_warning(

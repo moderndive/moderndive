@@ -7,7 +7,7 @@
 * Update `geom_parallel_slopes()` with new arguments:
     + Use `fullrange=TRUE` to draw regression lines over the entire support of the x-axis (by @wjhopper)
     + Use `level` to set different level of confidence interval shading (by @echasnovski)
-
+* Added new function `geom_categorical_model` for visualizing regression models with one categorical variable (by @wjhopper)
 
 ***
 
