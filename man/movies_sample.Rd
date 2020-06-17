@@ -17,7 +17,7 @@ A data frame of 68 rows movies.
 movies_sample
 }
 \description{
-A random sample of 32 action movies and 36 romance movies from 
+A random sample of 32 action movies and 36 romance movies from
 \url{https://www.imdb.com/} and their ratings.
 }
 \examples{

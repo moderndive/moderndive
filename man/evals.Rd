@@ -30,10 +30,10 @@ A data frame with 463 observations corresponding to courses on the following 13 
 evals
 }
 \description{
-The data are gathered from end of semester student evaluations for a sample of 463 courses taught by  
-94 professors from the University of Texas at Austin. In addition, six 
-students rate the professors' physical appearance. The result is a data frame 
-where each row contains a different course and each column has information on 
+The data are gathered from end of semester student evaluations for a sample of 463 courses taught by
+94 professors from the University of Texas at Austin. In addition, six
+students rate the professors' physical appearance. The result is a data frame
+where each row contains a different course and each column has information on
 either the course or the professor \url{https://www.openintro.org/data/index.php?data=evals}
 }
 \examples{

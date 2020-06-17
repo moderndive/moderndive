@@ -14,8 +14,8 @@ A data frame of 332 rows representing Massachusetts high schools and 4 variables
 }
 }
 \source{
-The original source of the data are Massachusetts Department of 
-Education reports \url{http://profiles.doe.mass.edu/state_report/}, however 
+The original source of the data are Massachusetts Department of
+Education reports \url{http://profiles.doe.mass.edu/state_report/}, however
 the data was downloaded from Kaggle at \url{https://www.kaggle.com/ndalziel/massachusetts-public-schools-data}
 }
 \usage{

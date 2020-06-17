@@ -14,8 +14,8 @@ get_regression_table(model, digits = 3, print = FALSE)
 \item{print}{If TRUE, return in print format suitable for R Markdown}
 }
 \value{
-A tibble-formatted regression table along with lower and upper end 
-points of all confidence intervals for all parameters \code{lower_ci} and 
+A tibble-formatted regression table along with lower and upper end
+points of all confidence intervals for all parameters \code{lower_ci} and
 \code{upper_ci}.
 }
 \description{

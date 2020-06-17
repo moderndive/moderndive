@@ -2,7 +2,7 @@
 % Please edit documentation in R/geom_parallel_slopes.R
 \name{geom_parallel_slopes}
 \alias{geom_parallel_slopes}
-\title{Parallel slopes model}
+\title{Parallel slopes regression model}
 \usage{
 geom_parallel_slopes(
   mapping = NULL,
@@ -105,7 +105,7 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
   geom_parallel_slopes(se = FALSE, size = 4)
 
-# Fit non-linear model 
+# Fit non-linear model
 example_df <- house_prices \%>\%
   slice(1:1000) \%>\%
   mutate(
@@ -113,11 +113,14 @@ example_df <- house_prices \%>\%
     log10_size = log10(sqft_living)
   )
 ggplot(example_df, aes(x = log10_size, y = log10_price, color = condition)) +
-  geom_point(alpha = 0.1) + 
+  geom_point(alpha = 0.1) +
   geom_parallel_slopes(formula = y ~ poly(x, 2))
 
 # Different grouping
 ggplot(example_df, aes(x = log10_size, y = log10_price)) +
   geom_point(alpha = 0.1) +
   geom_parallel_slopes(aes(fill = condition))
+}
+\seealso{
+\code{\link{geom_categorical_model}}
 }

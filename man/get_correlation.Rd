@@ -9,10 +9,10 @@ get_correlation(data, formula, na.rm = FALSE, ...)
 \arguments{
 \item{data}{a data frame object}
 
-\item{formula}{a formula with the response variable name on the left and 
+\item{formula}{a formula with the response variable name on the left and
 the explanatory variable name on the right}
 
-\item{na.rm}{a logical value indicating whether NA values should be stripped 
+\item{na.rm}{a logical value indicating whether NA values should be stripped
 before the computation proceeds.}
 
 \item{...}{further arguments passed to \code{\link[stats]{cor}}}
@@ -28,17 +28,17 @@ a data frame using pipeable and formula-friendly syntax
 library(moderndive)
 
 # Compute correlation between mpg and cyl:
-mtcars \%>\% 
-   get_correlation(formula = mpg ~ cyl)
-   
+mtcars \%>\%
+  get_correlation(formula = mpg ~ cyl)
+
 # Group by one variable:
 library(dplyr)
-mtcars \%>\% 
-  group_by(am) \%>\% 
+mtcars \%>\%
+  group_by(am) \%>\%
   get_correlation(formula = mpg ~ cyl)
-  
+
 # Group by two variables:
-mtcars \%>\% 
-  group_by(am, gear) \%>\% 
+mtcars \%>\%
+  group_by(am, gear) \%>\%
   get_correlation(formula = mpg ~ cyl)
 }

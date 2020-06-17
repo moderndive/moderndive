@@ -13,7 +13,7 @@ A data frame with 48 observations on the following 3 variables.
 }
 }
 \source{
-Rosen B and Jerdee T. 1974. Influence of sex role stereotypes on personnel 
+Rosen B and Jerdee T. 1974. Influence of sex role stereotypes on personnel
 decisions. Journal of Applied Psychology 59(1):9-14.
 }
 \usage{

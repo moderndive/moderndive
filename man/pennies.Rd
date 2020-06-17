@@ -18,7 +18,7 @@ StatCrunch \url{https://www.statcrunch.com/app/index.php?dataid=301596}
 pennies
 }
 \description{
-A dataset of 800 pennies to be treated as a sampling population. Data on 
+A dataset of 800 pennies to be treated as a sampling population. Data on
 these pennies were recorded in 2011.
 }
 \examples{
@@ -31,14 +31,16 @@ many_samples <- pennies \%>\%
 many_samples
 
 # Compute mean year of minting for each sample
-sample_means <- many_samples \%>\% 
-  group_by(replicate) \%>\% 
+sample_means <- many_samples \%>\%
+  group_by(replicate) \%>\%
   summarize(mean_year = mean(year))
 
 # Plot sampling distribution
 ggplot(sample_means, aes(x = mean_year)) +
   geom_histogram(binwidth = 1, color = "white") +
-  labs(x = expression(bar(x)), y = "Number of samples", 
-  title = "Sampling distribution of x_bar based 25 samples of size n = 50")
+  labs(
+    x = expression(bar(x)), y = "Number of samples",
+    title = "Sampling distribution of x_bar based 25 samples of size n = 50"
+  )
 }
 \keyword{datasets}

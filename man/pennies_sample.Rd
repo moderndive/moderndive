@@ -16,17 +16,17 @@ pennies_sample
 }
 \description{
 A sample of 50 pennies contained in a 50 cent roll from Florence Bank on
-Friday February 1, 2019 in downtown Northampton, Massachusetts, USA 
+Friday February 1, 2019 in downtown Northampton, Massachusetts, USA
 \url{https://goo.gl/maps/AF88fpvVfm12}.
 }
 \note{
-The original \code{pennies_sample} has been renamed \code{\link{orig_pennies_sample}} 
+The original \code{pennies_sample} has been renamed \code{\link{orig_pennies_sample}}
 as of \code{moderndive} v0.3.0.
 }
 \examples{
 library(ggplot2)
 
 ggplot(pennies_sample, aes(x = year)) +
- geom_histogram(binwidth = 5, boundary = 2000)
+  geom_histogram(binwidth = 5, boundary = 2000)
 }
 \keyword{datasets}

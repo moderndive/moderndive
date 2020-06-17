@@ -6,7 +6,7 @@
 \title{moderndive - Tidyverse-Friendly Introductory Linear Regression}
 \description{
 Datasets and wrapper functions for tidyverse-friendly introductory linear
-regression, used in "Statistical Inference via Data Science: A ModernDive 
+regression, used in "Statistical Inference via Data Science: A ModernDive
 into R and the tidyverse" available at \url{https://moderndive.com/}.
 }
 \examples{

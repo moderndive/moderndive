@@ -22,17 +22,17 @@ US Census Bureau. Code used to scrape data available at \url{https://github.com/
 DD_vs_SB
 }
 \description{
-Number of Dunkin Donuts & Starbucks, median income, and population in 1024 
+Number of Dunkin Donuts & Starbucks, median income, and population in 1024
 census tracts in eastern Massachusetts in 2016.
 }
 \examples{
 # Compute correlation between a census tract's median income and number of cafes of
 # each type after removing two cases where median_income is missing
 library(dplyr)
-DD_vs_SB \%>\% 
-  mutate(shops_per_1000 = 1000 * shops/population) \%>\% 
-  filter(!is.na(median_income)) \%>\% 
-  group_by(shop_type) \%>\% 
+DD_vs_SB \%>\%
+  mutate(shops_per_1000 = 1000 * shops / population) \%>\%
+  filter(!is.na(median_income)) \%>\%
+  group_by(shop_type) \%>\%
   summarize(cor = cor(median_income, shops_per_1000))
 }
 \keyword{datasets}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/geom_categorical_model.R
 \name{geom_categorical_model}
 \alias{geom_categorical_model}
-\title{Categorical bivariate regression model}
+\title{Regression model with one categorical explanatory/predictor variable}
 \usage{
 geom_categorical_model(
   mapping = NULL,
@@ -65,10 +65,10 @@ that define both data and aesthetics and shouldn't inherit behaviour from
 the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
 }
 \description{
-\code{geom_catergorical_model()} fits a regression model using the categorical
+\code{geom_categorical_model()} fits a regression model using the categorical
 x axis as the explanatory variable, and visualizes the model's fitted values 
 as piecewise horizontal line segments. Confidence interval bands can be
-included in the visualization of the model. Like \code{geom_parallel_slopes},
+included in the visualization of the model. Like \code{\link{geom_parallel_slopes}},
 this function has the same nature as \code{geom_smooth()} from
 the {ggplot2} package, but provides functionality that \code{geom_smooth()}
 currently doesn't have.
@@ -88,4 +88,7 @@ p \%+\% aes(color=drv)
 # But mapping the color aesthetic doesn't change the model that is fit
 p \%+\% aes(color=class)
   
+}
+\seealso{
+\code{\link{geom_parallel_slopes}}
 }

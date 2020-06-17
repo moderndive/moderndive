@@ -31,15 +31,17 @@ many_bootstraps <- orig_pennies_sample \%>\%
 many_bootstraps
 
 # Compute mean year of minting for each bootstrap sample
-bootstrap_means <- many_bootstraps \%>\% 
-  group_by(replicate) \%>\% 
+bootstrap_means <- many_bootstraps \%>\%
+  group_by(replicate) \%>\%
   summarize(mean_year = mean(year))
 
 # Plot sampling distribution
 ggplot(bootstrap_means, aes(x = mean_year)) +
   geom_histogram(binwidth = 1, color = "white") +
-  labs(x = expression(bar(x)), y = "Number of samples", 
-  title = "Bootstrap distribution of x_bar based 50 resamples of size n = 40")
+  labs(
+    x = expression(bar(x)), y = "Number of samples",
+    title = "Bootstrap distribution of x_bar based 50 resamples of size n = 40"
+  )
 }
 \seealso{
 \code{\link{pennies}}

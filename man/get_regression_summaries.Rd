@@ -17,7 +17,7 @@ get_regression_summaries(model, digits = 3, print = FALSE)
 A single-row tibble with regression summaries. Ex: \code{r_squared} and \code{mse}.
 }
 \description{
-Output scalar summary statistics for an \code{lm()} regression in "tidy" 
+Output scalar summary statistics for an \code{lm()} regression in "tidy"
 format. This function is a wrapper function for \code{broom::glance()}.
 }
 \examples{

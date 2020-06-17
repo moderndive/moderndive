@@ -27,9 +27,9 @@ in \code{data}}
 A \code{\link[ggplot2]{ggplot}} object.
 }
 \description{
-NOTE: THIS FUNCTION WILL SOON BE DEPRECATED; PLEASE USE \code{{geom_parallel_slopes()}} 
-INSTEAD. Output a visualization of linear regression when you have one numerical 
-and one categorical explanatory/predictor variable: a separate colored 
+NOTE: THIS FUNCTION WILL SOON BE DEPRECATED; PLEASE USE \code{{geom_parallel_slopes()}}
+INSTEAD. Output a visualization of linear regression when you have one numerical
+and one categorical explanatory/predictor variable: a separate colored
 regression line for each level of the categorical variable
 }
 \examples{
@@ -43,19 +43,25 @@ house_prices <- house_prices \%>\%
     log10_price = log10(price),
     log10_size = log10(sqft_living)
   )
-  
+
 # Output parallel slopes model plot:
-gg_parallel_slopes(y = "log10_price", num_x = "log10_size", cat_x = "condition",
-                   data = house_prices, alpha = 0.1) +
-  labs(x = "log10 square feet living space", y = "log10 price in USD",
-       title = "House prices in Seattle: Parallel slopes model")
+gg_parallel_slopes(
+  y = "log10_price", num_x = "log10_size", cat_x = "condition",
+  data = house_prices, alpha = 0.1
+) +
+  labs(
+    x = "log10 square feet living space", y = "log10 price in USD",
+    title = "House prices in Seattle: Parallel slopes model"
+  )
 
 # Compare with interaction model plot:
 ggplot(house_prices, aes(x = log10_size, y = log10_price, col = condition)) +
   geom_point(alpha = 0.1) +
   geom_smooth(method = "lm", se = FALSE, size = 1) +
-  labs(x = "log10 square feet living space", y = "log10 price in USD", 
-       title = "House prices in Seattle: Interaction model")
+  labs(
+    x = "log10 square feet living space", y = "log10 price in USD",
+    title = "House prices in Seattle: Interaction model"
+  )
 }
 \seealso{
 \code{\link{geom_parallel_slopes}}

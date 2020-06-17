@@ -5,7 +5,7 @@
 \alias{tactile_prop_red}
 \title{Tactile sampling from a tub of balls}
 \format{
-A data frame of 33 rows representing different groups of students' 
+A data frame of 33 rows representing different groups of students'
 samples of size n = 50 and 4 variables
 \describe{
   \item{group}{Group members}
@@ -27,8 +27,10 @@ library(ggplot2)
 # Plot sampling distributions
 ggplot(tactile_prop_red, aes(x = prop_red)) +
   geom_histogram(binwidth = 0.025) +
-  labs(x = expression(hat(p)), y = "Number of samples", 
-  title = "Sampling distribution of p_hat based 33 samples of size n = 50")
+  labs(
+    x = expression(hat(p)), y = "Number of samples",
+    title = "Sampling distribution of p_hat based 33 samples of size n = 50"
+  )
 }
 \seealso{
 \code{\link{bowl}}

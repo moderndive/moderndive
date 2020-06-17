@@ -8,8 +8,8 @@ knitr::opts_chunk$set(
   # Figure:
   out.width = "100%",
   fig.path = "Figures/",
-  fig.width = 16/2.5,
-  fig.height = 9/2.5,
+  fig.width = 16 / 2.5,
+  fig.height = 9 / 2.5,
   fig.align = "center",
   fig.show = "hold",
   # Etc:
@@ -34,12 +34,11 @@ library(patchwork)
 set.seed(76)
 
 # Set ggplot defaults for JOSE output:
-if(!knitr::is_html_output()){
+if (!knitr::is_html_output()) {
   # Grey theme:
   theme_set(theme_light())
-  
-  scale_colour_discrete <- scale_colour_viridis_d
 
+  scale_colour_discrete <- scale_colour_viridis_d
 }
 
 
@@ -55,13 +54,13 @@ library(knitr)
 library(broom)
 
 ## ---- echo=FALSE----------------------------------------------------
-evals_sample <- evals %>% 
-  select(ID, prof_ID, score, age, bty_avg, gender, ethnicity, language, rank) %>% 
+evals_sample <- evals %>%
+  select(ID, prof_ID, score, age, bty_avg, gender, ethnicity, language, rank) %>%
   sample_n(5)
 
 ## ----random-sample-courses, echo=FALSE------------------------------
-evals_sample %>% 
-  kable() 
+evals_sample %>%
+  kable()
 
 ## -------------------------------------------------------------------
 score_model <- lm(score ~ age, data = evals)
@@ -99,14 +98,14 @@ get_regression_table(score_model)
 sqrt(diag(vcov(score_model)))
 
 ## -------------------------------------------------------------------
-get_regression_table(score_model) %>% 
+get_regression_table(score_model) %>%
   pull(std_error)
 
 ## -------------------------------------------------------------------
 get_regression_table(score_model)$std_error
 
 ## -------------------------------------------------------------------
-get_regression_table(score_model) %>% 
+get_regression_table(score_model) %>%
   kable()
 
 ## ---- eval=FALSE----------------------------------------------------
@@ -127,7 +126,7 @@ residuals(score_model)[1:10]
 
 ## ---- echo=FALSE----------------------------------------------------
 score_model_points <- get_regression_points(score_model)
-score_model_points %>% 
+score_model_points %>%
   slice(1:10)
 
 ## ----residuals-1, fig.cap="Histogram visualizing distribution of residuals."----
@@ -184,7 +183,7 @@ p1 <- ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 p2 <- ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
   labs(x = "Age", y = "Teaching score", color = "Ethnicity") +
-  geom_parallel_slopes(se = FALSE) + 
+  geom_parallel_slopes(se = FALSE) +
   theme(axis.title.y = element_blank())
 p1 + p2
 
@@ -199,47 +198,59 @@ get_regression_table(parallel_slopes_evals)
 
 ## ---- eval=FALSE----------------------------------------------------
 #  # Code to plot interaction and parallel slopes models for MA_schools
-#  ggplot(MA_schools,
-#         aes(x = perc_disadvan, y = average_sat_math, color = size)) +
+#  ggplot(
+#    MA_schools,
+#    aes(x = perc_disadvan, y = average_sat_math, color = size)
+#  ) +
 #    geom_point(alpha = 0.25) +
-#    labs(x = "% economically disadvantaged",
-#         y = "Math SAT Score",
-#         color = "School size") +
+#    labs(
+#      x = "% economically disadvantaged",
+#      y = "Math SAT Score",
+#      color = "School size"
+#    ) +
 #    geom_smooth(method = "lm", se = FALSE)
 #  
-#  ggplot(MA_schools,
-#         aes(x = perc_disadvan, y = average_sat_math, color = size)) +
+#  ggplot(
+#    MA_schools,
+#    aes(x = perc_disadvan, y = average_sat_math, color = size)
+#  ) +
 #    geom_point(alpha = 0.25) +
-#    labs(x = "% economically disadvantaged",
-#         y = "Math SAT Score",
-#         color = "School size") +
+#    labs(
+#      x = "% economically disadvantaged",
+#      y = "Math SAT Score",
+#      color = "School size"
+#    ) +
 #    geom_parallel_slopes(se = FALSE)
 
 ## ----interaction-and-parallel-slopes-model-2, echo=FALSE, fig.height = 9/3, fig.cap = "Interaction (left) and parallel slopes (right) models."----
 p1 <- ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
   geom_point(alpha = 0.25) +
   geom_smooth(method = "lm", se = FALSE) +
-  labs(x = "% economically disadvantaged", 
-       y = "Math SAT Score", 
-       color = "School size") + 
+  labs(
+    x = "% economically disadvantaged",
+    y = "Math SAT Score",
+    color = "School size"
+  ) +
   theme(legend.position = "none")
 p2 <- ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
   geom_point(alpha = 0.25) +
-  geom_parallel_slopes(se = FALSE) + 
-  labs(x = "% economically disadvantaged", 
-       y = "Math SAT Score", 
-       color = "School size") + 
+  geom_parallel_slopes(se = FALSE) +
+  labs(
+    x = "% economically disadvantaged",
+    y = "Math SAT Score",
+    color = "School size"
+  ) +
   theme(axis.title.y = element_blank())
 p1 + p2
 
 ## -------------------------------------------------------------------
 # Regression table for interaction model:
-interaction_MA <- 
+interaction_MA <-
   lm(average_sat_math ~ perc_disadvan * size, data = MA_schools)
 get_regression_table(interaction_MA)
 
 # Regression table for parallel slopes model:
-parallel_slopes_MA <- 
+parallel_slopes_MA <-
   lm(average_sat_math ~ perc_disadvan + size, data = MA_schools)
 get_regression_table(parallel_slopes_MA)
 
