@@ -12,6 +12,8 @@ geom_parallel_slopes(
   se = TRUE,
   formula = y ~ x,
   n = 100,
+  fullrange = FALSE,
+  level = 0.95,
   na.rm = FALSE,
   show.legend = NA,
   inherit.aes = TRUE
@@ -53,6 +55,11 @@ default.}
 linear \code{y ~ x} by default.}
 
 \item{n}{Number of points per group at which to evaluate model.}
+
+\item{fullrange}{Should the fit span the full range of the plot, or just
+the data?}
+
+\item{level}{Level of confidence interval to use (0.95 by default).}
 
 \item{na.rm}{If \code{FALSE}, the default, missing values are removed with
 a warning. If \code{TRUE}, missing values are silently removed.}

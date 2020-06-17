@@ -15,6 +15,7 @@
 #' @param n Number of points per group at which to evaluate model.
 #' @inheritParams ggplot2::layer
 #' @inheritParams ggplot2::geom_smooth
+#' @inheritParams ggplot2::stat_smooth
 #'
 #' @examples
 #' library(dplyr)
@@ -56,6 +57,7 @@
 geom_parallel_slopes <- function(mapping = NULL, data = NULL,
                                  position = "identity", ...,
                                  se = TRUE, formula = y ~ x, n = 100,
+                                 fullrange = FALSE, level = 0.95,
                                  na.rm = FALSE, show.legend = NA,
                                  inherit.aes = TRUE) {
   # Possibly warn about not needing to pass `method` argument
@@ -71,8 +73,12 @@ geom_parallel_slopes <- function(mapping = NULL, data = NULL,
   }
 
   # Construct layer params
-  params <- c(list(na.rm = na.rm, se = se, formula = formula, n = n), dots)
-
+  stat_params <- c(
+    na.rm = na.rm, se = se, formula = formula, n = n, fullrange = fullrange,
+    level = level
+  )
+  params <- c(stat_params, dots)
+  
   ggplot2::layer(
     geom = ggplot2::GeomSmooth, stat = StatParallelSlopes, data = data,
     mapping = mapping, position = position, params = params,
@@ -83,8 +89,8 @@ geom_parallel_slopes <- function(mapping = NULL, data = NULL,
 StatParallelSlopes <- ggplot2::ggproto(
   "StatParallelSlopes", ggplot2::Stat,
   required_aes = c("x", "y"),
-
-  compute_panel = function(data, scales, se = TRUE, formula = y ~ x, n = 100) {
+  compute_panel = function(data, scales, se = TRUE, formula = y ~ x, n = 100,
+                           fullrange = FALSE, level = 0.95) {
     if (nrow(data) == 0) {
       return(data[integer(0), ])
     }
@@ -98,12 +104,21 @@ StatParallelSlopes <- ggplot2::ggproto(
     model <- stats::lm(formula = formula, data = data)
 
     # Compute prediction from model based on sequence of x-values defined for
-    # every group separately
+    # every group
+    groups <- split(data, data$group)
+    groups_new_data <- lapply(
+      X = groups, FUN = compute_group_new_data,
+      scales = scales, n = n, fullrange = fullrange
+    )
     stats <- lapply(
-      X = split(data, data$group), FUN = predict_per_group,
-      model = model, se = se, n = n
+      X = groups_new_data, FUN = predict_df,
+      model = model, se = se, level = level
     )
 
+    # Restore columns that describe group with unique value (like color, etc.)
+    # so that they can be used in output plot
+    stats <- mapply(restore_unique_cols, stats, groups, SIMPLIFY = FALSE)
+    
     # Combine predictions into one data frame
     dplyr::bind_rows(stats)
   }
@@ -128,18 +143,25 @@ compute_model_info <- function(data, formula) {
   list(formula = formula, data = data)
 }
 
-predict_per_group <- function(group_df, model, se, n) {
-  # This code is a modified version of `ggplot2:::predictdf.default`
-
-  # Create a data on which to perform prediction
-  x_seq <- seq(min(group_df$x), max(group_df$x), length.out = n)
+compute_group_new_data <- function(group_df, scales, n, fullrange) {
+  if (fullrange) {
+    support <- scales$x$dimension()
+  } else {
+    support <- range(group_df$x, na.rm = TRUE)
+  }
+  
+  x_seq <- seq(support[1], support[2], length.out = n)
   group_seq <- rep(group_df$group[1], n)
-  new_data <- data.frame(x = x_seq, group = group_seq)
+  
+  data.frame(x = x_seq, group = group_seq)
+}
 
+predict_df <- function(model, new_data, se, level) {
+  # This code is a modified version of `ggplot2:::predictdf.default`
+  
   # Perform prediction
   pred <- stats::predict(
-    model,
-    newdata = new_data, se.fit = se,
+    model, newdata = new_data, se.fit = se, level = level,
     interval = if (se) "confidence" else "none"
   )
 
@@ -147,15 +169,11 @@ predict_per_group <- function(group_df, model, se, n) {
   if (isTRUE(se)) {
     fit <- as.data.frame(pred$fit)
     names(fit) <- c("y", "ymin", "ymax")
-
-    res <- data.frame(x = x_seq, fit, se = pred$se.fit)
+    
+    data.frame(x = new_data$x, fit, se = pred$se.fit)
   } else {
-    res <- data.frame(x = x_seq, y = as.vector(pred))
+    data.frame(x = new_data$x, y = as.vector(pred))
   }
-
-  # Restore columns that describe group with unique value (like color, etc.)
-  # so that they can be used in output plot
-  restore_unique_cols(res, group_df)
 }
 
 # Combination of source code from `ggplot2::StatSmooth$compute_panel` and
