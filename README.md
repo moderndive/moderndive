@@ -6,6 +6,8 @@
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![Travis-CI Build
 Status](https://travis-ci.org/moderndive/moderndive.svg?branch=master)](https://travis-ci.org/moderndive/moderndive)
+[![GitHub Actions
+Status](https://github.com/moderndive/moderndive/workflows/R-CMD-check/badge.svg)](https://github.com/moderndive/moderndive/actions)
 [![Coverage
 Status](https://img.shields.io/codecov/c/github/moderndive/moderndive/master.svg)](https://codecov.io/github/moderndive/moderndive?branch=master)
 [![CRAN RStudio mirror
@@ -118,7 +120,7 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_parallel_slopes(se = FALSE)
 ```
 
-![](man/figures/plot-example-1.png)<!-- -->
+<img src="man/figures/plot-example-1.png" width="672" />
 
 ## Other features
 
@@ -163,7 +165,7 @@ test <- read_csv("https://github.com/moderndive/moderndive/raw/master/vignettes/
 house_model <- lm(SalePrice ~ YrSold, data = train)
 
 # Make and submit predictions
-submission <- get_regression_points(house_model, newdata = test, ID = "Id") %>% 
+submission <- get_regression_points(house_model, newdata = test, ID = "Id") %>%
   select(Id, SalePrice = SalePrice_hat)
 write_csv(submission, "submission.csv")
 ```
@@ -223,6 +225,11 @@ get_regression_points(score_model)
 
 ``` r
 library(broom)
+```
+
+    ## Warning: package 'broom' was built under R version 3.6.2
+
+``` r
 augment(score_model)
 ```
 
