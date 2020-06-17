@@ -3,7 +3,7 @@
 #' \code{geom_catergorical_model()} fits a regression model using the categorical
 #' x axis as the explanatory variable, and visualizes the model's fitted values 
 #' as piecewise horizontal line segments. Confidence interval bands can be
-#' included in the visualization of the model. Like \code{geom_parallel_slopes},
+#' included in the visualization of the model. Like \code{\link{geom_parallel_slopes()}},
 #' this function has the same nature as \code{geom_smooth()} from
 #' the {ggplot2} package, but provides functionality that \code{geom_smooth()}
 #' currently doesn't have.
