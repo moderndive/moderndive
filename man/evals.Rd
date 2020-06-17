@@ -4,7 +4,8 @@
 \name{evals}
 \alias{evals}
 \title{Teaching evaluations at the UT Austin}
-\format{A data frame with 463 observations corresponding to courses on the following 13 variables.
+\format{
+A data frame with 463 observations corresponding to courses on the following 13 variables.
 \describe{
   \item{ID}{Identification variable for course.}
   \item{prof_ID}{Identification variable for professor. Many professors are included more than once in this dataset.}
@@ -20,7 +21,8 @@
   \item{cls_did_eval}{Number of students in class who completed evaluation.}
   \item{cls_students}{Total number of students in class.}
   \item{cls_level}{Class level: lower, upper.}
-}}
+}
+}
 \source{
 Çetinkaya-Rundel M, Morgan KL, Stangl D. 2013. Looking Good on Course Evaluations. CHANCE 26(2). \url{https://chance.amstat.org/2013/04/looking-good/}
 }

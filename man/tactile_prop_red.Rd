@@ -4,14 +4,16 @@
 \name{tactile_prop_red}
 \alias{tactile_prop_red}
 \title{Tactile sampling from a tub of balls}
-\format{A data frame of 33 rows representing different groups of students' 
+\format{
+A data frame of 33 rows representing different groups of students' 
 samples of size n = 50 and 4 variables
 \describe{
   \item{group}{Group members}
   \item{replicate}{Replicate number}
   \item{red_balls}{Number of red balls sampled out of 50}
   \item{prop_red}{Proportion red balls out of 50}
-}}
+}
+}
 \usage{
 tactile_prop_red
 }

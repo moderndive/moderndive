@@ -4,10 +4,12 @@
 \name{bowl_sample_1}
 \alias{bowl_sample_1}
 \title{Tactile sample of size 50 from a bowl of balls}
-\format{A data frame of 50 rows representing different balls and 1 variable.
+\format{
+A data frame of 50 rows representing different balls and 1 variable.
 \describe{
   \item{color}{Color of ball sampled}
-}}
+}
+}
 \usage{
 bowl_sample_1
 }
