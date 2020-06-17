@@ -24,14 +24,11 @@ Imports:
     dplyr,
     ggplot2,
     tibble,
-    readr,
     janitor,
-    patchwork,
     broom (>= 0.4.3),
     formula.tools,
     stringr,
     knitr,
-    viridis,
     infer,
     rlang (>= 0.2.0),
     glue
@@ -40,5 +37,10 @@ Suggests: testthat,
     covr,
     rmarkdown,
     vdiffr,
-    rticles
+    ggplot2movies,
+    openintro,
+    patchwork,
+    viridis,
+    readr
 VignetteBuilder: knitr
+Remotes: r-lib/xml2 
