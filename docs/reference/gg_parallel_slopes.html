@@ -10,23 +10,27 @@
 
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -36,11 +40,10 @@
 
 
 <meta property="og:title" content="Plot parallel slopes model — gg_parallel_slopes" />
-<meta property="og:description" content="NOTE: THIS FUNCTION WILL SOON BE DEPRECATED; PLEASE USE {geom_parallel_slopes()} 
-INSTEAD. Output a visualization of linear regression when you have one numerical 
-and one categorical explanatory/predictor variable: a separate colored 
+<meta property="og:description" content="NOTE: THIS FUNCTION WILL SOON BE DEPRECATED; PLEASE USE {geom_parallel_slopes()}
+INSTEAD. Output a visualization of linear regression when you have one numerical
+and one categorical explanatory/predictor variable: a separate colored
 regression line for each level of the categorical variable" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -58,7 +61,7 @@ regression line for each level of the categorical variable" />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -95,7 +98,7 @@ regression line for each level of the categorical variable" />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/why-moderndive.html">Why should you use the moderndive package for intro linear regression?</a>
+      <a href="../articles/why-moderndive.html">Take a `moderndive` into introductory linear regression with R</a>
     </li>
   </ul>
 </li>
@@ -105,7 +108,7 @@ regression line for each level of the categorical variable" />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/ModernDive/moderndive_package">
+  <a href="https://github.com/ModernDive/moderndive_package/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -129,9 +132,9 @@ regression line for each level of the categorical variable" />
     </div>
 
     <div class="ref-description">
-    <p>NOTE: THIS FUNCTION WILL SOON BE DEPRECATED; PLEASE USE <code>{geom_parallel_slopes()}</code> 
-INSTEAD. Output a visualization of linear regression when you have one numerical 
-and one categorical explanatory/predictor variable: a separate colored 
+    <p>NOTE: THIS FUNCTION WILL SOON BE DEPRECATED; PLEASE USE <code>{geom_parallel_slopes()}</code>
+INSTEAD. Output a visualization of linear regression when you have one numerical
+and one categorical explanatory/predictor variable: a separate colored
 regression line for each level of the categorical variable</p>
     </div>
 
@@ -188,10 +191,14 @@ in <code>data</code></p></td>
   )
 
 <span class='co'># Output parallel slopes model plot:</span>
-<span class='fu'>gg_parallel_slopes</span>(<span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"log10_price"</span>, <span class='kw'>num_x</span> <span class='kw'>=</span> <span class='st'>"log10_size"</span>, <span class='kw'>cat_x</span> <span class='kw'>=</span> <span class='st'>"condition"</span>,
-                   <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>house_prices</span>, <span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>0.1</span>) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"log10 square feet living space"</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"log10 price in USD"</span>,
-       <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"House prices in Seattle: Parallel slopes model"</span>)</div><div class='output co'>#&gt; <span class='message'>Plotting parallel slopes models is now much easier using the</span>
+<span class='fu'>gg_parallel_slopes</span>(
+  <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"log10_price"</span>, <span class='kw'>num_x</span> <span class='kw'>=</span> <span class='st'>"log10_size"</span>, <span class='kw'>cat_x</span> <span class='kw'>=</span> <span class='st'>"condition"</span>,
+  <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>house_prices</span>, <span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>0.1</span>
+) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(
+    <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"log10 square feet living space"</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"log10 price in USD"</span>,
+    <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"House prices in Seattle: Parallel slopes model"</span>
+  )</div><div class='output co'>#&gt; <span class='message'>Plotting parallel slopes models is now much easier using the</span>
 #&gt; <span class='message'>`geom_parallel_slopes()` function. We suggest you use</span>
 #&gt; <span class='message'>`geom_parallel_slopes()` instead of `gg_parallel_slopes()`; read the help</span>
 #&gt; <span class='message'>file by running `?geom_parallel_slopes` to learn how.</span></div><div class='img'><img src='gg_parallel_slopes-1.png' alt='' width='700' height='433' /></div><div class='input'>
@@ -199,18 +206,15 @@ in <code>data</code></p></td>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>house_prices</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>log10_size</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>log10_price</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='no'>condition</span>)) +
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>(<span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>0.1</span>) +
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span>(<span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"lm"</span>, <span class='kw'>se</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>1</span>) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"log10 square feet living space"</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"log10 price in USD"</span>,
-       <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"House prices in Seattle: Interaction model"</span>)</div><div class='img'><img src='gg_parallel_slopes-2.png' alt='' width='700' height='433' /></div></pre>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(
+    <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"log10 square feet living space"</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"log10 price in USD"</span>,
+    <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"House prices in Seattle: Interaction model"</span>
+  )</div><div class='output co'>#&gt; <span class='message'>`geom_smooth()` using formula 'y ~ x'</span></div><div class='img'><img src='gg_parallel_slopes-2.png' alt='' width='700' height='433' /></div></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -221,7 +225,7 @@ in <code>data</code></p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
 </div>
 
       </footer>

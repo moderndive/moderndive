@@ -1,5 +1,5 @@
 #' Parallel slopes regression model
-#' 
+#'
 #' \code{geom_parallel_slopes()} fits parallel slopes model and adds its line
 #' output(s) to a \code{ggplot} object. Basically, it fits a unified model with
 #' intercepts varying between groups (which should be supplied as standard
@@ -19,7 +19,7 @@
 #'
 #' @seealso \code{\link{geom_categorical_model}}
 #' @export
-#' 
+#'
 #' @examples
 #' library(dplyr)
 #' library(ggplot2)
@@ -81,7 +81,7 @@ geom_parallel_slopes <- function(mapping = NULL, data = NULL,
     level = level
   )
   params <- c(stat_params, dots)
-  
+
   ggplot2::layer(
     geom = ggplot2::GeomSmooth, stat = StatParallelSlopes, data = data,
     mapping = mapping, position = position, params = params,
@@ -121,7 +121,7 @@ StatParallelSlopes <- ggplot2::ggproto(
     # Restore columns that describe group with unique value (like color, etc.)
     # so that they can be used in output plot
     stats <- mapply(restore_unique_cols, stats, groups, SIMPLIFY = FALSE)
-    
+
     # Combine predictions into one data frame
     dplyr::bind_rows(stats)
   }
@@ -152,19 +152,20 @@ compute_group_new_data <- function(group_df, scales, n, fullrange) {
   } else {
     support <- range(group_df$x, na.rm = TRUE)
   }
-  
+
   x_seq <- seq(support[1], support[2], length.out = n)
   group_seq <- rep(group_df$group[1], n)
-  
+
   data.frame(x = x_seq, group = group_seq)
 }
 
 predict_df <- function(model, new_data, se, level) {
   # This code is a modified version of `ggplot2:::predictdf.default`
-  
+
   # Perform prediction
   pred <- stats::predict(
-    model, newdata = new_data, se.fit = se, level = level,
+    model,
+    newdata = new_data, se.fit = se, level = level,
     interval = if (se) "confidence" else "none"
   )
 
@@ -172,7 +173,7 @@ predict_df <- function(model, new_data, se, level) {
   if (isTRUE(se)) {
     fit <- as.data.frame(pred$fit)
     names(fit) <- c("y", "ymin", "ymax")
-    
+
     data.frame(x = new_data$x, fit, se = pred$se.fit)
   } else {
     data.frame(x = new_data$x, y = as.vector(pred))

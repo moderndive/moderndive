@@ -66,7 +66,7 @@ the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
 }
 \description{
 \code{geom_categorical_model()} fits a regression model using the categorical
-x axis as the explanatory variable, and visualizes the model's fitted values 
+x axis as the explanatory variable, and visualizes the model's fitted values
 as piecewise horizontal line segments. Confidence interval bands can be
 included in the visualization of the model. Like \code{\link{geom_parallel_slopes}},
 this function has the same nature as \code{geom_smooth()} from
@@ -77,17 +77,16 @@ currently doesn't have.
 library(dplyr)
 library(ggplot2)
 
-p <- ggplot(mpg, aes(x=drv, y=hwy)) +
+p <- ggplot(mpg, aes(x = drv, y = hwy)) +
   geom_point() +
   geom_categorical_model()
 p
 
 # You can use different colors for each categorical level
-p \%+\% aes(color=drv)
+p \%+\% aes(color = drv)
 
 # But mapping the color aesthetic doesn't change the model that is fit
-p \%+\% aes(color=class)
-  
+p \%+\% aes(color = class)
 }
 \seealso{
 \code{\link{geom_parallel_slopes}}
