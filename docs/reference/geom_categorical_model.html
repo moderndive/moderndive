@@ -41,7 +41,7 @@
 
 <meta property="og:title" content="Regression model with one categorical explanatory/predictor variable — geom_categorical_model" />
 <meta property="og:description" content="geom_categorical_model() fits a regression model using the categorical
-x axis as the explanatory variable, and visualizes the model's fitted values 
+x axis as the explanatory variable, and visualizes the model's fitted values
 as piecewise horizontal line segments. Confidence interval bands can be
 included in the visualization of the model. Like geom_parallel_slopes,
 this function has the same nature as geom_smooth() from
@@ -136,7 +136,7 @@ currently doesn't have." />
 
     <div class="ref-description">
     <p><code>geom_categorical_model()</code> fits a regression model using the categorical
-x axis as the explanatory variable, and visualizes the model's fitted values 
+x axis as the explanatory variable, and visualizes the model's fitted values
 as piecewise horizontal line segments. Confidence interval bands can be
 included in the visualization of the model. Like <code><a href='geom_parallel_slopes.html'>geom_parallel_slopes</a></code>,
 this function has the same nature as <code>geom_smooth()</code> from
@@ -231,15 +231,14 @@ the default plot specification, e.g. <code><a href='https://ggplot2.tidyverse.or
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
 
-<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span><span class='kw'>=</span><span class='no'>drv</span>, <span class='kw'>y</span><span class='kw'>=</span><span class='no'>hwy</span>)) +
+<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>drv</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>hwy</span>)) +
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>() +
   <span class='fu'>geom_categorical_model</span>()
 <span class='no'>p</span></div><div class='img'><img src='geom_categorical_model-1.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># You can use different colors for each categorical level</span>
-<span class='no'>p</span> <span class='kw'>%+%</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>color</span><span class='kw'>=</span><span class='no'>drv</span>)</div><div class='img'><img src='geom_categorical_model-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='no'>p</span> <span class='kw'>%+%</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>drv</span>)</div><div class='img'><img src='geom_categorical_model-2.png' alt='' width='700' height='433' /></div><div class='input'>
 <span class='co'># But mapping the color aesthetic doesn't change the model that is fit</span>
-<span class='no'>p</span> <span class='kw'>%+%</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>color</span><span class='kw'>=</span><span class='no'>class</span>)</div><div class='img'><img src='geom_categorical_model-3.png' alt='' width='700' height='433' /></div><div class='input'>  
-</div></pre>
+<span class='no'>p</span> <span class='kw'>%+%</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>class</span>)</div><div class='img'><img src='geom_categorical_model-3.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
