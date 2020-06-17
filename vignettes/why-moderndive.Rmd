@@ -34,10 +34,11 @@ affiliations:
    index: 3
 bibliography: paper.bib
 output:
-# Uncomment the three lines below to build JOSE article using rticles:
+# Uncomment the four lines below to build JOSE article using rticles:
 #  rticles::joss_article:
 #    keep_md: yes
 #    number_sections: yes
+#    citation_package: default
   rmarkdown::html_vignette:
     df_print: default
     number_sections: yes
