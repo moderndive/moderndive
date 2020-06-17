@@ -11,7 +11,6 @@ matrix:
   - r: devel
 
 warnings_are_errors: true
-sudo: required
 cache: packages
 latex: false
 
@@ -38,7 +37,7 @@ before_deploy:
 
 deploy:
   provider: pages
-  skip-cleanup: true
+  cleanup: true
   keep-history: true
   local-dir: docs
   github_token: $MODERNDIVE_GITHUB_PAT
