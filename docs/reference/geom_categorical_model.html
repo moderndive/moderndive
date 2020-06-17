@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Parallel slopes regression model — geom_parallel_slopes • moderndive</title>
+<title>Regression model with one categorical explanatory/predictor variable — geom_categorical_model • moderndive</title>
 
 
 <!-- jquery -->
@@ -39,13 +39,13 @@
 
 
 
-<meta property="og:title" content="Parallel slopes regression model — geom_parallel_slopes" />
-<meta property="og:description" content="geom_parallel_slopes() fits parallel slopes model and adds its line
-output(s) to a ggplot object. Basically, it fits a unified model with
-intercepts varying between groups (which should be supplied as standard
-ggplot2 grouping aesthetics: group, color, fill,
-etc.). This function has the same nature as geom_smooth() from
-ggplot2 package, but provides functionality that geom_smooth()
+<meta property="og:title" content="Regression model with one categorical explanatory/predictor variable — geom_categorical_model" />
+<meta property="og:description" content="geom_categorical_model() fits a regression model using the categorical
+x axis as the explanatory variable, and visualizes the model's fitted values 
+as piecewise horizontal line segments. Confidence interval bands can be
+included in the visualization of the model. Like geom_parallel_slopes,
+this function has the same nature as geom_smooth() from
+the ggplot2 package, but provides functionality that geom_smooth()
 currently doesn't have." />
 
 
@@ -129,30 +129,27 @@ currently doesn't have." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Parallel slopes regression model</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/geom_parallel_slopes.R'><code>R/geom_parallel_slopes.R</code></a></small>
-    <div class="hidden name"><code>geom_parallel_slopes.Rd</code></div>
+    <h1>Regression model with one categorical explanatory/predictor variable</h1>
+    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/geom_categorical_model.R'><code>R/geom_categorical_model.R</code></a></small>
+    <div class="hidden name"><code>geom_categorical_model.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p><code>geom_parallel_slopes()</code> fits parallel slopes model and adds its line
-output(s) to a <code>ggplot</code> object. Basically, it fits a unified model with
-intercepts varying between groups (which should be supplied as standard
-ggplot2 grouping aesthetics: <code>group</code>, <code>color</code>, <code>fill</code>,
-etc.). This function has the same nature as <code>geom_smooth()</code> from
-ggplot2 package, but provides functionality that <code>geom_smooth()</code>
+    <p><code>geom_categorical_model()</code> fits a regression model using the categorical
+x axis as the explanatory variable, and visualizes the model's fitted values 
+as piecewise horizontal line segments. Confidence interval bands can be
+included in the visualization of the model. Like <code><a href='geom_parallel_slopes.html'>geom_parallel_slopes</a></code>,
+this function has the same nature as <code>geom_smooth()</code> from
+the ggplot2 package, but provides functionality that <code>geom_smooth()</code>
 currently doesn't have.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>geom_parallel_slopes</span>(
+    <pre class="usage"><span class='fu'>geom_categorical_model</span>(
   <span class='kw'>mapping</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>data</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
   <span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"identity"</span>,
   <span class='no'>...</span>,
   <span class='kw'>se</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>y</span> ~ <span class='no'>x</span>,
-  <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>100</span>,
-  <span class='kw'>fullrange</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>level</span> <span class='kw'>=</span> <span class='fl'>0.95</span>,
   <span class='kw'>na.rm</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>show.legend</span> <span class='kw'>=</span> <span class='fl'>NA</span>,
@@ -201,20 +198,6 @@ to the paired geom/stat.</p></td>
 default.</p></td>
     </tr>
     <tr>
-      <th>formula</th>
-      <td><p>Formula to use per group in parallel slopes model. Basic
-linear <code>y ~ x</code> by default.</p></td>
-    </tr>
-    <tr>
-      <th>n</th>
-      <td><p>Number of points per group at which to evaluate model.</p></td>
-    </tr>
-    <tr>
-      <th>fullrange</th>
-      <td><p>Should the fit span the full range of the plot, or just
-the data?</p></td>
-    </tr>
-    <tr>
       <th>level</th>
       <td><p>Level of confidence interval to use (0.95 by default).</p></td>
     </tr>
@@ -242,39 +225,21 @@ the default plot specification, e.g. <code><a href='https://ggplot2.tidyverse.or
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='geom_categorical_model.html'>geom_categorical_model</a></code></p></div>
+    <div class='dont-index'><p><code><a href='geom_parallel_slopes.html'>geom_parallel_slopes</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
 
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>evals</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>age</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>score</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>ethnicity</span>)) +
+<span class='no'>p</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>mpg</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span><span class='kw'>=</span><span class='no'>drv</span>, <span class='kw'>y</span><span class='kw'>=</span><span class='no'>hwy</span>)) +
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>() +
-  <span class='fu'>geom_parallel_slopes</span>(<span class='kw'>se</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='img'><img src='geom_parallel_slopes-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># Basic usage</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>evals</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>age</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>score</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>ethnicity</span>)) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>() +
-  <span class='fu'>geom_parallel_slopes</span>()</div><div class='img'><img src='geom_parallel_slopes-2.png' alt='' width='700' height='433' /></div><div class='input'><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>evals</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>age</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>score</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>ethnicity</span>)) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>() +
-  <span class='fu'>geom_parallel_slopes</span>(<span class='kw'>se</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</div><div class='img'><img src='geom_parallel_slopes-3.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># Supply custom aesthetics</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>evals</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>age</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>score</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>ethnicity</span>)) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>() +
-  <span class='fu'>geom_parallel_slopes</span>(<span class='kw'>se</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>4</span>)</div><div class='img'><img src='geom_parallel_slopes-4.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># Fit non-linear model</span>
-<span class='no'>example_df</span> <span class='kw'>&lt;-</span> <span class='no'>house_prices</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/slice.html'>slice</a></span>(<span class='fl'>1</span>:<span class='fl'>1000</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(
-    <span class='kw'>log10_price</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log10</a></span>(<span class='no'>price</span>),
-    <span class='kw'>log10_size</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log10</a></span>(<span class='no'>sqft_living</span>)
-  )
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>example_df</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>log10_size</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>log10_price</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>condition</span>)) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>(<span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>0.1</span>) +
-  <span class='fu'>geom_parallel_slopes</span>(<span class='kw'>formula</span> <span class='kw'>=</span> <span class='no'>y</span> ~ <span class='fu'><a href='https://rdrr.io/r/stats/poly.html'>poly</a></span>(<span class='no'>x</span>, <span class='fl'>2</span>))</div><div class='img'><img src='geom_parallel_slopes-5.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># Different grouping</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>example_df</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>log10_size</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>log10_price</span>)) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>(<span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>0.1</span>) +
-  <span class='fu'>geom_parallel_slopes</span>(<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>condition</span>))</div><div class='img'><img src='geom_parallel_slopes-6.png' alt='' width='700' height='433' /></div></pre>
+  <span class='fu'>geom_categorical_model</span>()
+<span class='no'>p</span></div><div class='img'><img src='geom_categorical_model-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># You can use different colors for each categorical level</span>
+<span class='no'>p</span> <span class='kw'>%+%</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>color</span><span class='kw'>=</span><span class='no'>drv</span>)</div><div class='img'><img src='geom_categorical_model-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># But mapping the color aesthetic doesn't change the model that is fit</span>
+<span class='no'>p</span> <span class='kw'>%+%</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>color</span><span class='kw'>=</span><span class='no'>class</span>)</div><div class='img'><img src='geom_categorical_model-3.png' alt='' width='700' height='433' /></div><div class='input'>  
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
