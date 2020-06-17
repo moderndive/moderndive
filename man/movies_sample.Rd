@@ -4,13 +4,15 @@
 \name{movies_sample}
 \alias{movies_sample}
 \title{Random sample of 68 action and romance movies}
-\format{A data frame of 68 rows movies.
+\format{
+A data frame of 68 rows movies.
 \describe{
   \item{title}{Movie title}
   \item{year}{Year released}
   \item{rating}{IMDb rating out of 10 stars}
   \item{genre}{Action or Romance}
-}}
+}
+}
 \usage{
 movies_sample
 }
@@ -27,6 +29,6 @@ ggplot(data = movies_sample, aes(x = genre, y = rating)) +
   labs(x = "Genre: Action or Romance", y = "IMDb rating")
 }
 \seealso{
-This data was sampled from the `movies` data frame in \code{\link[ggplot2movies]{movies}}.
+This data was sampled from the `movies` data frame in the \code{ggplot2movies} package.
 }
 \keyword{datasets}

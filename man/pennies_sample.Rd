@@ -4,11 +4,13 @@
 \name{pennies_sample}
 \alias{pennies_sample}
 \title{A sample of 50 pennies}
-\format{A data frame of 50 rows representing 50 sampled pennies and 2 variables
+\format{
+A data frame of 50 rows representing 50 sampled pennies and 2 variables
 \describe{
   \item{ID}{Variable used to uniquely identify each penny.}
   \item{year}{Year of minting.}
-}}
+}
+}
 \usage{
 pennies_sample
 }

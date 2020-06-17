@@ -4,12 +4,14 @@
 \name{promotions_shuffled}
 \alias{promotions_shuffled}
 \title{One permutation/shuffle of promotions}
-\format{A data frame with 48 observations on the following 3 variables.
+\format{
+A data frame with 48 observations on the following 3 variables.
 \describe{
   \item{id}{Identification variable used to distinguish rows.}
   \item{gender}{shuffled/permuted (binary) gender: a factor with two levels `male` and `female`}
   \item{decision}{a factor with two levels: `promoted` and `not`}
-}}
+}
+}
 \usage{
 promotions_shuffled
 }
