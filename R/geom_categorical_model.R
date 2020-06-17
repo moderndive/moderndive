@@ -1,9 +1,9 @@
-#' Categorical bivariate regression model
+#' Regression model with one categorical explanatory/predictor variable
 #' 
-#' \code{geom_catergorical_model()} fits a regression model using the categorical
+#' \code{geom_categorical_model()} fits a regression model using the categorical
 #' x axis as the explanatory variable, and visualizes the model's fitted values 
 #' as piecewise horizontal line segments. Confidence interval bands can be
-#' included in the visualization of the model. Like \code{\link{geom_parallel_slopes()}},
+#' included in the visualization of the model. Like \code{\link{geom_parallel_slopes}},
 #' this function has the same nature as \code{geom_smooth()} from
 #' the {ggplot2} package, but provides functionality that \code{geom_smooth()}
 #' currently doesn't have.
@@ -15,6 +15,9 @@
 #'
 #' @inheritParams ggplot2::layer
 #' @inheritParams ggplot2::geom_smooth
+#' 
+#' @seealso \code{\link{geom_parallel_slopes}}
+#' @export
 #'
 #' @examples
 #' library(dplyr)
@@ -31,8 +34,6 @@
 #' # But mapping the color aesthetic doesn't change the model that is fit
 #' p %+% aes(color=class)
 #'   
-#' @export
-#' @seealso \code{\link{geom_parallel_slopes()}}
 geom_categorical_model <- function(mapping = NULL, data = NULL,
                                    position = "identity", ...,
                                    se = TRUE, level = 0.95,

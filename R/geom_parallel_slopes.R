@@ -1,4 +1,4 @@
-#' Parallel slopes model
+#' Parallel slopes regression model
 #' 
 #' \code{geom_parallel_slopes()} fits parallel slopes model and adds its line
 #' output(s) to a \code{ggplot} object. Basically, it fits a unified model with
@@ -17,6 +17,9 @@
 #' @inheritParams ggplot2::geom_smooth
 #' @inheritParams ggplot2::stat_smooth
 #'
+#' @seealso \code{\link{geom_categorical_model}}
+#' @export
+#' 
 #' @examples
 #' library(dplyr)
 #' library(ggplot2)
