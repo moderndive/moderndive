@@ -4,7 +4,8 @@
 \name{house_prices}
 \alias{house_prices}
 \title{House Sales in King County, USA}
-\format{A data frame with 21613 observations on the following 21 variables.
+\format{
+A data frame with 21613 observations on the following 21 variables.
 \describe{
   \item{id}{a notation for a house}
   \item{date}{Date house was sold}
@@ -27,7 +28,8 @@
   \item{long}{Longitude coordinate}
   \item{sqft_living15}{Living room area in 2015 (implies-- some renovations) This might or might not have affected the lotsize area}
   \item{sqft_lot15}{lotSize area in 2015 (implies-- some renovations)}
-}}
+}
+}
 \source{
 Kaggle \url{https://www.kaggle.com/harlfoxem/housesalesprediction}. 
 Note data is released under a CC0: Public Domain license.

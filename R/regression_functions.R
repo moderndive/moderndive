@@ -26,7 +26,7 @@ globalVariables(c(
 #' @importFrom janitor clean_names
 #' @importFrom knitr kable
 #' @export
-#' @seealso \code{\link[broom]{tidy}}, \code{\link{get_regression_points}}, \code{\link{get_regression_summaries}}
+#' @seealso \code{\link[broom:reexports]{tidy}}, \code{\link{get_regression_points}}, \code{\link{get_regression_summaries}}
 #'
 #' @examples
 #' library(moderndive)
@@ -110,7 +110,7 @@ get_regression_table <- function(model, digits = 3, print = FALSE) {
 #' @importFrom rlang sym
 #' @importFrom rlang ":="
 #' @export
-#' @seealso \code{\link[broom]{augment}}, \code{\link{get_regression_table}}, \code{\link{get_regression_summaries}}
+#' @seealso \code{\link[broom:reexports]{augment}}, \code{\link{get_regression_table}}, \code{\link{get_regression_summaries}}
 #'
 #' @examples
 #' library(dplyr)
@@ -260,7 +260,7 @@ get_regression_points <-
 #' @importFrom janitor clean_names
 #' @importFrom knitr kable
 #' @export
-#' @seealso \code{\link[broom]{glance}}, \code{\link{get_regression_table}}, \code{\link{get_regression_points}}
+#' @seealso \code{\link[broom:reexports]{glance}}, \code{\link{get_regression_table}}, \code{\link{get_regression_points}}
 #'
 #' @examples
 #' library(moderndive)
