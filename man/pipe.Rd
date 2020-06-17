@@ -7,7 +7,6 @@
 lhs \%>\% rhs
 }
 \description{
-See \code{magrittr::\link[magrittr]{\%>\%}} for details. This
-file was generated using \code{usethis::use_pipe()}.
+See \code{magrittr::\link[magrittr:pipe]{\%>\%}} for details.
 }
 \keyword{internal}

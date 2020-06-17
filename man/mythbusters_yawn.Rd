@@ -4,7 +4,8 @@
 \name{mythbusters_yawn}
 \alias{mythbusters_yawn}
 \title{Data from Mythbusters' study on contagiousness of yawning}
-\format{A data frame of 50 rows representing each of the 50 participants
+\format{
+A data frame of 50 rows representing each of the 50 participants
 in the study.
 \describe{
   \item{subj}{integer value corresponding to identifier variable of 
@@ -13,7 +14,8 @@ in the study.
   yawner, or \code{"control"}, participant was not shown a yawner}
   \item{yawn}{string of either \code{"yes"}, the participant yawned, or
   \code{"no"}, the participant did not yawn}
-}}
+}
+}
 \usage{
 mythbusters_yawn
 }

@@ -4,13 +4,15 @@
 \name{pennies_resamples}
 \alias{pennies_resamples}
 \title{Bootstrap resamples of a sample of 50 pennies}
-\format{A data frame of 1750 rows representing 35 students' bootstrap 
+\format{
+A data frame of 1750 rows representing 35 students' bootstrap 
 resamples of size 50 and 3 variables
 \describe{
   \item{replicate}{ID variable of replicate/resample number.}
   \item{name}{Name of student}
   \item{year}{Year on resampled penny}
-}}
+}
+}
 \usage{
 pennies_resamples
 }

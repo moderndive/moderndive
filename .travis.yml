@@ -28,7 +28,6 @@ notifications:
 
 r_packages:
   - devtools
-  - rticles
   
 r_github_packages:
   - hadley/pkgdown

@@ -30,5 +30,5 @@ mpg_model <- lm(mpg ~ cyl, data = mtcars)
 get_regression_summaries(mpg_model)
 }
 \seealso{
-\code{\link[broom]{glance}}, \code{\link{get_regression_table}}, \code{\link{get_regression_points}}
+\code{\link[broom:reexports]{glance}}, \code{\link{get_regression_table}}, \code{\link{get_regression_points}}
 }
