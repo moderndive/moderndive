@@ -39,5 +39,6 @@ RoxygenNote: 7.0.2
 Suggests: testthat,
     covr,
     rmarkdown,
-    vdiffr
+    vdiffr,
+    rticles
 VignetteBuilder: knitr
