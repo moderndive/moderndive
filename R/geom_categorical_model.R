@@ -32,7 +32,7 @@
 #' p %+% aes(color=class)
 #'   
 #' @export
-#' 
+#' @seealso \code{\link{geom_parallel_slopes()}}
 geom_categorical_model <- function(mapping = NULL, data = NULL,
                                    position = "identity", ...,
                                    se = TRUE, level = 0.95,
