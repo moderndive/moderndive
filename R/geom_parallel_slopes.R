@@ -1,5 +1,5 @@
 #' Parallel slopes model
-#' 
+#'
 #' \code{geom_parallel_slopes()} fits parallel slopes model and adds its line
 #' output(s) to a \code{ggplot} object. Basically, it fits a unified model with
 #' intercepts varying between groups (which should be supplied as standard
@@ -20,11 +20,11 @@
 #' @examples
 #' library(dplyr)
 #' library(ggplot2)
-#' 
+#'
 #' ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 #'   geom_point() +
 #'   geom_parallel_slopes(se = FALSE)
-#' 
+#'
 #' # Basic usage
 #' ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 #'   geom_point() +
@@ -32,13 +32,13 @@
 #' ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 #'   geom_point() +
 #'   geom_parallel_slopes(se = FALSE)
-#' 
+#'
 #' # Supply custom aesthetics
 #' ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 #'   geom_point() +
 #'   geom_parallel_slopes(se = FALSE, size = 4)
-#' 
-#' # Fit non-linear model 
+#'
+#' # Fit non-linear model
 #' example_df <- house_prices %>%
 #'   slice(1:1000) %>%
 #'   mutate(
@@ -46,9 +46,9 @@
 #'     log10_size = log10(sqft_living)
 #'   )
 #' ggplot(example_df, aes(x = log10_size, y = log10_price, color = condition)) +
-#'   geom_point(alpha = 0.1) + 
+#'   geom_point(alpha = 0.1) +
 #'   geom_parallel_slopes(formula = y ~ poly(x, 2))
-#' 
+#'
 #' # Different grouping
 #' ggplot(example_df, aes(x = log10_size, y = log10_price)) +
 #'   geom_point(alpha = 0.1) +
@@ -68,10 +68,10 @@ geom_parallel_slopes <- function(mapping = NULL, data = NULL,
       '("lm" is used).',
       call. = FALSE
     )
-    
+
     dots <- dots[setdiff(names(dots), "method")]
   }
-  
+
   # Construct layer params
   stat_params <- c(
     na.rm = na.rm, se = se, formula = formula, n = n, fullrange = fullrange,
@@ -88,23 +88,21 @@ geom_parallel_slopes <- function(mapping = NULL, data = NULL,
 
 StatParallelSlopes <- ggplot2::ggproto(
   "StatParallelSlopes", ggplot2::Stat,
-  
   required_aes = c("x", "y"),
-  
   compute_panel = function(data, scales, se = TRUE, formula = y ~ x, n = 100,
                            fullrange = FALSE, level = 0.95) {
     if (nrow(data) == 0) {
       return(data[integer(0), ])
     }
-    
+
     # Compute model data
     model_info <- compute_model_info(data, formula)
     formula <- model_info$formula
     data <- model_info$data
-    
+
     # Fit model
     model <- stats::lm(formula = formula, data = data)
-    
+
     # Compute prediction from model based on sequence of x-values defined for
     # every group
     groups <- split(data, data$group)
@@ -116,7 +114,7 @@ StatParallelSlopes <- ggplot2::ggproto(
       X = groups_new_data, FUN = predict_df,
       model = model, se = se, level = level
     )
-    
+
     # Restore columns that describe group with unique value (like color, etc.)
     # so that they can be used in output plot
     stats <- mapply(restore_unique_cols, stats, groups, SIMPLIFY = FALSE)
@@ -141,7 +139,7 @@ compute_model_info <- function(data, formula) {
     # Actually make model to have parallel slopes
     formula <- as.formula(paste0(deparse(formula), " + group"))
   }
-  
+
   list(formula = formula, data = data)
 }
 
@@ -166,7 +164,7 @@ predict_df <- function(model, new_data, se, level) {
     model, newdata = new_data, se.fit = se, level = level,
     interval = if (se) "confidence" else "none"
   )
-  
+
   # Convert prediction to "ggplot2 format"
   if (isTRUE(se)) {
     fit <- as.data.frame(pred$fit)
@@ -184,9 +182,9 @@ restore_unique_cols <- function(new, old) {
   is_unique <- sapply(old, has_unique_value)
   unique_df <- old[1, is_unique, drop = FALSE]
   rownames(unique_df) <- seq_len(nrow(unique_df))
-  
+
   missing <- !(names(unique_df) %in% names(new))
-  
+
   cbind(new, unique_df[rep(1, nrow(new)), missing, drop = FALSE])
 }
 

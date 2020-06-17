@@ -2,14 +2,14 @@
 #'
 #' Data from a 1970's study on whether gender influences hiring recommendations.
 #' Originally used in OpenIntro.org.
-#' 
+#'
 #' @format A data frame with 48 observations on the following 3 variables.
 #' \describe{
 #'   \item{id}{Identification variable used to distinguish rows.}
 #'   \item{gender}{gender (collected as a binary variable at the time of the study): a factor with two levels `male` and `female`}
 #'   \item{decision}{a factor with two levels: `promoted` and `not`}
 #' }
-#' @source Rosen B and Jerdee T. 1974. Influence of sex role stereotypes on personnel 
+#' @source Rosen B and Jerdee T. 1974. Influence of sex role stereotypes on personnel
 #' decisions. Journal of Applied Psychology 59(1):9-14.
 #' @seealso The data in `gender_promotions` is a tidyverse-friendly transformation of the `gender.discrimination` data frame from the \code{openintro} package.
 #' @examples
@@ -21,7 +21,7 @@
 #' One permutation/shuffle of promotions
 #'
 #' Shuffled/permuted data from a 1970's study on whether gender influences hiring recommendations.
-#' 
+#'
 #' @format A data frame with 48 observations on the following 3 variables.
 #' \describe{
 #'   \item{id}{Identification variable used to distinguish rows.}
@@ -47,8 +47,8 @@
 #'   \item{perc_disadvan}{Percent of the student body that are considered economically disadvantaged.}
 #'   \item{size}{Size of school enrollment; small 13-341 students, medium 342-541 students, large 542-4264 students.}
 #' }
-#' @source The original source of the data are Massachusetts Department of 
-#' Education reports \url{http://profiles.doe.mass.edu/state_report/}, however 
+#' @source The original source of the data are Massachusetts Department of
+#' Education reports \url{http://profiles.doe.mass.edu/state_report/}, however
 #' the data was downloaded from Kaggle at \url{https://www.kaggle.com/ndalziel/massachusetts-public-schools-data}
 #' @examples
 #' library(ggplot2)
@@ -60,10 +60,10 @@
 
 
 
-#' Dunkin Donuts vs Starbucks 
+#' Dunkin Donuts vs Starbucks
 #'
-#' Number of Dunkin Donuts & Starbucks, median income, and population in 1024 
-#' census tracts in eastern Massachusetts in 2016. 
+#' Number of Dunkin Donuts & Starbucks, median income, and population in 1024
+#' census tracts in eastern Massachusetts in 2016.
 #'
 #' @format A data frame of 1024 rows representing census tracts and 6 variables
 #' \describe{
@@ -79,10 +79,10 @@
 #' # Compute correlation between a census tract's median income and number of cafes of
 #' # each type after removing two cases where median_income is missing
 #' library(dplyr)
-#' DD_vs_SB %>% 
-#'   mutate(shops_per_1000 = 1000 * shops/population) %>% 
-#'   filter(!is.na(median_income)) %>% 
-#'   group_by(shop_type) %>% 
+#' DD_vs_SB %>%
+#'   mutate(shops_per_1000 = 1000 * shops / population) %>%
+#'   filter(!is.na(median_income)) %>%
+#'   group_by(shop_type) %>%
 #'   summarize(cor = cor(median_income, shops_per_1000))
 "DD_vs_SB"
 
@@ -90,10 +90,10 @@
 
 #' House Sales in King County, USA
 #'
-#' This dataset contains house sale prices for King County, which includes 
+#' This dataset contains house sale prices for King County, which includes
 #' Seattle. It includes homes sold between May 2014 and May 2015. This dataset
 #' was obtained from Kaggle.com \url{https://www.kaggle.com/harlfoxem/housesalesprediction/data}
-#' 
+#'
 #' @format A data frame with 21613 observations on the following 21 variables.
 #' \describe{
 #'   \item{id}{a notation for a house}
@@ -118,32 +118,31 @@
 #'   \item{sqft_living15}{Living room area in 2015 (implies-- some renovations) This might or might not have affected the lotsize area}
 #'   \item{sqft_lot15}{lotSize area in 2015 (implies-- some renovations)}
 #' }
-#' @source Kaggle \url{https://www.kaggle.com/harlfoxem/housesalesprediction}. 
+#' @source Kaggle \url{https://www.kaggle.com/harlfoxem/housesalesprediction}.
 #' Note data is released under a CC0: Public Domain license.
 #' @examples
 #' library(dplyr)
 #' library(ggplot2)
-#' 
+#'
 #' # Create variable log of house price
-#' house_prices <- house_prices %>% 
+#' house_prices <- house_prices %>%
 #'   mutate(log_price = log(price))
-#'   
+#'
 #' # Plot histogram of log of house price
 #' ggplot(house_prices, aes(x = log_price)) +
 #'   geom_histogram()
-#' 
 "house_prices"
 
 
 
 #' Teaching evaluations at the UT Austin
 #'
-#' The data are gathered from end of semester student evaluations for a sample of 463 courses taught by  
-#' 94 professors from the University of Texas at Austin. In addition, six 
-#' students rate the professors' physical appearance. The result is a data frame 
-#' where each row contains a different course and each column has information on 
+#' The data are gathered from end of semester student evaluations for a sample of 463 courses taught by
+#' 94 professors from the University of Texas at Austin. In addition, six
+#' students rate the professors' physical appearance. The result is a data frame
+#' where each row contains a different course and each column has information on
 #' either the course or the professor \url{https://www.openintro.org/data/index.php?data=evals}
-#' 
+#'
 #' @format A data frame with 463 observations corresponding to courses on the following 13 variables.
 #' \describe{
 #'   \item{ID}{Identification variable for course.}
@@ -179,28 +178,30 @@
 #' @format A data frame of 50 rows representing each of the 50 participants
 #' in the study.
 #' \describe{
-#'   \item{subj}{integer value corresponding to identifier variable of 
+#'   \item{subj}{integer value corresponding to identifier variable of
 #'   subject ID}
-#'   \item{group}{string of either \code{"seed"}, participant was shown a 
+#'   \item{group}{string of either \code{"seed"}, participant was shown a
 #'   yawner, or \code{"control"}, participant was not shown a yawner}
 #'   \item{yawn}{string of either \code{"yes"}, the participant yawned, or
 #'   \code{"no"}, the participant did not yawn}
 #' }
 #' @examples
 #' library(ggplot2)
-#' 
+#'
 #' # Plot both variables as a stacked proportional bar chart
 #' ggplot(mythbusters_yawn, aes(x = group, fill = yawn)) +
 #'   geom_bar(position = "fill") +
-#'   labs(x = "", y = "Proportion", 
-#'   title = "Proportion of yawn and not yawn for each group")
+#'   labs(
+#'     x = "", y = "Proportion",
+#'     title = "Proportion of yawn and not yawn for each group"
+#'   )
 "mythbusters_yawn"
 
 
 
 #' Random sample of 68 action and romance movies
 #'
-#' A random sample of 32 action movies and 36 romance movies from 
+#' A random sample of 32 action movies and 36 romance movies from
 #' \url{https://www.imdb.com/} and their ratings.
 #'
 #' @format A data frame of 68 rows movies.
@@ -213,13 +214,9 @@
 #' @seealso This data was sampled from the `movies` data frame in the \code{ggplot2movies} package.
 #' @examples
 #' library(ggplot2)
-#' 
+#'
 #' # Visualize relationship between rating and genre
 #' ggplot(data = movies_sample, aes(x = genre, y = rating)) +
 #'   geom_boxplot() +
 #'   labs(x = "Genre: Action or Romance", y = "IMDb rating")
 "movies_sample"
-
-
-
-
