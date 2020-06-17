@@ -17,16 +17,20 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
+
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -40,7 +44,7 @@
 94 professors from the University of Texas at Austin. In addition, six 
 students rate the professors' physical appearance. The result is a data frame 
 where each row contains a different course and each column has information on 
-either the course or the professor https://www.openintro.org/stat/data/?data=evals" />
+either the course or the professor https://www.openintro.org/data/index.php?data=evals" />
 
 
 
@@ -58,7 +62,7 @@ either the course or the professor https://www.openintro.org/stat/data/?data=eva
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -95,7 +99,7 @@ either the course or the professor https://www.openintro.org/stat/data/?data=eva
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/why-moderndive.html">Why should you use the moderndive package for intro linear regression?</a>
+      <a href="../articles/why-moderndive.html">Take a `moderndive` into introductory linear regression with R</a>
     </li>
   </ul>
 </li>
@@ -133,15 +137,15 @@ either the course or the professor https://www.openintro.org/stat/data/?data=eva
 94 professors from the University of Texas at Austin. In addition, six 
 students rate the professors' physical appearance. The result is a data frame 
 where each row contains a different course and each column has information on 
-either the course or the professor <a href='https://www.openintro.org/stat/data/?data=evals'>https://www.openintro.org/stat/data/?data=evals</a></p>
+either the course or the professor <a href='https://www.openintro.org/data/index.php?data=evals'>https://www.openintro.org/data/index.php?data=evals</a></p>
     </div>
 
-    <pre class="usage"><span class='no'>evals</span></pre>
+    <pre class="usage"><span class='kw'>evals</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame with 463 observations corresponding to courses on the following 13 variables.</p><dl class='dl-horizontal'>
+    <p>A data frame with 463 observations corresponding to courses on the following 13 variables.</p><dl>
   <dt>ID</dt><dd><p>Identification variable for course.</p></dd>
   <dt>prof_ID</dt><dd><p>Identification variable for professor. Many professors are included more than once in this dataset.</p></dd>
   <dt>score</dt><dd><p>Average professor evaluation score: (1) very unsatisfactory - (5) excellent.</p></dd>
@@ -158,14 +162,15 @@ either the course or the professor <a href='https://www.openintro.org/stat/data/
   <dt>cls_level</dt><dd><p>Class level: lower, upper.</p></dd>
 
 </dl>
+
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
     <p>Çetinkaya-Rundel M, Morgan KL, Stangl D. 2013. Looking Good on Course Evaluations. CHANCE 26(2). <a href='https://chance.amstat.org/2013/04/looking-good/'>https://chance.amstat.org/2013/04/looking-good/</a></p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>glimpse</a></span>(<span class='no'>evals</span>)</div><div class='output co'>#&gt; Observations: 463
-#&gt; Variables: 14
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://dplyr.tidyverse.org'>dplyr</a></span>)
+<span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span>(<span class='kw'>evals</span>)</div><div class='output co'>#&gt; Rows: 463
+#&gt; Columns: 14
 #&gt; $ ID           &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1…
 #&gt; $ prof_ID      &lt;int&gt; 1, 1, 1, 1, 2, 2, 2, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5,…
 #&gt; $ score        &lt;dbl&gt; 4.7, 4.1, 3.9, 4.8, 4.6, 4.3, 2.8, 4.1, 3.4, 4.5, 3.8, 4…
@@ -182,13 +187,9 @@ either the course or the professor <a href='https://www.openintro.org/stat/data/
 #&gt; $ cls_level    &lt;fct&gt; upper, upper, upper, upper, upper, upper, upper, upper, …</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#format">Format</a></li>
-      <li><a href="#source">Source</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -199,7 +200,7 @@ either the course or the professor <a href='https://www.openintro.org/stat/data/
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

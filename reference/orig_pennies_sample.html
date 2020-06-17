@@ -17,16 +17,20 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
+
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -55,7 +59,7 @@ as the population. Data on these pennies were recorded in 2011." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -92,7 +96,7 @@ as the population. Data on these pennies were recorded in 2011." />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/why-moderndive.html">Why should you use the moderndive package for intro linear regression?</a>
+      <a href="../articles/why-moderndive.html">Take a `moderndive` into introductory linear regression with R</a>
     </li>
   </ul>
 </li>
@@ -126,69 +130,64 @@ as the population. Data on these pennies were recorded in 2011." />
     </div>
 
     <div class="ref-description">
-    <p>A dataset of 40 pennies to be treated as a random sample with <code><a href='pennies.html'>pennies</a></code> acting
+    <p>A dataset of 40 pennies to be treated as a random sample with <code><a href='https://rdrr.io/pkg/moderndive/man/pennies.html'>pennies</a></code> acting
 as the population. Data on these pennies were recorded in 2011.</p>
     </div>
 
-    <pre class="usage"><span class='no'>orig_pennies_sample</span></pre>
+    <pre class="usage"><span class='kw'>orig_pennies_sample</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame of 40 rows representing 40 randomly sampled pennies from <code><a href='pennies.html'>pennies</a></code> and 2 variables</p><dl class='dl-horizontal'>
+    <p>A data frame of 40 rows representing 40 randomly sampled pennies from <code><a href='https://rdrr.io/pkg/moderndive/man/pennies.html'>pennies</a></code> and 2 variables</p><dl>
   <dt>year</dt><dd><p>Year of minting</p></dd>
   <dt>age_in_2011</dt><dd><p>Age in 2011</p></dd>
 
 </dl>
+
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
     <p>StatCrunch <a href='https://www.statcrunch.com/app/index.php?dataid=301596'>https://www.statcrunch.com/app/index.php?dataid=301596</a></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='pennies.html'>pennies</a></code></p></div>
+    <div class='dont-index'><p><code><a href='https://rdrr.io/pkg/moderndive/man/pennies.html'>pennies</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://dplyr.tidyverse.org'>dplyr</a></span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://ggplot2.tidyverse.org'>ggplot2</a></span>)
 
 <span class='co'># Take 50 different resamples/bootstraps from the original sample</span>
-<span class='no'>many_bootstraps</span> <span class='kw'>&lt;-</span> <span class='no'>orig_pennies_sample</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/infer/man/rep_sample_n.html'>rep_sample_n</a></span>(<span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>40</span>, <span class='kw'>replace</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>reps</span> <span class='kw'>=</span> <span class='fl'>50</span>)
-<span class='no'>many_bootstraps</span></div><div class='output co'>#&gt; # A tibble: 2,000 x 3
+<span class='kw'>many_bootstraps</span> <span class='op'>&lt;-</span> <span class='kw'>orig_pennies_sample</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/infer/man/rep_sample_n.html'>rep_sample_n</a></span>(size = <span class='fl'>40</span>, replace = <span class='fl'>TRUE</span>, reps = <span class='fl'>50</span>)
+<span class='kw'>many_bootstraps</span></div><div class='output co'>#&gt; # A tibble: 2,000 x 3
 #&gt; # Groups:   replicate [50]
 #&gt;    replicate  year age_in_2011
 #&gt;        &lt;int&gt; &lt;dbl&gt;       &lt;dbl&gt;
-#&gt;  1         1  1972          39
-#&gt;  2         1  1997          14
-#&gt;  3         1  1979          32
-#&gt;  4         1  1981          30
-#&gt;  5         1  1983          28
-#&gt;  6         1  1974          37
-#&gt;  7         1  1992          19
-#&gt;  8         1  1988          23
-#&gt;  9         1  2010           1
-#&gt; 10         1  1972          39
+#&gt;  1         1  1986          25
+#&gt;  2         1  1974          37
+#&gt;  3         1  1997          14
+#&gt;  4         1  1993          18
+#&gt;  5         1  1988          23
+#&gt;  6         1  1996          15
+#&gt;  7         1  2004           7
+#&gt;  8         1  2004           7
+#&gt;  9         1  1985          26
+#&gt; 10         1  1961          50
 #&gt; # … with 1,990 more rows</div><div class='input'>
 <span class='co'># Compute mean year of minting for each bootstrap sample</span>
-<span class='no'>bootstrap_means</span> <span class='kw'>&lt;-</span> <span class='no'>many_bootstraps</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>replicate</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span>(<span class='kw'>mean_year</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='no'>year</span>))
-
+<span class='kw'>bootstrap_means</span> <span class='op'>&lt;-</span> <span class='kw'>many_bootstraps</span> <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='kw'>replicate</span>) <span class='op'>%&gt;%</span> 
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span>(mean_year = <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span>(<span class='kw'>year</span>))</div><div class='output co'>#&gt; <span class='message'>`summarise()` ungrouping output (override with `.groups` argument)</span></div><div class='input'>
 <span class='co'># Plot sampling distribution</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>bootstrap_means</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>mean_year</span>)) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span>(<span class='kw'>binwidth</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"white"</span>) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span>(<span class='fu'><a href='https://rdrr.io/r/grDevices/plotmath.html'>bar</a></span>(<span class='no'>x</span>)), <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Number of samples"</span>,
-  <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Bootstrap distribution of x_bar based 50 resamples of size n = 40"</span>)</div><div class='img'><img src='orig_pennies_sample-1.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='kw'>bootstrap_means</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(x = <span class='kw'>mean_year</span>)) <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span>(binwidth = <span class='fl'>1</span>, color = <span class='st'>"white"</span>) <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(x = <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span>(<span class='fu'><a href='https://rdrr.io/r/grDevices/plotmath.html'>bar</a></span>(<span class='kw'>x</span>)), y = <span class='st'>"Number of samples"</span>, 
+  title = <span class='st'>"Bootstrap distribution of x_bar based 50 resamples of size n = 40"</span>)</div><div class='img'><img src='orig_pennies_sample-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#format">Format</a></li>
-      <li><a href="#source">Source</a></li>
-      <li><a href="#see-also">See also</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -199,7 +198,7 @@ as the population. Data on these pennies were recorded in 2011.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

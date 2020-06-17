@@ -17,16 +17,20 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
+
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/all.min.css" integrity="sha256-PbSmjxuVAzJ6FPvNYsrXygfGhNJYyZ2GktDbkMBqQZg=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.1/css/v4-shims.min.css" integrity="sha256-A6jcAdwFD48VMjlI3GDxUd+eCQa7/KWy6G9oe/ovaPA=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -53,7 +57,7 @@
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-news">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -90,7 +94,7 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="../articles/why-moderndive.html">Why should you use the moderndive package for intro linear regression?</a>
+      <a href="../articles/why-moderndive.html">Take a `moderndive` into introductory linear regression with R</a>
     </li>
   </ul>
 </li>
@@ -118,29 +122,37 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Changelog <small></small></h1>
+      <h1 data-toc-skip>Changelog <small></small></h1>
       <small>Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
     <div id="moderndive-0-4-0-9000" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.4.0.9000">
 <a href="#moderndive-0-4-0-9000" class="anchor"></a>moderndive 0.4.0.9000<small> Unreleased </small>
 </h1>
 <ul>
+<li>Modified <code>vignettes/why-moderndive.Rmd</code> to act as submission to <a href="https://jose.theoj.org/">Journal of Open Source Education</a>
+</li>
 <li>“Why ModernDive?” vignette now loads <code>patchwork</code> package from CRAN</li>
+<li>Update <code><a href="https://rdrr.io/pkg/moderndive/man/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> with new arguments:
+<ul>
+<li>Use <code>fullrange=TRUE</code> to draw regression lines over the entire support of the x-axis (by <a href='https://github.com/wjhopper'>@wjhopper</a>)</li>
+<li>Use <code>level</code> to set different level of confidence interval shading (by <a href='https://github.com/echasnovski'>@echasnovski</a>)</li>
+</ul>
+</li>
 </ul>
 <hr>
 </div>
     <div id="moderndive-0-4-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.4.0">
 <a href="#moderndive-0-4-0" class="anchor"></a>moderndive 0.4.0<small> 2019-11-04 </small>
 </h1>
 <ul>
-<li>Added <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> geom extension to <code>ggplot2</code> package to plot parallel slopes regression models with one numerical and one categorical variable (this is not possible using <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">ggplot2::geom_smooth()</a></code>). Note this renders <code><a href="../reference/gg_parallel_slopes.html">gg_parallel_slopes()</a></code> function added in v0.3.0 obsolete.</li>
-<li>Added example of <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> to “Why <code>moderndive</code>?” vignette</li>
+<li>Added <code><a href="https://rdrr.io/pkg/moderndive/man/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> geom extension to <code>ggplot2</code> package to plot parallel slopes regression models with one numerical and one categorical variable (this is not possible using <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">ggplot2::geom_smooth()</a></code>). Note this renders <code><a href="https://rdrr.io/pkg/moderndive/man/gg_parallel_slopes.html">gg_parallel_slopes()</a></code> function added in v0.3.0 obsolete.</li>
+<li>Added example of <code><a href="https://rdrr.io/pkg/moderndive/man/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> to “Why <code>moderndive</code>?” vignette</li>
 <li>Added student names (permission obtained in all cases) to <code>pennies_resamples</code> data frame columns</li>
 <li>
-<code><a href="../reference/get_correlation.html">get_correlation()</a></code> now:
+<code><a href="https://rdrr.io/pkg/moderndive/man/get_correlation.html">get_correlation()</a></code> now:
 <ul>
 <li>Respects <code><a href="https://dplyr.tidyverse.org/reference/group_by.html">dplyr::group_by()</a></code> grouping</li>
 <li>Can handle missing data by either passing <code>na.rm = TRUE</code> argument or by passing standard <code>stats:cor(use = "complete.obs")</code> argument via <code>...</code>
@@ -151,13 +163,13 @@
 <hr>
 </div>
     <div id="moderndive-0-3-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.3.0">
 <a href="#moderndive-0-3-0" class="anchor"></a>moderndive 0.3.0<small> 2019-07-18 </small>
 </h1>
 <ul>
-<li>Added minimally viable “parallel slopes” regression model plotting function <code><a href="../reference/gg_parallel_slopes.html">gg_parallel_slopes()</a></code>. In the future we hope to define a new <code>ggplot2</code> geom.</li>
+<li>Added minimally viable “parallel slopes” regression model plotting function <code><a href="https://rdrr.io/pkg/moderndive/man/gg_parallel_slopes.html">gg_parallel_slopes()</a></code>. In the future we hope to define a new <code>ggplot2</code> geom.</li>
 <li>Added “Why <code>moderndive</code>?” vignette</li>
-<li>Added ID argument to <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code> to return a column that identifies the observational units/rows</li>
+<li>Added ID argument to <code><a href="https://rdrr.io/pkg/moderndive/man/get_regression_points.html">get_regression_points()</a></code> to return a column that identifies the observational units/rows</li>
 <li>Datasets:
 <ul>
 <li>Added <code>DD_vs_SB</code>: Dunkin Donuts and Starbucks in Eastern Massachusetts data collected by <a href='https://github.com/DelaneyMoran'>@DelaneyMoran</a></li>
@@ -178,23 +190,23 @@
 <hr>
 </div>
     <div id="moderndive-0-2-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.2.0">
 <a href="#moderndive-0-2-0" class="anchor"></a>moderndive 0.2.0<small> 2018-07-06 </small>
 </h1>
 <p>Updated package for:</p>
 <ul>
-<li>Use in DataCamp’s <a href="https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse">Modeling with Data in the Tidyverse</a>, in particular added <code>evals</code> and <code>house_prices</code> datasets and updated <code><a href="../reference/get_regression_table.html">get_regression_table()</a></code> and <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code> functions.</li>
+<li>Use in DataCamp’s <a href="https://www.datacamp.com/courses/modeling-with-data-in-the-tidyverse">Modeling with Data in the Tidyverse</a>, in particular added <code>evals</code> and <code>house_prices</code> datasets and updated <code><a href="https://rdrr.io/pkg/moderndive/man/get_regression_table.html">get_regression_table()</a></code> and <code><a href="https://rdrr.io/pkg/moderndive/man/get_regression_points.html">get_regression_points()</a></code> functions.</li>
 <li>v0.4.0 of <a href="https://moderndive.com/">ModernDive</a> textbook</li>
 </ul>
 <p>Details:</p>
 <ul>
-<li>Created <code><a href="../reference/get_correlation.html">get_correlation()</a></code> function to omit <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> syntax and return a data frame</li>
+<li>Created <code><a href="https://rdrr.io/pkg/moderndive/man/get_correlation.html">get_correlation()</a></code> function to omit <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> syntax and return a data frame</li>
 <li>Import <code><a href="https://rdrr.io/pkg/infer/man/rep_sample_n.html">infer::rep_sample_n()</a></code> instead of our own defined version, as this function is <a href="https://github.com/tidymodels/infer/pull/82">now included in <code>infer</code></a>
 </li>
 <li>Added <code>evals</code>, <code>house_prices</code>, <code>tactile_prop_red</code>, <code>pennies_sample</code> and <code>mythbusters_yawn</code> datasets</li>
-<li>Added mean squared error and root mean squared error to output of <code><a href="../reference/get_regression_summaries.html">get_regression_summaries()</a></code>
+<li>Added mean squared error and root mean squared error to output of <code><a href="https://rdrr.io/pkg/moderndive/man/get_regression_summaries.html">get_regression_summaries()</a></code>
 </li>
-<li>Added <code>newdata</code> argument to <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code>. When:
+<li>Added <code>newdata</code> argument to <code><a href="https://rdrr.io/pkg/moderndive/man/get_regression_points.html">get_regression_points()</a></code>. When:
 <ul>
 <li>Original outcome variable is included in <code>newdata</code>, output it as well as <code>residual</code> (See Issue 17).</li>
 <li>Otherwise omit <code>residual</code>
@@ -206,14 +218,14 @@
 <hr>
 </div>
     <div id="moderndive-0-1-1" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.1.1">
 <a href="#moderndive-0-1-1" class="anchor"></a>moderndive 0.1.1<small> 2018-01-22 </small>
 </h1>
-<p>Fixed broken url in <code><a href="../reference/bowl_samples.html">?bowl_samples</a></code></p>
+<p>Fixed broken url in <code><a href="https://rdrr.io/pkg/moderndive/man/bowl_samples.html">?bowl_samples</a></code></p>
 <hr>
 </div>
     <div id="moderndive-0-1-0" class="section level1">
-<h1 class="page-header">
+<h1 class="page-header" data-toc-text="0.1.0">
 <a href="#moderndive-0-1-0" class="anchor"></a>moderndive 0.1.0<small> 2018-01-22 </small>
 </h1>
 <ul>
@@ -233,17 +245,9 @@
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
-    <div id="tocnav">
-      <h2>Contents</h2>
-      <ul class="nav nav-pills nav-stacked">
-        <li><a href="#moderndive-0-4-0-9000">0.4.0.9000</a></li>
-        <li><a href="#moderndive-0-4-0">0.4.0</a></li>
-        <li><a href="#moderndive-0-3-0">0.3.0</a></li>
-        <li><a href="#moderndive-0-2-0">0.2.0</a></li>
-        <li><a href="#moderndive-0-1-1">0.1.1</a></li>
-        <li><a href="#moderndive-0-1-0">0.1.0</a></li>
-      </ul>
-    </div>
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 
 </div>
@@ -255,7 +259,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>
