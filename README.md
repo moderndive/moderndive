@@ -120,7 +120,7 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_parallel_slopes(se = FALSE)
 ```
 
-<img src="man/figures/plot-example-1.png" width="672" />
+![](man/figures/plot-example-1.png)<!-- -->
 
 ## Other features
 
@@ -225,11 +225,6 @@ get_regression_points(score_model)
 
 ``` r
 library(broom)
-```
-
-    ## Warning: package 'broom' was built under R version 3.6.2
-
-``` r
 augment(score_model)
 ```
 
