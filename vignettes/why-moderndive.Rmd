@@ -3,7 +3,7 @@ title: "Take a `moderndive` into introductory linear regression with R"
 author: "Albert Y. Kim, Chester Ismay, and Max Kuhn"
 date: "`r Sys.Date()`"
 vignette: >
-  %\VignetteIndexEntry{Why should you use the moderndive package for intro linear regression?}
+  %\VignetteIndexEntry{Take a `moderndive` into introductory linear regression with R}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 tags:
@@ -34,11 +34,6 @@ affiliations:
    index: 3
 bibliography: paper.bib
 output:
-# Uncomment the four lines below to build JOSE article using rticles:
-#  rticles::joss_article:
-#    keep_md: yes
-#    number_sections: yes
-#    citation_package: default
   rmarkdown::html_vignette:
     df_print: default
     number_sections: yes
@@ -79,7 +74,7 @@ library(patchwork)
 # Random number generator seed value
 set.seed(76)
 
-# Set ggplot defaults for JOSE output:
+# Set ggplot defaults for rticles output:
 if (!knitr::is_html_output()) {
   # Grey theme:
   theme_set(theme_light())
@@ -88,7 +83,7 @@ if (!knitr::is_html_output()) {
 }
 
 
-# Set output width for JOSE paper:
+# Set output width for rticles paper:
 options(width = 70)
 ```
 

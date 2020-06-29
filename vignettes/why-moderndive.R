@@ -33,7 +33,7 @@ library(patchwork)
 # Random number generator seed value
 set.seed(76)
 
-# Set ggplot defaults for JOSE output:
+# Set ggplot defaults for rticles output:
 if (!knitr::is_html_output()) {
   # Grey theme:
   theme_set(theme_light())
@@ -42,7 +42,7 @@ if (!knitr::is_html_output()) {
 }
 
 
-# Set output width for JOSE paper:
+# Set output width for rticles paper:
 options(width = 70)
 
 ## -------------------------------------------------------------------

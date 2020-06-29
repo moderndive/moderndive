@@ -1,7 +1,6 @@
 # moderndive 0.5.0
 
 * "Why ModernDive?" vignette
-    + Modified `vignettes/why-moderndive.Rmd` to also output in `rticles` format
     + Now loads `patchwork` package from CRAN
 * Add deprecation warning message to `gg_parallel_slopes()` to use `geom_parallel_slopes()` instead
 * Update `geom_parallel_slopes()` with new arguments:
