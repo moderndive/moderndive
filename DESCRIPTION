@@ -8,7 +8,8 @@ Authors@R: c(
     person("Andrew", "Bray", email = "abray@reed.edu", role = "ctb"),
     person("Delaney", "Moran", email = "dmoran@middlebury.edu", role = "ctb"),
     person("Evgeni", "Chasnovski", email = "evgeni.chasnovski@gmail.com", role = "ctb"),
-    person("Will", "Hopper", email = "wjhopper510@gmail.com", role = "ctb")
+    person("Will", "Hopper", email = "wjhopper510@gmail.com", role = "ctb"),
+    person("Marium", "Tapal", email = "mariumtapal@gmail.com", role = "ctb")
     )
 Maintainer: Albert Y. Kim <albert.ys.kim@gmail.com>
 Description: Datasets and wrapper functions for tidyverse-friendly introductory linear regression, used in "Statistical Inference via Data Science: A ModernDive into R and the Tidyverse" available at <https://moderndive.com/>.
