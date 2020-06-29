@@ -24,6 +24,7 @@ globalVariables(c(
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' library(ggplot2)
 #' library(dplyr)
 #' library(moderndive)
@@ -53,6 +54,7 @@ globalVariables(c(
 #'     x = "log10 square feet living space", y = "log10 price in USD",
 #'     title = "House prices in Seattle: Interaction model"
 #'   )
+#' }
 gg_parallel_slopes <- function(y, num_x, cat_x, data, alpha = 1) {
   .Deprecated("geom_parallel_slopes()")
   # Define model formula and fitted/predicted value
