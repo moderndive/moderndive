@@ -4,8 +4,8 @@ globalVariables(c(
 
 #' Plot parallel slopes model
 #'
-#' NOTE: THIS FUNCTION WILL SOON BE DEPRECATED; PLEASE USE \code{{geom_parallel_slopes()}}
-#' INSTEAD. Output a visualization of linear regression when you have one numerical
+#' NOTE: This function is deprecated; please use \code{\link{geom_parallel_slopes}}
+#' instead. Output a visualization of linear regression when you have one numerical
 #' and one categorical explanatory/predictor variable: a separate colored
 #' regression line for each level of the categorical variable
 #'
@@ -24,6 +24,7 @@ globalVariables(c(
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' library(ggplot2)
 #' library(dplyr)
 #' library(moderndive)
@@ -53,7 +54,9 @@ globalVariables(c(
 #'     x = "log10 square feet living space", y = "log10 price in USD",
 #'     title = "House prices in Seattle: Interaction model"
 #'   )
+#' }
 gg_parallel_slopes <- function(y, num_x, cat_x, data, alpha = 1) {
+  .Deprecated("geom_parallel_slopes()")
   # Define model formula and fitted/predicted value
   formula <- glue::glue(y, " ~ ", num_x, " + ", cat_x) %>%
     as.formula()

@@ -27,12 +27,13 @@ in \code{data}}
 A \code{\link[ggplot2]{ggplot}} object.
 }
 \description{
-NOTE: THIS FUNCTION WILL SOON BE DEPRECATED; PLEASE USE \code{{geom_parallel_slopes()}}
-INSTEAD. Output a visualization of linear regression when you have one numerical
+NOTE: This function is deprecated; please use \code{\link{geom_parallel_slopes}}
+instead. Output a visualization of linear regression when you have one numerical
 and one categorical explanatory/predictor variable: a separate colored
 regression line for each level of the categorical variable
 }
 \examples{
+\dontrun{
 library(ggplot2)
 library(dplyr)
 library(moderndive)
@@ -62,6 +63,7 @@ ggplot(house_prices, aes(x = log10_size, y = log10_price, col = condition)) +
     x = "log10 square feet living space", y = "log10 price in USD",
     title = "House prices in Seattle: Interaction model"
   )
+}
 }
 \seealso{
 \code{\link{geom_parallel_slopes}}
