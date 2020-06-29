@@ -8,6 +8,7 @@
     + Use `fullrange=TRUE` to draw regression lines over the entire support of the x-axis (by @wjhopper)
     + Use `level` to set different level of confidence interval shading (by @echasnovski)
 * Added new function `geom_categorical_model()` for visualizing regression models with one categorical explanatory/predictor variable (by @wjhopper)
+* Add deprecation warning message to `gg_parallel_slopes()` to use `geom_parallel_slopes()` instead
 
 ***
 

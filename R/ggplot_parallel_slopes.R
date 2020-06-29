@@ -54,6 +54,7 @@ globalVariables(c(
 #'     title = "House prices in Seattle: Interaction model"
 #'   )
 gg_parallel_slopes <- function(y, num_x, cat_x, data, alpha = 1) {
+  .Deprecated("geom_parallel_slopes()")
   # Define model formula and fitted/predicted value
   formula <- glue::glue(y, " ~ ", num_x, " + ", cat_x) %>%
     as.formula()
