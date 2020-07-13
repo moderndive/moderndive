@@ -88,7 +88,7 @@ test_that("README code works", {
   # cannot compute residuals
   newcars <- slice(mtcars, 1:3) %>%
     select(-mpg)
-  expect_silent(
+  expect_warning(
     get_regression_points(mpg_mlr_model2, newdata = newcars)
   )
   
