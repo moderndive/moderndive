@@ -11,7 +11,7 @@
 #' }
 #' @source Rosen B and Jerdee T. 1974. Influence of sex role stereotypes on personnel
 #' decisions. Journal of Applied Psychology 59(1):9-14.
-#' @seealso The data in `gender_promotions` is a tidyverse-friendly transformation of the `gender.discrimination` data frame from the \code{openintro} package.
+#' @seealso The data in `promotions` is a slight modification of \code{\link[openintro]{gender_discrimination}}.
 #' @examples
 #' library(dplyr)
 #' glimpse(promotions)
@@ -161,6 +161,7 @@
 #'   \item{cls_level}{Class level: lower, upper.}
 #' }
 #' @source Çetinkaya-Rundel M, Morgan KL, Stangl D. 2013. Looking Good on Course Evaluations. CHANCE 26(2). \url{https://chance.amstat.org/2013/04/looking-good/}
+#' @seealso The data in `evals` is a slight modification of \code{\link[openintro]{evals}}.
 #' @examples
 #' library(dplyr)
 #' glimpse(evals)

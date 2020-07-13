@@ -3,13 +3,13 @@ Type: Package
 Title: Tidyverse-Friendly Introductory Linear Regression
 Version: 0.5.0
 Authors@R: c(
-    person("Albert Y.", "Kim", email = "albert.ys.kim@gmail.com", role = c("aut", "cre")),
-    person("Chester", "Ismay", email = "chester.ismay@gmail.com", role = "aut"),
+    person("Albert Y.", "Kim", email = "albert.ys.kim@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-7824-306X")),
+    person("Chester", "Ismay", email = "chester.ismay@gmail.com", role = "aut", comment = c(ORCID = "0000-0003-2820-2547")),
     person("Andrew", "Bray", email = "abray@reed.edu", role = "ctb"),
     person("Delaney", "Moran", email = "dmoran@middlebury.edu", role = "ctb"),
-    person("Evgeni", "Chasnovski", email = "evgeni.chasnovski@gmail.com", role = "ctb"),
+    person("Evgeni", "Chasnovski", email = "evgeni.chasnovski@gmail.com", role = "ctb", comment = c(ORCID = "0000-0002-1617-4019")),
     person("Will", "Hopper", email = "wjhopper510@gmail.com", role = "ctb"),
-    person("Marium", "Tapal", email = "mariumtapal@gmail.com", role = "ctb")
+    person("Marium", "Tapal", email = "mariumtapal@gmail.com", role = "ctb", comment = c(ORCID = "0000-0001-5093-6462"))
     )
 Maintainer: Albert Y. Kim <albert.ys.kim@gmail.com>
 Description: Datasets and wrapper functions for tidyverse-friendly introductory linear regression, used in "Statistical Inference via Data Science: A ModernDive into R and the Tidyverse" available at <https://moderndive.com/>.
@@ -33,7 +33,7 @@ Imports:
     infer,
     rlang (>= 0.2.0),
     glue
-RoxygenNote: 7.1.0
+RoxygenNote: 7.1.1
 Suggests: testthat,
     covr,
     rmarkdown,
