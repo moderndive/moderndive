@@ -40,4 +40,7 @@ either the course or the professor \url{https://www.openintro.org/data/index.php
 library(dplyr)
 glimpse(evals)
 }
+\seealso{
+The data in `evals` is a slight modification of \code{\link[openintro]{evals}}.
+}
 \keyword{datasets}
