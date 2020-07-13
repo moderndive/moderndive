@@ -8,7 +8,7 @@ Authors@R: c(
     person("Andrew", "Bray", email = "abray@reed.edu", role = "ctb"),
     person("Delaney", "Moran", email = "dmoran@middlebury.edu", role = "ctb"),
     person("Evgeni", "Chasnovski", email = "evgeni.chasnovski@gmail.com", role = "ctb", comment = c(ORCID = "0000-0002-1617-4019")),
-    person("Will", "Hopper", email = "wjhopper510@gmail.com", role = "ctb"),
+    person("Will", "Hopper", email = "wjhopper510@gmail.com", role = "ctb", comment = c(ORCID = "0000-0002-7848-1946")),
     person("Marium", "Tapal", email = "mariumtapal@gmail.com", role = "ctb", comment = c(ORCID = "0000-0001-5093-6462"))
     )
 Maintainer: Albert Y. Kim <albert.ys.kim@gmail.com>
