@@ -3,7 +3,7 @@ title: "Take a `moderndive` into introductory linear regression with R"
 author: "Albert Y. Kim, Chester Ismay, and Max Kuhn"
 date: "`r Sys.Date()`"
 vignette: >
-  %\VignetteIndexEntry{Why should you use the moderndive package for intro linear regression?}
+  %\VignetteIndexEntry{Take a `moderndive` into introductory linear regression with R}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 tags:
