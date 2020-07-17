@@ -19,3 +19,4 @@
 ^.*\.log$
 ^\.github$
 ^LICENSE\.md$
+^LICENSE$

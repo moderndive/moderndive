@@ -1,11 +1,11 @@
-# moderndive 0.5.0.9000
+# moderndive 0.5.0
 
 * Modified `vignettes/why-moderndive.Rmd` main vignette
-* Update `geom_parallel_slopes()` with new arguments:
+* Updated `geom_parallel_slopes()` with new arguments:
     + Use `fullrange=TRUE` to draw regression lines over the entire support of the x-axis (by @wjhopper)
     + Use `level` to set different level of confidence interval shading (by @echasnovski)
 * Added new function `geom_categorical_model()` for visualizing regression models with one categorical explanatory/predictor variable (by @wjhopper)
-* Add deprecation warning message to `gg_parallel_slopes()` to use `geom_parallel_slopes()` instead (by @mariumtapal)
+* Add deprecation warning message to `gg_parallel_slopes()` directing users to use `geom_parallel_slopes()` instead (by @mariumtapal)
 
 
 
