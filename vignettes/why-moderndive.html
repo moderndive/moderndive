@@ -552,7 +552,7 @@ Visualization of parallel slopes model.
 <blockquote>
 <p>“How do we extract the values in the regression table?”</p>
 </blockquote>
-<p>While one might argue that extracting the intercept and slope coefficients can be simply done using <code>coefficients(score_model)</code>, what about the standard errors? For example, a Google query of “<em>how do I extract standard errors from lm in R</em>” yielded results from <a href="https://stat.ethz.ch/pipermail/r-help/2008-April/160538.html" target="_blank">the R mailing list</a> and from <a href="https://stats.stackexchange.com/questions/27511/extract-standard-errors-of-coefficient-linear-regression-r" target="_blank">crossvalidated</a> suggesting we run:</p>
+<p>While one might argue that extracting the intercept and slope coefficients can be simply done using <code>coefficients(score_model)</code>, what about the standard errors? For example, a Google query of “<em>how do I extract standard errors from lm in R</em>” yielded results from <a href="https://stat.ethz.ch/pipermail/r-help/2008-April/160538.html" target="_blank">the R mailing list</a> and from <a href="https://stats.stackexchange.com/questions/27511/extract-standard-errors-of-coefficient-linear-regression-r" target="_blank">Cross Validated</a> suggesting we run:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">sqrt</span>(<span class="kw">diag</span>(<span class="kw">vcov</span>(score_model)))</span>
 <span id="cb10-2"><a href="#cb10-2"></a><span class="co">## (Intercept)         age </span></span>
 <span id="cb10-3"><a href="#cb10-3"></a><span class="co">## 0.126778499 0.002569157</span></span></code></pre></div>
@@ -856,7 +856,7 @@ Interaction (left) and parallel slopes (right) models.
 <ol style="list-style-type: decimal">
 <li>By writing wrappers to pre-existing functions, instead of creating new custom functions, there is minimal re-inventing of the wheel necessary.</li>
 <li>In our experience, novice R users had a hard time understanding the <code>broom</code> package function names <code>tidy()</code>, <code>augment()</code>, and <code>glance()</code>. To make them more user-friendly, the <code>moderndive</code> package wrappers have much more intuitively named <code>get_regression_table()</code>, <code>get_regression_points()</code>, and <code>get_regression_summaries()</code>.</li>
-<li>The variables included in the outputs of the above 3 <code>broom</code> functions are not all applicable to an introductory statistics students and of those that were, we found them to be unintuitively named. We therefore cut out some of the variables from the output and renamed some of the remaining variables. For example, compare the outputs of the <code>get_regression_points()</code> wrapper function and the parent <code>broom::augment()</code> function.</li>
+<li>The variables included in the outputs of the above 3 <code>broom</code> functions are not all applicable to an introductory statistics students and of those that were, we found they were not intuitive for new R users. We therefore cut out some of the variables from the output and renamed some of the remaining variables. For example, compare the outputs of the <code>get_regression_points()</code> wrapper function and the parent <code>broom::augment()</code> function.</li>
 </ol>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1"></a><span class="kw">get_regression_points</span>(score_model)</span>
 <span id="cb29-2"><a href="#cb29-2"></a><span class="co">## # A tibble: 463 x 5</span></span>
@@ -895,8 +895,8 @@ Interaction (left) and parallel slopes (right) models.
 <p>The <code>geom_parallel_slopes()</code> is a custom built <code>geom</code> extension to the <code>ggplot2</code> package. For example, the <code>ggplot2</code> webpage page gives <a href="https://ggplot2.tidyverse.org/articles/extending-ggplot2.html" target="_blank">instructions</a> on how to create such extensions. The source code for <code>geom_parallel_slopes()</code> written by <a href="https://github.com/echasnovski" target="_blank">Evgeni Chasnovski</a> can be found on <a href="https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R" target="_blank">GitHub</a>.</p>
 </div>
 </div>
-<div id="acknowledgements" class="section level1">
-<h1><span class="header-section-number">4</span> Acknowledgements</h1>
+<div id="acknowledgments" class="section level1">
+<h1><span class="header-section-number">4</span> Acknowledgments</h1>
 <p>Many thanks to Jenny Smetzer <a href="https://github.com/smetzer180" target="_blank">@smetzer180</a> for her helpful feedback for this vignette and to Evgeni Chasnovski <a href="https://github.com/echasnovski" target="_blank">@echasnovski</a> for contributing the <code>geom_parallel_slopes()</code> function via GitHub <a href="https://github.com/moderndive/moderndive/pull/55" target="_blank">pull request</a>. The authors do not have any financial support to disclose.</p>
 </div>
 <div id="references" class="section level1 unnumbered">
