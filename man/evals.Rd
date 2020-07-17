@@ -24,7 +24,7 @@ A data frame with 463 observations corresponding to courses on the following 13 
 }
 }
 \source{
-Çetinkaya-Rundel M, Morgan KL, Stangl D. 2013. Looking Good on Course Evaluations. CHANCE 26(2). \url{https://chance.amstat.org/2013/04/looking-good/}
+Çetinkaya-Rundel M, Morgan KL, Stangl D. 2013. Looking Good on Course Evaluations. CHANCE 26(2).
 }
 \usage{
 evals
