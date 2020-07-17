@@ -18,3 +18,4 @@
 ^Publish Document\.dcf$
 ^.*\.log$
 ^\.github$
+^LICENSE\.md$
