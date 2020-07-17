@@ -15,7 +15,7 @@ Maintainer: Albert Y. Kim <albert.ys.kim@gmail.com>
 Description: Datasets and wrapper functions for tidyverse-friendly introductory linear regression, used in "Statistical Inference via Data Science: A ModernDive into R and the Tidyverse" available at <https://moderndive.com/>.
 Depends:
     R (>= 3.4.0)
-License: MIT + file LICENSE
+License: GPL-3
 Encoding: UTF-8
 LazyData: true
 URL: https://github.com/ModernDive/moderndive_package
@@ -44,4 +44,3 @@ Suggests: testthat,
     viridis,
     readr
 VignetteBuilder: knitr
-Remotes: r-lib/xml2 
