@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">moderndive</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
       </span>
     </div>
 
@@ -126,27 +126,26 @@
       <small>Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="moderndive-0-4-0-9000" class="section level1">
-<h1 class="page-header" data-toc-text="0.4.0.9000">
-<a href="#moderndive-0-4-0-9000" class="anchor"></a>moderndive 0.4.0.9000<small> Unreleased </small>
+    <div id="moderndive-050" class="section level1">
+<h1 class="page-header" data-toc-text="0.5.0">
+<a href="#moderndive-050" class="anchor"></a>moderndive 0.5.0<small> Unreleased </small>
 </h1>
 <ul>
-<li>Modified <code>vignettes/why-moderndive.Rmd</code> to act as submission to <a href="https://jose.theoj.org/">Journal of Open Source Education</a>
-</li>
-<li>“Why ModernDive?” vignette now loads <code>patchwork</code> package from CRAN</li>
-<li>Update <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> with new arguments:
+<li>Modified <code>vignettes/why-moderndive.Rmd</code> main vignette</li>
+<li>Updated <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> with new arguments:
 <ul>
 <li>Use <code>fullrange=TRUE</code> to draw regression lines over the entire support of the x-axis (by <a href='https://github.com/wjhopper'>@wjhopper</a>)</li>
 <li>Use <code>level</code> to set different level of confidence interval shading (by <a href='https://github.com/echasnovski'>@echasnovski</a>)</li>
 </ul>
 </li>
 <li>Added new function <code><a href="../reference/geom_categorical_model.html">geom_categorical_model()</a></code> for visualizing regression models with one categorical explanatory/predictor variable (by <a href='https://github.com/wjhopper'>@wjhopper</a>)</li>
+<li>Add deprecation warning message to <code><a href="../reference/gg_parallel_slopes.html">gg_parallel_slopes()</a></code> directing users to use <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> instead (by <a href='https://github.com/mariumtapal'>@mariumtapal</a>)</li>
 </ul>
 <hr>
 </div>
-    <div id="moderndive-0-4-0" class="section level1">
+    <div id="moderndive-040" class="section level1">
 <h1 class="page-header" data-toc-text="0.4.0">
-<a href="#moderndive-0-4-0" class="anchor"></a>moderndive 0.4.0<small> 2019-11-04 </small>
+<a href="#moderndive-040" class="anchor"></a>moderndive 0.4.0<small> 2019-11-04 </small>
 </h1>
 <ul>
 <li>Added <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> geom extension to <code>ggplot2</code> package to plot parallel slopes regression models with one numerical and one categorical variable (this is not possible using <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">ggplot2::geom_smooth()</a></code>). Note this renders <code><a href="../reference/gg_parallel_slopes.html">gg_parallel_slopes()</a></code> function added in v0.3.0 obsolete.</li>
@@ -163,9 +162,9 @@
 </ul>
 <hr>
 </div>
-    <div id="moderndive-0-3-0" class="section level1">
+    <div id="moderndive-030" class="section level1">
 <h1 class="page-header" data-toc-text="0.3.0">
-<a href="#moderndive-0-3-0" class="anchor"></a>moderndive 0.3.0<small> 2019-07-18 </small>
+<a href="#moderndive-030" class="anchor"></a>moderndive 0.3.0<small> 2019-07-18 </small>
 </h1>
 <ul>
 <li>Added minimally viable “parallel slopes” regression model plotting function <code><a href="../reference/gg_parallel_slopes.html">gg_parallel_slopes()</a></code>. In the future we hope to define a new <code>ggplot2</code> geom.</li>
@@ -174,7 +173,7 @@
 <li>Datasets:
 <ul>
 <li>Added <code>DD_vs_SB</code>: Dunkin Donuts and Starbucks in Eastern Massachusetts data collected by <a href='https://github.com/DelaneyMoran'>@DelaneyMoran</a></li>
-<li>Added <code>promotions</code>: tibble version of <code><a href="https://rdrr.io/pkg/openintro/man/gender.discrimination.html">openintro::gender.discrimination</a></code> used to illustrate permutation test.</li>
+<li>Added <code>promotions</code>: tibble version of <code>openintro::gender.discrimination</code> used to illustrate permutation test.</li>
 <li>Added <code>MA_schools</code>: Relationship between SAT scores and socio-economic status for Massachusetts high schools.</li>
 <li>Added <code>mythbusters_yawn</code>: Data from study on Mythbusters show on whether yawning is</li>
 <li>Added <code>promotions_shuffled</code>: one instance of <code>promotions</code> with <code>gender</code> permuted/shuffled</li>
@@ -190,9 +189,9 @@
 </ul>
 <hr>
 </div>
-    <div id="moderndive-0-2-0" class="section level1">
+    <div id="moderndive-020" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.0">
-<a href="#moderndive-0-2-0" class="anchor"></a>moderndive 0.2.0<small> 2018-07-06 </small>
+<a href="#moderndive-020" class="anchor"></a>moderndive 0.2.0<small> 2018-07-06 </small>
 </h1>
 <p>Updated package for:</p>
 <ul>
@@ -218,16 +217,16 @@
 </ul>
 <hr>
 </div>
-    <div id="moderndive-0-1-1" class="section level1">
+    <div id="moderndive-011" class="section level1">
 <h1 class="page-header" data-toc-text="0.1.1">
-<a href="#moderndive-0-1-1" class="anchor"></a>moderndive 0.1.1<small> 2018-01-22 </small>
+<a href="#moderndive-011" class="anchor"></a>moderndive 0.1.1<small> 2018-01-22 </small>
 </h1>
 <p>Fixed broken url in <code><a href="../reference/bowl_samples.html">?bowl_samples</a></code></p>
 <hr>
 </div>
-    <div id="moderndive-0-1-0" class="section level1">
+    <div id="moderndive-010" class="section level1">
 <h1 class="page-header" data-toc-text="0.1.0">
-<a href="#moderndive-0-1-0" class="anchor"></a>moderndive 0.1.0<small> 2018-01-22 </small>
+<a href="#moderndive-010" class="anchor"></a>moderndive 0.1.0<small> 2018-01-22 </small>
 </h1>
 <ul>
 <li>Added three <code>get_regression_*</code> functions meant for novice R users/regression fitters that process regression model outputs</li>

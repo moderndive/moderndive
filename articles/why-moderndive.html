@@ -31,7 +31,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">moderndive</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
       </span>
     </div>
 
@@ -79,13 +79,13 @@
 
       
 
-      </header><div class="row">
+      </header><script src="why-moderndive_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Take a <code>moderndive</code> into introductory linear regression with R</h1>
                         <h4 class="author">Albert Y. Kim, Chester Ismay, and Max Kuhn</h4>
             
-            <h4 class="date">2020-06-17</h4>
+            <h4 class="date">2020-07-19</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/ModernDive/moderndive_package/blob/master/vignettes/why-moderndive.Rmd"><code>vignettes/why-moderndive.Rmd</code></a></small>
       <div class="hidden name"><code>why-moderndive.Rmd</code></div>
@@ -256,10 +256,11 @@
 <li>
 <p>Get scalar summaries of a regression fit including <span class="math inline">\(R^2\)</span> and <span class="math inline">\(R^2_{adj}\)</span> but also the (root) mean-squared error:</p>
 <div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="../reference/get_regression_summaries.html">get_regression_summaries</a></span>(<span class="no">score_model</span>)
-<span class="co">## # A tibble: 1 x 8</span>
+<span class="co">## # A tibble: 1 x 9</span>
 <span class="co">##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df</span>
 <span class="co">##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     2</span></pre></body></html></div>
+<span class="co">## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     1</span>
+<span class="co">## # … with 1 more variable: nobs &lt;dbl&gt;</span></pre></body></html></div>
 </li>
 </ol>
 </div>
@@ -337,7 +338,7 @@ Visualization of parallel slopes model.
 <blockquote>
 <p>“How do we extract the values in the regression table?”</p>
 </blockquote>
-<p>While one might argue that extracting the intercept and slope coefficients can be simply done using <code><a href="https://rdrr.io/r/stats/coef.html">coefficients(score_model)</a></code>, what about the standard errors? For example, a Google query of “<em>how do I extract standard errors from lm in R</em>” yielded results from <a href="https://stat.ethz.ch/pipermail/r-help/2008-April/160538.html" target="_blank">the R mailing list</a> and from <a href="https://stats.stackexchange.com/questions/27511/extract-standard-errors-of-coefficient-linear-regression-r" target="_blank">crossvalidated</a> suggesting we run:</p>
+<p>While one might argue that extracting the intercept and slope coefficients can be simply done using <code><a href="https://rdrr.io/r/stats/coef.html">coefficients(score_model)</a></code>, what about the standard errors? For example, a Google query of “<em>how do I extract standard errors from lm in R</em>” yielded results from <a href="https://stat.ethz.ch/pipermail/r-help/2008-April/160538.html" target="_blank">the R mailing list</a> and from <a href="https://stats.stackexchange.com/questions/27511/extract-standard-errors-of-coefficient-linear-regression-r" target="_blank">Cross Validated</a> suggesting we run:</p>
 <div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/vcov.html">vcov</a></span>(<span class="no">score_model</span>)))
 <span class="co">## (Intercept)         age </span>
 <span class="co">## 0.126778499 0.002569157</span></pre></body></html></div>
@@ -520,10 +521,11 @@ Resulting Kaggle RMSLE score.
 ## F-statistic: 5.342 on 1 and 461 DF,  p-value: 0.02125</code></pre>
 <p>Say we wanted to extract the scalar model summaries at the bottom of this output, such as <span class="math inline">\(R^2\)</span>, <span class="math inline">\(R^2_{adj}\)</span>, and the <span class="math inline">\(F\)</span>-statistic. We can do so using the <code><a href="../reference/get_regression_summaries.html">get_regression_summaries()</a></code> function.</p>
 <div class="sourceCode" id="cb25"><html><body><pre class="r"><span class="fu"><a href="../reference/get_regression_summaries.html">get_regression_summaries</a></span>(<span class="no">score_model</span>)
-<span class="co">## # A tibble: 1 x 8</span>
+<span class="co">## # A tibble: 1 x 9</span>
 <span class="co">##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df</span>
 <span class="co">##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     2</span></pre></body></html></div>
+<span class="co">## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     1</span>
+<span class="co">## # … with 1 more variable: nobs &lt;dbl&gt;</span></pre></body></html></div>
 <p>We’ve supplemented the standard scalar summaries output yielded by <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> with the mean squared error <code>mse</code> and root mean squared error <code>rmse</code> given their popularity in machine learning settings.</p>
 </div>
 <div id="plot-parallel-slopes-regression-models" class="section level2">
@@ -631,17 +633,17 @@ Interaction (left) and parallel slopes (right) models.
 <p>As we mentioned earlier, the three <code>get_regression_*</code> functions are merely wrappers of functions from the <code>broom</code> package for converting statistical analysis objects into tidy tibbles along with a few added tweaks, but with the introductory statistics student in mind <span class="citation">(Robinson and Hayes 2019)</span>:</p>
 <ol style="list-style-type: decimal">
 <li>
-<code><a href="../reference/get_regression_table.html">get_regression_table()</a></code> is a wrapper for <code><a href="https://rdrr.io/pkg/broom/man/reexports.html">broom::tidy()</a></code>.</li>
+<code><a href="../reference/get_regression_table.html">get_regression_table()</a></code> is a wrapper for <code><a href="https://broom.tidymodels.org/reference/reexports.html">broom::tidy()</a></code>.</li>
 <li>
-<code><a href="../reference/get_regression_points.html">get_regression_points()</a></code> is a wrapper for <code><a href="https://rdrr.io/pkg/broom/man/reexports.html">broom::augment()</a></code>.</li>
+<code><a href="../reference/get_regression_points.html">get_regression_points()</a></code> is a wrapper for <code><a href="https://broom.tidymodels.org/reference/reexports.html">broom::augment()</a></code>.</li>
 <li>
-<code>get_regression_summaries</code> is a wrapper for <code><a href="https://rdrr.io/pkg/broom/man/reexports.html">broom::glance()</a></code>.</li>
+<code>get_regression_summaries</code> is a wrapper for <code><a href="https://broom.tidymodels.org/reference/reexports.html">broom::glance()</a></code>.</li>
 </ol>
 <p>Why did we take this approach to address the initial 5 common student questions at the outset of the article?</p>
 <ol style="list-style-type: decimal">
 <li>By writing wrappers to pre-existing functions, instead of creating new custom functions, there is minimal re-inventing of the wheel necessary.</li>
-<li>In our experience, novice R users had a hard time understanding the <code>broom</code> package function names <code><a href="https://rdrr.io/pkg/broom/man/reexports.html">tidy()</a></code>, <code><a href="https://rdrr.io/pkg/broom/man/reexports.html">augment()</a></code>, and <code><a href="https://rdrr.io/pkg/broom/man/reexports.html">glance()</a></code>. To make them more user-friendly, the <code>moderndive</code> package wrappers have much more intuitively named <code><a href="../reference/get_regression_table.html">get_regression_table()</a></code>, <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code>, and <code><a href="../reference/get_regression_summaries.html">get_regression_summaries()</a></code>.</li>
-<li>The variables included in the outputs of the above 3 <code>broom</code> functions are not all applicable to an introductory statistics students and of those that were, we found them to be unintuitively named. We therefore cut out some of the variables from the output and renamed some of the remaining variables. For example, compare the outputs of the <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code> wrapper function and the parent <code><a href="https://rdrr.io/pkg/broom/man/reexports.html">broom::augment()</a></code> function.</li>
+<li>In our experience, novice R users had a hard time understanding the <code>broom</code> package function names <code><a href="https://broom.tidymodels.org/reference/reexports.html">tidy()</a></code>, <code><a href="https://broom.tidymodels.org/reference/reexports.html">augment()</a></code>, and <code><a href="https://broom.tidymodels.org/reference/reexports.html">glance()</a></code>. To make them more user-friendly, the <code>moderndive</code> package wrappers have much more intuitively named <code><a href="../reference/get_regression_table.html">get_regression_table()</a></code>, <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code>, and <code><a href="../reference/get_regression_summaries.html">get_regression_summaries()</a></code>.</li>
+<li>The variables included in the outputs of the above 3 <code>broom</code> functions are not all applicable to an introductory statistics students and of those that were, we found they were not intuitive for new R users. We therefore cut out some of the variables from the output and renamed some of the remaining variables. For example, compare the outputs of the <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code> wrapper function and the parent <code><a href="https://broom.tidymodels.org/reference/reexports.html">broom::augment()</a></code> function.</li>
 </ol>
 <div class="sourceCode" id="cb29"><html><body><pre class="r"><span class="fu"><a href="../reference/get_regression_points.html">get_regression_points</a></span>(<span class="no">score_model</span>)
 <span class="co">## # A tibble: 463 x 5</span>
@@ -658,21 +660,21 @@ Interaction (left) and parallel slopes (right) models.
 <span class="co">##  9     9   3.4    51      4.16   -0.759</span>
 <span class="co">## 10    10   4.5    40      4.22    0.276</span>
 <span class="co">## # … with 453 more rows</span>
-<span class="kw pkg">broom</span><span class="kw ns">::</span><span class="fu"><a href="https://rdrr.io/pkg/broom/man/reexports.html">augment</a></span>(<span class="no">score_model</span>)
-<span class="co">## # A tibble: 463 x 9</span>
-<span class="co">##    score   age .fitted .se.fit  .resid    .hat .sigma .cooksd</span>
-<span class="co">##    &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;   &lt;dbl&gt;</span>
-<span class="co">##  1   4.7    36    4.25  0.0405  0.452  0.00560  0.542 1.97e-3</span>
-<span class="co">##  2   4.1    36    4.25  0.0405 -0.148  0.00560  0.542 2.12e-4</span>
-<span class="co">##  3   3.9    36    4.25  0.0405 -0.348  0.00560  0.542 1.17e-3</span>
-<span class="co">##  4   4.8    36    4.25  0.0405  0.552  0.00560  0.541 2.94e-3</span>
-<span class="co">##  5   4.6    59    4.11  0.0371  0.488  0.00471  0.541 1.93e-3</span>
-<span class="co">##  6   4.3    59    4.11  0.0371  0.188  0.00471  0.542 2.88e-4</span>
-<span class="co">##  7   2.8    59    4.11  0.0371 -1.31   0.00471  0.538 1.39e-2</span>
-<span class="co">##  8   4.1    51    4.16  0.0261 -0.0591 0.00232  0.542 1.39e-5</span>
-<span class="co">##  9   3.4    51    4.16  0.0261 -0.759  0.00232  0.541 2.29e-3</span>
-<span class="co">## 10   4.5    40    4.22  0.0331  0.276  0.00374  0.542 4.88e-4</span>
-<span class="co">## # … with 453 more rows, and 1 more variable: .std.resid &lt;dbl&gt;</span></pre></body></html></div>
+<span class="kw pkg">broom</span><span class="kw ns">::</span><span class="fu"><a href="https://broom.tidymodels.org/reference/reexports.html">augment</a></span>(<span class="no">score_model</span>)
+<span class="co">## # A tibble: 463 x 8</span>
+<span class="co">##    score   age .fitted  .resid .std.resid    .hat .sigma   .cooksd</span>
+<span class="co">##    &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;</span>
+<span class="co">##  1   4.7    36    4.25  0.452       0.837 0.00560  0.542 0.00197  </span>
+<span class="co">##  2   4.1    36    4.25 -0.148      -0.274 0.00560  0.542 0.000212 </span>
+<span class="co">##  3   3.9    36    4.25 -0.348      -0.645 0.00560  0.542 0.00117  </span>
+<span class="co">##  4   4.8    36    4.25  0.552       1.02  0.00560  0.541 0.00294  </span>
+<span class="co">##  5   4.6    59    4.11  0.488       0.904 0.00471  0.541 0.00193  </span>
+<span class="co">##  6   4.3    59    4.11  0.188       0.349 0.00471  0.542 0.000288 </span>
+<span class="co">##  7   2.8    59    4.11 -1.31       -2.43  0.00471  0.538 0.0139   </span>
+<span class="co">##  8   4.1    51    4.16 -0.0591     -0.109 0.00232  0.542 0.0000139</span>
+<span class="co">##  9   3.4    51    4.16 -0.759      -1.40  0.00232  0.541 0.00229  </span>
+<span class="co">## 10   4.5    40    4.22  0.276       0.510 0.00374  0.542 0.000488 </span>
+<span class="co">## # … with 453 more rows</span></pre></body></html></div>
 <p>The source code for these three <code>get_regression_*</code> functions can be found on <a href="https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R" target="_blank">GitHub</a>.</p>
 </div>
 <div id="custom-geometries" class="section level2">
@@ -681,9 +683,9 @@ Interaction (left) and parallel slopes (right) models.
 <p>The <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> is a custom built <code>geom</code> extension to the <code>ggplot2</code> package. For example, the <code>ggplot2</code> webpage page gives <a href="https://ggplot2.tidyverse.org/articles/extending-ggplot2.html" target="_blank">instructions</a> on how to create such extensions. The source code for <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> written by <a href="https://github.com/echasnovski" target="_blank">Evgeni Chasnovski</a> can be found on <a href="https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R" target="_blank">GitHub</a>.</p>
 </div>
 </div>
-<div id="acknowledgements" class="section level1">
+<div id="acknowledgments" class="section level1">
 <h1 class="hasAnchor">
-<a href="#acknowledgements" class="anchor"></a>Acknowledgements</h1>
+<a href="#acknowledgments" class="anchor"></a>Acknowledgments</h1>
 <p>Many thanks to Jenny Smetzer <a href="https://github.com/smetzer180" target="_blank">@smetzer180</a> for her helpful feedback for this vignette and to Evgeni Chasnovski <a href="https://github.com/echasnovski" target="_blank">@echasnovski</a> for contributing the <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> function via GitHub <a href="https://github.com/moderndive/moderndive/pull/55" target="_blank">pull request</a>. The authors do not have any financial support to disclose.</p>
 </div>
 <div id="references" class="section level1 unnumbered">
@@ -694,7 +696,7 @@ Interaction (left) and parallel slopes (right) models.
 <p>American Statistical Association Undergraduate Guidelines Workgroup. 2016. “‘Guidelines for Assessment and Instruction in Statistics Education (GAISE) in Statistics Education (GAISE) College Report College Report 2016’.” Alexandria, VA: American Statistical Association. <a href="http://www.amstat.org/education/gaise">http://www.amstat.org/education/gaise</a>.</p>
 </div>
 <div id="ref-diez2015openintro">
-<p>Diez, D.M., C.D. Barr, and M. Çetinkaya-Rundel. 2015. <em>OpenIntro Statistics</em>. OpenIntro, Incorporated. <a href="https://books.google.com/books?id=xNMWswEACAAJ">https://books.google.com/books?id=xNMWswEACAAJ</a>.</p>
+<p>Diez, D. M., C. D. Barr, and M. Çetinkaya-Rundel. 2015. <em>OpenIntro Statistics</em>. OpenIntro, Incorporated. <a href="https://books.google.com/books?id=xNMWswEACAAJ">https://books.google.com/books?id=xNMWswEACAAJ</a>.</p>
 </div>
 <div id="ref-ismay2019moderndive">
 <p>Ismay, Chester., and Albert Y. Kim. 2019. <em>Statistical Inference via Data Science: A Moderndive into R and the Tidyverse</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://moderndive.com/">https://moderndive.com/</a>.</p>
@@ -722,9 +724,9 @@ Interaction (left) and parallel slopes (right) models.
 <div class="footnotes">
 <hr>
 <ol>
-<li id="fn1"><p>For details on the remaining 5 variables, see the help file by running <code><a href="../reference/evals.html">?evals</a></code>.<a href="#fnref1" class="footnote-back">↩</a></p></li>
-<li id="fn2"><p>Note that <code>gender</code> was collected as a binary variable at the time of the study (2005).<a href="#fnref2" class="footnote-back">↩</a></p></li>
-<li id="fn3"><p>For more details on this dataset, see the help file by running <code><a href="../reference/MA_schools.html">?MA_schools</a></code>.<a href="#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn1"><p>For details on the remaining 5 variables, see the help file by running <code><a href="../reference/evals.html">?evals</a></code>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Note that <code>gender</code> was collected as a binary variable at the time of the study (2005).<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn3"><p>For more details on this dataset, see the help file by running <code><a href="../reference/MA_schools.html">?MA_schools</a></code>.<a href="#fnref3" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
   </div>

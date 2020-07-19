@@ -40,8 +40,8 @@
 
 
 <meta property="og:title" content="Plot parallel slopes model — gg_parallel_slopes" />
-<meta property="og:description" content="NOTE: THIS FUNCTION WILL SOON BE DEPRECATED; PLEASE USE {geom_parallel_slopes()}
-INSTEAD. Output a visualization of linear regression when you have one numerical
+<meta property="og:description" content="NOTE: This function is deprecated; please use geom_parallel_slopes
+instead. Output a visualization of linear regression when you have one numerical
 and one categorical explanatory/predictor variable: a separate colored
 regression line for each level of the categorical variable" />
 
@@ -75,7 +75,7 @@ regression line for each level of the categorical variable" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">moderndive</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.4.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0</span>
       </span>
     </div>
 
@@ -132,8 +132,8 @@ regression line for each level of the categorical variable" />
     </div>
 
     <div class="ref-description">
-    <p>NOTE: THIS FUNCTION WILL SOON BE DEPRECATED; PLEASE USE <code>{geom_parallel_slopes()}</code>
-INSTEAD. Output a visualization of linear regression when you have one numerical
+    <p>NOTE: This function is deprecated; please use <code><a href='geom_parallel_slopes.html'>geom_parallel_slopes</a></code>
+instead. Output a visualization of linear regression when you have one numerical
 and one categorical explanatory/predictor variable: a separate colored
 regression line for each level of the categorical variable</p>
     </div>
@@ -179,7 +179,8 @@ in <code>data</code></p></td>
     <div class='dont-index'><p><code><a href='geom_parallel_slopes.html'>geom_parallel_slopes</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
+    <pre class="examples"><div class='input'><span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>moderndive</span>)
 
@@ -198,10 +199,8 @@ in <code>data</code></p></td>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(
     <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"log10 square feet living space"</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"log10 price in USD"</span>,
     <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"House prices in Seattle: Parallel slopes model"</span>
-  )</div><div class='output co'>#&gt; <span class='message'>Plotting parallel slopes models is now much easier using the</span>
-#&gt; <span class='message'>`geom_parallel_slopes()` function. We suggest you use</span>
-#&gt; <span class='message'>`geom_parallel_slopes()` instead of `gg_parallel_slopes()`; read the help</span>
-#&gt; <span class='message'>file by running `?geom_parallel_slopes` to learn how.</span></div><div class='img'><img src='gg_parallel_slopes-1.png' alt='' width='700' height='433' /></div><div class='input'>
+  )
+
 <span class='co'># Compare with interaction model plot:</span>
 <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>house_prices</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>log10_size</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>log10_price</span>, <span class='kw'>col</span> <span class='kw'>=</span> <span class='no'>condition</span>)) +
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>(<span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>0.1</span>) +
@@ -209,7 +208,8 @@ in <code>data</code></p></td>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(
     <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"log10 square feet living space"</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"log10 price in USD"</span>,
     <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"House prices in Seattle: Interaction model"</span>
-  )</div><div class='output co'>#&gt; <span class='message'>`geom_smooth()` using formula 'y ~ x'</span></div><div class='img'><img src='gg_parallel_slopes-2.png' alt='' width='700' height='433' /></div></pre>
+  )
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
