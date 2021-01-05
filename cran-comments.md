@@ -14,9 +14,9 @@
 
 ## R CMD check results
 
-Per Kurt Hornik's email, this is a submission that addresses the problems shown
-on https://cran.r-project.org/web/checks/check_results_moderndive.html. I am
-submitting before the 2020-07-20 deadline.
+Per Prof. Brian Ripley's email, this is a submission that addresses the problems in
+his "CRAN packages suggesting vdiffr but not using it conditionally" email sent
+on 2020/12/8. I am submitting before the 2021-01-12 deadline.
 
 * I was not able to confirm checks for windows R-devel b/c the win-builder
 upload page has been returning the following error for a few days now:
