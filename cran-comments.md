@@ -10,6 +10,7 @@
 * Rhub via devtools::check_rhub(env_vars=c(R_COMPILE_AND_INSTALL_PACKAGES = "always"))
     + Fedora Linux, R-devel, clang, gfortran
     + Windows Server 2008 R2 SP1, R-devel, 32/64 bit
+    + Ubuntu Linux 16.04 LTS, R-release, GCC
 
 
 ## R CMD check results
@@ -17,15 +18,3 @@
 Per Prof. Brian Ripley's email, this is a submission that addresses the problems in
 his "CRAN packages suggesting vdiffr but not using it conditionally" email sent
 on 2020/12/8. I am submitting before the 2021-01-12 deadline.
-
-* I was not able to confirm checks for windows R-devel b/c the win-builder
-upload page has been returning the following error for a few days now:
-"ERROR: Access to the path 'C:\Inetpub\ftproot\R-devel\moderndive_0.5.0.tar.gz'
-is denied."
-* The Rhub Fedora Linux, R-devel, clang, gfortran returned NOTEs that it found the
-following (possibly) invalid URLs. However I tested each out and had no problems
-loading them.
-    + https://www.kaggle.com/c/house-prices-advanced-regression-techniques
-    + https://www.kaggle.com/harlfoxem/housesalesprediction
-    + https://www.kaggle.com/harlfoxem/housesalesprediction/data
-    + https://www.kaggle.com/ndalziel/massachusetts-public-schools-data

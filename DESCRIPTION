@@ -18,8 +18,8 @@ Depends:
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-URL: https://github.com/ModernDive/moderndive_package
-BugReports: https://github.com/ModernDive/moderndive_package/issues
+URL: https://github.com/moderndive/moderndive/issues
+BugReports: https://github.com/moderndive/moderndive/issues
 Imports: 
     magrittr,
     dplyr,

@@ -64,7 +64,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/ModernDive/moderndive_package/">
+  <a href="https://github.com/moderndive/moderndive/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -93,25 +93,29 @@
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>Get the released version from CRAN:</p>
-<div class="sourceCode" id="cb1"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span>(<span class="st">"moderndive"</span>)</pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"moderndive"</span><span class="op">)</span></pre></div>
 <p>Or the development version from GitHub:</p>
-<div class="sourceCode" id="cb2"><pre class="r"><span class="co"># If you haven't installed remotes yet, do so:</span>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="co"># If you haven't installed remotes yet, do so:</span>
 <span class="co"># install.packages("remotes")</span>
-<span class="kw pkg">remotes</span><span class="kw ns">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span>(<span class="st">"moderndive/moderndive"</span>)</pre></div>
+<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"moderndive/moderndive"</span><span class="op">)</span></pre></div>
 </div>
 <div id="demo" class="section level2">
 <h2 class="hasAnchor">
 <a href="#demo" class="anchor"></a>Demo</h2>
 <p>Let’s fit a simple linear regression of teaching <code>score</code> (as evaluated by students) over instructor age for 463 courses taught by 94 instructors at the UT Austin:</p>
-<div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">moderndive</span>)
-<span class="no">score_model</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span>(<span class="no">score</span> ~ <span class="no">age</span>, <span class="kw">data</span> <span class="kw">=</span> <span class="no">evals</span>)</pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/moderndive/moderndive/issues">moderndive</a></span><span class="op">)</span>
+<span class="va">score_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">score</span> <span class="op">~</span> <span class="va">age</span>, data <span class="op">=</span> <span class="va">evals</span><span class="op">)</span></pre></div>
 <p>Among the many useful features of the <code>moderndive</code> package outlined in our essay <a href="https://moderndive.github.io/moderndive/articles/why-moderndive.html">“Why should you use the moderndive package for intro linear regression?”</a> we highlight three functions in particular as covered there.</p>
 <p>We also mention the <code><a href="reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> function as <strong>#4</strong>.</p>
 <div id="1-get-regression-tables" class="section level4">
 <h4 class="hasAnchor">
 <a href="#1-get-regression-tables" class="anchor"></a>1. Get regression tables</h4>
 <p>Get a tidy regression table <strong>with</strong> confidence intervals:</p>
-<div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="reference/get_regression_table.html">get_regression_table</a></span>(<span class="no">score_model</span>)</pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="fu"><a href="reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></pre></div>
 <div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">## # A tibble: 2 x 7</span></span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="co">##   term      estimate std_error statistic p_value lower_ci upper_ci</span></span>
 <span id="cb5-3"><a href="#cb5-3"></a><span class="co">##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
@@ -122,7 +126,8 @@
 <h4 class="hasAnchor">
 <a href="#2-get-fittedpredicted-values-and-residuals" class="anchor"></a>2. Get fitted/predicted values and residuals</h4>
 <p>Get information on each point/observation in your regression, including fitted/predicted values &amp; residuals, organized in a single data frame with intuitive variable names:</p>
-<div class="sourceCode" id="cb6"><pre class="r"><span class="fu"><a href="reference/get_regression_points.html">get_regression_points</a></span>(<span class="no">score_model</span>)</pre></div>
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="fu"><a href="reference/get_regression_points.html">get_regression_points</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></pre></div>
 <div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">## # A tibble: 463 x 5</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="co">##       ID score   age score_hat residual</span></span>
 <span id="cb7-3"><a href="#cb7-3"></a><span class="co">##    &lt;int&gt; &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span></span>
@@ -142,7 +147,8 @@
 <h4 class="hasAnchor">
 <a href="#3-get-regression-fit-summaries" class="anchor"></a>3. Get regression fit summaries</h4>
 <p>Get all the scalar summaries of a regression fit included in <code><a href="https://rdrr.io/r/base/summary.html">summary(score_model)</a></code> along with the mean-squared error and root mean-squared error:</p>
-<div class="sourceCode" id="cb8"><pre class="r"><span class="fu"><a href="reference/get_regression_summaries.html">get_regression_summaries</a></span>(<span class="no">score_model</span>)</pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit">
+<span class="fu"><a href="reference/get_regression_summaries.html">get_regression_summaries</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></pre></div>
 <div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">## # A tibble: 1 x 8</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="co">##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df</span></span>
 <span id="cb9-3"><a href="#cb9-3"></a><span class="co">##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;</span></span>
@@ -152,10 +158,11 @@
 <h4 class="hasAnchor">
 <a href="#4-plot-parallel-slopes-models" class="anchor"></a>4. Plot parallel slopes models</h4>
 <p>Plot parallel slopes regression models involving one categorical and one numerical explanatory/predictor variable (something you cannot do using <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">ggplot2::geom_smooth()</a></code>).</p>
-<div class="sourceCode" id="cb10"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="no">evals</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">x</span> <span class="kw">=</span> <span class="no">age</span>, <span class="kw">y</span> <span class="kw">=</span> <span class="no">score</span>, <span class="kw">color</span> <span class="kw">=</span> <span class="no">ethnicity</span>)) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>() +
-  <span class="fu"><a href="reference/geom_parallel_slopes.html">geom_parallel_slopes</a></span>(<span class="kw">se</span> <span class="kw">=</span> <span class="fl">FALSE</span>)</pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">evals</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">score</span>, color <span class="op">=</span> <span class="va">ethnicity</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
+  <span class="fu"><a href="reference/geom_parallel_slopes.html">geom_parallel_slopes</a></span><span class="op">(</span>se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></pre></div>
 <p><img src="reference/figures/plot-example-1.png"><!-- --></p>
 </div>
 </div>
@@ -166,7 +173,8 @@
 <h4 class="hasAnchor">
 <a href="#1-print-markdown-friendly-tables" class="anchor"></a>1. Print markdown friendly tables</h4>
 <p>Want to output cleanly formatted tables in an R Markdown document? Just add <code>print = TRUE</code> to any of the three <code>get_regression_*()</code> functions.</p>
-<div class="sourceCode" id="cb11"><pre class="r"><span class="fu"><a href="reference/get_regression_table.html">get_regression_table</a></span>(<span class="no">score_model</span>, <span class="kw">print</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></div>
+<div class="sourceCode" id="cb11"><pre class="downlit">
+<span class="fu"><a href="reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">score_model</span>, print <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></pre></div>
 <table class="table">
 <thead><tr class="header">
 <th align="left">term</th>
@@ -204,20 +212,21 @@
 <a href="#2-predictions-on-new-data" class="anchor"></a>2. Predictions on new data</h4>
 <p>Want to apply your fitted model on new data to make predictions? No problem! Include a <code>newdata</code> data frame argument to <code><a href="reference/get_regression_points.html">get_regression_points()</a></code>.</p>
 <p>For example, the Kaggle.com practice competition <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques">House Prices: Advanced Regression Techniques</a> requires you to fit/train a model to the provided <code>train.csv</code> training set to make predictions of house prices in the provided <code>test.csv</code> test set. The following code performs these steps and outputs the predictions in <code>submission.csv</code>:</p>
-<div class="sourceCode" id="cb12"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidyverse</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">moderndive</span>)
+<div class="sourceCode" id="cb12"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/moderndive/moderndive/issues">moderndive</a></span><span class="op">)</span>
 
 <span class="co"># Load in training and test set</span>
-<span class="no">train</span> <span class="kw">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://github.com/moderndive/moderndive/raw/master/vignettes/train.csv"</span>)
-<span class="no">test</span> <span class="kw">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"https://github.com/moderndive/moderndive/raw/master/vignettes/test.csv"</span>)
+<span class="va">train</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"https://github.com/moderndive/moderndive/raw/master/vignettes/train.csv"</span><span class="op">)</span>
+<span class="va">test</span> <span class="op">&lt;-</span> <span class="fu">read_csv</span><span class="op">(</span><span class="st">"https://github.com/moderndive/moderndive/raw/master/vignettes/test.csv"</span><span class="op">)</span>
 
 <span class="co"># Fit model</span>
-<span class="no">house_model</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span>(<span class="no">SalePrice</span> ~ <span class="no">YrSold</span>, <span class="kw">data</span> <span class="kw">=</span> <span class="no">train</span>)
+<span class="va">house_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">SalePrice</span> <span class="op">~</span> <span class="va">YrSold</span>, data <span class="op">=</span> <span class="va">train</span><span class="op">)</span>
 
 <span class="co"># Make and submit predictions</span>
-<span class="no">submission</span> <span class="kw">&lt;-</span> <span class="fu"><a href="reference/get_regression_points.html">get_regression_points</a></span>(<span class="no">house_model</span>, <span class="kw">newdata</span> <span class="kw">=</span> <span class="no">test</span>, <span class="kw">ID</span> <span class="kw">=</span> <span class="st">"Id"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu">select</span>(<span class="no">Id</span>, <span class="kw">SalePrice</span> <span class="kw">=</span> <span class="no">SalePrice_hat</span>)
-<span class="fu">write_csv</span>(<span class="no">submission</span>, <span class="st">"submission.csv"</span>)</pre></div>
+<span class="va">submission</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_regression_points.html">get_regression_points</a></span><span class="op">(</span><span class="va">house_model</span>, newdata <span class="op">=</span> <span class="va">test</span>, ID <span class="op">=</span> <span class="st">"Id"</span><span class="op">)</span> <span class="op">%&gt;%</span>
+  <span class="fu">select</span><span class="op">(</span><span class="va">Id</span>, SalePrice <span class="op">=</span> <span class="va">SalePrice_hat</span><span class="op">)</span>
+<span class="fu">write_csv</span><span class="op">(</span><span class="va">submission</span>, <span class="st">"submission.csv"</span><span class="op">)</span></pre></div>
 <p>The resulting <code>submission.csv</code> is formatted such that it can be submitted on Kaggle, resulting in a “root mean squared logarithmic error” leaderboard score of 0.42918.</p>
 <p><img src="https://github.com/moderndive/moderndive/raw/master/vignettes/leaderboard_orig.png"><!-- --></p>
 </div>
@@ -228,21 +237,22 @@
 <p>The three <code>get_regression</code> functions are wrappers of functions from the <a href="https://CRAN.R-project.org/package=broom/vignettes/broom.html"><code>broom</code></a> package for converting statistical analysis objects into tidy tibbles along with a few added tweaks:</p>
 <ol>
 <li>
-<code><a href="reference/get_regression_table.html">get_regression_table()</a></code> is a wrapper for <code><a href="https://broom.tidymodels.org/reference/reexports.html">broom::tidy()</a></code>
+<code><a href="reference/get_regression_table.html">get_regression_table()</a></code> is a wrapper for <code><a href="https://generics.r-lib.org/reference/tidy.html">broom::tidy()</a></code>
 </li>
 <li>
-<code><a href="reference/get_regression_points.html">get_regression_points()</a></code> is a wrapper for <code><a href="https://broom.tidymodels.org/reference/reexports.html">broom::augment()</a></code>
+<code><a href="reference/get_regression_points.html">get_regression_points()</a></code> is a wrapper for <code><a href="https://generics.r-lib.org/reference/augment.html">broom::augment()</a></code>
 </li>
 <li>
-<code><a href="reference/get_regression_summaries.html">get_regression_summaries()</a></code> is a wrapper for <code><a href="https://broom.tidymodels.org/reference/reexports.html">broom::glance()</a></code>
+<code><a href="reference/get_regression_summaries.html">get_regression_summaries()</a></code> is a wrapper for <code><a href="https://generics.r-lib.org/reference/glance.html">broom::glance()</a></code>
 </li>
 </ol>
 <p>Why did we create these wrappers?</p>
 <ul>
-<li>The <code>broom</code> package function names <code><a href="https://broom.tidymodels.org/reference/reexports.html">tidy()</a></code>, <code><a href="https://broom.tidymodels.org/reference/reexports.html">augment()</a></code>, and <code><a href="https://broom.tidymodels.org/reference/reexports.html">glance()</a></code> don’t mean anything to intro stats students, where as the <code>moderndive</code> package function names <code><a href="reference/get_regression_table.html">get_regression_table()</a></code>, <code><a href="reference/get_regression_points.html">get_regression_points()</a></code>, and <code><a href="reference/get_regression_summaries.html">get_regression_summaries()</a></code> are more intuitive.</li>
-<li>The default column/variable names in the outputs of the above 3 functions are a little daunting for intro stats students to interpret. We cut out some of them and renamed many of them with more intuitive names. For example, compare the outputs of the <code><a href="reference/get_regression_points.html">get_regression_points()</a></code> wrapper function and the parent <code><a href="https://broom.tidymodels.org/reference/reexports.html">broom::augment()</a></code> function.</li>
+<li>The <code>broom</code> package function names <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code>, <code><a href="https://generics.r-lib.org/reference/augment.html">augment()</a></code>, and <code><a href="https://generics.r-lib.org/reference/glance.html">glance()</a></code> don’t mean anything to intro stats students, where as the <code>moderndive</code> package function names <code><a href="reference/get_regression_table.html">get_regression_table()</a></code>, <code><a href="reference/get_regression_points.html">get_regression_points()</a></code>, and <code><a href="reference/get_regression_summaries.html">get_regression_summaries()</a></code> are more intuitive.</li>
+<li>The default column/variable names in the outputs of the above 3 functions are a little daunting for intro stats students to interpret. We cut out some of them and renamed many of them with more intuitive names. For example, compare the outputs of the <code><a href="reference/get_regression_points.html">get_regression_points()</a></code> wrapper function and the parent <code><a href="https://generics.r-lib.org/reference/augment.html">broom::augment()</a></code> function.</li>
 </ul>
-<!-- end list --><div class="sourceCode" id="cb13"><pre class="r"><span class="fu"><a href="reference/get_regression_points.html">get_regression_points</a></span>(<span class="no">score_model</span>)</pre></div>
+<!-- end list --><div class="sourceCode" id="cb13"><pre class="downlit">
+<span class="fu"><a href="reference/get_regression_points.html">get_regression_points</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></pre></div>
 <div class="sourceCode" id="cb14"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a><span class="co">## # A tibble: 463 x 5</span></span>
 <span id="cb14-2"><a href="#cb14-2"></a><span class="co">##       ID score   age score_hat residual</span></span>
 <span id="cb14-3"><a href="#cb14-3"></a><span class="co">##    &lt;int&gt; &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span></span>
@@ -257,8 +267,9 @@
 <span id="cb14-12"><a href="#cb14-12"></a><span class="co">##  9     9   3.4    51      4.16   -0.759</span></span>
 <span id="cb14-13"><a href="#cb14-13"></a><span class="co">## 10    10   4.5    40      4.22    0.276</span></span>
 <span id="cb14-14"><a href="#cb14-14"></a><span class="co">## # … with 453 more rows</span></span></code></pre></div>
-<div class="sourceCode" id="cb15"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">broom</span>)
-<span class="fu"><a href="https://broom.tidymodels.org/reference/reexports.html">augment</a></span>(<span class="no">score_model</span>)</pre></div>
+<div class="sourceCode" id="cb15"><pre class="downlit">
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/">broom</a></span><span class="op">)</span>
+<span class="fu"><a href="https://generics.r-lib.org/reference/augment.html">augment</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></pre></div>
 <div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="co">## # A tibble: 463 x 9</span></span>
 <span id="cb16-2"><a href="#cb16-2"></a><span class="co">##    score   age .fitted .se.fit  .resid    .hat .sigma   .cooksd .std.resid</span></span>
 <span id="cb16-3"><a href="#cb16-3"></a><span class="co">##    &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;</span></span>
@@ -285,9 +296,9 @@
 <ul class="list-unstyled">
 <li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=moderndive">https://​cloud.r-project.org/​package=moderndive</a>
 </li>
-<li>Browse source code at <br><a href="https://github.com/ModernDive/moderndive_package/">https://​github.com/​ModernDive/​moderndive_package/​</a>
+<li>Browse source code at <br><a href="https://github.com/moderndive/moderndive/">https://​github.com/​moderndive/​moderndive/​</a>
 </li>
-<li>Report a bug at <br><a href="https://github.com/ModernDive/moderndive_package/issues">https://​github.com/​ModernDive/​moderndive_package/​issues</a>
+<li>Report a bug at <br><a href="https://github.com/moderndive/moderndive/issues">https://​github.com/​moderndive/​moderndive/​issues</a>
 </li>
 </ul>
 </div>
@@ -333,7 +344,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

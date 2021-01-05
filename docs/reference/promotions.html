@@ -106,7 +106,7 @@ Originally used in OpenIntro.org." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/ModernDive/moderndive_package/">
+  <a href="https://github.com/moderndive/moderndive/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -125,7 +125,7 @@ Originally used in OpenIntro.org." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Bank manager recommendations based on (binary) gender</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/datasets.R'><code>R/datasets.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/moderndive/moderndive/blob/master/R/datasets.R'><code>R/datasets.R</code></a></small>
     <div class="hidden name"><code>promotions.Rd</code></div>
     </div>
 
@@ -134,12 +134,12 @@ Originally used in OpenIntro.org." />
 Originally used in OpenIntro.org.</p>
     </div>
 
-    <pre class="usage"><span class='no'>promotions</span></pre>
+    <pre class="usage"><span class='va'>promotions</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame with 48 observations on the following 3 variables.</p><dl'>
+    <p>A data frame with 48 observations on the following 3 variables.</p><dl>
   <dt>id</dt><dd><p>Identification variable used to distinguish rows.</p></dd>
   <dt>gender</dt><dd><p>gender (collected as a binary variable at the time of the study): a factor with two levels `male` and `female`</p></dd>
   <dt>decision</dt><dd><p>a factor with two levels: `promoted` and `not`</p></dd>
@@ -155,8 +155,9 @@ decisions. Journal of Applied Psychology 59(1):9-14.</p>
     <div class='dont-index'><p>The data in `promotions` is a slight modification of <code><a href='https://rdrr.io/pkg/openintro/man/gender_discrimination.html'>gender_discrimination</a></code>.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>glimpse</a></span>(<span class='no'>promotions</span>)</div><div class='output co'>#&gt; Rows: 48
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+<span class='fu'><a href='https://tibble.tidyverse.org/reference/glimpse.html'>glimpse</a></span><span class='op'>(</span><span class='va'>promotions</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; Rows: 48
 #&gt; Columns: 3
 #&gt; $ id       <span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 1…
 #&gt; $ decision </span><span style='color: #555555;font-style: italic;'>&lt;fct&gt;</span><span> promoted, promoted, promoted, promoted, promoted, promoted, …
@@ -176,7 +177,7 @@ decisions. Journal of Applied Psychology 59(1):9-14.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
