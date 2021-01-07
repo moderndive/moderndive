@@ -1,12 +1,11 @@
 ## Test environments
 
-* local macOS install, R 4.0.1
-* ubuntu 16.04.6 on travis-ci (release, devel, oldrel)
+* local macOS install, R 4.0.2
 * win-builder (release, devel, oldrel)
 * GitHub Actions
-    + ubuntu-16.04: release
-    + windows: release
-    + macOS: release, devel
+    + ubuntu-16.04: latest
+    + windows: latest
+    + macOS: latest, devel
 * Rhub via devtools::check_rhub(env_vars=c(R_COMPILE_AND_INSTALL_PACKAGES = "always"))
     + Fedora Linux, R-devel, clang, gfortran
     + Windows Server 2008 R2 SP1, R-devel, 32/64 bit
@@ -18,3 +17,29 @@
 Per Prof. Brian Ripley's email, this is a submission that addresses the problems in
 his "CRAN packages suggesting vdiffr but not using it conditionally" email sent
 on 2020/12/8. I am submitting before the 2021-01-12 deadline.
+
+I obtained the following NOTES about (possibly) invalid URLs, but they all work just fine
+
+URL: https://www.kaggle.com/c/house-prices-advanced-regression-techniques
+  From: inst/doc/why-moderndive.html
+  Status: 404
+  Message: Not Found
+URL: https://www.kaggle.com/harlfoxem/housesalesprediction
+  From: man/house_prices.Rd
+  Status: 404
+  Message: Not Found
+URL: https://www.kaggle.com/harlfoxem/housesalesprediction/data
+  From: man/house_prices.Rd
+  Status: 404
+  Message: Not Found
+URL: https://www.kaggle.com/ndalziel/massachusetts-public-schools-data
+  From: man/MA_schools.Rd
+  Status: 404
+  Message: Not Found
+URL: https://www.statcrunch.com/app/index.php?dataid=301596
+  From: man/orig_pennies_sample.Rd
+        man/pennies.Rd
+  Status: Error
+  Message: libcurl error code 60:
+    	SSL certificate problem: certificate has expired
+    	(Status without verification: OK
