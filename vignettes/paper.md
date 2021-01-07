@@ -653,7 +653,7 @@ Why did we take this approach to address the initial 5 common student questions 
 
 1. By writing wrappers to pre-existing functions, instead of creating new custom functions, there is minimal re-inventing of the wheel necessary. 
 1. In our experience, novice R users had a hard time understanding the `broom` package function names `tidy()`, `augment()`, and `glance()`. To make them more user-friendly, the `moderndive` package wrappers have much more intuitively named `get_regression_table()`, `get_regression_points()`, and `get_regression_summaries()`.
-1. The variables included in the outputs of the above 3 `broom` functions are not all applicable to an introductory statistics students and of those that were, we found them to be unintuitively named. We therefore cut out some of the variables from the output and renamed some of the remaining variables. For example, compare the outputs of the `get_regression_points()` wrapper function and the parent `broom::augment()` function.
+1. The variables included in the outputs of the above 3 `broom` functions are not all applicable to an introductory statistics students and of those that were, we found them to be counterintuitively named. We therefore cut out some of the variables from the output and renamed some of the remaining variables. For example, compare the outputs of the `get_regression_points()` wrapper function and the parent `broom::augment()` function.
 
 
 ```r
@@ -702,7 +702,7 @@ The `geom_parallel_slopes()` is a custom built `geom` extension to the `ggplot2`
 
 
 
-# Acknowledgements
+# Acknowledgments
 
 Many thanks to Jenny Smetzer [\@smetzer180](https://github.com/smetzer180){target="_blank"} for her helpful feedback for this vignette and to Evgeni Chasnovski [\@echasnovski](https://github.com/echasnovski){target="_blank"} for contributing the `geom_parallel_slopes()` function via GitHub [pull request](https://github.com/moderndive/moderndive/pull/55){target="_blank"}. The authors do not have any financial support to disclose.
 

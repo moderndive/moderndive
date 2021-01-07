@@ -34,7 +34,7 @@ affiliations:
    index: 3
 bibliography: paper.bib
 output:
-# Uncomment the four lines below to build JOSE article using rticles:
+# Uncomment the four lines below to build article using rticles:
 #  rticles::joss_article:
 #    keep_md: yes
 #    number_sections: yes
@@ -79,7 +79,7 @@ library(patchwork)
 # Random number generator seed value
 set.seed(76)
 
-# Set ggplot defaults for JOSE output:
+# Set ggplot defaults for rticles output:
 if (!knitr::is_html_output()) {
   # Grey theme:
   theme_set(theme_light())
@@ -88,7 +88,7 @@ if (!knitr::is_html_output()) {
 }
 
 
-# Set output width for JOSE paper:
+# Set output width for rticles:
 options(width = 70)
 ```
 
