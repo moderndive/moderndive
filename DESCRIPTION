@@ -34,8 +34,7 @@ Imports:
     rlang (>= 0.2.0),
     glue
 RoxygenNote: 7.1.1
-Suggests: usethis,
-    testthat,
+Suggests: testthat,
     covr,
     rmarkdown,
     vdiffr,
