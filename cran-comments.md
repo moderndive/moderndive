@@ -18,7 +18,13 @@ Per Prof. Brian Ripley's email, this is a submission that addresses the problems
 his "CRAN packages suggesting vdiffr but not using it conditionally" email sent
 on 2020/12/8. I am submitting before the 2021-01-12 deadline.
 
-I obtained the following NOTES about (possibly) invalid URLs, but they all work just fine
+
+On the CRAN Package Check Results for Package moderndive page https://cran.r-project.org/web/checks/check_results_moderndive.html,
+there is one Additional Issue "M1mac" https://www.stats.ox.ac.uk/pub/bdr/M1mac/moderndive.out,
+which I believe has to with the vdiffr package. 
+
+
+I also, obtained the following NOTES about (possibly) invalid URLs, but they all work just fine: 
 
 URL: https://www.kaggle.com/c/house-prices-advanced-regression-techniques
   From: inst/doc/why-moderndive.html
