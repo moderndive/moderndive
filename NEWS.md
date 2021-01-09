@@ -1,6 +1,16 @@
-# moderndive 0.5.0.9000
+# moderndive 0.5.1.9000
 
 * 
+
+
+
+***
+
+
+
+# moderndive 0.5.1
+
+* Use vdiffr conditionally
 
 
 

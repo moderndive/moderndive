@@ -73,7 +73,7 @@ https://www.imdb.com/ and their ratings." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">moderndive</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1.9000</span>
       </span>
     </div>
 
@@ -81,7 +81,7 @@ https://www.imdb.com/ and their ratings." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -106,8 +106,8 @@ https://www.imdb.com/ and their ratings." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/ModernDive/moderndive_package/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/moderndive/moderndive/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -125,7 +125,7 @@ https://www.imdb.com/ and their ratings." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Random sample of 68 action and romance movies</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/datasets.R'><code>R/datasets.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/moderndive/moderndive/blob/master/R/datasets.R'><code>R/datasets.R</code></a></small>
     <div class="hidden name"><code>movies_sample.Rd</code></div>
     </div>
 
@@ -134,12 +134,12 @@ https://www.imdb.com/ and their ratings." />
 <a href='https://www.imdb.com/'>https://www.imdb.com/</a> and their ratings.</p>
     </div>
 
-    <pre class="usage"><span class='no'>movies_sample</span></pre>
+    <pre class="usage"><span class='va'>movies_sample</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame of 68 rows movies.</p><dl'>
+    <p>A data frame of 68 rows movies.</p><dl>
   <dt>title</dt><dd><p>Movie title</p></dd>
   <dt>year</dt><dd><p>Year released</p></dd>
   <dt>rating</dt><dd><p>IMDb rating out of 10 stars</p></dd>
@@ -152,12 +152,13 @@ https://www.imdb.com/ and their ratings." />
     <div class='dont-index'><p>This data was sampled from the `movies` data frame in the <code>ggplot2movies</code> package.</p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
 
 <span class='co'># Visualize relationship between rating and genre</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>movies_sample</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>genre</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>rating</span>)) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span>() +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"Genre: Action or Romance"</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"IMDb rating"</span>)</div><div class='img'><img src='movies_sample-1.png' alt='' width='700' height='433' /></div></pre>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span>data <span class='op'>=</span> <span class='va'>movies_sample</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>genre</span>, y <span class='op'>=</span> <span class='va'>rating</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='st'>"Genre: Action or Romance"</span>, y <span class='op'>=</span> <span class='st'>"IMDb rating"</span><span class='op'>)</span>
+</div><div class='img'><img src='movies_sample-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -173,7 +174,7 @@ https://www.imdb.com/ and their ratings." />
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

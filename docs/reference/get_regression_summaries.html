@@ -73,7 +73,7 @@ format. This function is a wrapper function for broom::glance()." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">moderndive</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1.9000</span>
       </span>
     </div>
 
@@ -81,7 +81,7 @@ format. This function is a wrapper function for broom::glance()." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -106,8 +106,8 @@ format. This function is a wrapper function for broom::glance()." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/ModernDive/moderndive_package/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/moderndive/moderndive/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -125,16 +125,16 @@ format. This function is a wrapper function for broom::glance()." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get regression summary values</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/regression_functions.R'><code>R/regression_functions.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R'><code>R/regression_functions.R</code></a></small>
     <div class="hidden name"><code>get_regression_summaries.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Output scalar summary statistics for an <code><a href='https://rdrr.io/r/stats/lm.html'>lm()</a></code> regression in "tidy"
-format. This function is a wrapper function for <code><a href='https://broom.tidymodels.org/reference/reexports.html'>broom::glance()</a></code>.</p>
+format. This function is a wrapper function for <code><a href='https://generics.r-lib.org/reference/glance.html'>broom::glance()</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_regression_summaries</span>(<span class='no'>model</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>get_regression_summaries</span><span class='op'>(</span><span class='va'>model</span>, digits <span class='op'>=</span> <span class='fl'>3</span>, print <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -158,16 +158,17 @@ format. This function is a wrapper function for <code><a href='https://broom.tid
     <p>A single-row tibble with regression summaries. Ex: <code>r_squared</code> and <code>mse</code>.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://broom.tidymodels.org/reference/reexports.html'>glance</a></code>, <code><a href='get_regression_table.html'>get_regression_table</a></code>, <code><a href='get_regression_points.html'>get_regression_points</a></code></p></div>
+    <div class='dont-index'><p><code>glance</code>, <code><a href='get_regression_table.html'>get_regression_table</a></code>, <code><a href='get_regression_points.html'>get_regression_points</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>moderndive</span>)
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/moderndive/moderndive/issues'>moderndive</a></span><span class='op'>)</span>
 
 <span class='co'># Fit lm() regression:</span>
-<span class='no'>mpg_model</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>(<span class='no'>mpg</span> ~ <span class='no'>cyl</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)
+<span class='va'>mpg_model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>mpg</span> <span class='op'>~</span> <span class='va'>cyl</span>, data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span>
 
 <span class='co'># Get regression summaries:</span>
-<span class='fu'>get_regression_summaries</span>(<span class='no'>mpg_model</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 9</span><span>
+<span class='fu'>get_regression_summaries</span><span class='op'>(</span><span class='va'>mpg_model</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 9</span><span>
 #&gt;   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df  nobs
 #&gt;       </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>         </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span>     0.726         0.717  9.64  3.10  3.21      79.6       0     1    32</div></span></pre>
@@ -186,7 +187,7 @@ format. This function is a wrapper function for <code><a href='https://broom.tid
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

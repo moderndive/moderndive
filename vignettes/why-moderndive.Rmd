@@ -34,7 +34,7 @@ affiliations:
    index: 3
 bibliography: paper.bib
 output:
-# Uncomment the four lines below to build JOSE article using rticles:
+# Uncomment the four lines below to build article using rticles:
 #  rticles::joss_article:
 #    keep_md: yes
 #    number_sections: yes
@@ -79,7 +79,7 @@ library(patchwork)
 # Random number generator seed value
 set.seed(76)
 
-# Set ggplot defaults for JOSE output:
+# Set ggplot defaults for rticles output:
 if (!knitr::is_html_output()) {
   # Grey theme:
   theme_set(theme_light())
@@ -88,7 +88,7 @@ if (!knitr::is_html_output()) {
 }
 
 
-# Set output width for JOSE paper:
+# Set output width for rticles:
 options(width = 70)
 ```
 
@@ -100,7 +100,7 @@ options(width = 70)
 
 Linear regression has long been a staple of introductory statistics courses. While the curricula of introductory statistics courses has much evolved of late, the overall importance of regression remains the same [@ASAGuidelines]. To facilitate the teaching of regression while leveraging modern computational tools, we've created the [`moderndive`](https://moderndive.github.io/moderndive/){target="_blank"} R package of datasets and functions for [tidyverse](https://www.tidyverse.org/)-friendly introductory linear regression [@tidyverse2019]. 
 
-This R package is designed to supplement the book "Statistical Inference via Data Science: A ModernDive into R and the Tidyverse" [@ismay2019moderndive]. Note that the book is also available online at https://www.moderndive.com and is referred to as "ModernDive" for short.
+This R package is designed to supplement the book "Statistical Inference via Data Science: A ModernDive into R and the Tidyverse" [@ismay2019moderndive]. Note that the book is also available online at https://moderndive.com and is referred to as "ModernDive" for short.
 
 Before we proceed, let's load all the R packages we are going to need.
 

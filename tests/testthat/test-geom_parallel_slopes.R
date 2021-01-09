@@ -25,18 +25,18 @@ viz <- ggplot(test_df, aes(a, b, colour = gr)) +
 
 # geom_parallel_slopes ----------------------------------------------------
 test_that("geom_parallel_slopes works", {
-  vdiffr::expect_doppelganger(
+  expect_doppelganger(
     "geom_parallel_slopes-basic-1",
     viz + geom_parallel_slopes() + labs(title = "geom_parallel_slopes()")
   )
 
-  vdiffr::expect_doppelganger(
+  expect_doppelganger(
     "geom_parallel_slopes-basic-2",
     viz + geom_parallel_slopes(se = FALSE) +
       labs(title = "geom_parallel_slopes() with `se = FALSE`")
   )
 
-  vdiffr::expect_doppelganger(
+  expect_doppelganger(
     "geom_parallel_slopes-basic-3",
     viz +
       geom_parallel_slopes(
@@ -45,7 +45,7 @@ test_that("geom_parallel_slopes works", {
       labs(title = "geom_parallel_slopes() with extra aesthetics")
   )
 
-  vdiffr::expect_doppelganger(
+  expect_doppelganger(
     "geom_parallel_slopes-basic-4",
     ggplot(test_df, aes(a, c, colour = gr)) +
       geom_point() +
@@ -53,14 +53,14 @@ test_that("geom_parallel_slopes works", {
       labs(title = "Quadratic geom_parallel_slopes()")
   )
 
-  vdiffr::expect_doppelganger(
+  expect_doppelganger(
     "geom_parallel_slopes-basic-5",
     viz + geom_parallel_slopes() +
       facet_wrap(~pan) +
       labs(title = "Faceted geom_parallel_slopes()")
   )
 
-  vdiffr::expect_doppelganger(
+  expect_doppelganger(
     "geom_parallel_slopes-basic-6",
     ggplot(test_df, aes(a, b)) +
       geom_point() +
@@ -68,7 +68,7 @@ test_that("geom_parallel_slopes works", {
       labs(title = "geom_parallel_slopes() with `group` aesthetics grouping")
   )
 
-  vdiffr::expect_doppelganger(
+  expect_doppelganger(
     "geom_parallel_slopes-basic-7",
     ggplot(test_df, aes(a, b)) +
       geom_point() +
@@ -76,14 +76,14 @@ test_that("geom_parallel_slopes works", {
       labs(title = "geom_parallel_slopes() with `fill` aesthetics grouping")
   )
 
-  vdiffr::expect_doppelganger(
+  expect_doppelganger(
     "geom_parallel_slopes-fullrange",
     viz + geom_parallel_slopes(fullrange = TRUE) +
       xlim(c(-1, 2)) +
       labs(title = "geom_parallel_slopes() with fullrange=TRUE")
   )
 
-  vdiffr::expect_doppelganger(
+  expect_doppelganger(
     "geom_parallel_slopes-level",
     viz + geom_parallel_slopes(level = 0.25) +
       labs(title = "geom_parallel_slopes() with level=0.25")
@@ -92,7 +92,7 @@ test_that("geom_parallel_slopes works", {
 
 test_that("geom_parallel_slopes works in edge cases", {
   # Non-factor grouping
-  vdiffr::expect_doppelganger(
+  expect_doppelganger(
     "geom_parallel_slopes-edge-non-factor-grouping",
     test_df %>%
       dplyr::mutate(gr = as.integer(gr)) %>%
@@ -104,7 +104,7 @@ test_that("geom_parallel_slopes works in edge cases", {
 
   # Works without grouping variable. Should give warning
   expect_warning(
-    vdiffr::expect_doppelganger(
+    expect_doppelganger(
       "geom_parallel_slopes-edge-no-grouping",
       ggplot(test_df, aes(a, b)) +
         geom_point() +
@@ -116,7 +116,7 @@ test_that("geom_parallel_slopes works in edge cases", {
 
   # Works with grouping variable that has one unique value. Should give warning
   expect_warning(
-    vdiffr::expect_doppelganger(
+    expect_doppelganger(
       "geom_parallel_slopes-edge-unique-grouping",
       test_df %>%
         dplyr::mutate(gr = 1) %>%
@@ -130,7 +130,7 @@ test_that("geom_parallel_slopes works in edge cases", {
 
   # Gives a custom warning when supplied `method` argument
   expect_warning(
-    vdiffr::expect_doppelganger(
+    expect_doppelganger(
       "geom_parallel_slopes-edge-method-arg",
       viz + geom_parallel_slopes(method = "lm") +
         labs(title = "geom_parallel_slopes() with `method` supplied")

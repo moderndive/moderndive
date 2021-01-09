@@ -4,8 +4,6 @@
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
-[![Travis-CI Build
-Status](https://travis-ci.org/moderndive/moderndive.svg?branch=master)](https://travis-ci.org/moderndive/moderndive)
 [![GitHub Actions
 Status](https://github.com/moderndive/moderndive/workflows/R-CMD-check/badge.svg)](https://github.com/moderndive/moderndive/actions)
 [![Coverage
@@ -15,8 +13,8 @@ downloads](http://cranlogs.r-pkg.org/badges/moderndive)](http://www.r-pkg.org/pk
 
 An R package of datasets and wrapper functions for
 [tidyverse](https://www.tidyverse.org/)-friendly introductory linear
-regression used in “Statistical Inference via Data Science: A ModernDive
-into R and the Tidyverse” available at
+regression used in "Statistical Inference via Data Science: A ModernDive
+into R and the Tidyverse"" available at
 [ModernDive.com](https://moderndive.com/).
 
 ## Installation

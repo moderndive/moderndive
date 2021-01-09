@@ -1,11 +1,11 @@
 Package: moderndive
 Type: Package
 Title: Tidyverse-Friendly Introductory Linear Regression
-Version: 0.5.0.9000
+Version: 0.5.1.9000
 Authors@R: c(
     person("Albert Y.", "Kim", email = "albert.ys.kim@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-7824-306X")),
     person("Chester", "Ismay", email = "chester.ismay@gmail.com", role = "aut", comment = c(ORCID = "0000-0003-2820-2547")),
-    person("Andrew", "Bray", email = "abray@reed.edu", role = "ctb"),
+    person("Andrew", "Bray", email = "abray@reed.edu", role = "ctb", comment = c(ORCID = "0000-0002-4037-7414")),
     person("Delaney", "Moran", email = "delaneyemoran@gmail.com", role = "ctb"),
     person("Evgeni", "Chasnovski", email = "evgeni.chasnovski@gmail.com", role = "ctb", comment = c(ORCID = "0000-0002-1617-4019")),
     person("Will", "Hopper", email = "wjhopper510@gmail.com", role = "ctb", comment = c(ORCID = "0000-0002-7848-1946")),
@@ -18,8 +18,8 @@ Depends:
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-URL: https://github.com/ModernDive/moderndive_package
-BugReports: https://github.com/ModernDive/moderndive_package/issues
+URL: https://github.com/moderndive/moderndive/issues
+BugReports: https://github.com/moderndive/moderndive/issues
 Imports: 
     magrittr,
     dplyr,
