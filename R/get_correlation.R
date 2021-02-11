@@ -104,7 +104,7 @@ check_formula_args <- function(data, formula,
 
   if (length(explanatory_variable) > 1) {
     stop(paste(
-      "The left hand side of the `formula` should only have one",
+      "The right hand side of the `formula` should only have one",
       "variable name"
     ))
   }
