@@ -47,6 +47,7 @@ get_regression_table <- function(model, digits = 3, print = FALSE) {
   explanatory_variable <- formula(model) %>%
     rhs() %>%
     all.vars()
+  cat_explanatory_variable <- names(model[["xlevels"]])
 
   # Create output tibble
   regression_table <- model %>%
@@ -58,7 +59,7 @@ get_regression_table <- function(model, digits = 3, print = FALSE) {
     rename(
       lower_ci = conf_low,
       upper_ci = conf_high
-    )
+    ) %>% mutate(term = extract_cat_names(term, cat_explanatory_variable))
 
   # Transform to markdown
   if (print) {
@@ -312,6 +313,31 @@ get_regression_summaries <-
     return(regression_summaries)
   }
 
+
+# Extract explanatory categorical variable levels ----
+extract_cat_names <- function(term, cat_names) {
+  # if none of the x variables are categorical, do nothing
+  if (length(cat_names) > 0){
+    # the xlevels should only be matched at the beginning of the term
+    matches <-
+      as.character(stringr::str_match(term, paste0("^",cat_names, collapse = "|")))
+    not_matched <- c(1,which(is.na(matches)))
+    # force intercept term to always be in the not_matched group
+    
+    
+    if (length(matches) > 0) {
+      matches <-
+        paste0(matches, ": ", stringr::str_sub(term, nchar(matches) + 1, nchar(term)))
+      matches[not_matched] <- term[not_matched]
+      return(matches)
+    } else{
+      return(term)
+    }
+  } else {
+    return(term)
+  }
+  
+}
 
 
 

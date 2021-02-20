@@ -101,3 +101,27 @@ test_that("README code works", {
       get_regression_summaries(digits = 5, print = TRUE)
   )
 })
+
+
+test_that("pretty printing xlevels used in `get_regression_table` 
+          does not give unexpected outputs", {
+  terms <-
+    c("intercept",
+      "aaaa",
+      "babab",
+      "c_c-x",
+      "xx-xx",
+      "not intercept and not categorical")
+  xlevels <- c("a", "b", "i", "c", "x")
+  expect_equal(
+    moderndive:::extract_cat_names(terms, xlevels),
+    c(
+      "intercept",
+      "a: aaa",
+      "b: abab",
+      "c: _c-x",
+      "x: x-xx",
+      "not intercept and not categorical"
+    )
+  )
+})
