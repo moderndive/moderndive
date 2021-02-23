@@ -4,7 +4,12 @@
 \alias{get_regression_table}
 \title{Get regression table}
 \usage{
-get_regression_table(model, digits = 3, print = FALSE)
+get_regression_table(
+  model,
+  digits = 3,
+  print = FALSE,
+  default_categorical_levels = FALSE
+)
 }
 \arguments{
 \item{model}{an \code{lm()} model object}
@@ -12,6 +17,11 @@ get_regression_table(model, digits = 3, print = FALSE)
 \item{digits}{number of digits precision in output table}
 
 \item{print}{If TRUE, return in print format suitable for R Markdown}
+
+\item{default_categorical_levels}{If TRUE, do not change the non-baseline
+categorical variables in the term column. Otherwise non-baseline 
+categorical variables will be displayed in the format 
+"categorical_variable_name: level_name"}
 }
 \value{
 A tibble-formatted regression table along with lower and upper end
