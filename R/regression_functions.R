@@ -13,6 +13,10 @@ globalVariables(c(
 #' @param model an \code{lm()} model object
 #' @param digits number of digits precision in output table
 #' @param print If TRUE, return in print format suitable for R Markdown
+#' @param default_categorical_levels If TRUE, do not change the non-baseline
+#'  categorical variables in the term column. Otherwise non-baseline 
+#'  categorical variables will be displayed in the format 
+#'  "categorical_variable_name: level_name"
 #'
 #' @return A tibble-formatted regression table along with lower and upper end
 #' points of all confidence intervals for all parameters \code{lower_ci} and
@@ -36,7 +40,7 @@ globalVariables(c(
 #'
 #' # Get regression table:
 #' get_regression_table(mpg_model)
-get_regression_table <- function(model, digits = 3, print = FALSE) {
+get_regression_table <- function(model, digits = 3, print = FALSE, default_categorical_levels = FALSE) {
   # Check inputs
   input_checks(model, digits, print)
 
@@ -59,7 +63,8 @@ get_regression_table <- function(model, digits = 3, print = FALSE) {
     rename(
       lower_ci = conf_low,
       upper_ci = conf_high
-    ) %>% mutate(term = extract_cat_names(term, cat_explanatory_variable))
+    ) %>% mutate(term = extract_cat_names(term, cat_explanatory_variable,
+                                          default_categorical_levels))
 
   # Transform to markdown
   if (print) {
@@ -315,34 +320,34 @@ get_regression_summaries <-
 
 
 # Extract explanatory categorical variable levels ----
-extract_cat_names <- function(term, cat_names) {
-  # if none of the x variables are categorical, do nothing
-  if (length(cat_names) > 0){
-    # the xlevels should only be matched at the beginning of the term
-    matches <-
-      as.character(stringr::str_match(term, paste0("^",cat_names, collapse = "|")))
-    not_matched <- c(1,which(is.na(matches)))
-    # force intercept term to always be in the not_matched group
-    
-    
-    if (length(matches) > 0) {
+extract_cat_names <- function(term, cat_names, default_categorical_levels) {
+    if ((!default_categorical_levels) & (length(cat_names) > 0)) {
+      # if none of the x variables are categorical, do nothing
+      # only change how we display non-baseline levels of categorical variables
+      # if at least one of the x variables are categorical AND the user
+      # does not want the default categorical levels
+      
+      # the xlevels should only be matched at the beginning of the term
       matches <-
-        paste0(matches, ": ", stringr::str_sub(term, nchar(matches) + 1, nchar(term)))
-      matches[not_matched] <- term[not_matched]
-      return(matches)
-    } else{
+        as.character(stringr::str_match(term, paste0("^", cat_names, collapse = "|")))
+      not_matched <- c(1, which(is.na(matches)))
+      # force intercept term to always be in the not_matched group
+      if (length(matches) > 0) {
+        matches <-
+          paste0(matches, ": ", stringr::str_sub(term, nchar(matches) + 1, nchar(term)))
+        matches[not_matched] <- term[not_matched]
+        return(matches)
+      } else{
+        return(term)
+      }
+    } else {
       return(term)
     }
-  } else {
-    return(term)
   }
-  
-}
-
 
 
 # Check input functions ----
-input_checks <- function(model, digits = 3, print = FALSE) {
+input_checks <- function(model, digits = 3, print = FALSE, default_categorical_levels= FALSE) {
   # Since the `"glm"` class also contains the `"lm"` class
   if (length(class(model)) != 1 | !("lm" %in% class(model))) {
     stop(paste(
@@ -353,6 +358,7 @@ input_checks <- function(model, digits = 3, print = FALSE) {
   }
   check_numeric(digits)
   check_logical(print)
+  check_logical(default_categorical_levels)
 }
 
 check_numeric <- function(input) {
