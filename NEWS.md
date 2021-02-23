@@ -1,6 +1,6 @@
 # moderndive 0.5.1.9000
 
-* 
+* Changed printing of non-baseline categorical variable levels in regression table to be cleaner #102
 
 
 
