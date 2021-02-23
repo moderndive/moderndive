@@ -57,6 +57,15 @@ test_that("function inputs are valid", {
   expect_error(
     get_regression_points(model = mpg_cyl, ID = 6)
   )
+  
+  # Check default_categorical_levels
+  expect_silent(
+    get_regression_table(model = mpg_cyl, digits = 5, print = FALSE, default_categorical_levels = TRUE)
+  )
+  
+  expect_error(
+    get_regression_table(model = mpg_cyl, digits = 5, print = FALSE, default_categorical_levels = "yes pls")
+  )
 })
 
 
@@ -101,3 +110,43 @@ test_that("README code works", {
       get_regression_summaries(digits = 5, print = TRUE)
   )
 })
+
+
+test_that("pretty printing xlevels used in `get_regression_table` 
+          does not give unexpected outputs", {
+  terms <-
+    c("intercept",
+      "aaaa",
+      "babab",
+      "c_c-x",
+      "xx-xx",
+      "not intercept and not categorical")
+  xlevels <- c("a", "b", "i", "c", "x")
+  expect_equal(
+    moderndive:::extract_cat_names(terms, xlevels, FALSE),
+    c(
+      "intercept",
+      "a: aaa",
+      "b: abab",
+      "c: _c-x",
+      "x: x-xx",
+      "not intercept and not categorical"
+    )
+  )
+})
+
+test_that(
+  "we display modified non-baseline levels of categorical variables by default, but allow users to use the default R behavior",
+  {
+    expect_equal(
+      get_regression_table(mpg_cyl, default_categorical_levels = TRUE) %>% pull(term) %>% .[c(-1)],
+      names(mpg_cyl$coefficients)[c(-1)]
+    )
+    
+    mpg_model <- lm(mpg ~ hp, data = mtcars)
+    expect_equal(
+      get_regression_table(mpg_model, default_categorical_levels = FALSE) %>% pull(term) %>% .[c(-1)],
+      names(mpg_model$coefficients)[c(-1)]
+    )
+  }
+)
