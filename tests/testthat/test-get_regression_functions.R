@@ -120,8 +120,9 @@ test_that("pretty printing xlevels used in `get_regression_table`
       "babab",
       "c_c-x",
       "xx-xx",
-      "not intercept and not categorical")
-  xlevels <- c("a", "b", "i", "c", "x")
+      "not intercept and not categorical",
+      "as.factor(cyl)6")
+  xlevels <- c("a", "b", "i", "c", "x", "as.factor(cyl)")
   expect_equal(
     moderndive:::extract_cat_names(terms, xlevels, FALSE),
     c(
@@ -130,7 +131,8 @@ test_that("pretty printing xlevels used in `get_regression_table`
       "b: abab",
       "c: _c-x",
       "x: x-xx",
-      "not intercept and not categorical"
+      "not intercept and not categorical",
+      "as.factor(cyl): 6"
     )
   )
 })
