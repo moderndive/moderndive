@@ -320,6 +320,13 @@ get_regression_summaries <-
 
 
 # Extract explanatory categorical variable levels ----
+
+# helper function to escape regex characters from a variable name
+remove_re_char <- function(string){
+  # taken from the `escapeRegex` function in the Hmisc package
+  gsub("([.|()\\^{}+$*?]|\\[|\\])", "\\\\\\1", string)
+}
+
 extract_cat_names <- function(term, cat_names, default_categorical_levels) {
     if ((!default_categorical_levels) & (length(cat_names) > 0)) {
       # if none of the x variables are categorical, do nothing
@@ -327,9 +334,14 @@ extract_cat_names <- function(term, cat_names, default_categorical_levels) {
       # if at least one of the x variables are categorical AND the user
       # does not want the default categorical levels
       
+      # we need to handle the case where a factor is defined within the regression
+      # equation
+      cat_names <- remove_re_char(cat_names)
+      cat_names <- cat_names[order(nchar(cat_names), decreasing = T)]
+      
       # the xlevels should only be matched at the beginning of the term
       matches <-
-        as.character(stringr::str_match(term, paste0("^", cat_names, collapse = "|")))
+        as.character(stringr::str_extract(term, paste0("(", "^", cat_names, ")", collapse = "|")))
       not_matched <- c(1, which(is.na(matches)))
       # force intercept term to always be in the not_matched group
       if (length(matches) > 0) {
