@@ -81,8 +81,8 @@ get_regression_table(score_model, conf.level = 0.99)
 #### 2\. Get fitted/predicted values and residuals
 
 Get information on each point/observation in your regression, including
-fitted/predicted values & residuals, organized in a single data frame
-with intuitive variable names:
+fitted/predicted values & residuals (e.g. `score_hat` and `residual`),
+organized in a single data frame with intuitive variable names:
 
 ``` r
 get_regression_points(score_model)
