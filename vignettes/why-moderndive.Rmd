@@ -93,16 +93,19 @@ options(width = 70)
 ```
 
 
+# Summary
 
+We present the [`moderndive`](https://moderndive.github.io/moderndive/){target="_blank"} R package of datasets and functions for [tidyverse](https://www.tidyverse.org/)-friendly introductory linear regression [@tidyverse2019]. These tools leverage the well-developed `tidyverse` and `broom` packages to facilitate 1) working with regression tables that include confidence intervals, 2) access to regression outputs on an observation level (e.g. fitted/predicted values and residuals), 3) scalar summaries of regression fit (e.g. $R^2$, $R^2_{adj}$, and mean squared error), and 4) visualizing parallel slopes regression models using `ggplot2`-like syntax [@R-ggplot2, @R-broom]. This R package is designed to supplement the book "Statistical Inference via Data Science: A ModernDive into R and the Tidyverse" [@ismay2019moderndive]. Note that the book is also available online at https://moderndive.com and is referred to as "ModernDive" for short.
+
+
+# Statement of Need
+
+Linear regression has long been a staple of introductory statistics courses. While the curricula of introductory statistics courses has much evolved of late, the overall importance of regression remains the same [@ASAGuidelines]. Furthermore, while the use of the R statistical programming language for statistical methods is not new, recent developments such as the `tidyverse` suite of packages have made statistical computation with R accessible to a broader audience [@tidyverse2019]. We go one step further by leveraging the `tidyverse` and the `broom` package to make linear regression accessible to students taking an introductory statistics course [@R-broom]. Such students are likely to be new to statistical computation with R; we designed `moderndive` with these students in mind. 
 
 
 # Introduction
 
-Linear regression has long been a staple of introductory statistics courses. While the curricula of introductory statistics courses has much evolved of late, the overall importance of regression remains the same [@ASAGuidelines]. To facilitate the teaching of regression while leveraging modern computational tools, we've created the [`moderndive`](https://moderndive.github.io/moderndive/){target="_blank"} R package of datasets and functions for [tidyverse](https://www.tidyverse.org/)-friendly introductory linear regression [@tidyverse2019]. 
-
-This R package is designed to supplement the book "Statistical Inference via Data Science: A ModernDive into R and the Tidyverse" [@ismay2019moderndive]. Note that the book is also available online at https://moderndive.com and is referred to as "ModernDive" for short.
-
-Before we proceed, let's load all the R packages we are going to need.
+Let's load all the R packages we are going to need.
 
 ```{r}
 library(moderndive)
