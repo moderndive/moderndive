@@ -346,7 +346,14 @@ Visualization of parallel slopes model.
 <span class="co">##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">## 1 intercept    4.46      0.127     35.2    0        4.21     4.71 </span>
 <span class="co">## 2 age         -0.006     0.003     -2.31   0.021   -0.011   -0.001</span></code></pre></div>
-<p>Observe how the p-value stars are omitted and confidence intervals for the point estimates of all regression parameters are included by default. By including them in the output, we can easily emphasize to students that they “surround” the point estimates in the <code>estimate</code> column. Note the confidence level is defaulted to 95%.</p>
+<p>Observe how the p-value stars are omitted and confidence intervals for the point estimates of all regression parameters are included by default. By including them in the output, we can easily emphasize to students that they “surround” the point estimates in the <code>estimate</code> column. Note the confidence level is defaulted to 95%; this default can be changed using the <code>conf.level</code> argument:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="../reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">score_model</span>, conf.level <span class="op">=</span> <span class="fl">0.99</span><span class="op">)</span>
+<span class="co">## # A tibble: 2 x 7</span>
+<span class="co">##   term      estimate std_error statistic p_value lower_ci upper_ci</span>
+<span class="co">##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
+<span class="co">## 1 intercept    4.46      0.127     35.2    0        4.13     4.79 </span>
+<span class="co">## 2 age         -0.006     0.003     -2.31   0.021   -0.013    0.001</span></code></pre></div>
 </div>
 <div id="outputs-as-tibbles" class="section level2">
 <h2 class="hasAnchor">
@@ -356,21 +363,21 @@ Visualization of parallel slopes model.
 <p>“How do we extract the values in the regression table?”</p>
 </blockquote>
 <p>While one might argue that extracting the intercept and slope coefficients can be simply done using <code><a href="https://rdrr.io/r/stats/coef.html">coefficients(score_model)</a></code>, what about the standard errors? For example, a Google query of “<em>how do I extract standard errors from lm in R</em>” yielded results from <a href="https://stat.ethz.ch/pipermail/r-help/2008-April/160538.html" target="_blank">the R mailing list</a> and from <a href="https://stats.stackexchange.com/questions/27511/extract-standard-errors-of-coefficient-linear-regression-r" target="_blank">Cross Validated</a> suggesting we run:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html">diag</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html">vcov</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span><span class="op">)</span><span class="op">)</span>
 <span class="co">## (Intercept)         age </span>
 <span class="co">## 0.126778499 0.002569157</span></code></pre></div>
 <p>We argue that this task shouldn’t be this hard, especially in an introductory statistics setting. To rectify this, the three <code>get_regression_*</code> functions all return data frames in the tidyverse-style tibble (tidy table) format <span class="citation">(Müller and Wickham 2019)</span>. Therefore you can easily extract columns using the <code><a href="https://dplyr.tidyverse.org/reference/pull.html">pull()</a></code> function from the <code>dplyr</code> package <span class="citation">(Wickham et al. 2020)</span>:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html">pull</a></span><span class="op">(</span><span class="va">std_error</span><span class="op">)</span>
 <span class="co">## [1] 0.127 0.003</span></code></pre></div>
 <p>or equivalently you can use the <code><a href="https://rdrr.io/r/base/Extract.html">$</a></code> sign operator from base R:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span><span class="op">$</span><span class="va">std_error</span>
 <span class="co">## [1] 0.127 0.003</span></code></pre></div>
 <p>Furthermore, by piping the above <code><a href="../reference/get_regression_table.html">get_regression_table(score_model)</a></code> output into the <code><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable()</a></code> function from the <code>knitr</code> package <span class="citation">(Xie 2020)</span>, you can obtain aesthetically pleasing regression tables in R Markdown documents, instead of tables written in jarring computer output font:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html">kable</a></span><span class="op">(</span><span class="op">)</span></code></pre></div>
 <table class="table">
@@ -413,20 +420,20 @@ Visualization of parallel slopes model.
 <p>“Where are the fitted/predicted values and residuals?”</p>
 </blockquote>
 <p>How can we extract point-by-point information from a regression model, such as the fitted/predicted values and the residuals? (Note we only display the first 10 out of 463 of such values for brevity’s sake.)</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html">fitted</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></code></pre></div>
 <pre><code>##        1        2        3        4        5        6        7 
 ## 4.248156 4.248156 4.248156 4.248156 4.111577 4.111577 4.111577 
 ##        8        9       10 
 ## 4.159083 4.159083 4.224403</code></pre>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html">residuals</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></code></pre></div>
 <pre><code>##           1           2           3           4           5 
 ##  0.45184376 -0.14815624 -0.34815624  0.55184376  0.48842294 
 ##           6           7           8           9          10 
 ##  0.18842294 -1.31157706 -0.05908286 -0.75908286  0.27559666</code></pre>
 <p>But why have the original explanatory/predictor <code>age</code> and outcome variable <code>score</code> in <code>evals</code>, the fitted/predicted values <code>score_hat</code>, and <code>residual</code> floating around in separate vectors? Since each observation relates to the same course, we argue it makes more sense to organize them together in the same data frame using <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code>:</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">score_model_points</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_regression_points.html">get_regression_points</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span>
 <span class="va">score_model_points</span></code></pre></div>
 <pre><code>## # A tibble: 10 x 5
@@ -444,7 +451,7 @@ Visualization of parallel slopes model.
 ## 10    10   4.5    40      4.22    0.276</code></pre>
 <p>Observe that the original outcome variable <code>score</code> and explanatory/predictor variable <code>age</code> are now supplemented with the fitted/predicted values <code>score_hat</code> and <code>residual</code> columns. By putting the fitted values, predicted values, and residuals next to the original data, we argue that the computation of these values is less opaque. For example, instructors can easily emphasize how all values in the first row of output are computed.</p>
 <p>Furthermore, recall that since all outputs in the <code>moderndive</code> package are tibble data frames, custom residual analysis plots can be created instead of relying on the default plots yielded by <code><a href="https://rdrr.io/r/stats/plot.lm.html">plot.lm()</a></code>. For example, we can check for the normality of residuals using the histogram of residuals shown in .</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Code to visualize distribution of residuals:</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">score_model_points</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">residual</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">20</span><span class="op">)</span> <span class="op">+</span>
@@ -455,7 +462,7 @@ Histogram visualizing distribution of residuals.
 </p>
 </div>
 <p>As another example, we can investigate potential relationships between the residuals and all explanatory/predictor variables and the presence of heteroskedasticity using partial residual plots, like the partial residual plot over age shown in . If the term “heteroskedasticity” is new to you, it corresponds to the variability of one variable being unequal across the range of values of another variable. The presence of heteroskedasticity violates one of the assumptions of inference for linear regression.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Code to visualize partial residual plot over age:</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">score_model_points</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">residual</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
@@ -475,7 +482,7 @@ Partial residual residual plot over age.
 </blockquote>
 <p>With the fields of machine learning and artificial intelligence gaining prominence, the importance of predictive modeling cannot be understated. Therefore, we’ve designed the <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code> function to allow for a <code>newdata</code> argument to quickly apply a previously fitted model to new observations.</p>
 <p>Let’s create an artificial “new” dataset consisting of two instructors of age 39 and 42 and save it in a tibble data frame called <code>new_prof</code>. We then set the <code>newdata</code> argument to <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code> to apply our previously fitted model <code>score_model</code> to this new data, where <code>score_hat</code> holds the corresponding fitted/predicted values.</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">new_prof</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">39</span>, <span class="fl">42</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="../reference/get_regression_points.html">get_regression_points</a></span><span class="op">(</span><span class="va">score_model</span>, newdata <span class="op">=</span> <span class="va">new_prof</span><span class="op">)</span>
 <span class="co">## # A tibble: 2 x 3</span>
@@ -495,7 +502,7 @@ House prices Kaggle competition homepage.
 <li>Fit a naive model of house sale price as a function of year sold to the training data.</li>
 <li>Make predictions on the test data and write them to a <code>submission.csv</code> file that can be submitted to Kaggle using <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code>. Note the use of the <code>ID</code> argument to use the <code>id</code> variable in <code>test</code> to identify the rows (a requirement of Kaggle competition submissions).</li>
 </ol>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org">readr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/moderndive/moderndive/issues">moderndive</a></span><span class="op">)</span>
@@ -548,7 +555,7 @@ Resulting Kaggle RMSLE score.
 ## Multiple R-squared:  0.01146,    Adjusted R-squared:  0.009311 
 ## F-statistic: 5.342 on 1 and 461 DF,  p-value: 0.02125</code></pre>
 <p>Say we wanted to extract the scalar model summaries at the bottom of this output, such as <span class="math inline">\(R^2\)</span>, <span class="math inline">\(R^2_{adj}\)</span>, and the <span class="math inline">\(F\)</span>-statistic. We can do so using the <code><a href="../reference/get_regression_summaries.html">get_regression_summaries()</a></code> function.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_regression_summaries.html">get_regression_summaries</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span>
 <span class="co">## # A tibble: 1 x 9</span>
 <span class="co">##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df</span>
@@ -571,7 +578,7 @@ Interaction (left) and parallel slopes (right) models.
 </p>
 </div>
 <p>Students might be wondering “Why would you use the parallel slopes model on the right when the data clearly form an”X" pattern as seen in the interaction model on the left?" This is an excellent opportunity to gently introduce the notion of <em>model selection</em> and <em>Occam’s Razor</em>: an interaction model should only be used over a parallel slopes model <strong>if the additional complexity of the interaction model is warranted</strong>. Here, we define model “complexity/simplicity” in terms of the number of parameters in the corresponding regression tables:</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Regression table for interaction model:</span>
 <span class="va">interaction_evals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">score</span> <span class="op">~</span> <span class="va">age</span> <span class="op">*</span> <span class="va">ethnicity</span>, data <span class="op">=</span> <span class="va">evals</span><span class="op">)</span>
 <span class="fu"><a href="../reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">interaction_evals</span><span class="op">)</span>
@@ -594,7 +601,7 @@ Interaction (left) and parallel slopes (right) models.
 <span class="co">## 3 ethnicity: n…    0.138     0.073      1.89   0.059   -0.005    0.282</span></code></pre></div>
 <p>The interaction model is “more complex” as evidenced by its regression table involving 4 rows of parameter estimates whereas the parallel slopes model is “simpler” as evidenced by its regression table involving only 3 parameter estimates. It can be argued however that this additional complexity is warranted given the clearly different slopes in the left-hand plot of .</p>
 <p>We now present a contrasting example, this time from Chapter 6 of the online version of <a href="https://moderndive.com/6-multiple-regression.html#model-selection">ModernDive Subsection 6.3.1</a> involving Massachusetts USA public high schools.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> Let’s plot both the interaction and parallel slopes models in .</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Code to plot interaction and parallel slopes models for MA_schools</span>
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>
   <span class="va">MA_schools</span>,
@@ -625,7 +632,7 @@ Interaction (left) and parallel slopes (right) models.
 </p>
 </div>
 <p>In terms of the corresponding regression tables, observe that the corresponding regression table for the parallel slopes model has 4 rows as opposed to the 6 for the interaction model, reflecting its higher degree of “model simplicity.”</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="co"># Regression table for interaction model:</span>
 <span class="va">interaction_MA</span> <span class="op">&lt;-</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">average_sat_math</span> <span class="op">~</span> <span class="va">perc_disadvan</span> <span class="op">*</span> <span class="va">size</span>, data <span class="op">=</span> <span class="va">MA_schools</span><span class="op">)</span>
@@ -677,7 +684,7 @@ Interaction (left) and parallel slopes (right) models.
 <li>In our experience, novice R users had a hard time understanding the <code>broom</code> package function names <code><a href="https://generics.r-lib.org/reference/tidy.html">tidy()</a></code>, <code><a href="https://generics.r-lib.org/reference/augment.html">augment()</a></code>, and <code><a href="https://generics.r-lib.org/reference/glance.html">glance()</a></code>. To make them more user-friendly, the <code>moderndive</code> package wrappers have much more intuitively named <code><a href="../reference/get_regression_table.html">get_regression_table()</a></code>, <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code>, and <code><a href="../reference/get_regression_summaries.html">get_regression_summaries()</a></code>.</li>
 <li>The variables included in the outputs of the above 3 <code>broom</code> functions are not all applicable to an introductory statistics students and of those that were, we found they were not intuitive for new R users. We therefore cut out some of the variables from the output and renamed some of the remaining variables. For example, compare the outputs of the <code><a href="../reference/get_regression_points.html">get_regression_points()</a></code> wrapper function and the parent <code><a href="https://generics.r-lib.org/reference/augment.html">broom::augment()</a></code> function.</li>
 </ol>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_regression_points.html">get_regression_points</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span>
 <span class="co">## # A tibble: 463 x 5</span>
 <span class="co">##       ID score   age score_hat residual</span>

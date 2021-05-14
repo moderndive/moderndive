@@ -34,7 +34,7 @@ affiliations:
    index: 3
 bibliography: paper.bib
 output:
-# Uncomment the four lines below to build article using rticles:
+# Uncomment the three lines below to build article using rticles:
   rticles::joss_article:
     keep_md: yes
     number_sections: yes
@@ -264,7 +264,17 @@ get_regression_table(score_model)
 ## 2 age         -0.006     0.003     -2.31   0.021   -0.011   -0.001
 ```
 
-Observe how the p-value stars are omitted and confidence intervals for the point estimates of all regression parameters are included by default. By including them in the output, we can easily emphasize to students that they "surround" the point estimates in the `estimate` column. Note the confidence level is defaulted to 95%. 
+Observe how the p-value stars are omitted and confidence intervals for the point estimates of all regression parameters are included by default. By including them in the output, we can easily emphasize to students that they "surround" the point estimates in the `estimate` column. Note the confidence level is defaulted to 95%; this default can be changed using the `conf.level` argument: 
+
+
+```r
+get_regression_table(score_model, conf.level = 0.99)
+## # A tibble: 2 x 7
+##   term      estimate std_error statistic p_value lower_ci upper_ci
+##   <chr>        <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
+## 1 intercept    4.46      0.127     35.2    0        4.13     4.79 
+## 2 age         -0.006     0.003     -2.31   0.021   -0.013    0.001
+```
 
 
 ## 2. Outputs as tibbles

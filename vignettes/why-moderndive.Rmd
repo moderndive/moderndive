@@ -236,7 +236,11 @@ Instead of `summary()`, let's use the `get_regression_table()` function:
 get_regression_table(score_model)
 ```
 
-Observe how the p-value stars are omitted and confidence intervals for the point estimates of all regression parameters are included by default. By including them in the output, we can easily emphasize to students that they "surround" the point estimates in the `estimate` column. Note the confidence level is defaulted to 95%. 
+Observe how the p-value stars are omitted and confidence intervals for the point estimates of all regression parameters are included by default. By including them in the output, we can easily emphasize to students that they "surround" the point estimates in the `estimate` column. Note the confidence level is defaulted to 95%; this default can be changed using the `conf.level` argument: 
+
+```{r}
+get_regression_table(score_model, conf.level = 0.99)
+```
 
 
 ## 2. Outputs as tibbles

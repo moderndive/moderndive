@@ -95,6 +95,9 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 get_regression_table(score_model)
 
 ## -------------------------------------------------------------------
+get_regression_table(score_model, conf.level = 0.99)
+
+## -------------------------------------------------------------------
 sqrt(diag(vcov(score_model)))
 
 ## -------------------------------------------------------------------
