@@ -34,10 +34,10 @@ affiliations:
    index: 3
 bibliography: paper.bib
 output:
-# Uncomment the four lines below to build article using rticles:
-  rticles::joss_article:
-    keep_md: yes
-    number_sections: yes
+# Uncomment the three lines below to build article using rticles:
+  # rticles::joss_article:
+  #   keep_md: yes
+  #   number_sections: yes
   rmarkdown::html_vignette:
     df_print: default
     number_sections: yes
