@@ -11,6 +11,7 @@ globalVariables(c(
 #' intervals in the output table by default.
 #'
 #' @param model an \code{lm()} model object
+#' @inheritParams broom::tidy.lm
 #' @param digits number of digits precision in output table
 #' @param print If TRUE, return in print format suitable for R Markdown
 #' @param default_categorical_levels If TRUE, do not change the non-baseline
@@ -20,7 +21,7 @@ globalVariables(c(
 #'
 #' @return A tibble-formatted regression table along with lower and upper end
 #' points of all confidence intervals for all parameters \code{lower_ci} and
-#' \code{upper_ci}.
+#' \code{upper_ci}; the confidence levels default to 95\%. 
 #' @importFrom stats lm
 #' @importFrom stats predict
 #' @importFrom formula.tools lhs
@@ -40,7 +41,10 @@ globalVariables(c(
 #'
 #' # Get regression table:
 #' get_regression_table(mpg_model)
-get_regression_table <- function(model, digits = 3, print = FALSE, default_categorical_levels = FALSE) {
+#' 
+#' # Vary confidence level of confidence intervals
+#' get_regression_table(mpg_model, conf.level = 0.99)
+get_regression_table <- function(model, conf.level = 0.95, digits = 3, print = FALSE, default_categorical_levels = FALSE) {
   # Check inputs
   input_checks(model, digits, print)
 
@@ -55,7 +59,7 @@ get_regression_table <- function(model, digits = 3, print = FALSE, default_categ
 
   # Create output tibble
   regression_table <- model %>%
-    tidy(conf.int = TRUE) %>%
+    tidy(conf.int = TRUE, conf.level) %>%
     mutate_if(is.numeric, round, digits = digits) %>%
     mutate(term = ifelse(term == "(Intercept)", "intercept", term)) %>%
     as_tibble() %>%

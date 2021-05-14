@@ -65,6 +65,19 @@ get_regression_table(score_model)
     ## 1 intercept    4.46      0.127     35.2    0        4.21     4.71 
     ## 2 age         -0.006     0.003     -2.31   0.021   -0.011   -0.001
 
+The confidence level is by default 95%; we can vary this with
+`conf.level`
+
+``` r
+get_regression_table(score_model, conf.level = 0.99)
+```
+
+    ## # A tibble: 2 x 7
+    ##   term      estimate std_error statistic p_value lower_ci upper_ci
+    ##   <chr>        <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
+    ## 1 intercept    4.46      0.127     35.2    0        4.13     4.79 
+    ## 2 age         -0.006     0.003     -2.31   0.021   -0.013    0.001
+
 #### 2\. Get fitted/predicted values and residuals
 
 Get information on each point/observation in your regression, including

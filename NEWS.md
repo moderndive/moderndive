@@ -1,6 +1,7 @@
 # moderndive 0.5.1.9000
 
 * Changed printing of non-baseline categorical variable levels in regression table to be cleaner #102
+* Added explicit `conf.level` argument to `get_regression_table()` inherited from `broom::tidy.lm()`
 
 
 

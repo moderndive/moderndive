@@ -55,6 +55,11 @@ Get a tidy regression table **with** confidence intervals:
 get_regression_table(score_model)
 ```
 
+The confidence level is by default 95%; we can vary this with `conf.level`
+```{r}
+get_regression_table(score_model, conf.level = 0.99)
+```
+
 #### 2. Get fitted/predicted values and residuals
 
 Get information on each point/observation in your regression, including fitted/predicted values & residuals, organized in a single data frame with intuitive variable names:

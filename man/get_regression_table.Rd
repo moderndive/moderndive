@@ -6,6 +6,7 @@
 \usage{
 get_regression_table(
   model,
+  conf.level = 0.95,
   digits = 3,
   print = FALSE,
   default_categorical_levels = FALSE
@@ -13,6 +14,10 @@ get_regression_table(
 }
 \arguments{
 \item{model}{an \code{lm()} model object}
+
+\item{conf.level}{The confidence level to use for the confidence interval
+if \code{conf.int = TRUE}. Must be strictly greater than 0 and less than 1.
+Defaults to 0.95, which corresponds to a 95 percent confidence interval.}
 
 \item{digits}{number of digits precision in output table}
 
@@ -26,7 +31,7 @@ categorical variables will be displayed in the format
 \value{
 A tibble-formatted regression table along with lower and upper end
 points of all confidence intervals for all parameters \code{lower_ci} and
-\code{upper_ci}.
+\code{upper_ci}; the confidence levels default to 95\%.
 }
 \description{
 Output regression table for an \code{lm()} regression in "tidy" format. This function
@@ -41,6 +46,9 @@ mpg_model <- lm(mpg ~ cyl, data = mtcars)
 
 # Get regression table:
 get_regression_table(mpg_model)
+
+# Vary confidence level of confidence intervals
+get_regression_table(mpg_model, conf.level = 0.99)
 }
 \seealso{
 \code{\link[broom:reexports]{tidy}}, \code{\link{get_regression_points}}, \code{\link{get_regression_summaries}}
