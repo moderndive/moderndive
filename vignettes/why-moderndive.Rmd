@@ -542,7 +542,9 @@ The `geom_parallel_slopes()` is a custom built `geom` extension to the `ggplot2`
 
 
 
+# Author contributions
 
+Albert Y. Kim and Chester Ismay contributed equally to the development of the `moderndive` package. Albert Y. Kim wrote a majority of the initial version of this manuscript with Chester Ismay writing the rest. Max Kuhn provided guidance and feedback at various stages of the package development and manuscript writing. 
 
 
 # Acknowledgments
