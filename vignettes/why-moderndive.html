@@ -12,7 +12,7 @@
 
 <meta name="author" content="Albert Y. Kim, Chester Ismay, and Max Kuhn" />
 
-<meta name="date" content="2021-01-08" />
+<meta name="date" content="2021-05-14" />
 
 <title>Take a moderndive into introductory linear regression with R</title>
 
@@ -43,7 +43,14 @@ document.addEventListener('DOMContentLoaded', function() {
     </style>
 
 
-<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
 code.sourceCode > span { display: inline-block; line-height: 1.25; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -329,15 +336,21 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 
 <h1 class="title toc-ignore">Take a <code>moderndive</code> into introductory linear regression with R</h1>
 <h4 class="author">Albert Y. Kim, Chester Ismay, and Max Kuhn</h4>
-<h4 class="date">2021-01-08</h4>
+<h4 class="date">2021-05-14</h4>
 
 
 
+<div id="summary" class="section level1">
+<h1><span class="header-section-number">1</span> Summary</h1>
+<p>We present the <a href="https://moderndive.github.io/moderndive/" target="_blank"><code>moderndive</code></a> R package of datasets and functions for <a href="https://www.tidyverse.org/">tidyverse</a>-friendly introductory linear regression <span class="citation">(Wickham, Averick, et al. 2019)</span>. These tools leverage the well-developed <code>tidyverse</code> and <code>broom</code> packages to facilitate 1) working with regression tables that include confidence intervals, 2) accessing regression outputs on an observation level (e.g. fitted/predicted values and residuals), 3) inspecting scalar summaries of regression fit (e.g. <span class="math inline">\(R^2\)</span>, <span class="math inline">\(R^2_{adj}\)</span>, and mean squared error), and 4) visualizing parallel slopes regression models using <code>ggplot2</code>-like syntax <span class="citation">(Wickham, Chang, et al. 2019; Robinson and Hayes 2019)</span>. This R package is designed to supplement the book “Statistical Inference via Data Science: A ModernDive into R and the Tidyverse” <span class="citation">(Ismay and Kim 2019)</span>. Note that the book is also available online at <a href="https://moderndive.com" class="uri">https://moderndive.com</a> and is referred to as “ModernDive” for short.</p>
+</div>
+<div id="statement-of-need" class="section level1">
+<h1><span class="header-section-number">2</span> Statement of Need</h1>
+<p>Linear regression has long been a staple of introductory statistics courses. While the curricula of introductory statistics courses has much evolved of late, the overall importance of regression remains the same <span class="citation">(American Statistical Association Undergraduate Guidelines Workgroup 2016)</span>. Furthermore, while the use of the R statistical programming language for statistical analysis is not new, recent developments such as the <code>tidyverse</code> suite of packages have made statistical computation with R accessible to a broader audience <span class="citation">(Wickham, Averick, et al. 2019)</span>. We go one step further by leveraging the <code>tidyverse</code> and the <code>broom</code> packages to make linear regression accessible to students taking an introductory statistics course <span class="citation">(Robinson and Hayes 2019)</span>. Such students are likely to be new to statistical computation with R; we designed <code>moderndive</code> with these students in mind.</p>
+</div>
 <div id="introduction" class="section level1">
-<h1><span class="header-section-number">1</span> Introduction</h1>
-<p>Linear regression has long been a staple of introductory statistics courses. While the curricula of introductory statistics courses has much evolved of late, the overall importance of regression remains the same <span class="citation">(American Statistical Association Undergraduate Guidelines Workgroup 2016)</span>. To facilitate the teaching of regression while leveraging modern computational tools, we’ve created the <a href="https://moderndive.github.io/moderndive/" target="_blank"><code>moderndive</code></a> R package of datasets and functions for <a href="https://www.tidyverse.org/">tidyverse</a>-friendly introductory linear regression <span class="citation">(Wickham, Averick, et al. 2019)</span>.</p>
-<p>This R package is designed to supplement the book “Statistical Inference via Data Science: A ModernDive into R and the Tidyverse” <span class="citation">(Ismay and Kim 2019)</span>. Note that the book is also available online at <a href="https://moderndive.com" class="uri">https://moderndive.com</a> and is referred to as “ModernDive” for short.</p>
-<p>Before we proceed, let’s load all the R packages we are going to need.</p>
+<h1><span class="header-section-number">3</span> Introduction</h1>
+<p>Let’s load all the R packages we are going to need.</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">library</span>(moderndive)</span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="kw">library</span>(ggplot2)</span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="kw">library</span>(dplyr)</span>
@@ -424,7 +437,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 </tbody>
 </table>
 <div id="regression-analysis-the-good-old-fashioned-way" class="section level2">
-<h2><span class="header-section-number">1.1</span> Regression analysis the “good old-fashioned” way</h2>
+<h2><span class="header-section-number">3.1</span> Regression analysis the “good old-fashioned” way</h2>
 <p>Let’s fit a simple linear regression model of teaching <code>score</code> as a function of instructor <code>age</code> using the <code>lm()</code> function.</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>score_model &lt;-<span class="st"> </span><span class="kw">lm</span>(score <span class="op">~</span><span class="st"> </span>age, <span class="dt">data =</span> evals)</span></code></pre></div>
 <p>Let’s now study the output of the fitted model <code>score_model</code> “the good old-fashioned way”: using <code>summary()</code> which calls <code>summary.lm()</code> behind the scenes (we’ll refer to them interchangeably throughout this paper).</p>
@@ -457,7 +470,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 </ol>
 </div>
 <div id="regression-analysis-using-moderndive" class="section level2">
-<h2><span class="header-section-number">1.2</span> Regression analysis using <code>moderndive</code></h2>
+<h2><span class="header-section-number">3.2</span> Regression analysis using <code>moderndive</code></h2>
 <p>To address these questions, we’ve included three functions in the <code>moderndive</code> package that take a fitted model object as input and return the same information as <code>summary.lm()</code>, but output them in tidyverse-friendly format <span class="citation">(Wickham, Averick, et al. 2019)</span>. As we’ll see later, while these three functions are merely wrappers to existing functions in the <code>broom</code> package for converting statistical objects into tidy tibbles, we modified them with the introductory statistics student in mind <span class="citation">(Robinson and Hayes 2019)</span>.</p>
 <ol style="list-style-type: decimal">
 <li><p>Get a tidy regression table <strong>with confidence intervals</strong>:</p>
@@ -493,7 +506,7 @@ code > span.er { color: #a61717; background-color: #e3d2d2; }
 </ol>
 </div>
 <div id="bonus-visualizing-parallel-slopes-models-with-moderndive" class="section level2">
-<h2><span class="header-section-number">1.3</span> Bonus: Visualizing parallel slopes models with <code>moderndive</code></h2>
+<h2><span class="header-section-number">3.3</span> Bonus: Visualizing parallel slopes models with <code>moderndive</code></h2>
 <p>Furthermore, say you would like to create a visualization of the relationship between two numerical variables and a third categorical variable with <span class="math inline">\(k\)</span> levels. Let’s create this using a colored scatterplot via the <code>ggplot2</code> package for data visualization <span class="citation">(Wickham, Chang, et al. 2019)</span>. Using <code>geom_smooth(method = &quot;lm&quot;, se = FALSE)</code> yields a visualization of an <em>interaction model</em> where each of the <span class="math inline">\(k\)</span> regression lines has their own intercept and slope. For example in , we extend our previous regression model by now mapping the categorical variable <code>ethnicity</code> to the <code>color</code> aesthetic.</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="co"># Code to visualize interaction model:</span></span>
 <span id="cb7-2"><a href="#cb7-2"></a><span class="kw">ggplot</span>(evals, <span class="kw">aes</span>(<span class="dt">x =</span> age, <span class="dt">y =</span> score, <span class="dt">color =</span> ethnicity)) <span class="op">+</span></span>
@@ -522,7 +535,7 @@ Visualization of parallel slopes model.
 <p>At this point however, students will inevitably ask a sixth question: “When would you ever use a parallel slopes model?”</p>
 </div>
 <div id="why-should-you-use-the-moderndive-package" class="section level2">
-<h2><span class="header-section-number">1.4</span> Why should you use the <code>moderndive</code> package?</h2>
+<h2><span class="header-section-number">3.4</span> Why should you use the <code>moderndive</code> package?</h2>
 <p>To recap this introduction, we believe that the following functions included in the <code>moderndive</code> package</p>
 <ol style="list-style-type: decimal">
 <li><code>get_regression_table()</code></li>
@@ -534,9 +547,9 @@ Visualization of parallel slopes model.
 </div>
 </div>
 <div id="features" class="section level1">
-<h1><span class="header-section-number">2</span> Features</h1>
+<h1><span class="header-section-number">4</span> Features</h1>
 <div id="less-p-value-stars-more-confidence-intervals" class="section level2">
-<h2><span class="header-section-number">2.1</span> 1. Less p-value stars, more confidence intervals</h2>
+<h2><span class="header-section-number">4.1</span> 1. Less p-value stars, more confidence intervals</h2>
 <p>The first common student question:</p>
 <blockquote>
 <p>“Wow! Look at those p-value stars! Stars are good, so I should try to get many stars, right?”</p>
@@ -557,7 +570,7 @@ Visualization of parallel slopes model.
 <p>Observe how the p-value stars are omitted and confidence intervals for the point estimates of all regression parameters are included by default. By including them in the output, we can easily emphasize to students that they “surround” the point estimates in the <code>estimate</code> column. Note the confidence level is defaulted to 95%.</p>
 </div>
 <div id="outputs-as-tibbles" class="section level2">
-<h2><span class="header-section-number">2.2</span> 2. Outputs as tibbles</h2>
+<h2><span class="header-section-number">4.2</span> 2. Outputs as tibbles</h2>
 <p>The second common student question:</p>
 <blockquote>
 <p>“How do we extract the values in the regression table?”</p>
@@ -611,7 +624,7 @@ Visualization of parallel slopes model.
 </table>
 </div>
 <div id="birds-of-a-feather-should-flock-together-fitted-values-residuals" class="section level2">
-<h2><span class="header-section-number">2.3</span> 3. Birds of a feather should flock together: Fitted values &amp; residuals</h2>
+<h2><span class="header-section-number">4.3</span> 3. Birds of a feather should flock together: Fitted values &amp; residuals</h2>
 <p>The third common student question:</p>
 <blockquote>
 <p>“Where are the fitted/predicted values and residuals?”</p>
@@ -668,7 +681,7 @@ Partial residual residual plot over age.
 </div>
 </div>
 <div id="a-quick-and-easy-kaggle-predictive-modeling-competition-submission" class="section level2">
-<h2><span class="header-section-number">2.4</span> 4. A quick-and-easy Kaggle predictive modeling competition submission!</h2>
+<h2><span class="header-section-number">4.4</span> 4. A quick-and-easy Kaggle predictive modeling competition submission!</h2>
 <p>The fourth common student question:</p>
 <blockquote>
 <p>“How do I apply this model to a new set of data to make predictions?”</p>
@@ -722,7 +735,7 @@ Resulting Kaggle RMSLE score.
 </div>
 </div>
 <div id="scalar-summaries-of-linear-regression-model-fits" class="section level2">
-<h2><span class="header-section-number">2.5</span> 5. Scalar summaries of linear regression model fits</h2>
+<h2><span class="header-section-number">4.5</span> 5. Scalar summaries of linear regression model fits</h2>
 <p>The fifth common student question:</p>
 <blockquote>
 <p>“What is all this other stuff at the bottom?”</p>
@@ -756,7 +769,7 @@ Resulting Kaggle RMSLE score.
 <p>We’ve supplemented the standard scalar summaries output yielded by <code>summary()</code> with the mean squared error <code>mse</code> and root mean squared error <code>rmse</code> given their popularity in machine learning settings.</p>
 </div>
 <div id="plot-parallel-slopes-regression-models" class="section level2">
-<h2><span class="header-section-number">2.6</span> 6. Plot parallel slopes regression models</h2>
+<h2><span class="header-section-number">4.6</span> 6. Plot parallel slopes regression models</h2>
 <p>Finally, the last common student question:</p>
 <blockquote>
 <p>“When would you ever use a parallel slopes model?”</p>
@@ -777,7 +790,7 @@ Interaction (left) and parallel slopes (right) models.
 <span id="cb26-6"><a href="#cb26-6"></a><span class="co">##   &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
 <span id="cb26-7"><a href="#cb26-7"></a><span class="co">## 1 intercept        2.61      0.518      5.04   0        1.59     3.63 </span></span>
 <span id="cb26-8"><a href="#cb26-8"></a><span class="co">## 2 age              0.032     0.011      2.84   0.005    0.01     0.054</span></span>
-<span id="cb26-9"><a href="#cb26-9"></a><span class="co">## 3 ethnicitynot…    2.00      0.534      3.74   0        0.945    3.04 </span></span>
+<span id="cb26-9"><a href="#cb26-9"></a><span class="co">## 3 ethnicity: n…    2.00      0.534      3.74   0        0.945    3.04 </span></span>
 <span id="cb26-10"><a href="#cb26-10"></a><span class="co">## 4 age:ethnicit…   -0.04      0.012     -3.51   0       -0.063   -0.018</span></span>
 <span id="cb26-11"><a href="#cb26-11"></a></span>
 <span id="cb26-12"><a href="#cb26-12"></a><span class="co"># Regression table for parallel slopes model:</span></span>
@@ -788,7 +801,7 @@ Interaction (left) and parallel slopes (right) models.
 <span id="cb26-17"><a href="#cb26-17"></a><span class="co">##   &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
 <span id="cb26-18"><a href="#cb26-18"></a><span class="co">## 1 intercept        4.37      0.136     32.1    0        4.1      4.63 </span></span>
 <span id="cb26-19"><a href="#cb26-19"></a><span class="co">## 2 age             -0.006     0.003     -2.5    0.013   -0.012   -0.001</span></span>
-<span id="cb26-20"><a href="#cb26-20"></a><span class="co">## 3 ethnicitynot…    0.138     0.073      1.89   0.059   -0.005    0.282</span></span></code></pre></div>
+<span id="cb26-20"><a href="#cb26-20"></a><span class="co">## 3 ethnicity: n…    0.138     0.073      1.89   0.059   -0.005    0.282</span></span></code></pre></div>
 <p>The interaction model is “more complex” as evidenced by its regression table involving 4 rows of parameter estimates whereas the parallel slopes model is “simpler” as evidenced by its regression table involving only 3 parameter estimates. It can be argued however that this additional complexity is warranted given the clearly different slopes in the left-hand plot of .</p>
 <p>We now present a contrasting example, this time from Chapter 6 of the online version of <a href="https://moderndive.com/6-multiple-regression.html#model-selection">ModernDive Subsection 6.3.1</a> involving Massachusetts USA public high schools.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> Let’s plot both the interaction and parallel slopes models in .</p>
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1"></a><span class="co"># Code to plot interaction and parallel slopes models for MA_schools</span></span>
@@ -831,8 +844,8 @@ Interaction (left) and parallel slopes (right) models.
 <span id="cb28-7"><a href="#cb28-7"></a><span class="co">##   &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
 <span id="cb28-8"><a href="#cb28-8"></a><span class="co">## 1 intercept      594.       13.3      44.7     0      568.     620.   </span></span>
 <span id="cb28-9"><a href="#cb28-9"></a><span class="co">## 2 perc_disadvan   -2.93      0.294    -9.96    0       -3.51    -2.35 </span></span>
-<span id="cb28-10"><a href="#cb28-10"></a><span class="co">## 3 sizemedium     -17.8      15.8      -1.12    0.263  -48.9     13.4  </span></span>
-<span id="cb28-11"><a href="#cb28-11"></a><span class="co">## 4 sizelarge      -13.3      13.8      -0.962   0.337  -40.5     13.9  </span></span>
+<span id="cb28-10"><a href="#cb28-10"></a><span class="co">## 3 size: medium   -17.8      15.8      -1.12    0.263  -48.9     13.4  </span></span>
+<span id="cb28-11"><a href="#cb28-11"></a><span class="co">## 4 size: large    -13.3      13.8      -0.962   0.337  -40.5     13.9  </span></span>
 <span id="cb28-12"><a href="#cb28-12"></a><span class="co">## 5 perc_disadva…    0.146     0.371     0.393   0.694   -0.585    0.877</span></span>
 <span id="cb28-13"><a href="#cb28-13"></a><span class="co">## 6 perc_disadva…    0.189     0.323     0.586   0.559   -0.446    0.824</span></span>
 <span id="cb28-14"><a href="#cb28-14"></a></span>
@@ -845,17 +858,17 @@ Interaction (left) and parallel slopes (right) models.
 <span id="cb28-21"><a href="#cb28-21"></a><span class="co">##   &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
 <span id="cb28-22"><a href="#cb28-22"></a><span class="co">## 1 intercept       588.       7.61     77.3     0       573.     603.  </span></span>
 <span id="cb28-23"><a href="#cb28-23"></a><span class="co">## 2 perc_disadvan    -2.78     0.106   -26.1     0        -2.99    -2.57</span></span>
-<span id="cb28-24"><a href="#cb28-24"></a><span class="co">## 3 sizemedium      -11.9      7.54     -1.58    0.115   -26.7      2.91</span></span>
-<span id="cb28-25"><a href="#cb28-25"></a><span class="co">## 4 sizelarge        -6.36     6.92     -0.919   0.359   -20.0      7.26</span></span></code></pre></div>
+<span id="cb28-24"><a href="#cb28-24"></a><span class="co">## 3 size: medium    -11.9      7.54     -1.58    0.115   -26.7      2.91</span></span>
+<span id="cb28-25"><a href="#cb28-25"></a><span class="co">## 4 size: large      -6.36     6.92     -0.919   0.359   -20.0      7.26</span></span></code></pre></div>
 <p>Unlike our earlier comparison of interaction and parallel slopes models in , in this case it could be argued that the additional complexity of the interaction model is <em>not</em> warranted since the 3 three regression lines in the left-hand interaction are already somewhat parallel. Therefore the simpler parallel slopes model should be favored.</p>
 <p>Going one step further, notice how the three regression lines in the visualization of the parallel slopes model in the right-hand plot of  have similar intercepts. In can thus be argued that the additional model complexity induced by introducing the categorical variable school <code>size</code> is not warranted. Therefore, a simple linear regression model using only <code>perc_disadvan</code> percent of the student body that are economically disadvantaged should be favored.</p>
 <p>While many students will inevitably find these results depressing, in our opinion, it is important to additionally emphasize that such regression analyses can be used as an empowering tool to bring to light inequities in access to education and inform policy decisions.</p>
 </div>
 </div>
 <div id="the-details" class="section level1">
-<h1><span class="header-section-number">3</span> The Details</h1>
+<h1><span class="header-section-number">5</span> The Details</h1>
 <div id="broom-wrappers" class="section level2">
-<h2><span class="header-section-number">3.1</span> Three wrappers to <code>broom</code> functions</h2>
+<h2><span class="header-section-number">5.1</span> Three wrappers to <code>broom</code> functions</h2>
 <p>As we mentioned earlier, the three <code>get_regression_*</code> functions are merely wrappers of functions from the <code>broom</code> package for converting statistical analysis objects into tidy tibbles along with a few added tweaks, but with the introductory statistics student in mind <span class="citation">(Robinson and Hayes 2019)</span>:</p>
 <ol style="list-style-type: decimal">
 <li><code>get_regression_table()</code> is a wrapper for <code>broom::tidy()</code>.</li>
@@ -885,28 +898,32 @@ Interaction (left) and parallel slopes (right) models.
 <span id="cb29-15"><a href="#cb29-15"></a><span class="co">## # … with 453 more rows</span></span>
 <span id="cb29-16"><a href="#cb29-16"></a>broom<span class="op">::</span><span class="kw">augment</span>(score_model)</span>
 <span id="cb29-17"><a href="#cb29-17"></a><span class="co">## # A tibble: 463 x 8</span></span>
-<span id="cb29-18"><a href="#cb29-18"></a><span class="co">##    score   age .fitted  .resid .std.resid    .hat .sigma   .cooksd</span></span>
-<span id="cb29-19"><a href="#cb29-19"></a><span class="co">##    &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;</span></span>
-<span id="cb29-20"><a href="#cb29-20"></a><span class="co">##  1   4.7    36    4.25  0.452       0.837 0.00560  0.542 0.00197  </span></span>
-<span id="cb29-21"><a href="#cb29-21"></a><span class="co">##  2   4.1    36    4.25 -0.148      -0.274 0.00560  0.542 0.000212 </span></span>
-<span id="cb29-22"><a href="#cb29-22"></a><span class="co">##  3   3.9    36    4.25 -0.348      -0.645 0.00560  0.542 0.00117  </span></span>
-<span id="cb29-23"><a href="#cb29-23"></a><span class="co">##  4   4.8    36    4.25  0.552       1.02  0.00560  0.541 0.00294  </span></span>
-<span id="cb29-24"><a href="#cb29-24"></a><span class="co">##  5   4.6    59    4.11  0.488       0.904 0.00471  0.541 0.00193  </span></span>
-<span id="cb29-25"><a href="#cb29-25"></a><span class="co">##  6   4.3    59    4.11  0.188       0.349 0.00471  0.542 0.000288 </span></span>
-<span id="cb29-26"><a href="#cb29-26"></a><span class="co">##  7   2.8    59    4.11 -1.31       -2.43  0.00471  0.538 0.0139   </span></span>
-<span id="cb29-27"><a href="#cb29-27"></a><span class="co">##  8   4.1    51    4.16 -0.0591     -0.109 0.00232  0.542 0.0000139</span></span>
-<span id="cb29-28"><a href="#cb29-28"></a><span class="co">##  9   3.4    51    4.16 -0.759      -1.40  0.00232  0.541 0.00229  </span></span>
-<span id="cb29-29"><a href="#cb29-29"></a><span class="co">## 10   4.5    40    4.22  0.276       0.510 0.00374  0.542 0.000488 </span></span>
+<span id="cb29-18"><a href="#cb29-18"></a><span class="co">##    score   age .fitted  .resid    .hat .sigma   .cooksd .std.resid</span></span>
+<span id="cb29-19"><a href="#cb29-19"></a><span class="co">##    &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;</span></span>
+<span id="cb29-20"><a href="#cb29-20"></a><span class="co">##  1   4.7    36    4.25  0.452  0.00560  0.542 0.00197        0.837</span></span>
+<span id="cb29-21"><a href="#cb29-21"></a><span class="co">##  2   4.1    36    4.25 -0.148  0.00560  0.542 0.000212      -0.274</span></span>
+<span id="cb29-22"><a href="#cb29-22"></a><span class="co">##  3   3.9    36    4.25 -0.348  0.00560  0.542 0.00117       -0.645</span></span>
+<span id="cb29-23"><a href="#cb29-23"></a><span class="co">##  4   4.8    36    4.25  0.552  0.00560  0.541 0.00294        1.02 </span></span>
+<span id="cb29-24"><a href="#cb29-24"></a><span class="co">##  5   4.6    59    4.11  0.488  0.00471  0.541 0.00193        0.904</span></span>
+<span id="cb29-25"><a href="#cb29-25"></a><span class="co">##  6   4.3    59    4.11  0.188  0.00471  0.542 0.000288       0.349</span></span>
+<span id="cb29-26"><a href="#cb29-26"></a><span class="co">##  7   2.8    59    4.11 -1.31   0.00471  0.538 0.0139        -2.43 </span></span>
+<span id="cb29-27"><a href="#cb29-27"></a><span class="co">##  8   4.1    51    4.16 -0.0591 0.00232  0.542 0.0000139     -0.109</span></span>
+<span id="cb29-28"><a href="#cb29-28"></a><span class="co">##  9   3.4    51    4.16 -0.759  0.00232  0.541 0.00229       -1.40 </span></span>
+<span id="cb29-29"><a href="#cb29-29"></a><span class="co">## 10   4.5    40    4.22  0.276  0.00374  0.542 0.000488       0.510</span></span>
 <span id="cb29-30"><a href="#cb29-30"></a><span class="co">## # … with 453 more rows</span></span></code></pre></div>
 <p>The source code for these three <code>get_regression_*</code> functions can be found on <a href="https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R" target="_blank">GitHub</a>.</p>
 </div>
 <div id="custom-geometries" class="section level2">
-<h2><span class="header-section-number">3.2</span> Custom geometries</h2>
+<h2><span class="header-section-number">5.2</span> Custom geometries</h2>
 <p>The <code>geom_parallel_slopes()</code> is a custom built <code>geom</code> extension to the <code>ggplot2</code> package. For example, the <code>ggplot2</code> webpage page gives <a href="https://ggplot2.tidyverse.org/articles/extending-ggplot2.html" target="_blank">instructions</a> on how to create such extensions. The source code for <code>geom_parallel_slopes()</code> written by <a href="https://github.com/echasnovski" target="_blank">Evgeni Chasnovski</a> can be found on <a href="https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R" target="_blank">GitHub</a>.</p>
 </div>
 </div>
+<div id="author-contributions" class="section level1">
+<h1><span class="header-section-number">6</span> Author contributions</h1>
+<p>Albert Y. Kim and Chester Ismay contributed equally to the development of the <code>moderndive</code> package. Albert Y. Kim wrote a majority of the initial version of this manuscript with Chester Ismay writing the rest. Max Kuhn provided guidance and feedback at various stages of the package development and manuscript writing.</p>
+</div>
 <div id="acknowledgments" class="section level1">
-<h1><span class="header-section-number">4</span> Acknowledgments</h1>
+<h1><span class="header-section-number">7</span> Acknowledgments</h1>
 <p>Many thanks to Jenny Smetzer <a href="https://github.com/smetzer180" target="_blank">@smetzer180</a> for her helpful feedback for this vignette and to Evgeni Chasnovski <a href="https://github.com/echasnovski" target="_blank">@echasnovski</a> for contributing the <code>geom_parallel_slopes()</code> function via GitHub <a href="https://github.com/moderndive/moderndive/pull/55" target="_blank">pull request</a>. The authors do not have any financial support to disclose.</p>
 </div>
 <div id="references" class="section level1 unnumbered">

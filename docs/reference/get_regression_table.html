@@ -136,7 +136,13 @@ is a wrapper function for <code><a href='https://generics.r-lib.org/reference/ti
 intervals in the output table by default.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_regression_table</span><span class='op'>(</span><span class='va'>model</span>, digits <span class='op'>=</span> <span class='fl'>3</span>, print <span class='op'>=</span> <span class='cn'>FALSE</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>get_regression_table</span><span class='op'>(</span>
+  <span class='va'>model</span>,
+  conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
+  digits <span class='op'>=</span> <span class='fl'>3</span>,
+  print <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  default_categorical_levels <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -146,6 +152,12 @@ intervals in the output table by default.</p>
       <td><p>an <code><a href='https://rdrr.io/r/stats/lm.html'>lm()</a></code> model object</p></td>
     </tr>
     <tr>
+      <th>conf.level</th>
+      <td><p>The confidence level to use for the confidence interval
+if <code>conf.int = TRUE</code>. Must be strictly greater than 0 and less than 1.
+Defaults to 0.95, which corresponds to a 95 percent confidence interval.</p></td>
+    </tr>
+    <tr>
       <th>digits</th>
       <td><p>number of digits precision in output table</p></td>
     </tr>
@@ -153,13 +165,20 @@ intervals in the output table by default.</p>
       <th>print</th>
       <td><p>If TRUE, return in print format suitable for R Markdown</p></td>
     </tr>
+    <tr>
+      <th>default_categorical_levels</th>
+      <td><p>If TRUE, do not change the non-baseline
+categorical variables in the term column. Otherwise non-baseline 
+categorical variables will be displayed in the format 
+"categorical_variable_name: level_name"</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A tibble-formatted regression table along with lower and upper end
 points of all confidence intervals for all parameters <code>lower_ci</code> and
-<code>upper_ci</code>.</p>
+<code>upper_ci</code>; the confidence levels default to 95%.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
     <div class='dont-index'><p><code>tidy</code>, <code><a href='get_regression_points.html'>get_regression_points</a></code>, <code><a href='get_regression_summaries.html'>get_regression_summaries</a></code></p></div>
@@ -172,11 +191,18 @@ points of all confidence intervals for all parameters <code>lower_ci</code> and
 
 <span class='co'># Get regression table:</span>
 <span class='fu'>get_regression_table</span><span class='op'>(</span><span class='va'>mpg_model</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 2 x 7</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 7</span><span>
 #&gt;   term      estimate std_error statistic p_value lower_ci upper_ci
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> intercept    37.9      2.07      18.3        0    33.6     42.1 
-#&gt; </span><span style='color: #555555;'>2</span><span> cyl          -</span><span style='color: #BB0000;'>2.88</span><span>     0.322     -</span><span style='color: #BB0000;'>8.92</span><span>       0    -</span><span style='color: #BB0000;'>3.53</span><span>    -</span><span style='color: #BB0000;'>2.22</span><span></div></span></pre>
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> intercept    37.9      2.07      18.3        0    33.6     42.1 
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> cyl          -</span><span style='color: #BB0000;'>2.88</span><span>     0.322     -</span><span style='color: #BB0000;'>8.92</span><span>       0    -</span><span style='color: #BB0000;'>3.53</span><span>    -</span><span style='color: #BB0000;'>2.22</span><span></div><div class='input'>
+<span class='co'># Vary confidence level of confidence intervals</span>
+<span class='fu'>get_regression_table</span><span class='op'>(</span><span class='va'>mpg_model</span>, conf.level <span class='op'>=</span> <span class='fl'>0.99</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 2 x 7</span><span>
+#&gt;   term      estimate std_error statistic p_value lower_ci upper_ci
+#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
+#&gt; </span><span style='color: #BCBCBC;'>1</span><span> intercept    37.9      2.07      18.3        0    32.2     43.6 
+#&gt; </span><span style='color: #BCBCBC;'>2</span><span> cyl          -</span><span style='color: #BB0000;'>2.88</span><span>     0.322     -</span><span style='color: #BB0000;'>8.92</span><span>       0    -</span><span style='color: #BB0000;'>3.76</span><span>    -</span><span style='color: #BB0000;'>1.99</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

@@ -13,8 +13,8 @@ downloads](http://cranlogs.r-pkg.org/badges/moderndive)](http://www.r-pkg.org/pk
 
 An R package of datasets and wrapper functions for
 [tidyverse](https://www.tidyverse.org/)-friendly introductory linear
-regression used in "Statistical Inference via Data Science: A ModernDive
-into R and the Tidyverse"" available at
+regression used in “Statistical Inference via Data Science: A ModernDive
+into R and the Tidyverse” available at
 [ModernDive.com](https://moderndive.com/).
 
 ## Installation
@@ -47,7 +47,7 @@ score_model <- lm(score ~ age, data = evals)
 Among the many useful features of the `moderndive` package outlined in
 our essay [“Why should you use the moderndive package for intro linear
 regression?”](https://moderndive.github.io/moderndive/articles/why-moderndive.html)
-we highlight three functions in particular as covered there.
+we highlight four functions in particular as covered there.
 
 We also mention the `geom_parallel_slopes()` function as **\#4**.
 
@@ -65,11 +65,24 @@ get_regression_table(score_model)
     ## 1 intercept    4.46      0.127     35.2    0        4.21     4.71 
     ## 2 age         -0.006     0.003     -2.31   0.021   -0.011   -0.001
 
+The confidence level is by default 95%; we can vary this with
+`conf.level`
+
+``` r
+get_regression_table(score_model, conf.level = 0.99)
+```
+
+    ## # A tibble: 2 x 7
+    ##   term      estimate std_error statistic p_value lower_ci upper_ci
+    ##   <chr>        <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
+    ## 1 intercept    4.46      0.127     35.2    0        4.13     4.79 
+    ## 2 age         -0.006     0.003     -2.31   0.021   -0.013    0.001
+
 #### 2\. Get fitted/predicted values and residuals
 
 Get information on each point/observation in your regression, including
-fitted/predicted values & residuals, organized in a single data frame
-with intuitive variable names:
+fitted/predicted values & residuals (e.g. `score_hat` and `residual`),
+organized in a single data frame with intuitive variable names:
 
 ``` r
 get_regression_points(score_model)
@@ -100,10 +113,10 @@ mean-squared error:
 get_regression_summaries(score_model)
 ```
 
-    ## # A tibble: 1 x 8
-    ##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df
-    ##       <dbl>         <dbl> <dbl> <dbl> <dbl>     <dbl>   <dbl> <dbl>
-    ## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     2
+    ## # A tibble: 1 x 9
+    ##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df  nobs
+    ##       <dbl>         <dbl> <dbl> <dbl> <dbl>     <dbl>   <dbl> <dbl> <dbl>
+    ## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     1   463
 
 #### 4\. Plot parallel slopes models
 
@@ -118,15 +131,14 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_parallel_slopes(se = FALSE)
 ```
 
-![](man/figures/plot-example-1.png)<!-- -->
+<img src="man/figures/plot-example-1.png" width="672" />
 
 ## Other features
 
 #### 1\. Print markdown friendly tables
 
 Want to output cleanly formatted tables in an R Markdown document? Just
-add `print = TRUE` to any of the three `get_regression_*()`
-functions.
+add `print = TRUE` to any of the three `get_regression_*()` functions.
 
 ``` r
 get_regression_table(score_model, print = TRUE)
@@ -170,8 +182,7 @@ write_csv(submission, "submission.csv")
 
 The resulting `submission.csv` is formatted such that it can be
 submitted on Kaggle, resulting in a “root mean squared logarithmic
-error” leaderboard score of
-0.42918.
+error” leaderboard score of 0.42918.
 
 ![](https://github.com/moderndive/moderndive/raw/master/vignettes/leaderboard_orig.png)<!-- -->
 
@@ -226,19 +237,19 @@ library(broom)
 augment(score_model)
 ```
 
-    ## # A tibble: 463 x 9
-    ##    score   age .fitted .se.fit  .resid    .hat .sigma   .cooksd .std.resid
-    ##    <dbl> <int>   <dbl>   <dbl>   <dbl>   <dbl>  <dbl>     <dbl>      <dbl>
-    ##  1   4.7    36    4.25  0.0405  0.452  0.00560  0.542 0.00197        0.837
-    ##  2   4.1    36    4.25  0.0405 -0.148  0.00560  0.542 0.000212      -0.274
-    ##  3   3.9    36    4.25  0.0405 -0.348  0.00560  0.542 0.00117       -0.645
-    ##  4   4.8    36    4.25  0.0405  0.552  0.00560  0.541 0.00294        1.02 
-    ##  5   4.6    59    4.11  0.0371  0.488  0.00471  0.541 0.00193        0.904
-    ##  6   4.3    59    4.11  0.0371  0.188  0.00471  0.542 0.000288       0.349
-    ##  7   2.8    59    4.11  0.0371 -1.31   0.00471  0.538 0.0139        -2.43 
-    ##  8   4.1    51    4.16  0.0261 -0.0591 0.00232  0.542 0.0000139     -0.109
-    ##  9   3.4    51    4.16  0.0261 -0.759  0.00232  0.541 0.00229       -1.40 
-    ## 10   4.5    40    4.22  0.0331  0.276  0.00374  0.542 0.000488       0.510
+    ## # A tibble: 463 x 8
+    ##    score   age .fitted  .resid    .hat .sigma   .cooksd .std.resid
+    ##    <dbl> <int>   <dbl>   <dbl>   <dbl>  <dbl>     <dbl>      <dbl>
+    ##  1   4.7    36    4.25  0.452  0.00560  0.542 0.00197        0.837
+    ##  2   4.1    36    4.25 -0.148  0.00560  0.542 0.000212      -0.274
+    ##  3   3.9    36    4.25 -0.348  0.00560  0.542 0.00117       -0.645
+    ##  4   4.8    36    4.25  0.552  0.00560  0.541 0.00294        1.02 
+    ##  5   4.6    59    4.11  0.488  0.00471  0.541 0.00193        0.904
+    ##  6   4.3    59    4.11  0.188  0.00471  0.542 0.000288       0.349
+    ##  7   2.8    59    4.11 -1.31   0.00471  0.538 0.0139        -2.43 
+    ##  8   4.1    51    4.16 -0.0591 0.00232  0.542 0.0000139     -0.109
+    ##  9   3.4    51    4.16 -0.759  0.00232  0.541 0.00229       -1.40 
+    ## 10   4.5    40    4.22  0.276  0.00374  0.542 0.000488       0.510
     ## # … with 453 more rows
 
 -----

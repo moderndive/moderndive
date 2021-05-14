@@ -1,9 +1,9 @@
 ---
 title: "Take a `moderndive` into introductory linear regression with R"
 author: "Albert Y. Kim, Chester Ismay, and Max Kuhn"
-date: "2020-03-19"
+date: "2021-05-14"
 vignette: >
-  %\VignetteIndexEntry{Why should you use the moderndive package for intro linear regression?}
+  %\VignetteIndexEntry{Take a `moderndive` into introductory linear regression with R}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 tags:
@@ -34,6 +34,7 @@ affiliations:
    index: 3
 bibliography: paper.bib
 output:
+# Uncomment the four lines below to build article using rticles:
   rticles::joss_article:
     keep_md: yes
     number_sections: yes
@@ -45,16 +46,19 @@ output:
 
 
 
+# Summary
 
+We present the [`moderndive`](https://moderndive.github.io/moderndive/){target="_blank"} R package of datasets and functions for [tidyverse](https://www.tidyverse.org/)-friendly introductory linear regression [@tidyverse2019]. These tools leverage the well-developed `tidyverse` and `broom` packages to facilitate 1) working with regression tables that include confidence intervals, 2) accessing regression outputs on an observation level (e.g. fitted/predicted values and residuals), 3) inspecting scalar summaries of regression fit (e.g. $R^2$, $R^2_{adj}$, and mean squared error), and 4) visualizing parallel slopes regression models using `ggplot2`-like syntax [@R-ggplot2; @R-broom]. This R package is designed to supplement the book "Statistical Inference via Data Science: A ModernDive into R and the Tidyverse" [@ismay2019moderndive]. Note that the book is also available online at https://moderndive.com and is referred to as "ModernDive" for short.
+
+
+# Statement of Need
+
+Linear regression has long been a staple of introductory statistics courses. While the curricula of introductory statistics courses has much evolved of late, the overall importance of regression remains the same [@ASAGuidelines]. Furthermore, while the use of the R statistical programming language for statistical analysis is not new, recent developments such as the `tidyverse` suite of packages have made statistical computation with R accessible to a broader audience [@tidyverse2019]. We go one step further by leveraging the `tidyverse` and the `broom` packages to make linear regression accessible to students taking an introductory statistics course [@R-broom]. Such students are likely to be new to statistical computation with R; we designed `moderndive` with these students in mind. 
 
 
 # Introduction
 
-Linear regression has long been a staple of introductory statistics courses. While the curricula of introductory statistics courses has much evolved of late, the overall importance of regression remains the same [@ASAGuidelines]. To facilitate the teaching of regression while leveraging modern computational tools, we've created the [`moderndive`](https://moderndive.github.io/moderndive/){target="_blank"} R package of datasets and functions for [tidyverse](https://www.tidyverse.org/)-friendly introductory linear regression [@tidyverse2019]. 
-
-This R package is designed to supplement the book "Statistical Inference via Data Science: A ModernDive into R and the Tidyverse" [@ismay2019moderndive]. Note that the book is also available online at https://moderndive.com and is referred to as "ModernDive" for short.
-
-Before we proceed, let's load all the R packages we are going to need.
+Let's load all the R packages we are going to need.
 
 
 ```r
@@ -77,13 +81,13 @@ In the following table, we present a subset of 9 of the 14 variables included fo
 1. The remaining variables are demographic variables describing that course's instructor, including `bty_avg` (average "beauty" score) for that professor as given by a panel of 6 students.^[Note that `gender` was collected as a binary variable at the time of the study (2005).]
 
 
-  ID   prof_ID   score   age   bty_avg  gender   ethnicity      language   rank    
-----  --------  ------  ----  --------  -------  -------------  ---------  --------
- 129        23     3.7    62     3.000  male     not minority   english    tenured 
- 109        19     4.7    46     4.333  female   not minority   english    tenured 
-  28         6     4.8    62     5.500  male     not minority   english    tenured 
- 434        88     2.8    62     2.000  male     not minority   english    tenured 
- 330        66     4.0    64     2.333  male     not minority   english    tenured 
+|  ID| prof_ID| score| age| bty_avg|gender |ethnicity    |language |rank    |
+|---:|-------:|-----:|---:|-------:|:------|:------------|:--------|:-------|
+| 129|      23|   3.7|  62|   3.000|male   |not minority |english  |tenured |
+| 109|      19|   4.7|  46|   4.333|female |not minority |english  |tenured |
+|  28|       6|   4.8|  62|   5.500|male   |not minority |english  |tenured |
+| 434|      88|   2.8|  62|   2.000|male   |not minority |english  |tenured |
+| 330|      66|   4.0|  64|   2.333|male   |not minority |english  |tenured |
 
 
 
@@ -167,10 +171,11 @@ To address these questions, we've included three functions in the `moderndive` p
     
     ```r
     get_regression_summaries(score_model)
-    ## # A tibble: 1 x 8
+    ## # A tibble: 1 x 9
     ##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df
     ##       <dbl>         <dbl> <dbl> <dbl> <dbl>     <dbl>   <dbl> <dbl>
-    ## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     2
+    ## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     1
+    ## # ... with 1 more variable: nobs <dbl>
     ```
 
 
@@ -268,7 +273,7 @@ The second common student question:
 
 > "How do we extract the values in the regression table?"
 
-While one might argue that extracting the intercept and slope coefficients can be simply done using `coefficients(score_model)`, what about the standard errors? For example, a Google query of "_how do I extract standard errors from lm in R_" yielded results from [the R mailing list](https://stat.ethz.ch/pipermail/r-help/2008-April/160538.html){target="_blank"} and from [crossvalidated](https://stats.stackexchange.com/questions/27511/extract-standard-errors-of-coefficient-linear-regression-r){target="_blank"} suggesting we run:
+While one might argue that extracting the intercept and slope coefficients can be simply done using `coefficients(score_model)`, what about the standard errors? For example, a Google query of "_how do I extract standard errors from lm in R_" yielded results from [the R mailing list](https://stat.ethz.ch/pipermail/r-help/2008-April/160538.html){target="_blank"} and from [Cross Validated](https://stats.stackexchange.com/questions/27511/extract-standard-errors-of-coefficient-linear-regression-r){target="_blank"} suggesting we run:
 
 
 ```r
@@ -282,7 +287,7 @@ We argue that this task shouldn't be this hard, especially in an introductory st
 
 
 ```r
-get_regression_table(score_model) %>% 
+get_regression_table(score_model) %>%
   pull(std_error)
 ## [1] 0.127 0.003
 ```
@@ -299,16 +304,16 @@ Furthermore, by piping the above `get_regression_table(score_model)` output into
 
 
 ```r
-get_regression_table(score_model) %>% 
+get_regression_table(score_model) %>%
   kable()
 ```
 
 
 
-term         estimate   std_error   statistic   p_value   lower_ci   upper_ci
-----------  ---------  ----------  ----------  --------  ---------  ---------
-intercept       4.462       0.127      35.195     0.000      4.213      4.711
-age            -0.006       0.003      -2.311     0.021     -0.011     -0.001
+|term      | estimate| std_error| statistic| p_value| lower_ci| upper_ci|
+|:---------|--------:|---------:|---------:|-------:|--------:|--------:|
+|intercept |    4.462|     0.127|    35.195|   0.000|    4.213|    4.711|
+|age       |   -0.006|     0.003|    -2.311|   0.021|   -0.011|   -0.001|
 
 
 ## 3. Birds of a feather should flock together: Fitted values & residuals
@@ -460,8 +465,8 @@ test <- read_csv("https://moderndive.com/data/test.csv")
 house_model <- lm(SalePrice ~ YrSold, data = train)
 
 # Make predictions and save in appropriate data frame format:
-submission <- house_model %>% 
-  get_regression_points(newdata = test, ID = "Id") %>% 
+submission <- house_model %>%
+  get_regression_points(newdata = test, ID = "Id") %>%
   select(Id, SalePrice = SalePrice_hat)
 
 # Write predictions to csv:
@@ -516,10 +521,11 @@ Say we wanted to extract the scalar model summaries at the bottom of this output
 
 ```r
 get_regression_summaries(score_model)
-## # A tibble: 1 x 8
+## # A tibble: 1 x 9
 ##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df
 ##       <dbl>         <dbl> <dbl> <dbl> <dbl>     <dbl>   <dbl> <dbl>
-## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     2
+## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     1
+## # ... with 1 more variable: nobs <dbl>
 ```
 
 We've supplemented the standard scalar summaries output yielded by `summary()` with the mean squared error `mse` and root mean squared error `rmse` given their popularity in machine learning settings.
@@ -554,7 +560,7 @@ get_regression_table(interaction_evals)
 ##   <chr>            <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
 ## 1 intercept        2.61      0.518      5.04   0        1.59     3.63 
 ## 2 age              0.032     0.011      2.84   0.005    0.01     0.054
-## 3 ethnicitynot~    2.00      0.534      3.74   0        0.945    3.04 
+## 3 ethnicity: n~    2.00      0.534      3.74   0        0.945    3.04 
 ## 4 age:ethnicit~   -0.04      0.012     -3.51   0       -0.063   -0.018
 
 # Regression table for parallel slopes model:
@@ -565,7 +571,7 @@ get_regression_table(parallel_slopes_evals)
 ##   <chr>            <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
 ## 1 intercept        4.37      0.136     32.1    0        4.1      4.63 
 ## 2 age             -0.006     0.003     -2.5    0.013   -0.012   -0.001
-## 3 ethnicitynot~    0.138     0.073      1.89   0.059   -0.005    0.282
+## 3 ethnicity: n~    0.138     0.073      1.89   0.059   -0.005    0.282
 ```
 
 The interaction model is "more complex" as evidenced by its regression table involving 4 rows of parameter estimates whereas the parallel slopes model is "simpler" as evidenced by its regression table involving only 3 parameter estimates. It can be argued however that this additional complexity is warranted given the clearly different slopes in the left-hand plot of \autoref{fig:interaction-and-parallel-slopes-model-1}.
@@ -575,20 +581,28 @@ We now present a contrasting example, this time from Chapter 6 of the online ver
 
 ```r
 # Code to plot interaction and parallel slopes models for MA_schools
-ggplot(MA_schools, 
-       aes(x = perc_disadvan, y = average_sat_math, color = size)) +
+ggplot(
+  MA_schools,
+  aes(x = perc_disadvan, y = average_sat_math, color = size)
+) +
   geom_point(alpha = 0.25) +
-  labs(x = "% economically disadvantaged", 
-       y = "Math SAT Score", 
-       color = "School size") + 
+  labs(
+    x = "% economically disadvantaged",
+    y = "Math SAT Score",
+    color = "School size"
+  ) +
   geom_smooth(method = "lm", se = FALSE)
 
-ggplot(MA_schools, 
-       aes(x = perc_disadvan, y = average_sat_math, color = size)) +
+ggplot(
+  MA_schools,
+  aes(x = perc_disadvan, y = average_sat_math, color = size)
+) +
   geom_point(alpha = 0.25) +
-  labs(x = "% economically disadvantaged", 
-       y = "Math SAT Score", 
-       color = "School size") +
+  labs(
+    x = "% economically disadvantaged",
+    y = "Math SAT Score",
+    color = "School size"
+  ) +
   geom_parallel_slopes(se = FALSE)
 ```
 
@@ -606,7 +620,7 @@ In terms of the corresponding regression tables, observe that the corresponding 
 
 ```r
 # Regression table for interaction model:
-interaction_MA <- 
+interaction_MA <-
   lm(average_sat_math ~ perc_disadvan * size, data = MA_schools)
 get_regression_table(interaction_MA)
 ## # A tibble: 6 x 7
@@ -614,13 +628,13 @@ get_regression_table(interaction_MA)
 ##   <chr>            <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
 ## 1 intercept      594.       13.3      44.7     0      568.     620.   
 ## 2 perc_disadvan   -2.93      0.294    -9.96    0       -3.51    -2.35 
-## 3 sizemedium     -17.8      15.8      -1.12    0.263  -48.9     13.4  
-## 4 sizelarge      -13.3      13.8      -0.962   0.337  -40.5     13.9  
+## 3 size: medium   -17.8      15.8      -1.12    0.263  -48.9     13.4  
+## 4 size: large    -13.3      13.8      -0.962   0.337  -40.5     13.9  
 ## 5 perc_disadva~    0.146     0.371     0.393   0.694   -0.585    0.877
 ## 6 perc_disadva~    0.189     0.323     0.586   0.559   -0.446    0.824
 
 # Regression table for parallel slopes model:
-parallel_slopes_MA <- 
+parallel_slopes_MA <-
   lm(average_sat_math ~ perc_disadvan + size, data = MA_schools)
 get_regression_table(parallel_slopes_MA)
 ## # A tibble: 4 x 7
@@ -628,8 +642,8 @@ get_regression_table(parallel_slopes_MA)
 ##   <chr>            <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
 ## 1 intercept       588.       7.61     77.3     0       573.     603.  
 ## 2 perc_disadvan    -2.78     0.106   -26.1     0        -2.99    -2.57
-## 3 sizemedium      -11.9      7.54     -1.58    0.115   -26.7      2.91
-## 4 sizelarge        -6.36     6.92     -0.919   0.359   -20.0      7.26
+## 3 size: medium    -11.9      7.54     -1.58    0.115   -26.7      2.91
+## 4 size: large      -6.36     6.92     -0.919   0.359   -20.0      7.26
 ```
 
 Unlike our earlier comparison of interaction and parallel slopes models in \autoref{fig:interaction-and-parallel-slopes-model-1}, in this case it could be argued that the additional complexity of the interaction model is *not* warranted since the 3 three regression lines in the left-hand interaction are already somewhat parallel. Therefore the simpler parallel slopes model should be favored. 
@@ -653,7 +667,7 @@ Why did we take this approach to address the initial 5 common student questions 
 
 1. By writing wrappers to pre-existing functions, instead of creating new custom functions, there is minimal re-inventing of the wheel necessary. 
 1. In our experience, novice R users had a hard time understanding the `broom` package function names `tidy()`, `augment()`, and `glance()`. To make them more user-friendly, the `moderndive` package wrappers have much more intuitively named `get_regression_table()`, `get_regression_points()`, and `get_regression_summaries()`.
-1. The variables included in the outputs of the above 3 `broom` functions are not all applicable to an introductory statistics students and of those that were, we found them to be counterintuitively named. We therefore cut out some of the variables from the output and renamed some of the remaining variables. For example, compare the outputs of the `get_regression_points()` wrapper function and the parent `broom::augment()` function.
+1. The variables included in the outputs of the above 3 `broom` functions are not all applicable to an introductory statistics students and of those that were, we found they were not intuitive for new R users. We therefore cut out some of the variables from the output and renamed some of the remaining variables. For example, compare the outputs of the `get_regression_points()` wrapper function and the parent `broom::augment()` function.
 
 
 ```r
@@ -673,20 +687,20 @@ get_regression_points(score_model)
 ## 10    10   4.5    40      4.22    0.276
 ## # ... with 453 more rows
 broom::augment(score_model)
-## # A tibble: 463 x 9
-##    score   age .fitted .se.fit  .resid    .hat .sigma .cooksd
-##    <dbl> <int>   <dbl>   <dbl>   <dbl>   <dbl>  <dbl>   <dbl>
-##  1   4.7    36    4.25  0.0405  0.452  0.00560  0.542 1.97e-3
-##  2   4.1    36    4.25  0.0405 -0.148  0.00560  0.542 2.12e-4
-##  3   3.9    36    4.25  0.0405 -0.348  0.00560  0.542 1.17e-3
-##  4   4.8    36    4.25  0.0405  0.552  0.00560  0.541 2.94e-3
-##  5   4.6    59    4.11  0.0371  0.488  0.00471  0.541 1.93e-3
-##  6   4.3    59    4.11  0.0371  0.188  0.00471  0.542 2.88e-4
-##  7   2.8    59    4.11  0.0371 -1.31   0.00471  0.538 1.39e-2
-##  8   4.1    51    4.16  0.0261 -0.0591 0.00232  0.542 1.39e-5
-##  9   3.4    51    4.16  0.0261 -0.759  0.00232  0.541 2.29e-3
-## 10   4.5    40    4.22  0.0331  0.276  0.00374  0.542 4.88e-4
-## # ... with 453 more rows, and 1 more variable: .std.resid <dbl>
+## # A tibble: 463 x 8
+##    score   age .fitted  .resid    .hat .sigma   .cooksd .std.resid
+##    <dbl> <int>   <dbl>   <dbl>   <dbl>  <dbl>     <dbl>      <dbl>
+##  1   4.7    36    4.25  0.452  0.00560  0.542 0.00197        0.837
+##  2   4.1    36    4.25 -0.148  0.00560  0.542 0.000212      -0.274
+##  3   3.9    36    4.25 -0.348  0.00560  0.542 0.00117       -0.645
+##  4   4.8    36    4.25  0.552  0.00560  0.541 0.00294        1.02 
+##  5   4.6    59    4.11  0.488  0.00471  0.541 0.00193        0.904
+##  6   4.3    59    4.11  0.188  0.00471  0.542 0.000288       0.349
+##  7   2.8    59    4.11 -1.31   0.00471  0.538 0.0139        -2.43 
+##  8   4.1    51    4.16 -0.0591 0.00232  0.542 0.0000139     -0.109
+##  9   3.4    51    4.16 -0.759  0.00232  0.541 0.00229       -1.40 
+## 10   4.5    40    4.22  0.276  0.00374  0.542 0.000488       0.510
+## # ... with 453 more rows
 ```
 
 The source code for these three `get_regression_*` functions can be found on [GitHub](https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R){target="_blank"}.
@@ -699,7 +713,9 @@ The `geom_parallel_slopes()` is a custom built `geom` extension to the `ggplot2`
 
 
 
+# Author contributions
 
+Albert Y. Kim and Chester Ismay contributed equally to the development of the `moderndive` package. Albert Y. Kim wrote a majority of the initial version of this manuscript with Chester Ismay writing the rest. Max Kuhn provided guidance and feedback at various stages of the package development and manuscript writing. 
 
 
 # Acknowledgments
