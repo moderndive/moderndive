@@ -85,7 +85,7 @@
       <h1 data-toc-skip>Take a <code>moderndive</code> into introductory linear regression with R</h1>
                         <h4 class="author">Albert Y. Kim, Chester Ismay, and Max Kuhn</h4>
             
-            <h4 class="date">2021-01-09</h4>
+            <h4 class="date">2021-05-14</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/moderndive/moderndive/blob/master/vignettes/why-moderndive.Rmd"><code>vignettes/why-moderndive.Rmd</code></a></small>
       <div class="hidden name"><code>why-moderndive.Rmd</code></div>
@@ -94,12 +94,20 @@
 
     
     
+<div id="summary" class="section level1">
+<h1 class="hasAnchor">
+<a href="#summary" class="anchor"></a>Summary</h1>
+<p>We present the <a href="https://moderndive.github.io/moderndive/" target="_blank"><code>moderndive</code></a> R package of datasets and functions for <a href="https://www.tidyverse.org/">tidyverse</a>-friendly introductory linear regression <span class="citation">(Wickham, Averick, et al. 2019)</span>. These tools leverage the well-developed <code>tidyverse</code> and <code>broom</code> packages to facilitate 1) working with regression tables that include confidence intervals, 2) accessing regression outputs on an observation level (e.g. fitted/predicted values and residuals), 3) inspecting scalar summaries of regression fit (e.g. <span class="math inline">\(R^2\)</span>, <span class="math inline">\(R^2_{adj}\)</span>, and mean squared error), and 4) visualizing parallel slopes regression models using <code>ggplot2</code>-like syntax <span class="citation">(Wickham, Chang, et al. 2019; Robinson and Hayes 2019)</span>. This R package is designed to supplement the book “Statistical Inference via Data Science: A ModernDive into R and the Tidyverse” <span class="citation">(Ismay and Kim 2019)</span>. Note that the book is also available online at <a href="https://moderndive.com" class="uri">https://moderndive.com</a> and is referred to as “ModernDive” for short.</p>
+</div>
+<div id="statement-of-need" class="section level1">
+<h1 class="hasAnchor">
+<a href="#statement-of-need" class="anchor"></a>Statement of Need</h1>
+<p>Linear regression has long been a staple of introductory statistics courses. While the curricula of introductory statistics courses has much evolved of late, the overall importance of regression remains the same <span class="citation">(American Statistical Association Undergraduate Guidelines Workgroup 2016)</span>. Furthermore, while the use of the R statistical programming language for statistical analysis is not new, recent developments such as the <code>tidyverse</code> suite of packages have made statistical computation with R accessible to a broader audience <span class="citation">(Wickham, Averick, et al. 2019)</span>. We go one step further by leveraging the <code>tidyverse</code> and the <code>broom</code> packages to make linear regression accessible to students taking an introductory statistics course <span class="citation">(Robinson and Hayes 2019)</span>. Such students are likely to be new to statistical computation with R; we designed <code>moderndive</code> with these students in mind.</p>
+</div>
 <div id="introduction" class="section level1">
 <h1 class="hasAnchor">
 <a href="#introduction" class="anchor"></a>Introduction</h1>
-<p>Linear regression has long been a staple of introductory statistics courses. While the curricula of introductory statistics courses has much evolved of late, the overall importance of regression remains the same <span class="citation">(American Statistical Association Undergraduate Guidelines Workgroup 2016)</span>. To facilitate the teaching of regression while leveraging modern computational tools, we’ve created the <a href="https://moderndive.github.io/moderndive/" target="_blank"><code>moderndive</code></a> R package of datasets and functions for <a href="https://www.tidyverse.org/">tidyverse</a>-friendly introductory linear regression <span class="citation">(Wickham, Averick, et al. 2019)</span>.</p>
-<p>This R package is designed to supplement the book “Statistical Inference via Data Science: A ModernDive into R and the Tidyverse” <span class="citation">(Ismay and Kim 2019)</span>. Note that the book is also available online at <a href="https://moderndive.com" class="uri">https://moderndive.com</a> and is referred to as “ModernDive” for short.</p>
-<p>Before we proceed, let’s load all the R packages we are going to need.</p>
+<p>Let’s load all the R packages we are going to need.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/moderndive/moderndive/issues">moderndive</a></span><span class="op">)</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
@@ -572,7 +580,7 @@ Interaction (left) and parallel slopes (right) models.
 <span class="co">##   &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">## 1 intercept        2.61      0.518      5.04   0        1.59     3.63 </span>
 <span class="co">## 2 age              0.032     0.011      2.84   0.005    0.01     0.054</span>
-<span class="co">## 3 ethnicitynot…    2.00      0.534      3.74   0        0.945    3.04 </span>
+<span class="co">## 3 ethnicity: n…    2.00      0.534      3.74   0        0.945    3.04 </span>
 <span class="co">## 4 age:ethnicit…   -0.04      0.012     -3.51   0       -0.063   -0.018</span>
 
 <span class="co"># Regression table for parallel slopes model:</span>
@@ -583,7 +591,7 @@ Interaction (left) and parallel slopes (right) models.
 <span class="co">##   &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">## 1 intercept        4.37      0.136     32.1    0        4.1      4.63 </span>
 <span class="co">## 2 age             -0.006     0.003     -2.5    0.013   -0.012   -0.001</span>
-<span class="co">## 3 ethnicitynot…    0.138     0.073      1.89   0.059   -0.005    0.282</span></code></pre></div>
+<span class="co">## 3 ethnicity: n…    0.138     0.073      1.89   0.059   -0.005    0.282</span></code></pre></div>
 <p>The interaction model is “more complex” as evidenced by its regression table involving 4 rows of parameter estimates whereas the parallel slopes model is “simpler” as evidenced by its regression table involving only 3 parameter estimates. It can be argued however that this additional complexity is warranted given the clearly different slopes in the left-hand plot of .</p>
 <p>We now present a contrasting example, this time from Chapter 6 of the online version of <a href="https://moderndive.com/6-multiple-regression.html#model-selection">ModernDive Subsection 6.3.1</a> involving Massachusetts USA public high schools.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> Let’s plot both the interaction and parallel slopes models in .</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
@@ -627,8 +635,8 @@ Interaction (left) and parallel slopes (right) models.
 <span class="co">##   &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">## 1 intercept      594.       13.3      44.7     0      568.     620.   </span>
 <span class="co">## 2 perc_disadvan   -2.93      0.294    -9.96    0       -3.51    -2.35 </span>
-<span class="co">## 3 sizemedium     -17.8      15.8      -1.12    0.263  -48.9     13.4  </span>
-<span class="co">## 4 sizelarge      -13.3      13.8      -0.962   0.337  -40.5     13.9  </span>
+<span class="co">## 3 size: medium   -17.8      15.8      -1.12    0.263  -48.9     13.4  </span>
+<span class="co">## 4 size: large    -13.3      13.8      -0.962   0.337  -40.5     13.9  </span>
 <span class="co">## 5 perc_disadva…    0.146     0.371     0.393   0.694   -0.585    0.877</span>
 <span class="co">## 6 perc_disadva…    0.189     0.323     0.586   0.559   -0.446    0.824</span>
 
@@ -641,8 +649,8 @@ Interaction (left) and parallel slopes (right) models.
 <span class="co">##   &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">## 1 intercept       588.       7.61     77.3     0       573.     603.  </span>
 <span class="co">## 2 perc_disadvan    -2.78     0.106   -26.1     0        -2.99    -2.57</span>
-<span class="co">## 3 sizemedium      -11.9      7.54     -1.58    0.115   -26.7      2.91</span>
-<span class="co">## 4 sizelarge        -6.36     6.92     -0.919   0.359   -20.0      7.26</span></code></pre></div>
+<span class="co">## 3 size: medium    -11.9      7.54     -1.58    0.115   -26.7      2.91</span>
+<span class="co">## 4 size: large      -6.36     6.92     -0.919   0.359   -20.0      7.26</span></code></pre></div>
 <p>Unlike our earlier comparison of interaction and parallel slopes models in , in this case it could be argued that the additional complexity of the interaction model is <em>not</em> warranted since the 3 three regression lines in the left-hand interaction are already somewhat parallel. Therefore the simpler parallel slopes model should be favored.</p>
 <p>Going one step further, notice how the three regression lines in the visualization of the parallel slopes model in the right-hand plot of  have similar intercepts. In can thus be argued that the additional model complexity induced by introducing the categorical variable school <code>size</code> is not warranted. Therefore, a simple linear regression model using only <code>perc_disadvan</code> percent of the student body that are economically disadvantaged should be favored.</p>
 <p>While many students will inevitably find these results depressing, in our opinion, it is important to additionally emphasize that such regression analyses can be used as an empowering tool to bring to light inequities in access to education and inform policy decisions.</p>
@@ -687,18 +695,18 @@ Interaction (left) and parallel slopes (right) models.
 <span class="co">## # … with 453 more rows</span>
 <span class="fu">broom</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/augment.html">augment</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span>
 <span class="co">## # A tibble: 463 x 8</span>
-<span class="co">##    score   age .fitted  .resid .std.resid    .hat .sigma   .cooksd</span>
-<span class="co">##    &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;</span>
-<span class="co">##  1   4.7    36    4.25  0.452       0.837 0.00560  0.542 0.00197  </span>
-<span class="co">##  2   4.1    36    4.25 -0.148      -0.274 0.00560  0.542 0.000212 </span>
-<span class="co">##  3   3.9    36    4.25 -0.348      -0.645 0.00560  0.542 0.00117  </span>
-<span class="co">##  4   4.8    36    4.25  0.552       1.02  0.00560  0.541 0.00294  </span>
-<span class="co">##  5   4.6    59    4.11  0.488       0.904 0.00471  0.541 0.00193  </span>
-<span class="co">##  6   4.3    59    4.11  0.188       0.349 0.00471  0.542 0.000288 </span>
-<span class="co">##  7   2.8    59    4.11 -1.31       -2.43  0.00471  0.538 0.0139   </span>
-<span class="co">##  8   4.1    51    4.16 -0.0591     -0.109 0.00232  0.542 0.0000139</span>
-<span class="co">##  9   3.4    51    4.16 -0.759      -1.40  0.00232  0.541 0.00229  </span>
-<span class="co">## 10   4.5    40    4.22  0.276       0.510 0.00374  0.542 0.000488 </span>
+<span class="co">##    score   age .fitted  .resid    .hat .sigma   .cooksd .std.resid</span>
+<span class="co">##    &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;</span>
+<span class="co">##  1   4.7    36    4.25  0.452  0.00560  0.542 0.00197        0.837</span>
+<span class="co">##  2   4.1    36    4.25 -0.148  0.00560  0.542 0.000212      -0.274</span>
+<span class="co">##  3   3.9    36    4.25 -0.348  0.00560  0.542 0.00117       -0.645</span>
+<span class="co">##  4   4.8    36    4.25  0.552  0.00560  0.541 0.00294        1.02 </span>
+<span class="co">##  5   4.6    59    4.11  0.488  0.00471  0.541 0.00193        0.904</span>
+<span class="co">##  6   4.3    59    4.11  0.188  0.00471  0.542 0.000288       0.349</span>
+<span class="co">##  7   2.8    59    4.11 -1.31   0.00471  0.538 0.0139        -2.43 </span>
+<span class="co">##  8   4.1    51    4.16 -0.0591 0.00232  0.542 0.0000139     -0.109</span>
+<span class="co">##  9   3.4    51    4.16 -0.759  0.00232  0.541 0.00229       -1.40 </span>
+<span class="co">## 10   4.5    40    4.22  0.276  0.00374  0.542 0.000488       0.510</span>
 <span class="co">## # … with 453 more rows</span></code></pre></div>
 <p>The source code for these three <code>get_regression_*</code> functions can be found on <a href="https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R" target="_blank">GitHub</a>.</p>
 </div>
@@ -707,6 +715,11 @@ Interaction (left) and parallel slopes (right) models.
 <a href="#custom-geometries" class="anchor"></a>Custom geometries</h2>
 <p>The <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> is a custom built <code>geom</code> extension to the <code>ggplot2</code> package. For example, the <code>ggplot2</code> webpage page gives <a href="https://ggplot2.tidyverse.org/articles/extending-ggplot2.html" target="_blank">instructions</a> on how to create such extensions. The source code for <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> written by <a href="https://github.com/echasnovski" target="_blank">Evgeni Chasnovski</a> can be found on <a href="https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R" target="_blank">GitHub</a>.</p>
 </div>
+</div>
+<div id="author-contributions" class="section level1">
+<h1 class="hasAnchor">
+<a href="#author-contributions" class="anchor"></a>Author contributions</h1>
+<p>Albert Y. Kim and Chester Ismay contributed equally to the development of the <code>moderndive</code> package. Albert Y. Kim wrote a majority of the initial version of this manuscript with Chester Ismay writing the rest. Max Kuhn provided guidance and feedback at various stages of the package development and manuscript writing.</p>
 </div>
 <div id="acknowledgments" class="section level1">
 <h1 class="hasAnchor">

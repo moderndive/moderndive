@@ -130,9 +130,11 @@
 <h1 class="page-header" data-toc-text="0.5.1.9000">
 <a href="#moderndive-0519000" class="anchor"></a>moderndive 0.5.1.9000<small> Unreleased </small>
 </h1>
-<ul><li>
-</li></ul>
-<hr>
+<ul>
+<li>Changed printing of non-baseline categorical variable levels in regression table to be cleaner <a href='https://github.com/moderndive/moderndive/issues/102'>#102</a></li>
+<li>Added explicit <code>conf.level</code> argument to <code><a href="../reference/get_regression_table.html">get_regression_table()</a></code> inherited from <code><a href="https://broom.tidymodels.org/reference/tidy.lm.html">broom::tidy.lm()</a></code>
+</li>
+</ul>
 </div>
     <div id="moderndive-051" class="section level1">
 <h1 class="page-header" data-toc-text="0.5.1">
@@ -141,7 +143,6 @@
 <ul>
 <li>Use vdiffr conditionally</li>
 </ul>
-<hr>
 </div>
     <div id="moderndive-050" class="section level1">
 <h1 class="page-header" data-toc-text="0.5.0">
@@ -158,7 +159,6 @@
 <li>Added new function <code><a href="../reference/geom_categorical_model.html">geom_categorical_model()</a></code> for visualizing regression models with one categorical explanatory/predictor variable (by <a href='https://github.com/wjhopper'>@wjhopper</a>)</li>
 <li>Add deprecation warning message to <code><a href="../reference/gg_parallel_slopes.html">gg_parallel_slopes()</a></code> directing users to use <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> instead (by <a href='https://github.com/mariumtapal'>@mariumtapal</a>)</li>
 </ul>
-<hr>
 </div>
     <div id="moderndive-040" class="section level1">
 <h1 class="page-header" data-toc-text="0.4.0">
@@ -177,7 +177,6 @@
 </ul>
 </li>
 </ul>
-<hr>
 </div>
     <div id="moderndive-030" class="section level1">
 <h1 class="page-header" data-toc-text="0.3.0">
@@ -204,7 +203,6 @@
 <li>Removed all <code>assertive::assert()</code> code</li>
 <li>Converted <code>house_prices$date</code> from <code>dttm</code> (date-time) to <code>date</code> per R4DS <a href="https://r4ds.had.co.nz/dates-and-times.html#creating-datetimes">comment</a> on using simplest data type possible</li>
 </ul>
-<hr>
 </div>
     <div id="moderndive-020" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.0">
@@ -232,14 +230,12 @@
 </li>
 <li>Removed <code>tidyverse</code> from Depends, Imports, or Suggests</li>
 </ul>
-<hr>
 </div>
     <div id="moderndive-011" class="section level1">
 <h1 class="page-header" data-toc-text="0.1.1">
 <a href="#moderndive-011" class="anchor"></a>moderndive 0.1.1<small> 2018-01-22 </small>
 </h1>
 <p>Fixed broken url in <code><a href="../reference/bowl_samples.html">?bowl_samples</a></code></p>
-<hr>
 </div>
     <div id="moderndive-010" class="section level1">
 <h1 class="page-header" data-toc-text="0.1.0">
