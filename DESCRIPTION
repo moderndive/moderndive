@@ -38,9 +38,5 @@ Suggests: testthat,
     covr,
     rmarkdown,
     vdiffr,
-    ggplot2movies,
-    openintro,
-    patchwork,
-    viridis,
-    readr
+    patchwork
 VignetteBuilder: knitr

@@ -67,10 +67,8 @@ knitr::opts_chunk$set(
 library(moderndive)
 library(ggplot2)
 library(dplyr)
-library(readr)
 library(knitr)
 library(broom)
-library(viridis)
 
 # Needed packages internally
 library(patchwork)
@@ -83,7 +81,7 @@ if (!knitr::is_html_output()) {
   # Grey theme:
   theme_set(theme_light())
 
-  scale_colour_discrete <- scale_colour_viridis_d
+  scale_colour_discrete <- ggplot2::scale_colour_viridis_d
 }
 
 
@@ -110,7 +108,6 @@ Let's load all the R packages we are going to need.
 library(moderndive)
 library(ggplot2)
 library(dplyr)
-library(readr)
 library(knitr)
 library(broom)
 ```
