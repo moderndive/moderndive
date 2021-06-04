@@ -21,3 +21,5 @@
 ^\.github$
 ^LICENSE\.md$
 ^LICENSE$
+^_pkgdown\.yml$
+^pkgdown$
