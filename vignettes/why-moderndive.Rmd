@@ -359,7 +359,7 @@ This Kaggle competition requires you to fit/train a model to the provided `train
 1. Fit a naive model of house sale price as a function of year sold to the training data.
 1. Make predictions on the test data and write them to a `submission.csv` file that can be submitted to Kaggle using `get_regression_points()`. Note the use of the `ID` argument to use the `id` variable in `test` to identify the rows (a requirement of Kaggle competition submissions).
 
-```{r, eval=FALSE}
+```r
 library(readr)
 library(dplyr)
 library(moderndive)
