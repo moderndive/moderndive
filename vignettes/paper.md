@@ -136,7 +136,7 @@ Here are 5 common student questions we've heard over the years in our introducto
 
 ## Regression analysis using `moderndive`
 
-To address these questions, we've included three functions in the `moderndive` package that take a fitted model object as input and return the same information as `summary.lm()`, but output them in tidyverse-friendly format [@tidyverse2019]. As we'll see later, while these three functions are merely wrappers to existing functions in the `broom` package for converting statistical objects into tidy tibbles, we modified them with the introductory statistics student in mind [@R-broom].
+To address these questions, we've included three functions in the `moderndive` package that take a fitted model object as input and return the same information as `summary.lm()`, but output them in tidyverse-friendly format [@tidyverse2019]. As we'll see later, while these three functions are thin wrappers to existing functions in the `broom` package for converting statistical objects into tidy tibbles, we modified them with the introductory statistics student in mind [@R-broom].
 
 1. Get a tidy regression table **with confidence intervals**:
     
@@ -203,7 +203,7 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 
 However, many introductory statistics courses start with the easier to teach "common slope, different intercepts" regression model, also known as the *parallel slopes* model. However, no argument to plot such models exists within `geom_smooth()`.
 
-[Evgeni Chasnovski](https://github.com/echasnovski){target="_blank"} thus wrote a custom `geom_` extension to `ggplot2` called `geom_parallel_slopes()`; this extension is included in the `moderndive` package. Much like `geom_smooth()` from the `ggplot2` package, you merely add a `geom_parallel_slopes()` layer to the code, resulting in \autoref{fig:parallel-slopes-model}.
+[Evgeni Chasnovski](https://github.com/echasnovski){target="_blank"} thus wrote a custom `geom_` extension to `ggplot2` called `geom_parallel_slopes()`; this extension is included in the `moderndive` package. Much like `geom_smooth()` from the `ggplot2` package, you add `geom_parallel_slopes()` as another layer to the code, resulting in \autoref{fig:parallel-slopes-model}.
 
 
 ```r
@@ -264,7 +264,7 @@ get_regression_table(score_model)
 ## 2 age         -0.006     0.003     -2.31   0.021   -0.011   -0.001
 ```
 
-Observe how the p-value stars are omitted and confidence intervals for the point estimates of all regression parameters are included by default. By including them in the output, we can easily emphasize to students that they "surround" the point estimates in the `estimate` column. Note the confidence level is defaulted to 95%; this default can be changed using the `conf.level` argument: 
+Observe how the p-value stars are omitted and confidence intervals for the point estimates of all regression parameters are included by default. By including them in the output, we can then emphasize to students that they "surround" the point estimates in the `estimate` column. Note the confidence level is defaulted to 95%; this default can be changed using the `conf.level` argument: 
 
 
 ```r
@@ -283,7 +283,7 @@ The second common student question:
 
 > "How do we extract the values in the regression table?"
 
-While one might argue that extracting the intercept and slope coefficients can be simply done using `coefficients(score_model)`, what about the standard errors? For example, a Google query of "_how do I extract standard errors from lm in R_" yielded results from [the R mailing list](https://stat.ethz.ch/pipermail/r-help/2008-April/160538.html){target="_blank"} and from [Cross Validated](https://stats.stackexchange.com/questions/27511/extract-standard-errors-of-coefficient-linear-regression-r){target="_blank"} suggesting we run:
+While one might argue that extracting the intercept and slope coefficients can be "simply" done using `coefficients(score_model)`, what about the standard errors? For example, a Google query of "_how do I extract standard errors from lm in R_" yielded results from [the R mailing list](https://stat.ethz.ch/pipermail/r-help/2008-April/160538.html){target="_blank"} and from [Cross Validated](https://stats.stackexchange.com/questions/27511/extract-standard-errors-of-coefficient-linear-regression-r){target="_blank"} suggesting we run:
 
 
 ```r
@@ -292,7 +292,7 @@ sqrt(diag(vcov(score_model)))
 ## 0.126778499 0.002569157
 ```
 
-We argue that this task shouldn't be this hard, especially in an introductory statistics setting. To rectify this, the three `get_regression_*` functions  all return data frames in the tidyverse-style tibble (tidy table) format [@R-tibble]. Therefore you can easily extract columns using the `pull()` function from the `dplyr` package [@R-dplyr]:
+We argue that this task shouldn't be this hard, especially in an introductory statistics setting. To rectify this, the three `get_regression_*` functions  all return data frames in the tidyverse-style tibble (tidy table) format [@R-tibble]. Therefore you can extract columns using the `pull()` function from the `dplyr` package [@R-dplyr]:
 
 
 
@@ -381,7 +381,7 @@ score_model_points
 ## 10    10   4.5    40      4.22    0.276
 ```
 
-Observe that the original outcome variable `score` and explanatory/predictor variable `age` are now supplemented with the fitted/predicted values `score_hat` and `residual` columns. By putting the fitted values, predicted values, and residuals next to the original data, we argue that the computation of these values is less opaque. For example, instructors can easily emphasize how all values in the first row of output are computed.
+Observe that the original outcome variable `score` and explanatory/predictor variable `age` are now supplemented with the fitted/predicted values `score_hat` and `residual` columns. By putting the fitted values, predicted values, and residuals next to the original data, we argue that the computation of these values is less opaque. For example, instructors can emphasize how all values in the first row of output are computed.
 
 Furthermore, recall that since all outputs in the `moderndive` package are tibble data frames, custom residual analysis plots can be created instead of relying on the default plots yielded by `plot.lm()`. For example, we can check for the normality of residuals using the histogram of residuals shown in \autoref{fig:residuals-1}.
 
@@ -667,7 +667,7 @@ While many students will inevitably find these results depressing, in our opinio
 
 ## Three wrappers to `broom` functions {#broom-wrappers}
 
-As we mentioned earlier, the three `get_regression_*` functions are merely wrappers of functions from the `broom` package for converting statistical analysis objects into tidy tibbles along with a few added tweaks, but with the introductory statistics student in mind [@R-broom]:
+As we mentioned earlier, the three `get_regression_*` functions are wrappers of functions from the `broom` package for converting statistical analysis objects into tidy tibbles along with a few added tweaks, but with the introductory statistics student in mind [@R-broom]:
 
 1. `get_regression_table()` is a wrapper for `broom::tidy()`.
 1. `get_regression_points()` is a wrapper for `broom::augment()`.
