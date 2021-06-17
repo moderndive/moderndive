@@ -24,14 +24,14 @@ Defaults to 0.95, which corresponds to a 95 percent confidence interval.}
 \item{print}{If TRUE, return in print format suitable for R Markdown}
 
 \item{default_categorical_levels}{If TRUE, do not change the non-baseline
-categorical variables in the term column. Otherwise non-baseline 
-categorical variables will be displayed in the format 
+categorical variables in the term column. Otherwise non-baseline
+categorical variables will be displayed in the format
 "categorical_variable_name: level_name"}
 }
 \value{
 A tibble-formatted regression table along with lower and upper end
 points of all confidence intervals for all parameters \code{lower_ci} and
-\code{upper_ci}; the confidence levels default to 95\%.
+\code{upper_ci}; the confidence levels default to 95\\%.
 }
 \description{
 Output regression table for an \code{lm()} regression in "tidy" format. This function
@@ -51,5 +51,5 @@ get_regression_table(mpg_model)
 get_regression_table(mpg_model, conf.level = 0.99)
 }
 \seealso{
-\code{\link[broom:reexports]{tidy}}, \code{\link{get_regression_points}}, \code{\link{get_regression_summaries}}
+\code{\link[broom:reexports]{tidy()}}, \code{\link[=get_regression_points]{get_regression_points()}}, \code{\link[=get_regression_summaries]{get_regression_summaries()}}
 }

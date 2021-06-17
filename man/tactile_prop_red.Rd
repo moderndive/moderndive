@@ -8,10 +8,10 @@
 A data frame of 33 rows representing different groups of students'
 samples of size n = 50 and 4 variables
 \describe{
-  \item{group}{Group members}
-  \item{replicate}{Replicate number}
-  \item{red_balls}{Number of red balls sampled out of 50}
-  \item{prop_red}{Proportion red balls out of 50}
+\item{group}{Group members}
+\item{replicate}{Replicate number}
+\item{red_balls}{Number of red balls sampled out of 50}
+\item{prop_red}{Proportion red balls out of 50}
 }
 }
 \usage{
@@ -22,6 +22,6 @@ Counting the number of red balls in 33 tactile samples of size n = 50 balls from
 \url{https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg}
 }
 \seealso{
-\code{\link{bowl}}
+\code{\link[=bowl]{bowl()}}
 }
 \keyword{datasets}

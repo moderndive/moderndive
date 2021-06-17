@@ -6,11 +6,11 @@ globalVariables(c(
 
 #' Get regression table
 #'
-#' Output regression table for an \code{lm()} regression in "tidy" format. This function
-#' is a wrapper function for \code{broom::tidy()} and includes confidence
+#' Output regression table for an `lm()` regression in "tidy" format. This function
+#' is a wrapper function for `broom::tidy()` and includes confidence
 #' intervals in the output table by default.
 #'
-#' @param model an \code{lm()} model object
+#' @param model an `lm()` model object
 #' @inheritParams broom::tidy.lm
 #' @param digits number of digits precision in output table
 #' @param print If TRUE, return in print format suitable for R Markdown
@@ -20,8 +20,8 @@ globalVariables(c(
 #'  "categorical_variable_name: level_name"
 #'
 #' @return A tibble-formatted regression table along with lower and upper end
-#' points of all confidence intervals for all parameters \code{lower_ci} and
-#' \code{upper_ci}; the confidence levels default to 95\%. 
+#' points of all confidence intervals for all parameters `lower_ci` and
+#' `upper_ci`; the confidence levels default to 95\%. 
 #' @importFrom stats lm
 #' @importFrom stats predict
 #' @importFrom formula.tools lhs
@@ -31,7 +31,7 @@ globalVariables(c(
 #' @importFrom janitor clean_names
 #' @importFrom knitr kable
 #' @export
-#' @seealso \code{\link[broom:reexports]{tidy}}, \code{\link{get_regression_points}}, \code{\link{get_regression_summaries}}
+#' @seealso [`tidy()`][broom::reexports], [get_regression_points()], [get_regression_summaries()]
 #'
 #' @examples
 #' library(moderndive)
@@ -82,20 +82,20 @@ get_regression_table <- function(model, conf.level = 0.95, digits = 3, print = F
 
 #' Get regression points
 #'
-#' Output information on each point/observation used in an \code{lm()} regression in
-#' "tidy" format. This function is a wrapper function for \code{broom::augment()}
+#' Output information on each point/observation used in an `lm()` regression in
+#' "tidy" format. This function is a wrapper function for `broom::augment()`
 #' and renames the variables to have more intuitive names.
 #'
 #' @inheritParams get_regression_table
-#' @param newdata A new data frame of points/observations to apply \code{model} to
+#' @param newdata A new data frame of points/observations to apply `model` to
 #' obtain new fitted values and/or predicted values y-hat. Note the format of
-#' \code{newdata} must match the format of the original \code{data} used to fit
-#' \code{model}.
+#' `newdata` must match the format of the original `data` used to fit
+#' `model`.
 #' @param ID A string indicating which variable in either the original data used to fit
-#' \code{model} or \code{newdata} should be used as
+#' `model` or `newdata` should be used as
 #' an identification variable to distinguish the observational units
 #' in each row. This variable will be the left-most variable in the output data
-#' frame. If \code{ID} is unspecified, a column \code{ID} with values 1 through the number of
+#' frame. If `ID` is unspecified, a column `ID` with values 1 through the number of
 #' rows is returned as the identification variable.
 #'
 #' @return A tibble-formatted regression table of outcome/response variable,
@@ -120,7 +120,7 @@ get_regression_table <- function(model, conf.level = 0.95, digits = 3, print = F
 #' @importFrom rlang sym
 #' @importFrom rlang ":="
 #' @export
-#' @seealso \code{\link[broom:reexports]{augment}}, \code{\link{get_regression_table}}, \code{\link{get_regression_summaries}}
+#' @seealso [`augment()`][broom::reexports], [get_regression_table()], [get_regression_summaries()]
 #'
 #' @examples
 #' library(dplyr)
@@ -247,12 +247,12 @@ get_regression_points <-
 
 #' Get regression summary values
 #'
-#' Output scalar summary statistics for an \code{lm()} regression in "tidy"
-#' format. This function is a wrapper function for \code{broom::glance()}.
+#' Output scalar summary statistics for an `lm()` regression in "tidy"
+#' format. This function is a wrapper function for `broom::glance()`.
 #'
 #' @inheritParams get_regression_table
 #'
-#' @return A single-row tibble with regression summaries. Ex: \code{r_squared} and \code{mse}.
+#' @return A single-row tibble with regression summaries. Ex: `r_squared` and `mse`.
 #' @importFrom dplyr select
 #' @importFrom dplyr rename_at
 #' @importFrom dplyr vars
@@ -272,7 +272,7 @@ get_regression_points <-
 #' @importFrom janitor clean_names
 #' @importFrom knitr kable
 #' @export
-#' @seealso \code{\link[broom:reexports]{glance}}, \code{\link{get_regression_table}}, \code{\link{get_regression_points}}
+#' @seealso [`glance()`][broom::reexports], [get_regression_table()], [get_regression_points()]
 #'
 #' @examples
 #' library(moderndive)

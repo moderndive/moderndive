@@ -7,12 +7,12 @@
 \format{
 A data frame of 1024 rows representing census tracts and 6 variables
 \describe{
-  \item{county}{County where census tract is located. Either Bristol, Essex, Middlesex, Norfolk, Plymouth, or Suffolk county}
-  \item{FIPS}{Federal Information Processing Standards code identifying census tract}
-  \item{median_income}{Median income of census tract}
-  \item{population}{Population of census tract}
-  \item{shop_type}{Coffee shop type: Dunkin Donuts or Starbucks}
-  \item{shops}{Number of shops}
+\item{county}{County where census tract is located. Either Bristol, Essex, Middlesex, Norfolk, Plymouth, or Suffolk county}
+\item{FIPS}{Federal Information Processing Standards code identifying census tract}
+\item{median_income}{Median income of census tract}
+\item{population}{Population of census tract}
+\item{shop_type}{Coffee shop type: Dunkin Donuts or Starbucks}
+\item{shops}{Number of shops}
 }
 }
 \source{

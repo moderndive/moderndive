@@ -8,11 +8,11 @@
 A data frame 10 rows representing different groups of students'
 samples of size n = 50 and 5 variables
 \describe{
-  \item{group}{Group name}
-  \item{red}{Number of red balls sampled}
-  \item{white}{Number of white balls sampled}
-  \item{green}{Number of green balls sampled}
-  \item{n}{Total number of balls samples}
+\item{group}{Group name}
+\item{red}{Number of red balls sampled}
+\item{white}{Number of white balls sampled}
+\item{green}{Number of green balls sampled}
+\item{n}{Total number of balls samples}
 }
 }
 \usage{
@@ -23,6 +23,6 @@ Counting the number of red balls in 10 samples of size n = 50 balls from
 \url{https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg}
 }
 \seealso{
-\code{\link{bowl}}
+\code{\link[=bowl]{bowl()}}
 }
 \keyword{datasets}

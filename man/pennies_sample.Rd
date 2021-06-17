@@ -7,8 +7,8 @@
 \format{
 A data frame of 50 rows representing 50 sampled pennies and 2 variables
 \describe{
-  \item{ID}{Variable used to uniquely identify each penny.}
-  \item{year}{Year of minting.}
+\item{ID}{Variable used to uniquely identify each penny.}
+\item{year}{Year of minting.}
 }
 }
 \usage{
@@ -20,7 +20,7 @@ Friday February 1, 2019 in downtown Northampton, Massachusetts, USA
 \url{https://goo.gl/maps/AF88fpvVfm12}.
 }
 \note{
-The original \code{pennies_sample} has been renamed \code{\link{orig_pennies_sample}}
+The original \code{pennies_sample} has been renamed \code{\link[=orig_pennies_sample]{orig_pennies_sample()}}
 as of \code{moderndive} v0.3.0.
 }
 \keyword{datasets}

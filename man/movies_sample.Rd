@@ -7,10 +7,10 @@
 \format{
 A data frame of 68 rows movies.
 \describe{
-  \item{title}{Movie title}
-  \item{year}{Year released}
-  \item{rating}{IMDb rating out of 10 stars}
-  \item{genre}{Action or Romance}
+\item{title}{Movie title}
+\item{year}{Year released}
+\item{rating}{IMDb rating out of 10 stars}
+\item{genre}{Action or Romance}
 }
 }
 \usage{
@@ -21,6 +21,6 @@ A random sample of 32 action movies and 36 romance movies from
 \url{https://www.imdb.com/} and their ratings.
 }
 \seealso{
-This data was sampled from the `movies` data frame in the \code{ggplot2movies} package.
+This data was sampled from the \code{movies} data frame in the \code{ggplot2movies} package.
 }
 \keyword{datasets}

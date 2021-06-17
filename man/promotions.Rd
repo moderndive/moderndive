@@ -7,9 +7,9 @@
 \format{
 A data frame with 48 observations on the following 3 variables.
 \describe{
-  \item{id}{Identification variable used to distinguish rows.}
-  \item{gender}{gender (collected as a binary variable at the time of the study): a factor with two levels `male` and `female`}
-  \item{decision}{a factor with two levels: `promoted` and `not`}
+\item{id}{Identification variable used to distinguish rows.}
+\item{gender}{gender (collected as a binary variable at the time of the study): a factor with two levels \code{male} and \code{female}}
+\item{decision}{a factor with two levels: \code{promoted} and \code{not}}
 }
 }
 \source{
@@ -24,6 +24,6 @@ Data from a 1970's study on whether gender influences hiring recommendations.
 Originally used in OpenIntro.org.
 }
 \seealso{
-The data in `promotions` is a slight modification of \code{\link[openintro]{gender_discrimination}}.
+The data in \code{promotions} is a slight modification of \code{\link[openintro:gender_discrimination]{openintro::gender_discrimination()}}.
 }
 \keyword{datasets}

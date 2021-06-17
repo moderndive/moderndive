@@ -7,7 +7,7 @@
 \format{
 A data frame of 50 rows representing different balls and 1 variable.
 \describe{
-  \item{color}{Color of ball sampled}
+\item{color}{Color of ball sampled}
 }
 }
 \usage{
@@ -18,6 +18,6 @@ A single tactile sample of size n = 50 balls from
 \url{https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg}
 }
 \seealso{
-\code{\link{bowl}}
+\code{\link[=bowl]{bowl()}}
 }
 \keyword{datasets}

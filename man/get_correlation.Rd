@@ -15,7 +15,7 @@ the explanatory variable name on the right}
 \item{na.rm}{a logical value indicating whether NA values should be stripped
 before the computation proceeds.}
 
-\item{...}{further arguments passed to \code{\link[stats]{cor}}}
+\item{...}{further arguments passed to \code{\link[stats:cor]{stats::cor()}}}
 }
 \value{
 A 1x1 data frame storing the correlation value

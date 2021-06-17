@@ -7,27 +7,27 @@
 \format{
 A data frame with 21613 observations on the following 21 variables.
 \describe{
-  \item{id}{a notation for a house}
-  \item{date}{Date house was sold}
-  \item{price}{Price is prediction target}
-  \item{bedrooms}{Number of Bedrooms/House}
-  \item{bathrooms}{Number of bathrooms/bedrooms}
-  \item{sqft_living}{square footage of the home}
-  \item{sqft_lot}{square footage of the lot}
-  \item{floors}{Total floors (levels) in house}
-  \item{waterfront}{House which has a view to a waterfront}
-  \item{view}{Has been viewed}
-  \item{condition}{How good the condition is (Overall)}
-  \item{grade}{overall grade given to the housing unit, based on King County grading system}
-  \item{sqft_above}{square footage of house apart from basement}
-  \item{sqft_basement}{square footage of the basement}
-  \item{yr_built}{Built Year}
-  \item{yr_renovated}{Year when house was renovated}
-  \item{zipcode}{zip code}
-  \item{lat}{Latitude coordinate}
-  \item{long}{Longitude coordinate}
-  \item{sqft_living15}{Living room area in 2015 (implies-- some renovations) This might or might not have affected the lotsize area}
-  \item{sqft_lot15}{lotSize area in 2015 (implies-- some renovations)}
+\item{id}{a notation for a house}
+\item{date}{Date house was sold}
+\item{price}{Price is prediction target}
+\item{bedrooms}{Number of Bedrooms/House}
+\item{bathrooms}{Number of bathrooms/bedrooms}
+\item{sqft_living}{square footage of the home}
+\item{sqft_lot}{square footage of the lot}
+\item{floors}{Total floors (levels) in house}
+\item{waterfront}{House which has a view to a waterfront}
+\item{view}{Has been viewed}
+\item{condition}{How good the condition is (Overall)}
+\item{grade}{overall grade given to the housing unit, based on King County grading system}
+\item{sqft_above}{square footage of house apart from basement}
+\item{sqft_basement}{square footage of the basement}
+\item{yr_built}{Built Year}
+\item{yr_renovated}{Year when house was renovated}
+\item{zipcode}{zip code}
+\item{lat}{Latitude coordinate}
+\item{long}{Longitude coordinate}
+\item{sqft_living15}{Living room area in 2015 (implies-- some renovations) This might or might not have affected the lotsize area}
+\item{sqft_lot15}{lotSize area in 2015 (implies-- some renovations)}
 }
 }
 \source{

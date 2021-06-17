@@ -8,9 +8,9 @@
 A data frame 2400 rows representing different balls in the bowl, of which
 900 are red and 1500 are white.
 \describe{
-  \item{ball_ID}{ID variable used to denote all balls. Note this value is not
-  marked on the balls themselves}
-  \item{color}{color of ball: red or white}
+\item{ball_ID}{ID variable used to denote all balls. Note this value is not
+marked on the balls themselves}
+\item{color}{color of ball: red or white}
 }
 }
 \usage{

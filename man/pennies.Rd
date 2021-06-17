@@ -7,8 +7,8 @@
 \format{
 A data frame of 800 rows representing different pennies and 2 variables
 \describe{
-  \item{year}{Year of minting}
-  \item{age_in_2011}{Age in 2011}
+\item{year}{Year of minting}
+\item{age_in_2011}{Age in 2011}
 }
 }
 \source{
