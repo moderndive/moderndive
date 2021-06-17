@@ -6,8 +6,8 @@
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![GitHub Actions
 Status](https://github.com/moderndive/moderndive/workflows/R-CMD-check/badge.svg)](https://github.com/moderndive/moderndive/actions)
-[![Coverage
-Status](https://img.shields.io/codecov/c/github/moderndive/moderndive/master.svg)](https://codecov.io/github/moderndive/moderndive?branch=master)
+[![Codecov test
+coverage](https://codecov.io/gh/moderndive/moderndive/branch/master/graph/badge.svg)](https://codecov.io/gh/moderndive/moderndive?branch=master)
 [![CRAN RStudio mirror
 downloads](http://cranlogs.r-pkg.org/badges/moderndive)](http://www.r-pkg.org/pkg/moderndive)
 
