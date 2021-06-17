@@ -1,1 +1,33 @@
-url: https://moderndive.github.io/moderndive/
+url: "moderndive.github.io/moderndive/"
+
+reference:
+- title: Functions
+  contents:
+  - '`geom_categorical_model`'
+  - '`geom_parallel_slopes`'
+  - '`get_correlation`'
+  - '`get_regression_points`'
+  - '`get_regression_summaries`'
+  - '`get_regression_table`'
+  - '`gg_parallel_slopes`'
+- title: Datasets
+  contents:
+  - '`DD_vs_SB`'
+  - '`MA_schools`'
+  - '`bowl`'
+  - '`bowl_sample_1`'
+  - '`bowl_samples`'
+  - '`evals`'
+  - '`movies_sample`'
+  - '`mythbusters_yawn`'
+  - '`orig_pennies_sample`'
+  - '`pennies`'
+  - '`pennies_resamples`'
+  - '`pennies_sample`'
+  - '`promotions`'
+  - '`promotions_shuffled`'
+  - '`tactile_prop_red`'
+  - '`house_prices`'
+- title: Misc
+  contents:
+  - '`moderndive`'
