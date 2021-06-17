@@ -18,11 +18,6 @@ promotions_shuffled
 \description{
 Shuffled/permuted data from a 1970's study on whether gender influences hiring recommendations.
 }
-\examples{
-library(dplyr)
-glimpse(promotions)
-glimpse(promotions_shuffled)
-}
 \seealso{
 \code{\link{promotions}}.
 }

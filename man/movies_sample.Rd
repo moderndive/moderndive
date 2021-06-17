@@ -20,14 +20,6 @@ movies_sample
 A random sample of 32 action movies and 36 romance movies from
 \url{https://www.imdb.com/} and their ratings.
 }
-\examples{
-library(ggplot2)
-
-# Visualize relationship between rating and genre
-ggplot(data = movies_sample, aes(x = genre, y = rating)) +
-  geom_boxplot() +
-  labs(x = "Genre: Action or Romance", y = "IMDb rating")
-}
 \seealso{
 This data was sampled from the `movies` data frame in the \code{ggplot2movies} package.
 }

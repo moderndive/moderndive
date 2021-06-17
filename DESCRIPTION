@@ -39,10 +39,8 @@ Suggests:
     covr,
     rmarkdown,
     vdiffr,
-    ggplot2movies,
     openintro,
     patchwork,
     viridis,
-    readr,
-    ragg
+    readr
 VignetteBuilder: knitr

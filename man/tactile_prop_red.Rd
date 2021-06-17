@@ -21,17 +21,6 @@ tactile_prop_red
 Counting the number of red balls in 33 tactile samples of size n = 50 balls from
 \url{https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg}
 }
-\examples{
-library(ggplot2)
-
-# Plot sampling distributions
-ggplot(tactile_prop_red, aes(x = prop_red)) +
-  geom_histogram(binwidth = 0.025) +
-  labs(
-    x = expression(hat(p)), y = "Number of samples",
-    title = "Sampling distribution of p_hat based 33 samples of size n = 50"
-  )
-}
 \seealso{
 \code{\link{bowl}}
 }

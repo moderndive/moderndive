@@ -11,11 +11,6 @@
 #' }
 #' @note The original \code{pennies_sample} has been renamed \code{\link{orig_pennies_sample}}
 #' as of \code{moderndive} v0.3.0.
-#' @examples
-#' library(ggplot2)
-#'
-#' ggplot(pennies_sample, aes(x = year)) +
-#'   geom_histogram(binwidth = 5, boundary = 2000)
 "pennies_sample"
 
 
@@ -35,16 +30,6 @@
 #'   \item{year}{Year on resampled penny}
 #' }
 #' @seealso \code{\link{pennies_sample}}
-#' @examples
-#' library(ggplot2)
-#' library(dplyr)
-#' bootstrap_sample_means <- pennies_resamples %>%
-#'   group_by(name) %>%
-#'   summarize(sample_mean = mean(year))
-#'
-#' ggplot(bootstrap_sample_means, aes(x = sample_mean)) +
-#'   geom_histogram(binwidth = 2.5) +
-#'   labs(x = "sample mean year", title = "Bootstrap distribution of sample mean year")
 "pennies_resamples"
 
 
@@ -60,27 +45,6 @@
 #'   \item{age_in_2011}{Age in 2011}
 #' }
 #' @source StatCrunch \url{https://www.statcrunch.com/app/index.php?dataid=301596}
-#' @examples
-#' library(dplyr)
-#' library(ggplot2)
-#'
-#' # Take 25 different samples of size n = 50 pennies from population
-#' many_samples <- pennies %>%
-#'   rep_sample_n(size = 50, reps = 25)
-#' many_samples
-#'
-#' # Compute mean year of minting for each sample
-#' sample_means <- many_samples %>%
-#'   group_by(replicate) %>%
-#'   summarize(mean_year = mean(year))
-#'
-#' # Plot sampling distribution
-#' ggplot(sample_means, aes(x = mean_year)) +
-#'   geom_histogram(binwidth = 1, color = "white") +
-#'   labs(
-#'     x = expression(bar(x)), y = "Number of samples",
-#'     title = "Sampling distribution of x_bar based 25 samples of size n = 50"
-#'   )
 "pennies"
 
 
@@ -97,27 +61,6 @@
 #' }
 #' @source StatCrunch \url{https://www.statcrunch.com/app/index.php?dataid=301596}
 #' @seealso \code{\link{pennies}}
-#' @examples
-#' library(dplyr)
-#' library(ggplot2)
-#'
-#' # Take 50 different resamples/bootstraps from the original sample
-#' many_bootstraps <- orig_pennies_sample %>%
-#'   rep_sample_n(size = 40, replace = TRUE, reps = 50)
-#' many_bootstraps
-#'
-#' # Compute mean year of minting for each bootstrap sample
-#' bootstrap_means <- many_bootstraps %>%
-#'   group_by(replicate) %>%
-#'   summarize(mean_year = mean(year))
-#'
-#' # Plot sampling distribution
-#' ggplot(bootstrap_means, aes(x = mean_year)) +
-#'   geom_histogram(binwidth = 1, color = "white") +
-#'   labs(
-#'     x = expression(bar(x)), y = "Number of samples",
-#'     title = "Bootstrap distribution of x_bar based 50 resamples of size n = 40"
-#'   )
 "orig_pennies_sample"
 
 
@@ -137,29 +80,6 @@
 #'   marked on the balls themselves}
 #'   \item{color}{color of ball: red or white}
 #' }
-#' @examples
-#' library(dplyr)
-#' library(ggplot2)
-#'
-#' # Take 10 different samples of size n = 50 balls from bowl
-#' bowl_samples_simulated <- bowl %>%
-#'   rep_sample_n(50, reps = 10)
-#'
-#' # Compute 10 different p_hats (prop red) based on 10 different samples of
-#' # size n = 50
-#' p_hats <- bowl_samples_simulated %>%
-#'   group_by(replicate, color) %>%
-#'   summarize(count = n()) %>%
-#'   mutate(proportion = count / 50) %>%
-#'   filter(color == "red")
-#'
-#' # Plot sampling distribution
-#' ggplot(p_hats, aes(x = proportion)) +
-#'   geom_histogram(binwidth = 0.05) +
-#'   labs(
-#'     x = expression(hat(p)), y = "Number of samples",
-#'     title = "Sampling distribution of p_hat based 10 samples of size n = 50"
-#'   )
 "bowl"
 
 
@@ -179,21 +99,6 @@
 #'   \item{n}{Total number of balls samples}
 #' }
 #' @seealso \code{\link{bowl}}
-#' @examples
-#' library(dplyr)
-#' library(ggplot2)
-#'
-#' # Compute proportion red
-#' bowl_samples <- bowl_samples %>%
-#'   mutate(prop_red = red / n)
-#'
-#' # Plot sampling distributions
-#' ggplot(bowl_samples, aes(x = prop_red)) +
-#'   geom_histogram(binwidth = 0.05) +
-#'   labs(
-#'     x = expression(hat(p)), y = "Number of samples",
-#'     title = "Sampling distribution of p_hat based 10 samples of size n = 50"
-#'   )
 "bowl_samples"
 
 
@@ -212,16 +117,6 @@
 #'   \item{prop_red}{Proportion red balls out of 50}
 #' }
 #' @seealso \code{\link{bowl}}
-#' @examples
-#' library(ggplot2)
-#'
-#' # Plot sampling distributions
-#' ggplot(tactile_prop_red, aes(x = prop_red)) +
-#'   geom_histogram(binwidth = 0.025) +
-#'   labs(
-#'     x = expression(hat(p)), y = "Number of samples",
-#'     title = "Sampling distribution of p_hat based 33 samples of size n = 50"
-#'   )
 "tactile_prop_red"
 
 
@@ -236,13 +131,6 @@
 #'   \item{color}{Color of ball sampled}
 #' }
 #' @seealso \code{\link{bowl}}
-#' @examples
-#' library(ggplot2)
-#'
-#' # Barplot of distribution of balls in sample
-#' ggplot(bowl_sample_1, aes(x = color)) +
-#'   geom_bar() +
-#'   labs(title = "50 sampled bals from bowl")
 "bowl_sample_1"
 
 
@@ -262,9 +150,6 @@
 #' @source Rosen B and Jerdee T. 1974. Influence of sex role stereotypes on personnel
 #' decisions. Journal of Applied Psychology 59(1):9-14.
 #' @seealso The data in `promotions` is a slight modification of \code{\link[openintro]{gender_discrimination}}.
-#' @examples
-#' library(dplyr)
-#' glimpse(promotions)
 "promotions"
 
 
@@ -279,10 +164,6 @@
 #'   \item{decision}{a factor with two levels: `promoted` and `not`}
 #' }
 #' @seealso \code{\link{promotions}}.
-#' @examples
-#' library(dplyr)
-#' glimpse(promotions)
-#' glimpse(promotions_shuffled)
 "promotions_shuffled"
 
 
@@ -300,12 +181,6 @@
 #' @source The original source of the data are Massachusetts Department of
 #' Education reports \url{http://profiles.doe.mass.edu/state_report/}, however
 #' the data was downloaded from Kaggle at \url{https://www.kaggle.com/ndalziel/massachusetts-public-schools-data}
-#' @examples
-#' library(ggplot2)
-#' ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
-#'   geom_point() +
-#'   geom_smooth(method = "lm", se = FALSE) +
-#'   labs(y = "Math SAT score", x = "Percentage economically disadvantaged", color = "School size")
 "MA_schools"
 
 
@@ -325,15 +200,6 @@
 #'   \item{shops}{Number of shops}
 #' }
 #' @source US Census Bureau. Code used to scrape data available at \url{https://github.com/DelaneyMoran/FinalProject}
-#' @examples
-#' # Compute correlation between a census tract's median income and number of cafes of
-#' # each type after removing two cases where median_income is missing
-#' library(dplyr)
-#' DD_vs_SB %>%
-#'   mutate(shops_per_1000 = 1000 * shops / population) %>%
-#'   filter(!is.na(median_income)) %>%
-#'   group_by(shop_type) %>%
-#'   summarize(cor = cor(median_income, shops_per_1000))
 "DD_vs_SB"
 
 
@@ -370,17 +236,6 @@
 #' }
 #' @source Kaggle \url{https://www.kaggle.com/harlfoxem/housesalesprediction}.
 #' Note data is released under a CC0: Public Domain license.
-#' @examples
-#' library(dplyr)
-#' library(ggplot2)
-#'
-#' # Create variable log of house price
-#' house_prices <- house_prices %>%
-#'   mutate(log_price = log(price))
-#'
-#' # Plot histogram of log of house price
-#' ggplot(house_prices, aes(x = log_price)) +
-#'   geom_histogram()
 "house_prices"
 
 
@@ -412,9 +267,6 @@
 #' }
 #' @source Çetinkaya-Rundel M, Morgan KL, Stangl D. 2013. Looking Good on Course Evaluations. CHANCE 26(2). 
 #' @seealso The data in `evals` is a slight modification of \code{\link[openintro]{evals}}.
-#' @examples
-#' library(dplyr)
-#' glimpse(evals)
 "evals"
 
 
@@ -436,16 +288,6 @@
 #'   \item{yawn}{string of either \code{"yes"}, the participant yawned, or
 #'   \code{"no"}, the participant did not yawn}
 #' }
-#' @examples
-#' library(ggplot2)
-#'
-#' # Plot both variables as a stacked proportional bar chart
-#' ggplot(mythbusters_yawn, aes(x = group, fill = yawn)) +
-#'   geom_bar(position = "fill") +
-#'   labs(
-#'     x = "", y = "Proportion",
-#'     title = "Proportion of yawn and not yawn for each group"
-#'   )
 "mythbusters_yawn"
 
 
@@ -463,11 +305,4 @@
 #'   \item{genre}{Action or Romance}
 #' }
 #' @seealso This data was sampled from the `movies` data frame in the \code{ggplot2movies} package.
-#' @examples
-#' library(ggplot2)
-#'
-#' # Visualize relationship between rating and genre
-#' ggplot(data = movies_sample, aes(x = genre, y = rating)) +
-#'   geom_boxplot() +
-#'   labs(x = "Genre: Action or Romance", y = "IMDb rating")
 "movies_sample"

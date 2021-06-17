@@ -23,10 +23,6 @@ promotions
 Data from a 1970's study on whether gender influences hiring recommendations.
 Originally used in OpenIntro.org.
 }
-\examples{
-library(dplyr)
-glimpse(promotions)
-}
 \seealso{
 The data in `promotions` is a slight modification of \code{\link[openintro]{gender_discrimination}}.
 }

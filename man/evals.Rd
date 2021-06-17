@@ -36,10 +36,6 @@ students rate the professors' physical appearance. The result is a data frame
 where each row contains a different course and each column has information on
 either the course or the professor \url{https://www.openintro.org/data/index.php?data=evals}
 }
-\examples{
-library(dplyr)
-glimpse(evals)
-}
 \seealso{
 The data in `evals` is a slight modification of \code{\link[openintro]{evals}}.
 }

@@ -17,14 +17,6 @@ bowl_sample_1
 A single tactile sample of size n = 50 balls from
 \url{https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg}
 }
-\examples{
-library(ggplot2)
-
-# Barplot of distribution of balls in sample
-ggplot(bowl_sample_1, aes(x = color)) +
-  geom_bar() +
-  labs(title = "50 sampled bals from bowl")
-}
 \seealso{
 \code{\link{bowl}}
 }

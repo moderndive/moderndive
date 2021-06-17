@@ -24,11 +24,4 @@ MA_schools
 \description{
 Data on Massachusetts public high schools in 2017
 }
-\examples{
-library(ggplot2)
-ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
-  geom_point() +
-  geom_smooth(method = "lm", se = FALSE) +
-  labs(y = "Math SAT score", x = "Percentage economically disadvantaged", color = "School size")
-}
 \keyword{datasets}

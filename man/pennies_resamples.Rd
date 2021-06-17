@@ -22,17 +22,6 @@ a 50 cent roll from Florence Bank on Friday February 1, 2019 in downtown Northam
 Massachusetts, USA \url{https://goo.gl/maps/AF88fpvVfm12}. The original sample
 of 50 pennies is available in \code{\link{pennies_sample}} .
 }
-\examples{
-library(ggplot2)
-library(dplyr)
-bootstrap_sample_means <- pennies_resamples \%>\%
-  group_by(name) \%>\%
-  summarize(sample_mean = mean(year))
-
-ggplot(bootstrap_sample_means, aes(x = sample_mean)) +
-  geom_histogram(binwidth = 2.5) +
-  labs(x = "sample mean year", title = "Bootstrap distribution of sample mean year")
-}
 \seealso{
 \code{\link{pennies_sample}}
 }

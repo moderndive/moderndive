@@ -25,15 +25,4 @@ From a study on whether yawning is contagious
 The data here was derived from the final proportions of yawns given
 in the show.
 }
-\examples{
-library(ggplot2)
-
-# Plot both variables as a stacked proportional bar chart
-ggplot(mythbusters_yawn, aes(x = group, fill = yawn)) +
-  geom_bar(position = "fill") +
-  labs(
-    x = "", y = "Proportion",
-    title = "Proportion of yawn and not yawn for each group"
-  )
-}
 \keyword{datasets}

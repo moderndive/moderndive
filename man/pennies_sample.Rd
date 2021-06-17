@@ -23,10 +23,4 @@ Friday February 1, 2019 in downtown Northampton, Massachusetts, USA
 The original \code{pennies_sample} has been renamed \code{\link{orig_pennies_sample}}
 as of \code{moderndive} v0.3.0.
 }
-\examples{
-library(ggplot2)
-
-ggplot(pennies_sample, aes(x = year)) +
-  geom_histogram(binwidth = 5, boundary = 2000)
-}
 \keyword{datasets}
