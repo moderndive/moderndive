@@ -65,7 +65,6 @@ Let's load all the R packages we are going to need.
 library(moderndive)
 library(ggplot2)
 library(dplyr)
-library(readr)
 library(knitr)
 library(broom)
 ```

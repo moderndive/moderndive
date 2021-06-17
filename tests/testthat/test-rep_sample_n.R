@@ -4,7 +4,7 @@ library(dplyr)
 
 test_that("`rep_sample_n` is working", {
   N <- 2400
-  tub <- data_frame(
+  tub <- tibble::tibble(
     ball_ID = 1:N,
     color = c(rep("red", 900), rep("white", N - 900))
   )

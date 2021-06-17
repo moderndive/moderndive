@@ -66,10 +66,8 @@ knitr::opts_chunk$set(
 library(moderndive)
 library(ggplot2)
 library(dplyr)
-library(readr)
 library(knitr)
 library(broom)
-library(viridis)
 
 # Needed packages internally
 library(patchwork)
@@ -82,7 +80,7 @@ if (!knitr::is_html_output()) {
   # Grey theme:
   theme_set(theme_light())
 
-  scale_colour_discrete <- scale_colour_viridis_d
+  scale_colour_discrete <- ggplot2::scale_colour_viridis_d
 }
 
 
@@ -109,7 +107,6 @@ Let's load all the R packages we are going to need.
 library(moderndive)
 library(ggplot2)
 library(dplyr)
-library(readr)
 library(knitr)
 library(broom)
 ```
@@ -356,7 +353,7 @@ This Kaggle competition requires you to fit/train a model to the provided `train
 1. Fit a naive model of house sale price as a function of year sold to the training data.
 1. Make predictions on the test data and write them to a `submission.csv` file that can be submitted to Kaggle using `get_regression_points()`. Note the use of the `ID` argument to use the `id` variable in `test` to identify the rows (a requirement of Kaggle competition submissions).
 
-```{r, eval=FALSE}
+```r
 library(readr)
 library(dplyr)
 library(moderndive)

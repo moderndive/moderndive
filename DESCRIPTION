@@ -45,4 +45,5 @@ Suggests:
     viridis,
     readr,
     ragg
+    patchwork
 VignetteBuilder: knitr

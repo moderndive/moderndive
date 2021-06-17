@@ -168,7 +168,7 @@ usethis::use_data(mythbusters_yawn, overwrite = TRUE)
 set.seed(76)
 N <- 2400
 bowl <-
-  data_frame(
+  tibble::tibble(
     color = c(rep("red", 900), rep("white", N - 900))
   ) %>%
   sample_frac(1) %>%
