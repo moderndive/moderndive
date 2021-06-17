@@ -1,7 +1,7 @@
 ---
 title: "Take a `moderndive` into introductory linear regression with R"
 author: "Albert Y. Kim, Chester Ismay, and Max Kuhn"
-date: "2021-05-14"
+date: "2021-06-17"
 vignette: >
   %\VignetteIndexEntry{Take a `moderndive` into introductory linear regression with R}
   %\VignetteEncoding{UTF-8}
@@ -193,7 +193,7 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 
 \begin{figure}
 
-{\centering \includegraphics[width=1\linewidth]{Figures/interaction-model-1} 
+{\centering \includegraphics[width=1\linewidth]{paper_files/figure-latex/interaction-model-1} 
 
 }
 
@@ -202,7 +202,7 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 
 However, many introductory statistics courses start with the easier to teach "common slope, different intercepts" regression model, also known as the *parallel slopes* model. However, no argument to plot such models exists within `geom_smooth()`.
 
-[Evgeni Chasnovski](https://github.com/echasnovski){target="_blank"} thus wrote a custom `geom_` extension to `ggplot2` called `geom_parallel_slopes()`; this extension is included in the `moderndive` package. Much like `geom_smooth()` from the `ggplot2` package, you add `geom_parallel_slopes()` as another layer to the code, resulting in \autoref{fig:parallel-slopes-model}.
+[Evgeni Chasnovski](https://github.com/echasnovski){target="_blank"} thus wrote a custom `geom_` extension to `ggplot2` called `geom_parallel_slopes()`; this extension is included in the `moderndive` package. Much like `geom_smooth()` from the `ggplot2` package, you add `geom_parallel_slopes()` as a layer to the code, resulting in \autoref{fig:parallel-slopes-model}.
 
 
 ```r
@@ -215,7 +215,7 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 
 \begin{figure}
 
-{\centering \includegraphics[width=1\linewidth]{Figures/parallel-slopes-model-1} 
+{\centering \includegraphics[width=1\linewidth]{paper_files/figure-latex/parallel-slopes-model-1} 
 
 }
 
@@ -394,7 +394,7 @@ ggplot(score_model_points, aes(x = residual)) +
 
 \begin{figure}
 
-{\centering \includegraphics[width=1\linewidth]{Figures/residuals-1-1} 
+{\centering \includegraphics[width=1\linewidth]{paper_files/figure-latex/residuals-1-1} 
 
 }
 
@@ -413,13 +413,12 @@ ggplot(score_model_points, aes(x = age, y = residual)) +
 
 \begin{figure}
 
-{\centering \includegraphics[width=1\linewidth]{Figures/residuals-2-1} 
+{\centering \includegraphics[width=1\linewidth]{paper_files/figure-latex/residuals-2-1} 
 
 }
 
 \caption{Partial residual residual plot over age.}\label{fig:residuals-2}
 \end{figure}
-
 
 ## 4. A quick-and-easy Kaggle predictive modeling competition submission!
 
@@ -430,7 +429,6 @@ The fourth common student question:
 With the fields of machine learning and artificial intelligence gaining prominence, the importance of predictive modeling cannot be understated. Therefore, we've designed the `get_regression_points()` function to allow for a `newdata` argument to quickly apply a previously fitted model to new observations. 
 
 Let's create an artificial "new" dataset consisting of two instructors of age 39 and 42 and save it in a tibble data frame called `new_prof`. We then set the `newdata` argument to `get_regression_points()` to apply our previously fitted model `score_model` to this new data, where `score_hat` holds the corresponding fitted/predicted values. 
-
 
 
 ```r
@@ -459,7 +457,6 @@ This Kaggle competition requires you to fit/train a model to the provided `train
 1. Read in the training and test data.
 1. Fit a naive model of house sale price as a function of year sold to the training data.
 1. Make predictions on the test data and write them to a `submission.csv` file that can be submitted to Kaggle using `get_regression_points()`. Note the use of the `ID` argument to use the `id` variable in `test` to identify the rows (a requirement of Kaggle competition submissions).
-
 
 ```r
 library(readr)
@@ -493,7 +490,6 @@ obtain a "root mean squared logarithmic error" (RMSLE) score of 0.42918 as seen 
 
 \caption{Resulting Kaggle RMSLE score.}\label{fig:kaggle-2}
 \end{figure}
-
 
 ## 5. Scalar summaries of linear regression model fits
 
@@ -550,7 +546,7 @@ For example, recall the earlier visualizations of the interaction and parallel s
 
 \begin{figure}
 
-{\centering \includegraphics[width=1\linewidth]{Figures/interaction-and-parallel-slopes-model-1-1} 
+{\centering \includegraphics[width=1\linewidth]{paper_files/figure-latex/interaction-and-parallel-slopes-model-1-1} 
 
 }
 
@@ -617,7 +613,7 @@ ggplot(
 
 \begin{figure}
 
-{\centering \includegraphics[width=1\linewidth]{Figures/interaction-and-parallel-slopes-model-2-1} 
+{\centering \includegraphics[width=1\linewidth]{paper_files/figure-latex/interaction-and-parallel-slopes-model-2-1} 
 
 }
 
@@ -660,7 +656,6 @@ Unlike our earlier comparison of interaction and parallel slopes models in \auto
 Going one step further, notice how the three regression lines in the visualization of the parallel slopes model in the right-hand plot of \autoref{fig:interaction-and-parallel-slopes-model-2} have similar intercepts. In can thus be argued that the additional model complexity induced by introducing the categorical variable school `size` is not warranted. Therefore, a simple linear regression model using only `perc_disadvan` percent of the student body that are economically disadvantaged should be favored.
 
 While many students will inevitably find these results depressing, in our opinion, it is important to additionally emphasize that such regression analyses can be used as an empowering tool to bring to light inequities in access to education and inform policy decisions.
-
 
 # The Details
 
@@ -714,27 +709,16 @@ broom::augment(score_model)
 
 The source code for these three `get_regression_*` functions can be found on [GitHub](https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R){target="_blank"}.
 
-
 ## Custom geometries
 
 The `geom_parallel_slopes()` is a custom built `geom` extension to the `ggplot2` package. For example, the `ggplot2` webpage page gives [instructions](https://ggplot2.tidyverse.org/articles/extending-ggplot2.html){target="_blank"} on how to create such extensions. The source code for `geom_parallel_slopes()` written by [Evgeni Chasnovski](https://github.com/echasnovski){target="_blank"} can be found on [GitHub](https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R){target="_blank"}. 
-
-
-
 
 # Author contributions
 
 Albert Y. Kim and Chester Ismay contributed equally to the development of the `moderndive` package. Albert Y. Kim wrote a majority of the initial version of this manuscript with Chester Ismay writing the rest. Max Kuhn provided guidance and feedback at various stages of the package development and manuscript writing. 
 
-
 # Acknowledgments
 
 Many thanks to Jenny Smetzer [\@smetzer180](https://github.com/smetzer180){target="_blank"} for her helpful feedback for this vignette and to Evgeni Chasnovski [\@echasnovski](https://github.com/echasnovski){target="_blank"} for contributing the `geom_parallel_slopes()` function via GitHub [pull request](https://github.com/moderndive/moderndive/pull/55){target="_blank"}. The authors do not have any financial support to disclose.
-
-
-
-
-
-
 
 # References
