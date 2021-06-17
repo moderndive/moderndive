@@ -39,11 +39,14 @@ Suggests:
     covr,
     rmarkdown,
     vdiffr,
+<<<<<<< HEAD
     ggplot2movies,
     openintro,
     patchwork,
     viridis,
     readr,
     ragg
+=======
+>>>>>>> 028a30e5384645b284873c54e944a69837ba376c
     patchwork
 VignetteBuilder: knitr
