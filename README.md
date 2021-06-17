@@ -11,10 +11,20 @@ coverage](https://codecov.io/gh/moderndive/moderndive/branch/master/graph/badge.
 [![CRAN RStudio mirror
 downloads](http://cranlogs.r-pkg.org/badges/moderndive)](http://www.r-pkg.org/pkg/moderndive)
 
-An R package of datasets and wrapper functions for
+## Overview
+
+The [`moderndive`](https://moderndive.github.io/moderndive/) R package
+consists of datasets and functions for
 [tidyverse](https://www.tidyverse.org/)-friendly introductory linear
-regression used in “Statistical Inference via Data Science: A ModernDive
-into R and the Tidyverse” available at
+regression. These tools leverage the well-developed `tidyverse` and
+`broom` packages to facilitate 1) working with regression tables that
+include confidence intervals, 2) accessing regression outputs on an
+observation level (e.g. fitted/predicted values and residuals), 3)
+inspecting scalar summaries of regression fit (e.g. R-squared, R-squared
+adjusted, and mean squared error), and 4) visualizing parallel slopes
+regression models using `ggplot2`-like syntax. This R package is
+designed to supplement the book “Statistical Inference via Data Science:
+A ModernDive into R and the Tidyverse” available at
 [ModernDive.com](https://moderndive.com/).
 
 ## Installation
@@ -51,7 +61,7 @@ we highlight four functions in particular as covered there.
 
 We also mention the `geom_parallel_slopes()` function as **\#4**.
 
-#### 1. Get regression tables
+#### 1\. Get regression tables
 
 Get a tidy regression table **with** confidence intervals:
 
@@ -78,7 +88,7 @@ get_regression_table(score_model, conf.level = 0.99)
     ## 1 intercept    4.46      0.127     35.2    0        4.13     4.79 
     ## 2 age         -0.006     0.003     -2.31   0.021   -0.013    0.001
 
-#### 2. Get fitted/predicted values and residuals
+#### 2\. Get fitted/predicted values and residuals
 
 Get information on each point/observation in your regression, including
 fitted/predicted values & residuals (e.g. `score_hat` and `residual`),
@@ -103,7 +113,7 @@ get_regression_points(score_model)
     ## 10    10   4.5    40      4.22    0.276
     ## # … with 453 more rows
 
-#### 3. Get regression fit summaries
+#### 3\. Get regression fit summaries
 
 Get all the scalar summaries of a regression fit included in
 `summary(score_model)` along with the mean-squared error and root
@@ -118,7 +128,7 @@ get_regression_summaries(score_model)
     ##       <dbl>         <dbl> <dbl> <dbl> <dbl>     <dbl>   <dbl> <dbl> <dbl>
     ## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     1   463
 
-#### 4. Plot parallel slopes models
+#### 4\. Plot parallel slopes models
 
 Plot parallel slopes regression models involving one categorical and one
 numerical explanatory/predictor variable (something you cannot do using
@@ -135,7 +145,7 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 
 ## Other features
 
-#### 1. Print markdown friendly tables
+#### 1\. Print markdown friendly tables
 
 Want to output cleanly formatted tables in an R Markdown document? Add
 `print = TRUE` to any of the three `get_regression_*()` functions.
@@ -145,18 +155,19 @@ get_regression_table(score_model, print = TRUE)
 ```
 
 | term      | estimate | std\_error | statistic | p\_value | lower\_ci | upper\_ci |
-|:----------|---------:|-----------:|----------:|---------:|----------:|----------:|
+| :-------- | -------: | ---------: | --------: | -------: | --------: | --------: |
 | intercept |    4.462 |      0.127 |    35.195 |    0.000 |     4.213 |     4.711 |
-| age       |   -0.006 |      0.003 |    -2.311 |    0.021 |    -0.011 |    -0.001 |
+| age       |  \-0.006 |      0.003 |   \-2.311 |    0.021 |   \-0.011 |   \-0.001 |
 
-#### 2. Predictions on new data
+#### 2\. Predictions on new data
 
 Want to apply your fitted model on new data to make predictions? No
-problem! Include a `newdata` data frame argument to
+problem\! Include a `newdata` data frame argument to
 `get_regression_points()`.
 
-For example, the Kaggle.com practice competition
-<a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques" target="_blank">House Prices: Advanced Regression Techniques</a>
+For example, the Kaggle.com practice competition [House Prices: Advanced
+Regression
+Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
 requires you to fit/train a model to the provided `train.csv` training
 set to make predictions of house prices in the provided `test.csv` test
 set. The following code performs these steps and outputs the predictions
@@ -188,7 +199,7 @@ error” leaderboard score of 0.42918.
 ## The Details
 
 The three `get_regression` functions are wrappers of functions from the
-<a href="https://CRAN.R-project.org/package=broom/vignettes/broom.html" target="_blank"><code>broom</code></a>
+[`broom`](https://CRAN.R-project.org/package=broom/vignettes/broom.html)
 package for converting statistical analysis objects into tidy tibbles
 along with a few added tweaks:
 
@@ -198,17 +209,19 @@ along with a few added tweaks:
 
 Why did we create these wrappers?
 
--   The `broom` package function names `tidy()`, `augment()`, and
+  - The `broom` package function names `tidy()`, `augment()`, and
     `glance()` don’t mean anything to intro stats students, where as the
     `moderndive` package function names `get_regression_table()`,
     `get_regression_points()`, and `get_regression_summaries()` are more
     intuitive.
--   The default column/variable names in the outputs of the above 3
+  - The default column/variable names in the outputs of the above 3
     functions are a little daunting for intro stats students to
     interpret. We cut out some of them and renamed many of them with
     more intuitive names. For example, compare the outputs of the
     `get_regression_points()` wrapper function and the parent
     `broom::augment()` function.
+
+<!-- end list -->
 
 ``` r
 get_regression_points(score_model)
@@ -249,7 +262,7 @@ augment(score_model)
     ## 10   4.5    40    4.22  0.276  0.00374  0.542 0.000488       0.510
     ## # … with 453 more rows
 
-------------------------------------------------------------------------
+-----
 
 Please note that this project is released with a [Contributor Code of
 Conduct](CONDUCT.md). By participating in this project you agree to
