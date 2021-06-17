@@ -52,7 +52,6 @@ knitr::opts_chunk$set(
   echo = TRUE,
   # Figure:
   out.width = "100%",
-  fig.path = "Figures/",
   fig.width = 16 / 2.5,
   fig.height = 9 / 2.5,
   fig.align = "center",
@@ -330,7 +329,6 @@ ggplot(score_model_points, aes(x = age, y = residual)) +
   labs(x = "Age", y = "Residual")
 ```
 
-
 ## 4. A quick-and-easy Kaggle predictive modeling competition submission!
 
 The fourth common student question:
@@ -340,7 +338,6 @@ The fourth common student question:
 With the fields of machine learning and artificial intelligence gaining prominence, the importance of predictive modeling cannot be understated. Therefore, we've designed the `get_regression_points()` function to allow for a `newdata` argument to quickly apply a previously fitted model to new observations. 
 
 Let's create an artificial "new" dataset consisting of two instructors of age 39 and 42 and save it in a tibble data frame called `new_prof`. We then set the `newdata` argument to `get_regression_points()` to apply our previously fitted model `score_model` to this new data, where `score_hat` holds the corresponding fitted/predicted values. 
-
 
 ```{r}
 new_prof <- tibble(age = c(39, 42))
@@ -386,7 +383,6 @@ obtain a "root mean squared logarithmic error" (RMSLE) score of 0.42918 as seen 
 ```{r kaggle-2, echo=FALSE, fig.cap="Resulting Kaggle RMSLE score."}
 knitr::include_graphics("leaderboard_orig.png")
 ```
-
 
 ## 5. Scalar summaries of linear regression model fits
 
@@ -516,7 +512,6 @@ Going one step further, notice how the three regression lines in the visualizati
 
 While many students will inevitably find these results depressing, in our opinion, it is important to additionally emphasize that such regression analyses can be used as an empowering tool to bring to light inequities in access to education and inform policy decisions.
 
-
 # The Details
 
 ## Three wrappers to `broom` functions {#broom-wrappers}
@@ -540,27 +535,16 @@ broom::augment(score_model)
 
 The source code for these three `get_regression_*` functions can be found on [GitHub](https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R){target="_blank"}.
 
-
 ## Custom geometries
 
 The `geom_parallel_slopes()` is a custom built `geom` extension to the `ggplot2` package. For example, the `ggplot2` webpage page gives [instructions](https://ggplot2.tidyverse.org/articles/extending-ggplot2.html){target="_blank"} on how to create such extensions. The source code for `geom_parallel_slopes()` written by [Evgeni Chasnovski](https://github.com/echasnovski){target="_blank"} can be found on [GitHub](https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R){target="_blank"}. 
-
-
-
 
 # Author contributions
 
 Albert Y. Kim and Chester Ismay contributed equally to the development of the `moderndive` package. Albert Y. Kim wrote a majority of the initial version of this manuscript with Chester Ismay writing the rest. Max Kuhn provided guidance and feedback at various stages of the package development and manuscript writing. 
 
-
 # Acknowledgments
 
 Many thanks to Jenny Smetzer [\@smetzer180](https://github.com/smetzer180){target="_blank"} for her helpful feedback for this vignette and to Evgeni Chasnovski [\@echasnovski](https://github.com/echasnovski){target="_blank"} for contributing the `geom_parallel_slopes()` function via GitHub [pull request](https://github.com/moderndive/moderndive/pull/55){target="_blank"}. The authors do not have any financial support to disclose.
-
-
-
-
-
-
 
 # References
