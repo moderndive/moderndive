@@ -8,9 +8,9 @@
 A data frame of 1750 rows representing 35 students' bootstrap
 resamples of size 50 and 3 variables
 \describe{
-  \item{replicate}{ID variable of replicate/resample number.}
-  \item{name}{Name of student}
-  \item{year}{Year on resampled penny}
+\item{replicate}{ID variable of replicate/resample number.}
+\item{name}{Name of student}
+\item{year}{Year on resampled penny}
 }
 }
 \usage{
@@ -20,9 +20,9 @@ pennies_resamples
 35 bootstrap resamples with replacement of sample of 50 pennies contained in
 a 50 cent roll from Florence Bank on Friday February 1, 2019 in downtown Northampton,
 Massachusetts, USA \url{https://goo.gl/maps/AF88fpvVfm12}. The original sample
-of 50 pennies is available in \code{\link{pennies_sample}} .
+of 50 pennies is available in \code{\link[=pennies_sample]{pennies_sample()}} .
 }
 \seealso{
-\code{\link{pennies_sample}}
+\code{\link[=pennies_sample]{pennies_sample()}}
 }
 \keyword{datasets}

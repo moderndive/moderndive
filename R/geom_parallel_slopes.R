@@ -1,23 +1,23 @@
 #' Parallel slopes regression model
 #'
-#' \code{geom_parallel_slopes()} fits parallel slopes model and adds its line
-#' output(s) to a \code{ggplot} object. Basically, it fits a unified model with
+#' `geom_parallel_slopes()` fits parallel slopes model and adds its line
+#' output(s) to a `ggplot` object. Basically, it fits a unified model with
 #' intercepts varying between groups (which should be supplied as standard
-#' {ggplot2} grouping aesthetics: \code{group}, \code{color}, \code{fill},
-#' etc.). This function has the same nature as \code{geom_smooth()} from
-#' {ggplot2} package, but provides functionality that \code{geom_smooth()}
+#' {ggplot2} grouping aesthetics: `group`, `color`, `fill`,
+#' etc.). This function has the same nature as `geom_smooth()` from
+#' {ggplot2} package, but provides functionality that `geom_smooth()`
 #' currently doesn't have.
 #'
-#' @param se Display confidence interval around model lines? \code{TRUE} by
+#' @param se Display confidence interval around model lines? `TRUE` by
 #'   default.
 #' @param formula Formula to use per group in parallel slopes model. Basic
-#'   linear \code{y ~ x} by default.
+#'   linear `y ~ x` by default.
 #' @param n Number of points per group at which to evaluate model.
 #' @inheritParams ggplot2::layer
 #' @inheritParams ggplot2::geom_smooth
 #' @inheritParams ggplot2::stat_smooth
 #'
-#' @seealso \code{\link{geom_categorical_model}}
+#' @seealso [geom_categorical_model()]
 #' @export
 #'
 #' @examples

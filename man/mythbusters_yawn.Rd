@@ -8,12 +8,12 @@
 A data frame of 50 rows representing each of the 50 participants
 in the study.
 \describe{
-  \item{subj}{integer value corresponding to identifier variable of
-  subject ID}
-  \item{group}{string of either \code{"seed"}, participant was shown a
-  yawner, or \code{"control"}, participant was not shown a yawner}
-  \item{yawn}{string of either \code{"yes"}, the participant yawned, or
-  \code{"no"}, the participant did not yawn}
+\item{subj}{integer value corresponding to identifier variable of
+subject ID}
+\item{group}{string of either \code{"seed"}, participant was shown a
+yawner, or \code{"control"}, participant was not shown a yawner}
+\item{yawn}{string of either \code{"yes"}, the participant yawned, or
+\code{"no"}, the participant did not yawn}
 }
 }
 \usage{

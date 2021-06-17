@@ -68,7 +68,7 @@ the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
 \code{geom_categorical_model()} fits a regression model using the categorical
 x axis as the explanatory variable, and visualizes the model's fitted values
 as piecewise horizontal line segments. Confidence interval bands can be
-included in the visualization of the model. Like \code{\link{geom_parallel_slopes}},
+included in the visualization of the model. Like \code{\link[=geom_parallel_slopes]{geom_parallel_slopes()}},
 this function has the same nature as \code{geom_smooth()} from
 the {ggplot2} package, but provides functionality that \code{geom_smooth()}
 currently doesn't have.
@@ -89,5 +89,5 @@ p \%+\% aes(color = drv)
 p \%+\% aes(color = class)
 }
 \seealso{
-\code{\link{geom_parallel_slopes}}
+\code{\link[=geom_parallel_slopes]{geom_parallel_slopes()}}
 }

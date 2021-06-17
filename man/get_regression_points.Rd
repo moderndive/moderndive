@@ -67,5 +67,5 @@ mpg_model_train <- lm(mpg ~ cyl, data = training_set)
 get_regression_points(mpg_model_train, newdata = test_set, ID = "automobile")
 }
 \seealso{
-\code{\link[broom:reexports]{augment}}, \code{\link{get_regression_table}}, \code{\link{get_regression_summaries}}
+\code{\link[broom:reexports]{augment()}}, \code{\link[=get_regression_table]{get_regression_table()}}, \code{\link[=get_regression_summaries]{get_regression_summaries()}}
 }

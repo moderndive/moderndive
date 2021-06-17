@@ -1,14 +1,14 @@
 #' Regression model with one categorical explanatory/predictor variable
 #'
-#' \code{geom_categorical_model()} fits a regression model using the categorical
+#' `geom_categorical_model()` fits a regression model using the categorical
 #' x axis as the explanatory variable, and visualizes the model's fitted values
 #' as piecewise horizontal line segments. Confidence interval bands can be
-#' included in the visualization of the model. Like \code{\link{geom_parallel_slopes}},
-#' this function has the same nature as \code{geom_smooth()} from
-#' the {ggplot2} package, but provides functionality that \code{geom_smooth()}
+#' included in the visualization of the model. Like [geom_parallel_slopes()],
+#' this function has the same nature as `geom_smooth()` from
+#' the {ggplot2} package, but provides functionality that `geom_smooth()`
 #' currently doesn't have.
 #'
-#' @param se Display confidence interval around model lines? \code{TRUE} by
+#' @param se Display confidence interval around model lines? `TRUE` by
 #'   default.
 #'
 #' @param level Level of confidence interval to use (0.95 by default).
@@ -16,7 +16,7 @@
 #' @inheritParams ggplot2::layer
 #' @inheritParams ggplot2::geom_smooth
 #'
-#' @seealso \code{\link{geom_parallel_slopes}}
+#' @seealso [geom_parallel_slopes()]
 #' @export
 #'
 #' @examples

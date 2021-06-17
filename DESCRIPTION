@@ -44,3 +44,4 @@ Suggests:
     viridis,
     readr
 VignetteBuilder: knitr
+Roxygen: list(markdown = TRUE)

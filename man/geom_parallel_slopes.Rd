@@ -122,5 +122,5 @@ ggplot(example_df, aes(x = log10_size, y = log10_price)) +
   geom_parallel_slopes(aes(fill = condition))
 }
 \seealso{
-\code{\link{geom_categorical_model}}
+\code{\link[=geom_categorical_model]{geom_categorical_model()}}
 }
