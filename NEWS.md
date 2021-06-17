@@ -2,6 +2,8 @@
 
 * Changed printing of non-baseline categorical variable levels in regression table to be cleaner #102
 * Added explicit `conf.level` argument to `get_regression_table()` inherited from `broom::tidy.lm()`
+* Improved main package vignette based on feedback from @lwjohnst86 & @lisamr
+* Fixed `pkgdown` and `covr` issues, defragged documentation.
 
 
 
