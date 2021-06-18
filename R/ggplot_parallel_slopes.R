@@ -4,20 +4,20 @@ globalVariables(c(
 
 #' Plot parallel slopes model
 #'
-#' NOTE: This function is deprecated; please use \code{\link{geom_parallel_slopes}}
+#' NOTE: This function is deprecated; please use [geom_parallel_slopes()]
 #' instead. Output a visualization of linear regression when you have one numerical
 #' and one categorical explanatory/predictor variable: a separate colored
 #' regression line for each level of the categorical variable
 #'
 #' @inheritParams stats::lm
-#' @param y Character string of outcome variable in \code{data}
+#' @param y Character string of outcome variable in `data`
 #' @param num_x Character string of numerical explanatory/predictor variable in
-#'   \code{data}
+#'   `data`
 #' @param cat_x Character string of categorical explanatory/predictor variable
-#'   in \code{data}
+#'   in `data`
 #' @param alpha Transparency of points
-#' @seealso \code{\link{geom_parallel_slopes}}
-#' @return A \code{\link[ggplot2]{ggplot}} object.
+#' @seealso [geom_parallel_slopes()]
+#' @return A [ggplot2::ggplot()] object.
 #' @importFrom glue glue
 #' @importFrom stats as.formula
 #' @import ggplot2

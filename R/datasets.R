@@ -1,3 +1,141 @@
+#' A sample of 50 pennies
+#'
+#' A sample of 50 pennies contained in a 50 cent roll from Florence Bank on
+#' Friday February 1, 2019 in downtown Northampton, Massachusetts, USA
+#' <https://goo.gl/maps/AF88fpvVfm12>.
+#'
+#' @format A data frame of 50 rows representing 50 sampled pennies and 2 variables
+#' \describe{
+#'   \item{ID}{Variable used to uniquely identify each penny.}
+#'   \item{year}{Year of minting.}
+#' }
+#' @note The original `pennies_sample` has been renamed [orig_pennies_sample()]
+#' as of `moderndive` v0.3.0.
+"pennies_sample"
+
+
+
+#' Bootstrap resamples of a sample of 50 pennies
+#'
+#' 35 bootstrap resamples with replacement of sample of 50 pennies contained in
+#' a 50 cent roll from Florence Bank on Friday February 1, 2019 in downtown Northampton,
+#' Massachusetts, USA <https://goo.gl/maps/AF88fpvVfm12>. The original sample
+#' of 50 pennies is available in [pennies_sample()] .
+#'
+#' @format A data frame of 1750 rows representing 35 students' bootstrap
+#' resamples of size 50 and 3 variables
+#' \describe{
+#'   \item{replicate}{ID variable of replicate/resample number.}
+#'   \item{name}{Name of student}
+#'   \item{year}{Year on resampled penny}
+#' }
+#' @seealso [pennies_sample()]
+"pennies_resamples"
+
+
+
+#' A population of 800 pennies sampled in 2011
+#'
+#' A dataset of 800 pennies to be treated as a sampling population. Data on
+#' these pennies were recorded in 2011.
+#'
+#' @format A data frame of 800 rows representing different pennies and 2 variables
+#' \describe{
+#'   \item{year}{Year of minting}
+#'   \item{age_in_2011}{Age in 2011}
+#' }
+#' @source StatCrunch <https://www.statcrunch.com/app/index.php?dataid=301596>
+"pennies"
+
+
+
+#' A random sample of 40 pennies sampled from the `pennies` data frame
+#'
+#' A dataset of 40 pennies to be treated as a random sample with [pennies()] acting
+#' as the population. Data on these pennies were recorded in 2011.
+#'
+#' @format A data frame of 40 rows representing 40 randomly sampled pennies from [pennies()] and 2 variables
+#' \describe{
+#'   \item{year}{Year of minting}
+#'   \item{age_in_2011}{Age in 2011}
+#' }
+#' @source StatCrunch <https://www.statcrunch.com/app/index.php?dataid=301596>
+#' @seealso [pennies()]
+"orig_pennies_sample"
+
+
+
+
+
+
+#' A sampling bowl of red and white balls
+#'
+#' A sampling bowl used as the population in a simulated sampling exercise. Also
+#' known as the urn sampling framework <https://en.wikipedia.org/wiki/Urn_problem>.
+#'
+#' @format A data frame 2400 rows representing different balls in the bowl, of which
+#' 900 are red and 1500 are white.
+#' \describe{
+#'   \item{ball_ID}{ID variable used to denote all balls. Note this value is not
+#'   marked on the balls themselves}
+#'   \item{color}{color of ball: red or white}
+#' }
+"bowl"
+
+
+
+#' Sampling from a bowl of balls
+#'
+#' Counting the number of red balls in 10 samples of size n = 50 balls from
+#' <https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg>
+#'
+#' @format A data frame 10 rows representing different groups of students'
+#' samples of size n = 50 and 5 variables
+#' \describe{
+#'   \item{group}{Group name}
+#'   \item{red}{Number of red balls sampled}
+#'   \item{white}{Number of white balls sampled}
+#'   \item{green}{Number of green balls sampled}
+#'   \item{n}{Total number of balls samples}
+#' }
+#' @seealso [bowl()]
+"bowl_samples"
+
+
+
+#' Tactile sampling from a tub of balls
+#'
+#' Counting the number of red balls in 33 tactile samples of size n = 50 balls from
+#' <https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg>
+#'
+#' @format A data frame of 33 rows representing different groups of students'
+#' samples of size n = 50 and 4 variables
+#' \describe{
+#'   \item{group}{Group members}
+#'   \item{replicate}{Replicate number}
+#'   \item{red_balls}{Number of red balls sampled out of 50}
+#'   \item{prop_red}{Proportion red balls out of 50}
+#' }
+#' @seealso [bowl()]
+"tactile_prop_red"
+
+
+
+#' Tactile sample of size 50 from a bowl of balls
+#'
+#' A single tactile sample of size n = 50 balls from
+#' <https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg>
+#'
+#' @format A data frame of 50 rows representing different balls and 1 variable.
+#' \describe{
+#'   \item{color}{Color of ball sampled}
+#' }
+#' @seealso [bowl()]
+"bowl_sample_1"
+
+
+
+
 #' Bank manager recommendations based on (binary) gender
 #'
 #' Data from a 1970's study on whether gender influences hiring recommendations.
@@ -11,10 +149,7 @@
 #' }
 #' @source Rosen B and Jerdee T. 1974. Influence of sex role stereotypes on personnel
 #' decisions. Journal of Applied Psychology 59(1):9-14.
-#' @seealso The data in `promotions` is a slight modification of \code{\link[openintro]{gender_discrimination}}.
-#' @examples
-#' library(dplyr)
-#' glimpse(promotions)
+#' @seealso The data in `promotions` is a slight modification of [openintro::gender_discrimination()].
 "promotions"
 
 
@@ -28,11 +163,7 @@
 #'   \item{gender}{shuffled/permuted (binary) gender: a factor with two levels `male` and `female`}
 #'   \item{decision}{a factor with two levels: `promoted` and `not`}
 #' }
-#' @seealso \code{\link{promotions}}.
-#' @examples
-#' library(dplyr)
-#' glimpse(promotions)
-#' glimpse(promotions_shuffled)
+#' @seealso [promotions()].
 "promotions_shuffled"
 
 
@@ -48,14 +179,8 @@
 #'   \item{size}{Size of school enrollment; small 13-341 students, medium 342-541 students, large 542-4264 students.}
 #' }
 #' @source The original source of the data are Massachusetts Department of
-#' Education reports \url{http://profiles.doe.mass.edu/state_report/}, however
-#' the data was downloaded from Kaggle at \url{https://www.kaggle.com/ndalziel/massachusetts-public-schools-data}
-#' @examples
-#' library(ggplot2)
-#' ggplot(MA_schools, aes(x = perc_disadvan, y = average_sat_math, color = size)) +
-#'   geom_point() +
-#'   geom_smooth(method = "lm", se = FALSE) +
-#'   labs(y = "Math SAT score", x = "Percentage economically disadvantaged", color = "School size")
+#' Education reports <http://profiles.doe.mass.edu/state_report/>, however
+#' the data was downloaded from Kaggle at <https://www.kaggle.com/ndalziel/massachusetts-public-schools-data>
 "MA_schools"
 
 
@@ -74,16 +199,7 @@
 #'   \item{shop_type}{Coffee shop type: Dunkin Donuts or Starbucks}
 #'   \item{shops}{Number of shops}
 #' }
-#' @source US Census Bureau. Code used to scrape data available at \url{https://github.com/DelaneyMoran/FinalProject}
-#' @examples
-#' # Compute correlation between a census tract's median income and number of cafes of
-#' # each type after removing two cases where median_income is missing
-#' library(dplyr)
-#' DD_vs_SB %>%
-#'   mutate(shops_per_1000 = 1000 * shops / population) %>%
-#'   filter(!is.na(median_income)) %>%
-#'   group_by(shop_type) %>%
-#'   summarize(cor = cor(median_income, shops_per_1000))
+#' @source US Census Bureau. Code used to scrape data available at <https://github.com/DelaneyMoran/FinalProject>
 "DD_vs_SB"
 
 
@@ -92,7 +208,7 @@
 #'
 #' This dataset contains house sale prices for King County, which includes
 #' Seattle. It includes homes sold between May 2014 and May 2015. This dataset
-#' was obtained from Kaggle.com \url{https://www.kaggle.com/harlfoxem/housesalesprediction/data}
+#' was obtained from Kaggle.com <https://www.kaggle.com/harlfoxem/housesalesprediction/data>
 #'
 #' @format A data frame with 21613 observations on the following 21 variables.
 #' \describe{
@@ -118,19 +234,8 @@
 #'   \item{sqft_living15}{Living room area in 2015 (implies-- some renovations) This might or might not have affected the lotsize area}
 #'   \item{sqft_lot15}{lotSize area in 2015 (implies-- some renovations)}
 #' }
-#' @source Kaggle \url{https://www.kaggle.com/harlfoxem/housesalesprediction}.
+#' @source Kaggle <https://www.kaggle.com/harlfoxem/housesalesprediction>.
 #' Note data is released under a CC0: Public Domain license.
-#' @examples
-#' library(dplyr)
-#' library(ggplot2)
-#'
-#' # Create variable log of house price
-#' house_prices <- house_prices %>%
-#'   mutate(log_price = log(price))
-#'
-#' # Plot histogram of log of house price
-#' ggplot(house_prices, aes(x = log_price)) +
-#'   geom_histogram()
 "house_prices"
 
 
@@ -141,7 +246,7 @@
 #' 94 professors from the University of Texas at Austin. In addition, six
 #' students rate the professors' physical appearance. The result is a data frame
 #' where each row contains a different course and each column has information on
-#' either the course or the professor \url{https://www.openintro.org/data/index.php?data=evals}
+#' either the course or the professor <https://www.openintro.org/data/index.php?data=evals>
 #'
 #' @format A data frame with 463 observations corresponding to courses on the following 13 variables.
 #' \describe{
@@ -161,10 +266,7 @@
 #'   \item{cls_level}{Class level: lower, upper.}
 #' }
 #' @source Çetinkaya-Rundel M, Morgan KL, Stangl D. 2013. Looking Good on Course Evaluations. CHANCE 26(2). 
-#' @seealso The data in `evals` is a slight modification of \code{\link[openintro]{evals}}.
-#' @examples
-#' library(dplyr)
-#' glimpse(evals)
+#' @seealso The data in `evals` is a slight modification of [openintro::evals()].
 "evals"
 
 
@@ -172,7 +274,7 @@
 #' Data from Mythbusters' study on contagiousness of yawning
 #'
 #' From a study on whether yawning is contagious
-#' \url{https://www.imdb.com/title/tt0768479/}.
+#' <https://www.imdb.com/title/tt0768479/>.
 #' The data here was derived from the final proportions of yawns given
 #' in the show.
 #'
@@ -181,21 +283,11 @@
 #' \describe{
 #'   \item{subj}{integer value corresponding to identifier variable of
 #'   subject ID}
-#'   \item{group}{string of either \code{"seed"}, participant was shown a
-#'   yawner, or \code{"control"}, participant was not shown a yawner}
-#'   \item{yawn}{string of either \code{"yes"}, the participant yawned, or
-#'   \code{"no"}, the participant did not yawn}
+#'   \item{group}{string of either `"seed"`, participant was shown a
+#'   yawner, or `"control"`, participant was not shown a yawner}
+#'   \item{yawn}{string of either `"yes"`, the participant yawned, or
+#'   `"no"`, the participant did not yawn}
 #' }
-#' @examples
-#' library(ggplot2)
-#'
-#' # Plot both variables as a stacked proportional bar chart
-#' ggplot(mythbusters_yawn, aes(x = group, fill = yawn)) +
-#'   geom_bar(position = "fill") +
-#'   labs(
-#'     x = "", y = "Proportion",
-#'     title = "Proportion of yawn and not yawn for each group"
-#'   )
 "mythbusters_yawn"
 
 
@@ -203,7 +295,7 @@
 #' Random sample of 68 action and romance movies
 #'
 #' A random sample of 32 action movies and 36 romance movies from
-#' \url{https://www.imdb.com/} and their ratings.
+#' <https://www.imdb.com/> and their ratings.
 #'
 #' @format A data frame of 68 rows movies.
 #' \describe{
@@ -212,12 +304,5 @@
 #'   \item{rating}{IMDb rating out of 10 stars}
 #'   \item{genre}{Action or Romance}
 #' }
-#' @seealso This data was sampled from the `movies` data frame in the \code{ggplot2movies} package.
-#' @examples
-#' library(ggplot2)
-#'
-#' # Visualize relationship between rating and genre
-#' ggplot(data = movies_sample, aes(x = genre, y = rating)) +
-#'   geom_boxplot() +
-#'   labs(x = "Genre: Action or Romance", y = "IMDb rating")
+#' @seealso This data was sampled from the `movies` data frame in the `ggplot2movies` package.
 "movies_sample"

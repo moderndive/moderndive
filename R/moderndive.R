@@ -2,7 +2,7 @@
 #'
 #' Datasets and wrapper functions for tidyverse-friendly introductory linear
 #' regression, used in "Statistical Inference via Data Science: A ModernDive
-#' into R and the tidyverse" available at \url{https://moderndive.com/}.
+#' into R and the tidyverse" available at <https://moderndive.com/>.
 #'
 #' @docType package
 #' @name moderndive

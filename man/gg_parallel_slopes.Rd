@@ -24,10 +24,10 @@ in \code{data}}
 \item{alpha}{Transparency of points}
 }
 \value{
-A \code{\link[ggplot2]{ggplot}} object.
+A \code{\link[ggplot2:ggplot]{ggplot2::ggplot()}} object.
 }
 \description{
-NOTE: This function is deprecated; please use \code{\link{geom_parallel_slopes}}
+NOTE: This function is deprecated; please use \code{\link[=geom_parallel_slopes]{geom_parallel_slopes()}}
 instead. Output a visualization of linear regression when you have one numerical
 and one categorical explanatory/predictor variable: a separate colored
 regression line for each level of the categorical variable
@@ -66,5 +66,5 @@ ggplot(house_prices, aes(x = log10_size, y = log10_price, col = condition)) +
 }
 }
 \seealso{
-\code{\link{geom_parallel_slopes}}
+\code{\link[=geom_parallel_slopes]{geom_parallel_slopes()}}
 }

@@ -7,9 +7,9 @@
 \format{
 A data frame with 48 observations on the following 3 variables.
 \describe{
-  \item{id}{Identification variable used to distinguish rows.}
-  \item{gender}{shuffled/permuted (binary) gender: a factor with two levels `male` and `female`}
-  \item{decision}{a factor with two levels: `promoted` and `not`}
+\item{id}{Identification variable used to distinguish rows.}
+\item{gender}{shuffled/permuted (binary) gender: a factor with two levels \code{male} and \code{female}}
+\item{decision}{a factor with two levels: \code{promoted} and \code{not}}
 }
 }
 \usage{
@@ -18,12 +18,7 @@ promotions_shuffled
 \description{
 Shuffled/permuted data from a 1970's study on whether gender influences hiring recommendations.
 }
-\examples{
-library(dplyr)
-glimpse(promotions)
-glimpse(promotions_shuffled)
-}
 \seealso{
-\code{\link{promotions}}.
+\code{\link[=promotions]{promotions()}}.
 }
 \keyword{datasets}

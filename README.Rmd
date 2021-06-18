@@ -11,11 +11,20 @@ knitr::opts_chunk$set(echo = TRUE, fig.path = "man/figures/")
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive) 
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![GitHub Actions Status](https://github.com/moderndive/moderndive/workflows/R-CMD-check/badge.svg)](https://github.com/moderndive/moderndive/actions)
-[![Coverage Status](https://img.shields.io/codecov/c/github/moderndive/moderndive/master.svg)](https://codecov.io/github/moderndive/moderndive?branch=master)
+[![Codecov test coverage](https://codecov.io/gh/moderndive/moderndive/branch/master/graph/badge.svg)](https://codecov.io/gh/moderndive/moderndive?branch=master)
 [![CRAN RStudio mirror downloads](http://cranlogs.r-pkg.org/badges/moderndive)](http://www.r-pkg.org/pkg/moderndive)
 
 
-An R package of datasets and wrapper functions for [tidyverse](https://www.tidyverse.org/)-friendly introductory linear regression used in "Statistical Inference via Data Science: A ModernDive into R and the Tidyverse" available at [ModernDive.com](https://moderndive.com/).
+## Overview
+
+The [`moderndive`](https://moderndive.github.io/moderndive/) R package consists of datasets and functions for [tidyverse](https://www.tidyverse.org/)-friendly introductory linear regression. These tools leverage the well-developed `tidyverse` and `broom` packages to facilitate 
+
+1. Working with regression tables that include confidence intervals
+2. Accessing regression outputs on an observation level (e.g. fitted/predicted values and residuals)
+3. Inspecting scalar summaries of regression fit (e.g. R-squared, R-squared adjusted, and mean squared error)
+4. Visualizing parallel slopes regression models using `ggplot2`-like syntax. 
+
+This R package is designed to supplement the book "Statistical Inference via Data Science: A ModernDive into R and the Tidyverse" available at [ModernDive.com](https://moderndive.com/).
 
 
 ## Installation
@@ -98,7 +107,7 @@ knitr::include_graphics("man/figures/plot-example-1.png")
 
 #### 1. Print markdown friendly tables
 
-Want to output cleanly formatted tables in an R Markdown document? Just add `print = TRUE` to any of the three `get_regression_*()` functions.
+Want to output cleanly formatted tables in an R Markdown document? Add `print = TRUE` to any of the three `get_regression_*()` functions.
 
 ```{r}
 get_regression_table(score_model, print = TRUE)

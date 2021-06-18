@@ -34,13 +34,14 @@ Imports:
     rlang (>= 0.2.0),
     glue
 RoxygenNote: 7.1.1
-Suggests: testthat,
+Suggests: 
+    testthat,
     covr,
     rmarkdown,
     vdiffr,
-    ggplot2movies,
     openintro,
     patchwork,
     viridis,
     readr
 VignetteBuilder: knitr
+Roxygen: list(markdown = TRUE)

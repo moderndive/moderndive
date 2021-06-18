@@ -7,20 +7,20 @@
 \format{
 A data frame with 463 observations corresponding to courses on the following 13 variables.
 \describe{
-  \item{ID}{Identification variable for course.}
-  \item{prof_ID}{Identification variable for professor. Many professors are included more than once in this dataset.}
-  \item{score}{Average professor evaluation score: (1) very unsatisfactory - (5) excellent.}
-  \item{age}{Age of professor.}
-  \item{bty_avg}{Average beauty rating of professor.}
-  \item{gender}{Gender of professor (collected as a binary variable at the time of the study): female, male.}
-  \item{ethnicity}{Ethnicity of professor: not minority, minority.}
-  \item{language}{Language of school where professor received education: English or non-English.}
-  \item{rank}{Rank of professor: teaching, tenure track, tenured.}
-  \item{pic_outfit}{Outfit of professor in picture: not formal, formal.}
-  \item{pic_color}{Color of professor’s picture: color, black & white.}
-  \item{cls_did_eval}{Number of students in class who completed evaluation.}
-  \item{cls_students}{Total number of students in class.}
-  \item{cls_level}{Class level: lower, upper.}
+\item{ID}{Identification variable for course.}
+\item{prof_ID}{Identification variable for professor. Many professors are included more than once in this dataset.}
+\item{score}{Average professor evaluation score: (1) very unsatisfactory - (5) excellent.}
+\item{age}{Age of professor.}
+\item{bty_avg}{Average beauty rating of professor.}
+\item{gender}{Gender of professor (collected as a binary variable at the time of the study): female, male.}
+\item{ethnicity}{Ethnicity of professor: not minority, minority.}
+\item{language}{Language of school where professor received education: English or non-English.}
+\item{rank}{Rank of professor: teaching, tenure track, tenured.}
+\item{pic_outfit}{Outfit of professor in picture: not formal, formal.}
+\item{pic_color}{Color of professor’s picture: color, black & white.}
+\item{cls_did_eval}{Number of students in class who completed evaluation.}
+\item{cls_students}{Total number of students in class.}
+\item{cls_level}{Class level: lower, upper.}
 }
 }
 \source{
@@ -36,11 +36,7 @@ students rate the professors' physical appearance. The result is a data frame
 where each row contains a different course and each column has information on
 either the course or the professor \url{https://www.openintro.org/data/index.php?data=evals}
 }
-\examples{
-library(dplyr)
-glimpse(evals)
-}
 \seealso{
-The data in `evals` is a slight modification of \code{\link[openintro]{evals}}.
+The data in \code{evals} is a slight modification of \code{\link[openintro:evals]{openintro::evals()}}.
 }
 \keyword{datasets}

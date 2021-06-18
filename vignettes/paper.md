@@ -1,7 +1,7 @@
 ---
 title: "Take a `moderndive` into introductory linear regression with R"
 author: "Albert Y. Kim, Chester Ismay, and Max Kuhn"
-date: "2021-05-14"
+date: "2021-06-17"
 vignette: >
   %\VignetteIndexEntry{Take a `moderndive` into introductory linear regression with R}
   %\VignetteEncoding{UTF-8}
@@ -65,7 +65,6 @@ Let's load all the R packages we are going to need.
 library(moderndive)
 library(ggplot2)
 library(dplyr)
-library(readr)
 library(knitr)
 library(broom)
 ```
@@ -136,7 +135,7 @@ Here are 5 common student questions we've heard over the years in our introducto
 
 ## Regression analysis using `moderndive`
 
-To address these questions, we've included three functions in the `moderndive` package that take a fitted model object as input and return the same information as `summary.lm()`, but output them in tidyverse-friendly format [@tidyverse2019]. As we'll see later, while these three functions are merely wrappers to existing functions in the `broom` package for converting statistical objects into tidy tibbles, we modified them with the introductory statistics student in mind [@R-broom].
+To address these questions, we've included three functions in the `moderndive` package that take a fitted model object as input and return the same information as `summary.lm()`, but output them in tidyverse-friendly format [@tidyverse2019]. As we'll see later, while these three functions are thin wrappers to existing functions in the `broom` package for converting statistical objects into tidy tibbles, we modified them with the introductory statistics student in mind [@R-broom].
 
 1. Get a tidy regression table **with confidence intervals**:
     
@@ -194,7 +193,7 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 
 \begin{figure}
 
-{\centering \includegraphics[width=1\linewidth]{Figures/interaction-model-1} 
+{\centering \includegraphics[width=1\linewidth]{paper_files/figure-latex/interaction-model-1} 
 
 }
 
@@ -203,7 +202,7 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 
 However, many introductory statistics courses start with the easier to teach "common slope, different intercepts" regression model, also known as the *parallel slopes* model. However, no argument to plot such models exists within `geom_smooth()`.
 
-[Evgeni Chasnovski](https://github.com/echasnovski){target="_blank"} thus wrote a custom `geom_` extension to `ggplot2` called `geom_parallel_slopes()`; this extension is included in the `moderndive` package. Much like `geom_smooth()` from the `ggplot2` package, you merely add a `geom_parallel_slopes()` layer to the code, resulting in \autoref{fig:parallel-slopes-model}.
+[Evgeni Chasnovski](https://github.com/echasnovski){target="_blank"} thus wrote a custom `geom_` extension to `ggplot2` called `geom_parallel_slopes()`; this extension is included in the `moderndive` package. Much like `geom_smooth()` from the `ggplot2` package, you add `geom_parallel_slopes()` as a layer to the code, resulting in \autoref{fig:parallel-slopes-model}.
 
 
 ```r
@@ -216,7 +215,7 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 
 \begin{figure}
 
-{\centering \includegraphics[width=1\linewidth]{Figures/parallel-slopes-model-1} 
+{\centering \includegraphics[width=1\linewidth]{paper_files/figure-latex/parallel-slopes-model-1} 
 
 }
 
@@ -264,7 +263,7 @@ get_regression_table(score_model)
 ## 2 age         -0.006     0.003     -2.31   0.021   -0.011   -0.001
 ```
 
-Observe how the p-value stars are omitted and confidence intervals for the point estimates of all regression parameters are included by default. By including them in the output, we can easily emphasize to students that they "surround" the point estimates in the `estimate` column. Note the confidence level is defaulted to 95%; this default can be changed using the `conf.level` argument: 
+Observe how the p-value stars are omitted and confidence intervals for the point estimates of all regression parameters are included by default. By including them in the output, we can then emphasize to students that they "surround" the point estimates in the `estimate` column. Note the confidence level is defaulted to 95%; this default can be changed using the `conf.level` argument: 
 
 
 ```r
@@ -283,7 +282,7 @@ The second common student question:
 
 > "How do we extract the values in the regression table?"
 
-While one might argue that extracting the intercept and slope coefficients can be simply done using `coefficients(score_model)`, what about the standard errors? For example, a Google query of "_how do I extract standard errors from lm in R_" yielded results from [the R mailing list](https://stat.ethz.ch/pipermail/r-help/2008-April/160538.html){target="_blank"} and from [Cross Validated](https://stats.stackexchange.com/questions/27511/extract-standard-errors-of-coefficient-linear-regression-r){target="_blank"} suggesting we run:
+While one might argue that extracting the intercept and slope coefficients can be "simply" done using `coefficients(score_model)`, what about the standard errors? For example, a Google query of "_how do I extract standard errors from lm in R_" yielded results from [the R mailing list](https://stat.ethz.ch/pipermail/r-help/2008-April/160538.html){target="_blank"} and from [Cross Validated](https://stats.stackexchange.com/questions/27511/extract-standard-errors-of-coefficient-linear-regression-r){target="_blank"} suggesting we run:
 
 
 ```r
@@ -292,7 +291,7 @@ sqrt(diag(vcov(score_model)))
 ## 0.126778499 0.002569157
 ```
 
-We argue that this task shouldn't be this hard, especially in an introductory statistics setting. To rectify this, the three `get_regression_*` functions  all return data frames in the tidyverse-style tibble (tidy table) format [@R-tibble]. Therefore you can easily extract columns using the `pull()` function from the `dplyr` package [@R-dplyr]:
+We argue that this task shouldn't be this hard, especially in an introductory statistics setting. To rectify this, the three `get_regression_*` functions  all return data frames in the tidyverse-style tibble (tidy table) format [@R-tibble]. Therefore you can extract columns using the `pull()` function from the `dplyr` package [@R-dplyr]:
 
 
 
@@ -381,7 +380,7 @@ score_model_points
 ## 10    10   4.5    40      4.22    0.276
 ```
 
-Observe that the original outcome variable `score` and explanatory/predictor variable `age` are now supplemented with the fitted/predicted values `score_hat` and `residual` columns. By putting the fitted values, predicted values, and residuals next to the original data, we argue that the computation of these values is less opaque. For example, instructors can easily emphasize how all values in the first row of output are computed.
+Observe that the original outcome variable `score` and explanatory/predictor variable `age` are now supplemented with the fitted/predicted values `score_hat` and `residual` columns. By putting the fitted values, predicted values, and residuals next to the original data, we argue that the computation of these values is less opaque. For example, instructors can emphasize how all values in the first row of output are computed.
 
 Furthermore, recall that since all outputs in the `moderndive` package are tibble data frames, custom residual analysis plots can be created instead of relying on the default plots yielded by `plot.lm()`. For example, we can check for the normality of residuals using the histogram of residuals shown in \autoref{fig:residuals-1}.
 
@@ -395,7 +394,7 @@ ggplot(score_model_points, aes(x = residual)) +
 
 \begin{figure}
 
-{\centering \includegraphics[width=1\linewidth]{Figures/residuals-1-1} 
+{\centering \includegraphics[width=1\linewidth]{paper_files/figure-latex/residuals-1-1} 
 
 }
 
@@ -414,13 +413,12 @@ ggplot(score_model_points, aes(x = age, y = residual)) +
 
 \begin{figure}
 
-{\centering \includegraphics[width=1\linewidth]{Figures/residuals-2-1} 
+{\centering \includegraphics[width=1\linewidth]{paper_files/figure-latex/residuals-2-1} 
 
 }
 
 \caption{Partial residual residual plot over age.}\label{fig:residuals-2}
 \end{figure}
-
 
 ## 4. A quick-and-easy Kaggle predictive modeling competition submission!
 
@@ -431,7 +429,6 @@ The fourth common student question:
 With the fields of machine learning and artificial intelligence gaining prominence, the importance of predictive modeling cannot be understated. Therefore, we've designed the `get_regression_points()` function to allow for a `newdata` argument to quickly apply a previously fitted model to new observations. 
 
 Let's create an artificial "new" dataset consisting of two instructors of age 39 and 42 and save it in a tibble data frame called `new_prof`. We then set the `newdata` argument to `get_regression_points()` to apply our previously fitted model `score_model` to this new data, where `score_hat` holds the corresponding fitted/predicted values. 
-
 
 
 ```r
@@ -460,7 +457,6 @@ This Kaggle competition requires you to fit/train a model to the provided `train
 1. Read in the training and test data.
 1. Fit a naive model of house sale price as a function of year sold to the training data.
 1. Make predictions on the test data and write them to a `submission.csv` file that can be submitted to Kaggle using `get_regression_points()`. Note the use of the `ID` argument to use the `id` variable in `test` to identify the rows (a requirement of Kaggle competition submissions).
-
 
 ```r
 library(readr)
@@ -494,7 +490,6 @@ obtain a "root mean squared logarithmic error" (RMSLE) score of 0.42918 as seen 
 
 \caption{Resulting Kaggle RMSLE score.}\label{fig:kaggle-2}
 \end{figure}
-
 
 ## 5. Scalar summaries of linear regression model fits
 
@@ -551,7 +546,7 @@ For example, recall the earlier visualizations of the interaction and parallel s
 
 \begin{figure}
 
-{\centering \includegraphics[width=1\linewidth]{Figures/interaction-and-parallel-slopes-model-1-1} 
+{\centering \includegraphics[width=1\linewidth]{paper_files/figure-latex/interaction-and-parallel-slopes-model-1-1} 
 
 }
 
@@ -618,7 +613,7 @@ ggplot(
 
 \begin{figure}
 
-{\centering \includegraphics[width=1\linewidth]{Figures/interaction-and-parallel-slopes-model-2-1} 
+{\centering \includegraphics[width=1\linewidth]{paper_files/figure-latex/interaction-and-parallel-slopes-model-2-1} 
 
 }
 
@@ -662,12 +657,11 @@ Going one step further, notice how the three regression lines in the visualizati
 
 While many students will inevitably find these results depressing, in our opinion, it is important to additionally emphasize that such regression analyses can be used as an empowering tool to bring to light inequities in access to education and inform policy decisions.
 
-
 # The Details
 
 ## Three wrappers to `broom` functions {#broom-wrappers}
 
-As we mentioned earlier, the three `get_regression_*` functions are merely wrappers of functions from the `broom` package for converting statistical analysis objects into tidy tibbles along with a few added tweaks, but with the introductory statistics student in mind [@R-broom]:
+As we mentioned earlier, the three `get_regression_*` functions are wrappers of functions from the `broom` package for converting statistical analysis objects into tidy tibbles along with a few added tweaks, but with the introductory statistics student in mind [@R-broom]:
 
 1. `get_regression_table()` is a wrapper for `broom::tidy()`.
 1. `get_regression_points()` is a wrapper for `broom::augment()`.
@@ -715,27 +709,16 @@ broom::augment(score_model)
 
 The source code for these three `get_regression_*` functions can be found on [GitHub](https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R){target="_blank"}.
 
-
 ## Custom geometries
 
 The `geom_parallel_slopes()` is a custom built `geom` extension to the `ggplot2` package. For example, the `ggplot2` webpage page gives [instructions](https://ggplot2.tidyverse.org/articles/extending-ggplot2.html){target="_blank"} on how to create such extensions. The source code for `geom_parallel_slopes()` written by [Evgeni Chasnovski](https://github.com/echasnovski){target="_blank"} can be found on [GitHub](https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R){target="_blank"}. 
-
-
-
 
 # Author contributions
 
 Albert Y. Kim and Chester Ismay contributed equally to the development of the `moderndive` package. Albert Y. Kim wrote a majority of the initial version of this manuscript with Chester Ismay writing the rest. Max Kuhn provided guidance and feedback at various stages of the package development and manuscript writing. 
 
-
 # Acknowledgments
 
 Many thanks to Jenny Smetzer [\@smetzer180](https://github.com/smetzer180){target="_blank"} for her helpful feedback for this vignette and to Evgeni Chasnovski [\@echasnovski](https://github.com/echasnovski){target="_blank"} for contributing the `geom_parallel_slopes()` function via GitHub [pull request](https://github.com/moderndive/moderndive/pull/55){target="_blank"}. The authors do not have any financial support to disclose.
-
-
-
-
-
-
 
 # References
