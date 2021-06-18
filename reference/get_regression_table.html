@@ -74,7 +74,7 @@ intervals in the output table by default." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">moderndive</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1.9000</span>
       </span>
     </div>
 
@@ -82,24 +82,15 @@ intervals in the output table by default." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../articles/moderndive.html">Get started</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/why-moderndive.html">Take a `moderndive` into introductory linear regression with R</a>
-    </li>
-  </ul>
+<li>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -107,8 +98,8 @@ intervals in the output table by default." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/ModernDive/moderndive_package/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/moderndive/moderndive/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -126,17 +117,23 @@ intervals in the output table by default." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get regression table</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/regression_functions.R'><code>R/regression_functions.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R'><code>R/regression_functions.R</code></a></small>
     <div class="hidden name"><code>get_regression_table.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Output regression table for an <code><a href='https://rdrr.io/r/stats/lm.html'>lm()</a></code> regression in "tidy" format. This function
-is a wrapper function for <code><a href='https://broom.tidymodels.org/reference/reexports.html'>broom::tidy()</a></code> and includes confidence
+is a wrapper function for <code><a href='https://generics.r-lib.org/reference/tidy.html'>broom::tidy()</a></code> and includes confidence
 intervals in the output table by default.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_regression_table</span>(<span class='no'>model</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>)</pre>
+    <pre class="usage"><span class='fu'>get_regression_table</span><span class='op'>(</span>
+  <span class='va'>model</span>,
+  conf.level <span class='op'>=</span> <span class='fl'>0.95</span>,
+  digits <span class='op'>=</span> <span class='fl'>3</span>,
+  print <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  default_categorical_levels <span class='op'>=</span> <span class='cn'>FALSE</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -146,6 +143,12 @@ intervals in the output table by default.</p>
       <td><p>an <code><a href='https://rdrr.io/r/stats/lm.html'>lm()</a></code> model object</p></td>
     </tr>
     <tr>
+      <th>conf.level</th>
+      <td><p>The confidence level to use for the confidence interval
+if <code>conf.int = TRUE</code>. Must be strictly greater than 0 and less than 1.
+Defaults to 0.95, which corresponds to a 95 percent confidence interval.</p></td>
+    </tr>
+    <tr>
       <th>digits</th>
       <td><p>number of digits precision in output table</p></td>
     </tr>
@@ -153,29 +156,44 @@ intervals in the output table by default.</p>
       <th>print</th>
       <td><p>If TRUE, return in print format suitable for R Markdown</p></td>
     </tr>
+    <tr>
+      <th>default_categorical_levels</th>
+      <td><p>If TRUE, do not change the non-baseline
+categorical variables in the term column. Otherwise non-baseline
+categorical variables will be displayed in the format
+"categorical_variable_name: level_name"</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A tibble-formatted regression table along with lower and upper end
 points of all confidence intervals for all parameters <code>lower_ci</code> and
-<code>upper_ci</code>.</p>
+<code>upper_ci</code>; the confidence levels default to 95\<!-- %. --></p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://broom.tidymodels.org/reference/reexports.html'>tidy</a></code>, <code><a href='get_regression_points.html'>get_regression_points</a></code>, <code><a href='get_regression_summaries.html'>get_regression_summaries</a></code></p></div>
+    <div class='dont-index'><p><code><a href='https://generics.r-lib.org/reference/tidy.html'>tidy()</a></code>, <code><a href='get_regression_points.html'>get_regression_points()</a></code>, <code><a href='get_regression_summaries.html'>get_regression_summaries()</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>moderndive</span>)
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/moderndive/moderndive/issues'>moderndive</a></span><span class='op'>)</span>
 
 <span class='co'># Fit lm() regression:</span>
-<span class='no'>mpg_model</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>(<span class='no'>mpg</span> ~ <span class='no'>cyl</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)
+<span class='va'>mpg_model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>mpg</span> <span class='op'>~</span> <span class='va'>cyl</span>, data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span>
 
 <span class='co'># Get regression table:</span>
-<span class='fu'>get_regression_table</span>(<span class='no'>mpg_model</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 2 x 7</span><span>
+<span class='fu'>get_regression_table</span><span class='op'>(</span><span class='va'>mpg_model</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 7</span>
 #&gt;   term      estimate std_error statistic p_value lower_ci upper_ci
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'>1</span><span> intercept    37.9      2.07      18.3        0    33.6     42.1 
-#&gt; </span><span style='color: #555555;'>2</span><span> cyl          -</span><span style='color: #BB0000;'>2.88</span><span>     0.322     -</span><span style='color: #BB0000;'>8.92</span><span>       0    -</span><span style='color: #BB0000;'>3.53</span><span>    -</span><span style='color: #BB0000;'>2.22</span><span></div></span></pre>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> intercept    37.9      2.07      18.3        0    33.6     42.1 
+#&gt; <span style='color: #BCBCBC;'>2</span> cyl          -<span style='color: #BB0000;'>2.88</span>     0.322     -<span style='color: #BB0000;'>8.92</span>       0    -<span style='color: #BB0000;'>3.53</span>    -<span style='color: #BB0000;'>2.22</span></div><div class='input'>
+<span class='co'># Vary confidence level of confidence intervals</span>
+<span class='fu'>get_regression_table</span><span class='op'>(</span><span class='va'>mpg_model</span>, conf.level <span class='op'>=</span> <span class='fl'>0.99</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 7</span>
+#&gt;   term      estimate std_error statistic p_value lower_ci upper_ci
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> intercept    37.9      2.07      18.3        0    32.2     43.6 
+#&gt; <span style='color: #BCBCBC;'>2</span> cyl          -<span style='color: #BB0000;'>2.88</span>     0.322     -<span style='color: #BB0000;'>8.92</span>       0    -<span style='color: #BB0000;'>3.76</span>    -<span style='color: #BB0000;'>1.99</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -191,7 +209,7 @@ points of all confidence intervals for all parameters <code>lower_ci</code> and
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

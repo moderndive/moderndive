@@ -73,7 +73,7 @@ https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">moderndive</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1.9000</span>
       </span>
     </div>
 
@@ -81,24 +81,15 @@ https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../articles/moderndive.html">Get started</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/why-moderndive.html">Take a `moderndive` into introductory linear regression with R</a>
-    </li>
-  </ul>
+<li>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -106,8 +97,8 @@ https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/ModernDive/moderndive_package/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/moderndive/moderndive/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -125,7 +116,7 @@ https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Sampling from a bowl of balls</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/bowl.R'><code>R/bowl.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/moderndive/moderndive/blob/master/R/datasets.R'><code>R/datasets.R</code></a></small>
     <div class="hidden name"><code>bowl_samples.Rd</code></div>
     </div>
 
@@ -134,40 +125,25 @@ https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg
 <a href='https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg'>https://github.com/moderndive/moderndive/blob/master/data-raw/sampling_bowl.jpeg</a></p>
     </div>
 
-    <pre class="usage"><span class='no'>bowl_samples</span></pre>
+    <pre class="usage"><span class='va'>bowl_samples</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
     <p>A data frame 10 rows representing different groups of students'
-samples of size n = 50 and 5 variables</p><dl'>
-  <dt>group</dt><dd><p>Group name</p></dd>
-  <dt>red</dt><dd><p>Number of red balls sampled</p></dd>
-  <dt>white</dt><dd><p>Number of white balls sampled</p></dd>
-  <dt>green</dt><dd><p>Number of green balls sampled</p></dd>
-  <dt>n</dt><dd><p>Total number of balls samples</p></dd>
+samples of size n = 50 and 5 variables</p><dl>
+<dt>group</dt><dd><p>Group name</p></dd>
+<dt>red</dt><dd><p>Number of red balls sampled</p></dd>
+<dt>white</dt><dd><p>Number of white balls sampled</p></dd>
+<dt>green</dt><dd><p>Number of green balls sampled</p></dd>
+<dt>n</dt><dd><p>Total number of balls samples</p></dd>
 
 </dl>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='bowl.html'>bowl</a></code></p></div>
+    <div class='dont-index'><p><code><a href='bowl.html'>bowl()</a></code></p></div>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
-
-<span class='co'># Compute proportion red</span>
-<span class='no'>bowl_samples</span> <span class='kw'>&lt;-</span> <span class='no'>bowl_samples</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>prop_red</span> <span class='kw'>=</span> <span class='no'>red</span> / <span class='no'>n</span>)
-
-<span class='co'># Plot sampling distributions</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>bowl_samples</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>prop_red</span>)) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span>(<span class='kw'>binwidth</span> <span class='kw'>=</span> <span class='fl'>0.05</span>) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(
-    <span class='kw'>x</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/expression.html'>expression</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/influence.measures.html'>hat</a></span>(<span class='no'>p</span>)), <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Number of samples"</span>,
-    <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Sampling distribution of p_hat based 10 samples of size n = 50"</span>
-  )</div><div class='img'><img src='bowl_samples-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -183,7 +159,7 @@ samples of size n = 50 and 5 variables</p><dl'>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

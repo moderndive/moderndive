@@ -75,7 +75,7 @@ in the show." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">moderndive</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1.9000</span>
       </span>
     </div>
 
@@ -83,24 +83,15 @@ in the show." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../articles/moderndive.html">Get started</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/why-moderndive.html">Take a `moderndive` into introductory linear regression with R</a>
-    </li>
-  </ul>
+<li>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -108,8 +99,8 @@ in the show." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/ModernDive/moderndive_package/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/moderndive/moderndive/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -127,7 +118,7 @@ in the show." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Data from Mythbusters' study on contagiousness of yawning</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/datasets.R'><code>R/datasets.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/moderndive/moderndive/blob/master/R/datasets.R'><code>R/datasets.R</code></a></small>
     <div class="hidden name"><code>mythbusters_yawn.Rd</code></div>
     </div>
 
@@ -138,33 +129,23 @@ The data here was derived from the final proportions of yawns given
 in the show.</p>
     </div>
 
-    <pre class="usage"><span class='no'>mythbusters_yawn</span></pre>
+    <pre class="usage"><span class='va'>mythbusters_yawn</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
     <p>A data frame of 50 rows representing each of the 50 participants
-in the study.</p><dl'>
-  <dt>subj</dt><dd><p>integer value corresponding to identifier variable of
-  subject ID</p></dd>
-  <dt>group</dt><dd><p>string of either <code>"seed"</code>, participant was shown a
-  yawner, or <code>"control"</code>, participant was not shown a yawner</p></dd>
-  <dt>yawn</dt><dd><p>string of either <code>"yes"</code>, the participant yawned, or
-  <code>"no"</code>, the participant did not yawn</p></dd>
+in the study.</p><dl>
+<dt>subj</dt><dd><p>integer value corresponding to identifier variable of
+subject ID</p></dd>
+<dt>group</dt><dd><p>string of either <code>"seed"</code>, participant was shown a
+yawner, or <code>"control"</code>, participant was not shown a yawner</p></dd>
+<dt>yawn</dt><dd><p>string of either <code>"yes"</code>, the participant yawned, or
+<code>"no"</code>, the participant did not yawn</p></dd>
 
 </dl>
 
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
-
-<span class='co'># Plot both variables as a stacked proportional bar chart</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>mythbusters_yawn</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>group</span>, <span class='kw'>fill</span> <span class='kw'>=</span> <span class='no'>yawn</span>)) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span>(<span class='kw'>position</span> <span class='kw'>=</span> <span class='st'>"fill"</span>) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(
-    <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>""</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Proportion"</span>,
-    <span class='kw'>title</span> <span class='kw'>=</span> <span class='st'>"Proportion of yawn and not yawn for each group"</span>
-  )</div><div class='img'><img src='mythbusters_yawn-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -180,7 +161,7 @@ in the study.</p><dl'>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -74,7 +74,7 @@ and renames the variables to have more intuitive names." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">moderndive</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1.9000</span>
       </span>
     </div>
 
@@ -82,24 +82,15 @@ and renames the variables to have more intuitive names." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../articles/moderndive.html">Get started</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/why-moderndive.html">Take a `moderndive` into introductory linear regression with R</a>
-    </li>
-  </ul>
+<li>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -107,8 +98,8 @@ and renames the variables to have more intuitive names." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/ModernDive/moderndive_package/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/moderndive/moderndive/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -126,23 +117,23 @@ and renames the variables to have more intuitive names." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get regression points</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/regression_functions.R'><code>R/regression_functions.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R'><code>R/regression_functions.R</code></a></small>
     <div class="hidden name"><code>get_regression_points.Rd</code></div>
     </div>
 
     <div class="ref-description">
     <p>Output information on each point/observation used in an <code><a href='https://rdrr.io/r/stats/lm.html'>lm()</a></code> regression in
-"tidy" format. This function is a wrapper function for <code><a href='https://broom.tidymodels.org/reference/reexports.html'>broom::augment()</a></code>
+"tidy" format. This function is a wrapper function for <code><a href='https://generics.r-lib.org/reference/augment.html'>broom::augment()</a></code>
 and renames the variables to have more intuitive names.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_regression_points</span>(
-  <span class='no'>model</span>,
-  <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fl'>3</span>,
-  <span class='kw'>print</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>newdata</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='kw'>ID</span> <span class='kw'>=</span> <span class='kw'>NULL</span>
-)</pre>
+    <pre class="usage"><span class='fu'>get_regression_points</span><span class='op'>(</span>
+  <span class='va'>model</span>,
+  digits <span class='op'>=</span> <span class='fl'>3</span>,
+  print <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  newdata <span class='op'>=</span> <span class='cn'>NULL</span>,
+  ID <span class='op'>=</span> <span class='cn'>NULL</span>
+<span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -183,63 +174,65 @@ rows is returned as the identification variable.</p></td>
 all explanatory/predictor variables, the fitted/predicted value, and residual.</p>
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='https://broom.tidymodels.org/reference/reexports.html'>augment</a></code>, <code><a href='get_regression_table.html'>get_regression_table</a></code>, <code><a href='get_regression_summaries.html'>get_regression_summaries</a></code></p></div>
+    <div class='dont-index'><p><code><a href='https://generics.r-lib.org/reference/augment.html'>augment()</a></code>, <code><a href='get_regression_table.html'>get_regression_table()</a></code>, <code><a href='get_regression_summaries.html'>get_regression_summaries()</a></code></p></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>tibble</span>)
+    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://tibble.tidyverse.org/'>tibble</a></span><span class='op'>)</span>
 
 <span class='co'># Convert rownames to column</span>
-<span class='no'>mtcars</span> <span class='kw'>&lt;-</span> <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://tibble.tidyverse.org/reference/rownames.html'>rownames_to_column</a></span>(<span class='kw'>var</span> <span class='kw'>=</span> <span class='st'>"automobile"</span>)
+<span class='va'>mtcars</span> <span class='op'>&lt;-</span> <span class='va'>mtcars</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://tibble.tidyverse.org/reference/rownames.html'>rownames_to_column</a></span><span class='op'>(</span>var <span class='op'>=</span> <span class='st'>"automobile"</span><span class='op'>)</span>
 
 <span class='co'># Fit lm() regression:</span>
-<span class='no'>mpg_model</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>(<span class='no'>mpg</span> ~ <span class='no'>cyl</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>mtcars</span>)
+<span class='va'>mpg_model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>mpg</span> <span class='op'>~</span> <span class='va'>cyl</span>, data <span class='op'>=</span> <span class='va'>mtcars</span><span class='op'>)</span>
 
 <span class='co'># Get information on all points in regression:</span>
-<span class='fu'>get_regression_points</span>(<span class='no'>mpg_model</span>, <span class='kw'>ID</span> <span class='kw'>=</span> <span class='st'>"automobile"</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 32 x 5</span><span>
+<span class='fu'>get_regression_points</span><span class='op'>(</span><span class='va'>mpg_model</span>, ID <span class='op'>=</span> <span class='st'>"automobile"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 32 x 5</span>
 #&gt;    automobile          mpg   cyl mpg_hat residual
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>             </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> Mazda RX4          21       6    20.6    0.37 
-#&gt; </span><span style='color: #555555;'> 2</span><span> Mazda RX4 Wag      21       6    20.6    0.37 
-#&gt; </span><span style='color: #555555;'> 3</span><span> Datsun 710         22.8     4    26.4   -</span><span style='color: #BB0000;'>3.58</span><span> 
-#&gt; </span><span style='color: #555555;'> 4</span><span> Hornet 4 Drive     21.4     6    20.6    0.77 
-#&gt; </span><span style='color: #555555;'> 5</span><span> Hornet Sportabout  18.7     8    14.9    3.82 
-#&gt; </span><span style='color: #555555;'> 6</span><span> Valiant            18.1     6    20.6   -</span><span style='color: #BB0000;'>2.53</span><span> 
-#&gt; </span><span style='color: #555555;'> 7</span><span> Duster 360         14.3     8    14.9   -</span><span style='color: #BB0000;'>0.578</span><span>
-#&gt; </span><span style='color: #555555;'> 8</span><span> Merc 240D          24.4     4    26.4   -</span><span style='color: #BB0000;'>1.98</span><span> 
-#&gt; </span><span style='color: #555555;'> 9</span><span> Merc 230           22.8     4    26.4   -</span><span style='color: #BB0000;'>3.58</span><span> 
-#&gt; </span><span style='color: #555555;'>10</span><span> Merc 280           19.2     6    20.6   -</span><span style='color: #BB0000;'>1.43</span><span> 
-#&gt; </span><span style='color: #555555;'># … with 22 more rows</span><span></div><div class='input'>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> Mazda RX4          21       6    20.6    0.37 
+#&gt; <span style='color: #BCBCBC;'> 2</span> Mazda RX4 Wag      21       6    20.6    0.37 
+#&gt; <span style='color: #BCBCBC;'> 3</span> Datsun 710         22.8     4    26.4   -<span style='color: #BB0000;'>3.58</span> 
+#&gt; <span style='color: #BCBCBC;'> 4</span> Hornet 4 Drive     21.4     6    20.6    0.77 
+#&gt; <span style='color: #BCBCBC;'> 5</span> Hornet Sportabout  18.7     8    14.9    3.82 
+#&gt; <span style='color: #BCBCBC;'> 6</span> Valiant            18.1     6    20.6   -<span style='color: #BB0000;'>2.53</span> 
+#&gt; <span style='color: #BCBCBC;'> 7</span> Duster 360         14.3     8    14.9   -<span style='color: #BB0000;'>0.578</span>
+#&gt; <span style='color: #BCBCBC;'> 8</span> Merc 240D          24.4     4    26.4   -<span style='color: #BB0000;'>1.98</span> 
+#&gt; <span style='color: #BCBCBC;'> 9</span> Merc 230           22.8     4    26.4   -<span style='color: #BB0000;'>3.58</span> 
+#&gt; <span style='color: #BCBCBC;'>10</span> Merc 280           19.2     6    20.6   -<span style='color: #BB0000;'>1.43</span> 
+#&gt; <span style='color: #949494;'># … with 22 more rows</span></div><div class='input'>
 <span class='co'># Create training and test set based on mtcars:</span>
-<span class='no'>training_set</span> <span class='kw'>&lt;-</span> <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/sample_n.html'>sample_frac</a></span>(<span class='fl'>0.5</span>)
-<span class='no'>test_set</span> <span class='kw'>&lt;-</span> <span class='no'>mtcars</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter-joins.html'>anti_join</a></span>(<span class='no'>training_set</span>, <span class='kw'>by</span> <span class='kw'>=</span> <span class='st'>"automobile"</span>)
+<span class='va'>training_set</span> <span class='op'>&lt;-</span> <span class='va'>mtcars</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/sample_n.html'>sample_frac</a></span><span class='op'>(</span><span class='fl'>0.5</span><span class='op'>)</span>
+<span class='va'>test_set</span> <span class='op'>&lt;-</span> <span class='va'>mtcars</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter-joins.html'>anti_join</a></span><span class='op'>(</span><span class='va'>training_set</span>, by <span class='op'>=</span> <span class='st'>"automobile"</span><span class='op'>)</span>
 
 <span class='co'># Fit model to training set:</span>
-<span class='no'>mpg_model_train</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span>(<span class='no'>mpg</span> ~ <span class='no'>cyl</span>, <span class='kw'>data</span> <span class='kw'>=</span> <span class='no'>training_set</span>)
+<span class='va'>mpg_model_train</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>mpg</span> <span class='op'>~</span> <span class='va'>cyl</span>, data <span class='op'>=</span> <span class='va'>training_set</span><span class='op'>)</span>
 
 <span class='co'># Make predictions on test set:</span>
-<span class='fu'>get_regression_points</span>(<span class='no'>mpg_model_train</span>, <span class='kw'>newdata</span> <span class='kw'>=</span> <span class='no'>test_set</span>, <span class='kw'>ID</span> <span class='kw'>=</span> <span class='st'>"automobile"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 16 x 5</span><span>
-#&gt;    automobile           mpg   cyl mpg_hat residual
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>              </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>    </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span> Mazda RX4 Wag       21       6    21.2   -</span><span style='color: #BB0000;'>0.155</span><span>
-#&gt; </span><span style='color: #555555;'> 2</span><span> Datsun 710          22.8     4    27.5   -</span><span style='color: #BB0000;'>4.68</span><span> 
-#&gt; </span><span style='color: #555555;'> 3</span><span> Hornet Sportabout   18.7     8    14.8    3.87 
-#&gt; </span><span style='color: #555555;'> 4</span><span> Merc 240D           24.4     4    27.5   -</span><span style='color: #BB0000;'>3.08</span><span> 
-#&gt; </span><span style='color: #555555;'> 5</span><span> Merc 280            19.2     6    21.2   -</span><span style='color: #BB0000;'>1.96</span><span> 
-#&gt; </span><span style='color: #555555;'> 6</span><span> Merc 280C           17.8     6    21.2   -</span><span style='color: #BB0000;'>3.36</span><span> 
-#&gt; </span><span style='color: #555555;'> 7</span><span> Merc 450SL          17.3     8    14.8    2.47 
-#&gt; </span><span style='color: #555555;'> 8</span><span> Cadillac Fleetwood  10.4     8    14.8   -</span><span style='color: #BB0000;'>4.43</span><span> 
-#&gt; </span><span style='color: #555555;'> 9</span><span> Chrysler Imperial   14.7     8    14.8   -</span><span style='color: #BB0000;'>0.127</span><span>
-#&gt; </span><span style='color: #555555;'>10</span><span> Toyota Corolla      33.9     4    27.5    6.42 
-#&gt; </span><span style='color: #555555;'>11</span><span> Toyota Corona       21.5     4    27.5   -</span><span style='color: #BB0000;'>5.98</span><span> 
-#&gt; </span><span style='color: #555555;'>12</span><span> AMC Javelin         15.2     8    14.8    0.373
-#&gt; </span><span style='color: #555555;'>13</span><span> Lotus Europa        30.4     4    27.5    2.92 
-#&gt; </span><span style='color: #555555;'>14</span><span> Ferrari Dino        19.7     6    21.2   -</span><span style='color: #BB0000;'>1.46</span><span> 
-#&gt; </span><span style='color: #555555;'>15</span><span> Maserati Bora       15       8    14.8    0.173
-#&gt; </span><span style='color: #555555;'>16</span><span> Volvo 142E          21.4     4    27.5   -</span><span style='color: #BB0000;'>6.08</span><span> </div></span></pre>
+<span class='fu'>get_regression_points</span><span class='op'>(</span><span class='va'>mpg_model_train</span>, newdata <span class='op'>=</span> <span class='va'>test_set</span>, ID <span class='op'>=</span> <span class='st'>"automobile"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 16 x 5</span>
+#&gt;    automobile            mpg   cyl mpg_hat residual
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>               <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> Mazda RX4            21       6    20.3    0.664
+#&gt; <span style='color: #BCBCBC;'> 2</span> Datsun 710           22.8     4    25.3   -<span style='color: #BB0000;'>2.48</span> 
+#&gt; <span style='color: #BCBCBC;'> 3</span> Duster 360           14.3     8    15.4   -<span style='color: #BB0000;'>1.10</span> 
+#&gt; <span style='color: #BCBCBC;'> 4</span> Merc 240D            24.4     4    25.3   -<span style='color: #BB0000;'>0.876</span>
+#&gt; <span style='color: #BCBCBC;'> 5</span> Merc 280             19.2     6    20.3   -<span style='color: #BB0000;'>1.14</span> 
+#&gt; <span style='color: #BCBCBC;'> 6</span> Merc 450SLC          15.2     8    15.4   -<span style='color: #BB0000;'>0.197</span>
+#&gt; <span style='color: #BCBCBC;'> 7</span> Lincoln Continental  10.4     8    15.4   -<span style='color: #BB0000;'>5.00</span> 
+#&gt; <span style='color: #BCBCBC;'> 8</span> Chrysler Imperial    14.7     8    15.4   -<span style='color: #BB0000;'>0.697</span>
+#&gt; <span style='color: #BCBCBC;'> 9</span> Fiat 128             32.4     4    25.3    7.12 
+#&gt; <span style='color: #BCBCBC;'>10</span> Honda Civic          30.4     4    25.3    5.12 
+#&gt; <span style='color: #BCBCBC;'>11</span> Toyota Corolla       33.9     4    25.3    8.62 
+#&gt; <span style='color: #BCBCBC;'>12</span> Toyota Corona        21.5     4    25.3   -<span style='color: #BB0000;'>3.78</span> 
+#&gt; <span style='color: #BCBCBC;'>13</span> Camaro Z28           13.3     8    15.4   -<span style='color: #BB0000;'>2.10</span> 
+#&gt; <span style='color: #BCBCBC;'>14</span> Pontiac Firebird     19.2     8    15.4    3.80 
+#&gt; <span style='color: #BCBCBC;'>15</span> Ferrari Dino         19.7     6    20.3   -<span style='color: #BB0000;'>0.636</span>
+#&gt; <span style='color: #BCBCBC;'>16</span> Maserati Bora        15       8    15.4   -<span style='color: #BB0000;'>0.397</span></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -255,7 +248,7 @@ all explanatory/predictor variables, the fitted/predicted value, and residual.</
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

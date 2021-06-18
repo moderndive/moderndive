@@ -72,7 +72,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">moderndive</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1.9000</span>
       </span>
     </div>
 
@@ -80,24 +80,15 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../articles/moderndive.html">Get started</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/why-moderndive.html">Take a `moderndive` into introductory linear regression with R</a>
-    </li>
-  </ul>
+<li>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -105,8 +96,8 @@
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/ModernDive/moderndive_package/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/moderndive/moderndive/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -124,7 +115,7 @@
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Massachusetts Public High Schools Data</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/datasets.R'><code>R/datasets.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/moderndive/moderndive/blob/master/R/datasets.R'><code>R/datasets.R</code></a></small>
     <div class="hidden name"><code>MA_schools.Rd</code></div>
     </div>
 
@@ -132,16 +123,16 @@
     <p>Data on Massachusetts public high schools in 2017</p>
     </div>
 
-    <pre class="usage"><span class='no'>MA_schools</span></pre>
+    <pre class="usage"><span class='va'>MA_schools</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame of 332 rows representing Massachusetts high schools and 4 variables</p><dl'>
-  <dt>school_name</dt><dd><p>High school name.</p></dd>
-  <dt>average_sat_math</dt><dd><p>Average SAT math score. Note 58 of the original 390 values of this variable were missing; these rows were dropped from consideration.</p></dd>
-  <dt>perc_disadvan</dt><dd><p>Percent of the student body that are considered economically disadvantaged.</p></dd>
-  <dt>size</dt><dd><p>Size of school enrollment; small 13-341 students, medium 342-541 students, large 542-4264 students.</p></dd>
+    <p>A data frame of 332 rows representing Massachusetts high schools and 4 variables</p><dl>
+<dt>school_name</dt><dd><p>High school name.</p></dd>
+<dt>average_sat_math</dt><dd><p>Average SAT math score. Note 58 of the original 390 values of this variable were missing; these rows were dropped from consideration.</p></dd>
+<dt>perc_disadvan</dt><dd><p>Percent of the student body that are considered economically disadvantaged.</p></dd>
+<dt>size</dt><dd><p>Size of school enrollment; small 13-341 students, medium 342-541 students, large 542-4264 students.</p></dd>
 
 </dl>
 
@@ -151,12 +142,6 @@
 Education reports <a href='http://profiles.doe.mass.edu/state_report/'>http://profiles.doe.mass.edu/state_report/</a>, however
 the data was downloaded from Kaggle at <a href='https://www.kaggle.com/ndalziel/massachusetts-public-schools-data'>https://www.kaggle.com/ndalziel/massachusetts-public-schools-data</a></p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>MA_schools</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>perc_disadvan</span>, <span class='kw'>y</span> <span class='kw'>=</span> <span class='no'>average_sat_math</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='no'>size</span>)) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_point.html'>geom_point</a></span>() +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth</a></span>(<span class='kw'>method</span> <span class='kw'>=</span> <span class='st'>"lm"</span>, <span class='kw'>se</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/labs.html'>labs</a></span>(<span class='kw'>y</span> <span class='kw'>=</span> <span class='st'>"Math SAT score"</span>, <span class='kw'>x</span> <span class='kw'>=</span> <span class='st'>"Percentage economically disadvantaged"</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"School size"</span>)</div><div class='output co'>#&gt; <span class='message'>`geom_smooth()` using formula 'y ~ x'</span></div><div class='img'><img src='MA_schools-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -172,7 +157,7 @@ the data was downloaded from Kaggle at <a href='https://www.kaggle.com/ndalziel/
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

@@ -74,7 +74,7 @@ was obtained from Kaggle.com https://www.kaggle.com/harlfoxem/housesalespredicti
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">moderndive</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.1.9000</span>
       </span>
     </div>
 
@@ -82,24 +82,15 @@ was obtained from Kaggle.com https://www.kaggle.com/harlfoxem/housesalespredicti
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="../reference/index.html">Reference</a>
+  <a href="../articles/moderndive.html">Get started</a>
 </li>
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Articles
-     
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li>
-      <a href="../articles/why-moderndive.html">Take a `moderndive` into introductory linear regression with R</a>
-    </li>
-  </ul>
+<li>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li>
   <a href="../news/index.html">Changelog</a>
@@ -107,8 +98,8 @@ was obtained from Kaggle.com https://www.kaggle.com/harlfoxem/housesalespredicti
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/ModernDive/moderndive_package/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+  <a href="https://github.com/moderndive/moderndive/">
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -126,7 +117,7 @@ was obtained from Kaggle.com https://www.kaggle.com/harlfoxem/housesalespredicti
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>House Sales in King County, USA</h1>
-    <small class="dont-index">Source: <a href='https://github.com/ModernDive/moderndive_package/blob/master/R/datasets.R'><code>R/datasets.R</code></a></small>
+    <small class="dont-index">Source: <a href='https://github.com/moderndive/moderndive/blob/master/R/datasets.R'><code>R/datasets.R</code></a></small>
     <div class="hidden name"><code>house_prices.Rd</code></div>
     </div>
 
@@ -136,33 +127,33 @@ Seattle. It includes homes sold between May 2014 and May 2015. This dataset
 was obtained from Kaggle.com <a href='https://www.kaggle.com/harlfoxem/housesalesprediction/data'>https://www.kaggle.com/harlfoxem/housesalesprediction/data</a></p>
     </div>
 
-    <pre class="usage"><span class='no'>house_prices</span></pre>
+    <pre class="usage"><span class='va'>house_prices</span></pre>
 
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame with 21613 observations on the following 21 variables.</p><dl'>
-  <dt>id</dt><dd><p>a notation for a house</p></dd>
-  <dt>date</dt><dd><p>Date house was sold</p></dd>
-  <dt>price</dt><dd><p>Price is prediction target</p></dd>
-  <dt>bedrooms</dt><dd><p>Number of Bedrooms/House</p></dd>
-  <dt>bathrooms</dt><dd><p>Number of bathrooms/bedrooms</p></dd>
-  <dt>sqft_living</dt><dd><p>square footage of the home</p></dd>
-  <dt>sqft_lot</dt><dd><p>square footage of the lot</p></dd>
-  <dt>floors</dt><dd><p>Total floors (levels) in house</p></dd>
-  <dt>waterfront</dt><dd><p>House which has a view to a waterfront</p></dd>
-  <dt>view</dt><dd><p>Has been viewed</p></dd>
-  <dt>condition</dt><dd><p>How good the condition is (Overall)</p></dd>
-  <dt>grade</dt><dd><p>overall grade given to the housing unit, based on King County grading system</p></dd>
-  <dt>sqft_above</dt><dd><p>square footage of house apart from basement</p></dd>
-  <dt>sqft_basement</dt><dd><p>square footage of the basement</p></dd>
-  <dt>yr_built</dt><dd><p>Built Year</p></dd>
-  <dt>yr_renovated</dt><dd><p>Year when house was renovated</p></dd>
-  <dt>zipcode</dt><dd><p>zip code</p></dd>
-  <dt>lat</dt><dd><p>Latitude coordinate</p></dd>
-  <dt>long</dt><dd><p>Longitude coordinate</p></dd>
-  <dt>sqft_living15</dt><dd><p>Living room area in 2015 (implies-- some renovations) This might or might not have affected the lotsize area</p></dd>
-  <dt>sqft_lot15</dt><dd><p>lotSize area in 2015 (implies-- some renovations)</p></dd>
+    <p>A data frame with 21613 observations on the following 21 variables.</p><dl>
+<dt>id</dt><dd><p>a notation for a house</p></dd>
+<dt>date</dt><dd><p>Date house was sold</p></dd>
+<dt>price</dt><dd><p>Price is prediction target</p></dd>
+<dt>bedrooms</dt><dd><p>Number of Bedrooms/House</p></dd>
+<dt>bathrooms</dt><dd><p>Number of bathrooms/bedrooms</p></dd>
+<dt>sqft_living</dt><dd><p>square footage of the home</p></dd>
+<dt>sqft_lot</dt><dd><p>square footage of the lot</p></dd>
+<dt>floors</dt><dd><p>Total floors (levels) in house</p></dd>
+<dt>waterfront</dt><dd><p>House which has a view to a waterfront</p></dd>
+<dt>view</dt><dd><p>Has been viewed</p></dd>
+<dt>condition</dt><dd><p>How good the condition is (Overall)</p></dd>
+<dt>grade</dt><dd><p>overall grade given to the housing unit, based on King County grading system</p></dd>
+<dt>sqft_above</dt><dd><p>square footage of house apart from basement</p></dd>
+<dt>sqft_basement</dt><dd><p>square footage of the basement</p></dd>
+<dt>yr_built</dt><dd><p>Built Year</p></dd>
+<dt>yr_renovated</dt><dd><p>Year when house was renovated</p></dd>
+<dt>zipcode</dt><dd><p>zip code</p></dd>
+<dt>lat</dt><dd><p>Latitude coordinate</p></dd>
+<dt>long</dt><dd><p>Longitude coordinate</p></dd>
+<dt>sqft_living15</dt><dd><p>Living room area in 2015 (implies-- some renovations) This might or might not have affected the lotsize area</p></dd>
+<dt>sqft_lot15</dt><dd><p>lotSize area in 2015 (implies-- some renovations)</p></dd>
 
 </dl>
 
@@ -171,17 +162,6 @@ was obtained from Kaggle.com <a href='https://www.kaggle.com/harlfoxem/housesale
     <p>Kaggle <a href='https://www.kaggle.com/harlfoxem/housesalesprediction'>https://www.kaggle.com/harlfoxem/housesalesprediction</a>.
 Note data is released under a CC0: Public Domain license.</p>
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
-
-<span class='co'># Create variable log of house price</span>
-<span class='no'>house_prices</span> <span class='kw'>&lt;-</span> <span class='no'>house_prices</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>log_price</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span>(<span class='no'>price</span>))
-
-<span class='co'># Plot histogram of log of house price</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>house_prices</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>log_price</span>)) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_histogram.html'>geom_histogram</a></span>()</div><div class='output co'>#&gt; <span class='message'>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</span></div><div class='img'><img src='house_prices-1.png' alt='' width='700' height='433' /></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -197,7 +177,7 @@ Note data is released under a CC0: Public Domain license.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
