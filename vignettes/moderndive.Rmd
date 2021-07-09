@@ -1,9 +1,9 @@
 ---
-title: "Take a `moderndive` into introductory linear regression with R"
+title: "`moderndive`: Datasets and functions for `tidyverse`-friendly introductory linear regression"
 author: "Albert Y. Kim, Chester Ismay, and Max Kuhn"
 date: "`r Sys.Date()`"
 vignette: >
-  %\VignetteIndexEntry{Take a `moderndive` into introductory linear regression with R}
+  %\VignetteIndexEntry{`moderndive`: Datasets and functions for `tidyverse`-friendly introductory linear regression}
   %\VignetteEncoding{UTF-8}
   %\VignetteEngine{knitr::rmarkdown}
 tags:
@@ -34,10 +34,6 @@ affiliations:
    index: 3
 bibliography: paper.bib
 output:
-# Uncomment the three lines below to build article using rticles:
-  # rticles::joss_article:
-  #   keep_md: yes
-  #   number_sections: yes
   rmarkdown::html_vignette:
     df_print: default
     number_sections: yes
