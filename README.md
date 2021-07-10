@@ -162,18 +162,13 @@ included for a random sample of 5 courses\[1\]:
 
 |  ID | prof\_ID | score | age | bty\_avg | gender | ethnicity    | language | rank         |
 | --: | -------: | ----: | --: | -------: | :----- | :----------- | :------- | :----------- |
-| 394 |       81 |   4.8 |  45 |    3.333 | male   | not minority | english  | teaching     |
-| 184 |       34 |   3.5 |  47 |    4.333 | female | minority     | english  | tenure track |
-|  41 |        8 |   4.3 |  51 |    4.000 | female | not minority | english  | tenured      |
-| 433 |       88 |   3.1 |  62 |    2.000 | male   | not minority | english  | tenured      |
-|  50 |       10 |   4.0 |  47 |    5.500 | male   | not minority | english  | teaching     |
+| 346 |       70 |   4.4 |  43 |    3.500 | male   | not minority | english  | tenure track |
+| 335 |       68 |   2.4 |  60 |    1.667 | male   | not minority | english  | tenured      |
+| 226 |       41 |   4.7 |  35 |    4.833 | male   | not minority | english  | tenured      |
+| 142 |       26 |   4.4 |  58 |    3.833 | male   | not minority | english  | tenured      |
+|  54 |       10 |   5.0 |  47 |    5.500 | male   | not minority | english  | teaching     |
 
 ### 1\. Focus less on p-value stars, more confidence intervals
-
-The first common student question:
-
-> “Wow\! Look at those p-value stars\! Stars are good, so I should try
-> to get many stars, right?”
 
 We argue that the `summary.lm()` output is deficient in an introductory
 statistics setting because:
@@ -219,10 +214,6 @@ get_regression_table(score_model, conf.level = 0.99)
     ## 2 age         -0.006     0.003     -2.31   0.021   -0.013    0.001
 
 ### 2\. Outputs as tibbles
-
-The second common student question:
-
-> “How do we extract the values in the regression table?”
 
 While one might argue that extracting the intercept and slope
 coefficients can be “simply” done using `coefficients(score_model)`,
@@ -279,10 +270,6 @@ get_regression_table(score_model) %>%
 | age       |  \-0.006 |      0.003 |   \-2.311 |    0.021 |   \-0.011 |   \-0.001 |
 
 ### 3\. Produce residual analysis plots from scratch using `ggplot2`
-
-The third common student question:
-
-> “Where are the fitted/predicted values and residuals?”
 
 How can we extract point-by-point information from a regression model,
 such as the fitted/predicted values and the residuals? (Note we only
@@ -376,10 +363,6 @@ ggplot(score_model_points, aes(x = age, y = residual)) +
 age.](man/figures/residuals-2-1.png)
 
 ### 4\. A quick-and-easy Kaggle predictive modeling competition submission\!
-
-The fourth common student question:
-
-> “How do I apply this model to a new set of data to make predictions?”
 
 With the fields of machine learning and artificial intelligence gaining
 prominence, the importance of predictive modeling cannot be understated.
@@ -476,10 +459,6 @@ Resulting Kaggle RMSLE score.
 </div>
 
 ### 5\. Visual model selection: plot parallel slopes & interaction regression models
-
-Finally, the last common student question:
-
-> “When would you ever use a parallel slopes model?”
 
 For example, recall the earlier visualizations of the interaction and
 parallel slopes models for teaching score as a function of age and
@@ -628,10 +607,6 @@ inequities in access to education and inform policy decisions.
 
 ### 6\. Produce metrics on the quality of regression model fits
 
-The fifth common student question:
-
-> “What is all this other stuff at the bottom?”
-
 Recall the output of the standard `summary.lm()` from earlier:
 
     ## 
@@ -728,6 +703,8 @@ Chasnovski](https://github.com/echasnovski) can be found on
 [GitHub](https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R).
 
 -----
+
+## Contributor code of conduct
 
 Please note that this project is released with a [Contributor Code of
 Conduct](CONDUCT.md). By participating in this project you agree to
