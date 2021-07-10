@@ -3,4 +3,4 @@
 # this file executable:
 # chmod +x ./_build.sh
 
-Rscript -e 'rmarkdown::render(input = "JOSE.Rmd", output_file = "paper")'
+Rscript -e 'rmarkdown::render(input = "paper.Rmd", output_file = "paper")'
