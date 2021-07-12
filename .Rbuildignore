@@ -24,3 +24,4 @@
 ^_pkgdown\.yml$
 ^pkgdown$
 ^CONTRIBUTING\.md$
+^vignettes/paper\.*$
