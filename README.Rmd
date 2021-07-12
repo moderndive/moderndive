@@ -61,7 +61,7 @@ get_regression_table(score_model)
     ```{r}
 get_regression_points(score_model)
     ```
-3. Get scalar summaries of a regression fit including $R^2$ and $R^2_{adj}$ but also the (root) mean-squared error:
+3. Get scalar summaries of a regression fit including R-squared and R-squared adjusted but also the (root) mean-squared error:
     ```{r}
 get_regression_summaries(score_model)
     ```
@@ -393,7 +393,7 @@ Recall the output of the standard `summary.lm()` from earlier:
 summary(score_model)
 ```
 
-Say we wanted to extract the scalar model summaries at the bottom of this output, such as $R^2$, $R^2_{adj}$, and the $F$-statistic. We can do so using the `get_regression_summaries()` function. 
+Say we wanted to extract the scalar model summaries at the bottom of this output, such as R-squared, R-squared adjusted, the F-statistic, and the degrees of freedom `df`. We can do so using the `get_regression_summaries()` function. 
 
 ```{r}
 get_regression_summaries(score_model)

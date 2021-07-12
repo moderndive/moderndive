@@ -89,8 +89,8 @@ score_model <- lm(score ~ age, data = evals)
         ## 10    10   4.5    40      4.22    0.276
         ## # … with 453 more rows
 
-3.  Get scalar summaries of a regression fit including \(R^2\) and
-    \(R^2_{adj}\) but also the (root) mean-squared error:
+3.  Get scalar summaries of a regression fit including R-squared and
+    R-squared adjusted but also the (root) mean-squared error:
     
     ``` r
     get_regression_summaries(score_model)
@@ -163,13 +163,13 @@ included for a random sample of 5 courses\[1\]:
     for that professor as given by a panel of 6
 students.\[2\]
 
-|  ID | prof\_ID | score | age | bty\_avg | gender | ethnicity    | language    | rank         |
-| --: | -------: | ----: | --: | -------: | :----- | :----------- | :---------- | :----------- |
-| 250 |       48 |   3.4 |  50 |    3.167 | female | not minority | english     | teaching     |
-| 245 |       48 |   4.4 |  50 |    3.167 | female | not minority | english     | teaching     |
-|  10 |        4 |   4.5 |  40 |    3.167 | female | not minority | english     | tenured      |
-| 339 |       70 |   4.5 |  43 |    3.500 | male   | not minority | english     | tenure track |
-|  75 |       14 |   3.5 |  49 |    4.000 | male   | not minority | non-english | tenured      |
+|  ID | prof\_ID | score | age | bty\_avg | gender | ethnicity    | language    | rank     |
+| --: | -------: | ----: | --: | -------: | :----- | :----------- | :---------- | :------- |
+| 398 |       82 |   3.5 |  57 |    2.833 | male   | not minority | english     | tenured  |
+|  25 |        6 |   4.6 |  62 |    5.500 | male   | not minority | english     | tenured  |
+| 355 |       71 |   4.9 |  50 |    3.333 | male   | minority     | english     | teaching |
+| 193 |       35 |   4.6 |  54 |    2.333 | male   | not minority | english     | tenured  |
+| 153 |       27 |   4.2 |  52 |    4.833 | male   | minority     | non-english | tenured  |
 
 ### 1\. Focus less on p-value stars, more confidence intervals
 
@@ -633,8 +633,9 @@ Recall the output of the standard `summary.lm()` from earlier:
     ## F-statistic: 5.342 on 1 and 461 DF,  p-value: 0.02125
 
 Say we wanted to extract the scalar model summaries at the bottom of
-this output, such as \(R^2\), \(R^2_{adj}\), and the \(F\)-statistic. We
-can do so using the `get_regression_summaries()` function.
+this output, such as R-squared, R-squared adjusted, the F-statistic, and
+the degrees of freedom `df`. We can do so using the
+`get_regression_summaries()` function.
 
 ``` r
 get_regression_summaries(score_model)
