@@ -212,7 +212,7 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 
 # Repository README
 
-In the GitHub repository README, we present an in depth discussion of six features of the `moderndive` package:
+In the GitHub repository README, we present an in-depth discussion of six features of the `moderndive` package:
 
 1. Focus less on p-value stars, more confidence intervals
 2. Outputs as tibbles
