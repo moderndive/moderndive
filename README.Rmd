@@ -1,6 +1,5 @@
 ---
 output: github_document
-bibliography: vignettes/paper.bib
 ---
 
 ```{r setup, include=FALSE}
@@ -29,13 +28,6 @@ This R package is designed to supplement the book "Statistical Inference via Dat
 
 
 
-
-
-
-***
-
-
-
 ## Installation
 
 Get the released version from CRAN:
@@ -51,11 +43,6 @@ Or the development version from GitHub:
 # install.packages("remotes")
 remotes::install_github("moderndive/moderndive")
 ```
-
-
-
-***
-
 
 
 
@@ -88,6 +75,13 @@ ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
     ```
 
 
+
+## Contributor code of conduct
+
+Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+
+
+
 ***
 
 
@@ -117,7 +111,7 @@ However we first discuss the model and data background
 
 ### Data background
 
-The data consists of end of semester student evaluations for a sample of 463 courses taught by 94 professors from the University of Texas at Austin [@diez2015openintro]. This data is included in the `evals` data frame from the `moderndive` package.
+The data consists of end of semester student evaluations for a sample of 463 courses taught by 94 professors from the University of Texas at Austin. This data is included in the `evals` data frame from the `moderndive` package.
 
 ```{r, echo=FALSE}
 evals_sample <- evals %>%
@@ -165,7 +159,7 @@ While one might argue that extracting the intercept and slope coefficients can b
 sqrt(diag(vcov(score_model)))
 ```
 
-We argue that this task shouldn't be this hard, especially in an introductory statistics setting. To rectify this, the three `get_regression_*` functions  all return data frames in the tidyverse-style tibble (tidy table) format [@R-tibble]. Therefore you can extract columns using the `pull()` function from the `dplyr` package [@R-dplyr]:
+We argue that this task shouldn't be this hard, especially in an introductory statistics setting. To rectify this, the three `get_regression_*` functions  all return data frames in the tidyverse-style tibble (tidy table) format. Therefore you can extract columns using the `pull()` function from the `dplyr` package:
 
 
 ```{r}
@@ -179,7 +173,7 @@ or equivalently you can use the `$` sign operator from base R:
 get_regression_table(score_model)$std_error
 ```
 
-Furthermore, by piping the above `get_regression_table(score_model)` output into the `kable()` function from the `knitr` package [@R-knitr], you can obtain aesthetically pleasing regression tables in R Markdown documents, instead of tables written in jarring computer output font:
+Furthermore, by piping the above `get_regression_table(score_model)` output into the `kable()` function from the `knitr` package, you can obtain aesthetically pleasing regression tables in R Markdown documents, instead of tables written in jarring computer output font:
 
 ```{r}
 get_regression_table(score_model) %>%
@@ -391,12 +385,6 @@ Going one step further, notice how the three regression lines in the visualizati
 While many students will inevitably find these results depressing, in our opinion, it is important to additionally emphasize that such regression analyses can be used as an empowering tool to bring to light inequities in access to education and inform policy decisions.
 
 
-
-***
-
-
-
-
 ### 6. Produce metrics on the quality of regression model fits
 
 Recall the output of the standard `summary.lm()` from earlier:
@@ -421,7 +409,7 @@ How does this all work? Let's open the hood of the `moderndive` package.
 
 ### Three wrappers to `broom` functions {#broom-wrappers}
 
-As we mentioned earlier, the three `get_regression_*` functions are wrappers of functions from the `broom` package for converting statistical analysis objects into tidy tibbles along with a few added tweaks, but with the introductory statistics student in mind [@R-broom]:
+As we mentioned earlier, the three `get_regression_*` functions are wrappers of functions from the `broom` package for converting statistical analysis objects into tidy tibbles along with a few added tweaks, but with the introductory statistics student in mind:
 
 1. `get_regression_table()` is a wrapper for `broom::tidy()`.
 1. `get_regression_points()` is a wrapper for `broom::augment()`.
@@ -444,22 +432,6 @@ The source code for these three `get_regression_*` functions can be found on [Gi
 
 The `geom_parallel_slopes()` is a custom built `geom` extension to the `ggplot2` package. For example, the `ggplot2` webpage page gives [instructions](https://ggplot2.tidyverse.org/articles/extending-ggplot2.html){target="_blank"} on how to create such extensions. The source code for `geom_parallel_slopes()` written by [Evgeni Chasnovski](https://github.com/echasnovski){target="_blank"} can be found on [GitHub](https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R){target="_blank"}.
 
-
-
-
-
-***
-
-
-
-## Contributor code of conduct
-
-
-Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
-
-
-
-***
 
 
 ## Bibliography

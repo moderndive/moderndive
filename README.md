@@ -31,8 +31,6 @@ This R package is designed to supplement the book “Statistical Inference
 via Data Science: A ModernDive into R and the Tidyverse” available at
 [ModernDive.com](https://moderndive.com/).
 
------
-
 ## Installation
 
 Get the released version from CRAN:
@@ -48,8 +46,6 @@ Or the development version from GitHub:
 # install.packages("remotes")
 remotes::install_github("moderndive/moderndive")
 ```
-
------
 
 ## Basic usage
 
@@ -118,6 +114,12 @@ score_model <- lm(score ~ age, data = evals)
     
     ![](man/figures/unnamed-chunk-7-1.png)<!-- -->
 
+## Contributor code of conduct
+
+Please note that this project is released with a [Contributor Code of
+Conduct](CONDUCT.md). By participating in this project you agree to
+abide by its terms.
+
 -----
 
 ## Six features
@@ -145,8 +147,8 @@ However we first discuss the model and data background
 
 The data consists of end of semester student evaluations for a sample of
 463 courses taught by 94 professors from the University of Texas at
-Austin (Diez, Barr, and Çetinkaya-Rundel 2015). This data is included in
-the `evals` data frame from the `moderndive` package.
+Austin. This data is included in the `evals` data frame from the
+`moderndive` package.
 
 In the following table, we present a subset of 9 of the 14 variables
 included for a random sample of 5 courses\[1\]:
@@ -158,15 +160,16 @@ included for a random sample of 5 courses\[1\]:
     evaluation score out of 5 as given by the students in this course.
 3.  The remaining variables are demographic variables describing that
     course’s instructor, including `bty_avg` (average “beauty” score)
-    for that professor as given by a panel of 6 students.\[2\]
+    for that professor as given by a panel of 6
+students.\[2\]
 
-|  ID | prof\_ID | score | age | bty\_avg | gender | ethnicity    | language | rank         |
-| --: | -------: | ----: | --: | -------: | :----- | :----------- | :------- | :----------- |
-| 346 |       70 |   4.4 |  43 |    3.500 | male   | not minority | english  | tenure track |
-| 335 |       68 |   2.4 |  60 |    1.667 | male   | not minority | english  | tenured      |
-| 226 |       41 |   4.7 |  35 |    4.833 | male   | not minority | english  | tenured      |
-| 142 |       26 |   4.4 |  58 |    3.833 | male   | not minority | english  | tenured      |
-|  54 |       10 |   5.0 |  47 |    5.500 | male   | not minority | english  | teaching     |
+|  ID | prof\_ID | score | age | bty\_avg | gender | ethnicity    | language    | rank         |
+| --: | -------: | ----: | --: | -------: | :----- | :----------- | :---------- | :----------- |
+| 250 |       48 |   3.4 |  50 |    3.167 | female | not minority | english     | teaching     |
+| 245 |       48 |   4.4 |  50 |    3.167 | female | not minority | english     | teaching     |
+|  10 |        4 |   4.5 |  40 |    3.167 | female | not minority | english     | tenured      |
+| 339 |       70 |   4.5 |  43 |    3.500 | male   | not minority | english     | tenure track |
+|  75 |       14 |   3.5 |  49 |    4.000 | male   | not minority | non-english | tenured      |
 
 ### 1\. Focus less on p-value stars, more confidence intervals
 
@@ -235,9 +238,8 @@ sqrt(diag(vcov(score_model)))
 We argue that this task shouldn’t be this hard, especially in an
 introductory statistics setting. To rectify this, the three
 `get_regression_*` functions all return data frames in the
-tidyverse-style tibble (tidy table) format (Müller and Wickham 2019).
-Therefore you can extract columns using the `pull()` function from the
-`dplyr` package (Wickham et al. 2020):
+tidyverse-style tibble (tidy table) format. Therefore you can extract
+columns using the `pull()` function from the `dplyr` package:
 
 ``` r
 get_regression_table(score_model) %>%
@@ -255,9 +257,9 @@ get_regression_table(score_model)$std_error
     ## [1] 0.127 0.003
 
 Furthermore, by piping the above `get_regression_table(score_model)`
-output into the `kable()` function from the `knitr` package (Xie 2020),
-you can obtain aesthetically pleasing regression tables in R Markdown
-documents, instead of tables written in jarring computer output font:
+output into the `kable()` function from the `knitr` package, you can
+obtain aesthetically pleasing regression tables in R Markdown documents,
+instead of tables written in jarring computer output font:
 
 ``` r
 get_regression_table(score_model) %>%
@@ -273,7 +275,8 @@ get_regression_table(score_model) %>%
 
 How can we extract point-by-point information from a regression model,
 such as the fitted/predicted values and the residuals? (Note we only
-display the first 10 out of 463 of such values for brevity’s sake.)
+display the first 10 out of 463 of such values for brevity’s
+    sake.)
 
 ``` r
 fitted(score_model)
@@ -390,7 +393,8 @@ get_regression_points(score_model, newdata = new_prof)
 Let’s do another example, this time using the Kaggle [House Prices:
 Advanced Regression
 Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
-practice competition ( displays the homepage for this competition).
+practice competition ( displays the homepage for this
+competition).
 
 <div class="figure" style="text-align: center">
 
@@ -444,7 +448,8 @@ write_csv(submission, "submission.csv")
 
 After submitting `submission.csv` to the leaderboard for this Kaggle
 competition, we obtain a “root mean squared logarithmic error” (RMSLE)
-score of 0.42918 as seen in .
+score of 0.42918 as seen in
+.
 
 <div class="figure">
 
@@ -452,7 +457,8 @@ score of 0.42918 as seen in .
 
 <p class="caption">
 
-Resulting Kaggle RMSLE score.
+Resulting Kaggle RMSLE
+score.
 
 </p>
 
@@ -603,8 +609,6 @@ our opinion, it is important to additionally emphasize that such
 regression analyses can be used as an empowering tool to bring to light
 inequities in access to education and inform policy decisions.
 
------
-
 ### 6\. Produce metrics on the quality of regression model fits
 
 Recall the output of the standard `summary.lm()` from earlier:
@@ -654,8 +658,7 @@ How does this all work? Let’s open the hood of the `moderndive` package.
 As we mentioned earlier, the three `get_regression_*` functions are
 wrappers of functions from the `broom` package for converting
 statistical analysis objects into tidy tibbles along with a few added
-tweaks, but with the introductory statistics student in mind (Robinson
-and Hayes 2019):
+tweaks, but with the introductory statistics student in mind:
 
 1.  `get_regression_table()` is a wrapper for `broom::tidy()`.
 2.  `get_regression_points()` is a wrapper for `broom::augment()`.
@@ -702,59 +705,7 @@ on how to create such extensions. The source code for
 Chasnovski](https://github.com/echasnovski) can be found on
 [GitHub](https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R).
 
------
-
-## Contributor code of conduct
-
-Please note that this project is released with a [Contributor Code of
-Conduct](CONDUCT.md). By participating in this project you agree to
-abide by its terms.
-
------
-
 ## Bibliography
-
-<div id="refs" class="references">
-
-<div id="ref-diez2015openintro">
-
-Diez, D. M., C. D. Barr, and M. Çetinkaya-Rundel. 2015. *OpenIntro
-Statistics*. OpenIntro, Incorporated.
-<https://books.google.com/books?id=xNMWswEACAAJ>.
-
-</div>
-
-<div id="ref-R-tibble">
-
-Müller, Kirill, and Hadley Wickham. 2019. *Tibble: Simple Data Frames*.
-<https://CRAN.R-project.org/package=tibble>.
-
-</div>
-
-<div id="ref-R-broom">
-
-Robinson, David, and Alex Hayes. 2019. *Broom: Convert Statistical
-Analysis Objects into Tidy Tibbles*.
-<https://CRAN.R-project.org/package=broom>.
-
-</div>
-
-<div id="ref-R-dplyr">
-
-Wickham, Hadley, Romain François, Lionel Henry, and Kirill Müller. 2020.
-*Dplyr: A Grammar of Data Manipulation*.
-<https://CRAN.R-project.org/package=dplyr>.
-
-</div>
-
-<div id="ref-R-knitr">
-
-Xie, Yihui. 2020. *Knitr: A General-Purpose Package for Dynamic Report
-Generation in R*. <https://CRAN.R-project.org/package=knitr>.
-
-</div>
-
-</div>
 
 1.  For details on the remaining 5 variables, see the help file by
     running `?evals`.
