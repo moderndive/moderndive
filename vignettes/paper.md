@@ -1,7 +1,7 @@
 ---
 title: "Take a `moderndive` into introductory linear regression with R"
 author: "Albert Y. Kim, Chester Ismay, and Max Kuhn"
-date: "2021-07-09"
+date: "2021-07-12"
 vignette: >
   %\VignetteIndexEntry{Take a `moderndive` into introductory linear regression with R}
   %\VignetteEncoding{UTF-8}
@@ -221,7 +221,7 @@ In the GitHub repository README, we present an in-depth discussion of six featur
 5. Visual model selection: plot parallel slopes & interaction regression models
 6. Produce metrics on the quality of regression model fits
 
-Furthermore, we discuss the inner-workings of the `moderndive` pacakges, including
+Furthermore, we discuss the inner-workings of the `moderndive` package:
 
 1. It leverages the `broom` package in its wrappers
 1. It builds a custom `ggplot2` geometry for the `geom_parallel_slopes()` function that allows for quick visualization of parallel slopes models in regression. 
