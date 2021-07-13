@@ -97,23 +97,12 @@ Why should you use the `moderndive` package for introductory linear regression? 
 5. Visual model selection: plot parallel slopes & interaction regression models
 6. Produce metrics on the quality of regression model fits
 
-```{r, message=FALSE, warning=FALSE}
-library(dplyr)
-```
-
-```{r, message=FALSE, warning=FALSE, echo=FALSE}
-library(knitr)
-library(broom)
-library(patchwork)
-```
-
-However we first discuss the model and data background
-
 ### Data background
 
-The data consists of end of semester student evaluations for a sample of 463 courses taught by 94 professors from the University of Texas at Austin. This data is included in the `evals` data frame from the `moderndive` package.
+We first discuss the model and data background. The data consists of end of semester student evaluations for a sample of 463 courses taught by 94 professors from the University of Texas at Austin. This data is included in the `evals` data frame from the `moderndive` package.
 
 ```{r, echo=FALSE}
+library(dplyr)
 evals_sample <- evals %>%
   select(ID, prof_ID, score, age, bty_avg, gender, ethnicity, language, rank) %>%
   sample_n(5)
@@ -126,6 +115,7 @@ In the following table, we present a subset of `r ncol(evals_sample)` of the `r 
 1. The remaining variables are demographic variables describing that course's instructor, including `bty_avg` (average "beauty" score) for that professor as given by a panel of 6 students.^[Note that `gender` was collected as a binary variable at the time of the study (2005).]
 
 ```{r random-sample-courses, echo=FALSE}
+library(knitr)
 evals_sample %>%
   kable()
 ```
@@ -163,6 +153,7 @@ We argue that this task shouldn't be this hard, especially in an introductory st
 
 
 ```{r}
+library(dplyr)
 get_regression_table(score_model) %>%
   pull(std_error)
 ```
@@ -176,6 +167,7 @@ get_regression_table(score_model)$std_error
 Furthermore, by piping the above `get_regression_table(score_model)` output into the `kable()` function from the `knitr` package, you can obtain aesthetically pleasing regression tables in R Markdown documents, instead of tables written in jarring computer output font:
 
 ```{r}
+library(knitr)
 get_regression_table(score_model) %>%
   kable()
 ```
@@ -286,6 +278,7 @@ knitr::include_graphics("vignettes/leaderboard_orig.png")
 For example, recall the earlier visualizations of the interaction and parallel slopes models for teaching score as a function of age and ethnicity we saw in Figures \ref{fig:interaction-model} and \ref{fig:parallel-slopes-model}. Let's present both visualizations side-by-side in \autoref{fig:interaction-and-parallel-slopes-model-1}.
 
 ```{r interaction-and-parallel-slopes-model-1, echo=FALSE, fig.height = 9/3, fig.cap = "Interaction (left) and parallel slopes (right) models.", }
+library(patchwork)
 p1 <- ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
   labs(x = "Age", y = "Teaching score", color = "Ethnicity") +
@@ -426,7 +419,7 @@ get_regression_points(score_model)
 broom::augment(score_model)
 ```
 
-The source code for these three `get_regression_*` functions can be found on [GitHub](https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R){target="_blank"}.
+The source code for these three `get_regression_*` functions can be found on [here](https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R){target="_blank"}.
 
 ### Custom geometries
 

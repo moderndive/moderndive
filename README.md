@@ -135,20 +135,12 @@ regression? Here are six features:
     regression models
 6.  Produce metrics on the quality of regression model fits
 
-<!-- end list -->
-
-``` r
-library(dplyr)
-```
-
-However we first discuss the model and data background
-
 ### Data background
 
-The data consists of end of semester student evaluations for a sample of
-463 courses taught by 94 professors from the University of Texas at
-Austin. This data is included in the `evals` data frame from the
-`moderndive` package.
+We first discuss the model and data background. The data consists of end
+of semester student evaluations for a sample of 463 courses taught by 94
+professors from the University of Texas at Austin. This data is included
+in the `evals` data frame from the `moderndive` package.
 
 In the following table, we present a subset of 9 of the 14 variables
 included for a random sample of 5 courses\[1\]:
@@ -164,11 +156,11 @@ included for a random sample of 5 courses\[1\]:
 
 |  ID | prof\_ID | score | age | bty\_avg | gender | ethnicity    | language | rank         |
 | --: | -------: | ----: | --: | -------: | :----- | :----------- | :------- | :----------- |
-|  27 |        6 |   4.5 |  62 |    5.500 | male   | not minority | english  | tenured      |
-| 137 |       24 |   4.7 |  64 |    4.167 | male   | not minority | english  | tenured      |
-| 441 |       89 |   3.7 |  35 |    7.833 | female | minority     | english  | tenure track |
-|  38 |        8 |   4.4 |  51 |    4.000 | female | not minority | english  | tenured      |
-| 320 |       65 |   4.5 |  52 |    2.333 | female | not minority | english  | teaching     |
+| 339 |       70 |   4.5 |  43 |    3.500 | male   | not minority | english  | tenure track |
+| 255 |       49 |   3.5 |  52 |    3.167 | male   | not minority | english  | tenured      |
+| 180 |       34 |   4.4 |  47 |    4.333 | female | minority     | english  | tenure track |
+| 458 |       93 |   4.1 |  32 |    6.833 | male   | not minority | english  | tenure track |
+|  86 |       16 |   4.4 |  45 |    4.167 | male   | not minority | english  | tenured      |
 
 ### 1\. Focus less on p-value stars, more confidence intervals
 
@@ -241,6 +233,7 @@ tidyverse-style tibble (tidy table) format. Therefore you can extract
 columns using the `pull()` function from the `dplyr` package:
 
 ``` r
+library(dplyr)
 get_regression_table(score_model) %>%
   pull(std_error)
 ```
@@ -261,6 +254,7 @@ obtain aesthetically pleasing regression tables in R Markdown documents,
 instead of tables written in jarring computer output font:
 
 ``` r
+library(knitr)
 get_regression_table(score_model) %>%
   kable()
 ```
@@ -689,7 +683,7 @@ broom::augment(score_model)
 
 The source code for these three `get_regression_*` functions can be
 found on
-[GitHub](https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R).
+[here](https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R).
 
 ### Custom geometries
 
