@@ -2,10 +2,6 @@
 title: "Take a `moderndive` into introductory linear regression with R"
 author: "Albert Y. Kim, Chester Ismay, and Max Kuhn"
 date: "2021-07-12"
-vignette: >
-  %\VignetteIndexEntry{Take a `moderndive` into introductory linear regression with R}
-  %\VignetteEncoding{UTF-8}
-  %\VignetteEngine{knitr::rmarkdown}
 tags:
   - R
   - Rstats
@@ -238,6 +234,6 @@ Albert Y. Kim and Chester Ismay contributed equally to the development of the `m
 
 # Acknowledgments
 
-Many thanks to Jenny Smetzer [\@smetzer180](https://github.com/smetzer180){target="_blank"}, Luke W. Johnston [\@lwjohnst86](https://github.com/lwjohnst86){target="_blank"}, and Lisa Rosenthal [\@lisamr](https://github.com/lisamr){target="_blank"} for their helpful feedback for this vignette and to Evgeni Chasnovski [\@echasnovski](https://github.com/echasnovski){target="_blank"} for contributing the `geom_parallel_slopes()` function via GitHub [pull request](https://github.com/moderndive/moderndive/pull/55){target="_blank"}. The authors do not have any financial support to disclose.
+Many thanks to Jenny Smetzer [\@smetzer180](https://github.com/smetzer180){target="_blank"}, Luke W. Johnston [\@lwjohnst86](https://github.com/lwjohnst86){target="_blank"}, and Lisa Rosenthal [\@lisamr](https://github.com/lisamr){target="_blank"} for their helpful feedback for this paper and to Evgeni Chasnovski [\@echasnovski](https://github.com/echasnovski){target="_blank"} for contributing the `geom_parallel_slopes()` function via GitHub [pull request](https://github.com/moderndive/moderndive/pull/55){target="_blank"}. The authors do not have any financial support to disclose.
 
 # References
