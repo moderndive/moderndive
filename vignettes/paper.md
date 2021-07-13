@@ -1,7 +1,7 @@
 ---
 title: "Take a `moderndive` into introductory linear regression with R"
 author: "Albert Y. Kim, Chester Ismay, and Max Kuhn"
-date: "2021-07-12"
+date: "2021-07-13"
 tags:
   - R
   - Rstats
