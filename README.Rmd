@@ -70,7 +70,7 @@ get_regression_summaries(score_model)
 library(ggplot2)
 ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
-  geom_smooth(method = "lm", se = FALSE) +
+  geom_parallel_slopes(se = FALSE) +
   labs(x = "Age", y = "Teaching score", color = "Ethnicity")
     ```
 
@@ -431,9 +431,3 @@ The source code for these three `get_regression_*` functions can be found on [Gi
 ### Custom geometries
 
 The `geom_parallel_slopes()` is a custom built `geom` extension to the `ggplot2` package. For example, the `ggplot2` webpage page gives [instructions](https://ggplot2.tidyverse.org/articles/extending-ggplot2.html){target="_blank"} on how to create such extensions. The source code for `geom_parallel_slopes()` written by [Evgeni Chasnovski](https://github.com/echasnovski){target="_blank"} can be found on [GitHub](https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R){target="_blank"}.
-
-
-
-## Bibliography
-
-

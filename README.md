@@ -108,7 +108,7 @@ score_model <- lm(score ~ age, data = evals)
     library(ggplot2)
     ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
       geom_point() +
-      geom_smooth(method = "lm", se = FALSE) +
+      geom_parallel_slopes(se = FALSE) +
       labs(x = "Age", y = "Teaching score", color = "Ethnicity")
     ```
     
@@ -160,16 +160,15 @@ included for a random sample of 5 courses\[1\]:
     evaluation score out of 5 as given by the students in this course.
 3.  The remaining variables are demographic variables describing that
     course’s instructor, including `bty_avg` (average “beauty” score)
-    for that professor as given by a panel of 6
-students.\[2\]
+    for that professor as given by a panel of 6 students.\[2\]
 
-|  ID | prof\_ID | score | age | bty\_avg | gender | ethnicity    | language    | rank     |
-| --: | -------: | ----: | --: | -------: | :----- | :----------- | :---------- | :------- |
-| 398 |       82 |   3.5 |  57 |    2.833 | male   | not minority | english     | tenured  |
-|  25 |        6 |   4.6 |  62 |    5.500 | male   | not minority | english     | tenured  |
-| 355 |       71 |   4.9 |  50 |    3.333 | male   | minority     | english     | teaching |
-| 193 |       35 |   4.6 |  54 |    2.333 | male   | not minority | english     | tenured  |
-| 153 |       27 |   4.2 |  52 |    4.833 | male   | minority     | non-english | tenured  |
+|  ID | prof\_ID | score | age | bty\_avg | gender | ethnicity    | language | rank         |
+| --: | -------: | ----: | --: | -------: | :----- | :----------- | :------- | :----------- |
+|  27 |        6 |   4.5 |  62 |    5.500 | male   | not minority | english  | tenured      |
+| 137 |       24 |   4.7 |  64 |    4.167 | male   | not minority | english  | tenured      |
+| 441 |       89 |   3.7 |  35 |    7.833 | female | minority     | english  | tenure track |
+|  38 |        8 |   4.4 |  51 |    4.000 | female | not minority | english  | tenured      |
+| 320 |       65 |   4.5 |  52 |    2.333 | female | not minority | english  | teaching     |
 
 ### 1\. Focus less on p-value stars, more confidence intervals
 
@@ -275,8 +274,7 @@ get_regression_table(score_model) %>%
 
 How can we extract point-by-point information from a regression model,
 such as the fitted/predicted values and the residuals? (Note we only
-display the first 10 out of 463 of such values for brevity’s
-    sake.)
+display the first 10 out of 463 of such values for brevity’s sake.)
 
 ``` r
 fitted(score_model)
@@ -393,8 +391,7 @@ get_regression_points(score_model, newdata = new_prof)
 Let’s do another example, this time using the Kaggle [House Prices:
 Advanced Regression
 Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
-practice competition ( displays the homepage for this
-competition).
+practice competition ( displays the homepage for this competition).
 
 <div class="figure" style="text-align: center">
 
@@ -448,8 +445,7 @@ write_csv(submission, "submission.csv")
 
 After submitting `submission.csv` to the leaderboard for this Kaggle
 competition, we obtain a “root mean squared logarithmic error” (RMSLE)
-score of 0.42918 as seen in
-.
+score of 0.42918 as seen in .
 
 <div class="figure">
 
@@ -457,8 +453,7 @@ score of 0.42918 as seen in
 
 <p class="caption">
 
-Resulting Kaggle RMSLE
-score.
+Resulting Kaggle RMSLE score.
 
 </p>
 
@@ -705,8 +700,6 @@ on how to create such extensions. The source code for
 `geom_parallel_slopes()` written by [Evgeni
 Chasnovski](https://github.com/echasnovski) can be found on
 [GitHub](https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R).
-
-## Bibliography
 
 1.  For details on the remaining 5 variables, see the help file by
     running `?evals`.
