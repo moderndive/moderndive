@@ -71,7 +71,11 @@ as piecewise horizontal line segments. Confidence interval bands can be
 included in the visualization of the model. Like \code{\link[=geom_parallel_slopes]{geom_parallel_slopes()}},
 this function has the same nature as \code{geom_smooth()} from
 the {ggplot2} package, but provides functionality that \code{geom_smooth()}
-currently doesn't have.
+currently doesn't have. When using a categorical predictor variable,
+the intercept corresponds to the mean for the baseline group, while
+coefficients for the non-baseline groups are offsets from this baseline.
+Thus in the visualization the baseline for comparison group's median is
+marked with a solid line, whereas all offset groups' medians are marked with dashed lines.
 }
 \examples{
 library(dplyr)
@@ -81,6 +85,14 @@ p <- ggplot(mpg, aes(x = drv, y = hwy)) +
   geom_point() +
   geom_categorical_model()
 p
+
+# In the above visualization, the solid line corresponds to the mean of 19.2
+# for the baseline group "4", whereas the dashed lines correspond to the
+# means of 28.19 and 21.02 for the non-baseline groups "f" and "r" respectively.
+# In the corresponding regression table however the coefficients for "f" and "r"
+# are presented as offsets from the mean for "4":
+model <- lm(hwy ~ drv, data = mpg)
+get_regression_table(model)
 
 # You can use different colors for each categorical level
 p \%+\% aes(color = drv)
