@@ -114,6 +114,20 @@ score_model <- lm(score ~ age, data = evals)
     
     ![](man/figures/unnamed-chunk-7-1.png)<!-- -->
 
+# Statement of Need
+
+Linear regression has long been a staple of introductory statistics
+courses. While the curricula of introductory statistics courses has much
+evolved of late, the overall importance of regression remains the same.
+Furthermore, while the use of the R statistical programming language for
+statistical analysis is not new, recent developments such as the
+`tidyverse` suite of packages have made statistical computation with R
+accessible to a broader audience. We go one step further by leveraging
+the `tidyverse` and the `broom` packages to make linear regression
+accessible to students taking an introductory statistics course. Such
+students are likely to be new to statistical computation with R; we
+designed `moderndive` with these students in mind.
+
 ## Contributor code of conduct
 
 Please note that this project is released with a [Contributor Code of
@@ -156,11 +170,11 @@ included for a random sample of 5 courses\[1\]:
 
 |  ID | prof\_ID | score | age | bty\_avg | gender | ethnicity    | language | rank         |
 | --: | -------: | ----: | --: | -------: | :----- | :----------- | :------- | :----------- |
-| 339 |       70 |   4.5 |  43 |    3.500 | male   | not minority | english  | tenure track |
-| 255 |       49 |   3.5 |  52 |    3.167 | male   | not minority | english  | tenured      |
-| 180 |       34 |   4.4 |  47 |    4.333 | female | minority     | english  | tenure track |
-| 458 |       93 |   4.1 |  32 |    6.833 | male   | not minority | english  | tenure track |
-|  86 |       16 |   4.4 |  45 |    4.167 | male   | not minority | english  | tenured      |
+| 456 |       93 |   4.5 |  32 |    6.833 | male   | not minority | english  | tenure track |
+| 159 |       29 |   4.6 |  70 |    3.000 | male   | not minority | english  | tenured      |
+| 135 |       24 |   4.8 |  64 |    4.167 | male   | not minority | english  | tenured      |
+| 164 |       31 |   4.4 |  63 |    4.333 | male   | not minority | english  | teaching     |
+| 192 |       35 |   4.1 |  54 |    2.333 | male   | not minority | english  | tenured      |
 
 ### 1\. Focus less on p-value stars, more confidence intervals
 
