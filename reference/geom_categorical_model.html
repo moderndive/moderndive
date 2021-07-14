@@ -46,7 +46,11 @@ as piecewise horizontal line segments. Confidence interval bands can be
 included in the visualization of the model. Like geom_parallel_slopes(),
 this function has the same nature as geom_smooth() from
 the ggplot2 package, but provides functionality that geom_smooth()
-currently doesn't have." />
+currently doesn't have. When using a categorical predictor variable,
+the intercept corresponds to the mean for the baseline group, while
+coefficients for the non-baseline groups are offsets from this baseline.
+Thus in the visualization the baseline for comparison group's median is
+marked with a solid line, whereas all offset groups' medians are marked with dashed lines." />
 
 
 
@@ -144,7 +148,11 @@ as piecewise horizontal line segments. Confidence interval bands can be
 included in the visualization of the model. Like <code><a href='geom_parallel_slopes.html'>geom_parallel_slopes()</a></code>,
 this function has the same nature as <code><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth()</a></code> from
 the ggplot2 package, but provides functionality that <code><a href='https://ggplot2.tidyverse.org/reference/geom_smooth.html'>geom_smooth()</a></code>
-currently doesn't have.</p>
+currently doesn't have. When using a categorical predictor variable,
+the intercept corresponds to the mean for the baseline group, while
+coefficients for the non-baseline groups are offsets from this baseline.
+Thus in the visualization the baseline for comparison group's median is
+marked with a solid line, whereas all offset groups' medians are marked with dashed lines.</p>
     </div>
 
     <pre class="usage"><span class='fu'>geom_categorical_model</span><span class='op'>(</span>
@@ -244,6 +252,19 @@ the default plot specification, e.g. <code><a href='https://ggplot2.tidyverse.or
   <span class='fu'>geom_categorical_model</span><span class='op'>(</span><span class='op'>)</span>
 <span class='va'>p</span>
 </div><div class='img'><img src='geom_categorical_model-1.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># In the above visualization, the solid line corresponds to the mean of 19.2</span>
+<span class='co'># for the baseline group "4", whereas the dashed lines correspond to the</span>
+<span class='co'># means of 28.19 and 21.02 for the non-baseline groups "f" and "r" respectively.</span>
+<span class='co'># In the corresponding regression table however the coefficients for "f" and "r"</span>
+<span class='co'># are presented as offsets from the mean for "4":</span>
+<span class='va'>model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/stats/lm.html'>lm</a></span><span class='op'>(</span><span class='va'>hwy</span> <span class='op'>~</span> <span class='va'>drv</span>, data <span class='op'>=</span> <span class='va'>mpg</span><span class='op'>)</span>
+<span class='fu'><a href='get_regression_table.html'>get_regression_table</a></span><span class='op'>(</span><span class='va'>model</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 7</span>
+#&gt;   term      estimate std_error statistic p_value lower_ci upper_ci
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span> intercept    19.2      0.404     47.5    0       18.4      20.0 
+#&gt; <span style='color: #BCBCBC;'>2</span> drv: f        8.99     0.567     15.9    0        7.87     10.1 
+#&gt; <span style='color: #BCBCBC;'>3</span> drv: r        1.82     0.913      2.00   0.047    0.026     3.62</div><div class='input'>
 <span class='co'># You can use different colors for each categorical level</span>
 <span class='va'>p</span> <span class='op'>%+%</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span>color <span class='op'>=</span> <span class='va'>drv</span><span class='op'>)</span>
 </div><div class='img'><img src='geom_categorical_model-2.png' alt='' width='700' height='433' /></div><div class='input'>
