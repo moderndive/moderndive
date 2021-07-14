@@ -114,7 +114,7 @@ score_model <- lm(score ~ age, data = evals)
     
     ![](man/figures/unnamed-chunk-7-1.png)<!-- -->
 
-# Statement of Need
+## Statement of Need
 
 Linear regression has long been a staple of introductory statistics
 courses. While the curricula of introductory statistics courses has much
@@ -168,13 +168,13 @@ included for a random sample of 5 courses\[1\]:
     course’s instructor, including `bty_avg` (average “beauty” score)
     for that professor as given by a panel of 6 students.\[2\]
 
-|  ID | prof\_ID | score | age | bty\_avg | gender | ethnicity    | language | rank         |
-| --: | -------: | ----: | --: | -------: | :----- | :----------- | :------- | :----------- |
-| 456 |       93 |   4.5 |  32 |    6.833 | male   | not minority | english  | tenure track |
-| 159 |       29 |   4.6 |  70 |    3.000 | male   | not minority | english  | tenured      |
-| 135 |       24 |   4.8 |  64 |    4.167 | male   | not minority | english  | tenured      |
-| 164 |       31 |   4.4 |  63 |    4.333 | male   | not minority | english  | teaching     |
-| 192 |       35 |   4.1 |  54 |    2.333 | male   | not minority | english  | tenured      |
+|  ID | prof\_ID | score | age | bty\_avg | gender | ethnicity    | language    | rank     |
+| --: | -------: | ----: | --: | -------: | :----- | :----------- | :---------- | :------- |
+| 337 |       68 |   2.5 |  60 |    1.667 | male   | not minority | english     | tenured  |
+|  78 |       14 |   3.6 |  49 |    4.000 | male   | not minority | non-english | tenured  |
+| 230 |       42 |   3.6 |  39 |    8.167 | female | not minority | english     | teaching |
+| 421 |       85 |   5.0 |  58 |    7.833 | male   | not minority | english     | teaching |
+|  38 |        8 |   4.4 |  51 |    4.000 | female | not minority | english     | tenured  |
 
 ### 1\. Focus less on p-value stars, more confidence intervals
 
