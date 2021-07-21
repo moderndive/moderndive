@@ -18,7 +18,7 @@ Depends:
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-URL: https://github.com/moderndive/moderndive/issues
+URL: https://moderndive.github.io/moderndive/, https://github.com/moderndive/moderndive/
 BugReports: https://github.com/moderndive/moderndive/issues
 Imports: 
     magrittr,
