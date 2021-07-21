@@ -2,6 +2,7 @@
 ## moderndive R Package <img src="https://github.com/moderndive/moderndive/blob/master/images/hex_blue_text.png?raw=true" align="right" width=125 />
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive)
+[![DOI](https://zenodo.org/badge/115030738.svg)](https://zenodo.org/badge/latestdoi/115030738)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![GitHub Actions
@@ -169,13 +170,13 @@ included for a random sample of 5 courses\[1\]:
     for that professor as given by a panel of 6
 students.\[2\]
 
-|  ID | prof\_ID | score | age | bty\_avg | gender | ethnicity    | language | rank         |
-| --: | -------: | ----: | --: | -------: | :----- | :----------- | :------- | :----------- |
-| 140 |       25 |   4.8 |  34 |    7.833 | female | not minority | english  | tenure track |
-| 164 |       31 |   4.4 |  63 |    4.333 | male   | not minority | english  | teaching     |
-|  64 |       12 |   4.2 |  37 |    4.333 | male   | not minority | english  | teaching     |
-| 178 |       34 |   4.2 |  47 |    4.333 | female | minority     | english  | tenure track |
-| 440 |       89 |   3.6 |  35 |    7.833 | female | minority     | english  | tenure track |
+|  ID | prof\_ID | score | age | bty\_avg | gender | ethnicity    | language    | rank         |
+| --: | -------: | ----: | --: | -------: | :----- | :----------- | :---------- | :----------- |
+| 377 |       77 |   4.5 |  38 |    2.500 | female | not minority | english     | teaching     |
+| 431 |       87 |   4.5 |  33 |    5.833 | male   | not minority | english     | tenure track |
+| 147 |       27 |   4.4 |  52 |    4.833 | male   | minority     | non-english | tenured      |
+| 346 |       70 |   4.4 |  43 |    3.500 | male   | not minority | english     | tenure track |
+| 461 |       94 |   4.4 |  42 |    5.333 | female | minority     | non-english | tenure track |
 
 ### 1\. Focus less on p-value stars, more confidence intervals
 
