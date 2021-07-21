@@ -179,7 +179,7 @@
 #'   \item{size}{Size of school enrollment; small 13-341 students, medium 342-541 students, large 542-4264 students.}
 #' }
 #' @source The original source of the data are Massachusetts Department of
-#' Education reports <http://profiles.doe.mass.edu/state_report/>, however
+#' Education reports <https://profiles.doe.mass.edu/state_report/>, however
 #' the data was downloaded from Kaggle at <https://www.kaggle.com/ndalziel/massachusetts-public-schools-data>
 "MA_schools"
 
