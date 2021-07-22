@@ -30,7 +30,9 @@ regression. These tools leverage the well-developed `tidyverse` and
 
 This R package is designed to supplement the book “Statistical Inference
 via Data Science: A ModernDive into R and the Tidyverse” available at
-[ModernDive.com](https://moderndive.com/).
+[ModernDive.com](https://moderndive.com/). For more background, read our
+[Journal of Open Source Education
+paper](https://doi.org/10.21105/jose.00115).
 
 ## Installation
 
@@ -167,16 +169,15 @@ included for a random sample of 5 courses\[1\]:
     evaluation score out of 5 as given by the students in this course.
 3.  The remaining variables are demographic variables describing that
     course’s instructor, including `bty_avg` (average “beauty” score)
-    for that professor as given by a panel of 6
-students.\[2\]
+    for that professor as given by a panel of 6 students.\[2\]
 
-|  ID | prof\_ID | score | age | bty\_avg | gender | ethnicity    | language    | rank         |
-| --: | -------: | ----: | --: | -------: | :----- | :----------- | :---------- | :----------- |
-| 377 |       77 |   4.5 |  38 |    2.500 | female | not minority | english     | teaching     |
-| 431 |       87 |   4.5 |  33 |    5.833 | male   | not minority | english     | tenure track |
-| 147 |       27 |   4.4 |  52 |    4.833 | male   | minority     | non-english | tenured      |
-| 346 |       70 |   4.4 |  43 |    3.500 | male   | not minority | english     | tenure track |
-| 461 |       94 |   4.4 |  42 |    5.333 | female | minority     | non-english | tenure track |
+|  ID | prof\_ID | score | age | bty\_avg | gender | ethnicity    | language | rank         |
+| --: | -------: | ----: | --: | -------: | :----- | :----------- | :------- | :----------- |
+| 444 |       91 |   4.1 |  52 |    4.500 | female | not minority | english  | tenured      |
+|  97 |       18 |   4.1 |  48 |    4.333 | male   | not minority | english  | teaching     |
+| 340 |       70 |   4.8 |  43 |    3.500 | male   | not minority | english  | tenure track |
+|  58 |       10 |   4.7 |  47 |    5.500 | male   | not minority | english  | teaching     |
+| 375 |       76 |   3.7 |  43 |    4.167 | female | minority     | english  | tenured      |
 
 ### 1\. Focus less on p-value stars, more confidence intervals
 
@@ -284,8 +285,7 @@ get_regression_table(score_model) %>%
 
 How can we extract point-by-point information from a regression model,
 such as the fitted/predicted values and the residuals? (Note we only
-display the first 10 out of 463 of such values for brevity’s
-    sake.)
+display the first 10 out of 463 of such values for brevity’s sake.)
 
 ``` r
 fitted(score_model)
@@ -402,8 +402,7 @@ get_regression_points(score_model, newdata = new_prof)
 Let’s do another example, this time using the Kaggle [House Prices:
 Advanced Regression
 Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
-practice competition ( displays the homepage for this
-competition).
+practice competition ( displays the homepage for this competition).
 
 <div class="figure" style="text-align: center">
 
@@ -457,8 +456,7 @@ write_csv(submission, "submission.csv")
 
 After submitting `submission.csv` to the leaderboard for this Kaggle
 competition, we obtain a “root mean squared logarithmic error” (RMSLE)
-score of 0.42918 as seen in
-.
+score of 0.42918 as seen in .
 
 <div class="figure">
 
@@ -466,8 +464,7 @@ score of 0.42918 as seen in
 
 <p class="caption">
 
-Resulting Kaggle RMSLE
-score.
+Resulting Kaggle RMSLE score.
 
 </p>
 
