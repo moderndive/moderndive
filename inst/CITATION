@@ -1,0 +1,17 @@
+citHeader("To cite moderndive in publications, please use:")
+
+citEntry(
+    entry = "Article",
+    author = personList(as.person("Albert Y. Kim"), as.person("Chester Ismay"), as.person("Max Kuhn")),
+    title = "Take a moderndive into introductory linear regression with R",
+    journal = "The Journal of Open Source Education",
+    year = 2021,
+    volume = 4,
+    number = 41,
+    issue = 115,
+    url = "https://doi.org/10.21105/jose.00115",
+    textVersion = paste("Kim, A. Y. and Ismay, C. and Kuhn, M. (2021)",
+        "Take a moderndive into introductory linear regression with R",
+        "Journal of Open Source Education. 4(41), 115", 
+        "https://doi.org/10.21105/jose.00115")
+)
