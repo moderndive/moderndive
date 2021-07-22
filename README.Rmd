@@ -9,6 +9,7 @@ knitr::opts_chunk$set(echo = TRUE, fig.path = "man/figures/", message=FALSE, war
 ## moderndive R Package <img src="https://github.com/moderndive/moderndive/blob/master/images/hex_blue_text.png?raw=true" align="right" width=125 />
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive) 
+[![DOI](https://zenodo.org/badge/115030738.svg)](https://zenodo.org/badge/latestdoi/115030738)
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![GitHub Actions Status](https://github.com/moderndive/moderndive/workflows/R-CMD-check/badge.svg)](https://github.com/moderndive/moderndive/actions)
 [![Codecov test coverage](https://codecov.io/gh/moderndive/moderndive/branch/master/graph/badge.svg)](https://codecov.io/gh/moderndive/moderndive?branch=master)
@@ -83,7 +84,7 @@ Linear regression has long been a staple of introductory statistics courses. Whi
 
 ## Contributor code of conduct
 
-Please note that this project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+Please note that this project is released with a [Contributor Code of Conduct](CONTRIBUTING.md). By participating in this project you agree to abide by its terms.
 
 
 
