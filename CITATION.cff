@@ -1,0 +1,13 @@
+cff-version: 1.1.0
+message: "If you use this software, please cite it as below."
+authors:
+  - family-names: Kim
+    given-names: Albert Y.
+    orcid: https://orcid.org/0000-0001-7824-306X
+  - family-names: Ismay
+    given-names: Chester
+    orcid: https://orcid.org/0000-0003-2820-2547
+title: "moderndive: Tidyverse-Friendly Introductory Linear Regression"
+version: 0.5.2
+doi: 10.5281/zenodo.5119261
+date-released: 2021-07-21
