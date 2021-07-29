@@ -89,7 +89,7 @@
 <code>moderndive</code>: Datasets and functions for <code>tidyverse</code>-friendly introductory linear regression</h1>
                         <h4 class="author">Albert Y. Kim, Chester Ismay, and Max Kuhn</h4>
             
-            <h4 class="date">2021-07-22</h4>
+            <h4 class="date">2021-07-29</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/moderndive/moderndive/blob/master/vignettes/moderndive.Rmd"><code>vignettes/moderndive.Rmd</code></a></small>
       <div class="hidden name"><code>moderndive.Rmd</code></div>
@@ -244,7 +244,7 @@
 <p>Get a tidy regression table <strong>with confidence intervals</strong>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span>
-<span class="co">## # A tibble: 2 x 7</span>
+<span class="co">## # A tibble: 2 × 7</span>
 <span class="co">##   term      estimate std_error statistic p_value lower_ci upper_ci</span>
 <span class="co">##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">## 1 intercept    4.46      0.127     35.2    0        4.21     4.71 </span>
@@ -254,7 +254,7 @@
 <p>Get information on each point/observation in your regression, including fitted/predicted values and residuals, in a single data frame:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_regression_points.html">get_regression_points</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span>
-<span class="co">## # A tibble: 463 x 5</span>
+<span class="co">## # A tibble: 463 × 5</span>
 <span class="co">##       ID score   age score_hat residual</span>
 <span class="co">##    &lt;int&gt; &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">##  1     1   4.7    36      4.25    0.452</span>
@@ -273,7 +273,7 @@
 <p>Get scalar summaries of a regression fit including <span class="math inline">\(R^2\)</span> and <span class="math inline">\(R^2_{adj}\)</span> but also the (root) mean-squared error:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_regression_summaries.html">get_regression_summaries</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span>
-<span class="co">## # A tibble: 1 x 9</span>
+<span class="co">## # A tibble: 1 × 9</span>
 <span class="co">##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df</span>
 <span class="co">##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;</span>
 <span class="co">## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     1</span>
@@ -344,7 +344,7 @@ Visualization of parallel slopes model.
 <p>Instead of <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code>, let’s use the <code><a href="../reference/get_regression_table.html">get_regression_table()</a></code> function:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span>
-<span class="co">## # A tibble: 2 x 7</span>
+<span class="co">## # A tibble: 2 × 7</span>
 <span class="co">##   term      estimate std_error statistic p_value lower_ci upper_ci</span>
 <span class="co">##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">## 1 intercept    4.46      0.127     35.2    0        4.21     4.71 </span>
@@ -352,7 +352,7 @@ Visualization of parallel slopes model.
 <p>Observe how the p-value stars are omitted and confidence intervals for the point estimates of all regression parameters are included by default. By including them in the output, we can then emphasize to students that they “surround” the point estimates in the <code>estimate</code> column. Note the confidence level is defaulted to 95%; this default can be changed using the <code>conf.level</code> argument:</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">score_model</span>, conf.level <span class="op">=</span> <span class="fl">0.99</span><span class="op">)</span>
-<span class="co">## # A tibble: 2 x 7</span>
+<span class="co">## # A tibble: 2 × 7</span>
 <span class="co">##   term      estimate std_error statistic p_value lower_ci upper_ci</span>
 <span class="co">##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">## 1 intercept    4.46      0.127     35.2    0        4.13     4.79 </span>
@@ -439,7 +439,7 @@ Visualization of parallel slopes model.
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">score_model_points</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_regression_points.html">get_regression_points</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span>
 <span class="va">score_model_points</span></code></pre></div>
-<pre><code>## # A tibble: 10 x 5
+<pre><code>## # A tibble: 10 × 5
 ##       ID score   age score_hat residual
 ##    &lt;int&gt; &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;
 ##  1     1   4.7    36      4.25    0.452
@@ -488,7 +488,7 @@ Partial residual residual plot over age.
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">new_prof</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span><span class="op">(</span>age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">39</span>, <span class="fl">42</span><span class="op">)</span><span class="op">)</span>
 <span class="fu"><a href="../reference/get_regression_points.html">get_regression_points</a></span><span class="op">(</span><span class="va">score_model</span>, newdata <span class="op">=</span> <span class="va">new_prof</span><span class="op">)</span>
-<span class="co">## # A tibble: 2 x 3</span>
+<span class="co">## # A tibble: 2 × 3</span>
 <span class="co">##      ID   age score_hat</span>
 <span class="co">##   &lt;int&gt; &lt;dbl&gt;     &lt;dbl&gt;</span>
 <span class="co">## 1     1    39      4.23</span>
@@ -560,7 +560,7 @@ Resulting Kaggle RMSLE score.
 <p>Say we wanted to extract the scalar model summaries at the bottom of this output, such as <span class="math inline">\(R^2\)</span>, <span class="math inline">\(R^2_{adj}\)</span>, and the <span class="math inline">\(F\)</span>-statistic. We can do so using the <code><a href="../reference/get_regression_summaries.html">get_regression_summaries()</a></code> function.</p>
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_regression_summaries.html">get_regression_summaries</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span>
-<span class="co">## # A tibble: 1 x 9</span>
+<span class="co">## # A tibble: 1 × 9</span>
 <span class="co">##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df</span>
 <span class="co">##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;</span>
 <span class="co">## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     1</span>
@@ -585,7 +585,7 @@ Interaction (left) and parallel slopes (right) models.
 <code class="sourceCode R"><span class="co"># Regression table for interaction model:</span>
 <span class="va">interaction_evals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">score</span> <span class="op">~</span> <span class="va">age</span> <span class="op">*</span> <span class="va">ethnicity</span>, data <span class="op">=</span> <span class="va">evals</span><span class="op">)</span>
 <span class="fu"><a href="../reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">interaction_evals</span><span class="op">)</span>
-<span class="co">## # A tibble: 4 x 7</span>
+<span class="co">## # A tibble: 4 × 7</span>
 <span class="co">##   term          estimate std_error statistic p_value lower_ci upper_ci</span>
 <span class="co">##   &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">## 1 intercept        2.61      0.518      5.04   0        1.59     3.63 </span>
@@ -596,7 +596,7 @@ Interaction (left) and parallel slopes (right) models.
 <span class="co"># Regression table for parallel slopes model:</span>
 <span class="va">parallel_slopes_evals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">score</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">ethnicity</span>, data <span class="op">=</span> <span class="va">evals</span><span class="op">)</span>
 <span class="fu"><a href="../reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">parallel_slopes_evals</span><span class="op">)</span>
-<span class="co">## # A tibble: 3 x 7</span>
+<span class="co">## # A tibble: 3 × 7</span>
 <span class="co">##   term          estimate std_error statistic p_value lower_ci upper_ci</span>
 <span class="co">##   &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">## 1 intercept        4.37      0.136     32.1    0        4.1      4.63 </span>
@@ -640,7 +640,7 @@ Interaction (left) and parallel slopes (right) models.
 <span class="va">interaction_MA</span> <span class="op">&lt;-</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">average_sat_math</span> <span class="op">~</span> <span class="va">perc_disadvan</span> <span class="op">*</span> <span class="va">size</span>, data <span class="op">=</span> <span class="va">MA_schools</span><span class="op">)</span>
 <span class="fu"><a href="../reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">interaction_MA</span><span class="op">)</span>
-<span class="co">## # A tibble: 6 x 7</span>
+<span class="co">## # A tibble: 6 × 7</span>
 <span class="co">##   term          estimate std_error statistic p_value lower_ci upper_ci</span>
 <span class="co">##   &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">## 1 intercept      594.       13.3      44.7     0      568.     620.   </span>
@@ -654,7 +654,7 @@ Interaction (left) and parallel slopes (right) models.
 <span class="va">parallel_slopes_MA</span> <span class="op">&lt;-</span>
   <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">average_sat_math</span> <span class="op">~</span> <span class="va">perc_disadvan</span> <span class="op">+</span> <span class="va">size</span>, data <span class="op">=</span> <span class="va">MA_schools</span><span class="op">)</span>
 <span class="fu"><a href="../reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">parallel_slopes_MA</span><span class="op">)</span>
-<span class="co">## # A tibble: 4 x 7</span>
+<span class="co">## # A tibble: 4 × 7</span>
 <span class="co">##   term          estimate std_error statistic p_value lower_ci upper_ci</span>
 <span class="co">##   &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">## 1 intercept       588.       7.61     77.3     0       573.     603.  </span>
@@ -689,7 +689,7 @@ Interaction (left) and parallel slopes (right) models.
 </ol>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="../reference/get_regression_points.html">get_regression_points</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span>
-<span class="co">## # A tibble: 463 x 5</span>
+<span class="co">## # A tibble: 463 × 5</span>
 <span class="co">##       ID score   age score_hat residual</span>
 <span class="co">##    &lt;int&gt; &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
 <span class="co">##  1     1   4.7    36      4.25    0.452</span>
@@ -704,7 +704,7 @@ Interaction (left) and parallel slopes (right) models.
 <span class="co">## 10    10   4.5    40      4.22    0.276</span>
 <span class="co">## # … with 453 more rows</span>
 <span class="fu">broom</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/augment.html">augment</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span>
-<span class="co">## # A tibble: 463 x 8</span>
+<span class="co">## # A tibble: 463 × 8</span>
 <span class="co">##    score   age .fitted  .resid    .hat .sigma   .cooksd .std.resid</span>
 <span class="co">##    &lt;dbl&gt; &lt;int&gt;   &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;  &lt;dbl&gt;     &lt;dbl&gt;      &lt;dbl&gt;</span>
 <span class="co">##  1   4.7    36    4.25  0.452  0.00560  0.542 0.00197        0.837</span>

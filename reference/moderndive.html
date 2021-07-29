@@ -150,14 +150,14 @@ into R and the tidyverse" available at <a href='https://moderndive.com/'>https:/
 
 <span class='co'># Regression tables:</span>
 <span class='fu'><a href='get_regression_table.html'>get_regression_table</a></span><span class='op'>(</span><span class='va'>mpg_model</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 7</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 × 7</span>
 #&gt;   term      estimate std_error statistic p_value lower_ci upper_ci
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span> intercept   30.1        1.63     18.4        0   26.8     33.4  
 #&gt; <span style='color: #BCBCBC;'>2</span> hp          -<span style='color: #BB0000;'>0.068</span>      0.01     -<span style='color: #BB0000;'>6.74</span>       0   -<span style='color: #BB0000;'>0.089</span>   -<span style='color: #BB0000;'>0.048</span></div><div class='input'>
 <span class='co'># Information on each point in a regression:</span>
 <span class='fu'><a href='get_regression_points.html'>get_regression_points</a></span><span class='op'>(</span><span class='va'>mpg_model</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 32 x 5</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 32 × 5</span>
 #&gt;       ID   mpg    hp mpg_hat residual
 #&gt;    <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'> 1</span>     1  21     110    22.6   -<span style='color: #BB0000;'>1.59</span> 
@@ -173,7 +173,7 @@ into R and the tidyverse" available at <a href='https://moderndive.com/'>https:/
 #&gt; <span style='color: #949494;'># … with 22 more rows</span></div><div class='input'>
 <span class='co'># Regression summaries</span>
 <span class='fu'><a href='get_regression_summaries.html'>get_regression_summaries</a></span><span class='op'>(</span><span class='va'>mpg_model</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 x 9</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1 × 9</span>
 #&gt;   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df  nobs
 #&gt;       <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span>     0.602         0.589  14.0  3.74  3.86      45.5       0     1    32</div><div class='input'>

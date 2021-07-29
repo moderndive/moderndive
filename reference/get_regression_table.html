@@ -194,14 +194,14 @@ points of all confidence intervals for all parameters <code>lower_ci</code> and
 
 <span class='co'># Get regression table:</span>
 <span class='fu'>get_regression_table</span><span class='op'>(</span><span class='va'>mpg_model</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 7</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 × 7</span>
 #&gt;   term      estimate std_error statistic p_value lower_ci upper_ci
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span> intercept    37.9      2.07      18.3        0    33.6     42.1 
 #&gt; <span style='color: #BCBCBC;'>2</span> cyl          -<span style='color: #BB0000;'>2.88</span>     0.322     -<span style='color: #BB0000;'>8.92</span>       0    -<span style='color: #BB0000;'>3.53</span>    -<span style='color: #BB0000;'>2.22</span></div><div class='input'>
 <span class='co'># Vary confidence level of confidence intervals</span>
 <span class='fu'>get_regression_table</span><span class='op'>(</span><span class='va'>mpg_model</span>, conf.level <span class='op'>=</span> <span class='fl'>0.99</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 7</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 × 7</span>
 #&gt;   term      estimate std_error statistic p_value lower_ci upper_ci
 #&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
 #&gt; <span style='color: #BCBCBC;'>1</span> intercept    37.9      2.07      18.3        0    32.2     43.6 
