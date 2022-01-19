@@ -1,3 +1,33 @@
+#' Alaska flights data
+#'
+#' On-time data for all Alaska Airlines flights that departed NYC (i.e. JFK, LGA or EWR) 
+#' in 2013. This is a subset of the `flights` data frame from `nycflights13`.
+#'
+#' @format A data frame of 714 rows representing Alaska Airlines flights and 19 variables
+#' \describe{
+#' \item{year, month, day}{Date of departure.}
+#' \item{dep_time, arr_time}{Actual departure and arrival times (format HHMM or HMM), local tz.}
+#' \item{sched_dep_time, sched_arr_time}{Scheduled departure and arrival times (format HHMM or HMM), local tz.}
+#' \item{dep_delay, arr_delay}{Departure and arrival delays, in minutes.
+#'   Negative times represent early departures/arrivals.}
+#' \item{carrier}{Two letter carrier abbreviation. See [`nycflights13::airlines`]
+#'   to get name.}
+#' \item{flight}{Flight number.}
+#' \item{tailnum}{Plane tail number. See [`nycflights13::planes`] for additional metadata.}
+#' \item{origin, dest}{Origin and destination. See [`nycflights13::airports`] for
+#'   additional metadata.}
+#' \item{air_time}{Amount of time spent in the air, in minutes.}
+#' \item{distance}{Distance between airports, in miles.}
+#' \item{hour, minute}{Time of scheduled departure broken into hour and minutes.}
+#' \item{time_hour}{Scheduled date and hour of the flight as a `POSIXct` date.
+#'   Along with `origin`, can be used to join flights data to [`nycflights13::weather`] data.}
+#' }
+#' @seealso [`nycflights13::flights`].
+#' @source RITA, Bureau of transportation statistics <https://www.transtats.bts.gov/>
+"alaska_flights"
+
+
+
 #' A sample of 50 pennies
 #'
 #' A sample of 50 pennies contained in a 50 cent roll from Florence Bank on
@@ -44,7 +74,7 @@
 #'   \item{year}{Year of minting}
 #'   \item{age_in_2011}{Age in 2011}
 #' }
-#' @source StatCrunch <https://www.statcrunch.com/app/index.php?dataid=301596>
+#' @source StatCrunch <https://www.statcrunch.com:443/app/index.html?dataid=301596>
 "pennies"
 
 
@@ -59,7 +89,7 @@
 #'   \item{year}{Year of minting}
 #'   \item{age_in_2011}{Age in 2011}
 #' }
-#' @source StatCrunch <https://www.statcrunch.com/app/index.php?dataid=301596>
+#' @source StatCrunch <https://www.statcrunch.com:443/app/index.html?dataid=301596>
 #' @seealso [pennies()]
 "orig_pennies_sample"
 

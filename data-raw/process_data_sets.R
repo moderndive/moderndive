@@ -6,12 +6,17 @@ library(usethis)
 library(janitor)
 library(openintro)
 library(ggplot2movies)
+library(nycflights13)
 
 
 #-------------------------------------------------------------------------------
 # Datasets: Documented in R/datasets.R
 #-------------------------------------------------------------------------------
 # Random sample of 68 action and romance movies from ggplot2movies::movies.
+alaska_flights <- flights %>% 
+  filter(carrier == "AS")
+usethis::use_data(alaska_flights, overwrite = TRUE)
+
 
 # Set random number generator seed value for reproducible/replicable random
 # sampling:
@@ -225,7 +230,7 @@ usethis::use_data(bowl_samples, overwrite = TRUE)
 # Pennies: Documented in R/pennie.R
 #-------------------------------------------------------------------------------
 # Population of 800 pennies from
-# https://www.statcrunch.com/app/index.php?dataid=301596
+# https://www.statcrunch.com:443/app/index.html?dataid=301596
 pennies <- read_csv("data-raw/population_of_pennies.csv")
 usethis::use_data(pennies, overwrite = TRUE)
 
