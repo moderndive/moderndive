@@ -230,7 +230,7 @@ usethis::use_data(bowl_samples, overwrite = TRUE)
 # Pennies: Documented in R/pennie.R
 #-------------------------------------------------------------------------------
 # Population of 800 pennies from
-# https://www.statcrunch.com/app/index.php?dataid=301596
+# https://www.statcrunch.com:443/app/index.html?dataid=301596
 pennies <- read_csv("data-raw/population_of_pennies.csv")
 usethis::use_data(pennies, overwrite = TRUE)
 

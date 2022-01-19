@@ -23,8 +23,7 @@
 #'   Along with `origin`, can be used to join flights data to [`nycflights13::weather`] data.}
 #' }
 #' @seealso [`nycflights13::flights`].
-#' @source RITA, Bureau of transportation statistics,
-#'  <https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236>
+#' @source RITA, Bureau of transportation statistics <https://www.transtats.bts.gov/>
 "alaska_flights"
 
 
@@ -75,7 +74,7 @@
 #'   \item{year}{Year of minting}
 #'   \item{age_in_2011}{Age in 2011}
 #' }
-#' @source StatCrunch <https://www.statcrunch.com/app/index.php?dataid=301596>
+#' @source StatCrunch <https://www.statcrunch.com:443/app/index.html?dataid=301596>
 "pennies"
 
 
@@ -90,7 +89,7 @@
 #'   \item{year}{Year of minting}
 #'   \item{age_in_2011}{Age in 2011}
 #' }
-#' @source StatCrunch <https://www.statcrunch.com/app/index.php?dataid=301596>
+#' @source StatCrunch <https://www.statcrunch.com:443/app/index.html?dataid=301596>
 #' @seealso [pennies()]
 "orig_pennies_sample"
 
