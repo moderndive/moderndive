@@ -1,6 +1,6 @@
-# moderndive 0.5.2.9000
+# moderndive 0.5.3
 
-* 
+* Added `alaska_flights` consisteing of Alaska Airlines subset of `nycflights13::flights`
 
 
 

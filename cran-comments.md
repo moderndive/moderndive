@@ -1,6 +1,6 @@
 ## Test environments
 
-* local macOS install, R 4.0.2
+* local macOS install, R 4.0.3
 * win-builder (release, devel, oldrelease)
 * GitHub Actions
     + ubuntu-16.04: latest
@@ -14,8 +14,5 @@
 
 ## R CMD check results
 
-* Rhub Windows Server 2008 R2 SP1, R-devel, 32/64 bit returned the following NOTES:
-    + Package suggested but not available for checking: 'readr'. I am able to install this package from CRAN without issue
-    + Unable to find GhostScript executable to run checks on size reduction. I believe this issue is temporary as it wasn't flagged yesterday
-* I obtained the following NOTE about (possibly) invalid URLs, but it works just fine: https://profiles.doe.mass.edu/state_report/
+* 
 
