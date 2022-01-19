@@ -1,3 +1,10 @@
+## Resubmission
+
+This is a resubmission of my earlier submission of moderndive v0.5.3. Through
+a mistake of my own I submitted incorrect .Rd man files that had possibly
+invalid URL's. Apologies for the trouble. 
+
+
 ## Test environments
 
 * local macOS install, R 4.0.3
