@@ -12,7 +12,7 @@ A data frame of 40 rows representing 40 randomly sampled pennies from \code{\lin
 }
 }
 \source{
-StatCrunch \url{https://www.statcrunch.com/app/index.php?dataid=301596}
+StatCrunch \url{https://www.statcrunch.com:443/app/index.html?dataid=301596}
 }
 \usage{
 orig_pennies_sample

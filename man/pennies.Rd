@@ -12,7 +12,7 @@ A data frame of 800 rows representing different pennies and 2 variables
 }
 }
 \source{
-StatCrunch \url{https://www.statcrunch.com/app/index.php?dataid=301596}
+StatCrunch \url{https://www.statcrunch.com:443/app/index.html?dataid=301596}
 }
 \usage{
 pennies

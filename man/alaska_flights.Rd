@@ -26,8 +26,7 @@ Along with \code{origin}, can be used to join flights data to \code{\link[nycfli
 }
 }
 \source{
-RITA, Bureau of transportation statistics,
-\url{https://www.transtats.bts.gov/DL_SelectFields.asp?Table_ID=236}
+RITA, Bureau of transportation statistics \url{https://www.transtats.bts.gov/}
 }
 \usage{
 alaska_flights
