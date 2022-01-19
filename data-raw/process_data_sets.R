@@ -6,12 +6,17 @@ library(usethis)
 library(janitor)
 library(openintro)
 library(ggplot2movies)
+library(nycflights13)
 
 
 #-------------------------------------------------------------------------------
 # Datasets: Documented in R/datasets.R
 #-------------------------------------------------------------------------------
 # Random sample of 68 action and romance movies from ggplot2movies::movies.
+alaska_flights <- flights %>% 
+  filter(carrier == "AS")
+usethis::use_data(alaska_flights, overwrite = TRUE)
+
 
 # Set random number generator seed value for reproducible/replicable random
 # sampling:
