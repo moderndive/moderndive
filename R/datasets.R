@@ -23,7 +23,7 @@
 #'   Along with `origin`, can be used to join flights data to [`nycflights13::weather`] data.}
 #' }
 #' @seealso [`nycflights13::flights`].
-#' @source RITA, Bureau of transportation statistics <https://www.transtats.bts.gov/>
+#' @source RITA, Bureau of transportation statistics
 "alaska_flights"
 
 
