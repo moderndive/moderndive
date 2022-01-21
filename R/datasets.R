@@ -1,3 +1,29 @@
+#' Early January hourly weather data
+#'
+#' Hourly meterological data for LGA, JFK and EWR for the month of January 2013. 
+#' This is a subset of the `weather` data frame from `nycflights13`.
+#'
+#' @format A data frame of 358 rows representing hourly measurements and 15 variables
+#' \describe{
+#' \item{origin}{Weather station. Named `origin` to facilitate merging with
+#'   [`nycflights13::flights`] data.}
+#' \item{year, month, day, hour}{Time of recording.}
+#' \item{temp, dewp}{Temperature and dewpoint in F.}
+#' \item{humid}{Relative humidity.}
+#' \item{wind_dir, wind_speed, wind_gust}{Wind direction (in degrees), speed
+#'   and gust speed (in mph).}
+#' \item{precip}{Precipitation, in inches.}
+#' \item{pressure}{Sea level pressure in millibars.}
+#' \item{visib}{Visibility in miles.}
+#' \item{time_hour}{Date and hour of the recording as a `POSIXct` date.}
+#' }
+#' @seealso [`nycflights13::weather`].
+#' @source ASOS download from Iowa Environmental Mesonet,
+#'   <https://mesonet.agron.iastate.edu/request/download.phtml>.
+"early_january_weather"
+
+
+
 #' Alaska flights data
 #'
 #' On-time data for all Alaska Airlines flights that departed NYC (i.e. JFK, LGA or EWR) 

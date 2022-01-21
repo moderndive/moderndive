@@ -12,7 +12,12 @@ library(nycflights13)
 #-------------------------------------------------------------------------------
 # Datasets: Documented in R/datasets.R
 #-------------------------------------------------------------------------------
-# Random sample of 68 action and romance movies from ggplot2movies::movies.
+early_january_weather <- weather %>% 
+  filter(origin == "EWR" & month == 1 & day <= 15)
+usethis::use_data(early_january_weather, overwrite = TRUE)
+
+
+# Alaska airlines flights only, used in moderndive.com Chapter 2 Data Viz
 alaska_flights <- flights %>% 
   filter(carrier == "AS")
 usethis::use_data(alaska_flights, overwrite = TRUE)
