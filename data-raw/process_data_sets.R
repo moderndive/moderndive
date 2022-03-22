@@ -272,3 +272,18 @@ pennies_resamples <-
   select(replicate, everything()) %>%
   unnest(cols = c(data))
 usethis::use_data(pennies_resamples, overwrite = TRUE)
+
+
+
+#-------------------------------------------------------------------------------
+# Coffee quality data
+# Google Sheet here: https://docs.google.com/spreadsheets/d/1fscb1AbsSXWqqws-hhWAZfT580ms_FvOkBBQsJwozSY/edit
+# Original Github source: https://github.com/jldbc/coffee-quality-database
+#-------------------------------------------------------------------------------
+
+coffee_quality_data <- 
+  "https://wjhopper.github.io/SDS-201/data/coffee_ratings.csv" %>%
+  readr::read_csv()
+
+usethis::use_data(coffee_quality_data, overwrite = TRUE)
+
