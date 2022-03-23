@@ -362,3 +362,25 @@
 #' }
 #' @seealso This data was sampled from the `movies` data frame in the `ggplot2movies` package.
 "movies_sample"
+
+
+#' Avocado Prices by US Region
+#' 
+#' Gathered from <https://docs.google.com/spreadsheets/d/1cNuj9V-9Xe8fqV3DQRhvsXJhER3zTkO1dSsQ1Q0j96g/edit#gid=1419070688>
+#' @format A data frame of 54 regions over 3 years of weekly results
+#' \describe{
+#' \item{Date}{Week of Data Recording}
+#' \item{Average Price}{Average Price of Avocado}
+#' \item{Total Volume}{Total Amount of Avocados}
+#' \item{Small Haas Sold}{Amount of Small Haas Avocados Sold}
+#' \item{Large Haas Sold}{Amount of Large Haas Avocados Sold}
+#' \item{XLarge Haas Sold}{Amount of Extra Large Haas Avocados Sold}
+#' \item{Total Bags}{Total Amount of Bags of Avocados}
+#' \items{Small Bags}{Total Amount of Bags of Small Haas Avocados}
+#' \items{Large Bags}{Total Amount of Bags of Large Haas Avocados}
+#' \items{XLarge Bags}{Total Amount of Bags of Extra Large Haas Avocados}
+#' \items{Type}{Type of Sale}
+#' \items{Year}{Year of Sale}
+#' \items{Region}{Region Where Sale Took Place}
+#' }
+#' "avocado_prices"
