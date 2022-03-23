@@ -272,3 +272,8 @@ pennies_resamples <-
   select(replicate, everything()) %>%
   unnest(cols = c(data))
 usethis::use_data(pennies_resamples, overwrite = TRUE)
+
+# Massachussets 2020 vs. 2019 Traffic Data
+ma_traffic_2020_vs_2019 <- 
+  read_csv("data-raw/Massachusetts_2020_vs_2019_Traffic_Data.csv") %>% 
+  janitor::clean_names()
