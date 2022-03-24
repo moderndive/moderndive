@@ -376,9 +376,9 @@
 #' \item{large_hass_sold}{Amount of Large Haas Avocados Sold}
 #' \item{xlarage_hass_sold}{Amount of Extra Large Haas Avocados Sold}
 #' \item{total_bags}{Total Amount of Bags of Avocados}
-#' \items{Small.Bags}{Total Amount of Bags of Small Haas Avocados}
-#' \items{Large.Bags}{Total Amount of Bags of Large Haas Avocados}
-#' \items{XLarge.Bags}{Total Amount of Bags of Extra Large Haas Avocados}
+#' \items{small_bags}{Total Amount of Bags of Small Haas Avocados}
+#' \items{large_bags}{Total Amount of Bags of Large Haas Avocados}
+#' \items{x_large_bags}{Total Amount of Bags of Extra Large Haas Avocados}
 #' \items{type}{Type of Sale}
 #' \items{year}{Year of Sale}
 #' \items{region}{Region Where Sale Took Place}
