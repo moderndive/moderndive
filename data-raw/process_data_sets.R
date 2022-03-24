@@ -281,4 +281,5 @@ avocados <-
   "https://wjhopper.github.io/SDS-201/data/avocados.csv" %>%
   read_csv() %>%
   janitor::clean_names()
+avocados$type <- as.factor(avocados$type)
 usethis::use_data(avocados, overwrite = TRUE)
