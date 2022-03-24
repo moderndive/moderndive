@@ -10,10 +10,8 @@ Authors@R: c(
     person("Evgeni", "Chasnovski", email = "evgeni.chasnovski@gmail.com", role = "ctb", comment = c(ORCID = "0000-0002-1617-4019")),
     person("Will", "Hopper", email = "wjhopper510@gmail.com", role = "ctb", comment = c(ORCID = "0000-0002-7848-1946")),
     person("Marium", "Tapal", email = "mariumtapal@gmail.com", role = "ctb", comment = c(ORCID = "0000-0001-5093-6462")),
-    person("Quinn", "White", email = "quinnarlise@gmail.com", role = "ctb", comment = c(ORCID = "0000-0001-5399-0237"))
-    )
-    person("Benjamin", "Bruncati", email = "kbruncati@smith.edu", role = "ctb", comment = c(ORCID = ""))
-    )
+    person("Quinn", "White", email = "quinnarlise@gmail.com", role = "ctb", comment = c(ORCID = "0000-0001-5399-0237")),
+    person("Benjamin", "Bruncati", email = "kbruncati@smith.edu", role = "ctb", comment = c(ORCID = "")),
     person("Tianshu", "Zhang", email = "tzhang26@smith.edu", role = "ctb", comment = c(ORCID = ""))
     )
 Maintainer: Albert Y. Kim <albert.ys.kim@gmail.com>
