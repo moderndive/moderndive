@@ -16,7 +16,7 @@ Authors@R: c(
     person("Benjamin", "Bruncati", email = "kbruncati@smith.edu", role = "ctb", comment = c(ORCID = "0000-0001-8545-5984"))
 =======
     person("Quinn", "White", email = "quinnarlise@gmail.com", role = "ctb", comment = c(ORCID = "0000-0001-5399-0237")),
-    person("Benjamin", "Bruncati", email = "kbruncati@smith.edu", role = "ctb", comment = c(ORCID = "")),
+    person("Benjamin", "Bruncati", email = "kbruncati@smith.edu", role = "ctb", comment = c(ORCID = "0000-0001-8545-5984")),
     person("Tianshu", "Zhang", email = "tzhang26@smith.edu", role = "ctb", comment = c(ORCID = ""))
     )
 Maintainer: Albert Y. Kim <albert.ys.kim@gmail.com>
