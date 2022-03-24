@@ -362,3 +362,8 @@
 #' }
 #' @seealso This data was sampled from the `movies` data frame in the `ggplot2movies` package.
 "movies_sample"
+
+
+#' International Power Lifting Results
+#' @docType data
+"intl_powerlifting"
