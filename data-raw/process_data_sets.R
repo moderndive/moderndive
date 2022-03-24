@@ -280,4 +280,3 @@ usethis::use_data(pennies_resamples, overwrite = TRUE)
 avocado_prices <-
   "https://wjhopper.github.io/SDS-201/data/avocados.csv" %>%
   read_csv() 
-usethis::use_data(pennies_resamples, overwrite = TRUE)
