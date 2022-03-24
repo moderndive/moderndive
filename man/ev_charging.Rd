@@ -8,33 +8,33 @@
 A data frame of 3,395 rows on 24 variables, where each row is an electric vehicle
 charging session.
 \describe{
-\item{session_id}{unique identifier specifying the electric vehicle charging session}
-\item{kwh_total}{total energy used at the charging session, in kilowatt hours (kWh)}
-\item{dollars}{quantity of money paid for the charging session in U.S. dollars}
-\item{created}{date and time recorded at the beginning of the charging session}
-\item{ended}{date and time recorded at the end of the charging session}
-\item{start_time}{hour of the day when the charging session began (1 through 24)}
-\item{end_time}{hour of the day when the charging session ended (1 through 24)}
-\item{charge_time_hrs}{length of the charging session in hours}
-\item{weekday}{first three characters of the name of the weekday when the charging session occurred}
-\item{platform}{digital platform the driver used to record the session (android, ios, web)}
-\item{distance}{distance from the charging location to the driver's home, expressed in miles
+\item{session_id}{Unique identifier specifying the electric vehicle charging session}
+\item{kwh_total}{Total energy used at the charging session, in kilowatt hours (kWh)}
+\item{dollars}{Quantity of money paid for the charging session in U.S. dollars}
+\item{created}{Date and time recorded at the beginning of the charging session}
+\item{ended}{Date and time recorded at the end of the charging session}
+\item{start_time}{Hour of the day when the charging session began (1 through 24)}
+\item{end_time}{Hour of the day when the charging session ended (1 through 24)}
+\item{charge_time_hrs}{Length of the charging session in hours}
+\item{weekday}{First three characters of the name of the weekday when the charging session occurred}
+\item{platform}{Digital platform the driver used to record the session (android, ios, web)}
+\item{distance}{Distance from the charging location to the driver's home, expressed in miles
 NA if the driver did not report their address}
-\item{user_id}{unique identifier for each driver}
-\item{station_id}{unique identifier for each charging station}
-\item{location_id}{unique identifier for each location owned by the company where charging stations
+\item{user_id}{Unique identifier for each driver}
+\item{station_id}{Unique identifier for each charging station}
+\item{location_id}{Unique identifier for each location owned by the company where charging stations
 were located}
-\item{manager_vehicle}{binary variable that is 1 when the vehicle is a type commonly used
+\item{manager_vehicle}{Binary variable that is 1 when the vehicle is a type commonly used
 by managers of the firm and 0 otherwise}
-\item{facility_type}{categorical variable that represents the facility type:
+\item{facility_type}{Categorical variable that represents the facility type:
 \itemize{
 \item 1 = manufacturing
 \item 2 = office
 \item 3 = research and development
 \item 4 = other} }
-\item{Mon, Tues, Wed, Thurs, Fri, Sat, Sun}{binary variables; 1 if the charging session took place on that day,
+\item{Mon, Tues, Wed, Thurs, Fri, Sat, Sun}{Binary variables; 1 if the charging session took place on that day,
 0 otherwise}
-\item{reported_zip}{binary variable; 1 if the driver did report their zip code, 0 if they did not}
+\item{reported_zip}{Binary variable; 1 if the driver did report their zip code, 0 if they did not}
 }
 }
 \source{
