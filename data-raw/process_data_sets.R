@@ -276,5 +276,17 @@ usethis::use_data(pennies_resamples, overwrite = TRUE)
 # Electric vehicle charging sessions
 # information from 3,395 high resolution electric vehicle charging sessions
 # Original data from: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/NFPQLW
-electric_vehicle_charging_sessions <- read_csv("https://dataverse.harvard.edu/api/access/datafile/3998649?format=original&gbrecs=true")
-usethis::use_data(electric_vehicle_charging_sessions, overwrite = TRUE)
+ev_charging <- 
+  "https://dataverse.harvard.edu/api/access/datafile/3998649?format=original&gbrecs=true" %>%
+  read_csv() %>%
+  mutate(facilityType = case_when(
+    facilityType == 1 ~ "manufacturing",
+    facilityType == 2 ~ "office",
+    facilityType == 3 ~ "research and development",
+    facilityType == 4 ~ "other"),
+    facilityType = factor(facilityType, levels = c("manufacturing",
+                                                   "office",
+                                                   "research and development",
+                                                   "other")))  
+  
+usethis::use_data(ev_charging, overwrite = TRUE)
