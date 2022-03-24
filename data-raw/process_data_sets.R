@@ -277,7 +277,8 @@ usethis::use_data(pennies_resamples, overwrite = TRUE)
 # Avocado Prices By Region
 # Original Google Sheet here:
 # https://docs.google.com/spreadsheets/d/1cNuj9V-9Xe8fqV3DQRhvsXJhER3zTkO1dSsQ1Q0j96g/edit#gid=1419070688
-avocado_prices <-
+avocados <-
   "https://wjhopper.github.io/SDS-201/data/avocados.csv" %>%
   read_csv() %>%
   janitor::clean_names()
+usethis::use_data(avocados, overwrite = TRUE)
