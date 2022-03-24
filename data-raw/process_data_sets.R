@@ -284,9 +284,10 @@ ev_charging <-
     facilityType == 2 ~ "office",
     facilityType == 3 ~ "research and development",
     facilityType == 4 ~ "other"),
-    facilityType = factor(facilityType, levels = c("manufacturing",
-                                                   "office",
-                                                   "research and development",
-                                                   "other")))  
+    facilityType = factor(facilityType, 
+                          levels = c("manufacturing",
+                                     "office",
+                                     "research and development",
+                                     "other")))  
   
 usethis::use_data(ev_charging, overwrite = TRUE)
