@@ -1,6 +1,6 @@
 # moderndive 0.5.3.9001
 
-* Added `coffee_quality` dataset:  
+* Added `coffee_quality` dataset: 1340 samples of coffee tested for their quality level
 
 # moderndive 0.5.3.9000
 
