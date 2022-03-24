@@ -372,11 +372,10 @@
 #' 
 #' @format A data frame of 264 rows representing a different community in Massachusetts.
 #' \describe{
-#'   \item{Community}{City or Town}
-#'   \item{Functional Class}{Class or group the road belongs to}
-#'   \item{Change_in_Speed}{Average estimated Speed (mph)}
-#'   \item{Change_in_Volume}{Average traffic}
-#'   \item{Change_in_Accidents}{Average number of accidents}
+#'   \item{community}{City or Town}
+#'   \item{functional Class}{Class or group the road belongs to}
+#'   \item{change_in_Speed}{Average estimated Speed (mph)}
+#'   \item{change_in_Volume}{Average traffic}
+#'   \item{change_in_Accidents}{Average number of accidents}
 #' }
-#' 
 "Massachusetts_2020_vs_2019_Traffic_Data"
