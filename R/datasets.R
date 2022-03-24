@@ -367,6 +367,7 @@
 #' Avocado Prices by US Region
 #' 
 #' Gathered from <https://docs.google.com/spreadsheets/d/1cNuj9V-9Xe8fqV3DQRhvsXJhER3zTkO1dSsQ1Q0j96g/edit#gid=1419070688>
+#' 
 #' @format A data frame of 54 regions over 3 years of weekly results
 #' \describe{
 #' \item{date}{Week of Data Recording}
