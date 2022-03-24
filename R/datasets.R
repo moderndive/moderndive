@@ -383,4 +383,4 @@
 #' \items{year}{Year of Sale}
 #' \items{region}{Region Where Sale Took Place}
 #' }
-#' "avocado_prices" 
+#' "avocados" 
