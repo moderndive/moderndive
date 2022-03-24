@@ -362,3 +362,30 @@
 #' }
 #' @seealso This data was sampled from the `movies` data frame in the `ggplot2movies` package.
 "movies_sample"
+
+#' Data from the Coffee Quality Institute's review pages in January 2018
+#'
+#' 1,340 digitized reviews on coffee samples from
+#' <https://database.coffeeinstitute.org/>.
+#'
+#' @format A data frame of 1,340 rows representing each sample of coffee.
+#' \describe{
+#'   \item{total_cup_points}{Number of points in final rating (scale of 0-100)}
+#'   \item{species}{Species of coffee bean plant (Arabica or Robusta)}
+#'   \item{owner}{Owner of coffee plant farm}
+#'   \item{country_of_origin}{Coffee bean's country of origin}
+#'   \item{farm_name}{Name of coffee plant farm}
+#'   \item{lot_number}{Lot number for tested coffee beans}
+#'   \item{mill}{Name of coffee bean's processing facility}
+#'   \item{ico_number}{International Coffee Organization number}
+#'   \item{company}{Name of coffee bean's company}
+#'   \item{altitude}{Altitude at which coffee plants were grown}
+#'   \item{region}{Region where coffee plants were grown}
+#'   \item{producer}{Name of coffee bean roaster}
+#'   \item{number_of_bags}{Number of tested bags}
+#'   \item{bag_weight}{Tested bag weight}
+#'   \item{in_country_partner}{Partner for the country}
+#'   \item{harvest_year}{Year the coffee beans were harvested}
+#'   
+#' }
+"coffee_ratings"
