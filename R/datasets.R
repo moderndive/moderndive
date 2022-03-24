@@ -376,7 +376,7 @@
 #' \item{plurality}{marked 5 for single fetus, otherwise number of fetuses}
 #' \item{outcome}{marked 1 for live birth that survived at least 28 days}
 #' \item{date}{birth date where 1096 is January 1st, 1961}
-#' \item{birth_date}{birth date in mm/dd/yy format}
+#' \item{birthday}{birth date in mm-dd-yyyy format}
 #' \item{gestation}{length of gestation in days, marked 999 if unknown}
 #' \item{sex}{infant's sex, where 1 is male, 2 is female, and 9 is unknown}
 #' \item{wt}{birth weight in ounces, marked 999 if unknown}
