@@ -402,4 +402,4 @@
 #'    0 otherwise}
 #'    \item{reportedZip}{binary variable; 1 if the driver did report their zip code, 0 if they did not}
 #' }
-"electric_vehicle_charging_sessions"
+"ev_charging"
