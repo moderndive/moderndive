@@ -1,3 +1,8 @@
 ## code to prepare `amazon-books` dataset goes here
+library(tidyverse)
 
-usethis::use_data(amazon-books, overwrite = TRUE)
+amazon_books <- readr::read_csv("data-raw/amazon_books.csv")
+amazon_books <- amazon_books %>%
+  janitor::clean_names()
+
+usethis::use_data(amazon_books, overwrite = TRUE)
