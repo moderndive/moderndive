@@ -362,3 +362,21 @@
 #' }
 #' @seealso This data was sampled from the `movies` data frame in the `ggplot2movies` package.
 "movies_sample"
+
+
+#' Massachusetts 2020 vs. 2019 Traffic Data Comparison
+#'
+#' Traffic data comes from two primary sources:
+#' <https://massdot-impact-crashes-vhb.opendata.arcgis.com/datasets/MassDOT::2020-vehicle-level-crash-details/explore> and 
+#' <https://mhd.public.ms2soft.com/tcds/tsearch.asp?loc=Mhd&mod=>
+#' 
+#' @format A data frame of 264 rows representing a different community in Massachusetts.
+#' \describe{
+#'   \item{Community}{City or Town}
+#'   \item{Functional Class}{Class or group the road belongs to}
+#'   \item{Change_in_Speed}{Average estimated Speed (mph)}
+#'   \item{Change_in_Volume}{Average traffic}
+#'   \item{Change_in_Accidents}{Average number of accidents}
+#' }
+#' 
+"Massachusetts_2020_vs_2019_Traffic_Data"
