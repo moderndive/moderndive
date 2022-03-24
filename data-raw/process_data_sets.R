@@ -283,7 +283,5 @@ usethis::use_data(pennies_resamples, overwrite = TRUE)
 
 coffee_quality <- 
   "https://wjhopper.github.io/SDS-201/data/coffee_ratings.csv" %>%
-  readr::read_csv()
-
+  read_csv()
 usethis::use_data(coffee_quality, overwrite = TRUE)
-
