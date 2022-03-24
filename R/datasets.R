@@ -362,3 +362,25 @@
 #' }
 #' @seealso This data was sampled from the `movies` data frame in the `ggplot2movies` package.
 "movies_sample"
+
+
+
+
+#' Data on maternal smoking and infant health
+#' 
+#' Data on maternal smoking and infant health from <https://www.stat.berkeley.edu/~statlabs/labs.html>
+#' 
+#' @format A data frame of 1236 rows of individual mothers.
+#' \describe{
+#' \item{id}{identification number}
+#' \item{plurality}{marked 5 for single fetus, otherwise number of fetuses}
+#' \item{outcome}{marked 1 for live birth that survived at least 28 days}
+#' \item{date}{birth date where 1096 is January 1st, 1961}
+#' \item{birth_date}{birth date in mm/dd/yy format}
+#' \item{gestation}{length of gestation in days, marked 999 if unknown}
+#' \item{sex}{infant's sex, where 1 is male, 2 is female, and 9 is unknown}
+#' \item{wt}{birth weight in ounces, marked 999 if unknown}
+#' \item{parity}{total number of previous pregnancies including fetal deaths and stillbirths, marked 99 if unknown}
+#' \item{race}{mother's race where 0-5 is white, 6 is Mexican, 7 is Black, 8 is Asian, 9 is mixed, and 99 is unknown}
+#' }
+"babies"
