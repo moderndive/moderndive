@@ -1,4 +1,4 @@
-#moderndive 0.5.3.9002
+#moderndive 0.5.3.9003
 
 * Added `avocados` consisting of avocado prices dataset downloaded from the Hass Avocado Board website in May of 2018.
 
