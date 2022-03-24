@@ -366,4 +366,4 @@
 
 #' International Power Lifting Results
 #' @docType data
-"intl_powerlifting"
+"ipf_lifts"
