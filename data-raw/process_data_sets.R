@@ -277,5 +277,4 @@ usethis::use_data(pennies_resamples, overwrite = TRUE)
 ma_traffic_2020_vs_2019 <- 
   read_csv("data-raw/Massachusetts_2020_vs_2019_Traffic_Data.csv") %>% 
   janitor::clean_names()
-
-usethis::use_data(ma_traffic_2020_vs_2019)
+usethis::use_data(ma_traffic_2020_vs_2019, overwrite = TRUE)
