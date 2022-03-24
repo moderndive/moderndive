@@ -288,6 +288,7 @@ ev_charging <-
                           levels = c("manufacturing",
                                      "office",
                                      "research and development",
-                                     "other")))  
+                                     "other")))  %>%
+  janitor::clean_names()
   
 usethis::use_data(ev_charging, overwrite = TRUE)
