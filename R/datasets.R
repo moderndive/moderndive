@@ -1,3 +1,25 @@
+#' #' Random sample of 68 action and romance movies
+#'
+#' A random sample of 325 different genres of books from
+#' <https://dasl.datadescription.com/datafile/amazon-books>.
+#'
+#' @format A data frame of 12 rows movies.
+#' \describe{
+#'   \item{title}{Book title}
+#'   \item{author}{Author who wrote book}
+#'   \item{list price}{recommended retail price of book}
+#'   \item{Amazon price}{lowest price of book shown on Amazon}
+#'   \item{Hard/Paper}{book is either hardcover or paperback}
+#'   \item{NumPages}{number of pages in book}
+#'   \item{Publisher}{Company that issues the book for sale}
+#'   \item{Pub Year}{Year the book was published}
+#'   \item{ISBN-10}{10-character ISBN number}
+#'   \item{Height, width, thick, weight}{height, width, weight and thickness of the book}
+#' }
+#' @source The Data and Story Library (DASL) <https://www.statcrunch.com:443/app/index.html?dataid=301596>
+#' "amazon_books"
+
+#' 
 #' Early January hourly weather data
 #'
 #' Hourly meterological data for LGA, JFK and EWR for the month of January 2013. 
