@@ -386,6 +386,21 @@
 #'   \item{bag_weight}{Tested bag weight}
 #'   \item{in_country_partner}{Partner for the country}
 #'   \item{harvest_year}{Year the coffee beans were harvested}
-#'   
+#'   \item{grading_date}{Day the coffee beans were graded}
+#'   \item{owner_1}{Owner of the coffee beans}
+#'   \item{variety}{Variety of the coffee beans}
+#'   \item{processing_method}{Method used for processing the coffee beans}
+#'   \item{aroma}{Coffee aroma rating}
+#'   \item{flavor}{Coffee flavor rating}
+#'   \item{aftertaste}{Coffee aftertaste rating}
+#'   \item{acidity}{Coffee acidity rating}
+#'   \item{body}{Coffee body rating}
+#'   \item{balance}{Coffee balance rating}
+#'   \item{uniformity}{Coffee uniformity rating}
+#'   \item{clean_cup}{Cup cleanliness rating}
+#'   \item{sweetness}{Coffee sweetness rating}
+#'   \item{cupper_points}{Cupper Points, an overall rating for the coffee}
+#'   \item{moisture}{Coffee moisture content}
+#'   \item{category_one_defects}{Number of category one defects for the coffee beans}
 #' }
 "coffee_ratings"
