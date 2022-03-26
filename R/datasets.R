@@ -372,29 +372,29 @@
 #' 
 #' @format A data frame of 1236 rows of individual mothers.
 #' \describe{
-#' \item{id}{identification number}
-#' \item{plurality}{marked 5 for single fetus, otherwise number of fetuses}
-#' \item{outcome}{marked 1 for live birth that survived at least 28 days}
-#' \item{date}{birth date where 1096 is January 1st, 1961}
-#' \item{birthday}{birth date in mm-dd-yyyy format}
-#' \item{gestation}{length of gestation in days, marked 999 if unknown}
-#' \item{sex}{infant's sex, where 1 is male, 2 is female, and 9 is unknown}
-#' \item{wt}{birth weight in ounces, marked 999 if unknown}
-#' \item{parity}{total number of previous pregnancies including fetal deaths and stillbirths, marked 99 if unknown}
-#' \item{race}{mother's race where 0-5 is white, 6 is Mexican, 7 is Black, 8 is Asian, 9 is mixed, and 99 is unknown}
-#' \item{age}{mother's age in years at termination of pregnancy, 99=unknown}
-#' \item{ed}{mother's education 0= less than 8th grade, 1 = 8th -12th grade - did not graduate, 2= HS graduate--no other schooling , 3= HS+trade, 4=HS+some college 5= College graduate, 6&7 Trade school HS unclear, 9=unknown}
-#' \item{ht}{mother's height in inches to the last completed inch, 99=unknown}
-#' \item{mwt}{mother prepregnancy wt in pounds, 999=unknown}
-#' \item{drace}{father's race, coding same as mother's race}
-#' \item{dage}{father's age, coding same as mother's age}
-#' \item{ded}{father's education, coding same as mother's education}
-#' \item{dht}{father's height, coding same as for mother's height}
-#' \item{dwt}{father's weight coding same as for mother's weight}
+#' \item{id}{Identification number}
+#' \item{plurality}{Marked 5 for single fetus, otherwise number of fetuses}
+#' \item{outcome}{Marked 1 for live birth that survived at least 28 days}
+#' \item{date}{Birth date where 1096 is January 1st, 1961}
+#' \item{birthday}{Birth date in mm-dd-yyyy format}
+#' \item{gestation}{Length of gestation in days, marked 999 if unknown}
+#' \item{sex}{Infant's sex, where 1 is male, 2 is female, and 9 is unknown}
+#' \item{wt}{Birth weight in ounces, marked 999 if unknown}
+#' \item{parity}{Total number of previous pregnancies including fetal deaths and stillbirths, marked 99 if unknown}
+#' \item{race}{Mother's race where 0-5 is white, 6 is Mexican, 7 is Black, 8 is Asian, 9 is mixed, and 99 is unknown}
+#' \item{age}{Mother's age in years at termination of pregnancy, 99=unknown}
+#' \item{ed}{Mother's education 0= less than 8th grade, 1 = 8th -12th grade - did not graduate, 2= HS graduate--no other schooling , 3= HS+trade, 4=HS+some college 5= College graduate, 6&7 Trade school HS unclear, 9=unknown}
+#' \item{ht}{Mother's height in inches to the last completed inch, 99=unknown}
+#' \item{mwt}{Mother prepregnancy wt in pounds, 999=unknown}
+#' \item{drace}{Father's race, coding same as mother's race}
+#' \item{dage}{Father's age, coding same as mother's age}
+#' \item{ded}{Father's education, coding same as mother's education}
+#' \item{dht}{Father's height, coding same as for mother's height}
+#' \item{dwt}{Father's weight coding same as for mother's weight}
 #' \item{marital}{0= legally separated, 1=married, 2= divorced, 3=widowed, 5=never married}
-#' \item{inc}{family yearly income in $2500 increments 0 = under 2500, 1=2500-4999, ..., 8= 12,500-14,999, 9=15000+, 98=unknown, 99=not asked}
-#' \item{smoke}{does mother smoke? 0=never, 1= smokes now, 2=until current pregnancy, 3=once did, not now, 9=unknown}
+#' \item{inc}{Family yearly income in $2500 increments 0 = under 2500, 1=2500-4999, ..., 8= 12,500-14,999, 9=15000+, 98=unknown, 99=not asked}
+#' \item{smoke}{Does mother smoke? 0=never, 1= smokes now, 2=until current pregnancy, 3=once did, not now, 9=unknown}
 #' \item{time}{If mother quit, how long ago? 0=never smoked, 1=still smokes, 2=during current preg, 3=within 1 yr, 4= 1 to 2 years ago, 5= 2 to 3 yr ago, 6= 3 to 4 yrs ago, 7=5 to 9yrs ago, 8=10+yrs ago, 9=quit and don't know, 98=unknown, 99=not asked}
-#' \item{number}{number of cigs smoked per day for past and current smokers  0=never, 1=1-4, 2=5-9, 3=10-14, 4=15-19, 5=20-29, 6=30-39, 7=40-60, 8=60+, 9=smoke but don't know, 98=unknown, 99=not asked}
+#' \item{number}{Number of cigs smoked per day for past and current smokers  0=never, 1=1-4, 2=5-9, 3=10-14, 4=15-19, 5=20-29, 6=30-39, 7=40-60, 8=60+, 9=smoke but don't know, 98=unknown, 99=not asked}
 #' }
 "babies"
