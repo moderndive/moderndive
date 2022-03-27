@@ -289,6 +289,6 @@ ev_charging <-
                                      "office",
                                      "research and development",
                                      "other")))  %>%
-  janitor::clean_names()
+  clean_names()
   
 usethis::use_data(ev_charging, overwrite = TRUE)
