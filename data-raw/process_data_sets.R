@@ -280,3 +280,4 @@ masstraffic2020 <-
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vTM4fElimnYsn6uYW9yq6RcEJyD4gQPkU6u4HGuXfdDqoRnOWGKhsZbFdUyO9VTvfHrkGWotjxGrtI_/pub?output=csv" %>%
   read_csv() %>%
   clean_names()
+usethis::usedata(masstraffic2020, overwrite = TRUE)
