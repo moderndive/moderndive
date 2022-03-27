@@ -36,7 +36,7 @@ Imports:
     infer,
     rlang (>= 0.2.0),
     glue
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Suggests: 
     testthat,
     covr,

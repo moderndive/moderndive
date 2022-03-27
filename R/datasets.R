@@ -365,7 +365,7 @@
 
 
 #' Avocado Prices by US Region
-#' 
+#'
 #' Gathered from <https://docs.google.com/spreadsheets/d/1cNuj9V-9Xe8fqV3DQRhvsXJhER3zTkO1dSsQ1Q0j96g/edit#gid=1419070688>
 #' 
 #' @format A data frame of 54 regions over 3 years of weekly results
@@ -377,11 +377,11 @@
 #' \item{large_hass_sold}{Amount of Large Haas Avocados Sold}
 #' \item{xlarage_hass_sold}{Amount of Extra Large Haas Avocados Sold}
 #' \item{total_bags}{Total Amount of Bags of Avocados}
-#' \items{small_bags}{Total Amount of Bags of Small Haas Avocados}
-#' \items{large_bags}{Total Amount of Bags of Large Haas Avocados}
-#' \items{x_large_bags}{Total Amount of Bags of Extra Large Haas Avocados}
-#' \items{type}{Type of Sale}
-#' \items{year}{Year of Sale}
-#' \items{region}{Region Where Sale Took Place}
+#' \item{small_bags}{Total Amount of Bags of Small Haas Avocados}
+#' \item{large_bags}{Total Amount of Bags of Large Haas Avocados}
+#' \item{x_large_bags}{Total Amount of Bags of Extra Large Haas Avocados}
+#' \item{type}{Type of Sale}
+#' \item{year}{Year of Sale}
+#' \item{region}{Region Where Sale Took Place}
 #' }
-#' "avocados" 
+"avocados" 
