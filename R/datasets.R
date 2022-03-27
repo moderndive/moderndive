@@ -402,5 +402,16 @@
 #'   \item{cupper_points}{Cupper Points, an overall rating for the coffee}
 #'   \item{moisture}{Coffee moisture content}
 #'   \item{category_one_defects}{Number of category one defects for the coffee beans}
+#'   \item{quakers}{Number of coffee beans that don't dark brown when roasted}
+#'   \item{color}{Color of the coffee beans}
+#'   \item{category_two_defects}{Number of category two defects for the coffee beans}
+#'   \item{expiration}{Expiration date of the coffee beans}
+#'   \item{certification_body}{Entity/Institute that certified the coffee beans}
+#'   \item{certification_address}{Body address of certification for coffee beans}
+#'   \item{certification_contact}{Certification contact for coffee beans}
+#'   \item{unit_of_measurement}{Unit of measurement for altitude}
+#'   \item{altitude_low_meters}{Lower altitude level coffee beans grow at}
+#'   \item{altitude_high_meters	}{Higher altitude level coffee beans grow at}
+#'   \item{altitude_mean_meters}{Average altitude level coffee beans grow at}
 #' }
 "coffee_ratings"
