@@ -284,7 +284,7 @@ babies <- "https://wjhopper.github.io/SDS-201/data/babies.csv" %>%
 
 # Creating new dates
 create <- tibble(
-  days = format(seq(as.Date("1961-09-12"), as.Date("1962-09-11"), by="days"), format="%m-%d-%Y"),
+  days = format(seq(as.Date("1961-09-12"), as.Date("1962-09-11"), by="days"), format="%Y-%m-%d"),
   date_days = c(1350:1714)
 ) %>% 
   mutate(merged = paste(days, date_days))
@@ -297,3 +297,6 @@ for (i in babies$birthday) {
   babies$birthday[index] = substr(create$merged[val], start = 1, stop = 10)
   index = index + 1
 }
+
+# Turns birthday into POSIXct date-time object
+babies$birthday <- lubridate::parse_date_time(babies$birthday, "ymd")
