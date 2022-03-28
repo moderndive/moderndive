@@ -365,10 +365,10 @@
 
 
 #' International Power Lifting Results
-#' @docType A data frame with 41,152 entries, one entry for individual lifter
+#' @format A data frame with 41,152 entries, one entry for individual lifter
 #' \describe{
 #'   \item{name}{Individual lifter name}
-#'   \item{sex}{Binary gender (M/F)}
+#'   \item{sex}{Binary sex (M/F)}
 #'   \item{event}{The type of competition that the lifter entered}
 #'   \item{equipment}{The equipment category under which the lifts were performed}
 #'   \item{age}{The age of the lifter on the start date of the meet}
