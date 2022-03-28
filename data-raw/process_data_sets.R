@@ -297,5 +297,3 @@ for (i in babies$birthday) {
   babies$birthday[index] = substr(create$merged[val], start = 1, stop = 10)
   index = index + 1
 }
-
-usethis::use_data(babies, overwrite = TRUE)
