@@ -280,7 +280,6 @@ usethis::use_data(pennies_resamples, overwrite = TRUE)
 avocados <-
   "https://wjhopper.github.io/SDS-201/data/avocados.csv" %>%
   read_csv() %>%
-  clean_names() %>%
-  mutate(type = as.factor(type)) %>%
-  rename(xlarge_hass_sold = xlarage_hass_sold)
+  janitor::clean_names()
+avocados$type <- as.factor(avocados$type)
 usethis::use_data(avocados, overwrite = TRUE)
