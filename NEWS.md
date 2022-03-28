@@ -1,4 +1,4 @@
-# moderndive 0.5.3.9001
+# moderndive 0.5.4
 
 * Added `Massachusetts 2020 vs. 2019 Traffic Data Comparison` consisting of collisions information sourced from reports produced by the Massachusetts Traffic Data Management System.
 
