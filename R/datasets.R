@@ -378,4 +378,4 @@
 #'   \item{change_in_Volume}{Average traffic}
 #'   \item{change_in_Accidents}{Average number of accidents}
 #' }
-"Massachusetts_2020_vs_2019_Traffic_Data"
+"ma_traffic_2020_vs_2019"
