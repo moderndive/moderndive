@@ -1,3 +1,8 @@
+# moderndive 0.5.3.9001
+
+* Added `ipf_lifts` consisting of international power lifting results
+
+
 # moderndive 0.5.3.9000
 
 * Added `early_january_weather` consisting of January subset of `nycflights13::weather`
