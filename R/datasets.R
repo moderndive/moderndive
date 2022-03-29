@@ -365,6 +365,8 @@
 
 
 #' International Power Lifting Results
+#' A subset of international powerlifting results.
+#' 
 #' @format A data frame with 41,152 entries, one entry for individual lifter
 #' \describe{
 #'   \item{name}{Individual lifter name}
@@ -384,4 +386,5 @@
 #'   \item{federation}{The federation that hosted the meet}
 #'   \item{meet_name}{The name of the meet}
 #' }
+#' @seealso This data is a subset of the open dataset [Open Powerlifting](https://www.openpowerlifting.org/)
 "ipf_lifts"

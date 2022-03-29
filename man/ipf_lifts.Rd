@@ -3,7 +3,8 @@
 \docType{data}
 \name{ipf_lifts}
 \alias{ipf_lifts}
-\title{International Power Lifting Results}
+\title{International Power Lifting Results
+A subset of international powerlifting results.}
 \format{
 A data frame with 41,152 entries, one entry for individual lifter
 \describe{
@@ -30,5 +31,9 @@ ipf_lifts
 }
 \description{
 International Power Lifting Results
+A subset of international powerlifting results.
+}
+\seealso{
+This data is a subset of the open dataset \href{https://www.openpowerlifting.org/}{Open Powerlifting}
 }
 \keyword{datasets}
