@@ -383,4 +383,4 @@
 #'   \item{nonfatal_injuries}{Number of non-fatal injuries for all recorded vehicle crashes}
 #'   \item{fatal_injuries}{Number of fatal injuries for all recorded vehicle crashes}
 #' }
-"masstraffic2020"
+"mass_traffic_2020"
