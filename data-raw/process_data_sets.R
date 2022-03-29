@@ -272,3 +272,12 @@ pennies_resamples <-
   select(replicate, everything()) %>%
   unnest(cols = c(data))
 usethis::use_data(pennies_resamples, overwrite = TRUE)
+
+# Massachusetts traffic data 2020
+# Original Google Sheet here:
+# https://docs.google.com/spreadsheets/d/1rRQIDBBs8DoPAk012BdgDuf4V7iFNZzj3PL4vWfK_IQ/edit#gid=2001681887
+masstraffic2020 <- 
+  "https://docs.google.com/spreadsheets/d/e/2PACX-1vTM4fElimnYsn6uYW9yq6RcEJyD4gQPkU6u4HGuXfdDqoRnOWGKhsZbFdUyO9VTvfHrkGWotjxGrtI_/pub?output=csv" %>%
+  read_csv() %>%
+  clean_names()
+usethis::use_data(masstraffic2020, overwrite = TRUE)

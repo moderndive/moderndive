@@ -362,3 +362,25 @@
 #' }
 #' @seealso This data was sampled from the `movies` data frame in the `ggplot2movies` package.
 "movies_sample"
+
+
+
+#' 2020 road traffic volume and crash level date for 13 Massachusetts counties
+#' 
+#'   
+#'
+#' @format A data frame of 874 rows representing traffic data at the 874 sites 
+#' \describe{
+#'   \item{site_id}{Site id}
+#'   \item{county}{County in which the site is located}
+#'   \item{community}{Community in which the site is located}
+#'   \item{rural_urban}{Rural (R) or Urban (U)}
+#'   \item{dir}{Direction for traffic movement. Either 1-WAY, 2-WAY, EB (eastbound), RAMP or WB (westbound)}
+#'   \item{functional_class}{Classification of road. Either Arterial, Collector, Freeway & Expressway, Interstate or Local Road}
+#'   \item{avg_speed}{Average traffic speed}
+#'   \item{total_volume}{Number of vehicles recorded at each site in 2020}
+#'   \item{crashes}{Number of vehicle crashes at each site}
+#'   \item{nonfatal_injuries}{Number of non-fatal injuries for all recorded vehicle crashes}
+#'   \item{fatal_injuries}{Number of fatal injuries for all recorded vehicle crashes}
+#' }
+"masstraffic2020"
