@@ -277,8 +277,7 @@ usethis::use_data(pennies_resamples, overwrite = TRUE)
 # information from 3,395 high resolution electric vehicle charging sessions
 # Original data from: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/NFPQLW
 ev_charging <-
-  "https://dataverse.harvard.edu/api/access/datafile/3998649?format=original&gbrecs=true" %>%
-  read_csv() %>%
+  read_csv("data-raw/station_data_dataverse.csv") %>%
   mutate(
     facilityType = case_when(
       facilityType == 1 ~ "manufacturing",
