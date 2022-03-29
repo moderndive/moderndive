@@ -281,7 +281,8 @@ usethis::use_data(pennies_resamples, overwrite = TRUE)
 # Original Github source: https://github.com/jldbc/coffee-quality-database
 #-------------------------------------------------------------------------------
 
-coffee_quality <- 
+coffee_ratings <- 
   "https://wjhopper.github.io/SDS-201/data/coffee_ratings.csv" %>%
-  read_csv()
-usethis::use_data(coffee_quality, overwrite = TRUE)
+  readr::read_csv()
+
+usethis::use_data(coffee_ratings, overwrite = TRUE)
