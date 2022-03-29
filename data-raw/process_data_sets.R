@@ -280,23 +280,6 @@ usethis::use_data(pennies_resamples, overwrite = TRUE)
 # https://wjhopper.github.io/SDS-201/data/babies.csv
 babies <- "https://wjhopper.github.io/SDS-201/data/babies.csv" %>%
   read_csv() %>%
-  mutate(birthday = date) # Creating new date variable
+  mutate(birthday = date) %>% # Creating new date variable
+  mutate(birthday = as.Date(date, origin = "1958-01-01"))
 
-# Creating new dates
-create <- tibble(
-  days = format(seq(as.Date("1961-09-12"), as.Date("1962-09-11"), by="days"), format="%Y-%m-%d"),
-  date_days = c(1350:1714)
-) %>% 
-  mutate(merged = paste(days, date_days))
-
-# Updating birthday in babies dataset
-val = 0
-index = 1
-for (i in babies$birthday) {
-  val = which(substr(create$merged, start = 12, stop = 15) == i)
-  babies$birthday[index] = substr(create$merged[val], start = 1, stop = 10)
-  index = index + 1
-}
-
-# Turns birthday into POSIXct date-time object
-babies$birthday <- lubridate::parse_date_time(babies$birthday, "ymd")
