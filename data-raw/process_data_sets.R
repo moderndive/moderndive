@@ -272,3 +272,4 @@ pennies_resamples <-
   select(replicate, everything()) %>%
   unnest(cols = c(data))
 usethis::use_data(pennies_resamples, overwrite = TRUE)
+
