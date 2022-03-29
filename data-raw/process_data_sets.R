@@ -295,5 +295,4 @@ ev_charging <-
     )
   ) %>%
   clean_names()
-
 usethis::use_data(ev_charging, overwrite = TRUE)
