@@ -1,8 +1,9 @@
+#' 
+#' Sample of Amazon books 
+#' 
+#' A random sample of 325 books from Amazon.com. 
 #'
-#' A random sample of 325 different genres of books from
-#' <https://dasl.datadescription.com/datafile/amazon-books>.
-#'
-#' @format A data frame of 12 rows movies.
+#' @format A data frame of 325 rows representing books listed on Amazon and 13 variables.
 #' \describe{
 #'   \item{title}{Book title}
 #'   \item{author}{Author who wrote book}
@@ -15,7 +16,7 @@
 #'   \item{ISBN-10}{10-character ISBN number}
 #'   \item{Height, width, thick, weight}{height, width, weight and thickness of the book}
 #' }
-#' @source The Data and Story Library (DASL) <https://www.statcrunch.com:443/app/index.html?dataid=301596>
+#' @source The Data and Story Library (DASL) <https://dasl.datadescription.com/datafile/amazon-books>
 "amazon_books"
 
 #' 
