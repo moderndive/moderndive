@@ -169,6 +169,12 @@ mythbusters_yawn <- tibble::tibble(group, yawn) %>%
   select(subj, group, yawn)
 usethis::use_data(mythbusters_yawn, overwrite = TRUE)
 
+# Amazon books data from: https://dasl.datadescription.com/datafile/amazon-books
+amazon_books <- 
+  "data-raw/amazon_books.csv" %>%
+  read_csv() %>%
+  clean_names()
+usethis::use_data(amazon_books, overwrite = TRUE)
 
 
 #-------------------------------------------------------------------------------
@@ -272,11 +278,3 @@ pennies_resamples <-
   select(replicate, everything()) %>%
   unnest(cols = c(data))
 usethis::use_data(pennies_resamples, overwrite = TRUE)
-
-# Amazon books data from: https://dasl.datadescription.com/datafile/amazon-books
-amazon_books <- 
-  "data-raw/amazon_books.csv" %>%
-  read_csv() %>%
-  clean_names()
-usethis::use_data(amazon_books, overwrite = TRUE)
-
