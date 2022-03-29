@@ -286,4 +286,3 @@ coffee_ratings <-
   readr::read_csv()
 
 usethis::use_data(coffee_ratings, overwrite = TRUE)
-
