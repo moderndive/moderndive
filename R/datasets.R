@@ -1,4 +1,3 @@
-#' #' Random sample of 68 action and romance movies
 #'
 #' A random sample of 325 different genres of books from
 #' <https://dasl.datadescription.com/datafile/amazon-books>.
@@ -17,7 +16,7 @@
 #'   \item{Height, width, thick, weight}{height, width, weight and thickness of the book}
 #' }
 #' @source The Data and Story Library (DASL) <https://www.statcrunch.com:443/app/index.html?dataid=301596>
-#' "amazon_books"
+"amazon_books"
 
 #' 
 #' Early January hourly weather data
