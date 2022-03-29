@@ -278,8 +278,8 @@ usethis::use_data(pennies_resamples, overwrite = TRUE)
 # Original Google Sheet here:
 # https://docs.google.com/spreadsheets/d/1cNuj9V-9Xe8fqV3DQRhvsXJhER3zTkO1dSsQ1Q0j96g/edit#gid=1419070688
 avocados <-
-  "https://wjhopper.github.io/SDS-201/data/avocados.csv" %>%
+  "data-raw/avocados.csv" %>%
   read_csv() %>%
-  janitor::clean_names()
-avocados$type <- as.factor(avocados$type)
+  clean_names() %>% 
+  mutate(type = as.factor(type))
 usethis::use_data(avocados, overwrite = TRUE)
