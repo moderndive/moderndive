@@ -272,3 +272,10 @@ pennies_resamples <-
   select(replicate, everything()) %>%
   unnest(cols = c(data))
 usethis::use_data(pennies_resamples, overwrite = TRUE)
+
+# Amazon books data from https://dasl.datadescription.com/datafile/amazon-books
+amazon_books <- 
+  "data-raw/amazon_books.csv" %>%
+  read_csv() %>%
+  clean_names()
+usethis::use_data(amazon_books, overwrite = TRUE)
