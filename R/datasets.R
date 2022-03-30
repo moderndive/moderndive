@@ -368,8 +368,6 @@
 
 #' Data on maternal smoking and infant health
 #' 
-#' Data on maternal smoking and infant health from <https://www.stat.berkeley.edu/~statlabs/labs.html>
-#' 
 #' @format A data frame of 1236 rows of individual mothers.
 #' \describe{
 #' \item{id}{Identification number}
@@ -397,4 +395,5 @@
 #' \item{time}{If mother quit, how long ago? 0=never smoked, 1=still smokes, 2=during current preg, 3=within 1 yr, 4= 1 to 2 years ago, 5= 2 to 3 yr ago, 6= 3 to 4 yrs ago, 7=5 to 9yrs ago, 8=10+yrs ago, 9=quit and don't know, 98=unknown, 99=not asked}
 #' \item{number}{Number of cigs smoked per day for past and current smokers  0=never, 1=1-4, 2=5-9, 3=10-14, 4=15-19, 5=20-29, 6=30-39, 7=40-60, 8=60+, 9=smoke but don't know, 98=unknown, 99=not asked}
 #' }
+#' @source Data on maternal smoking and infant health from <https://www.stat.berkeley.edu/~statlabs/labs.html>
 "babies"
