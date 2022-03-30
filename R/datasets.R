@@ -1,24 +1,4 @@
 #' 
-#' Sample of Amazon books 
-#' 
-#' A random sample of 325 books from Amazon.com. 
-#'
-#' @format A data frame of 325 rows representing books listed on Amazon and 13 variables.
-#' \describe{
-#'   \item{title}{Book title}
-#'   \item{author}{Author who wrote book}
-#'   \item{list price}{recommended retail price of book}
-#'   \item{Amazon price}{lowest price of book shown on Amazon}
-#'   \item{Hard/Paper}{book is either hardcover or paperback}
-#'   \item{NumPages}{number of pages in book}
-#'   \item{Publisher}{Company that issues the book for sale}
-#'   \item{Pub Year}{Year the book was published}
-#'   \item{ISBN-10}{10-character ISBN number}
-#'   \item{Height, width, thick, weight}{height, width, weight and thickness of the book}
-#' }
-#' @source The Data and Story Library (DASL) <https://dasl.datadescription.com/datafile/amazon-books>
-"amazon_books"
-
 #' 
 #' Early January hourly weather data
 #'
@@ -384,3 +364,23 @@
 #' }
 #' @seealso This data was sampled from the `movies` data frame in the `ggplot2movies` package.
 "movies_sample"
+#'
+#' Sample of Amazon books 
+#' 
+#' A random sample of 325 books from Amazon.com. 
+#'
+#' @format A data frame of 325 rows representing books listed on Amazon and 13 variables.
+#' \describe{
+#'   \item{title}{Book title}
+#'   \item{author}{Author who wrote book}
+#'   \item{list price}{recommended retail price of book}
+#'   \item{Amazon price}{lowest price of book shown on Amazon}
+#'   \item{Hard/Paper}{book is either hardcover or paperback}
+#'   \item{NumPages}{number of pages in book}
+#'   \item{Publisher}{Company that issues the book for sale}
+#'   \item{Pub Year}{Year the book was published}
+#'   \item{ISBN-10}{10-character ISBN number}
+#'   \item{Height, width, thick, weight}{height, width, weight and thickness of the book}
+#' }
+#' @source The Data and Story Library (DASL) <https://dasl.datadescription.com/datafile/amazon-books>
+"amazon_books"
