@@ -12,7 +12,7 @@ Authors@R: c(
     person("Marium", "Tapal", email = "mariumtapal@gmail.com", role = "ctb", comment = c(ORCID = "0000-0001-5093-6462")),
     person("Michelle", "Flesaker", email = "mflesaker@smith.edu", role = "ctb"),
     person("Irene", "Foster", email = "ifoster25@smith.edu", role = "ctb"),
-    person("Aushanae", "Hakker", email = "ahaller@smith.edu", role = "ctb")
+    person("Aushanae", "Haller", email = "ahaller@smith.edu", role = "ctb")
     )
 Maintainer: Albert Y. Kim <albert.ys.kim@gmail.com>
 Description: Datasets and wrapper functions for tidyverse-friendly introductory linear regression, used in "Statistical Inference via Data Science: A ModernDive into R and the Tidyverse" available at <https://moderndive.com/>.
