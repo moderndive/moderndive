@@ -281,6 +281,10 @@ usethis::use_data(pennies_resamples, overwrite = TRUE)
 ## https://docs.google.com/spreadsheets/d/1jhiTFaaJ4ZCUA9yMNFGQ2xnKItXewaNmzu6y0Syw_dk/edit
 library(tidyverse)
 mario_kart_auction <- "data-raw/mariokart.csv" %>%
-  read_csv()
+  read_csv() %>%
+  mutate(cond = as.factor(cond), 
+         ship_sp = as.factor(ship_sp),
+         stock_photo = as.factor(stock_photo))
+
 usethis::use_data(mario_kart_auction, overwrite = TRUE)
 
