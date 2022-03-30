@@ -26,14 +26,14 @@ A data frame with 41,152 entries, one entry for individual lifter
 \item{meet_name}{The name of the meet}
 }
 }
+\source{
+This data is a subset of the open dataset \href{https://www.openpowerlifting.org/}{Open Powerlifting}
+}
 \usage{
 ipf_lifts
 }
 \description{
 International Power Lifting Results
 A subset of international powerlifting results.
-}
-\seealso{
-This data is a subset of the open dataset \href{https://www.openpowerlifting.org/}{Open Powerlifting}
 }
 \keyword{datasets}

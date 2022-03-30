@@ -279,5 +279,15 @@ usethis::use_data(pennies_resamples, overwrite = TRUE)
 ipf_lifts <- 
   "data-raw/IPF Lifts - ipf_lifts.csv" %>%
   read_csv() %>%
-  clean_names()
+  clean_names() %>% 
+  mutate(
+    sex = as.factor(sex),
+    event = as.factor(event),
+    equipment = as.factor(equipment),
+    age_class = as.factor(age_class),
+    division = as.factor(division),
+    place = as.factor(place),
+    federation = as.factor(federation),
+    meet_name = as.factor(meet_name)
+  )
 usethis::use_data(ipf_lifts, overwrite = TRUE)
