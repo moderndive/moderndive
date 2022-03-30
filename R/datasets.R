@@ -367,8 +367,6 @@
 
 #' 2020 road traffic volume and crash level date for 13 Massachusetts counties
 #' 
-#'   
-#'
 #' @format A data frame of 874 rows representing traffic data at the 874 sites 
 #' \describe{
 #'   \item{site_id}{Site id}

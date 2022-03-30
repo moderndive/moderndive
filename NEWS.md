@@ -3,7 +3,7 @@
 * Added `early_january_weather` consisting of January subset of `nycflights13::weather`
 
 
-# moderndive 0.5.3.9000
+# moderndive 0.5.4
 
 * Added `mass_traffic_2020` consisting of traffic data for 13 Massachusetts counties
 

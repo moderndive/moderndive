@@ -276,8 +276,6 @@ usethis::use_data(pennies_resamples, overwrite = TRUE)
 # Massachusetts traffic data 2020
 # Original Google Sheet here:
 # https://docs.google.com/spreadsheets/d/1rRQIDBBs8DoPAk012BdgDuf4V7iFNZzj3PL4vWfK_IQ/edit#gid=2001681887
-mass_traffic_2020 <- 
-  "https://docs.google.com/spreadsheets/d/e/2PACX-1vTM4fElimnYsn6uYW9yq6RcEJyD4gQPkU6u4HGuXfdDqoRnOWGKhsZbFdUyO9VTvfHrkGWotjxGrtI_/pub?output=csv" %>%
-  read_csv() %>%
+mass_traffic_2020 <- read_csv("data-raw/masstraffic2020.csv") %>% 
   clean_names()
 usethis::use_data(mass_traffic_2020, overwrite = TRUE)
