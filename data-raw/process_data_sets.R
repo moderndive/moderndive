@@ -287,7 +287,13 @@ coffee_ratings <-
   mutate(
     grading_date = mdy(grading_date),
     variety = as.factor(variety),
-    processing_method = as.factor(processing_method)
+    processing_method = as.factor(processing_method),
+    color = as.factor(color),
+    expiration = mdy(expiration),
+    certification_body = as.factor(certification_body),
+    certification_address = as.factor(certification_address),
+    certification_contact = as.factor(certification_contact),
+    unit_of_measurement = as.factor(unit_of_measurement)
   )
 
 usethis::use_data(coffee_ratings, overwrite = TRUE)
