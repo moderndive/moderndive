@@ -376,7 +376,11 @@
 #'   \item{start_pr}{Price at the start of the auction}
 #'   \item{ship_pr}{Shipping price}
 #'   \item{total_pr}{Total price, equal to auction price plus shipping price}
-#'   
+#'   \item{ship_sp}{Shipping speed or method}
+#'   \item{seller_rate}{Seller's rating on Ebay, equal to the number of positive ratings minus the number of negative ratings}
+#'   \item{stock_photo}{Whether the auction photo was a stock photo or not, pictures used in many options were considered stock photos}
+#'   \item{wheels}{Number of Wii wheels included in the auction}
+#'   \item{title}{The title of the auctions}
 #' }
 #' @source This data is from <https://www.openintro.org/data/index.php?data=mariokart>
 "mario_kart_auction"
