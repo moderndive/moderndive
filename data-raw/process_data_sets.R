@@ -283,7 +283,7 @@ usethis::use_data(pennies_resamples, overwrite = TRUE)
 
 coffee_ratings <- 
   "https://wjhopper.github.io/SDS-201/data/coffee_ratings.csv" %>%
-  readr::read_csv() %>%
+  read_csv() %>%
   mutate(
     grading_date = mdy(grading_date),
     variety = as.factor(variety),
