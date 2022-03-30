@@ -1,3 +1,7 @@
+# moderndive 0.5.3.9001
+
+* Changed `birthday` column to `babies` dataset for easier understanding of birth dates
+
 # moderndive 0.5.3.9000
 
 * Added `early_january_weather` consisting of January subset of `nycflights13::weather`
