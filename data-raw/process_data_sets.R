@@ -280,12 +280,7 @@ usethis::use_data(pennies_resamples, overwrite = TRUE)
 avocados <-
   "data-raw/avocados.csv" %>%
   read_csv() %>%
-<<<<<<< HEAD
   janitor::clean_names() %>%
   mutate(type = as.factor(type))%>%
   rename(xlarge_hass_sold = xlarage_hass_sold)
-=======
-  clean_names() %>% 
-  mutate(type = as.factor(type))
->>>>>>> c11bba4e6abab1da8b2585fbc3453883abe50da1
 usethis::use_data(avocados, overwrite = TRUE)
