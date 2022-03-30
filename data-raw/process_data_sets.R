@@ -272,3 +272,15 @@ pennies_resamples <-
   select(replicate, everything()) %>%
   unnest(cols = c(data))
 usethis::use_data(pennies_resamples, overwrite = TRUE)
+
+#-------------------------------------------------------------------------------
+# Pennies: Documented in R/mario_kart_auction.R
+#-------------------------------------------------------------------------------
+## Population of 143 Ebay auctions selling Mario Kart for Nintendo Wii
+## Original Google Sheet here:
+## https://docs.google.com/spreadsheets/d/1jhiTFaaJ4ZCUA9yMNFGQ2xnKItXewaNmzu6y0Syw_dk/edit
+library(tidyverse)
+mario_kart_auction <- "data-raw/mariokart.csv" %>%
+  read_csv()
+usethis::use_data(mario_kart_auction, overwrite = TRUE)
+
