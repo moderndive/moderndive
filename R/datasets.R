@@ -362,3 +362,23 @@
 #' }
 #' @seealso This data was sampled from the `movies` data frame in the `ggplot2movies` package.
 "movies_sample"
+
+#' Data from Mario Kart Ebay auctions 
+#' 
+#' Ebay auction data for the Nintendo Wii game Mario Kart.
+#' 
+#' @format A data frame of 143 auctions.
+#' \describe{
+#'   \item{id}{Auction ID assigned by Ebay}
+#'   \item{duration}{Auction length in days}
+#'   \item{n_bids}{Number of bids}
+#'   \item{cond}{Game condition, either `new` or `used`}
+#'   \item{start_pr}{Price at the start of the auction}
+#'   \item{ship_pr}{Shipping price}
+#'   \item{total_pr}{Total price, equal to auction price plus shipping price}
+#'   
+#' }
+#' @source This data is from <https://www.openintro.org/data/index.php?data=mariokart>
+"mario_kart_auction"
+
+

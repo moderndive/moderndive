@@ -274,7 +274,7 @@ pennies_resamples <-
 usethis::use_data(pennies_resamples, overwrite = TRUE)
 
 #-------------------------------------------------------------------------------
-# Pennies: Documented in R/mario_kart_auction.R
+# Pennies: Documented in R/datasets.R
 #-------------------------------------------------------------------------------
 ## Population of 143 Ebay auctions selling Mario Kart for Nintendo Wii
 ## Original Google Sheet here:
