@@ -366,11 +366,10 @@
 
 #' Massachusetts 2020 vs. 2019 Traffic Data Comparison
 #'
-#' Traffic data comes from two primary sources:
-#' <https://massdot-impact-crashes-vhb.opendata.arcgis.com/datasets/MassDOT::2020-vehicle-level-crash-details/explore> and 
-#' <https://mhd.public.ms2soft.com/tcds/tsearch.asp?loc=Mhd&mod=>
+#' This dataset contains information about changes in speed, volume, and accidents of traffic 
+#' between 2020 and 2019 by community and class of road in Massachusetts.
 #' 
-#' @format A data frame of 264 rows representing a different community in Massachusetts.
+#' @format A data frame of 264 rows each representing a different community in Massachusetts.
 #' \describe{
 #'   \item{community}{City or Town}
 #'   \item{functional Class}{Class or group the road belongs to}
@@ -378,4 +377,7 @@
 #'   \item{change_in_Volume}{Average traffic}
 #'   \item{change_in_Accidents}{Average number of accidents}
 #' }
+#' @source 
+#' \url{https://massdot-impact-crashes-vhb.opendata.arcgis.com/datasets/MassDOT::2020-vehicle-level-crash-details/explore}
+#' \url{https://mhd.public.ms2soft.com/tcds/tsearch.asp?loc=Mhd&mod=}
 "ma_traffic_2020_vs_2019"
