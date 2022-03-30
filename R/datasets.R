@@ -375,7 +375,7 @@
 #' \item{total_volume}{Total Amount of Avocados}
 #' \item{small_hass_sold}{Amount of Small Haas Avocados Sold}
 #' \item{large_hass_sold}{Amount of Large Haas Avocados Sold}
-#' \item{xlarage_hass_sold}{Amount of Extra Large Haas Avocados Sold}
+#' \item{xlarge_hass_sold}{Amount of Extra Large Haas Avocados Sold}
 #' \item{total_bags}{Total Amount of Bags of Avocados}
 #' \items{small_bags}{Total Amount of Bags of Small Haas Avocados}
 #' \items{large_bags}{Total Amount of Bags of Large Haas Avocados}
