@@ -386,5 +386,5 @@
 #'   \item{federation}{The federation that hosted the meet}
 #'   \item{meet_name}{The name of the meet}
 #' }
-#' @seealso This data is a subset of the open dataset [Open Powerlifting](https://www.openpowerlifting.org/)
+#' @source This data is a subset of the open dataset [Open Powerlifting](https://www.openpowerlifting.org/)
 "ipf_lifts"
