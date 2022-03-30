@@ -277,5 +277,9 @@ usethis::use_data(pennies_resamples, overwrite = TRUE)
 # Original Google Sheet here:
 # https://docs.google.com/spreadsheets/d/1rRQIDBBs8DoPAk012BdgDuf4V7iFNZzj3PL4vWfK_IQ/edit#gid=2001681887
 mass_traffic_2020 <- read_csv("data-raw/masstraffic2020.csv") %>% 
-  clean_names()
+  clean_names() %>% 
+  mutate(county = as_factor(county),
+         rural_urban = as_factor(rural_urban),
+         dir = as_factor(dir),
+         functional_class = as_factor(functional_class))
 usethis::use_data(mass_traffic_2020, overwrite = TRUE)
