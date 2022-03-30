@@ -281,11 +281,13 @@ ipf_lifts <-
   read_csv() %>%
   clean_names() %>% 
   mutate(
+    name = as.factor(name),
     sex = as.factor(sex),
     event = as.factor(event),
     equipment = as.factor(equipment),
     age_class = as.factor(age_class),
     division = as.factor(division),
+    weight_class_kg = as.factor(weight_class_kg),
     place = as.factor(place),
     federation = as.factor(federation),
     meet_name = as.factor(meet_name)
