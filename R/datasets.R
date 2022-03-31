@@ -1,4 +1,4 @@
- #' Early January hourly weather data
+#' Early January hourly weather data
 #'
 #' Hourly meterological data for LGA, JFK and EWR for the month of January 2013. 
 #' This is a subset of the `weather` data frame from `nycflights13`.
