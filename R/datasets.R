@@ -398,7 +398,7 @@
 #'    \item 2 = office
 #'    \item 3 = research and development
 #'    \item 4 = other} }
-#'    \item{Mon, Tues, Wed, Thurs, Fri, Sat, Sun}{Binary variables; 1 if the charging session took place on that day,
+#'    \item{mon, tues, wed, thurs, fri, sat, sun}{Binary variables; 1 if the charging session took place on that day,
 #'    0 otherwise}
 #'    \item{reported_zip}{Binary variable; 1 if the driver did report their zip code, 0 if they did not}
 #' }
