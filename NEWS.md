@@ -1,6 +1,6 @@
 # moderndive 0.5.4
 
-* Changed `birthday` column to `babies` dataset for easier understanding of birth dates
+* Added `babies` on maternal smoking and infant health
 
 # moderndive 0.5.3.9000
 
