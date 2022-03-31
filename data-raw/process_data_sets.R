@@ -286,22 +286,9 @@ coffee_ratings <-
   read_csv() %>%
   mutate(
     species = as.factor(species),
-    owner = as.factor(owner),
-    country_of_origin = as.factor(country_of_origin),
-    farm_name = as.factor(farm_name),
-    mill = as.factor(mill),
-    company = as.factor(company),
-    region = as.factor(region),
-    producer = as.factor(producer),
-    in_country_partner = as.factor(in_country_partner),
     grading_date = mdy(grading_date),
-    variety = as.factor(variety),
-    processing_method = as.factor(processing_method),
     color = as.factor(color),
     expiration = mdy(expiration),
-    certification_body = as.factor(certification_body),
-    certification_address = as.factor(certification_address),
-    certification_contact = as.factor(certification_contact),
     unit_of_measurement = as.factor(unit_of_measurement)
   )
 
