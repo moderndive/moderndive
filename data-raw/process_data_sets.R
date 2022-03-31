@@ -279,4 +279,3 @@ usethis::use_data(pennies_resamples, overwrite = TRUE)
 saratoga_ny_home_prices <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vR9FA6dcnlqUeNm3Cp6HR3QbUK0L5FGOYFfBAYpWH76wej0HfPMX8kuaSj8qSgSoVWohNl2uHqBpP26/pub?output=csv")
 usethis::use_data(saratoga_house_prices, overwrite = TRUE)  
   
-  
