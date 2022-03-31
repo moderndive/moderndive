@@ -373,14 +373,14 @@
 #' \describe{
 #'   \item{title}{Book title}
 #'   \item{author}{Author who wrote book}
-#'   \item{list price}{recommended retail price of book}
-#'   \item{Amazon price}{lowest price of book shown on Amazon}
-#'   \item{Hard/Paper}{book is either hardcover or paperback}
-#'   \item{NumPages}{number of pages in book}
-#'   \item{Publisher}{Company that issues the book for sale}
-#'   \item{Pub Year}{Year the book was published}
-#'   \item{ISBN-10}{10-character ISBN number}
-#'   \item{Height, width, thick, weight}{height, width, weight and thickness of the book}
+#'   \item{list_price}{recommended retail price of book}
+#'   \item{amazon_price}{lowest price of book shown on Amazon}
+#'   \item{hard_paper}{book is either hardcover or paperback}
+#'   \item{num_pages}{number of pages in book}
+#'   \item{publisher}{Company that issues the book for sale}
+#'   \item{pub_year}{Year the book was published}
+#'   \item{isbn_10}{10-character ISBN number}
+#'   \item{height, width, thick, weight_oz}{height, width, weight and thickness of the book}
 #' }
 #' @source The Data and Story Library (DASL) <https://dasl.datadescription.com/datafile/amazon-books>
 "amazon_books"
