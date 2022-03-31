@@ -101,3 +101,8 @@ Fixed broken url in `?bowl_samples`
     + `pennies`: 800 pennies to be treated as a population from which to simulate sampling a numerical variable from (`year` of minting)
     + `bowl`: Bowl of 2400 balls of which 900 are red to be treated as a population from which to simulate sampling a categorical variable from (`color`). Also known as the urn sampling framework \url{https://en.wikipedia.org/wiki/Urn_problem}. 
     + `bowl_samples`: data from tactile version of sampling from `bowl` done in class: 10 groups sampled n=50 balls from  and counted the number red [ADD MODERNDIVE LINK]
+    
+# moderndive 0.5.3.9001
+
+* Added dataset:
+  + `ev_charging`: information from 3,395 high resolution electric vehicle charging sessions.
