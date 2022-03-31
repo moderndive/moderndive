@@ -10,8 +10,8 @@ Authors@R: c(
     person("Evgeni", "Chasnovski", email = "evgeni.chasnovski@gmail.com", role = "ctb", comment = c(ORCID = "0000-0002-1617-4019")),
     person("Will", "Hopper", email = "wjhopper510@gmail.com", role = "ctb", comment = c(ORCID = "0000-0002-7848-1946")),
     person("Marium", "Tapal", email = "mariumtapal@gmail.com", role = "ctb", comment = c(ORCID = "0000-0001-5093-6462")),
-    person("Abbie", "Benfield", email = "abenfield@smith.edu", role = "ctb"),
-    person("Georgia", "Gans", email = "ggans@smith.edu", role = "ctb"),
+    person("Abbie", "Benfield", email = "abbidabbers@gmail.com", role = "ctb"),
+    person("Georgia", "Gans", email = "georgiagans@live.com", role = "ctb"),
     person("Kacey", "Jean-Jacques", email = "kjeanjacques@smith.edu", role = "ctb")
     )
 Maintainer: Albert Y. Kim <albert.ys.kim@gmail.com>
@@ -36,7 +36,7 @@ Imports:
     infer,
     rlang (>= 0.2.0),
     glue
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Suggests: 
     testthat,
     covr,
