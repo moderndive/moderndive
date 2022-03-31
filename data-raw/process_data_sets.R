@@ -172,9 +172,8 @@ usethis::use_data(mythbusters_yawn, overwrite = TRUE)
 # Amazon books data from: https://dasl.datadescription.com/datafile/amazon-books
 amazon_books <- 
   "data-raw/amazon_books.csv" %>%
-  read_csv() %>%
-  clean_names() %>% 
-  mutate(hard_paper = as.factor(hard_paper))
+  read_csv(col_types = list(`Hard/ Paper` = col_factor())) %>%
+  clean_names()
 usethis::use_data(amazon_books, overwrite = TRUE)
 
 
