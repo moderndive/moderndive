@@ -372,7 +372,7 @@
 #' @format A data frame of 264 rows each representing a different community in Massachusetts.
 #' \describe{
 #'   \item{community}{City or Town}
-#'   \item{functional Class}{Class or group the road belongs to}
+#'   \item{functional_Class}{Class or group the road belongs to}
 #'   \item{change_in_Speed}{Average estimated Speed (mph)}
 #'   \item{change_in_Volume}{Average traffic}
 #'   \item{change_in_Accidents}{Average number of accidents}
