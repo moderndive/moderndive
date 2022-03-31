@@ -279,11 +279,12 @@ usethis::use_data(pennies_resamples, overwrite = TRUE)
 ev_charging <-
   read_csv("data-raw/station_data_dataverse.csv") %>%
   mutate(
-    facility_type = factor(facilityType,
-                           labels = c("manufacturing",
-                                      "office",
-                                      "research and development",
-                                      "other"))) %>%
+    facility_type = factor(
+      facilityType,
+      labels = c("manufacturing",
+                 "office",
+                 "research and development",
+                 "other"))) %>%
   select(-facilityType) %>%
   clean_names()
 usethis::use_data(ev_charging, overwrite = TRUE)
