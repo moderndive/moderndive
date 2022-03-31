@@ -1,5 +1,3 @@
-#' 
-#' 
 #' Early January hourly weather data
 #'
 #' Hourly meterological data for LGA, JFK and EWR for the month of January 2013. 
@@ -364,7 +362,9 @@
 #' }
 #' @seealso This data was sampled from the `movies` data frame in the `ggplot2movies` package.
 "movies_sample"
-#'
+
+
+
 #' Sample of Amazon books 
 #' 
 #' A random sample of 325 books from Amazon.com. 

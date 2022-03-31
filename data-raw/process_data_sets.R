@@ -173,7 +173,8 @@ usethis::use_data(mythbusters_yawn, overwrite = TRUE)
 amazon_books <- 
   "data-raw/amazon_books.csv" %>%
   read_csv() %>%
-  clean_names()
+  clean_names() %>% 
+  mutate(hard_paper = as.factor(hard_paper))
 usethis::use_data(amazon_books, overwrite = TRUE)
 
 

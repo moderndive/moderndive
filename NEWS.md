@@ -1,6 +1,6 @@
-# moderndive 0.5.3.9001
+# moderndive 0.5.4
 
-* Added `amazon-books` dataset: sample of books available for purchase on Amazon.com
+* Added `amazon_books` dataset: sample of books available for purchase on Amazon.com
 
 
 
