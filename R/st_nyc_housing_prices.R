@@ -1,2 +1,3 @@
-st_nyc_housing_prices <- read.csv("/Users/cynthialin/Downloads/saratoga_ny_home_prices (1).csv")
-usethis::use_data(st_nyc_housing_prices, overwrite=TRUE)
+saratoga_houses <- read.csv("https://wjhopper.github.io/SDS-201/data/saratoga_ny_home_prices.csv")
+# link piped
+usethis::use_data(saratoga_houses, overwrite = TRUE) # data file name fixed; format fixed
