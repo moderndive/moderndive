@@ -8,7 +8,7 @@
 A data frame of 1236 rows of individual mothers.
 \describe{
 \item{id}{Identification number}
-\item{plurality}{Marked 5 for single fetus, otherwise number of fetuses}
+\item{pluralty}{Marked 5 for single fetus, otherwise number of fetuses}
 \item{outcome}{Marked 1 for live birth that survived at least 28 days}
 \item{date}{Birth date where 1096 is January 1st, 1961}
 \item{birthday}{Birth date in mm-dd-yyyy format}
@@ -20,7 +20,7 @@ A data frame of 1236 rows of individual mothers.
 \item{age}{Mother's age in years at termination of pregnancy, 99=unknown}
 \item{ed}{Mother's education 0= less than 8th grade, 1 = 8th -12th grade - did not graduate, 2= HS graduate--no other schooling , 3= HS+trade, 4=HS+some college 5= College graduate, 6&7 Trade school HS unclear, 9=unknown}
 \item{ht}{Mother's height in inches to the last completed inch, 99=unknown}
-\item{mwt}{Mother prepregnancy wt in pounds, 999=unknown}
+\item{wt.1}{Mother prepregnancy wt in pounds, 999=unknown}
 \item{drace}{Father's race, coding same as mother's race}
 \item{dage}{Father's age, coding same as mother's age}
 \item{ded}{Father's education, coding same as mother's education}
