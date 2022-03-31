@@ -411,7 +411,7 @@
 #'   \item{certification_contact}{Certification contact for coffee beans}
 #'   \item{unit_of_measurement}{Unit of measurement for altitude}
 #'   \item{altitude_low_meters}{Lower altitude level coffee beans grow at}
-#'   \item{altitude_high_meters	}{Higher altitude level coffee beans grow at}
+#'   \item{altitude_high_meters}{Higher altitude level coffee beans grow at}
 #'   \item{altitude_mean_meters}{Average altitude level coffee beans grow at}
 #' }
 #' @source Coffee Quality Institute. Access cleaned data available at <https://github.com/jldbc/coffee-quality-database>
