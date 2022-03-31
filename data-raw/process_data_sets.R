@@ -295,7 +295,6 @@ coffee_ratings <-
     producer = as.factor(producer),
     in_country_partner = as.factor(in_country_partner),
     grading_date = mdy(grading_date),
-    variety = as.factor(variety),
     processing_method = as.factor(processing_method),
     color = as.factor(color),
     expiration = mdy(expiration),
