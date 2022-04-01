@@ -405,3 +405,65 @@
 #' @source Harvard Dataverse <https://doi.org/10.7910/DVN/NFPQLW>
 #' Note data is released under a CC0: Public Domain license.
 "ev_charging"
+
+#' Massachusetts 2020 vs. 2019 Traffic Data Comparison
+#'
+#' This dataset contains information about changes in speed, volume, and accidents of traffic 
+#' between 2020 and 2019 by community and class of road in Massachusetts.
+#' 
+#' @format A data frame of 264 rows each representing a different community in Massachusetts.
+#' \describe{
+#'   \item{community}{City or Town}
+#'   \item{functional_class}{Class or group the road belongs to}
+#'   \item{change_in_speed}{Average estimated Speed (mph)}
+#'   \item{change_in_volume}{Average traffic}
+#'   \item{change_in_accidents}{Average number of accidents}
+#' }
+#' @source 
+#' \url{https://massdot-impact-crashes-vhb.opendata.arcgis.com/datasets/MassDOT::2020-vehicle-level-crash-details/explore}
+#' \url{https://mhd.public.ms2soft.com/tcds/tsearch.asp?loc=Mhd&mod=}
+"ma_traffic_2020_vs_2019"
+
+#' Data from Mario Kart Ebay auctions 
+#' 
+#' Ebay auction data for the Nintendo Wii game Mario Kart.
+#' 
+#' @format A data frame of 143 auctions.
+#' \describe{
+#'   \item{id}{Auction ID assigned by Ebay}
+#'   \item{duration}{Auction length in days}
+#'   \item{n_bids}{Number of bids}
+#'   \item{cond}{Game condition, either `new` or `used`}
+#'   \item{start_pr}{Price at the start of the auction}
+#'   \item{ship_pr}{Shipping price}
+#'   \item{total_pr}{Total price, equal to auction price plus shipping price}
+#'   \item{ship_sp}{Shipping speed or method}
+#'   \item{seller_rate}{Seller's rating on Ebay, equal to the number of positive ratings minus the number of negative ratings}
+#'   \item{stock_photo}{Whether the auction photo was a stock photo or not, pictures used in many options were considered stock photos}
+#'   \item{wheels}{Number of Wii wheels included in the auction}
+#'   \item{title}{The title of the auctions}
+#' }
+#' @source This data is from <https://www.openintro.org/data/index.php?data=mariokart>
+"mario_kart_auction"
+
+#' Avocado Prices by US Region
+#' 
+#' Gathered from <https://docs.google.com/spreadsheets/d/1cNuj9V-9Xe8fqV3DQRhvsXJhER3zTkO1dSsQ1Q0j96g/edit#gid=1419070688>
+#' 
+#' @format A data frame of 54 regions over 3 years of weekly results
+#' \describe{
+#' \item{date}{Week of Data Recording}
+#' \item{average_price}{Average Price of Avocado}
+#' \item{total_volume}{Total Amount of Avocados}
+#' \item{small_hass_sold}{Amount of Small Haas Avocados Sold}
+#' \item{large_hass_sold}{Amount of Large Haas Avocados Sold}
+#' \item{xlarge_hass_sold}{Amount of Extra Large Haas Avocados Sold}
+#' \item{total_bags}{Total Amount of Bags of Avocados}
+#' \item{small_bags}{Total Amount of Bags of Small Haas Avocados}
+#' \item{large_bags}{Total Amount of Bags of Large Haas Avocados}
+#' \item{x_large_bags}{Total Amount of Bags of Extra Large Haas Avocados}
+#' \item{type}{Type of Sale}
+#' \item{year}{Year of Sale}
+#' \item{region}{Region Where Sale Took Place}
+#' }
+"avocados" 

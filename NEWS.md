@@ -1,7 +1,11 @@
 # moderndive 0.5.4
 
-* Added dataset:
-  + `ev_charging`: information from 3,395 high resolution electric vehicle charging sessions.
+* Added `ev_charging`: information from 3,395 high resolution electric vehicle charging sessions.
+* Added `ma_traffic_2020_vs_2019` consisting of collisions information sourced from reports produced by the Massachusetts Traffic Data Management System.
+* Added `mario-kart-auction` dataset
+* Added `avocados` consisting of avocado prices dataset downloaded from the Hass Avocado Board website in May of 2018.
+
+
 
 # moderndive 0.5.3.9000
 

@@ -292,3 +292,38 @@ ev_charging <-
   select(-facilityType) %>%
   clean_names()
 usethis::use_data(ev_charging, overwrite = TRUE)
+
+# Massachussets 2020 vs. 2019 Traffic Data
+ma_traffic_2020_vs_2019 <- 
+  "data-raw/Massachusetts_2020_vs_2019_Traffic_Data.csv" %>% 
+  read_csv() %>% 
+  clean_names() %>% 
+  mutate(functional_class = as_factor(functional_class))
+usethis::use_data(ma_traffic_2020_vs_2019, overwrite = TRUE)
+
+#-------------------------------------------------------------------------------
+# Mario kart auctions: Documented in R/datasets.R
+#-------------------------------------------------------------------------------
+## Population of 143 Ebay auctions selling Mario Kart for Nintendo Wii
+## Original Google Sheet here:
+## https://docs.google.com/spreadsheets/d/1jhiTFaaJ4ZCUA9yMNFGQ2xnKItXewaNmzu6y0Syw_dk/edit
+mario_kart_auction <- 
+  "data-raw/mariokart.csv" %>%
+  read_csv() %>%
+  mutate(
+    cond = as.factor(cond),
+    ship_sp = as.factor(ship_sp),
+    stock_photo = as.factor(stock_photo)
+  )
+usethis::use_data(mario_kart_auction, overwrite = TRUE)
+
+# Avocado Prices By Region
+# Original Google Sheet here:
+# https://docs.google.com/spreadsheets/d/1cNuj9V-9Xe8fqV3DQRhvsXJhER3zTkO1dSsQ1Q0j96g/edit#gid=1419070688
+avocados <-
+  "data-raw/avocados.csv" %>%
+  read_csv() %>%
+  janitor::clean_names() %>%
+  mutate(type = as.factor(type)) %>%
+  rename(xlarge_hass_sold = xlarage_hass_sold)
+usethis::use_data(avocados, overwrite = TRUE)
