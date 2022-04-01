@@ -1,5 +1,6 @@
 # moderndive 0.5.4
 
+* Added `coffee_quality` dataset: 1340 samples of coffee tested for their quality level
 * Added `amazon_books` dataset: sample of books available for purchase on Amazon.com
 * Added `ipf_lifts` consisting of international power lifting results
 * Added `babies` on maternal smoking and infant health
