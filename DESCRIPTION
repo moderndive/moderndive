@@ -1,7 +1,7 @@
 Package: moderndive
 Type: Package
 Title: Tidyverse-Friendly Introductory Linear Regression
-Version: 0.5.3.9003
+Version: 0.5.3.9008
 Authors@R: c(
     person("Albert Y.", "Kim", email = "albert.ys.kim@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-7824-306X")),
     person("Chester", "Ismay", email = "chester.ismay@gmail.com", role = "aut", comment = c(ORCID = "0000-0003-2820-2547")),
@@ -10,6 +10,30 @@ Authors@R: c(
     person("Evgeni", "Chasnovski", email = "evgeni.chasnovski@gmail.com", role = "ctb", comment = c(ORCID = "0000-0002-1617-4019")),
     person("Will", "Hopper", email = "wjhopper510@gmail.com", role = "ctb", comment = c(ORCID = "0000-0002-7848-1946")),
     person("Marium", "Tapal", email = "mariumtapal@gmail.com", role = "ctb", comment = c(ORCID = "0000-0001-5093-6462")),
+    person("Ziyue", "Yang", email = "zyang2k@gmail.com", role = "ctb", comment = c(ORCID = "0000-0002-9299-8327")),
+    person("Clara", "Li", email = "clarasepianli@gmail.com", role = "ctb", comment = c(ORCID = "0000-0003-2456-0849")),
+    person("Caroline", "McKenna", email = "carolinemckenna101@gmail.com", role = "ctb"),
+    person("Catherine", "Park", email = "jcathyp@gmail.com", role = "ctb", comment = c(ORCID = "0000-0002-8273-9620")),
+    person("Abbie", "Benfield", email = "abbidabbers@gmail.com", role = "ctb"),
+    person("Georgia", "Gans", email = "georgiagans@live.com", role = "ctb"),
+    person("Kacey", "Jean-Jacques", email = "kjeanjacques@smith.edu", role = "ctb"),
+    person("Swaha", "Bhattacharya", email = "itsswahabhattacharya@gmail.com", role = "ctb"),
+    person("Vivian", "Almaraz", email = "viviansofia101@gmail.com", role = "ctb"),
+    person("Elle Jo", "Whalen", email = "ewhalen@smith.edu", role = "ctb"),
+    person("Jacqueline", "Chen", email = "jchen76@smith.edu", role = "ctb"),
+    person("Michelle", "Flesaker", email = "mflesaker@smith.edu", role = "ctb"),
+    person("Irene", "Foster", email = "ifoster25@smith.edu", role = "ctb"),
+    person("Aushanae", "Haller", email = "aushanaenhaller@gmail.com", role = "ctb"),
+    person("Benjamin", "Bruncati", email = "kbruncati@smith.edu", role = "ctb", comment = c(ORCID = "0000-0001-8545-5984")),
+    person("Quinn", "White", email = "quinnarlise@gmail.com", role = "ctb", comment = c(ORCID = "0000-0001-5399-0237")),
+    person("Tianshu", "Zhang", email = "tzhang26@smith.edu", role = "ctb", comment = c(ORCID = "0000-0002-3004-4472")),
+    person("Katelyn", "Diaz", email = "katndiaz@gmail.com", role = "ctb", comment = c(ORCID = "0000-0001-6108-1682")),
+    person("Rose", "Porta", email = "rporta@smith.edu", role = "ctb"),
+    person("Renee", "Wu", email = "rwu30@smith.edu",role ="ctb"),
+    person("Arris", "Moise", email = "amoise@smith.edu", role = "ctb"),
+    person("Kate", "Phan", email = "kphan@smith.edu", role = "ctb"),
+    person("Grace", "Hartley", email = "grace.hartley@gmail.com", role = "ctb"),
+    person("Silas", "Weden", email = "silasweden@gmail.com", role = "ctb"),
     person("Emma", "Vejcik", email = "evejcik@gmail.com", role = "ctb", comment = c(ORCID = "0000-0001-5093-6462")),
     person("Nikki", "Schuldt", email = "nikkischuldt@gmail.com", role = "ctb"),
     person("Tess", "Goldmann", email = "tessgoldmann@aol.com", role = "ctb"),
