@@ -1,5 +1,7 @@
 # moderndive 0.5.4
 
+* Added `amazon_books` dataset: sample of books available for purchase on Amazon.com
+* Added `ipf_lifts` consisting of international power lifting results
 * Added `babies` on maternal smoking and infant health
 * Added `ev_charging`: information from 3,395 high resolution electric vehicle charging sessions.
 * Added `ma_traffic_2020_vs_2019` consisting of collisions information sourced from reports produced by the Massachusetts Traffic Data Management System.

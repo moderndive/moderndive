@@ -169,6 +169,12 @@ mythbusters_yawn <- tibble::tibble(group, yawn) %>%
   select(subj, group, yawn)
 usethis::use_data(mythbusters_yawn, overwrite = TRUE)
 
+# Amazon books data from: https://dasl.datadescription.com/datafile/amazon-books
+amazon_books <- 
+  "data-raw/amazon_books.csv" %>%
+  read_csv(col_types = list(`Hard/ Paper` = col_factor())) %>%
+  clean_names()
+usethis::use_data(amazon_books, overwrite = TRUE)
 
 
 #-------------------------------------------------------------------------------
@@ -273,6 +279,7 @@ pennies_resamples <-
   unnest(cols = c(data))
 usethis::use_data(pennies_resamples, overwrite = TRUE)
 
+
 # Massachusetts traffic data 2020
 # Original Google Sheet here:
 # https://docs.google.com/spreadsheets/d/1rRQIDBBs8DoPAk012BdgDuf4V7iFNZzj3PL4vWfK_IQ/edit#gid=2001681887
@@ -283,6 +290,25 @@ mass_traffic_2020 <- read_csv("data-raw/masstraffic2020.csv") %>%
          dir = as_factor(dir),
          functional_class = as_factor(functional_class))
 usethis::use_data(mass_traffic_2020, overwrite = TRUE)
+
+
+
+## Adding international powerlifting data
+ipf_lifts <- 
+  "data-raw/IPF Lifts - ipf_lifts.csv" %>%
+  read_csv() %>%
+  clean_names() %>% 
+  mutate(
+    sex = as.factor(sex),
+    event = as.factor(event),
+    equipment = as.factor(equipment),
+    age_class = as.factor(age_class),
+    division = as.factor(division),
+    place = as.character(place),
+    federation = as.factor(federation)
+  )
+usethis::use_data(ipf_lifts, overwrite = TRUE)
+
 
 #-------------------------------------------------------------------------------
 # Babies: Documented in R/babies.R

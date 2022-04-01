@@ -364,6 +364,7 @@
 "movies_sample"
 
 
+
 #' 2020 road traffic volume and crash level date for 13 Massachusetts counties
 #' 
 #' @format A data frame of 874 rows representing traffic data at the 874 sites 
@@ -381,6 +382,53 @@
 #'   \item{fatal_injuries}{Number of fatal injuries for all recorded vehicle crashes}
 #' }
 "mass_traffic_2020"
+
+#' Sample of Amazon books 
+#' 
+#' A random sample of 325 books from Amazon.com. 
+#'
+#' @format A data frame of 325 rows representing books listed on Amazon and 13 variables.
+#' \describe{
+#'   \item{title}{Book title}
+#'   \item{author}{Author who wrote book}
+#'   \item{list_price}{recommended retail price of book}
+#'   \item{amazon_price}{lowest price of book shown on Amazon}
+#'   \item{hard_paper}{book is either hardcover or paperback}
+#'   \item{num_pages}{number of pages in book}
+#'   \item{publisher}{Company that issues the book for sale}
+#'   \item{pub_year}{Year the book was published}
+#'   \item{isbn_10}{10-character ISBN number}
+#'   \item{height, width, thick, weight_oz}{height, width, weight and thickness of the book}
+#' }
+#' @source The Data and Story Library (DASL) <https://dasl.datadescription.com/datafile/amazon-books>
+"amazon_books"
+
+#' International Power Lifting Results
+#' A subset of international powerlifting results.
+#' 
+#' @format A data frame with 41,152 entries, one entry for individual lifter
+#' \describe{
+#'   \item{name}{Individual lifter name}
+#'   \item{sex}{Binary sex (M/F)}
+#'   \item{event}{The type of competition that the lifter entered}
+#'   \item{equipment}{The equipment category under which the lifts were performed}
+#'   \item{age}{The age of the lifter on the start date of the meet}
+#'   \item{age_class}{The age class in which the filter falls}
+#'   \item{division}{division of competetition}
+#'   \item{bodyweight_kg}{The recorded bodyweight of the lifter at the time of competition, to two decimal places}
+#'   \item{weight_class_kg}{The weight class in which the lifter competed, to two decimal places}
+#'   \item{best3squat_kg}{Maximum of the first three successful attempts for the lift}
+#'   \item{best3bench_kg}{Maximum of the first three successful attempts for the lift}
+#'   \item{best3deadlift_kg}{Maximum of the first three successful attempts for the lift}
+#'   \item{place}{The recorded place of the lifter in the given division at the end of the meet}
+#'   \item{date}{Date of the event}
+#'   \item{federation}{The federation that hosted the meet}
+#'   \item{meet_name}{The name of the meet}
+#' }
+#' @source This data is a subset of the open dataset [Open Powerlifting](https://www.openpowerlifting.org/)
+"ipf_lifts"
+
+
 
 #' Data on maternal smoking and infant health
 #' 
@@ -517,4 +565,5 @@
 #' \item{region}{Region Where Sale Took Place}
 #' }
 "avocados" 
+
 
