@@ -273,6 +273,14 @@ pennies_resamples <-
   unnest(cols = c(data))
 usethis::use_data(pennies_resamples, overwrite = TRUE)
 
+# Massachussets 2020 vs. 2019 Traffic Data
+ma_traffic_2020_vs_2019 <- 
+  "data-raw/Massachusetts_2020_vs_2019_Traffic_Data.csv" %>% 
+  read_csv() %>% 
+  clean_names() %>% 
+  mutate(functional_class = as_factor(functional_class))
+usethis::use_data(ma_traffic_2020_vs_2019, overwrite = TRUE)
+
 #-------------------------------------------------------------------------------
 # Mario kart auctions: Documented in R/datasets.R
 #-------------------------------------------------------------------------------

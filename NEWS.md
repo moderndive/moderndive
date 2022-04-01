@@ -1,5 +1,6 @@
-# moderndive 0.5.4.
+# moderndive 0.5.4
 
+* Added `ma_traffic_2020_vs_2019` consisting of collisions information sourced from reports produced by the Massachusetts Traffic Data Management System.
 * Added `mario-kart-auction` dataset
 * Added `avocados` consisting of avocado prices dataset downloaded from the Hass Avocado Board website in May of 2018.
 
