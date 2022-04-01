@@ -1,4 +1,4 @@
-# moderndive 0.5.3.9001
+# moderndive 0.5.4
 
 * Added `ipf_lifts` consisting of international power lifting results
 
