@@ -12,13 +12,13 @@ library(nycflights13)
 #-------------------------------------------------------------------------------
 # Datasets: Documented in R/datasets.R
 #-------------------------------------------------------------------------------
-early_january_weather <- weather %>% 
+early_january_weather <- weather %>%
   filter(origin == "EWR" & month == 1 & day <= 15)
 usethis::use_data(early_january_weather, overwrite = TRUE)
 
 
 # Alaska airlines flights only, used in moderndive.com Chapter 2 Data Viz
-alaska_flights <- flights %>% 
+alaska_flights <- flights %>%
   filter(carrier == "AS")
 usethis::use_data(alaska_flights, overwrite = TRUE)
 
@@ -272,6 +272,26 @@ pennies_resamples <-
   select(replicate, everything()) %>%
   unnest(cols = c(data))
 usethis::use_data(pennies_resamples, overwrite = TRUE)
+
+# Electric vehicle charging sessions
+# information from 3,395 high resolution electric vehicle charging sessions
+# Original data from: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/NFPQLW
+ev_charging <-
+  read_csv("data-raw/station_data_dataverse.csv") %>%
+  mutate(
+    facility_type = factor(
+      facilityType,
+      labels = c(
+        "manufacturing",
+        "office",
+        "research and development",
+        "other"
+      )
+    )
+  ) %>%
+  select(-facilityType) %>%
+  clean_names()
+usethis::use_data(ev_charging, overwrite = TRUE)
 
 # Massachussets 2020 vs. 2019 Traffic Data
 ma_traffic_2020_vs_2019 <- 
