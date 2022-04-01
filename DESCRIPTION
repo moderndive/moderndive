@@ -24,9 +24,6 @@ Description: Datasets and wrapper functions for
     in "Statistical Inference via Data Science: A ModernDive 
     into R and the Tidyverse" available at 
     <https://moderndive.com/>.
-=======
-Description: Datasets and wrapper functions for tidyverse-friendly introductory linear regression, used in "Statistical Inference via Data Science: A ModernDive into R and the Tidyverse" available at <https://moderndive.com/>.
->>>>>>> f99fa4555d3763015d43359009426cfb93267484
 Depends:
     R (>= 3.4.0)
 License: GPL-3
