@@ -273,6 +273,24 @@ pennies_resamples <-
   unnest(cols = c(data))
 usethis::use_data(pennies_resamples, overwrite = TRUE)
 
+
+
+## Adding international powerlifting data
+ipf_lifts <- 
+  "data-raw/IPF Lifts - ipf_lifts.csv" %>%
+  read_csv() %>%
+  clean_names() %>% 
+  mutate(
+    sex = as.factor(sex),
+    event = as.factor(event),
+    equipment = as.factor(equipment),
+    age_class = as.factor(age_class),
+    division = as.factor(division),
+    place = as.character(place),
+    federation = as.factor(federation)
+  )
+usethis::use_data(ipf_lifts, overwrite = TRUE)
+
 #-------------------------------------------------------------------------------
 # Babies: Documented in R/babies.R
 #-------------------------------------------------------------------------------
