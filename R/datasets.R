@@ -397,3 +397,107 @@
 #' }
 #' @source Data on maternal smoking and infant health from <https://www.stat.berkeley.edu/~statlabs/labs.html>
 "babies"
+
+#' Electric vehicle charging sessions for a workplace charging program
+#' 
+#' This dataset consists of information on 3,395 electric vehicle charging sessions across
+#' locations for a workplace charging program. The data contains information on multiple
+#' charging sessions from 85 electric vehicle drivers across 25 workplace locations, which 
+#' are located at facilities of various types.
+#' 
+#' @format A data frame of 3,395 rows on 24 variables, where each row is an electric vehicle
+#' charging session.
+#' \describe{
+#'    \item{session_id}{Unique identifier specifying the electric vehicle charging session}
+#'    \item{kwh_total}{Total energy used at the charging session, in kilowatt hours (kWh)}
+#'    \item{dollars}{Quantity of money paid for the charging session in U.S. dollars}
+#'    \item{created}{Date and time recorded at the beginning of the charging session}
+#'    \item{ended}{Date and time recorded at the end of the charging session}
+#'    \item{start_time}{Hour of the day when the charging session began (1 through 24)}
+#'    \item{end_time}{Hour of the day when the charging session ended (1 through 24)}
+#'    \item{charge_time_hrs}{Length of the charging session in hours}
+#'    \item{weekday}{First three characters of the name of the weekday when the charging session occurred}
+#'    \item{platform}{Digital platform the driver used to record the session (android, ios, web)} 
+#'    \item{distance}{Distance from the charging location to the driver's home, expressed in miles
+#'    NA if the driver did not report their address}
+#'    \item{user_id}{Unique identifier for each driver}
+#'    \item{station_id}{Unique identifier for each charging station}
+#'    \item{location_id}{Unique identifier for each location owned by the company where charging stations
+#'    were located}
+#'    \item{manager_vehicle}{Binary variable that is 1 when the vehicle is a type commonly used
+#'    by managers of the firm and 0 otherwise}
+#'    \item{facility_type}{Categorical variable that represents the facility type:
+#'    \itemize{
+#'    \item 1 = manufacturing
+#'    \item 2 = office
+#'    \item 3 = research and development
+#'    \item 4 = other} }
+#'    \item{mon, tues, wed, thurs, fri, sat, sun}{Binary variables; 1 if the charging session took place on that day,
+#'    0 otherwise}
+#'    \item{reported_zip}{Binary variable; 1 if the driver did report their zip code, 0 if they did not}
+#' }
+#' @source Harvard Dataverse <https://doi.org/10.7910/DVN/NFPQLW>
+#' Note data is released under a CC0: Public Domain license.
+"ev_charging"
+
+#' Massachusetts 2020 vs. 2019 Traffic Data Comparison
+#'
+#' This dataset contains information about changes in speed, volume, and accidents of traffic 
+#' between 2020 and 2019 by community and class of road in Massachusetts.
+#' 
+#' @format A data frame of 264 rows each representing a different community in Massachusetts.
+#' \describe{
+#'   \item{community}{City or Town}
+#'   \item{functional_class}{Class or group the road belongs to}
+#'   \item{change_in_speed}{Average estimated Speed (mph)}
+#'   \item{change_in_volume}{Average traffic}
+#'   \item{change_in_accidents}{Average number of accidents}
+#' }
+#' @source 
+#' \url{https://massdot-impact-crashes-vhb.opendata.arcgis.com/datasets/MassDOT::2020-vehicle-level-crash-details/explore}
+#' \url{https://mhd.public.ms2soft.com/tcds/tsearch.asp?loc=Mhd&mod=}
+"ma_traffic_2020_vs_2019"
+
+#' Data from Mario Kart Ebay auctions 
+#' 
+#' Ebay auction data for the Nintendo Wii game Mario Kart.
+#' 
+#' @format A data frame of 143 auctions.
+#' \describe{
+#'   \item{id}{Auction ID assigned by Ebay}
+#'   \item{duration}{Auction length in days}
+#'   \item{n_bids}{Number of bids}
+#'   \item{cond}{Game condition, either `new` or `used`}
+#'   \item{start_pr}{Price at the start of the auction}
+#'   \item{ship_pr}{Shipping price}
+#'   \item{total_pr}{Total price, equal to auction price plus shipping price}
+#'   \item{ship_sp}{Shipping speed or method}
+#'   \item{seller_rate}{Seller's rating on Ebay, equal to the number of positive ratings minus the number of negative ratings}
+#'   \item{stock_photo}{Whether the auction photo was a stock photo or not, pictures used in many options were considered stock photos}
+#'   \item{wheels}{Number of Wii wheels included in the auction}
+#'   \item{title}{The title of the auctions}
+#' }
+#' @source This data is from <https://www.openintro.org/data/index.php?data=mariokart>
+"mario_kart_auction"
+
+#' Avocado Prices by US Region
+#' 
+#' Gathered from <https://docs.google.com/spreadsheets/d/1cNuj9V-9Xe8fqV3DQRhvsXJhER3zTkO1dSsQ1Q0j96g/edit#gid=1419070688>
+#' 
+#' @format A data frame of 54 regions over 3 years of weekly results
+#' \describe{
+#' \item{date}{Week of Data Recording}
+#' \item{average_price}{Average Price of Avocado}
+#' \item{total_volume}{Total Amount of Avocados}
+#' \item{small_hass_sold}{Amount of Small Haas Avocados Sold}
+#' \item{large_hass_sold}{Amount of Large Haas Avocados Sold}
+#' \item{xlarge_hass_sold}{Amount of Extra Large Haas Avocados Sold}
+#' \item{total_bags}{Total Amount of Bags of Avocados}
+#' \item{small_bags}{Total Amount of Bags of Small Haas Avocados}
+#' \item{large_bags}{Total Amount of Bags of Large Haas Avocados}
+#' \item{x_large_bags}{Total Amount of Bags of Extra Large Haas Avocados}
+#' \item{type}{Type of Sale}
+#' \item{year}{Year of Sale}
+#' \item{region}{Region Where Sale Took Place}
+#' }
+"avocados" 
