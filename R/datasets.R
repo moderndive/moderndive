@@ -597,8 +597,8 @@
 #' \item{year}{Year of Sale}
 #' \item{region}{Region Where Sale Took Place}
 #' }
- saratoga-nycHousing-prices
-"avocados" 
+
+
 
 #' House Prices and Properties in Saratoga, New York
 #' Gathered from <https://docs.google.com/spreadsheets/d/1AY5eECqNIggKpYF3kYzJQBIuuOdkiclFhbjAmY3Yc8E/edit#gid=622599674>
@@ -618,5 +618,3 @@
 "saratoga_ny_home_prices" 
 
 
-"avocados"
- saratoga-nycHousing-prices
