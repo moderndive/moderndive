@@ -1,6 +1,7 @@
 # moderndive 0.5.4.
 
 * Added `mario-kart-auction` dataset
+* Added `avocados` consisting of avocado prices dataset downloaded from the Hass Avocado Board website in May of 2018.
 
 
 
