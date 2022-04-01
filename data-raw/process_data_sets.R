@@ -386,7 +386,7 @@ usethis::use_data(avocados, overwrite = TRUE)
 # saratoga housing prices
 # original google sheet here: https://docs.google.com/spreadsheets/d/1AY5eECqNIggKpYF3kYzJQBIuuOdkiclFhbjAmY3Yc8E
 # 
-saratoga_houses <- "data-raw/saratoga houses.csv" %>%
-  read.csv()
+saratoga_houses <- "data-raw/saratoga_houses.csv" %>%
+  read.csv("https://wjhopper.github.io/SDS-201/data/saratoga_ny_home_prices.csv")
 usethis::use_data(saratoga_houses, overwrite = TRUE) # data file name fixed; format fixed
 
