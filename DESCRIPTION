@@ -12,7 +12,10 @@ Authors@R: c(
     person("Marium", "Tapal", email = "mariumtapal@gmail.com", role = "ctb", comment = c(ORCID = "0000-0001-5093-6462")),
     person("Emma", "Vejcik", email = "evejcik@gmail.com", role = "ctb", comment = c(ORCID = "0000-0001-5093-6462")),
     person("Nikki", "Schuldt", email = "nikkischuldt@gmail.com", role = "ctb"),
-    person("Tess", "Goldmann", email = "tessgoldmann@aol.com", role = "ctb")
+    person("Tess", "Goldmann", email = "tessgoldmann@aol.com", role = "ctb"),
+    person("Hongtong", "Lin", email = "cccynthialht@gmail.com", role = "ctb"),
+    person("Alejandra", "Munoz", email = "amunozgarcia@smith.edu", role = "ctb"),
+    person("Elena", "Gordon-Halpern", role = "ctb")
     )
 Maintainer: Albert Y. Kim <albert.ys.kim@gmail.com>
 Description: contributers: Hongtong, Alejandra, Elina
