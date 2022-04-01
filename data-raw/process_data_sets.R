@@ -281,6 +281,25 @@ usethis::use_data(pennies_resamples, overwrite = TRUE)
 
 
 
+#-------------------------------------------------------------------------------
+# Coffee quality data
+# Google Sheet here: https://docs.google.com/spreadsheets/d/1fscb1AbsSXWqqws-hhWAZfT580ms_FvOkBBQsJwozSY/edit
+# Original Github source: https://github.com/jldbc/coffee-quality-database
+#-------------------------------------------------------------------------------
+
+coffee_ratings <- 
+  "https://wjhopper.github.io/SDS-201/data/coffee_ratings.csv" %>%
+  read_csv() %>%
+  mutate(
+    species = as.factor(species),
+    grading_date = mdy(grading_date),
+    color = as.factor(color),
+    expiration = mdy(expiration),
+    unit_of_measurement = as.factor(unit_of_measurement)
+  )
+
+usethis::use_data(coffee_ratings, overwrite = TRUE)
+
 ## Adding international powerlifting data
 ipf_lifts <- 
   "data-raw/IPF Lifts - ipf_lifts.csv" %>%
