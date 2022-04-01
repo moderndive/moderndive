@@ -392,7 +392,7 @@
 #' @format A data frame with 1057 observations on the following 8 variables
 #' \describe{
 #' \item{Price}{Price (US dollars)} 
-#' \item{Living.Area}{Living Area (square feet)}
+#' \item{Living.Area}{Living area (square feet)}
 #' \item{Bathrooms}{Number of Bathroom (half bathrooms have no shower or tub)}
 #' \item{Bedrooms}{Number of Bedrooms}
 #' \item{Fireplaces}{Number of Fireplaces}
