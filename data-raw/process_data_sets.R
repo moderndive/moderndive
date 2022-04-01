@@ -273,6 +273,13 @@ pennies_resamples <-
   unnest(cols = c(data))
 usethis::use_data(pennies_resamples, overwrite = TRUE)
 
+ saratoga-nycHousing-prices
+# Saratoga NY House Prices
+# Original Google Sheet here: 
+# https://docs.google.com/spreadsheets/d/1AY5eECqNIggKpYF3kYzJQBIuuOdkiclFhbjAmY3Yc8E/edit#gid=622599674
+saratoga_ny_home_prices <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vR9FA6dcnlqUeNm3Cp6HR3QbUK0L5FGOYFfBAYpWH76wej0HfPMX8kuaSj8qSgSoVWohNl2uHqBpP26/pub?output=csv")
+usethis::use_data(saratoga_house_prices, overwrite = TRUE)  
+
 
 # Avocado Prices By Region
 # Original Google Sheet here:
@@ -284,3 +291,4 @@ avocados <-
   mutate(type = as.factor(type))%>%
   rename(xlarge_hass_sold = xlarage_hass_sold)
 usethis::use_data(avocados, overwrite = TRUE)
+master

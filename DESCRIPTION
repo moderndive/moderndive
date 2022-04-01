@@ -1,7 +1,11 @@
 Package: moderndive
 Type: Package
 Title: Tidyverse-Friendly Introductory Linear Regression
+saratoga-nycHousing-prices
+Version: 0.5.3.9001
+
 Version: 0.5.3.9003
+ master
 Authors@R: c(
     person("Albert Y.", "Kim", email = "albert.ys.kim@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-7824-306X")),
     person("Chester", "Ismay", email = "chester.ismay@gmail.com", role = "aut", comment = c(ORCID = "0000-0003-2820-2547")),
@@ -9,10 +13,14 @@ Authors@R: c(
     person("Delaney", "Moran", email = "delaneyemoran@gmail.com", role = "ctb"),
     person("Evgeni", "Chasnovski", email = "evgeni.chasnovski@gmail.com", role = "ctb", comment = c(ORCID = "0000-0002-1617-4019")),
     person("Will", "Hopper", email = "wjhopper510@gmail.com", role = "ctb", comment = c(ORCID = "0000-0002-7848-1946")),
+ saratoga-nycHousing-prices
+    person("Marium", "Tapal", email = "mariumtapal@gmail.com", role = "ctb", comment = c(ORCID = "0000-0001-5093-6462"))
+    person("Alejandra", "Munoz", email = "alejandra.mg1228@gmail.com", role = "ctb")
     person("Marium", "Tapal", email = "mariumtapal@gmail.com", role = "ctb", comment = c(ORCID = "0000-0001-5093-6462")),
     person("Emma", "Vejcik", email = "evejcik@gmail.com", role = "ctb", comment = c(ORCID = "0000-0001-5093-6462")),
     person("Nikki", "Schuldt", email = "nikkischuldt@gmail.com", role = "ctb"),
     person("Tess", "Goldmann", email = "tessgoldmann@aol.com", role = "ctb")
+ master
     )
 Maintainer: Albert Y. Kim <albert.ys.kim@gmail.com>
 Description: Datasets and wrapper functions for tidyverse-friendly introductory linear regression, used in "Statistical Inference via Data Science: A ModernDive into R and the Tidyverse" available at <https://moderndive.com/>.
