@@ -273,6 +273,17 @@ pennies_resamples <-
   unnest(cols = c(data))
 usethis::use_data(pennies_resamples, overwrite = TRUE)
 
+#-------------------------------------------------------------------------------
+# Babies: Documented in R/babies.R
+#-------------------------------------------------------------------------------
+# Population of 1236 babies from
+# https://wjhopper.github.io/SDS-201/data/babies.csv
+babies <- read_csv("data-raw/babies.csv") %>%
+  clean_names() %>%
+  mutate(birthday = as.Date(date, origin = "1958-01-01"))
+
+usethis::use_data(babies, overwrite = TRUE)
+
 # Electric vehicle charging sessions
 # information from 3,395 high resolution electric vehicle charging sessions
 # Original data from: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/NFPQLW
