@@ -398,7 +398,7 @@
 #' \item{Fireplaces}{Number of Fireplaces}
 #' \item{Lot.Size}{Size of Lot (acres)}
 #' \item{Age}{Age of House (years)}
-#' \item{Fireplace}{Whether the House has a Fireplace}
+#' \item{Fireplace}{Whether the house has a Fireplace}
 #' }
 #' @source random sample of 1057 houses taken from full Saratoga Housing Data (De Veaux)
 "saratoga_ny_home_prices" 
