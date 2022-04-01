@@ -279,6 +279,7 @@ usethis::use_data(pennies_resamples, overwrite = TRUE)
 # Population of 1236 babies from
 # https://wjhopper.github.io/SDS-201/data/babies.csv
 babies <- read_csv("data-raw/babies.csv") %>%
+  clean_names() %>%
   mutate(birthday = as.Date(date, origin = "1958-01-01"))
 
 usethis::use_data(babies, overwrite = TRUE)
