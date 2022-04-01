@@ -10,6 +10,8 @@ Authors@R: c(
     person("Evgeni", "Chasnovski", email = "evgeni.chasnovski@gmail.com", role = "ctb", comment = c(ORCID = "0000-0002-1617-4019")),
     person("Will", "Hopper", email = "wjhopper510@gmail.com", role = "ctb", comment = c(ORCID = "0000-0002-7848-1946")),
     person("Marium", "Tapal", email = "mariumtapal@gmail.com", role = "ctb", comment = c(ORCID = "0000-0001-5093-6462")),
+    person("Grace", "Hartley", email = "grace.hartley@gmail.com", role = "ctb"),
+    person("Silas", "Weden", email = "silasweden@gmail.com", role = "ctb"),
     person("Emma", "Vejcik", email = "evejcik@gmail.com", role = "ctb", comment = c(ORCID = "0000-0001-5093-6462")),
     person("Nikki", "Schuldt", email = "nikkischuldt@gmail.com", role = "ctb"),
     person("Tess", "Goldmann", email = "tessgoldmann@aol.com", role = "ctb")
