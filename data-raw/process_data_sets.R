@@ -272,3 +272,15 @@ pennies_resamples <-
   select(replicate, everything()) %>%
   unnest(cols = c(data))
 usethis::use_data(pennies_resamples, overwrite = TRUE)
+
+
+# Avocado Prices By Region
+# Original Google Sheet here:
+# https://docs.google.com/spreadsheets/d/1cNuj9V-9Xe8fqV3DQRhvsXJhER3zTkO1dSsQ1Q0j96g/edit#gid=1419070688
+avocados <-
+  "data-raw/avocados.csv" %>%
+  read_csv() %>%
+  janitor::clean_names() %>%
+  mutate(type = as.factor(type))%>%
+  rename(xlarge_hass_sold = xlarage_hass_sold)
+usethis::use_data(avocados, overwrite = TRUE)

@@ -1,3 +1,9 @@
+# moderndive 0.5.4
+
+* Added `avocados` consisting of avocado prices dataset downloaded from the Hass Avocado Board website in May of 2018.
+
+
+
 # moderndive 0.5.3.9000
 
 * Added `early_january_weather` consisting of January subset of `nycflights13::weather`
