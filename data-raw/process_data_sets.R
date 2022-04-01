@@ -281,10 +281,14 @@ ev_charging <-
   mutate(
     facility_type = factor(
       facilityType,
-      labels = c("manufacturing",
-                 "office",
-                 "research and development",
-                 "other"))) %>%
+      labels = c(
+        "manufacturing",
+        "office",
+        "research and development",
+        "other"
+      )
+    )
+  ) %>%
   select(-facilityType) %>%
   clean_names()
 usethis::use_data(ev_charging, overwrite = TRUE)
