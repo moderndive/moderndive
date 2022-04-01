@@ -12,13 +12,13 @@ library(nycflights13)
 #-------------------------------------------------------------------------------
 # Datasets: Documented in R/datasets.R
 #-------------------------------------------------------------------------------
-early_january_weather <- weather %>% 
+early_january_weather <- weather %>%
   filter(origin == "EWR" & month == 1 & day <= 15)
 usethis::use_data(early_january_weather, overwrite = TRUE)
 
 
 # Alaska airlines flights only, used in moderndive.com Chapter 2 Data Viz
-alaska_flights <- flights %>% 
+alaska_flights <- flights %>%
   filter(carrier == "AS")
 usethis::use_data(alaska_flights, overwrite = TRUE)
 
@@ -169,6 +169,12 @@ mythbusters_yawn <- tibble::tibble(group, yawn) %>%
   select(subj, group, yawn)
 usethis::use_data(mythbusters_yawn, overwrite = TRUE)
 
+# Amazon books data from: https://dasl.datadescription.com/datafile/amazon-books
+amazon_books <- 
+  "data-raw/amazon_books.csv" %>%
+  read_csv(col_types = list(`Hard/ Paper` = col_factor())) %>%
+  clean_names()
+usethis::use_data(amazon_books, overwrite = TRUE)
 
 
 #-------------------------------------------------------------------------------
@@ -273,13 +279,97 @@ pennies_resamples <-
   unnest(cols = c(data))
 usethis::use_data(pennies_resamples, overwrite = TRUE)
 
- saratoga-nycHousing-prices
-# Saratoga NY House Prices
-# Original Google Sheet here: 
-# https://docs.google.com/spreadsheets/d/1AY5eECqNIggKpYF3kYzJQBIuuOdkiclFhbjAmY3Yc8E/edit#gid=622599674
-saratoga_ny_home_prices <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vR9FA6dcnlqUeNm3Cp6HR3QbUK0L5FGOYFfBAYpWH76wej0HfPMX8kuaSj8qSgSoVWohNl2uHqBpP26/pub?output=csv")
-usethis::use_data(saratoga_house_prices, overwrite = TRUE)  
 
+
+#-------------------------------------------------------------------------------
+# Coffee quality data
+# Google Sheet here: https://docs.google.com/spreadsheets/d/1fscb1AbsSXWqqws-hhWAZfT580ms_FvOkBBQsJwozSY/edit
+# Original Github source: https://github.com/jldbc/coffee-quality-database
+#-------------------------------------------------------------------------------
+
+coffee_ratings <- 
+  "https://wjhopper.github.io/SDS-201/data/coffee_ratings.csv" %>%
+  read_csv() %>%
+  mutate(
+    species = as.factor(species),
+    grading_date = mdy(grading_date),
+    color = as.factor(color),
+    expiration = mdy(expiration),
+    unit_of_measurement = as.factor(unit_of_measurement)
+  )
+
+usethis::use_data(coffee_ratings, overwrite = TRUE)
+
+## Adding international powerlifting data
+ipf_lifts <- 
+  "data-raw/IPF Lifts - ipf_lifts.csv" %>%
+  read_csv() %>%
+  clean_names() %>% 
+  mutate(
+    sex = as.factor(sex),
+    event = as.factor(event),
+    equipment = as.factor(equipment),
+    age_class = as.factor(age_class),
+    division = as.factor(division),
+    place = as.character(place),
+    federation = as.factor(federation)
+  )
+usethis::use_data(ipf_lifts, overwrite = TRUE)
+
+#-------------------------------------------------------------------------------
+# Babies: Documented in R/babies.R
+#-------------------------------------------------------------------------------
+# Population of 1236 babies from
+# https://wjhopper.github.io/SDS-201/data/babies.csv
+babies <- read_csv("data-raw/babies.csv") %>%
+  clean_names() %>%
+  mutate(birthday = as.Date(date, origin = "1958-01-01"))
+
+usethis::use_data(babies, overwrite = TRUE)
+
+# Electric vehicle charging sessions
+# information from 3,395 high resolution electric vehicle charging sessions
+# Original data from: https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/NFPQLW
+ev_charging <-
+  read_csv("data-raw/station_data_dataverse.csv") %>%
+  mutate(
+    facility_type = factor(
+      facilityType,
+      labels = c(
+        "manufacturing",
+        "office",
+        "research and development",
+        "other"
+      )
+    )
+  ) %>%
+  select(-facilityType) %>%
+  clean_names()
+usethis::use_data(ev_charging, overwrite = TRUE)
+
+# Massachussets 2020 vs. 2019 Traffic Data
+ma_traffic_2020_vs_2019 <- 
+  "data-raw/Massachusetts_2020_vs_2019_Traffic_Data.csv" %>% 
+  read_csv() %>% 
+  clean_names() %>% 
+  mutate(functional_class = as_factor(functional_class))
+usethis::use_data(ma_traffic_2020_vs_2019, overwrite = TRUE)
+
+#-------------------------------------------------------------------------------
+# Mario kart auctions: Documented in R/datasets.R
+#-------------------------------------------------------------------------------
+## Population of 143 Ebay auctions selling Mario Kart for Nintendo Wii
+## Original Google Sheet here:
+## https://docs.google.com/spreadsheets/d/1jhiTFaaJ4ZCUA9yMNFGQ2xnKItXewaNmzu6y0Syw_dk/edit
+mario_kart_auction <- 
+  "data-raw/mariokart.csv" %>%
+  read_csv() %>%
+  mutate(
+    cond = as.factor(cond),
+    ship_sp = as.factor(ship_sp),
+    stock_photo = as.factor(stock_photo)
+  )
+usethis::use_data(mario_kart_auction, overwrite = TRUE)
 
 # Avocado Prices By Region
 # Original Google Sheet here:
@@ -288,7 +378,6 @@ avocados <-
   "data-raw/avocados.csv" %>%
   read_csv() %>%
   janitor::clean_names() %>%
-  mutate(type = as.factor(type))%>%
+  mutate(type = as.factor(type)) %>%
   rename(xlarge_hass_sold = xlarage_hass_sold)
 usethis::use_data(avocados, overwrite = TRUE)
-master
