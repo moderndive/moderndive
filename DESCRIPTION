@@ -20,10 +20,10 @@ Authors@R: c(
 Maintainer: Albert Y. Kim <albert.ys.kim@gmail.com>
 <<<<<<< HEAD
 Description: Datasets and wrapper functions for 
-    tidyverse-friendly introductory linear regression, used 
-    in "Statistical Inference via Data Science: A ModernDive 
-    into R and the Tidyverse" available at 
-    <https://moderndive.com/>.
+tidyverse-friendly introductory linear regression, used 
+in "Statistical Inference via Data Science: A ModernDive 
+into R and the Tidyverse" available at 
+<https://moderndive.com/>.
 Depends:
     R (>= 3.4.0)
 License: GPL-3
