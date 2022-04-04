@@ -603,7 +603,6 @@
 #' House Prices and Properties in Saratoga, New York
 #' 
 #' Random sample of 1057 houses taken from full Saratoga Housing Data (De Veaux)
-#' 
 #' @format A data frame with 1057 observations on the following 8 variables
 #' \describe{
 #' \item{Price}{Price (US dollars)} 
