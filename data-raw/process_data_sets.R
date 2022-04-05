@@ -389,6 +389,6 @@ usethis::use_data(avocados, overwrite = TRUE)
 saratoga_houses <- 
   "data-raw/saratoga_houses.csv" %>%
   read_csv()%>%
-  clean_names
+  clean_names()
 usethis::use_data(saratoga_houses, overwrite = TRUE)
 
