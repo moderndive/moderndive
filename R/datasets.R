@@ -605,14 +605,14 @@
 #' Random sample of 1057 houses taken from full Saratoga Housing Data (De Veaux)
 #' @format A data frame with 1057 observations on the following 8 variables
 #' \describe{
-#' \item{Price}{Price (US dollars)} 
-#' \item{Living.Area}{Living Area (square feet)}
-#' \item{Bathrooms}{Number of Bathroom (half bathrooms have no shower or tub)}
-#' \item{Bedrooms}{Number of Bedrooms}
-#' \item{Fireplaces}{Number of Fireplaces}
-#' \item{Lot.Size}{Size of Lot (acres)}
-#' \item{Age}{Age of House (years)}
-#' \item{Fireplace}{Whether the house has a Fireplace}
+#' \item{price}{Price (US dollars)} 
+#' \item{living.area}{Living Area (square feet)}
+#' \item{bathrooms}{Number of Bathroom (half bathrooms have no shower or tub)}
+#' \item{bedrooms}{Number of Bedrooms}
+#' \item{fireplaces}{Number of Fireplaces}
+#' \item{lot.size}{Size of Lot (acres)}
+#' \item{age}{Age of House (years)}
+#' \item{fireplace}{Whether the house has a Fireplace}
 #' }
 #' @source Gathered from <https://docs.google.com/spreadsheets/d/1AY5eECqNIggKpYF3kYzJQBIuuOdkiclFhbjAmY3Yc8E/edit#gid=622599674>
 "saratoga_houses" 
