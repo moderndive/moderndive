@@ -1,0 +1,875 @@
+Site_ID,County,Community,Rural_Urban,Dir,Functional_Class,Avg_Speed,Total_Volume,Crashes,Nonfatal_Injuries,Fatal_Injuries
+1,berkshire,pittsfield,U,2-WAY,Arterial,45.00390485,5414470,NA,NA,NA
+10,norfolk,foxborough,U,2-WAY,Interstate,70.66905586,21321893,73,0,0
+1001,berkshire,williamstown,U,2-WAY,Arterial,35.44149281,7717,NA,NA,NA
+1004,berkshire,williamstown,U,2-WAY,Collector,21.64539391,5547,NA,NA,NA
+1007,berkshire,williamstown,U,2-WAY,Arterial,35.65915324,11657,NA,NA,NA
+1009,berkshire,clarksburg,R,2-WAY,Arterial,29.90103163,8676,NA,NA,NA
+1011,berkshire,florida,R,2-WAY,Arterial,35.09908815,3290,NA,NA,NA
+1016,berkshire,north adams,U,2-WAY,Arterial,34.36381977,6795,NA,NA,NA
+1017,berkshire,hancock,R,2-WAY,Arterial,46.32463256,10478,NA,NA,NA
+1019,berkshire,lanesborough,R,2-WAY,Arterial,48.98783248,10602,NA,NA,NA
+1056,berkshire,adams,U,2-WAY,Collector,36.7113594,4833,NA,NA,NA
+1058,berkshire,adams,U,2-WAY,Collector,25.02904846,7366,1,0,0
+1060,berkshire,adams,U,2-WAY,Collector,26.92461288,2453,NA,NA,NA
+1066,berkshire,lenox,U,2-WAY,Arterial,35.48750806,20173,NA,NA,NA
+1067,berkshire,lenox,U,2-WAY,Arterial,44.60573511,15501,NA,NA,NA
+1072,berkshire,windsor,R,2-WAY,Arterial,54.17968809,13134,NA,NA,NA
+1083,berkshire,stockbridge,R,2-WAY,Arterial,38.8828854,12539,NA,NA,NA
+1085,berkshire,stockbridge,R,2-WAY,Arterial,46.68086343,22376,NA,NA,NA
+1096,berkshire,lee,R,2-WAY,Arterial,47.02789356,9357,NA,NA,NA
+1110,berkshire,monterey,R,2-WAY,Collector,18.80208481,7053,NA,NA,NA
+1114,berkshire,becket,R,2-WAY,Local Road,41.32548717,5183,NA,NA,NA
+1115,berkshire,becket,R,2-WAY,Arterial,55.45951081,4211,NA,NA,NA
+1124,berkshire,new marlborough,R,2-WAY,Collector,31.17777778,2475,NA,NA,NA
+1132,hampden,chester,R,2-WAY,Arterial,31.8462093,8323,NA,NA,NA
+1136,hampshire,worthington,R,2-WAY,Collector,40.90528634,1362,1,0,0
+1142,berkshire,north adams,U,2-WAY,Collector,19.72157391,6687,2,0,0
+1143,berkshire,north adams,U,2-WAY,Collector,24.48490117,10910,2,0,0
+1166,berkshire,lanesborough,U,2-WAY,Arterial,31.67483566,8671,NA,NA,NA
+1171,berkshire,sheffield,R,2-WAY,Arterial,54.12812269,1976301,NA,NA,NA
+1178,berkshire,lanesborough,R,2-WAY,Arterial,53.64538555,1652666,NA,NA,NA
+1179,berkshire,lenox,U,2-WAY,Arterial,54.88549811,3699867,NA,NA,NA
+1180,hampden,russell,U,2-WAY,Arterial,52.7373793,1299667,NA,NA,NA
+1181,berkshire,sandisfield,R,2-WAY,Arterial,55.21748824,937384,NA,NA,NA
+1182,berkshire,windsor,R,2-WAY,Arterial,55.8740028,1009423,NA,NA,NA
+1183,berkshire,sheffield,R,2-WAY,Arterial,52.4377821,2622252,NA,NA,NA
+12,essex,haverhill,U,2-WAY,Arterial,42.53687452,1761104,NA,NA,NA
+125,berkshire,savoy,R,2-WAY,Collector,46.52362152,471117,NA,NA,NA
+13,norfolk,milton,U,2-WAY,Arterial,37.61654604,28049,4,0,0
+130,hampshire,huntington,R,2-WAY,Arterial,41.57937371,1065252,NA,NA,NA
+14,middlesex,burlington,U,2-WAY,Interstate,61.58251118,49527478,NA,NA,NA
+140,berkshire,clarksburg,R,2-WAY,Collector,44.49007079,825393,NA,NA,NA
+162,berkshire,adams,U,2-WAY,Arterial,48.77235549,5093067,NA,NA,NA
+17,worcester,sturbridge,R,2-WAY,Interstate,63.02028871,12361631,NA,NA,NA
+18,essex,georgetown,U,2-WAY,Interstate,73.94468006,19545104,NA,NA,NA
+1950,berkshire,hancock,R,2-WAY,Collector,54.60291054,1033072,NA,NA,NA
+2,berkshire,lee,U,2-WAY,Arterial,36.2356805,2033206,NA,NA,NA
+20,plymouth,plymouth,U,2-WAY,Freeway & Expressway,64.63839856,12147217,NA,NA,NA
+2001,franklin,charlemont,R,2-WAY,Arterial,35.07955801,8145,NA,NA,NA
+2002,franklin,charlemont,R,2-WAY,Arterial,40.2588577,5165,NA,NA,NA
+2011,franklin,colrain,R,2-WAY,Arterial,49.40195556,28180,NA,NA,NA
+2012,franklin,gill,U,2-WAY,Arterial,51.87886258,2044569,NA,NA,NA
+2015,franklin,northfield,R,2-WAY,Arterial,41.79429146,7953,NA,NA,NA
+2019,franklin,hawley,R,2-WAY,Collector,33.63349515,2060,NA,NA,NA
+2023,franklin,shelburne,R,2-WAY,Arterial,46.08924943,17227,NA,NA,NA
+2025,franklin,greenfield,U,2-WAY,Arterial,34.84998246,22808,NA,NA,NA
+2026,franklin,greenfield,U,2-WAY,Arterial,18.94741726,16167,2,0,0
+2027,franklin,greenfield,U,2-WAY,Collector,34.04343765,6423,NA,NA,NA
+2028,franklin,greenfield,U,2-WAY,Arterial,33.21547518,12912,NA,NA,NA
+2030,franklin,greenfield,U,2-WAY,Arterial,33.76653261,28599,NA,NA,NA
+2031,franklin,greenfield,U,2-WAY,Arterial,33.90491621,10801,NA,NA,NA
+2032,franklin,whately,R,2-WAY,Interstate,46.66561668,73969,1,0,0
+2033,franklin,greenfield,U,2-WAY,Collector,29.07857079,11111,4,0,0
+2036,franklin,greenfield,U,2-WAY,Freeway & Expressway,68.3335984,19492,NA,NA,NA
+2038,franklin,deerfield,R,2-WAY,Collector,44.62574019,5404,NA,NA,NA
+2052,franklin,montague,R,2-WAY,Collector,25.56689246,2362,NA,NA,NA
+2053,franklin,montague,U,2-WAY,Arterial,32.50383097,12921,NA,NA,NA
+2054,franklin,montague,U,2-WAY,Arterial,42.70400115,6989,NA,NA,NA
+2055,franklin,montague,U,2-WAY,Arterial,28.84411183,42496,NA,NA,NA
+2058,franklin,erving,R,2-WAY,Arterial,40.96181654,17704,2,0,0
+2060,franklin,erving,R,2-WAY,Arterial,49.78883146,18837,NA,NA,NA
+2065,franklin,wendell,R,2-WAY,Collector,32.54166005,6270,NA,NA,NA
+2077,hampshire,westhampton,R,2-WAY,Collector,24.04784689,1045,NA,NA,NA
+2086,hampshire,northampton,U,2-WAY,Arterial,29.72581277,12765,NA,NA,NA
+2087,hampshire,northampton,U,2-WAY,Arterial,23.83743764,31485,NA,NA,NA
+2093,hampshire,northampton,U,2-WAY,Local Road,29.19470986,12872,NA,NA,NA
+2096,hampshire,northampton,U,2-WAY,Arterial,15.44051071,42764,3,0,0
+2100,hampshire,amherst,R,2-WAY,Collector,40.2750416,6010,NA,NA,NA
+2102,hampshire,hadley,U,2-WAY,Arterial,38.38691634,28790,NA,NA,NA
+2106,hampshire,pelham,R,2-WAY,Collector,31.97949619,6828,NA,NA,NA
+2109,hampshire,amherst,U,2-WAY,Arterial,25.35486942,7353,NA,NA,NA
+211,franklin,deerfield,R,2-WAY,Collector,42.59889009,1868614,NA,NA,NA
+2110,hampshire,amherst,U,2-WAY,Arterial,32.32423731,13047,NA,NA,NA
+2111,hampshire,amherst,U,2-WAY,Arterial,32.54331952,10137,NA,NA,NA
+2112,hampshire,amherst,U,2-WAY,Arterial,33.05477284,25910,NA,NA,NA
+2113,hampshire,amherst,U,2-WAY,Arterial,32.36194669,8178,NA,NA,NA
+2115,hampshire,easthampton,U,2-WAY,Arterial,26.52619309,7292,NA,NA,NA
+2116,hampshire,easthampton,U,2-WAY,Arterial,34.74921743,16613,NA,NA,NA
+2118,hampshire,easthampton,U,2-WAY,Arterial,38.30742131,13058,1,0,0
+2121,hampshire,easthampton,U,2-WAY,Collector,31.15943825,14526,NA,NA,NA
+2122,hampshire,amherst,U,2-WAY,Arterial,31.7705279,17257,NA,NA,NA
+2124,hampden,holyoke,U,2-WAY,Collector,29.30941821,15336,NA,NA,NA
+2126,hampden,holyoke,U,2-WAY,Arterial,17.14376376,23168,27,0,0
+2130,hampshire,south hadley,U,2-WAY,Arterial,42.72440553,10052,NA,NA,NA
+2134,hampshire,south hadley,U,2-WAY,Arterial,36.36139332,4823,NA,NA,NA
+2135,hampshire,south hadley,U,2-WAY,Collector,32.68289884,6099,NA,NA,NA
+2136,hampshire,south hadley,U,2-WAY,Collector,27.21774194,2480,NA,NA,NA
+2137,hampshire,south hadley,U,2-WAY,Arterial,48.06376174,40024,NA,NA,NA
+2140,hampden,chicopee,U,2-WAY,Arterial,39.33415703,21456,NA,NA,NA
+2142,hampshire,belchertown,U,2-WAY,Arterial,37.39640111,19117,1,0,0
+2153,hampshire,ware,U,2-WAY,Arterial,39.85066382,42194,NA,NA,NA
+2166,hampden,southwick,U,2-WAY,Arterial,46.00017037,23504,2,0,0
+2168,hampden,southwick,U,2-WAY,Collector,37.57295073,9481,NA,NA,NA
+2174,hampden,westfield,U,2-WAY,Arterial,25.87381846,15447,NA,NA,NA
+2175,hampden,westfield,U,2-WAY,Collector,29.9093284,9187,NA,NA,NA
+2176,hampden,westfield,U,2-WAY,Collector,39.07232164,21519,2,0,0
+2178,hampden,east longmeadow,U,2-WAY,Collector,22.7446693,25795,NA,NA,NA
+2181,hampden,springfield,U,2-WAY,Collector,28.72460991,7306,NA,NA,NA
+2184,hampden,springfield,U,2-WAY,Collector,28.62268519,2160,NA,NA,NA
+2188,hampden,springfield,U,2-WAY,Collector,25.06949807,1036,NA,NA,NA
+2191,hampden,springfield,U,2-WAY,Freeway & Expressway,29.02881422,105972,8,0,0
+2193,hampden,springfield,U,2-WAY,Collector,33.23546407,8308,NA,NA,NA
+2194,hampden,springfield,U,2-WAY,Collector,24.33048221,16136,NA,NA,NA
+2204,hampden,west springfield,U,2-WAY,Local Road,39.26414152,30031,NA,NA,NA
+2219,hampshire,northampton,U,2-WAY,Arterial,28.16082027,23006,2,0,0
+2221,hampshire,northampton,U,2-WAY,Local Road,17.40607055,1219,NA,NA,NA
+2223,hampshire,south hadley,U,2-WAY,Arterial,28.12638019,20923,NA,NA,NA
+2229,franklin,greenfield,U,2-WAY,Arterial,31.34320616,5977,NA,NA,NA
+2233,franklin,montague,U,2-WAY,Arterial,36.72780911,26953,NA,NA,NA
+2241,hampden,southwick,U,2-WAY,Arterial,26.25194989,16926,2,0,0
+2242,hampden,southwick,U,2-WAY,Arterial,32.60055633,14383,NA,NA,NA
+2247,hampden,springfield,U,2-WAY,Interstate,59.8982092,27763370,NA,NA,NA
+2248,hampden,springfield,U,2-WAY,Interstate,64.036434,23260074,3,0,0
+2251,hampden,springfield,U,2-WAY,Interstate,60.75599702,14490655,NA,NA,NA
+2256,franklin,whately,R,2-WAY,Interstate,60.93115314,86017,NA,NA,NA
+2264,franklin,bernardston,R,2-WAY,Arterial,52.31737779,2705977,NA,NA,NA
+236467,norfolk,avon,U,2-WAY,Collector,35.43334415,6150,NA,NA,NA
+236526,plymouth,west bridgewater,U,2-WAY,Arterial,36.6928985,8002,3,0,0
+236617,middlesex,dunstable,U,2-WAY,Arterial,31.06327883,32912,1,0,0
+236640,bristol,easton,U,2-WAY,Arterial,34.79790127,25107,NA,NA,NA
+236644,bristol,easton,U,2-WAY,Arterial,35.93709486,10847,NA,NA,NA
+236645,bristol,easton,U,2-WAY,Arterial,37.78362551,26064,NA,NA,NA
+236646,bristol,easton,U,2-WAY,Arterial,40.87617801,26194,NA,NA,NA
+237107,worcester,upton,U,2-WAY,Arterial,39.78237143,45837,3,0,0
+237171,middlesex,westford,U,2-WAY,Arterial,44.37742034,22884,NA,NA,NA
+237239,worcester,worcester,U,2-WAY,Arterial,32.85966129,31711,3,0,0
+238045,norfolk,avon,U,2-WAY,Arterial,32.66608345,18311,2,0,0
+238049,norfolk,avon,U,2-WAY,Arterial,35.43054292,19111,1,0,0
+238054,norfolk,avon,U,2-WAY,Local Road,26.88828968,1282,NA,NA,NA
+238124,plymouth,bridgewater,U,2-WAY,Collector,29.8073838,8976,NA,NA,NA
+238166,plymouth,brockton,U,2-WAY,Arterial,23.39425732,10613,NA,NA,NA
+238431,middlesex,lowell,U,2-WAY,Arterial,33.81070402,33417,NA,NA,NA
+2396,hampshire,hatfield,R,2-WAY,Interstate,65.70937769,7077884,NA,NA,NA
+240204,norfolk,avon,U,2-WAY,Arterial,35.05587162,31274,NA,NA,NA
+240207,norfolk,avon,U,2-WAY,Arterial,31.96684378,31441,14,0,0
+240433,bristol,easton,U,2-WAY,Arterial,32.20082967,33605,2,0,0
+2405,hampshire,northampton,U,2-WAY,Interstate,68.74702086,9985463,NA,NA,NA
+240628,middlesex,lowell,U,2-WAY,Arterial,36.33049497,18208,NA,NA,NA
+241082,worcester,webster,U,2-WAY,Arterial,29.02567515,80450,19,0,0
+2425,hampshire,northampton,U,2-WAY,Interstate,68.90258796,7840211,NA,NA,NA
+2452,hampshire,easthampton,U,2-WAY,Interstate,67.92016147,12805773,NA,NA,NA
+25,bristol,somerset,U,2-WAY,Arterial,38.97583843,3055638,1,0,0
+250798,plymouth,pembroke,U,2-WAY,Local Road,30.14032698,2195,2,0,0
+250863,plymouth,west bridgewater,U,2-WAY,Collector,40.87992495,5311,NA,NA,NA
+251125,middlesex,billerica,U,2-WAY,Arterial,33.68891317,38435,NA,NA,NA
+252315,middlesex,dracut,U,2-WAY,Arterial,26.73741649,37575,NA,NA,NA
+253233,bristol,easton,U,2-WAY,Arterial,33.14690349,26416,13,0,0
+253768,worcester,sterling,R,2-WAY,Collector,39.52199263,11664,NA,NA,NA
+254032,worcester,berlin,U,2-WAY,Arterial,40.43258872,76978,8,0,0
+254043,worcester,brookfield,R,2-WAY,Collector,41.54820308,15783,NA,NA,NA
+254073,worcester,holden,U,2-WAY,Arterial,44.88653763,13852,NA,NA,NA
+254111,worcester,paxton,U,2-WAY,Arterial,40.49715876,8623,NA,NA,NA
+254160,worcester,westborough,U,2-WAY,Arterial,31.64688476,91287,NA,NA,NA
+255063,worcester,boylston,U,2-WAY,Arterial,43.37113443,49857,NA,NA,NA
+257659,bristol,easton,U,2-WAY,Arterial,41.85168739,33713,2,0,0
+257812,worcester,worcester,U,2-WAY,Arterial,37.16780146,40580,NA,NA,NA
+257931,norfolk,avon,U,2-WAY,Arterial,33.08805413,31581,NA,NA,NA
+280,hampden,west springfield,U,2-WAY,Arterial,41.4164477,3639062,NA,NA,NA
+2806,hampden,agawam,U,2-WAY,Freeway & Expressway,64.5464579,5073200,NA,NA,NA
+2846,hampden,chicopee,U,2-WAY,Arterial,27.98429541,47319,33,0,0
+2847,hampden,chicopee,U,2-WAY,Arterial,20.90702573,26602,NA,NA,NA
+2848,hampden,chicopee,U,2-WAY,Arterial,26.97363862,13282,NA,NA,NA
+2849,hampden,chicopee,U,2-WAY,Arterial,18.41251086,11512,5,0,0
+2850,hampden,chicopee,U,2-WAY,Arterial,35.07306405,40931,NA,NA,NA
+2855,hampden,chicopee,U,2-WAY,Arterial,34.06462221,26154,1,0,0
+2857,hampshire,south hadley,U,2-WAY,Arterial,37.12554286,21184,NA,NA,NA
+2858,hampshire,south hadley,U,2-WAY,Arterial,23.75625123,55869,NA,NA,NA
+2863,hampden,holyoke,U,2-WAY,Arterial,32.86438478,75493,19,0,0
+3,bristol,rehoboth,U,2-WAY,Arterial,47.93431077,2376295,NA,NA,NA
+30,worcester,webster,U,2-WAY,Interstate,67.94641339,8216879,NA,NA,NA
+3008,worcester,westminster,U,2-WAY,Freeway & Expressway,62.77993839,10290307,NA,NA,NA
+3016,worcester,westminster,U,2-WAY,Arterial,38.03903914,14716,NA,NA,NA
+303,worcester,auburn,U,2-WAY,Arterial,39.66854181,2380614,NA,NA,NA
+3045,worcester,lunenburg,U,2-WAY,Arterial,39.23335885,22204,NA,NA,NA
+3051,worcester,leominster,U,2-WAY,Arterial,37.91985107,32633,NA,NA,NA
+3053,worcester,leominster,U,2-WAY,Arterial,30.44397966,6096,4,0,0
+307,worcester,westborough,U,2-WAY,Arterial,54.3884723,15112593,NA,NA,NA
+3081,worcester,lancaster,U,2-WAY,Arterial,34.15387614,41046,NA,NA,NA
+3091,worcester,southborough,U,2-WAY,Collector,33.98374739,4307,NA,NA,NA
+3093,worcester,southborough,U,2-WAY,Collector,33.62576832,4230,NA,NA,NA
+3094,worcester,southborough,U,2-WAY,Collector,17.68699573,2107,NA,NA,NA
+3099,worcester,barre,R,2-WAY,Arterial,44.54819077,9037,NA,NA,NA
+31,hampden,springfield,U,2-WAY,Interstate,62.45084461,18524642,NA,NA,NA
+310,worcester,sutton,U,2-WAY,Freeway & Expressway,63.13235609,9329210,NA,NA,NA
+3102,worcester,hardwick,R,2-WAY,Arterial,43.66755913,11207,NA,NA,NA
+3103,worcester,hardwick,U,2-WAY,Arterial,46.43068121,15043,NA,NA,NA
+3108,worcester,rutland,U,2-WAY,Arterial,36.54973475,8294,5,0,0
+3110,worcester,boylston,U,2-WAY,Arterial,39.92397661,9576,5,0,0
+3115,worcester,west boylston,U,2-WAY,Collector,39.07934912,10939,NA,NA,NA
+3123,worcester,shrewsbury,U,2-WAY,Arterial,34.65826053,23249,2,0,0
+3125,worcester,shrewsbury,U,2-WAY,Collector,33.39000948,7387,NA,NA,NA
+3130,worcester,shrewsbury,U,2-WAY,Arterial,47.1416636,32583,NA,NA,NA
+3133,worcester,westborough,U,2-WAY,Collector,34.7036436,19108,NA,NA,NA
+3138,worcester,warren,R,2-WAY,Collector,41.5870226,7567,NA,NA,NA
+3139,worcester,paxton,U,2-WAY,Arterial,35.34117787,16827,NA,NA,NA
+3140,worcester,paxton,U,2-WAY,Arterial,48.97655548,1509617,NA,NA,NA
+3145,worcester,spencer,U,2-WAY,Arterial,43.10343659,14759,NA,NA,NA
+3149,worcester,paxton,U,2-WAY,Arterial,31.06073766,16349,2,0,0
+3154,worcester,worcester,U,2-WAY,Arterial,31.10486285,12364,NA,NA,NA
+3158,worcester,worcester,U,2-WAY,Collector,32.88910122,16752,4,0,0
+3159,worcester,worcester,U,2-WAY,Collector,24.34176428,9647,5,0,0
+316,worcester,worcester,U,2-WAY,Interstate,61.38170839,6711702,5,0,0
+3164,worcester,dudley,U,2-WAY,Arterial,34.8824115,27140,5,0,0
+3178,worcester,auburn,U,2-WAY,Arterial,44.30517035,5990496,8,0,0
+3180,norfolk,medway,U,2-WAY,Interstate,71.7838872,23347184,NA,NA,NA
+3189,worcester,grafton,U,2-WAY,Collector,29.49561062,9002,NA,NA,NA
+3190,worcester,grafton,U,2-WAY,Collector,36.08819715,3855,NA,NA,NA
+3199,worcester,uxbridge,U,2-WAY,Freeway & Expressway,67.31785959,8016605,NA,NA,NA
+3202,worcester,douglas,U,2-WAY,Local Road,25.92391561,33863,NA,NA,NA
+3205,worcester,uxbridge,U,2-WAY,Arterial,22.41041294,25718,NA,NA,NA
+3206,worcester,uxbridge,U,2-WAY,Arterial,36.82377651,17021,NA,NA,NA
+3208,worcester,webster,U,2-WAY,Arterial,42.93417225,28529,NA,NA,NA
+3210,worcester,webster,U,2-WAY,Interstate,69.62519878,8096692,NA,NA,NA
+3215,worcester,milford,U,2-WAY,Collector,20.47088634,18943,NA,NA,NA
+3216,worcester,hopedale,U,2-WAY,Arterial,31.83457198,3633,NA,NA,NA
+3217,worcester,milford,U,2-WAY,Arterial,40.50706191,17559,NA,NA,NA
+3220,worcester,blackstone,U,2-WAY,Arterial,31.69705421,17219,12,0,0
+3226,worcester,athol,U,2-WAY,Arterial,37.73802548,28331,2,0,0
+3236,worcester,petersham,R,2-WAY,Arterial,48.44150894,3804,NA,NA,NA
+3243,hampden,monson,U,2-WAY,Arterial,31.01054608,18114,NA,NA,NA
+3244,hampden,monson,U,2-WAY,Arterial,27.04048583,6916,NA,NA,NA
+3247,worcester,hopedale,U,2-WAY,Arterial,44.90071449,24230,2,0,0
+3275,worcester,worcester,U,2-WAY,Arterial,28.82076643,24173,2,0,0
+3277,worcester,worcester,U,2-WAY,Arterial,40.92271038,29630,NA,NA,NA
+3281,worcester,southbridge,U,2-WAY,Arterial,26.24532357,20476,8,0,0
+3283,worcester,southbridge,U,2-WAY,Collector,24.50476536,11018,NA,NA,NA
+3288,worcester,blackstone,U,2-WAY,Arterial,21.64848285,15164,4,0,0
+3291,worcester,worcester,U,2-WAY,Interstate,54.88579463,11498970,NA,NA,NA
+3292,worcester,worcester,U,2-WAY,Interstate,66.266796,9258052,2,0,0
+3293,worcester,west boylston,U,2-WAY,Interstate,68.71010564,7026930,NA,NA,NA
+3295,worcester,sterling,U,2-WAY,Interstate,69.50782374,4232377,NA,NA,NA
+3300,worcester,oxford,U,2-WAY,Interstate,66.10378788,14697139,NA,NA,NA
+3302,worcester,athol,R,2-WAY,Arterial,44.78691928,3853,NA,NA,NA
+3304,worcester,hubbardston,R,2-WAY,Arterial,48.88442211,11741,NA,NA,NA
+3305,worcester,fitchburg,U,2-WAY,Arterial,37.97986844,26451,NA,NA,NA
+3314,worcester,worcester,U,2-WAY,Collector,36.34948586,7782,NA,NA,NA
+3319,worcester,shrewsbury,U,2-WAY,Interstate,70.4634938,8522162,1,0,0
+3320,worcester,shrewsbury,U,2-WAY,Interstate,67.22204738,8307047,NA,NA,NA
+3323,worcester,shrewsbury,U,2-WAY,Interstate,71.4193935,8305279,NA,NA,NA
+3326,worcester,worcester,U,2-WAY,Interstate,64.87058755,10199300,13,0,0
+3328,worcester,northborough,U,2-WAY,Collector,32.87906751,8236,NA,NA,NA
+3329,hampden,brimfield,R,2-WAY,Arterial,55.29835252,2064111,2,0,0
+3331,worcester,sturbridge,R,2-WAY,Arterial,44.44916761,2472944,NA,NA,NA
+3333,worcester,worcester,U,2-WAY,Interstate,61.34889004,39592830,NA,NA,NA
+3336,worcester,leominster,U,2-WAY,Arterial,21.8117166,31912,1,0,0
+3337,worcester,shrewsbury,U,2-WAY,Arterial,37.20635924,26890,NA,NA,NA
+3372456,middlesex,westford,U,2-WAY,Arterial,29.16157842,37741,NA,NA,NA
+3372676,norfolk,avon,U,2-WAY,Local Road,23.43431635,371,NA,NA,NA
+3372680,plymouth,plymouth,U,2-WAY,Collector,43.1857998,13162,NA,NA,NA
+3372682,plymouth,plymouth,U,2-WAY,Collector,35.66844721,21273,NA,NA,NA
+3372812,middlesex,dracut,U,2-WAY,Collector,19.91977008,12354,9,0,0
+3372888,plymouth,abington,U,2-WAY,Local Road,27.0875576,1078,NA,NA,NA
+3372889,plymouth,abington,U,2-WAY,Local Road,24.21543002,2350,NA,NA,NA
+3372890,plymouth,brockton,,EB,Freeway & Expressway,37.39880212,23948,9,6,0
+3372891,plymouth,brockton,,WB,Freeway & Expressway,32.04507787,26495,3,0,0
+3372892,plymouth,brockton,U,2-WAY,Local Road,19.37189117,5385,2,0,0
+3372893,plymouth,brockton,U,2-WAY,Arterial,19.25552371,23212,14,0,0
+3372894,plymouth,brockton,U,2-WAY,Arterial,25.98281803,20946,2,0,0
+3372895,plymouth,brockton,U,1-WAY,Local Road,26.23824959,4301,NA,NA,NA
+3372896,plymouth,brockton,U,1-WAY,Local Road,26.71983847,7798,NA,NA,NA
+3372897,plymouth,brockton,U,2-WAY,Local Road,23.00803213,6097,19,0,0
+3372898,plymouth,brockton,U,2-WAY,Arterial,19.24118177,11080,2,0,0
+3372899,plymouth,brockton,U,2-WAY,Collector,35.66843168,29782,NA,NA,NA
+3372900,plymouth,brockton,U,2-WAY,Collector,37.78260363,25531,NA,NA,NA
+3372901,plymouth,brockton,U,2-WAY,Arterial,35.41391966,14634,11,0,0
+3372902,plymouth,brockton,U,2-WAY,Arterial,36.41346097,16742,NA,NA,NA
+3372903,plymouth,brockton,U,2-WAY,Arterial,25.36704703,16896,5,0,0
+3372904,plymouth,kingston,U,2-WAY,Local Road,30.90497738,1105,NA,NA,NA
+3372905,plymouth,plymouth,U,2-WAY,Collector,39.05310351,11429,NA,NA,NA
+3372906,plymouth,plymouth,U,2-WAY,Collector,41.77490989,8561,NA,NA,NA
+3372907,plymouth,west bridgewater,U,2-WAY,Collector,35.18882466,5684,NA,NA,NA
+35,essex,beverly,U,2-WAY,Freeway & Expressway,64.79597034,14947219,NA,NA,NA
+38,bristol,new bedford,U,2-WAY,Interstate,66.44708933,16023490,NA,NA,NA
+3895,worcester,auburn,U,2-WAY,Interstate,68.47034872,22418404,2,0,0
+390,middlesex,marlborough,U,2-WAY,Interstate,69.47495792,770741,NA,NA,NA
+3921,worcester,sturbridge,U,2-WAY,Interstate,69.52460225,10607958,NA,NA,NA
+3929,worcester,sturbridge,U,2-WAY,Interstate,69.24959707,10971908,10,0,0
+3982,worcester,millbury,U,2-WAY,Arterial,30.89410551,33954,NA,NA,NA
+3983,worcester,milford,U,2-WAY,Arterial,36.30010346,26096,NA,NA,NA
+3985,worcester,milford,U,2-WAY,Arterial,29.70091075,47653,7,0,0
+3991,worcester,worcester,U,2-WAY,Arterial,59.46063535,12339327,NA,NA,NA
+3992,worcester,worcester,U,2-WAY,Interstate,65.8587729,8417629,NA,NA,NA
+40,berkshire,lenox,R,2-WAY,Arterial,50.51893112,7201846,4,0,0
+4006,middlesex,hudson,U,2-WAY,Arterial,36.07608359,6460,NA,NA,NA
+4008,middlesex,stow,U,2-WAY,Arterial,32.42480181,26490,NA,NA,NA
+4013,middlesex,lincoln,U,2-WAY,Arterial,56.40740682,9192050,NA,NA,NA
+4014,middlesex,weston,U,2-WAY,Collector,37.39694367,3959,1,0,0
+4017,middlesex,framingham,U,2-WAY,Collector,42.08409342,7236,NA,NA,NA
+4022,middlesex,hopkinton,U,2-WAY,Arterial,37.41832806,11687,NA,NA,NA
+4024,middlesex,natick,U,2-WAY,Collector,28.0599813,10695,NA,NA,NA
+4027,middlesex,sherborn,U,2-WAY,Arterial,42.4927789,12325,NA,NA,NA
+403,middlesex,concord,U,2-WAY,Arterial,33.8617343,1580457,NA,NA,NA
+4036,middlesex,groton,U,2-WAY,Arterial,33.37952453,27047,NA,NA,NA
+4037,middlesex,groton,U,2-WAY,Arterial,38.27215615,10426,NA,NA,NA
+4040,middlesex,chelmsford,U,2-WAY,Arterial,42.73310811,8288,NA,NA,NA
+4042,middlesex,chelmsford,U,2-WAY,Arterial,35.46687211,3894,NA,NA,NA
+4059,middlesex,billerica,U,2-WAY,Collector,29.95457905,14884,NA,NA,NA
+4060,middlesex,billerica,U,2-WAY,Arterial,31.75025796,12599,2,0,0
+4062,middlesex,billerica,U,2-WAY,Arterial,38.93589108,22183,1,0,0
+4067,middlesex,billerica,U,2-WAY,Collector,44.35601719,6282,NA,NA,NA
+4076,middlesex,lowell,U,2-WAY,Arterial,19.35041566,18284,4,0,0
+4079,middlesex,lowell,U,2-WAY,Freeway & Expressway,54.29632546,2788356,6,0,0
+4083,middlesex,dracut,U,2-WAY,Arterial,35.73395447,53043,NA,NA,NA
+4084,middlesex,lowell,U,2-WAY,Arterial,36.91564714,48552,NA,NA,NA
+4088,middlesex,lowell,U,2-WAY,Arterial,27.91072361,45964,1,0,0
+4090,middlesex,littleton,U,2-WAY,Interstate,72.01549979,20844414,NA,NA,NA
+4097,middlesex,woburn,U,2-WAY,Interstate,61.70498391,42755246,NA,NA,NA
+4098,middlesex,woburn,U,2-WAY,Interstate,58.60362494,26862118,2,0,0
+4099,middlesex,stoneham,U,2-WAY,Interstate,64.91476447,14828442,NA,NA,NA
+4102,middlesex,dracut,U,2-WAY,Arterial,29.0504451,23927,5,0,0
+4103,middlesex,dracut,U,2-WAY,Arterial,40.96792885,23557,NA,NA,NA
+4105,middlesex,tewksbury,U,2-WAY,Collector,28.09754501,18330,NA,NA,NA
+4106,middlesex,billerica,U,2-WAY,Collector,29.03141433,21872,NA,NA,NA
+4110,middlesex,tewksbury,U,2-WAY,Arterial,30.56435442,27030,3,0,0
+4112,middlesex,tewksbury,U,2-WAY,Arterial,35.35910653,1746,4,0,0
+4113,middlesex,billerica,U,2-WAY,Collector,26.94859222,6322,NA,NA,NA
+4116,middlesex,westford,U,2-WAY,Arterial,35.83618312,9065,NA,NA,NA
+4119,middlesex,waltham,U,2-WAY,Interstate,64.96596545,36396640,NA,NA,NA
+4120,middlesex,waltham,U,2-WAY,Interstate,62.64245556,32064185,NA,NA,NA
+4123,middlesex,north reading,U,2-WAY,Arterial,33.57516274,19970,4,0,0
+4125,middlesex,wakefield,U,2-WAY,Arterial,35.48231877,23754,NA,NA,NA
+4134,middlesex,watertown,U,2-WAY,Collector,26.05432734,13796,NA,NA,NA
+4135,middlesex,chelmsford,U,2-WAY,Arterial,28.21916718,11313,NA,NA,NA
+4147,middlesex,wakefield,U,2-WAY,Interstate,59.84977609,38247085,NA,NA,NA
+4153,middlesex,bedford,U,2-WAY,Collector,39.04255094,9471,NA,NA,NA
+4156,middlesex,framingham,U,2-WAY,Collector,28.53270715,2981,NA,NA,NA
+4157,middlesex,framingham,U,2-WAY,Collector,22.98678508,14075,NA,NA,NA
+4159,middlesex,woburn,U,2-WAY,Interstate,60.64889164,43960371,NA,NA,NA
+4167,middlesex,acton,U,2-WAY,Collector,38.78809241,5887,NA,NA,NA
+4169,middlesex,stoneham,U,2-WAY,Interstate,69.54387539,44412984,NA,NA,NA
+4172,middlesex,acton,U,2-WAY,Freeway & Expressway,73.27743506,9885277,1,0,0
+4285,middlesex,chelmsford,U,2-WAY,Interstate,61.8113345,31096626,NA,NA,NA
+4391,middlesex,wilmington,U,2-WAY,Interstate,68.98441682,44521821,NA,NA,NA
+4798,middlesex,lexington,U,2-WAY,Freeway & Expressway,68.32569818,9851800,2,0,0
+4803,middlesex,reading,U,2-WAY,Interstate,66.04580747,46741019,NA,NA,NA
+4815,middlesex,holliston,U,2-WAY,Arterial,41.68599941,34070,2,0,0
+4921,middlesex,holliston,U,2-WAY,Arterial,33.49061128,24604,2,0,0
+5000,essex,haverhill,U,2-WAY,Arterial,41.58705081,34813,NA,NA,NA
+5004,essex,haverhill,U,2-WAY,Interstate,68.16184757,27740707,NA,NA,NA
+5007,essex,salisbury,U,2-WAY,Interstate,69.33735847,15158627,NA,NA,NA
+5010,essex,newbury,U,2-WAY,Interstate,73.23976339,18245113,NA,NA,NA
+5016,essex,andover,U,2-WAY,Interstate,64.43855688,25623692,NA,NA,NA
+502,essex,north andover,U,2-WAY,Arterial,37.70290079,67878,NA,NA,NA
+5025,essex,haverhill,U,2-WAY,Arterial,39.76759115,26249,NA,NA,NA
+5075,essex,andover,U,2-WAY,Interstate,68.5768766,24674623,NA,NA,NA
+5076,essex,beverly,U,2-WAY,Arterial,32.99034205,7455,1,0,0
+5082,essex,wenham,U,2-WAY,Arterial,32.366207,13633,NA,NA,NA
+5087,essex,newburyport,U,2-WAY,Interstate,73.05971736,5035105,NA,NA,NA
+5110,essex,methuen,U,2-WAY,Interstate,63.85689539,27837778,NA,NA,NA
+5124,essex,andover,U,2-WAY,Interstate,60.24007211,38030926,NA,NA,NA
+5127,essex,andover,U,2-WAY,Arterial,54.56336697,3123417,NA,NA,NA
+5241,essex,amesbury,U,2-WAY,Interstate,67.81758619,14788338,NA,NA,NA
+5258,essex,newbury,U,2-WAY,Interstate,73.0825174,19218994,NA,NA,NA
+5603,essex,andover,U,2-WAY,Arterial,32.69029917,28111,NA,NA,NA
+5609,essex,andover,U,2-WAY,Arterial,35.96882758,21349,19,0,0
+5615,essex,haverhill,U,2-WAY,Arterial,35.24925967,32418,1,0,0
+595,essex,lynnfield,U,2-WAY,Interstate,64.16271348,39151292,NA,NA,NA
+6001,bristol,norton,U,2-WAY,Collector,40.78908469,34514,NA,NA,NA
+6002,bristol,norton,U,2-WAY,Arterial,38.37456008,11934,NA,NA,NA
+6005,bristol,mansfield,U,2-WAY,Collector,27.80574641,1601,NA,NA,NA
+6013,bristol,norton,U,2-WAY,Collector,36.07009843,7518,NA,NA,NA
+6016,bristol,attleboro,U,2-WAY,Collector,31.20678564,9639,NA,NA,NA
+6018,bristol,attleboro,U,2-WAY,Arterial,37.64089568,13219,NA,NA,NA
+6020,bristol,attleboro,U,2-WAY,Arterial,35.01528679,41441,17,0,0
+6022,bristol,attleboro,U,2-WAY,Arterial,30.51123875,26115,NA,NA,NA
+6027,bristol,north attleborough,U,2-WAY,Arterial,37.1813429,31082,NA,NA,NA
+6038,bristol,rehoboth,U,2-WAY,Arterial,44.12801932,9533,2,0,0
+6040,bristol,rehoboth,U,2-WAY,Collector,30.487729,2893,NA,NA,NA
+6043,bristol,rehoboth,U,2-WAY,Arterial,42.11616714,36576,NA,NA,NA
+6047,bristol,rehoboth,U,2-WAY,Arterial,38.4460594,11078,NA,NA,NA
+6049,bristol,seekonk,U,2-WAY,Arterial,33.86055737,29998,NA,NA,NA
+6050,bristol,seekonk,U,2-WAY,Arterial,38.83619453,24407,34,1,0
+6051,bristol,seekonk,U,2-WAY,Collector,43.60670124,12541,NA,NA,NA
+6053,bristol,seekonk,U,2-WAY,Arterial,36.34239416,22864,NA,NA,NA
+6055,bristol,taunton,U,2-WAY,Collector,27.71830089,5497,2,0,0
+6057,bristol,taunton,U,2-WAY,Collector,40.09549251,45868,NA,NA,NA
+6069,bristol,taunton,U,2-WAY,Collector,29.73231228,14758,NA,NA,NA
+6073,bristol,taunton,U,2-WAY,Arterial,32.02817892,76805,NA,NA,NA
+6077,bristol,dighton,U,2-WAY,Arterial,45.06197703,12190,NA,NA,NA
+6078,bristol,dighton,U,2-WAY,Arterial,37.82111201,24826,NA,NA,NA
+6093,norfolk,foxborough,U,2-WAY,Interstate,70.14398535,30791148,2,0,0
+6106,bristol,somerset,U,2-WAY,Interstate,68.24958244,22401685,4,0,0
+6113,bristol,swansea,U,2-WAY,Collector,26.60955654,16439,NA,NA,NA
+6119,bristol,somerset,U,2-WAY,Arterial,32.25133912,21660,NA,NA,NA
+6120,bristol,somerset,U,2-WAY,Arterial,29.83161068,2322,NA,NA,NA
+6122,bristol,somerset,U,2-WAY,Collector,28.08031272,4221,2,0,0
+6123,bristol,somerset,U,2-WAY,Arterial,49.48140991,12937,NA,NA,NA
+6130,bristol,fall river,U,2-WAY,Collector,34.07198361,11714,4,0,0
+6131,bristol,fall river,U,2-WAY,Collector,34.60824138,10244,NA,NA,NA
+6135,bristol,fall river,U,2-WAY,Arterial,26.03346824,6424,2,0,0
+6136,bristol,fall river,U,2-WAY,Arterial,23.03671117,52745,11,0,0
+6138,bristol,fall river,U,2-WAY,Arterial,19.98439458,26343,11,0,0
+614,norfolk,randolph,U,2-WAY,Freeway & Expressway,62.0032564,41631506,3,0,0
+6140,bristol,fall river,U,2-WAY,Arterial,18.44731345,23938,12,0,0
+6150,bristol,fall river,U,2-WAY,Collector,23.8443843,11085,2,0,0
+6158,bristol,fall river,U,2-WAY,Arterial,59.0791597,17351,NA,NA,NA
+6160,bristol,freetown,U,2-WAY,Collector,35.37934544,12772,NA,NA,NA
+6163,bristol,freetown,U,2-WAY,Arterial,41.80473905,6668,NA,NA,NA
+6167,bristol,westport,U,2-WAY,Arterial,37.25528494,18969,NA,NA,NA
+6174,bristol,dartmouth,U,2-WAY,Collector,38.58386412,23550,5,0,0
+6175,bristol,dartmouth,U,2-WAY,Arterial,24.83197942,36930,1,0,0
+6180,bristol,dartmouth,U,2-WAY,Local Road,33.52623705,13702,NA,NA,NA
+6181,bristol,dartmouth,U,2-WAY,Arterial,36.08567226,16319,NA,NA,NA
+6182,bristol,dartmouth,U,2-WAY,Collector,28.20238856,12518,8,0,0
+6192,bristol,new bedford,U,2-WAY,Arterial,21.28415078,26959,27,0,0
+6193,bristol,new bedford,U,2-WAY,Collector,34.83132141,18558,NA,NA,NA
+6198,bristol,acushnet,U,2-WAY,Collector,36.43889167,13967,4,0,0
+6199,bristol,fairhaven,U,2-WAY,Collector,34.21280242,4960,NA,NA,NA
+6200,bristol,acushnet,U,2-WAY,Arterial,35.80754955,14281,6,0,0
+6204,norfolk,needham,U,2-WAY,Collector,24.87438862,4498,NA,NA,NA
+6206,norfolk,needham,U,2-WAY,Collector,32.37063042,3347,NA,NA,NA
+6214,norfolk,medway,U,2-WAY,Arterial,41.29423308,15797,7,0,0
+6220,norfolk,millis,U,2-WAY,Arterial,28.27645924,34213,4,0,0
+6221,norfolk,norfolk,U,2-WAY,Arterial,40.09520516,17352,NA,NA,NA
+6238,norfolk,avon,U,2-WAY,Freeway & Expressway,69.136408,38569715,NA,NA,NA
+6239,norfolk,avon,U,2-WAY,Arterial,31.54795503,4182,NA,NA,NA
+6242,norfolk,sharon,U,2-WAY,Interstate,70.97301299,20015949,NA,NA,NA
+6245,bristol,easton,U,2-WAY,Collector,35.58446392,8330,1,0,0
+6246,bristol,easton,U,2-WAY,Collector,38.27441666,14316,NA,NA,NA
+6248,norfolk,foxborough,U,2-WAY,Interstate,69.98152278,32072555,NA,NA,NA
+6252,bristol,easton,U,2-WAY,Collector,32.32525201,27184,2,0,0
+6260,bristol,easton,U,2-WAY,Collector,34.09890442,13235,NA,NA,NA
+6264,norfolk,franklin,U,2-WAY,Arterial,32.48242083,20621,NA,NA,NA
+6269,norfolk,braintree,U,2-WAY,Arterial,39.72804033,31444,NA,NA,NA
+6274,bristol,fall river,U,2-WAY,Arterial,22.65972222,5473,6,0,0
+6275,bristol,fall river,U,2-WAY,Arterial,23.47990016,22838,5,0,0
+6276,bristol,fall river,U,2-WAY,Collector,28.36951411,5104,3,0,0
+6277,bristol,fall river,U,2-WAY,Collector,20.82621951,6232,7,0,0
+6286,bristol,fall river,U,2-WAY,Collector,26.73575169,13177,NA,NA,NA
+6293,bristol,new bedford,U,2-WAY,Arterial,27.19070952,20819,2,0,0
+6295,bristol,new bedford,U,2-WAY,Arterial,20.50054855,18231,7,0,0
+6297,bristol,new bedford,U,2-WAY,Arterial,27.56083181,25102,3,0,0
+6298,bristol,new bedford,U,2-WAY,Arterial,16.00542774,16213,41,0,0
+6299,bristol,new bedford,U,2-WAY,Arterial,26.6478393,37842,9,0,0
+6300,bristol,new bedford,U,2-WAY,Collector,18.97920052,3077,8,0,0
+6301,bristol,new bedford,U,2-WAY,Arterial,17.75294708,15950,2,0,0
+6302,bristol,new bedford,U,2-WAY,Arterial,20.94047529,13172,15,0,0
+6312,bristol,mansfield,U,2-WAY,Interstate,71.54284798,19885212,NA,NA,NA
+6321,bristol,norton,U,2-WAY,Interstate,72.32461346,25694930,1,0,0
+6328,bristol,north attleborough,U,2-WAY,Interstate,68.58977474,28170514,NA,NA,NA
+6329,bristol,new bedford,U,2-WAY,Arterial,38.03993657,96512,2,0,0
+6330,bristol,raynham,U,2-WAY,Interstate,70.94578862,16464404,7,0,0
+6331,bristol,new bedford,U,2-WAY,Collector,21.32488005,7296,NA,NA,NA
+6355,bristol,taunton,U,2-WAY,Arterial,39.68753415,10982,NA,NA,NA
+6356,bristol,rehoboth,U,2-WAY,Arterial,34.974064,120231,NA,NA,NA
+6364,bristol,attleboro,U,2-WAY,Arterial,24.31726187,32317,NA,NA,NA
+6367,bristol,westport,U,2-WAY,Collector,35.07616611,10163,NA,NA,NA
+6368,bristol,taunton,U,2-WAY,Arterial,34.42964054,67546,2,0,0
+6369,bristol,mansfield,U,2-WAY,Arterial,25.59088961,28001,3,0,0
+6370,bristol,norton,U,2-WAY,Collector,37.75456986,27191,NA,NA,NA
+6371,bristol,mansfield,U,2-WAY,Arterial,33.58593256,18980,NA,NA,NA
+6389,bristol,norton,U,2-WAY,Collector,36.20689475,28732,NA,NA,NA
+6390,norfolk,randolph,U,2-WAY,Arterial,33.08944563,9380,2,2,0
+6391,norfolk,canton,U,2-WAY,Arterial,45.88676866,23792,NA,NA,NA
+650,bristol,attleboro,U,2-WAY,Interstate,69.0808476,34187763,NA,NA,NA
+6644,bristol,north attleborough,U,2-WAY,Collector,23.72076497,9569,4,0,0
+6647,norfolk,plainville,U,2-WAY,Arterial,50.14042056,5377795,NA,NA,NA
+6685,norfolk,canton,U,2-WAY,Arterial,38.62195239,52131,2,0,0
+6692,norfolk,dedham,U,2-WAY,Arterial,30.07384212,26665,NA,NA,NA
+6693,norfolk,dedham,U,2-WAY,Arterial,20.14659998,25191,2,0,0
+6703,norfolk,stoughton,U,2-WAY,Arterial,25.5450621,28261,5,4,0
+6732,norfolk,needham,U,2-WAY,Arterial,28.6207739,22716,2,0,0
+6733,norfolk,foxborough,U,2-WAY,Arterial,41.01912675,56204,NA,NA,NA
+6734,norfolk,dedham,U,2-WAY,Arterial,37.94671357,23308,NA,NA,NA
+6735,norfolk,canton,U,2-WAY,Arterial,30.50997139,34950,NA,NA,NA
+6736,norfolk,canton,U,2-WAY,Arterial,42.40461828,26525,NA,NA,NA
+6745,norfolk,weymouth,U,2-WAY,Arterial,33.69725144,33181,3,0,0
+6746,plymouth,brockton,U,2-WAY,Arterial,38.07325866,15534,NA,NA,NA
+7,plymouth,mattapoisett,U,2-WAY,Interstate,70.27027009,11148078,NA,NA,NA
+7005,plymouth,hingham,U,2-WAY,Arterial,31.92807099,4282,NA,NA,NA
+7012,plymouth,scituate,U,2-WAY,Arterial,25.96332078,6107,NA,NA,NA
+7016,plymouth,brockton,U,2-WAY,Arterial,34.89765331,38565,2,0,0
+7017,plymouth,brockton,U,2-WAY,Arterial,28.11923143,29149,35,0,0
+7021,plymouth,brockton,U,2-WAY,Freeway & Expressway,71.10799453,31968614,NA,NA,NA
+7022,plymouth,brockton,U,2-WAY,Freeway & Expressway,69.53697812,34217331,NA,NA,NA
+7027,plymouth,brockton,U,2-WAY,Arterial,20.97633237,29197,NA,NA,NA
+7028,plymouth,brockton,U,2-WAY,Collector,38.31491655,19124,NA,NA,NA
+7029,plymouth,brockton,U,2-WAY,Arterial,34.35553905,12114,NA,NA,NA
+703,plymouth,brockton,U,2-WAY,Arterial,41.14069033,2059091,2,0,0
+7032,plymouth,brockton,U,2-WAY,Arterial,31.8268193,62644,2,0,0
+7033,plymouth,brockton,U,2-WAY,Arterial,20.93021188,13498,18,8,0
+7038,plymouth,brockton,U,1-WAY,Arterial,16.46771037,2555,NA,NA,NA
+7043,plymouth,brockton,U,2-WAY,Collector,31.81201605,10719,3,0,0
+7044,plymouth,west bridgewater,U,2-WAY,Freeway & Expressway,70.45663992,31248839,NA,NA,NA
+7051,plymouth,kingston,U,2-WAY,Arterial,38.36312849,12172,NA,NA,NA
+7053,plymouth,hanover,U,2-WAY,Arterial,35.60975436,21006,NA,NA,NA
+7054,plymouth,hanson,U,2-WAY,Arterial,33.97884979,22222,1,0,0
+7056,plymouth,rockland,U,2-WAY,Arterial,37.65802843,20471,NA,NA,NA
+7059,plymouth,rockland,U,2-WAY,Arterial,39.67534683,8794,1,0,0
+7060,plymouth,abington,U,2-WAY,Arterial,35.65136073,55344,NA,NA,NA
+7062,plymouth,abington,U,2-WAY,Arterial,34.63971362,34227,NA,NA,NA
+7063,plymouth,whitman,U,2-WAY,Arterial,39.15504869,53105,1,0,0
+7064,plymouth,whitman,U,2-WAY,Arterial,32.5928114,38260,39,0,0
+7066,plymouth,whitman,U,2-WAY,Arterial,24.15385131,29826,13,0,0
+707,barnstable,bourne,U,2-WAY,Freeway & Expressway,57.00143207,11856615,NA,NA,NA
+7074,plymouth,marshfield,U,2-WAY,Arterial,36.55458221,10388,4,0,0
+7075,plymouth,duxbury,U,2-WAY,Arterial,37.51395786,7451,NA,NA,NA
+7076,plymouth,duxbury,U,2-WAY,Arterial,41.39215282,12119,2,0,0
+708,barnstable,bourne,U,2-WAY,Freeway & Expressway,48.54298984,19143220,NA,NA,NA
+7082,plymouth,bridgewater,U,2-WAY,Arterial,40.46231518,36059,NA,NA,NA
+7085,plymouth,east bridgewater,U,2-WAY,Arterial,42.42661816,17054,NA,NA,NA
+7086,plymouth,east bridgewater,U,2-WAY,Arterial,36.32434051,31733,NA,NA,NA
+7088,plymouth,east bridgewater,U,2-WAY,Arterial,42.61957384,30270,8,0,0
+7089,plymouth,east bridgewater,U,2-WAY,Arterial,34.29116657,23162,8,0,0
+709,barnstable,yarmouth,U,2-WAY,Arterial,23.78927492,68848,7,0,0
+7099,plymouth,lakeville,U,2-WAY,Arterial,34.29106066,5638,NA,NA,NA
+7100,plymouth,middleborough,U,2-WAY,Interstate,71.14662169,12578033,NA,NA,NA
+7102,plymouth,middleborough,U,2-WAY,Collector,41.04533745,7768,NA,NA,NA
+7116,plymouth,wareham,U,2-WAY,Interstate,71.04593692,14889236,NA,NA,NA
+7117,barnstable,sandwich,U,2-WAY,Arterial,34.12004731,1681,NA,NA,NA
+712,barnstable,barnstable,U,2-WAY,Arterial,27.46010685,79174,4,0,0
+7124,barnstable,falmouth,U,2-WAY,Arterial,41.19983981,17479,NA,NA,NA
+7125,barnstable,falmouth,U,2-WAY,Arterial,35.52554441,18839,NA,NA,NA
+7127,barnstable,falmouth,U,2-WAY,Arterial,34.63334035,4740,2,0,0
+7129,barnstable,falmouth,U,2-WAY,Collector,26.11456628,9050,10,0,0
+7132,barnstable,barnstable,U,2-WAY,Arterial,30.49040107,13439,NA,NA,NA
+7137,barnstable,barnstable,U,2-WAY,Local Road,33.84531765,11097,NA,NA,NA
+7138,barnstable,barnstable,U,2-WAY,Arterial,21.17041545,3744,NA,NA,NA
+7142,barnstable,brewster,U,2-WAY,Arterial,43.01570402,7514,NA,NA,NA
+7143,barnstable,brewster,U,2-WAY,Arterial,21.82797183,7243,NA,NA,NA
+7144,barnstable,brewster,U,2-WAY,Arterial,27.64457831,8250,NA,NA,NA
+7146,barnstable,dennis,U,2-WAY,Arterial,32.82375344,14042,NA,NA,NA
+7149,barnstable,provincetown,R,2-WAY,Collector,36.63672496,2509,NA,NA,NA
+7162,plymouth,kingston,U,2-WAY,Collector,35.4776069,26661,NA,NA,NA
+7163,plymouth,middleborough,U,2-WAY,Arterial,30.28399312,2324,2,0,0
+7195,barnstable,barnstable,U,2-WAY,Collector,22.05354201,1212,NA,NA,NA
+7199,barnstable,barnstable,U,2-WAY,Collector,29.19008264,3137,NA,NA,NA
+7203,barnstable,barnstable,U,2-WAY,Collector,23.70938851,3224,NA,NA,NA
+7207,barnstable,dennis,U,2-WAY,Arterial,33.27446193,11058,NA,NA,NA
+7214,barnstable,falmouth,U,2-WAY,Collector,21.31759379,1535,NA,NA,NA
+7221,barnstable,mashpee,U,2-WAY,Collector,36.16827627,3409,NA,NA,NA
+7224,barnstable,sandwich,U,2-WAY,Collector,29.84894724,8347,NA,NA,NA
+7226,barnstable,yarmouth,U,2-WAY,Collector,25.09285389,4354,NA,NA,NA
+7230,barnstable,yarmouth,U,2-WAY,Collector,24.91517857,1113,NA,NA,NA
+7233,barnstable,provincetown,U,2-WAY,Arterial,14.86840664,10958,NA,NA,NA
+7246,barnstable,yarmouth,U,2-WAY,Arterial,37.19129598,39499,NA,NA,NA
+725,bristol,raynham,U,2-WAY,Interstate,67.85573932,17667535,NA,NA,NA
+7322,barnstable,bourne,U,2-WAY,Freeway & Expressway,65.44564657,5628590,NA,NA,NA
+8,middlesex,marlborough,U,2-WAY,Interstate,58.06687876,19140875,NA,NA,NA
+80,suffolk,revere,U,2-WAY,Freeway & Expressway,65.06201302,22363255,1,0,0
+8087,suffolk,revere,U,2-WAY,Arterial,32.27799679,13965044,NA,NA,NA
+8104,suffolk,boston,U,2-WAY,Arterial,32.16509112,20522,NA,NA,NA
+8932,suffolk,boston,U,2-WAY,Interstate,58.49462074,32520492,NA,NA,NA
+9007,hampden,ludlow,U,2-WAY,Interstate,68.20788169,13398195,NA,NA,NA
+AET01,berkshire,lee,U,2-WAY,Interstate,63.1545983,6557125,NA,NA,NA
+AET02,hampden,blandford,R,2-WAY,Interstate,62.17621271,7810592,2,0,0
+AET03,hampden,westfield,U,2-WAY,Interstate,60.61194511,13214085,9,0,0
+AET04,hampden,ludlow,U,2-WAY,Interstate,63.44639662,15224715,NA,NA,NA
+AET05,worcester,warren,R,2-WAY,Interstate,61.54531567,12795702,2,0,0
+AET06,worcester,charlton,U,2-WAY,Interstate,62.69440067,28484602,NA,NA,NA
+AET07,middlesex,hopkinton,U,2-WAY,Interstate,61.26796551,25865107,NA,NA,NA
+AET08,worcester,southborough,U,2-WAY,Interstate,62.52941208,25616048,NA,NA,NA
+AET09,middlesex,framingham,U,2-WAY,Interstate,60.87445378,28734034,NA,NA,NA
+AET10,middlesex,weston,U,2-WAY,Interstate,60.9300112,34062747,4,0,0
+AET11,middlesex,newton,U,2-WAY,Interstate,59.06234361,31273468,4,0,0
+AET12,suffolk,boston,U,2-WAY,Interstate,60.16123128,31606995,NA,NA,NA
+AET13,suffolk,boston,U,2-WAY,Interstate,54.93045598,34202469,2,0,0
+AET14,suffolk,boston,U,2-WAY,Interstate,47.68638595,20077767,NA,NA,NA
+AET15,suffolk,boston,U,2-WAY,Interstate,45.81849106,21920563,NA,NA,NA
+AET16,suffolk,boston,U,2-WAY,Freeway & Expressway,34.45085549,14672058,NA,NA,NA
+MVC216,dukes,edgartown,U,2-WAY,Arterial,37.2630727,964566,NA,NA,NA
+MVC230,dukes,edgartown,U,2-WAY,Arterial,36.49075816,2384914,NA,NA,NA
+MVC260,dukes,edgartown,U,2-WAY,Arterial,43.58292587,3086612,NA,NA,NA
+MVC405,dukes,oak bluffs,U,2-WAY,Arterial,34.6766629,1460417,NA,NA,NA
+MVC625,dukes,west tisbury,R,2-WAY,Collector,39.35083992,2675659,NA,NA,NA
+MVC698,dukes,west tisbury,R,2-WAY,Collector,34.32151201,1205280,NA,NA,NA
+R12227,essex,methuen,U,RAMP,Freeway & Expressway,23.73593286,74411,NA,NA,NA
+R12742,essex,danvers,U,RAMP,Freeway & Expressway,22.74714609,23389,NA,NA,NA
+R12743,essex,danvers,U,RAMP,Freeway & Expressway,32.99092688,5621,NA,NA,NA
+R12744,essex,danvers,U,RAMP,Freeway & Expressway,35.36396557,32999,NA,NA,NA
+R12745,essex,danvers,U,RAMP,Freeway & Expressway,25.96745753,13951,NA,NA,NA
+R12746,essex,danvers,U,RAMP,Freeway & Expressway,40.58287652,32289,NA,NA,NA
+R12747,essex,danvers,U,RAMP,Freeway & Expressway,37.00353568,18384,NA,NA,NA
+R12748,essex,boxford,U,RAMP,Arterial,33.44500173,5782,NA,NA,NA
+R12749,essex,boxford,U,RAMP,Arterial,36.32315503,6992,NA,NA,NA
+R12750,essex,boxford,U,RAMP,Arterial,31.68087996,10701,NA,NA,NA
+R12751,essex,NA,U,RAMP,Interstate,31.05624166,2996,NA,NA,NA
+R12752,essex,boxford,U,RAMP,Arterial,25.37638376,2221,NA,NA,NA
+R12753,essex,boxford,U,RAMP,Arterial,27.20991361,19726,NA,NA,NA
+R12754,essex,boxford,U,RAMP,Arterial,40.14056079,8274,NA,NA,NA
+R12755,essex,georgetown,U,RAMP,Freeway & Expressway,33.57507655,8165,NA,NA,NA
+R12756,essex,georgetown,U,RAMP,Freeway & Expressway,29.1467846,8366,NA,NA,NA
+R12759,essex,newbury,U,RAMP,Arterial,41.71361126,11189,NA,NA,NA
+R12761,essex,newbury,R,RAMP,Collector,36.14112751,2643,NA,NA,NA
+R12762,essex,newburyport,U,RAMP,Freeway & Expressway,36.21839896,8457,NA,NA,NA
+R12764,essex,amesbury,U,RAMP,Freeway & Expressway,11.93992606,5410,3,0,0
+R12766,essex,amesbury,U,RAMP,Freeway & Expressway,40.04424024,5278,NA,NA,NA
+R12768,essex,salisbury,U,RAMP,Arterial,52.34909556,5086,NA,NA,NA
+R12769,essex,salisbury,U,RAMP,Arterial,35.7190971,5582,2,0,0
+R12771,essex,salisbury,U,RAMP,Arterial,45.5415716,10957,NA,NA,NA
+R12772,essex,salisbury,U,RAMP,Interstate,67.66938416,7833185,NA,NA,NA
+R12774,essex,amesbury,U,RAMP,Freeway & Expressway,16.70478036,3870,NA,NA,NA
+R12775,essex,amesbury,U,RAMP,Freeway & Expressway,40.6089048,17878,NA,NA,NA
+R12776,essex,newburyport,U,RAMP,Freeway & Expressway,38.20127829,14316,NA,NA,NA
+R12780,essex,newbury,U,RAMP,Arterial,40.05862131,5527,NA,NA,NA
+R12781,essex,newbury,U,RAMP,Arterial,12.22668932,6907,NA,NA,NA
+R12782,essex,georgetown,U,RAMP,Freeway & Expressway,31.5162917,6445,NA,NA,NA
+R12784,essex,boxford,U,RAMP,Freeway & Expressway,25.40446274,2308,NA,NA,NA
+R12785,essex,boxford,U,RAMP,Freeway & Expressway,33.73980978,3680,NA,NA,NA
+R12786,essex,boxford,U,RAMP,Freeway & Expressway,20.62446381,14687,NA,NA,NA
+R12787,essex,boxford,U,RAMP,Arterial,15.01716069,3205,NA,NA,NA
+R12789,essex,boxford,U,RAMP,Arterial,30.20092928,4412,NA,NA,NA
+R12791,essex,danvers,U,RAMP,Freeway & Expressway,36.51161822,20399,NA,NA,NA
+R12793,essex,danvers,U,RAMP,Arterial,43.15872141,7258,NA,NA,NA
+R12794,essex,danvers,U,RAMP,Arterial,18.31506091,5418,NA,NA,NA
+R12796,essex,danvers,U,RAMP,Freeway & Expressway,45.26629309,39421,2,0,0
+R13182,essex,methuen,U,RAMP,Freeway & Expressway,37.90214089,71092,NA,NA,NA
+R13217,essex,methuen,U,RAMP,Freeway & Expressway,39.56695968,92033,1,0,0
+R13244,essex,salisbury,U,RAMP,Interstate,67.80076108,7268908,NA,NA,NA
+R14026,bristol,new bedford,U,RAMP,Freeway & Expressway,47.81072041,34383,NA,NA,NA
+R14027,bristol,new bedford,U,RAMP,Freeway & Expressway,32.0941901,19243,NA,NA,NA
+R14060,bristol,new bedford,U,RAMP,Freeway & Expressway,30.45810989,21258,NA,NA,NA
+R14061,bristol,new bedford,U,RAMP,Freeway & Expressway,48.92593111,11460,NA,NA,NA
+R22519,bristol,taunton,U,RAMP,Freeway & Expressway,14.05152672,3668,NA,NA,NA
+R22578,bristol,taunton,U,RAMP,Arterial,13.92499518,20752,10,0,0
+R24001,barnstable,bourne,U,RAMP,Arterial,22.34104339,11846,NA,NA,NA
+R24002,barnstable,bourne,U,RAMP,Arterial,59.25061854,13742,1,0,0
+R24003,plymouth,wareham,U,RAMP,Collector,13.63346354,3840,NA,NA,NA
+R24004,plymouth,wareham,U,RAMP,Local Road,24.46217391,11500,NA,NA,NA
+R24005,plymouth,wareham,U,RAMP,Arterial,29.8502268,11464,NA,NA,NA
+R24007,barnstable,bourne,U,RAMP,Arterial,31.37472955,11555,NA,NA,NA
+R24008,barnstable,bourne,U,RAMP,Arterial,43.56405735,13043,NA,NA,NA
+R25004,bristol,fall river,U,RAMP,Arterial,29.82662996,19617,1,0,0
+R25006,bristol,fall river,U,RAMP,Arterial,31.71966749,14135,12,0,0
+R25008,bristol,fall river,U,RAMP,Collector,22.0061065,2047,NA,NA,NA
+R25009,bristol,fall river,U,RAMP,Collector,21.20857927,12029,2,0,0
+R25012,bristol,fall river,U,RAMP,Arterial,31.18780687,9776,NA,NA,NA
+R25014,bristol,fall river,U,RAMP,Arterial,47.83477792,21344,8,0,0
+R25502,essex,peabody,U,RAMP,Local Road,44.65649233,18183,NA,NA,NA
+R25504,essex,peabody,U,RAMP,Freeway & Expressway,37.96900393,21906,NA,NA,NA
+R25505,essex,peabody,U,RAMP,Freeway & Expressway,25.33395779,8007,2,0,0
+R25506,essex,peabody,U,RAMP,Freeway & Expressway,31.97673407,22995,NA,NA,NA
+R25507,essex,peabody,U,RAMP,Freeway & Expressway,36.91095625,7749,NA,NA,NA
+R25508,essex,peabody,U,RAMP,Freeway & Expressway,35.6429366,6293,NA,NA,NA
+R25510,essex,danvers,U,RAMP,Arterial,29.48691784,13377,15,0,0
+R25511,essex,danvers,U,RAMP,Arterial,21.65849642,10322,NA,NA,NA
+R25512,essex,danvers,U,RAMP,Arterial,22.3041543,7077,NA,NA,NA
+R25515,essex,danvers,U,RAMP,Freeway & Expressway,39.8271638,9347,27,0,0
+R25516,essex,danvers,U,RAMP,Freeway & Expressway,17.76048229,42381,5,0,0
+R25523,essex,beverly,U,RAMP,Freeway & Expressway,35.08186789,6767,NA,NA,NA
+R25528,essex,beverly,U,RAMP,Arterial,27.99674217,6446,NA,NA,NA
+R25529,essex,beverly,U,RAMP,Arterial,32.59108527,10062,5,0,0
+R25532,essex,wenham,U,RAMP,Arterial,15.10552408,2824,NA,NA,NA
+R25533,essex,manchester by the sea,U,RAMP,Arterial,23.55907037,3098,NA,NA,NA
+R25534,essex,manchester by the sea,U,RAMP,Arterial,45.76940133,451,2,0,0
+R25535,essex,manchester by the sea,U,RAMP,Arterial,37.87954762,7339,NA,NA,NA
+R25536,essex,manchester by the sea,U,RAMP,Arterial,35.44530321,2523,NA,NA,NA
+R25537,essex,gloucester,U,RAMP,Arterial,14.65120968,4216,2,0,0
+R25539,essex,gloucester,U,RAMP,Arterial,34.1969697,1353,NA,NA,NA
+R25540,essex,gloucester,U,RAMP,Arterial,17.24506874,3346,2,0,0
+R25541,essex,gloucester,U,RAMP,Local Road,17.61866126,493,NA,NA,NA
+R25543,essex,gloucester,U,RAMP,Local Road,28.72544081,794,3,0,0
+R25545,essex,gloucester,U,RAMP,Local Road,34.05491132,2932,6,0,0
+R25546,essex,gloucester,U,RAMP,Local Road,16.61743772,1405,2,0,0
+R25547,essex,gloucester,U,RAMP,Arterial,27.01380185,6702,NA,NA,NA
+R25548,essex,gloucester,U,RAMP,Arterial,24.80888828,3634,NA,NA,NA
+R25549,essex,manchester by the sea,U,RAMP,Arterial,23.01711783,2512,NA,NA,NA
+R25551,essex,manchester by the sea,U,RAMP,Local Road,30.77640845,284,NA,NA,NA
+R25553,essex,wenham,U,RAMP,Arterial,35.34502224,2923,NA,NA,NA
+R25555,essex,beverly,U,RAMP,Arterial,16.92802198,4550,11,0,0
+R25556,essex,beverly,U,RAMP,Arterial,36.66442543,8180,1,0,0
+R25557,essex,beverly,U,RAMP,Arterial,32.39293743,5338,1,0,0
+R25560,essex,beverly,U,RAMP,Freeway & Expressway,32.26266417,4797,NA,NA,NA
+R25561,essex,beverly,U,RAMP,Freeway & Expressway,19.36044418,8330,NA,NA,NA
+R25562,essex,beverly,U,RAMP,Freeway & Expressway,19.51354434,3507,NA,NA,NA
+R25563,essex,beverly,U,RAMP,Freeway & Expressway,31.13817928,10765,5,0,0
+R25564,essex,danvers,U,RAMP,Arterial,12.22395172,7870,3,0,0
+R25565,essex,danvers,U,RAMP,Arterial,15.99513948,7098,11,0,0
+R25568,essex,danvers,U,RAMP,Local Road,15.3866125,8493,NA,NA,NA
+R25572,essex,danvers,U,RAMP,Arterial,38.27772302,8116,9,0,0
+R25575,essex,peabody,U,RAMP,Freeway & Expressway,39.28402859,16229,NA,NA,NA
+R25576,essex,peabody,U,RAMP,Freeway & Expressway,31.80591497,3787,NA,NA,NA
+R25577,essex,peabody,U,RAMP,Freeway & Expressway,34.66663474,10442,NA,NA,NA
+R25578,essex,peabody,U,RAMP,Arterial,16.83702738,5369,2,0,0
+R25579,essex,peabody,U,RAMP,Arterial,9.547911131,17689,4,0,0
+R26002,bristol,new bedford,U,RAMP,Freeway & Expressway,22.11684083,33015,NA,NA,NA
+R26003,bristol,new bedford,U,RAMP,Arterial,30.15581476,26063,1,0,0
+R26004,bristol,new bedford,U,RAMP,Arterial,35.30097344,9451,3,0,0
+R26005,bristol,new bedford,U,RAMP,Arterial,27.68190261,37685,NA,NA,NA
+R26006,bristol,new bedford,U,RAMP,Arterial,16.4049441,15028,37,0,0
+R26007,bristol,new bedford,U,RAMP,Collector,47.01620507,13576,12,0,0
+R26008,bristol,new bedford,U,RAMP,Collector,19.34972299,3610,NA,NA,NA
+R26010,bristol,new bedford,U,RAMP,Arterial,31.41738197,NA,11,0,0
+R26011,bristol,new bedford,U,RAMP,Arterial,18.64711447,5285,NA,NA,NA
+R26012,bristol,freetown,U,RAMP,Arterial,16.11971172,5342,NA,NA,NA
+R26013,bristol,freetown,U,RAMP,Arterial,39.91105499,3564,NA,NA,NA
+R26014,plymouth,lakeville,U,RAMP,Arterial,14.13449211,4056,NA,NA,NA
+R26015,plymouth,lakeville,U,RAMP,Arterial,36.71667645,1703,NA,NA,NA
+R26016,bristol,taunton,U,RAMP,Arterial,33.59505553,3782,NA,NA,NA
+R26017,bristol,taunton,U,RAMP,Arterial,16.5209144,6168,NA,NA,NA
+R26028,bristol,taunton,U,RAMP,Freeway & Expressway,34.71929825,3477,NA,NA,NA
+R26030,plymouth,lakeville,U,RAMP,Arterial,38.21878225,4845,NA,NA,NA
+R26032,bristol,freetown,U,RAMP,Arterial,16.18101902,5574,NA,NA,NA
+R26038,bristol,new bedford,U,RAMP,Arterial,17.89977522,11354,6,0,0
+R26039,bristol,new bedford,U,RAMP,Arterial,50.67958218,16897,NA,NA,NA
+R26040,bristol,new bedford,U,RAMP,Arterial,33.72050172,13685,NA,NA,NA
+R26041,bristol,new bedford,U,RAMP,Arterial,46.38331413,14436,NA,NA,NA
+R26042,bristol,new bedford,U,RAMP,Freeway & Expressway,27.19328392,29662,NA,NA,NA
+R26043,bristol,new bedford,U,RAMP,Freeway & Expressway,18.39715638,50499,1,0,0
+R27502,essex,methuen,U,RAMP,Freeway & Expressway,21.93432376,41834,NA,NA,NA
+R27503,essex,methuen,U,RAMP,Freeway & Expressway,38.48898703,44720,NA,NA,NA
+R27504,essex,methuen,U,RAMP,Arterial,37.58111511,13900,NA,NA,NA
+R27505,essex,methuen,U,RAMP,Arterial,39.16821461,21211,NA,NA,NA
+R27506,essex,methuen,U,RAMP,Arterial,24.17849554,23530,NA,NA,NA
+R27508,essex,methuen,U,RAMP,Freeway & Expressway,27.77415275,70758,NA,NA,NA
+R27509,essex,methuen,U,RAMP,Freeway & Expressway,53.71607552,91630,2,0,0
+R27510,essex,methuen,U,RAMP,Arterial,27.77502083,25209,NA,NA,NA
+R27511,essex,methuen,U,RAMP,Arterial,39.36893663,22203,NA,NA,NA
+R27512,essex,methuen,U,RAMP,Arterial,30.3061408,15568,2,0,0
+R27513,essex,methuen,U,RAMP,Arterial,26.84627965,42496,NA,NA,NA
+R27514,essex,methuen,U,RAMP,Freeway & Expressway,25.62331792,53431,NA,NA,NA
+R27515,essex,methuen,U,RAMP,Freeway & Expressway,37.96389249,15440,NA,NA,NA
+R27516,essex,methuen,U,RAMP,Freeway & Expressway,38.38213322,24095,NA,NA,NA
+R28401,barnstable,falmouth,U,RAMP,Arterial,28.48362823,9834,2,0,0
+R28402,barnstable,falmouth,U,RAMP,Arterial,27.62220127,4243,NA,NA,NA
+R28403,barnstable,falmouth,U,RAMP,Arterial,25.64122928,2896,NA,NA,NA
+R28404,barnstable,falmouth,U,RAMP,Arterial,26.06836784,2077,NA,NA,NA
+R28405,barnstable,falmouth,U,RAMP,Arterial,21.0996696,4540,NA,NA,NA
+R28406,barnstable,falmouth,U,RAMP,Arterial,9.534867503,717,1,0,0
+R28408,barnstable,falmouth,U,RAMP,Arterial,21.80241935,1240,NA,NA,NA
+R28409,barnstable,falmouth,U,RAMP,Arterial,14.13165993,5199,NA,NA,NA
+R28410,barnstable,falmouth,U,RAMP,Arterial,30.74038462,2080,NA,NA,NA
+R28412,barnstable,falmouth,U,RAMP,Freeway & Expressway,28.825,4100,13,0,0
+R28413,barnstable,falmouth,U,RAMP,Freeway & Expressway,27.40756576,10759,NA,NA,NA
+RPA01-236-022,berkshire,dalton,U,2-WAY,Arterial,43.32113366,48079,NA,NA,NA
+RPA01-236-1stNofEa,berkshire,pittsfield,U,2-WAY,Arterial,21.82986281,32575,4,0,0
+RPA01-236-1stNofFn,berkshire,pittsfield,U,2-WAY,Arterial,25.14850198,37689,5,0,0
+RPA01-236-EtEof1st,berkshire,pittsfield,U,2-WAY,Arterial,28.47448086,61217,10,0,0
+RPA01-236-EtWof1st,berkshire,pittsfield,U,2-WAY,Arterial,28.00046674,54794,6,0,0
+RPA01-236-FenEofR7,berkshire,pittsfield,U,2-WAY,Arterial,23.07690884,16215,2,0,0
+RPA01-236-FenWofR7,berkshire,pittsfield,U,2-WAY,Arterial,18.38713132,10215,10,0,0
+RPA01-236-PomSofEt,berkshire,pittsfield,U,1-WAY,Local Road,26.0782726,3685,NA,NA,NA
+RPA01-345-023,berkshire,windsor,R,2-WAY,Arterial,53.10570342,7892,NA,NA,NA
+RPA02-013-0001,franklin,ashfield,R,2-WAY,Collector,48.63523527,10807,NA,NA,NA
+RPA02-013-0022,franklin,ashfield,R,2-WAY,Collector,47.73731846,9510,NA,NA,NA
+RPA02-013-0023,franklin,ashfield,R,2-WAY,Collector,35.45512218,4256,NA,NA,NA
+RPA02-029-0010,franklin,bernardston,R,2-WAY,Collector,42.77854234,7059,NA,NA,NA
+RPA02-047-0035,franklin,buckland,R,2-WAY,Collector,30.29442835,5870,NA,NA,NA
+RPA02-053-0017,franklin,charlemont,R,2-WAY,Collector,36.22510958,6390,NA,NA,NA
+RPA02-091-0038,franklin,erving,R,2-WAY,Collector,20.9030303,825,1,0,0
+RPA02-130-0005,franklin,heath,R,2-WAY,Collector,40.04938272,406,NA,NA,NA
+RPA02-154-0003,franklin,leverett,R,2-WAY,Collector,41.77240675,9797,NA,NA,NA
+RPA02-154-0006,franklin,leverett,R,2-WAY,Collector,35.79533599,16249,NA,NA,NA
+RPA02-154-0020,franklin,leverett,R,2-WAY,Collector,37.24869262,17211,NA,NA,NA
+RPA02-154-0021,franklin,leverett,R,2-WAY,Arterial,46.28920473,31336,NA,NA,NA
+RPA02-154-0022,franklin,leverett,R,2-WAY,Local Road,20.82790166,1749,NA,NA,NA
+RPA02-156-0007,franklin,leyden,R,2-WAY,Collector,38.30034247,2891,NA,NA,NA
+RPA02-190-0008,franklin,monroe,R,2-WAY,Collector,41.46261682,214,NA,NA,NA
+RPA02-192-0017,franklin,montague,R,2-WAY,Collector,39.4666325,19514,NA,NA,NA
+RPA02-204-0005,franklin,new salem,R,2-WAY,Arterial,51.1774259,12358,NA,NA,NA
+RPA02-204-0008,franklin,new salem,R,2-WAY,Collector,38.35217954,2318,NA,NA,NA
+RPA02-217-0003,franklin,northfield,R,2-WAY,Collector,43.99125087,11461,NA,NA,NA
+RPA02-217-0015,franklin,northfield,R,2-WAY,Collector,38.55862197,10733,NA,NA,NA
+RPA02-217-0042,franklin,northfield,R,2-WAY,Local Road,31.45628415,1819,NA,NA,NA
+RPA02-217-0047,franklin,northfield,R,2-WAY,Local Road,23.03277061,1007,NA,NA,NA
+RPA02-217-0048,franklin,northfield,R,2-WAY,Collector,30.20052901,6049,NA,NA,NA
+RPA02-223-0025,franklin,orange,R,2-WAY,Collector,39.12082075,9608,NA,NA,NA
+RPA02-223-0040,franklin,orange,R,2-WAY,Collector,35.94900605,6943,NA,NA,NA
+RPA02-223-0043,franklin,orange,U,2-WAY,Collector,34.47729714,20456,NA,NA,NA
+RPA02-253-0001,franklin,rowe,R,2-WAY,Collector,43.06221973,3570,NA,NA,NA
+RPA02-253-0008,franklin,rowe,R,2-WAY,Collector,39.62461807,2291,NA,NA,NA
+RPA02-272-0007,franklin,shutesbury,R,2-WAY,Collector,37.49753409,6894,NA,NA,NA
+RPA02-272-0010,franklin,shutesbury,R,2-WAY,Collector,36.0905683,6648,NA,NA,NA
+RPA02-272-0015,franklin,shutesbury,R,2-WAY,Arterial,53.42656192,26897,NA,NA,NA
+RPA02-272-0021,franklin,shutesbury,R,2-WAY,Collector,41.49372385,3111,NA,NA,NA
+RPA02-272-0025,franklin,shutesbury,R,2-WAY,Collector,36.93616385,6673,NA,NA,NA
+RPA02-289-0028,franklin,sunderland,U,2-WAY,Collector,36.45016142,4956,NA,NA,NA
+RPA02-289-0029,franklin,sunderland,U,2-WAY,Arterial,41.90970221,16661,NA,NA,NA
+rpa02-312-0024,franklin,warwick,R,2-WAY,Collector,35.44913968,11858,NA,NA,NA
+RPA02-312-0037,franklin,warwick,R,2-WAY,Collector,34.35326087,9386,NA,NA,NA
+RPA02-319-0028,franklin,wendell,R,2-WAY,Collector,39.32485939,4445,NA,NA,NA
+RPA02-337-0001,franklin,whately,R,2-WAY,Collector,34.43944916,32761,NA,NA,NA
+RPA02-337-0002,franklin,whately,R,2-WAY,Collector,34.33849019,6979,NA,NA,NA
+RPA02-337-0009,franklin,whately,R,2-WAY,Local Road,39.49638902,18695,NA,NA,NA
+RPA02-337-0015,franklin,whately,R,2-WAY,Collector,30.59893758,2259,NA,NA,NA
+RPA02-337-0034,franklin,whately,R,2-WAY,Collector,38.67980744,7682,NA,NA,NA
+RPA02-337-0050,franklin,whately,R,2-WAY,Collector,42.7072996,11166,NA,NA,NA
+RPA03-005-9992,hampden,agawam,U,2-WAY,Arterial,36.42463735,35311,1,0,0
+RPA03-008-9998,hampshire,amherst,U,2-WAY,Arterial,46.48222706,38624,2,0,0
+RPA03-024-10003,hampshire,belchertown,U,2-WAY,Arterial,46.13218425,17008,NA,NA,NA
+RPA03-043-10004,hampden,brimfield,R,1-WAY,Arterial,23.1593312,4068,NA,NA,NA
+RPA03-043-9911,hampden,brimfield,R,2-WAY,Arterial,38.46671408,28122,NA,NA,NA
+RPA03-061-9990,hampden,chicopee,U,2-WAY,Arterial,38.48460775,42301,NA,NA,NA
+RPA03-061-9991,hampden,chicopee,U,2-WAY,Arterial,34.37700479,33614,18,0,0
+RPA03-085-10000,hampden,east longmeadow,U,2-WAY,Arterial,34.29367022,56806,9,0,0
+RPA03-087-9404,hampshire,easthampton,U,2-WAY,Arterial,34.52531501,65484,NA,NA,NA
+RPA03-111-9418,hampshire,granby,R,2-WAY,Arterial,42.73941368,22720,NA,NA,NA
+RPA03-117-9704,hampshire,hadley,R,2-WAY,Collector,33.76232051,22567,2,0,0
+RPA03-137-9989,hampden,holyoke,U,2-WAY,Arterial,39.75291391,29349,NA,NA,NA
+RPA03-143-9994,hampshire,huntington,R,2-WAY,Arterial,32.93283582,10721,NA,NA,NA
+RPA03-159-9514,hampden,longmeadow,U,2-WAY,Arterial,24.00845117,36571,NA,NA,NA
+RPA03-159-9789,hampden,longmeadow,U,2-WAY,Arterial,32.26051658,30554,7,0,0
+RPA03-161-10010,hampden,ludlow,U,2-WAY,Local Road,22.41656805,4225,NA,NA,NA
+RPA03-161-10011,hampden,ludlow,U,2-WAY,Local Road,25.80206001,2233,NA,NA,NA
+RPA03-161-7371,hampden,ludlow,U,2-WAY,Arterial,26.79175293,28987,14,0,0
+RPA03-191-10001,hampden,monson,U,2-WAY,Arterial,25.73133407,8104,NA,NA,NA
+RPA03-214-9702,hampshire,northampton,U,2-WAY,Arterial,30.51829698,63878,6,0,0
+RPA03-214-9996,hampshire,northampton,U,2-WAY,Arterial,34.48000454,52842,NA,NA,NA
+RPA03-214-9999,hampshire,northampton,U,1-WAY,Arterial,41.17065889,14742,NA,NA,NA
+RPA03-275-9872,hampshire,south hadley,U,2-WAY,Arterial,37.37008101,27779,NA,NA,NA
+RPA03-279-9529,hampden,southwick,U,2-WAY,Arterial,36.73781602,39403,NA,NA,NA
+RPA03-281-9986,hampden,springfield,U,2-WAY,Arterial,21.26238104,38147,1,0,0
+RPA03-281-9987,hampden,springfield,U,2-WAY,Arterial,38.1679423,45364,NA,NA,NA
+RPA03-281-9988,hampden,springfield,U,2-WAY,Arterial,23.63466121,32735,NA,NA,NA
+RPA03-297-10005,hampden,tolland,R,2-WAY,Arterial,52.96577818,8976,NA,NA,NA
+RPA03-297-10006,hampden,tolland,R,2-WAY,Local Road,27.52060738,461,NA,NA,NA
+RPA03-309-10002,hampshire,ware,R,2-WAY,Arterial,46.24242689,23029,NA,NA,NA
+RPA03-325-8808,hampden,west springfield,U,2-WAY,Arterial,30.70546268,28182,6,0,0
+RPA03-329-9188,hampden,westfield,U,2-WAY,Arterial,31.66519097,44278,NA,NA,NA
+RPA03-329-9993,hampden,westfield,U,2-WAY,Arterial,44.54512896,31842,NA,NA,NA
+RPA03-340-10007,hampshire,williamsburg,U,2-WAY,Arterial,33.31274258,18294,NA,NA,NA
+RPA03-340-10008,hampshire,williamsburg,U,2-WAY,Local Road,26.07663225,6877,NA,NA,NA
+RPA03-340-10009,hampshire,williamsburg,U,2-WAY,Local Road,27.67717798,5620,2,0,0
+RPA03-340-9997,hampshire,williamsburg,R,2-WAY,Arterial,41.22261691,30380,NA,NA,NA
+RPA05-021-1005,worcester,barre,R,2-WAY,Collector,35.31050228,6132,NA,NA,NA
+RPA05-271-1718,worcester,shrewsbury,U,2-WAY,Arterial,48.39227462,78059,NA,NA,NA
+RPA05-323-0002,worcester,west brookfield,U,2-WAY,Local Road,24.26179018,2078,2,0,0
+RPA05-323-0003,worcester,west brookfield,U,2-WAY,Local Road,16.32105263,1900,NA,NA,NA
+RPA05-323-3153,worcester,west brookfield,U,2-WAY,Arterial,32.71149489,43266,NA,NA,NA
+RPA10-003-00008,bristol,acushnet,U,2-WAY,Arterial,27.37727335,65379,NA,NA,NA
+RPA10-016-000014,bristol,attleboro,U,2-WAY,Arterial,36.43290518,19156,2,0,0
+RPA10-016-00014,bristol,attleboro,U,2-WAY,Collector,30.53546793,9714,NA,NA,NA
+RPA10-016-00015,bristol,attleboro,U,2-WAY,Arterial,27.49124555,58201,1,0,0
+RPA10-016-00016,bristol,attleboro,U,2-WAY,Arterial,36.57638416,39623,NA,NA,NA
+RPA10-027-00001,bristol,berkley,U,2-WAY,Arterial,31.87330433,11721,NA,NA,NA
+RPA10-052-00004,plymouth,carver,U,2-WAY,Arterial,38.65171563,108181,NA,NA,NA
+RPA10-072-000011,bristol,dartmouth,U,2-WAY,Collector,39.93817935,73618,NA,NA,NA
+RPA10-094-00016,bristol,fairhaven,U,2-WAY,Arterial,36.53820873,89476,NA,NA,NA
+RPA10-094-00017,bristol,fairhaven,U,2-WAY,Arterial,26.67543436,33155,NA,NA,NA
+RPA10-095-00004,bristol,fall river,U,2-WAY,Arterial,27.60919134,104656,5,0,0
+RPA10-095-00005,bristol,fall river,U,2-WAY,Arterial,37.56093912,24073,NA,NA,NA
+RPA10-095-00006,bristol,fall river,U,2-WAY,Collector,29.86693115,41848,1,0,0
+RPA10-102-00004,bristol,freetown,U,2-WAY,Arterial,36.52766731,8803,1,0,0
+RPA10-146-00001,plymouth,lakeville,U,2-WAY,Arterial,35.49607657,11600,4,0,0
+RPA10-167-00006,bristol,mansfield,U,2-WAY,Arterial,38.09163195,68439,2,0,0
+RPA10-167-00007,bristol,mansfield,U,2-WAY,Collector,33.50821025,24240,NA,NA,NA
+RPA10-169-00008,plymouth,marion,U,2-WAY,Arterial,32.07883347,38817,NA,NA,NA
+RPA10-173-00006,plymouth,mattapoisett,U,2-WAY,Arterial,35.74019788,106040,NA,NA,NA
+RPA10-182-00011,plymouth,middleborough,U,2-WAY,Arterial,35.15035239,12772,NA,NA,NA
+RPA10-201-00005,bristol,new bedford,U,2-WAY,Arterial,25.47612834,22223,NA,NA,NA
+RPA10-211-00004,bristol,north attleborough,U,2-WAY,Arterial,34.51129048,83885,NA,NA,NA
+rpa10-218-00006,bristol,norton,U,2-WAY,Arterial,30.28252214,45963,NA,NA,NA
+RPA10-238-00003,norfolk,plainville,U,2-WAY,Arterial,35.75376713,46926,NA,NA,NA
+RPA10-245-00006,bristol,raynham,U,2-WAY,Arterial,35.72259677,17209,10,0,0
+RPA10-247-00001,bristol,rehoboth,U,2-WAY,Arterial,37.74009997,36015,NA,NA,NA
+RPA10-250-000010,plymouth,rochester,R,2-WAY,Collector,38.52736247,56126,NA,NA,NA
+RPA10-265-00005,bristol,seekonk,U,2-WAY,Arterial,36.22141607,23434,3,0,0
+RPA10-292-00007,bristol,swansea,U,2-WAY,Arterial,32.19324584,29110,2,0,0
+RPA10-293-00011,bristol,taunton,U,2-WAY,Arterial,40.44123548,23932,3,0,0
+RPA10-310-00014,plymouth,wareham,U,2-WAY,Arterial,28.56538898,72219,NA,NA,NA
+RPA10-334-00002,bristol,westport,U,2-WAY,Arterial,25.22129113,34259,2,0,0
+S20-005-243-01,norfolk,quincy,U,2-WAY,Arterial,31.2678776,127592,NA,NA,NA
+S20-005-243-03,norfolk,quincy,U,2-WAY,Arterial,31.41603328,102012,NA,NA,NA
+S20-005-243-04,norfolk,quincy,U,2-WAY,Collector,21.24389885,47573,NA,NA,NA
+S20-007-310-01,plymouth,wareham,U,2-WAY,Arterial,38.58946391,18840,1,0,0
+S20-009-128-01,essex,haverhill,U,1-WAY,Arterial,37.44127946,19133,NA,NA,NA
+S20-009-128-02,essex,haverhill,U,1-WAY,Arterial,35.4280799,10463,29,0,0
+S20-009-128-03,essex,haverhill,U,RAMP,Local Road,31.11392537,19188,NA,NA,NA
+S20-009-128-05,essex,haverhill,U,1-WAY,Arterial,41.71890068,1037,NA,NA,NA
+S20-009-128-06,essex,haverhill,U,1-WAY,Arterial,17.73667712,614,NA,NA,NA
+S20-009-128-09,essex,haverhill,U,RAMP,Local Road,17.0528169,281,NA,NA,NA
+S20-009-128-10,essex,haverhill,U,RAMP,Local Road,27.48303041,11609,NA,NA,NA
+S20-011-091-01,franklin,erving,R,2-WAY,Arterial,40.8044682,18240,1,0,0
+S20-011-091-02,franklin,erving,R,2-WAY,Arterial,43.00814741,21111,2,0,0
+S20-015-047-01,franklin,buckland,R,2-WAY,Collector,44.38597279,7792,1,0,0

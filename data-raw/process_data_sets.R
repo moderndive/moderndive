@@ -280,6 +280,18 @@ pennies_resamples <-
 usethis::use_data(pennies_resamples, overwrite = TRUE)
 
 
+# Massachusetts traffic data 2020
+# Original Google Sheet here:
+# https://docs.google.com/spreadsheets/d/1rRQIDBBs8DoPAk012BdgDuf4V7iFNZzj3PL4vWfK_IQ/edit#gid=2001681887
+mass_traffic_2020 <- read_csv("data-raw/masstraffic2020.csv") %>% 
+  clean_names() %>% 
+  mutate(county = as_factor(county),
+         rural_urban = as_factor(rural_urban),
+         dir = as_factor(dir),
+         functional_class = as_factor(functional_class))
+usethis::use_data(mass_traffic_2020, overwrite = TRUE)
+
+
 
 #-------------------------------------------------------------------------------
 # Coffee quality data
@@ -315,6 +327,7 @@ ipf_lifts <-
     federation = as.factor(federation)
   )
 usethis::use_data(ipf_lifts, overwrite = TRUE)
+
 
 #-------------------------------------------------------------------------------
 # Babies: Documented in R/babies.R
@@ -391,4 +404,3 @@ saratoga_houses <-
   read_csv()%>%
   clean_names()
 usethis::use_data(saratoga_houses, overwrite = TRUE)
-
