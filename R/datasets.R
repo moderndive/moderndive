@@ -625,7 +625,7 @@
 #' Random sample of 1057 houses taken from full Saratoga Housing Data (De Veaux)
 #' @format A data frame with 1057 observations on the following 8 variables
 #' \describe{
-#' \item{price}{Price (US dollars)} 
+#' \item{price}{price (US dollars)} 
 #' \item{living.area}{Living Area (square feet)}
 #' \item{bathrooms}{Number of Bathroom (half bathrooms have no shower or tub)}
 #' \item{bedrooms}{Number of Bedrooms}
