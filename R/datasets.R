@@ -626,11 +626,11 @@
 #' @format A data frame with 1057 observations on the following 8 variables
 #' \describe{
 #' \item{price}{price (US dollars)} 
-#' \item{living.area}{Living Area (square feet)}
+#' \item{living_area}{Living Area (square feet)}
 #' \item{bathrooms}{Number of Bathroom (half bathrooms have no shower or tub)}
 #' \item{bedrooms}{Number of Bedrooms}
 #' \item{fireplaces}{Number of Fireplaces}
-#' \item{lot.size}{Size of Lot (acres)}
+#' \item{lot_size}{Size of Lot (acres)}
 #' \item{age}{Age of House (years)}
 #' \item{fireplace}{Whether the house has a Fireplace}
 #' }
