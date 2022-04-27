@@ -18,7 +18,7 @@
 
 # moderndive 0.5.4
 
-* Added `mass_traffic_2020` consisting of traffic data for 13 Massachusetts counties
+* @amutaya @catherinepeppers @agoswa @wndlovu added `mass_traffic_2020` consisting of traffic data for 13 Massachusetts counties
 
 # moderndive 0.5.3
 
