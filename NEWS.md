@@ -1,14 +1,14 @@
 # moderndive 0.5.4
 
-* Added `coffee_quality` dataset: 1340 samples of coffee tested for their quality level
-* Added `amazon_books` dataset: sample of books available for purchase on Amazon.com
-* Added `ipf_lifts` consisting of international power lifting results
-* Added `babies` on maternal smoking and infant health
-* Added `ev_charging`: information from 3,395 high resolution electric vehicle charging sessions.
-* Added `ma_traffic_2020_vs_2019` consisting of collisions information sourced from reports produced by the Massachusetts Traffic Data Management System.
-* Added `mario-kart-auction` dataset
-* Added `avocados` consisting of avocado prices dataset downloaded from the Hass Avocado Board website in May of 2018.
-* Added `saratoga_houses` random sample of 1057 houses taken from full Saratoga Housing Data. 
+* @statsmed-sheep @caroline-mckenna @zyang2k @CJParkNW added `coffee_quality` dataset: 1340 samples of coffee tested for their quality level
+* @abbidabbers @georgiagans @kaceyjj added `amazon_books` dataset: sample of books available for purchase on Amazon.com
+* @ewhalen1 @vivala1 @Swaha294 @CCccc-76 added `ipf_lifts` consisting of international power lifting results
+* @i-m-foster @mflesaker @ajhaller added `babies` on maternal smoking and infant health
+* @tianshu-zhang @q-w-a @kbruncati @katelyndiaz added `ev_charging`: information from 3,395 high resolution electric vehicle charging sessions.
+* @rwu08 @arrismo @rporta23 @katephan added `ma_traffic_2020_vs_2019` consisting of collisions information sourced from reports produced by the Massachusetts Traffic Data Management System.
+* @shirleyzhang-1999 @hartlegr @silasweden added `mario-kart-auction` dataset
+* @heschmidt @evejcik @tessgold @nikkischuldt added `avocados` consisting of avocado prices dataset downloaded from the Hass Avocado Board website in May of 2018.
+* @hongtonglin @alejanmg @egordonhalpern added `saratoga_houses` random sample of 1057 houses taken from full Saratoga Housing Data. 
 
 
 # moderndive 0.5.3.9000
