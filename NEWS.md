@@ -1,24 +1,20 @@
-# moderndive 0.5.4
-
-* @statsmed-sheep @caroline-mckenna @zyang2k @CJParkNW added `coffee_quality` dataset: 1340 samples of coffee tested for their quality level
-* @abbidabbers @georgiagans @kaceyjj added `amazon_books` dataset: sample of books available for purchase on Amazon.com
-* @ewhalen1 @vivala1 @Swaha294 @CCccc-76 added `ipf_lifts` consisting of international power lifting results
-* @i-m-foster @mflesaker @ajhaller added `babies` on maternal smoking and infant health
-* @tianshu-zhang @q-w-a @kbruncati @katelyndiaz added `ev_charging`: information from 3,395 high resolution electric vehicle charging sessions.
-* @rwu08 @arrismo @rporta23 @katephan added `ma_traffic_2020_vs_2019` consisting of collisions information sourced from reports produced by the Massachusetts Traffic Data Management System.
-* @shirleyzhang-1999 @hartlegr @silasweden added `mario-kart-auction` dataset
-* @heschmidt @evejcik @tessgold @nikkischuldt added `avocados` consisting of avocado prices dataset downloaded from the Hass Avocado Board website in May of 2018.
-* @hongtonglin @alejanmg @egordonhalpern added `saratoga_houses` random sample of 1057 houses taken from full Saratoga Housing Data. 
-
-
 # moderndive 0.5.3.9000
 
 * Added `early_january_weather` consisting of January subset of `nycflights13::weather`
+* Added 10 datasets curated by @wjhopper @lacombe129 and @sastoudt for ideal use in intro statistics courses (@beanumber and @mariumtapal did preliminary pull request management and code reviews)
+    1. @statsmed-sheep @caroline-mckenna @zyang2k @CJParkNW added `coffee_quality` dataset: 1340 samples of coffee tested for their quality level
+    1. @abbidabbers @georgiagans @kaceyjj added `amazon_books` dataset: sample of books available for purchase on Amazon.com
+    1. @ewhalen1 @vivala1 @Swaha294 @CCccc-76 added `ipf_lifts` consisting of international power lifting results
+    1. @i-m-foster @mflesaker @ajhaller added `babies` on maternal smoking and infant health
+    1. @tianshu-zhang @q-w-a @kbruncati @katelyndiaz added `ev_charging`: information from 3,395 high resolution electric vehicle charging sessions.
+    1. @rwu08 @arrismo @rporta23 @katephan added `ma_traffic_2020_vs_2019` consisting of collisions information sourced from reports produced by the Massachusetts Traffic Data Management System.
+    1. @amutaya @catherinepeppers @agoswa @wndlovu added `mass_traffic_2020` consisting of traffic data for 13 Massachusetts counties
+    1. @shirleyzhang-1999 @hartlegr @silasweden added `mario_kart_auction` dataset
+    1. @heschmidt @evejcik @tessgold @nikkischuldt added `avocados` consisting of avocado prices dataset downloaded from the Hass Avocado Board website in May of 2018.
+    1. @hongtonglin @alejanmg @egordonhalpern added `saratoga_houses` random sample of 1057 houses taken from full Saratoga Housing Data. 
 
 
-# moderndive 0.5.4
 
-* @amutaya @catherinepeppers @agoswa @wndlovu added `mass_traffic_2020` consisting of traffic data for 13 Massachusetts counties
 
 # moderndive 0.5.3
 
