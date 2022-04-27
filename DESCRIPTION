@@ -9,6 +9,7 @@ Authors@R: c(
     person("Delaney", "Moran", email = "delaneyemoran@gmail.com", role = "ctb"),
     person("Evgeni", "Chasnovski", email = "evgeni.chasnovski@gmail.com", role = "ctb", comment = c(ORCID = "0000-0002-1617-4019")),
     person("Will", "Hopper", email = "wjhopper510@gmail.com", role = "ctb", comment = c(ORCID = "0000-0002-7848-1946")),
+    person("Benjamin S.", "Baumer", email = "ben.baumer@gmail.com", role = c("ctb"), comment = c(ORCID = "0000-0002-3279-0516")),
     person("Marium", "Tapal", email = "mariumtapal@gmail.com", role = "ctb", comment = c(ORCID = "0000-0001-5093-6462")),
     person("Wayne", "Ndlovu", email = "waynedndlovu5@gmail.com", role = "ctb"),
     person("Catherine", "Peppers", email = "cpeppers@smith.edu", role = "ctb"),
