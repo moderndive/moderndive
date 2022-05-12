@@ -553,7 +553,7 @@
 #'    0 otherwise}
 #'    \item{reported_zip}{Binary variable; 1 if the driver did report their zip code, 0 if they did not}
 #' }
-#' @source Harvard Dataverse <doi:10.7910/DVN/NFPQLW>.
+#' @source Harvard Dataverse \doi{10.7910/DVN/NFPQLW}.
 #' Note data is released under a CC0: Public Domain license.
 "ev_charging"
 

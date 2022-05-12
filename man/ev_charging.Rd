@@ -38,7 +38,7 @@ by managers of the firm and 0 otherwise}
 }
 }
 \source{
-Harvard Dataverse \url{doi:10.7910/DVN/NFPQLW}.
+Harvard Dataverse \doi{10.7910/DVN/NFPQLW}.
 Note data is released under a CC0: Public Domain license.
 }
 \usage{
