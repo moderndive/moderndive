@@ -63,7 +63,7 @@ score_model <- lm(score ~ age, data = evals)
     get_regression_table(score_model)
     ```
     
-        ## # A tibble: 2 x 7
+        ## # A tibble: 2 × 7
         ##   term      estimate std_error statistic p_value lower_ci upper_ci
         ##   <chr>        <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
         ## 1 intercept    4.46      0.127     35.2    0        4.21     4.71 
@@ -77,7 +77,7 @@ score_model <- lm(score ~ age, data = evals)
     get_regression_points(score_model)
     ```
     
-        ## # A tibble: 463 x 5
+        ## # A tibble: 463 × 5
         ##       ID score   age score_hat residual
         ##    <int> <dbl> <int>     <dbl>    <dbl>
         ##  1     1   4.7    36      4.25    0.452
@@ -99,7 +99,7 @@ score_model <- lm(score ~ age, data = evals)
     get_regression_summaries(score_model)
     ```
     
-        ## # A tibble: 1 x 9
+        ## # A tibble: 1 × 9
         ##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df  nobs
         ##       <dbl>         <dbl> <dbl> <dbl> <dbl>     <dbl>   <dbl> <dbl> <dbl>
         ## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     1   463
@@ -173,11 +173,11 @@ included for a random sample of 5 courses\[1\]:
 
 |  ID | prof\_ID | score | age | bty\_avg | gender | ethnicity    | language | rank         |
 | --: | -------: | ----: | --: | -------: | :----- | :----------- | :------- | :----------- |
-| 444 |       91 |   4.1 |  52 |    4.500 | female | not minority | english  | tenured      |
-|  97 |       18 |   4.1 |  48 |    4.333 | male   | not minority | english  | teaching     |
-| 340 |       70 |   4.8 |  43 |    3.500 | male   | not minority | english  | tenure track |
-|  58 |       10 |   4.7 |  47 |    5.500 | male   | not minority | english  | teaching     |
-| 375 |       76 |   3.7 |  43 |    4.167 | female | minority     | english  | tenured      |
+| 213 |       38 |   4.8 |  60 |    3.667 | male   | not minority | english  | tenured      |
+|  35 |        7 |   3.5 |  33 |    4.167 | female | not minority | english  | tenure track |
+| 211 |       38 |   4.6 |  60 |    3.667 | male   | not minority | english  | tenured      |
+| 306 |       58 |   3.0 |  43 |    3.333 | female | not minority | english  | tenured      |
+| 436 |       88 |   4.2 |  62 |    2.000 | male   | not minority | english  | tenured      |
 
 ### 1\. Focus less on p-value stars, more confidence intervals
 
@@ -201,7 +201,7 @@ Instead of `summary()`, let’s use the `get_regression_table()` function:
 get_regression_table(score_model)
 ```
 
-    ## # A tibble: 2 x 7
+    ## # A tibble: 2 × 7
     ##   term      estimate std_error statistic p_value lower_ci upper_ci
     ##   <chr>        <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
     ## 1 intercept    4.46      0.127     35.2    0        4.21     4.71 
@@ -218,7 +218,7 @@ be changed using the `conf.level` argument:
 get_regression_table(score_model, conf.level = 0.99)
 ```
 
-    ## # A tibble: 2 x 7
+    ## # A tibble: 2 × 7
     ##   term      estimate std_error statistic p_value lower_ci upper_ci
     ##   <chr>        <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
     ## 1 intercept    4.46      0.127     35.2    0        4.13     4.79 
@@ -317,7 +317,7 @@ score_model_points <- get_regression_points(score_model)
 score_model_points
 ```
 
-    ## # A tibble: 10 x 5
+    ## # A tibble: 10 × 5
     ##       ID score   age score_hat residual
     ##    <int> <dbl> <int>     <dbl>    <dbl>
     ##  1     1   4.7    36      4.25    0.452
@@ -393,7 +393,7 @@ new_prof <- tibble(age = c(39, 42))
 get_regression_points(score_model, newdata = new_prof)
 ```
 
-    ## # A tibble: 2 x 3
+    ## # A tibble: 2 × 3
     ##      ID   age score_hat
     ##   <int> <dbl>     <dbl>
     ## 1     1    39      4.23
@@ -406,7 +406,7 @@ practice competition ( displays the homepage for this competition).
 
 <div class="figure" style="text-align: center">
 
-<img src="vignettes/kaggle.png" alt="House prices Kaggle competition homepage." width="95%" />
+<img src="man/figures/kaggle.png" alt="House prices Kaggle competition homepage." width="95%" />
 
 <p class="caption">
 
@@ -460,7 +460,7 @@ score of 0.42918 as seen in .
 
 <div class="figure">
 
-<img src="vignettes/leaderboard_orig.png" alt="Resulting Kaggle RMSLE score." width="3326" />
+<img src="man/figures/leaderboard_orig.png" alt="Resulting Kaggle RMSLE score." width="3326" />
 
 <p class="caption">
 
@@ -495,7 +495,7 @@ interaction_evals <- lm(score ~ age * ethnicity, data = evals)
 get_regression_table(interaction_evals)
 ```
 
-    ## # A tibble: 4 x 7
+    ## # A tibble: 4 × 7
     ##   term                    estimate std_error statistic p_value lower_ci upper_ci
     ##   <chr>                      <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
     ## 1 intercept                  2.61      0.518      5.04   0        1.59     3.63 
@@ -509,7 +509,7 @@ parallel_slopes_evals <- lm(score ~ age + ethnicity, data = evals)
 get_regression_table(parallel_slopes_evals)
 ```
 
-    ## # A tibble: 3 x 7
+    ## # A tibble: 3 × 7
     ##   term                    estimate std_error statistic p_value lower_ci upper_ci
     ##   <chr>                      <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
     ## 1 intercept                  4.37      0.136     32.1    0        4.1      4.63 
@@ -571,7 +571,7 @@ interaction_MA <-
 get_regression_table(interaction_MA)
 ```
 
-    ## # A tibble: 6 x 7
+    ## # A tibble: 6 × 7
     ##   term                    estimate std_error statistic p_value lower_ci upper_ci
     ##   <chr>                      <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
     ## 1 intercept                594.       13.3      44.7     0      568.     620.   
@@ -588,7 +588,7 @@ parallel_slopes_MA <-
 get_regression_table(parallel_slopes_MA)
 ```
 
-    ## # A tibble: 4 x 7
+    ## # A tibble: 4 × 7
     ##   term          estimate std_error statistic p_value lower_ci upper_ci
     ##   <chr>            <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
     ## 1 intercept       588.       7.61     77.3     0       573.     603.  
@@ -647,7 +647,7 @@ the degrees of freedom `df`. We can do so using the
 get_regression_summaries(score_model)
 ```
 
-    ## # A tibble: 1 x 9
+    ## # A tibble: 1 × 9
     ##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df  nobs
     ##       <dbl>         <dbl> <dbl> <dbl> <dbl>     <dbl>   <dbl> <dbl> <dbl>
     ## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     1   463
