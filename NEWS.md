@@ -1,4 +1,4 @@
-# moderndive 0.5.3.9000
+# moderndive 0.5.4
 
 * Added `early_january_weather` consisting of January subset of `nycflights13::weather`
 * Added 10 datasets curated by @wjhopper @lacombe129 and @sastoudt for ideal use in intro statistics courses (@beanumber and @mariumtapal did preliminary pull request management and code reviews)

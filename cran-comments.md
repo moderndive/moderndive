@@ -1,20 +1,3 @@
-## Resubmission
-
-This is a resubmission of moderndive v0.5.3 that fixes: 
-
-   Found the following (possibly) invalid URLs:
-     URL: https://www.statcrunch.com/app/index.php?dataid=301596 (moved
-to https://www.statcrunch.com:443/app/index.html?dataid=301596)
-       From: man/orig_pennies_sample.Rd
-             man/pennies.Rd
-       Status: 301
-       Message: Moved Permanently
-
-Please change http --> https, add trailing slashes, or follow moved
-content as appropriate.
-
-
-
 ## Test environments
 
 * local macOS install, R 4.0.3

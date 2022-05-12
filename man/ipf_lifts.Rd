@@ -14,7 +14,7 @@ A data frame with 41,152 entries, one entry for individual lifter
 \item{equipment}{The equipment category under which the lifts were performed}
 \item{age}{The age of the lifter on the start date of the meet}
 \item{age_class}{The age class in which the filter falls}
-\item{division}{division of competetition}
+\item{division}{division of competition}
 \item{bodyweight_kg}{The recorded bodyweight of the lifter at the time of competition, to two decimal places}
 \item{weight_class_kg}{The weight class in which the lifter competed, to two decimal places}
 \item{best3squat_kg}{Maximum of the first three successful attempts for the lift}

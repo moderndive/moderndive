@@ -467,7 +467,7 @@
 #'   \item{equipment}{The equipment category under which the lifts were performed}
 #'   \item{age}{The age of the lifter on the start date of the meet}
 #'   \item{age_class}{The age class in which the filter falls}
-#'   \item{division}{division of competetition}
+#'   \item{division}{division of competition}
 #'   \item{bodyweight_kg}{The recorded bodyweight of the lifter at the time of competition, to two decimal places}
 #'   \item{weight_class_kg}{The weight class in which the lifter competed, to two decimal places}
 #'   \item{best3squat_kg}{Maximum of the first three successful attempts for the lift}
@@ -553,7 +553,7 @@
 #'    0 otherwise}
 #'    \item{reported_zip}{Binary variable; 1 if the driver did report their zip code, 0 if they did not}
 #' }
-#' @source Harvard Dataverse <https://doi.org/10.7910/DVN/NFPQLW>
+#' @source Harvard Dataverse <doi:10.7910/DVN/NFPQLW>.
 #' Note data is released under a CC0: Public Domain license.
 "ev_charging"
 
