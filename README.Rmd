@@ -241,7 +241,7 @@ get_regression_points(score_model, newdata = new_prof)
 Let's do another example, this time using the Kaggle [House Prices: Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques){target="_blank"} practice competition (\autoref{fig:kaggle-1} displays the homepage for this competition). 
 
 ```{r kaggle-1, echo=FALSE, fig.align='center', fig.cap="House prices Kaggle competition homepage.", out.width='95%', purl=FALSE}
-knitr::include_graphics("man/figures/kaggle.png")
+knitr::include_graphics("man/figures/kaggle.jpeg")
 ```
 
 This Kaggle competition requires you to fit/train a model to the provided `train.csv` training set to make predictions of house prices in the provided `test.csv` test set. We present an application of the `get_regression_points()` function allowing students to participate in this Kaggle competition. It will:
@@ -275,7 +275,7 @@ After submitting `submission.csv` to the leaderboard for this Kaggle competition
 obtain a "root mean squared logarithmic error" (RMSLE) score of 0.42918 as seen in \autoref{fig:kaggle-2}.
 
 ```{r kaggle-2, echo=FALSE, fig.cap="Resulting Kaggle RMSLE score."}
-knitr::include_graphics("man/figures/leaderboard_orig.png")
+knitr::include_graphics("man/figures/leaderboard_orig.jpeg")
 ```
 
 ### 5. Visual model selection: plot parallel slopes & interaction regression models

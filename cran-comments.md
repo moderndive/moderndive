@@ -1,3 +1,8 @@
+## Resubmission
+
+This is a resubmission to bring the package tarball size to under 5MB.
+
+
 ## Test environments
 
 * local macOS install, R 4.0.3
@@ -22,7 +27,6 @@
 
 NOTES:
 
-* installed size is 5.0Mb (just at the limit)
 * It says this URL is invalid, but it works just fine: https://profiles.doe.mass.edu/state_report/
 
 
