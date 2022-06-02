@@ -173,11 +173,11 @@ included for a random sample of 5 courses\[1\]:
 
 |  ID | prof\_ID | score | age | bty\_avg | gender | ethnicity    | language | rank         |
 | --: | -------: | ----: | --: | -------: | :----- | :----------- | :------- | :----------- |
-| 213 |       38 |   4.8 |  60 |    3.667 | male   | not minority | english  | tenured      |
-|  35 |        7 |   3.5 |  33 |    4.167 | female | not minority | english  | tenure track |
-| 211 |       38 |   4.6 |  60 |    3.667 | male   | not minority | english  | tenured      |
-| 306 |       58 |   3.0 |  43 |    3.333 | female | not minority | english  | tenured      |
-| 436 |       88 |   4.2 |  62 |    2.000 | male   | not minority | english  | tenured      |
+| 355 |       71 |   4.9 |  50 |    3.333 | male   | minority     | english  | teaching     |
+| 262 |       49 |   4.3 |  52 |    3.167 | male   | not minority | english  | tenured      |
+| 441 |       89 |   3.7 |  35 |    7.833 | female | minority     | english  | tenure track |
+|  51 |       10 |   4.3 |  47 |    5.500 | male   | not minority | english  | teaching     |
+|  49 |        9 |   4.5 |  33 |    4.667 | female | not minority | english  | tenure track |
 
 ### 1\. Focus less on p-value stars, more confidence intervals
 
@@ -406,7 +406,7 @@ practice competition ( displays the homepage for this competition).
 
 <div class="figure" style="text-align: center">
 
-<img src="man/figures/kaggle.png" alt="House prices Kaggle competition homepage." width="95%" />
+<img src="man/figures/kaggle.jpeg" alt="House prices Kaggle competition homepage." width="95%" />
 
 <p class="caption">
 
@@ -460,7 +460,7 @@ score of 0.42918 as seen in .
 
 <div class="figure">
 
-<img src="man/figures/leaderboard_orig.png" alt="Resulting Kaggle RMSLE score." width="3326" />
+<img src="man/figures/leaderboard_orig.jpeg" alt="Resulting Kaggle RMSLE score." width="3326" />
 
 <p class="caption">
 
