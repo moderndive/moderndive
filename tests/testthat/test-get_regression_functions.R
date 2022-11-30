@@ -97,8 +97,15 @@ test_that("README code works", {
   # cannot compute residuals
   newcars <- slice(mtcars, 1:3) %>%
     select(-mpg)
+  
+  if (packageVersion("broom") <= "1.0.1") {
+    regexp <- "variables found"
+  } else {
+    regexp <- NA
+  }
+  
   expect_warning(
-    get_regression_points(mpg_mlr_model2, newdata = newcars)
+    get_regression_points(mpg_mlr_model2, newdata = newcars), regexp = regexp
   )
   
   # Regression summaries
