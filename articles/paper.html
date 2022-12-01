@@ -19,6 +19,8 @@
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
+    
+
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -31,18 +33,12 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">moderndive</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.5.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.5.5</span>
       </span>
     </div>
 
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-<li>
-  <a href="../index.html">
-    <span class="fas fa-home fa-lg"></span>
-     
-  </a>
-</li>
 <li>
   <a href="../articles/moderndive.html">Get started</a>
 </li>
@@ -50,7 +46,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -67,7 +63,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="https://github.com/moderndive/moderndive/">
+  <a href="https://github.com/moderndive/moderndive/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
      
   </a>
@@ -82,52 +78,106 @@
 
       
 
-      </header><script src="paper_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Take a <code>moderndive</code> into introductory linear regression with R</h1>
-                        <h4 class="author">Albert Y. Kim, Chester Ismay, and Max Kuhn</h4>
+      <h1 data-toc-skip>Take a <code>moderndive</code> into introductory
+linear regression with R</h1>
+                        <h4 data-toc-skip class="author">Albert Y. Kim,
+Chester Ismay, and Max Kuhn</h4>
             
-            <h4 class="date">2021-07-29</h4>
+            <h4 data-toc-skip class="date">2022-12-01</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/moderndive/moderndive/blob/master/vignettes/paper.Rmd"><code>vignettes/paper.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/moderndive/moderndive/blob/HEAD/vignettes/paper.Rmd" class="external-link"><code>vignettes/paper.Rmd</code></a></small>
       <div class="hidden name"><code>paper.Rmd</code></div>
 
     </div>
 
     
     
-<div id="summary" class="section level1">
-<h1 class="hasAnchor">
-<a href="#summary" class="anchor"></a>Summary</h1>
-<p>We present the <a href="https://moderndive.github.io/moderndive/" target="_blank"><code>moderndive</code></a> R package of datasets and functions for <a href="https://www.tidyverse.org/">tidyverse</a>-friendly introductory linear regression <span class="citation">(Wickham, Averick, et al. 2019)</span>. These tools leverage the well-developed <code>tidyverse</code> and <code>broom</code> packages to facilitate 1) working with regression tables that include confidence intervals, 2) accessing regression outputs on an observation level (e.g. fitted/predicted values and residuals), 3) inspecting scalar summaries of regression fit (e.g. <span class="math inline">\(R^2\)</span>, <span class="math inline">\(R^2_{adj}\)</span>, and mean squared error), and 4) visualizing parallel slopes regression models using <code>ggplot2</code>-like syntax <span class="citation">(Wickham, Chang, et al. 2019; Robinson and Hayes 2019)</span>. This R package is designed to supplement the book “Statistical Inference via Data Science: A ModernDive into R and the Tidyverse” <span class="citation">(Ismay and Kim 2019)</span>. Note that the book is also available online at <a href="https://moderndive.com" class="uri">https://moderndive.com</a> and is referred to as “ModernDive” for short.</p>
+<div class="section level2">
+<h2 id="summary">Summary<a class="anchor" aria-label="anchor" href="#summary"></a>
+</h2>
+<p>We present the <a href="https://moderndive.github.io/moderndive/" target="_blank"><code>moderndive</code></a> R package of datasets and
+functions for <a href="https://www.tidyverse.org/" class="external-link">tidyverse</a>-friendly introductory
+linear regression <span class="citation">(Wickham, Averick, et al.
+2019)</span>. These tools leverage the well-developed
+<code>tidyverse</code> and <code>broom</code> packages to facilitate 1)
+working with regression tables that include confidence intervals, 2)
+accessing regression outputs on an observation level
+(e.g. fitted/predicted values and residuals), 3) inspecting scalar
+summaries of regression fit (e.g. <span class="math inline">\(R^2\)</span>, <span class="math inline">\(R^2_{adj}\)</span>, and mean squared error), and
+4) visualizing parallel slopes regression models using
+<code>ggplot2</code>-like syntax <span class="citation">(Wickham, Chang,
+et al. 2019; Robinson and Hayes 2019)</span>. This R package is designed
+to supplement the book “Statistical Inference via Data Science: A
+ModernDive into R and the Tidyverse” <span class="citation">(Ismay and
+Kim 2019)</span>. Note that the book is also available online at <a href="https://moderndive.com" class="external-link uri">https://moderndive.com</a> and
+is referred to as “ModernDive” for short.</p>
 </div>
-<div id="statement-of-need" class="section level1">
-<h1 class="hasAnchor">
-<a href="#statement-of-need" class="anchor"></a>Statement of Need</h1>
-<p>Linear regression has long been a staple of introductory statistics courses. While the curricula of introductory statistics courses has much evolved of late, the overall importance of regression remains the same <span class="citation">(American Statistical Association Undergraduate Guidelines Workgroup 2016)</span>. Furthermore, while the use of the R statistical programming language for statistical analysis is not new, recent developments such as the <code>tidyverse</code> suite of packages have made statistical computation with R accessible to a broader audience <span class="citation">(Wickham, Averick, et al. 2019)</span>. We go one step further by leveraging the <code>tidyverse</code> and the <code>broom</code> packages to make linear regression accessible to students taking an introductory statistics course <span class="citation">(Robinson and Hayes 2019)</span>. Such students are likely to be new to statistical computation with R; we designed <code>moderndive</code> with these students in mind.</p>
+<div class="section level2">
+<h2 id="statement-of-need">Statement of Need<a class="anchor" aria-label="anchor" href="#statement-of-need"></a>
+</h2>
+<p>Linear regression has long been a staple of introductory statistics
+courses. While the curricula of introductory statistics courses has much
+evolved of late, the overall importance of regression remains the same
+<span class="citation">(American Statistical Association Undergraduate
+Guidelines Workgroup 2016)</span>. Furthermore, while the use of the R
+statistical programming language for statistical analysis is not new,
+recent developments such as the <code>tidyverse</code> suite of packages
+have made statistical computation with R accessible to a broader
+audience <span class="citation">(Wickham, Averick, et al. 2019)</span>.
+We go one step further by leveraging the <code>tidyverse</code> and the
+<code>broom</code> packages to make linear regression accessible to
+students taking an introductory statistics course <span class="citation">(Robinson and Hayes 2019)</span>. Such students are
+likely to be new to statistical computation with R; we designed
+<code>moderndive</code> with these students in mind.</p>
 </div>
-<div id="introduction" class="section level1">
-<h1 class="hasAnchor">
-<a href="#introduction" class="anchor"></a>Introduction</h1>
+<div class="section level2">
+<h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
+</h2>
 <p>Let’s load all the R packages we are going to need.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://moderndive.github.io/moderndive/">moderndive</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/">knitr</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/">broom</a></span><span class="op">)</span></code></pre></div>
-<p>Let’s consider data gathered from end of semester student evaluations for a sample of 463 courses taught by 94 professors from the University of Texas at Austin <span class="citation">(Diez, Barr, and Çetinkaya-Rundel 2015)</span>. This data is included in the <code>evals</code> data frame from the <code>moderndive</code> package.</p>
-<p>In the following table, we present a subset of 9 of the 14 variables included for a random sample of 5 courses<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>:</p>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://moderndive.github.io/moderndive/">moderndive</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/" class="external-link">knitr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/" class="external-link">broom</a></span><span class="op">)</span></span></code></pre></div>
+<p>Let’s consider data gathered from end of semester student evaluations
+for a sample of 463 courses taught by 94 professors from the University
+of Texas at Austin <span class="citation">(Diez, Barr, and
+Çetinkaya-Rundel 2015)</span>. This data is included in the
+<code>evals</code> data frame from the <code>moderndive</code>
+package.</p>
+<p>In the following table, we present a subset of 9 of the 14 variables
+included for a random sample of 5 courses<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>:</p>
 <ol style="list-style-type: decimal">
 <li>
-<code>ID</code> uniquely identifies the course whereas <code>prof_ID</code> identifies the professor who taught this course. This distinction is important since many professors taught more than one course.</li>
+<code>ID</code> uniquely identifies the course whereas
+<code>prof_ID</code> identifies the professor who taught this course.
+This distinction is important since many professors taught more than one
+course.</li>
 <li>
-<code>score</code> is the outcome variable of interest: average professor evaluation score out of 5 as given by the students in this course.</li>
-<li>The remaining variables are demographic variables describing that course’s instructor, including <code>bty_avg</code> (average “beauty” score) for that professor as given by a panel of 6 students.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>
+<code>score</code> is the outcome variable of interest: average
+professor evaluation score out of 5 as given by the students in this
+course.</li>
+<li>The remaining variables are demographic variables describing that
+course’s instructor, including <code>bty_avg</code> (average “beauty”
+score) for that professor as given by a panel of 6 students.<a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>
 </li>
 </ol>
 <table class="table">
+<colgroup>
+<col width="5%">
+<col width="11%">
+<col width="8%">
+<col width="5%">
+<col width="11%">
+<col width="10%">
+<col width="19%">
+<col width="13%">
+<col width="11%">
+</colgroup>
 <thead><tr class="header">
 <th align="right">ID</th>
 <th align="right">prof_ID</th>
@@ -197,100 +247,136 @@
 </tr>
 </tbody>
 </table>
-<div id="regression-analysis-the-good-old-fashioned-way" class="section level2">
-<h2 class="hasAnchor">
-<a href="#regression-analysis-the-good-old-fashioned-way" class="anchor"></a>Regression analysis the “good old-fashioned” way</h2>
-<p>Let’s fit a simple linear regression model of teaching <code>score</code> as a function of instructor <code>age</code> using the <code><a href="https://rdrr.io/r/stats/lm.html">lm()</a></code> function.</p>
+<div class="section level3">
+<h3 id="regression-analysis-the-good-old-fashioned-way">Regression analysis the “good old-fashioned” way<a class="anchor" aria-label="anchor" href="#regression-analysis-the-good-old-fashioned-way"></a>
+</h3>
+<p>Let’s fit a simple linear regression model of teaching
+<code>score</code> as a function of instructor <code>age</code> using
+the <code><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm()</a></code> function.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="va">score_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">score</span> <span class="op">~</span> <span class="va">age</span>, data <span class="op">=</span> <span class="va">evals</span><span class="op">)</span></code></pre></div>
-<p>Let’s now study the output of the fitted model <code>score_model</code> “the good old-fashioned way”: using <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code> which calls <code><a href="https://rdrr.io/r/stats/summary.lm.html">summary.lm()</a></code> behind the scenes (we’ll refer to them interchangeably throughout this paper).</p>
+<code class="sourceCode R"><span><span class="va">score_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">score</span> <span class="op">~</span> <span class="va">age</span>, data <span class="op">=</span> <span class="va">evals</span><span class="op">)</span></span></code></pre></div>
+<p>Let’s now study the output of the fitted model
+<code>score_model</code> “the good old-fashioned way”: using
+<code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code> which calls <code><a href="https://rdrr.io/r/stats/summary.lm.html" class="external-link">summary.lm()</a></code> behind the
+scenes (we’ll refer to them interchangeably throughout this paper).</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span>
-<span class="co">## </span>
-<span class="co">## Call:</span>
-<span class="co">## lm(formula = score ~ age, data = evals)</span>
-<span class="co">## </span>
-<span class="co">## Residuals:</span>
-<span class="co">##     Min      1Q  Median      3Q     Max </span>
-<span class="co">## -1.9185 -0.3531  0.1172  0.4172  0.8825 </span>
-<span class="co">## </span>
-<span class="co">## Coefficients:</span>
-<span class="co">##              Estimate Std. Error t value Pr(&gt;|t|)    </span>
-<span class="co">## (Intercept)  4.461932   0.126778  35.195   &lt;2e-16 ***</span>
-<span class="co">## age         -0.005938   0.002569  -2.311   0.0213 *  </span>
-<span class="co">## ---</span>
-<span class="co">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span>
-<span class="co">## </span>
-<span class="co">## Residual standard error: 0.5413 on 461 degrees of freedom</span>
-<span class="co">## Multiple R-squared:  0.01146,    Adjusted R-squared:  0.009311 </span>
-<span class="co">## F-statistic: 5.342 on 1 and 461 DF,  p-value: 0.02125</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Call:</span></span>
+<span><span class="co">## lm(formula = score ~ age, data = evals)</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Residuals:</span></span>
+<span><span class="co">##     Min      1Q  Median      3Q     Max </span></span>
+<span><span class="co">## -1.9185 -0.3531  0.1172  0.4172  0.8825 </span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Coefficients:</span></span>
+<span><span class="co">##              Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span><span class="co">## (Intercept)  4.461932   0.126778  35.195   &lt;2e-16 ***</span></span>
+<span><span class="co">## age         -0.005938   0.002569  -2.311   0.0213 *  </span></span>
+<span><span class="co">## ---</span></span>
+<span><span class="co">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## Residual standard error: 0.5413 on 461 degrees of freedom</span></span>
+<span><span class="co">## Multiple R-squared:  0.01146,    Adjusted R-squared:  0.009311 </span></span>
+<span><span class="co">## F-statistic: 5.342 on 1 and 461 DF,  p-value: 0.02125</span></span></code></pre></div>
 </div>
-<div id="regression-analysis-using-moderndive" class="section level2">
-<h2 class="hasAnchor">
-<a href="#regression-analysis-using-moderndive" class="anchor"></a>Regression analysis using <code>moderndive</code>
-</h2>
-<p>As an improvement to base R’s regression functions, we’ve included three functions in the <code>moderndive</code> package that take a fitted model object as input and return the same information as <code><a href="https://rdrr.io/r/stats/summary.lm.html">summary.lm()</a></code>, but output them in tidyverse-friendly format <span class="citation">(Wickham, Averick, et al. 2019)</span>. As we’ll see later, while these three functions are thin wrappers to existing functions in the <code>broom</code> package for converting statistical objects into tidy tibbles, we modified them with the introductory statistics student in mind <span class="citation">(Robinson and Hayes 2019)</span>.</p>
+<div class="section level3">
+<h3 id="regression-analysis-using-moderndive">Regression analysis using <code>moderndive</code><a class="anchor" aria-label="anchor" href="#regression-analysis-using-moderndive"></a>
+</h3>
+<p>As an improvement to base R’s regression functions, we’ve included
+three functions in the <code>moderndive</code> package that take a
+fitted model object as input and return the same information as
+<code><a href="https://rdrr.io/r/stats/summary.lm.html" class="external-link">summary.lm()</a></code>, but output them in tidyverse-friendly format
+<span class="citation">(Wickham, Averick, et al. 2019)</span>. As we’ll
+see later, while these three functions are thin wrappers to existing
+functions in the <code>broom</code> package for converting statistical
+objects into tidy tibbles, we modified them with the introductory
+statistics student in mind <span class="citation">(Robinson and Hayes
+2019)</span>.</p>
 <ol style="list-style-type: decimal">
 <li>
-<p>Get a tidy regression table <strong>with confidence intervals</strong>:</p>
+<p>Get a tidy regression table <strong>with confidence
+intervals</strong>:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span>
-<span class="co">## # A tibble: 2 × 7</span>
-<span class="co">##   term      estimate std_error statistic p_value lower_ci upper_ci</span>
-<span class="co">##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">## 1 intercept    4.46      0.127     35.2    0        4.21     4.71 </span>
-<span class="co">## 2 age         -0.006     0.003     -2.31   0.021   -0.011   -0.001</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span>
+<span><span class="co">## <span style="color: #949494;"># A tibble: 2 × 7</span></span></span>
+<span><span class="co">##   term      estimate std_error statistic p_value lower_ci upper_ci</span></span>
+<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> intercept    4.46      0.127     35.2    0        4.21     4.71 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span> age         -<span style="color: #BB0000;">0.006</span>     0.003     -<span style="color: #BB0000;">2.31</span>   0.021   -<span style="color: #BB0000;">0.011</span>   -<span style="color: #BB0000;">0.001</span></span></span></code></pre></div>
 </li>
 <li>
-<p>Get information on each point/observation in your regression, including fitted/predicted values and residuals, in a single data frame:</p>
+<p>Get information on each point/observation in your regression,
+including fitted/predicted values and residuals, in a single data
+frame:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/get_regression_points.html">get_regression_points</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span>
-<span class="co">## # A tibble: 463 × 5</span>
-<span class="co">##       ID score   age score_hat residual</span>
-<span class="co">##    &lt;int&gt; &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span>
-<span class="co">##  1     1   4.7    36      4.25    0.452</span>
-<span class="co">##  2     2   4.1    36      4.25   -0.148</span>
-<span class="co">##  3     3   3.9    36      4.25   -0.348</span>
-<span class="co">##  4     4   4.8    36      4.25    0.552</span>
-<span class="co">##  5     5   4.6    59      4.11    0.488</span>
-<span class="co">##  6     6   4.3    59      4.11    0.188</span>
-<span class="co">##  7     7   2.8    59      4.11   -1.31 </span>
-<span class="co">##  8     8   4.1    51      4.16   -0.059</span>
-<span class="co">##  9     9   3.4    51      4.16   -0.759</span>
-<span class="co">## 10    10   4.5    40      4.22    0.276</span>
-<span class="co">## # … with 453 more rows</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/get_regression_points.html">get_regression_points</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span>
+<span><span class="co">## <span style="color: #949494;"># A tibble: 463 × 5</span></span></span>
+<span><span class="co">##       ID score   age score_hat residual</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>     1   4.7    36      4.25    0.452</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>     2   4.1    36      4.25   -<span style="color: #BB0000;">0.148</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>     3   3.9    36      4.25   -<span style="color: #BB0000;">0.348</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>     4   4.8    36      4.25    0.552</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>     5   4.6    59      4.11    0.488</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>     6   4.3    59      4.11    0.188</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>     7   2.8    59      4.11   -<span style="color: #BB0000;">1.31</span> </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     8   4.1    51      4.16   -<span style="color: #BB0000;">0.059</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     9   3.4    51      4.16   -<span style="color: #BB0000;">0.759</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span>    10   4.5    40      4.22    0.276</span></span>
+<span><span class="co">## <span style="color: #949494;"># … with 453 more rows</span></span></span></code></pre></div>
 </li>
 <li>
-<p>Get scalar summaries of a regression fit including <span class="math inline">\(R^2\)</span> and <span class="math inline">\(R^2_{adj}\)</span> but also the (root) mean-squared error:</p>
+<p>Get scalar summaries of a regression fit including <span class="math inline">\(R^2\)</span> and <span class="math inline">\(R^2_{adj}\)</span> but also the (root)
+mean-squared error:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="fu"><a href="../reference/get_regression_summaries.html">get_regression_summaries</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span>
-<span class="co">## # A tibble: 1 × 9</span>
-<span class="co">##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df</span>
-<span class="co">##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt;</span>
-<span class="co">## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     1</span>
-<span class="co">## # … with 1 more variable: nobs &lt;dbl&gt;</span></code></pre></div>
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/get_regression_summaries.html">get_regression_summaries</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span>
+<span><span class="co">## <span style="color: #949494;"># A tibble: 1 × 9</span></span></span>
+<span><span class="co">##   r_squared adj_r_squa…¹   mse  rmse sigma stati…² p_value    df  nobs</span></span>
+<span><span class="co">##       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span>     0.011        0.009 0.292 0.540 0.541    5.34   0.021     1   463</span></span>
+<span><span class="co">## <span style="color: #949494;"># … with abbreviated variable names ¹​adj_r_squared, ²​statistic</span></span></span></code></pre></div>
 </li>
 </ol>
-<p>Furthermore, say you would like to create a visualization of the relationship between two numerical variables and a third categorical variable with <span class="math inline">\(k\)</span> levels. Let’s create this using a colored scatterplot via the <code>ggplot2</code> package for data visualization <span class="citation">(Wickham, Chang, et al. 2019)</span>. Using <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth(method = "lm", se = FALSE)</a></code> yields a visualization of an <em>interaction model</em> where each of the <span class="math inline">\(k\)</span> regression lines has their own intercept and slope. For example in , we extend our previous regression model by now mapping the categorical variable <code>ethnicity</code> to the <code>color</code> aesthetic.</p>
+<p>Furthermore, say you would like to create a visualization of the
+relationship between two numerical variables and a third categorical
+variable with <span class="math inline">\(k\)</span> levels. Let’s
+create this using a colored scatterplot via the <code>ggplot2</code>
+package for data visualization <span class="citation">(Wickham, Chang,
+et al. 2019)</span>. Using
+<code>geom_smooth(method = "lm", se = FALSE)</code> yields a
+visualization of an <em>interaction model</em> where each of the <span class="math inline">\(k\)</span> regression lines has their own
+intercept and slope. For example in , we extend our previous regression
+model by now mapping the categorical variable <code>ethnicity</code> to
+the <code>color</code> aesthetic.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Code to visualize interaction model:</span>
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">evals</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">score</span>, color <span class="op">=</span> <span class="va">ethnicity</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Age"</span>, y <span class="op">=</span> <span class="st">"Teaching score"</span>, color <span class="op">=</span> <span class="st">"Ethnicity"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Code to visualize interaction model:</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">evals</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">score</span>, color <span class="op">=</span> <span class="va">ethnicity</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Age"</span>, y <span class="op">=</span> <span class="st">"Teaching score"</span>, color <span class="op">=</span> <span class="st">"Ethnicity"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="paper_files/figure-html/interaction-model-1.png" alt="Visualization of interaction model." width="100%"><p class="caption">
 Visualization of interaction model.
 </p>
 </div>
-<p>However, many introductory statistics courses start with the easier to teach “common slope, different intercepts” regression model, also known as the <em>parallel slopes</em> model. However, no argument to plot such models exists within <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code>.</p>
-<p><a href="https://github.com/echasnovski" target="_blank">Evgeni Chasnovski</a> thus wrote a custom <code>geom_</code> extension to <code>ggplot2</code> called <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code>; this extension is included in the <code>moderndive</code> package. Much like <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth()</a></code> from the <code>ggplot2</code> package, you add <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> as a layer to the code, resulting in .</p>
+<p>However, many introductory statistics courses start with the easier
+to teach “common slope, different intercepts” regression model, also
+known as the <em>parallel slopes</em> model. However, no argument to
+plot such models exists within <code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth()</a></code>.</p>
+<p><a href="https://github.com/echasnovski" target="_blank" class="external-link">Evgeni
+Chasnovski</a> thus wrote a custom <code>geom_</code> extension to
+<code>ggplot2</code> called <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code>; this
+extension is included in the <code>moderndive</code> package. Much like
+<code><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html" class="external-link">geom_smooth()</a></code> from the <code>ggplot2</code> package, you
+add <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> as a layer to the code,
+resulting in .</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span class="co"># Code to visualize parallel slopes model:</span>
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">evals</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">score</span>, color <span class="op">=</span> <span class="va">ethnicity</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes</a></span><span class="op">(</span>se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Age"</span>, y <span class="op">=</span> <span class="st">"Teaching score"</span>, color <span class="op">=</span> <span class="st">"Ethnicity"</span><span class="op">)</span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># Code to visualize parallel slopes model:</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">evals</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">score</span>, color <span class="op">=</span> <span class="va">ethnicity</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes</a></span><span class="op">(</span>se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Age"</span>, y <span class="op">=</span> <span class="st">"Teaching score"</span>, color <span class="op">=</span> <span class="st">"Ethnicity"</span><span class="op">)</span></span></code></pre></div>
 <div class="figure" style="text-align: center">
 <img src="paper_files/figure-html/parallel-slopes-model-1.png" alt="Visualization of parallel slopes model." width="100%"><p class="caption">
 Visualization of parallel slopes model.
@@ -298,64 +384,95 @@ Visualization of parallel slopes model.
 </div>
 </div>
 </div>
-<div id="repository-readme" class="section level1">
-<h1 class="hasAnchor">
-<a href="#repository-readme" class="anchor"></a>Repository README</h1>
-<p>In the GitHub repository README, we present an in-depth discussion of six features of the <code>moderndive</code> package:</p>
+<div class="section level2">
+<h2 id="repository-readme">Repository README<a class="anchor" aria-label="anchor" href="#repository-readme"></a>
+</h2>
+<p>In the GitHub repository README, we present an in-depth discussion of
+six features of the <code>moderndive</code> package:</p>
 <ol style="list-style-type: decimal">
 <li>Focus less on p-value stars, more confidence intervals</li>
 <li>Outputs as tibbles</li>
-<li>Produce residual analysis plots from scratch using <code>ggplot2</code>
+<li>Produce residual analysis plots from scratch using
+<code>ggplot2</code>
 </li>
-<li>A quick-and-easy Kaggle predictive modeling competition submission!</li>
-<li>Visual model selection: plot parallel slopes &amp; interaction regression models</li>
+<li>A quick-and-easy Kaggle predictive modeling competition
+submission!</li>
+<li>Visual model selection: plot parallel slopes &amp; interaction
+regression models</li>
 <li>Produce metrics on the quality of regression model fits</li>
 </ol>
-<p>Furthermore, we discuss the inner-workings of the <code>moderndive</code> package:</p>
+<p>Furthermore, we discuss the inner-workings of the
+<code>moderndive</code> package:</p>
 <ol style="list-style-type: decimal">
 <li>It leverages the <code>broom</code> package in its wrappers</li>
-<li>It builds a custom <code>ggplot2</code> geometry for the <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> function that allows for quick visualization of parallel slopes models in regression.</li>
+<li>It builds a custom <code>ggplot2</code> geometry for the
+<code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> function that allows for quick
+visualization of parallel slopes models in regression.</li>
 </ol>
 </div>
-<div id="author-contributions" class="section level1">
-<h1 class="hasAnchor">
-<a href="#author-contributions" class="anchor"></a>Author contributions</h1>
-<p>Albert Y. Kim and Chester Ismay contributed equally to the development of the <code>moderndive</code> package. Albert Y. Kim wrote a majority of the initial version of this manuscript with Chester Ismay writing the rest. Max Kuhn provided guidance and feedback at various stages of the package development and manuscript writing.</p>
+<div class="section level2">
+<h2 id="author-contributions">Author contributions<a class="anchor" aria-label="anchor" href="#author-contributions"></a>
+</h2>
+<p>Albert Y. Kim and Chester Ismay contributed equally to the
+development of the <code>moderndive</code> package. Albert Y. Kim wrote
+a majority of the initial version of this manuscript with Chester Ismay
+writing the rest. Max Kuhn provided guidance and feedback at various
+stages of the package development and manuscript writing.</p>
 </div>
-<div id="acknowledgments" class="section level1">
-<h1 class="hasAnchor">
-<a href="#acknowledgments" class="anchor"></a>Acknowledgments</h1>
-<p>Many thanks to Jenny Smetzer <a href="https://github.com/smetzer180" target="_blank">@smetzer180</a>, Luke W. Johnston <a href="https://github.com/lwjohnst86" target="_blank">@lwjohnst86</a>, and Lisa Rosenthal <a href="https://github.com/lisamr" target="_blank">@lisamr</a> for their helpful feedback for this paper and to Evgeni Chasnovski <a href="https://github.com/echasnovski" target="_blank">@echasnovski</a> for contributing the <code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> function via GitHub <a href="https://github.com/moderndive/moderndive/pull/55" target="_blank">pull request</a>. The authors do not have any financial support to disclose.</p>
+<div class="section level2">
+<h2 id="acknowledgments">Acknowledgments<a class="anchor" aria-label="anchor" href="#acknowledgments"></a>
+</h2>
+<p>Many thanks to Jenny Smetzer <a href="https://github.com/smetzer180" target="_blank" class="external-link">@smetzer180</a>, Luke W. Johnston <a href="https://github.com/lwjohnst86" target="_blank" class="external-link">@lwjohnst86</a>,
+and Lisa Rosenthal <a href="https://github.com/lisamr" target="_blank" class="external-link">@lisamr</a> for their helpful feedback for this paper
+and to Evgeni Chasnovski <a href="https://github.com/echasnovski" target="_blank" class="external-link">@echasnovski</a> for contributing the
+<code><a href="../reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> function via GitHub <a href="https://github.com/moderndive/moderndive/pull/55" target="_blank" class="external-link">pull request</a>. The authors do not have any financial
+support to disclose.</p>
 </div>
-<div id="references" class="section level1 unnumbered">
-<h1 class="hasAnchor">
-<a href="#references" class="anchor"></a>References</h1>
-<div id="refs" class="references">
-<div id="ref-ASAGuidelines">
-<p>American Statistical Association Undergraduate Guidelines Workgroup. 2016. “‘Guidelines for Assessment and Instruction in Statistics Education (GAISE) in Statistics Education (GAISE) College Report College Report 2016’.” Alexandria, VA: American Statistical Association.</p>
+<div class="section level2">
+<h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
+</h2>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-ASAGuidelines" class="csl-entry">
+American Statistical Association Undergraduate Guidelines Workgroup.
+2016. <span>“<span><span>‘Guidelines for Assessment and Instruction in
+Statistics Education (GAISE) in Statistics Education (GAISE) College
+Report College Report 2016’</span></span>.”</span> Alexandria, VA:
+American Statistical Association.
 </div>
-<div id="ref-diez2015openintro">
-<p>Diez, D. M., C. D. Barr, and M. Çetinkaya-Rundel. 2015. <em>OpenIntro Statistics</em>. OpenIntro, Incorporated. <a href="https://doi.org/10.5070/T573020084">https://doi.org/10.5070/T573020084</a>.</p>
+<div id="ref-diez2015openintro" class="csl-entry">
+Diez, D. M., C. D. Barr, and M. Çetinkaya-Rundel. 2015. <em>OpenIntro
+Statistics</em>. OpenIntro, Incorporated. <a href="https://doi.org/10.5070/T573020084" class="external-link">https://doi.org/10.5070/T573020084</a>.
 </div>
-<div id="ref-ismay2019moderndive">
-<p>Ismay, Chester., and Albert Y. Kim. 2019. <em>Statistical Inference via Data Science: A Moderndive into R and the Tidyverse</em>. Chapman &amp; Hall/Crc the R Series. CRC Press. <a href="https://doi.org/10.1080/00224065.2020.1848366">https://doi.org/10.1080/00224065.2020.1848366</a>.</p>
+<div id="ref-ismay2019moderndive" class="csl-entry">
+Ismay, Chester., and Albert Y. Kim. 2019. <em>Statistical Inference via
+Data Science: A ModernDive into r and the Tidyverse</em>. Chapman &amp;
+Hall/CRC the r Series. CRC Press. <a href="https://doi.org/10.1080/00224065.2020.1848366" class="external-link">https://doi.org/10.1080/00224065.2020.1848366</a>.
 </div>
-<div id="ref-R-broom">
-<p>Robinson, David, and Alex Hayes. 2019. <em>Broom: Convert Statistical Analysis Objects into Tidy Tibbles</em>. <a href="https://CRAN.R-project.org/package=broom">https://CRAN.R-project.org/package=broom</a>.</p>
+<div id="ref-R-broom" class="csl-entry">
+Robinson, David, and Alex Hayes. 2019. <em>Broom: Convert Statistical
+Analysis Objects into Tidy Tibbles</em>. <a href="https://CRAN.R-project.org/package=broom" class="external-link">https://CRAN.R-project.org/package=broom</a>.
 </div>
-<div id="ref-tidyverse2019">
-<p>Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. “Welcome to the tidyverse.” <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686">https://doi.org/10.21105/joss.01686</a>.</p>
+<div id="ref-tidyverse2019" class="csl-entry">
+Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy
+D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019.
+<span>“Welcome to the <span class="nocase">tidyverse</span>.”</span>
+<em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686" class="external-link">https://doi.org/10.21105/joss.01686</a>.
 </div>
-<div id="ref-R-ggplot2">
-<p>Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen, Kohske Takahashi, Claus Wilke, Kara Woo, and Hiroaki Yutani. 2019. <em>ggplot2: Create Elegant Data Visualisations Using the Grammar of Graphics</em>. <a href="https://doi.org/10.1007/978-0-387-98141-3">https://doi.org/10.1007/978-0-387-98141-3</a>.</p>
+<div id="ref-R-ggplot2" class="csl-entry">
+Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen,
+Kohske Takahashi, Claus Wilke, Kara Woo, and Hiroaki Yutani. 2019.
+<em><span class="nocase">ggplot2</span>: Create Elegant Data
+Visualisations Using the Grammar of Graphics</em>. <a href="https://doi.org/10.1007/978-0-387-98141-3" class="external-link">https://doi.org/10.1007/978-0-387-98141-3</a>.
 </div>
 </div>
 </div>
-<div class="footnotes">
+<div class="footnotes footnotes-end-of-document">
 <hr>
 <ol>
-<li id="fn1"><p>For details on the remaining 5 variables, see the help file by running <code><a href="../reference/evals.html">?evals</a></code>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
-<li id="fn2"><p>Note that <code>gender</code> was collected as a binary variable at the time of the study (2005).<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
+<li id="fn1"><p>For details on the remaining 5 variables, see the help
+file by running <code><a href="../reference/evals.html">?evals</a></code>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+<li id="fn2"><p>Note that <code>gender</code> was collected as a binary
+variable at the time of the study (2005).<a href="#fnref2" class="footnote-back">↩︎</a></p></li>
 </ol>
 </div>
   </div>
@@ -371,11 +488,13 @@ Visualization of parallel slopes model.
 
 
       <footer><div class="copyright">
-  <p>Developed by Albert Y. Kim, Chester Ismay.</p>
+  <p></p>
+<p>Developed by Albert Y. Kim, Chester Ismay.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
+  <p></p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer>
@@ -383,6 +502,8 @@ Visualization of parallel slopes model.
 
   
 
+
+  
 
   </body>
 </html>

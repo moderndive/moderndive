@@ -1,11 +1,11 @@
-pandoc: 2.7.3
-pkgdown: 1.6.1
+pandoc: 2.19.2
+pkgdown: 2.0.6
 pkgdown_sha: ~
 articles:
   moderndive: moderndive.html
   paper: paper.html
-last_built: 2021-07-29T12:45Z
+last_built: 2022-12-01T22:16Z
 urls:
-  reference: moderndive.github.io/moderndive//reference
-  article: moderndive.github.io/moderndive//articles
+  reference: moderndive.github.io/moderndive/reference
+  article: moderndive.github.io/moderndive/articles
 

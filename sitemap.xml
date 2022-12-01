@@ -1,90 +1,150 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>moderndive.github.io/moderndive//index.html</loc>
+    <loc>moderndive.github.io/moderndive/404.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/DD_vs_SB.html</loc>
+    <loc>moderndive.github.io/moderndive/CODE_OF_CONDUCT.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/MA_schools.html</loc>
+    <loc>moderndive.github.io/moderndive/CONTRIBUTING.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/bowl.html</loc>
+    <loc>moderndive.github.io/moderndive/LICENSE.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/bowl_sample_1.html</loc>
+    <loc>moderndive.github.io/moderndive/articles/index.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/bowl_samples.html</loc>
+    <loc>moderndive.github.io/moderndive/articles/moderndive.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/evals.html</loc>
+    <loc>moderndive.github.io/moderndive/articles/paper.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/geom_categorical_model.html</loc>
+    <loc>moderndive.github.io/moderndive/authors.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/geom_parallel_slopes.html</loc>
+    <loc>moderndive.github.io/moderndive/index.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/get_correlation.html</loc>
+    <loc>moderndive.github.io/moderndive/news/index.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/get_regression_points.html</loc>
+    <loc>moderndive.github.io/moderndive/reference/DD_vs_SB.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/get_regression_summaries.html</loc>
+    <loc>moderndive.github.io/moderndive/reference/MA_schools.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/get_regression_table.html</loc>
+    <loc>moderndive.github.io/moderndive/reference/alaska_flights.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/gg_parallel_slopes.html</loc>
+    <loc>moderndive.github.io/moderndive/reference/amazon_books.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/house_prices.html</loc>
+    <loc>moderndive.github.io/moderndive/reference/avocados.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/moderndive.html</loc>
+    <loc>moderndive.github.io/moderndive/reference/babies.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/movies_sample.html</loc>
+    <loc>moderndive.github.io/moderndive/reference/bowl.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/mythbusters_yawn.html</loc>
+    <loc>moderndive.github.io/moderndive/reference/bowl_sample_1.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/orig_pennies_sample.html</loc>
+    <loc>moderndive.github.io/moderndive/reference/bowl_samples.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/pennies.html</loc>
+    <loc>moderndive.github.io/moderndive/reference/coffee_ratings.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/pennies_resamples.html</loc>
+    <loc>moderndive.github.io/moderndive/reference/early_january_weather.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/pennies_sample.html</loc>
+    <loc>moderndive.github.io/moderndive/reference/ev_charging.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/pipe.html</loc>
+    <loc>moderndive.github.io/moderndive/reference/evals.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/promotions.html</loc>
+    <loc>moderndive.github.io/moderndive/reference/geom_categorical_model.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/promotions_shuffled.html</loc>
+    <loc>moderndive.github.io/moderndive/reference/geom_parallel_slopes.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/reexports.html</loc>
+    <loc>moderndive.github.io/moderndive/reference/get_correlation.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//reference/tactile_prop_red.html</loc>
+    <loc>moderndive.github.io/moderndive/reference/get_regression_points.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//articles/moderndive.html</loc>
+    <loc>moderndive.github.io/moderndive/reference/get_regression_summaries.html</loc>
   </url>
   <url>
-    <loc>moderndive.github.io/moderndive//articles/paper.html</loc>
+    <loc>moderndive.github.io/moderndive/reference/get_regression_table.html</loc>
+  </url>
+  <url>
+    <loc>moderndive.github.io/moderndive/reference/gg_parallel_slopes.html</loc>
+  </url>
+  <url>
+    <loc>moderndive.github.io/moderndive/reference/house_prices.html</loc>
+  </url>
+  <url>
+    <loc>moderndive.github.io/moderndive/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>moderndive.github.io/moderndive/reference/ipf_lifts.html</loc>
+  </url>
+  <url>
+    <loc>moderndive.github.io/moderndive/reference/ma_traffic_2020_vs_2019.html</loc>
+  </url>
+  <url>
+    <loc>moderndive.github.io/moderndive/reference/mario_kart_auction.html</loc>
+  </url>
+  <url>
+    <loc>moderndive.github.io/moderndive/reference/mass_traffic_2020.html</loc>
+  </url>
+  <url>
+    <loc>moderndive.github.io/moderndive/reference/moderndive.html</loc>
+  </url>
+  <url>
+    <loc>moderndive.github.io/moderndive/reference/movies_sample.html</loc>
+  </url>
+  <url>
+    <loc>moderndive.github.io/moderndive/reference/mythbusters_yawn.html</loc>
+  </url>
+  <url>
+    <loc>moderndive.github.io/moderndive/reference/orig_pennies_sample.html</loc>
+  </url>
+  <url>
+    <loc>moderndive.github.io/moderndive/reference/pennies.html</loc>
+  </url>
+  <url>
+    <loc>moderndive.github.io/moderndive/reference/pennies_resamples.html</loc>
+  </url>
+  <url>
+    <loc>moderndive.github.io/moderndive/reference/pennies_sample.html</loc>
+  </url>
+  <url>
+    <loc>moderndive.github.io/moderndive/reference/pipe.html</loc>
+  </url>
+  <url>
+    <loc>moderndive.github.io/moderndive/reference/promotions.html</loc>
+  </url>
+  <url>
+    <loc>moderndive.github.io/moderndive/reference/promotions_shuffled.html</loc>
+  </url>
+  <url>
+    <loc>moderndive.github.io/moderndive/reference/reexports.html</loc>
+  </url>
+  <url>
+    <loc>moderndive.github.io/moderndive/reference/saratoga_houses.html</loc>
+  </url>
+  <url>
+    <loc>moderndive.github.io/moderndive/reference/tactile_prop_red.html</loc>
   </url>
 </urlset>
