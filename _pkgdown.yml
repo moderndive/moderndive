@@ -12,6 +12,18 @@ reference:
   - '`gg_parallel_slopes`'
 - title: Datasets
   contents:
+  - '`alaska_flights`' 
+  - '`amazon_books`' 
+  - '`avocados`' 
+  - '`babies`' 
+  - '`coffee_ratings`'
+  - '`early_january_weather`' 
+  - '`ev_charging`' 
+  - '`ipf_lifts`' 
+  - '`ma_traffic_2020_vs_2019`' 
+  - '`mario_kart_auction`' 
+  - '`mass_traffic_2020`' 
+  - '`saratoga_houses`'
   - '`DD_vs_SB`'
   - '`MA_schools`'
   - '`bowl`'
