@@ -86,7 +86,7 @@ linear regression with R</h1>
                         <h4 data-toc-skip class="author">Albert Y. Kim,
 Chester Ismay, and Max Kuhn</h4>
             
-            <h4 data-toc-skip class="date">2022-12-01</h4>
+            <h4 data-toc-skip class="date">2024-02-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/moderndive/moderndive/blob/HEAD/vignettes/paper.Rmd" class="external-link"><code>vignettes/paper.Rmd</code></a></small>
       <div class="hidden name"><code>paper.Rmd</code></div>
@@ -324,7 +324,7 @@ frame:</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     8   4.1    51      4.16   -<span style="color: #BB0000;">0.059</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     9   3.4    51      4.16   -<span style="color: #BB0000;">0.759</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>    10   4.5    40      4.22    0.276</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 453 more rows</span></span></span></code></pre></div>
+<span><span class="co">## <span style="color: #949494;"># ℹ 453 more rows</span></span></span></code></pre></div>
 </li>
 <li>
 <p>Get scalar summaries of a regression fit including <span class="math inline">\(R^2\)</span> and <span class="math inline">\(R^2_{adj}\)</span> but also the (root)
@@ -332,10 +332,10 @@ mean-squared error:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_regression_summaries.html">get_regression_summaries</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span>
 <span><span class="co">## <span style="color: #949494;"># A tibble: 1 × 9</span></span></span>
-<span><span class="co">##   r_squared adj_r_squa…¹   mse  rmse sigma stati…² p_value    df  nobs</span></span>
-<span><span class="co">##       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">1</span>     0.011        0.009 0.292 0.540 0.541    5.34   0.021     1   463</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with abbreviated variable names ¹​adj_r_squared, ²​statistic</span></span></span></code></pre></div>
+<span><span class="co">##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df</span></span>
+<span><span class="co">##       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span>     0.011         0.009 0.292 0.540 0.541      5.34   0.021     1</span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 1 more variable: nobs &lt;dbl&gt;</span></span></span></code></pre></div>
 </li>
 </ol>
 <p>Furthermore, say you would like to create a visualization of the
@@ -494,7 +494,7 @@ variable at the time of the study (2005).<a href="#fnref2" class="footnote-back"
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>

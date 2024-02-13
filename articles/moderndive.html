@@ -87,7 +87,7 @@ for <code>tidyverse</code>-friendly introductory linear regression</h1>
                         <h4 data-toc-skip class="author">Albert Y. Kim,
 Chester Ismay, and Max Kuhn</h4>
             
-            <h4 data-toc-skip class="date">2022-12-01</h4>
+            <h4 data-toc-skip class="date">2024-02-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/moderndive/moderndive/blob/HEAD/vignettes/moderndive.Rmd" class="external-link"><code>vignettes/moderndive.Rmd</code></a></small>
       <div class="hidden name"><code>moderndive.Rmd</code></div>
@@ -335,7 +335,7 @@ frame:</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     8   4.1    51      4.16   -<span style="color: #BB0000;">0.059</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     9   3.4    51      4.16   -<span style="color: #BB0000;">0.759</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>    10   4.5    40      4.22    0.276</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 453 more rows</span></span></span></code></pre></div>
+<span><span class="co">## <span style="color: #949494;"># ℹ 453 more rows</span></span></span></code></pre></div>
 </li>
 <li>
 <p>Get scalar summaries of a regression fit including <span class="math inline">\(R^2\)</span> and <span class="math inline">\(R^2_{adj}\)</span> but also the (root)
@@ -343,10 +343,10 @@ mean-squared error:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_regression_summaries.html">get_regression_summaries</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span>
 <span><span class="co">## <span style="color: #949494;"># A tibble: 1 × 9</span></span></span>
-<span><span class="co">##   r_squared adj_r_squa…¹   mse  rmse sigma stati…² p_value    df  nobs</span></span>
-<span><span class="co">##       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">1</span>     0.011        0.009 0.292 0.540 0.541    5.34   0.021     1   463</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with abbreviated variable names ¹​adj_r_squared, ²​statistic</span></span></span></code></pre></div>
+<span><span class="co">##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df</span></span>
+<span><span class="co">##       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span>     0.011         0.009 0.292 0.540 0.541      5.34   0.021     1</span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 1 more variable: nobs &lt;dbl&gt;</span></span></span></code></pre></div>
 </li>
 </ol>
 </div>
@@ -751,10 +751,10 @@ this output, such as <span class="math inline">\(R^2\)</span>, <span class="math
 <div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_regression_summaries.html">get_regression_summaries</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span>
 <span><span class="co">## <span style="color: #949494;"># A tibble: 1 × 9</span></span></span>
-<span><span class="co">##   r_squared adj_r_squa…¹   mse  rmse sigma stati…² p_value    df  nobs</span></span>
-<span><span class="co">##       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">1</span>     0.011        0.009 0.292 0.540 0.541    5.34   0.021     1   463</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with abbreviated variable names ¹​adj_r_squared, ²​statistic</span></span></span></code></pre></div>
+<span><span class="co">##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df</span></span>
+<span><span class="co">##       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span>     0.011         0.009 0.292 0.540 0.541      5.34   0.021     1</span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 1 more variable: nobs &lt;dbl&gt;</span></span></span></code></pre></div>
 <p>We’ve supplemented the standard scalar summaries output yielded by
 <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code> with the mean squared error <code>mse</code> and
 root mean squared error <code>rmse</code> given their popularity in
@@ -790,26 +790,22 @@ corresponding regression tables:</p>
 <span><span class="va">interaction_evals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">score</span> <span class="op">~</span> <span class="va">age</span> <span class="op">*</span> <span class="va">ethnicity</span>, data <span class="op">=</span> <span class="va">evals</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">interaction_evals</span><span class="op">)</span></span>
 <span><span class="co">## <span style="color: #949494;"># A tibble: 4 × 7</span></span></span>
-<span><span class="co">##   term                 estim…¹ std_e…² stati…³ p_value lower…⁴ upper…⁵</span></span>
-<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">1</span> intercept              2.61    0.518    5.04   0       1.59    3.63 </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">2</span> age                    0.032   0.011    2.84   0.005   0.01    0.054</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">3</span> ethnicity: not mino…   2.00    0.534    3.74   0       0.945   3.04 </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">4</span> age:ethnicitynot mi…  -<span style="color: #BB0000;">0.04</span>    0.012   -<span style="color: #BB0000;">3.51</span>   0      -<span style="color: #BB0000;">0.063</span>  -<span style="color: #BB0000;">0.018</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># … with abbreviated variable names ¹​estimate, ²​std_error,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   ³​statistic, ⁴​lower_ci, ⁵​upper_ci</span></span></span>
+<span><span class="co">##   term          estimate std_error statistic p_value lower_ci upper_ci</span></span>
+<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> intercept        2.61      0.518      5.04   0        1.59     3.63 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span> age              0.032     0.011      2.84   0.005    0.01     0.054</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">3</span> ethnicity: n…    2.00      0.534      3.74   0        0.945    3.04 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">4</span> age:ethnicit…   -<span style="color: #BB0000;">0.04</span>      0.012     -<span style="color: #BB0000;">3.51</span>   0       -<span style="color: #BB0000;">0.063</span>   -<span style="color: #BB0000;">0.018</span></span></span>
 <span></span>
 <span><span class="co"># Regression table for parallel slopes model:</span></span>
 <span><span class="va">parallel_slopes_evals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">score</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">ethnicity</span>, data <span class="op">=</span> <span class="va">evals</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">parallel_slopes_evals</span><span class="op">)</span></span>
 <span><span class="co">## <span style="color: #949494;"># A tibble: 3 × 7</span></span></span>
-<span><span class="co">##   term                 estim…¹ std_e…² stati…³ p_value lower…⁴ upper…⁵</span></span>
-<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">1</span> intercept              4.37    0.136   32.1    0       4.1     4.63 </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">2</span> age                   -<span style="color: #BB0000;">0.006</span>   0.003   -<span style="color: #BB0000;">2.5</span>    0.013  -<span style="color: #BB0000;">0.012</span>  -<span style="color: #BB0000;">0.001</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">3</span> ethnicity: not mino…   0.138   0.073    1.89   0.059  -<span style="color: #BB0000;">0.005</span>   0.282</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with abbreviated variable names ¹​estimate, ²​std_error,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   ³​statistic, ⁴​lower_ci, ⁵​upper_ci</span></span></span></code></pre></div>
+<span><span class="co">##   term          estimate std_error statistic p_value lower_ci upper_ci</span></span>
+<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> intercept        4.37      0.136     32.1    0        4.1      4.63 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span> age             -<span style="color: #BB0000;">0.006</span>     0.003     -<span style="color: #BB0000;">2.5</span>    0.013   -<span style="color: #BB0000;">0.012</span>   -<span style="color: #BB0000;">0.001</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">3</span> ethnicity: n…    0.138     0.073      1.89   0.059   -<span style="color: #BB0000;">0.005</span>    0.282</span></span></code></pre></div>
 <p>The interaction model is “more complex” as evidenced by its
 regression table involving 4 rows of parameter estimates whereas the
 parallel slopes model is “simpler” as evidenced by its regression table
@@ -860,16 +856,14 @@ degree of “model simplicity.”</p>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">average_sat_math</span> <span class="op">~</span> <span class="va">perc_disadvan</span> <span class="op">*</span> <span class="va">size</span>, data <span class="op">=</span> <span class="va">MA_schools</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">interaction_MA</span><span class="op">)</span></span>
 <span><span class="co">## <span style="color: #949494;"># A tibble: 6 × 7</span></span></span>
-<span><span class="co">##   term                 estim…¹ std_e…² stati…³ p_value lower…⁴ upper…⁵</span></span>
-<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">1</span> intercept            594.     13.3    44.7     0     568.    620.   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">2</span> perc_disadvan         -<span style="color: #BB0000;">2.93</span>    0.294  -<span style="color: #BB0000;">9.96</span>    0      -<span style="color: #BB0000;">3.51</span>   -<span style="color: #BB0000;">2.35</span> </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">3</span> size: medium         -<span style="color: #BB0000;">17.8</span>    15.8    -<span style="color: #BB0000;">1.12</span>    0.263 -<span style="color: #BB0000;">48.9</span>    13.4  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">4</span> size: large          -<span style="color: #BB0000;">13.3</span>    13.8    -<span style="color: #BB0000;">0.962</span>   0.337 -<span style="color: #BB0000;">40.5</span>    13.9  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">5</span> perc_disadvan:sizem…   0.146   0.371   0.393   0.694  -<span style="color: #BB0000;">0.585</span>   0.877</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">6</span> perc_disadvan:sizel…   0.189   0.323   0.586   0.559  -<span style="color: #BB0000;">0.446</span>   0.824</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with abbreviated variable names ¹​estimate, ²​std_error,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   ³​statistic, ⁴​lower_ci, ⁵​upper_ci</span></span></span>
+<span><span class="co">##   term          estimate std_error statistic p_value lower_ci upper_ci</span></span>
+<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> intercept      594.       13.3      44.7     0      568.     620.   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span> perc_disadvan   -<span style="color: #BB0000;">2.93</span>      0.294    -<span style="color: #BB0000;">9.96</span>    0       -<span style="color: #BB0000;">3.51</span>    -<span style="color: #BB0000;">2.35</span> </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">3</span> size: medium   -<span style="color: #BB0000;">17.8</span>      15.8      -<span style="color: #BB0000;">1.12</span>    0.263  -<span style="color: #BB0000;">48.9</span>     13.4  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">4</span> size: large    -<span style="color: #BB0000;">13.3</span>      13.8      -<span style="color: #BB0000;">0.962</span>   0.337  -<span style="color: #BB0000;">40.5</span>     13.9  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">5</span> perc_disadva…    0.146     0.371     0.393   0.694   -<span style="color: #BB0000;">0.585</span>    0.877</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">6</span> perc_disadva…    0.189     0.323     0.586   0.559   -<span style="color: #BB0000;">0.446</span>    0.824</span></span>
 <span></span>
 <span><span class="co"># Regression table for parallel slopes model:</span></span>
 <span><span class="va">parallel_slopes_MA</span> <span class="op">&lt;-</span></span>
@@ -960,7 +954,7 @@ function.</li>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     8   4.1    51      4.16   -<span style="color: #BB0000;">0.059</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     9   3.4    51      4.16   -<span style="color: #BB0000;">0.759</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>    10   4.5    40      4.22    0.276</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 453 more rows</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 453 more rows</span></span></span>
 <span><span class="fu">broom</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/augment.html" class="external-link">augment</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span>
 <span><span class="co">## <span style="color: #949494;"># A tibble: 463 × 8</span></span></span>
 <span><span class="co">##    score   age .fitted  .resid    .hat .sigma   .cooksd .std.resid</span></span>
@@ -975,7 +969,7 @@ function.</li>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span>   4.1    51    4.16 -<span style="color: #BB0000;">0.059</span><span style="color: #BB0000; text-decoration: underline;">1</span> 0.002<span style="text-decoration: underline;">32</span>  0.542 0.000<span style="text-decoration: underline;">013</span>9     -<span style="color: #BB0000;">0.109</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>   3.4    51    4.16 -<span style="color: #BB0000;">0.759</span>  0.002<span style="text-decoration: underline;">32</span>  0.541 0.002<span style="text-decoration: underline;">29</span>       -<span style="color: #BB0000;">1.40</span> </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>   4.5    40    4.22  0.276  0.003<span style="text-decoration: underline;">74</span>  0.542 0.000<span style="text-decoration: underline;">488</span>       0.510</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 453 more rows</span></span></span></code></pre></div>
+<span><span class="co">## <span style="color: #949494;"># ℹ 453 more rows</span></span></span></code></pre></div>
 <p>The source code for these three <code>get_regression_*</code>
 functions can be found on <a href="https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R" target="_blank" class="external-link">GitHub</a>.</p>
 </div>
@@ -1087,7 +1081,7 @@ running <code><a href="../reference/MA_schools.html">?MA_schools</a></code>.<a h
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer>
