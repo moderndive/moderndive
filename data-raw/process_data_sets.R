@@ -7,21 +7,31 @@ library(janitor)
 library(openintro)
 library(ggplot2movies)
 library(nycflights13)
+library(nycflights23)
 
 
 #-------------------------------------------------------------------------------
 # Datasets: Documented in R/datasets.R
 #-------------------------------------------------------------------------------
-early_january_weather <- weather %>%
+early_january_weather <- nycflights13::weather %>%
   filter(origin == "EWR" & month == 1 & day <= 15)
 usethis::use_data(early_january_weather, overwrite = TRUE)
 
-
-# Alaska airlines flights only, used in moderndive.com Chapter 2 Data Viz
-alaska_flights <- flights %>%
+# Alaska airlines flights only, 
+# previously used in moderndive.com Chapter 2 Data Viz
+alaska_flights <- nycflights13::flights %>%
   filter(carrier == "AS")
 usethis::use_data(alaska_flights, overwrite = TRUE)
 
+
+early_january_weather2023 <- nycflights23::weather %>%
+  filter(origin == "EWR" & month == 1 & day <= 15)
+usethis::use_data(early_january_weather2023, overwrite = TRUE)
+
+# Alaska airlines flights only, used in moderndive.com Chapter 2 Data Viz
+alaska_flights2023 <- nycflights23::flights %>%
+  filter(carrier == "AS")
+usethis::use_data(alaska_flights2023, overwrite = TRUE)
 
 # Set random number generator seed value for reproducible/replicable random
 # sampling:
@@ -403,3 +413,14 @@ saratoga_houses <-
   read_csv() %>%
   janitor::clean_names()
 usethis::use_data(saratoga_houses, overwrite = TRUE)
+
+# almonds data
+almonds_bowl <- "data-raw/almonds_bowl.rds" |> 
+  read_rds()
+usethis::use_data(almonds_bowl, overwrite = TRUE)
+
+almonds_sample_100 <- "data-raw/almonds_sample_100.rds" |> 
+  read_rds() |> 
+  ungroup() |> 
+  select(ID, weight)
+usethis::use_data(almonds_sample_100, overwrite = TRUE)

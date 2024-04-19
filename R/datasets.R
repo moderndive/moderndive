@@ -22,6 +22,29 @@
 #'   <https://mesonet.agron.iastate.edu/request/download.phtml>.
 "early_january_weather"
 
+#' Early January hourly weather data for 2023
+#'
+#' Hourly meterological data for LGA, JFK and EWR for the month of January 2023. 
+#' This is a subset of the `weather` data frame from `nycflights23`.
+#'
+#' @format A data frame of 360 rows representing hourly measurements and 15 variables
+#' \describe{
+#' \item{origin}{Weather station. Named `origin` to facilitate merging with
+#'   [`nycflights23::flights`] data.}
+#' \item{year, month, day, hour}{Time of recording.}
+#' \item{temp, dewp}{Temperature and dewpoint in F.}
+#' \item{humid}{Relative humidity.}
+#' \item{wind_dir, wind_speed, wind_gust}{Wind direction (in degrees), speed
+#'   and gust speed (in mph).}
+#' \item{precip}{Precipitation, in inches.}
+#' \item{pressure}{Sea level pressure in millibars.}
+#' \item{visib}{Visibility in miles.}
+#' \item{time_hour}{Date and hour of the recording as a `POSIXct` date.}
+#' }
+#' @seealso [`nycflights23::weather`].
+#' @source ASOS download from Iowa Environmental Mesonet,
+#'   <https://mesonet.agron.iastate.edu/request/download.phtml>.
+"early_january_weather2023"
 
 
 #' Alaska flights data
@@ -52,6 +75,33 @@
 #' @source RITA, Bureau of transportation statistics
 "alaska_flights"
 
+#' Alaska flights data for 2023
+#'
+#' On-time data for all Alaska Airlines flights that departed NYC (i.e. JFK, LGA or EWR) 
+#' in 2023. This is a subset of the `flights` data frame from `nycflights23`.
+#'
+#' @format A data frame of 7843 rows representing Alaska Airlines flights and 19 variables
+#' \describe{
+#' \item{year, month, day}{Date of departure.}
+#' \item{dep_time, arr_time}{Actual departure and arrival times (format HHMM or HMM), local tz.}
+#' \item{sched_dep_time, sched_arr_time}{Scheduled departure and arrival times (format HHMM or HMM), local tz.}
+#' \item{dep_delay, arr_delay}{Departure and arrival delays, in minutes.
+#'   Negative times represent early departures/arrivals.}
+#' \item{carrier}{Two letter carrier abbreviation. See [`nycflights13::airlines`]
+#'   to get name.}
+#' \item{flight}{Flight number.}
+#' \item{tailnum}{Plane tail number. See [`nycflights13::planes`] for additional metadata.}
+#' \item{origin, dest}{Origin and destination. See [`nycflights13::airports`] for
+#'   additional metadata.}
+#' \item{air_time}{Amount of time spent in the air, in minutes.}
+#' \item{distance}{Distance between airports, in miles.}
+#' \item{hour, minute}{Time of scheduled departure broken into hour and minutes.}
+#' \item{time_hour}{Scheduled date and hour of the flight as a `POSIXct` date.
+#'   Along with `origin`, can be used to join flights data to [`nycflights13::weather`] data.}
+#' }
+#' @seealso [`nycflights23::flights`].
+#' @source RITA, Bureau of transportation statistics
+"alaska_flights2023"
 
 
 #' A sample of 50 pennies
@@ -637,5 +687,22 @@
 #' @source Gathered from <https://docs.google.com/spreadsheets/d/1AY5eECqNIggKpYF3kYzJQBIuuOdkiclFhbjAmY3Yc8E/edit#gid=622599674>
 "saratoga_houses" 
 
+#' Chocolate-covered almonds data
+#' 
+#' 5000 chocolate-covered almonds selected from a large batch, weighed in grams.
+#' @format A data frame with 5000 observations on the following 2 variables
+#' \describe{
+#' \item{ID}{Identification value for a given chocolate-covered almond} 
+#' \item{weight}{Weight of the chocolate-covered almond in grams (to the nearest tenth)}
+#' }
+"almonds_bowl" 
 
-
+#' Chocolate-covered almonds data sample
+#' 
+#' A sample of 100 chocolate-covered almonds, weighed in grams.
+#' @format A data frame with 100 observations on the following 2 variables
+#' \describe{
+#' \item{ID}{Identification value for a given chocolate-covered almond} 
+#' \item{weight}{Weight of the chocolate-covered almond in grams (to the nearest tenth)}
+#' }
+"almonds_sample_100" 

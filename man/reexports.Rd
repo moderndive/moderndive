@@ -4,6 +4,7 @@
 \name{reexports}
 \alias{reexports}
 \alias{rep_sample_n}
+\alias{rep_slice_sample}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{
@@ -11,6 +12,6 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{infer}{\code{\link[infer]{rep_sample_n}}}
+  \item{infer}{\code{\link[infer]{rep_sample_n}}, \code{\link[infer:rep_sample_n]{rep_slice_sample}}}
 }}
 

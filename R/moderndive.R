@@ -26,4 +26,4 @@
 #' ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
 #'   geom_point() +
 #'   geom_parallel_slopes(se = FALSE)
-NULL
+"_PACKAGE"
