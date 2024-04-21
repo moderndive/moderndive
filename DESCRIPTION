@@ -1,7 +1,7 @@
 Package: moderndive
 Type: Package
 Title: Tidyverse-Friendly Introductory Linear Regression
-Version: 0.5.5
+Version: 0.6.1
 Authors@R: c(
     person("Albert Y.", "Kim", email = "albert.ys.kim@gmail.com", role = c("aut", "cre"), comment = c(ORCID = "0000-0001-7824-306X")),
     person("Chester", "Ismay", email = "chester.ismay@gmail.com", role = "aut", comment = c(ORCID = "0000-0003-2820-2547")),
@@ -69,7 +69,7 @@ Imports:
     infer,
     rlang (>= 0.2.0),
     glue
-RoxygenNote: 7.2.2
+RoxygenNote: 7.3.1
 Suggests: 
     testthat,
     covr,

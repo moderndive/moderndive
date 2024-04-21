@@ -1,3 +1,8 @@
+# moderndive 0.6.1
+* Added `almonds_bowl` and `almonds_sample_100` data for upcoming ModernDive v2 updates to Inference chapters
+* Added `early_january_weather2023` and `alaska_flights2023` data for upcoming ModernDive v2 updates derived from data in the `nycflights23` package
+
+
 # moderndive 0.5.5
 
 * Addressing `broom` reverse dependency issue https://github.com/moderndive/moderndive/issues/128

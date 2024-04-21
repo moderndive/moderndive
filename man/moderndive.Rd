@@ -2,6 +2,7 @@
 % Please edit documentation in R/moderndive.R
 \docType{package}
 \name{moderndive}
+\alias{moderndive-package}
 \alias{moderndive}
 \title{moderndive - Tidyverse-Friendly Introductory Linear Regression}
 \description{
@@ -29,4 +30,67 @@ library(ggplot2)
 ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
   geom_parallel_slopes(se = FALSE)
+}
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://moderndive.github.io/moderndive/}
+  \item \url{https://github.com/moderndive/moderndive/}
+  \item Report bugs at \url{https://github.com/moderndive/moderndive/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Albert Y. Kim \email{albert.ys.kim@gmail.com} (\href{https://orcid.org/0000-0001-7824-306X}{ORCID})
+
+Authors:
+\itemize{
+  \item Chester Ismay \email{chester.ismay@gmail.com} (\href{https://orcid.org/0000-0003-2820-2547}{ORCID})
+}
+
+Other contributors:
+\itemize{
+  \item Andrew Bray \email{abray@reed.edu} (\href{https://orcid.org/0000-0002-4037-7414}{ORCID}) [contributor]
+  \item Delaney Moran \email{delaneyemoran@gmail.com} [contributor]
+  \item Evgeni Chasnovski \email{evgeni.chasnovski@gmail.com} (\href{https://orcid.org/0000-0002-1617-4019}{ORCID}) [contributor]
+  \item Will Hopper \email{wjhopper510@gmail.com} (\href{https://orcid.org/0000-0002-7848-1946}{ORCID}) [contributor]
+  \item Benjamin S. Baumer \email{ben.baumer@gmail.com} (\href{https://orcid.org/0000-0002-3279-0516}{ORCID}) [contributor]
+  \item Marium Tapal \email{mariumtapal@gmail.com} (\href{https://orcid.org/0000-0001-5093-6462}{ORCID}) [contributor]
+  \item Wayne Ndlovu \email{waynedndlovu5@gmail.com} [contributor]
+  \item Catherine Peppers \email{cpeppers@smith.edu} [contributor]
+  \item Annah Mutaya \email{annahmutaya18@gmail.com} [contributor]
+  \item Anushree Goswami \email{anushreeegoswami@gmail.com} [contributor]
+  \item Ziyue Yang \email{zyang2k@gmail.com} (\href{https://orcid.org/0000-0002-9299-8327}{ORCID}) [contributor]
+  \item Clara Li \email{clarasepianli@gmail.com} (\href{https://orcid.org/0000-0003-2456-0849}{ORCID}) [contributor]
+  \item Caroline McKenna \email{carolinemckenna101@gmail.com} [contributor]
+  \item Catherine Park \email{jcathyp@gmail.com} (\href{https://orcid.org/0000-0002-8273-9620}{ORCID}) [contributor]
+  \item Abbie Benfield \email{abbidabbers@gmail.com} [contributor]
+  \item Georgia Gans \email{georgiagans@live.com} [contributor]
+  \item Kacey Jean-Jacques \email{kjeanjacques@smith.edu} [contributor]
+  \item Swaha Bhattacharya \email{itsswahabhattacharya@gmail.com} [contributor]
+  \item Vivian Almaraz \email{viviansofia101@gmail.com} [contributor]
+  \item Elle Jo Whalen \email{ewhalen@smith.edu} [contributor]
+  \item Jacqueline Chen \email{jchen76@smith.edu} [contributor]
+  \item Michelle Flesaker \email{mflesaker@smith.edu} [contributor]
+  \item Irene Foster \email{ifoster25@smith.edu} [contributor]
+  \item Aushanae Haller \email{aushanaenhaller@gmail.com} [contributor]
+  \item Benjamin Bruncati \email{kbruncati@smith.edu} (\href{https://orcid.org/0000-0001-8545-5984}{ORCID}) [contributor]
+  \item Quinn White \email{quinnarlise@gmail.com} (\href{https://orcid.org/0000-0001-5399-0237}{ORCID}) [contributor]
+  \item Tianshu Zhang \email{tzhang26@smith.edu} (\href{https://orcid.org/0000-0002-3004-4472}{ORCID}) [contributor]
+  \item Katelyn Diaz \email{katndiaz@gmail.com} (\href{https://orcid.org/0000-0001-6108-1682}{ORCID}) [contributor]
+  \item Rose Porta \email{rporta@smith.edu} [contributor]
+  \item Renee Wu \email{rwu30@smith.edu} [contributor]
+  \item Arris Moise \email{amoise@smith.edu} [contributor]
+  \item Kate Phan \email{kphan@smith.edu} [contributor]
+  \item Grace Hartley \email{grace.hartley@gmail.com} [contributor]
+  \item Silas Weden \email{silasweden@gmail.com} [contributor]
+  \item Emma Vejcik \email{evejcik@gmail.com} (\href{https://orcid.org/0000-0001-5093-6462}{ORCID}) [contributor]
+  \item Nikki Schuldt \email{nikkischuldt@gmail.com} [contributor]
+  \item Tess Goldmann \email{tessgoldmann@aol.com} [contributor]
+  \item Hongtong Lin \email{cccynthialht@gmail.com} [contributor]
+  \item Alejandra Munoz \email{amunozgarcia@smith.edu} [contributor]
+  \item Elina Gordon-Halpern \email{egordonhalpern@smith.edu} [contributor]
+  \item Haley Schmidt \email{heschmidt00@gmail.com} (\href{https://orcid.org/0000-0002-6184-2266}{ORCID}) [contributor]
+}
+
 }

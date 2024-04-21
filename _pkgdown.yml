@@ -40,6 +40,10 @@ reference:
   - '`promotions_shuffled`'
   - '`tactile_prop_red`'
   - '`house_prices`'
+  - '`alaska_flights2023`'
+  - '`almonds_bowl`'
+  - '`almonds_sample_100`'
+  - '`early_january_weather2023`'
 - title: Misc
   contents:
   - '`moderndive`'
