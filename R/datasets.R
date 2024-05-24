@@ -44,7 +44,7 @@
 #' @seealso [`nycflights23::weather`].
 #' @source ASOS download from Iowa Environmental Mesonet,
 #'   <https://mesonet.agron.iastate.edu/request/download.phtml>.
-"early_january_weather2023"
+"early_january_2023_weather"
 
 
 #' Alaska flights data
@@ -75,33 +75,33 @@
 #' @source RITA, Bureau of transportation statistics
 "alaska_flights"
 
-#' Alaska flights data for 2023
+#' Envoy Air flights data for 2023
 #'
-#' On-time data for all Alaska Airlines flights that departed NYC (i.e. JFK, LGA or EWR) 
+#' On-time data for all Envoy Air flights that departed NYC (i.e. JFK, LGA or EWR) 
 #' in 2023. This is a subset of the `flights` data frame from `nycflights23`.
 #'
-#' @format A data frame of 7843 rows representing Alaska Airlines flights and 19 variables
+#' @format A data frame of 357 rows representing Alaska Airlines flights and 19 variables
 #' \describe{
 #' \item{year, month, day}{Date of departure.}
 #' \item{dep_time, arr_time}{Actual departure and arrival times (format HHMM or HMM), local tz.}
 #' \item{sched_dep_time, sched_arr_time}{Scheduled departure and arrival times (format HHMM or HMM), local tz.}
 #' \item{dep_delay, arr_delay}{Departure and arrival delays, in minutes.
 #'   Negative times represent early departures/arrivals.}
-#' \item{carrier}{Two letter carrier abbreviation. See [`nycflights13::airlines`]
+#' \item{carrier}{Two letter carrier abbreviation. See [`nycflights23::airlines`]
 #'   to get name.}
 #' \item{flight}{Flight number.}
-#' \item{tailnum}{Plane tail number. See [`nycflights13::planes`] for additional metadata.}
-#' \item{origin, dest}{Origin and destination. See [`nycflights13::airports`] for
+#' \item{tailnum}{Plane tail number. See [`nycflights23::planes`] for additional metadata.}
+#' \item{origin, dest}{Origin and destination. See [`nycflights23::airports`] for
 #'   additional metadata.}
 #' \item{air_time}{Amount of time spent in the air, in minutes.}
 #' \item{distance}{Distance between airports, in miles.}
 #' \item{hour, minute}{Time of scheduled departure broken into hour and minutes.}
 #' \item{time_hour}{Scheduled date and hour of the flight as a `POSIXct` date.
-#'   Along with `origin`, can be used to join flights data to [`nycflights13::weather`] data.}
+#'   Along with `origin`, can be used to join flights data to [`nycflights23::weather`] data.}
 #' }
 #' @seealso [`nycflights23::flights`].
 #' @source RITA, Bureau of transportation statistics
-"alaska_flights2023"
+"envoy_flights"
 
 
 #' A sample of 50 pennies

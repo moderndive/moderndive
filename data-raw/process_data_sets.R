@@ -24,14 +24,14 @@ alaska_flights <- nycflights13::flights %>%
 usethis::use_data(alaska_flights, overwrite = TRUE)
 
 
-early_january_weather2023 <- nycflights23::weather %>%
+early_january_2023_weather <- nycflights23::weather %>%
   filter(origin == "EWR" & month == 1 & day <= 15)
-usethis::use_data(early_january_weather2023, overwrite = TRUE)
+usethis::use_data(early_january_2023_weather, overwrite = TRUE)
 
-# Alaska airlines flights only, used in moderndive.com Chapter 2 Data Viz
-alaska_flights2023 <- nycflights23::flights %>%
-  filter(carrier == "AS")
-usethis::use_data(alaska_flights2023, overwrite = TRUE)
+# Envoy Air flights only, used in moderndive.com Chapter 2 Data Viz
+envoy_flights <- nycflights23::flights %>%
+  filter(carrier == "MQ")
+usethis::use_data(envoy_flights, overwrite = TRUE)
 
 # Set random number generator seed value for reproducible/replicable random
 # sampling:
@@ -61,7 +61,7 @@ usethis::use_data(movies_sample, overwrite = TRUE)
 # evals data from:
 # https://cran.r-project.org/web/packages/openintro/openintro.pdf#page=66
 set.seed(76)
-promotions <- gender.discrimination %>%
+promotions <- gender_discrimination %>%
   as_tibble() %>%
   mutate(
     decision = factor(decision, levels = c("not", "promoted")),
