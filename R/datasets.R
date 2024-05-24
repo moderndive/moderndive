@@ -1,6 +1,6 @@
 #' Early January hourly weather data
 #'
-#' Hourly meterological data for LGA, JFK and EWR for the month of January 2013. 
+#' Hourly meteorological data for LGA, JFK and EWR for the month of January 2013. 
 #' This is a subset of the `weather` data frame from `nycflights13`.
 #'
 #' @format A data frame of 358 rows representing hourly measurements and 15 variables
@@ -24,7 +24,7 @@
 
 #' Early January hourly weather data for 2023
 #'
-#' Hourly meterological data for LGA, JFK and EWR for the month of January 2023. 
+#' Hourly meteorological data for LGA, JFK and EWR for the month of January 2023. 
 #' This is a subset of the `weather` data frame from `nycflights23`.
 #'
 #' @format A data frame of 360 rows representing hourly measurements and 15 variables
