@@ -28,7 +28,7 @@ ASOS download from Iowa Environmental Mesonet,
 early_january_weather
 }
 \description{
-Hourly meterological data for LGA, JFK and EWR for the month of January 2013.
+Hourly meteorological data for LGA, JFK and EWR for the month of January 2013.
 This is a subset of the \code{weather} data frame from \code{nycflights13}.
 }
 \seealso{

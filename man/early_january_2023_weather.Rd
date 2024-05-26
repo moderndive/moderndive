@@ -28,7 +28,7 @@ ASOS download from Iowa Environmental Mesonet,
 early_january_2023_weather
 }
 \description{
-Hourly meterological data for LGA, JFK and EWR for the month of January 2023.
+Hourly meteorological data for LGA, JFK and EWR for the month of January 2023.
 This is a subset of the \code{weather} data frame from \code{nycflights23}.
 }
 \seealso{
