@@ -2,15 +2,16 @@
 #'
 #' `geom_categorical_model()` fits a regression model using the categorical
 #' x axis as the explanatory variable, and visualizes the model's fitted values
-#' as piecewise horizontal line segments. Confidence interval bands can be
+#' as piece-wise horizontal line segments. Confidence interval bands can be
 #' included in the visualization of the model. Like [geom_parallel_slopes()],
 #' this function has the same nature as `geom_smooth()` from
-#' the {ggplot2} package, but provides functionality that `geom_smooth()`
+#' the `{ggplot2}` package, but provides functionality that `geom_smooth()`
 #' currently doesn't have. When using a categorical predictor variable, 
 #' the intercept corresponds to the mean for the baseline group, while
 #' coefficients for the non-baseline groups are offsets from this baseline. 
 #' Thus in the visualization the baseline for comparison group's median is 
-#' marked with a solid line, whereas all offset groups' medians are marked with dashed lines. 
+#' marked with a solid line, whereas all offset groups' medians are marked with
+#' dashed lines. 
 #'
 #' @param se Display confidence interval around model lines? `TRUE` by
 #'   default.

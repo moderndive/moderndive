@@ -3,9 +3,9 @@
 #' `geom_parallel_slopes()` fits parallel slopes model and adds its line
 #' output(s) to a `ggplot` object. Basically, it fits a unified model with
 #' intercepts varying between groups (which should be supplied as standard
-#' {ggplot2} grouping aesthetics: `group`, `color`, `fill`,
+#' `{ggplot2}` grouping aesthetics: `group`, `color`, `fill`,
 #' etc.). This function has the same nature as `geom_smooth()` from
-#' {ggplot2} package, but provides functionality that `geom_smooth()`
+#' `{ggplot2}` package, but provides functionality that `geom_smooth()`
 #' currently doesn't have.
 #'
 #' @param se Display confidence interval around model lines? `TRUE` by

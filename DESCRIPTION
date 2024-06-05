@@ -79,6 +79,7 @@ Suggests:
     patchwork,
     viridis,
     readr,
-    nycflights13
+    nycflights13,
+    nycflights23
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
