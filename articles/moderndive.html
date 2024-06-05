@@ -87,7 +87,7 @@ for <code>tidyverse</code>-friendly introductory linear regression</h1>
                         <h4 data-toc-skip class="author">Albert Y. Kim,
 Chester Ismay, and Max Kuhn</h4>
             
-            <h4 data-toc-skip class="date">2024-04-21</h4>
+            <h4 data-toc-skip class="date">2024-06-05</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/moderndive/moderndive/blob/HEAD/vignettes/moderndive.Rmd" class="external-link"><code>vignettes/moderndive.Rmd</code></a></small>
       <div class="hidden name"><code>moderndive.Rmd</code></div>
@@ -795,8 +795,9 @@ corresponding regression tables:</p>
 <span><span class="co">## <span style="color: #BCBCBC;">1</span> intercept        2.61      0.518      5.04   0        1.59     3.63 </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">2</span> age              0.032     0.011      2.84   0.005    0.01     0.054</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">3</span> ethnicity: n…    2.00      0.534      3.74   0        0.945    3.04 </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">4</span> age:ethnicit…   -<span style="color: #BB0000;">0.04</span>      0.012     -<span style="color: #BB0000;">3.51</span>   0       -<span style="color: #BB0000;">0.063</span>   -<span style="color: #BB0000;">0.018</span></span></span>
-<span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">4</span> age:ethnicit…   -<span style="color: #BB0000;">0.04</span>      0.012     -<span style="color: #BB0000;">3.51</span>   0       -<span style="color: #BB0000;">0.063</span>   -<span style="color: #BB0000;">0.018</span></span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
 <span><span class="co"># Regression table for parallel slopes model:</span></span>
 <span><span class="va">parallel_slopes_evals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">score</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">ethnicity</span>, data <span class="op">=</span> <span class="va">evals</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">parallel_slopes_evals</span><span class="op">)</span></span>
@@ -816,7 +817,7 @@ the left-hand plot of .</p>
 online version of <a href="https://moderndive.com/6-multiple-regression.html#model-selection" class="external-link">ModernDive
 Subsection 6.3.1</a> involving Massachusetts USA public high schools.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> Let’s plot
 both the interaction and parallel slopes models in .</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Code to plot interaction and parallel slopes models for MA_schools</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span></span>
 <span>  <span class="va">MA_schools</span>,</span>
@@ -850,7 +851,7 @@ Interaction (left) and parallel slopes (right) models.
 corresponding regression table for the parallel slopes model has 4 rows
 as opposed to the 6 for the interaction model, reflecting its higher
 degree of “model simplicity.”</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Regression table for interaction model:</span></span>
 <span><span class="va">interaction_MA</span> <span class="op">&lt;-</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">average_sat_math</span> <span class="op">~</span> <span class="va">perc_disadvan</span> <span class="op">*</span> <span class="va">size</span>, data <span class="op">=</span> <span class="va">MA_schools</span><span class="op">)</span></span>
@@ -863,8 +864,9 @@ degree of “model simplicity.”</p>
 <span><span class="co">## <span style="color: #BCBCBC;">3</span> size: medium   -<span style="color: #BB0000;">17.8</span>      15.8      -<span style="color: #BB0000;">1.12</span>    0.263  -<span style="color: #BB0000;">48.9</span>     13.4  </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">4</span> size: large    -<span style="color: #BB0000;">13.3</span>      13.8      -<span style="color: #BB0000;">0.962</span>   0.337  -<span style="color: #BB0000;">40.5</span>     13.9  </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">5</span> perc_disadva…    0.146     0.371     0.393   0.694   -<span style="color: #BB0000;">0.585</span>    0.877</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">6</span> perc_disadva…    0.189     0.323     0.586   0.559   -<span style="color: #BB0000;">0.446</span>    0.824</span></span>
-<span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">6</span> perc_disadva…    0.189     0.323     0.586   0.559   -<span style="color: #BB0000;">0.446</span>    0.824</span></span></code></pre></div>
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
 <span><span class="co"># Regression table for parallel slopes model:</span></span>
 <span><span class="va">parallel_slopes_MA</span> <span class="op">&lt;-</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">average_sat_math</span> <span class="op">~</span> <span class="va">perc_disadvan</span> <span class="op">+</span> <span class="va">size</span>, data <span class="op">=</span> <span class="va">MA_schools</span><span class="op">)</span></span>
@@ -939,7 +941,7 @@ example, compare the outputs of the <code><a href="../reference/get_regression_p
 wrapper function and the parent <code><a href="https://generics.r-lib.org/reference/augment.html" class="external-link">broom::augment()</a></code>
 function.</li>
 </ol>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/get_regression_points.html">get_regression_points</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span>
 <span><span class="co">## <span style="color: #949494;"># A tibble: 463 × 5</span></span></span>
 <span><span class="co">##       ID score   age score_hat residual</span></span>
@@ -954,8 +956,9 @@ function.</li>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     8   4.1    51      4.16   -<span style="color: #BB0000;">0.059</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     9   3.4    51      4.16   -<span style="color: #BB0000;">0.759</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>    10   4.5    40      4.22    0.276</span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 453 more rows</span></span></span>
-<span><span class="fu">broom</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/augment.html" class="external-link">augment</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 453 more rows</span></span></span></code></pre></div>
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">broom</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/augment.html" class="external-link">augment</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span>
 <span><span class="co">## <span style="color: #949494;"># A tibble: 463 × 8</span></span></span>
 <span><span class="co">##    score   age .fitted  .resid    .hat .sigma   .cooksd .std.resid</span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
