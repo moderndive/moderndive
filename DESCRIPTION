@@ -39,7 +39,7 @@ Authors@R: c(
     person("Kate", "Phan", email = "kphan@smith.edu", role = "ctb"),
     person("Grace", "Hartley", email = "grace.hartley@gmail.com", role = "ctb"),
     person("Silas", "Weden", email = "silasweden@gmail.com", role = "ctb"),
-    person("Emma", "Vejcik", email = "evejcik@gmail.com", role = "ctb", comment = c(ORCID = "0000-0001-5093-6462")),
+    person("Emma", "Vejcik", email = "evejcik@gmail.com", role = "ctb"),
     person("Nikki", "Schuldt", email = "nikkischuldt@gmail.com", role = "ctb"),
     person("Tess", "Goldmann", email = "tessgoldmann@aol.com", role = "ctb"),
     person("Hongtong", "Lin", email = "cccynthialht@gmail.com", role = "ctb"),
