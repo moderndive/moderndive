@@ -1,3 +1,7 @@
+# moderndive 0.6.1.9000
+
+-   
+
 # moderndive 0.6.1
 
 -   Added `almonds_bowl` and `almonds_sample_100` data for upcoming ModernDive v2 updates to Inference chapters
