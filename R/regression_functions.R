@@ -218,7 +218,6 @@ get_regression_points <-
         identification_variable <- eval(model$call$data, environment(formula(model))) %>%
           pull(!!ID)
       } else {
-        
         # Case 2.b) When computing predicted values for a new dataset newdata than
         # the one used to fit the model, extract ID variable from newdata.
         identification_variable <- newdata %>%
@@ -226,6 +225,7 @@ get_regression_points <-
       }
       # Set ID variable
       regression_points <- regression_points %>%
+        na.omit() %>%
         mutate(ID = identification_variable) %>%
         select(ID, everything()) %>%
         rename_at(vars("ID"), ~ID)
