@@ -207,6 +207,7 @@ get_regression_points <-
       # Case 1: If ID argument is not specified, set as ID variable as 1 through
       # number of rows
       regression_points <- regression_points %>%
+        na.omit() %>%
         mutate(ID = 1:n()) %>%
         select(ID, everything())
     } else {
@@ -217,6 +218,7 @@ get_regression_points <-
         identification_variable <- eval(model$call$data, environment(formula(model))) %>%
           pull(!!ID)
       } else {
+        
         # Case 2.b) When computing predicted values for a new dataset newdata than
         # the one used to fit the model, extract ID variable from newdata.
         identification_variable <- newdata %>%
