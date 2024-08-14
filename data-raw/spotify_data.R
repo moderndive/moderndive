@@ -5,7 +5,8 @@ spotify <- read_csv("data-raw/spotify_dataset.csv") |>
 
 spotify_by_genre <- spotify |> 
   filter(track_genre %in% c("metal", "deep-house", "rock", "dubstep",
-                            "hip-hop", "country"))
+                            "hip-hop", "country")) |> 
+  select(track_id, track_genre, everything())
 
 # set.seed(2024)
 # 
