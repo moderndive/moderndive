@@ -6,7 +6,7 @@ spotify <- read_csv("data-raw/spotify_dataset.csv") |>
 spotify_by_genre <- spotify |> 
   filter(track_genre %in% c("metal", "deep-house", "rock", "dubstep",
                             "hip-hop", "country")) |> 
-  select(track_id, track_genre, everything())
+  mutate(popular_or_not = ifelse(popularity > 50, "popular", "not popular"))
 
 # set.seed(2024)
 # 
