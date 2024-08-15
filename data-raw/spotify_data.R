@@ -43,7 +43,7 @@ combined_sample <- bind_rows(metal_sample_popular, metal_sample_not_popular,
   slice_sample(n = 52)
 
 spotify_52_shuffled <- combined_sample |> 
-  mutate(track_genre = sample(track_genre))
+  mutate(popular_or_not = sample(popular_or_not))
 
 # set.seed(2024)
 # 
