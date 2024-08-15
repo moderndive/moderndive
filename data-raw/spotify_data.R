@@ -42,6 +42,8 @@ combined_sample <- bind_rows(metal_sample_popular, metal_sample_not_popular,
                              deephouse_sample_not_popular) |> 
   slice_sample(n = 52)
 
+spotify_52_original <- combined_sample
+
 spotify_52_shuffled <- combined_sample |> 
   mutate(popular_or_not = sample(popular_or_not))
 
@@ -61,5 +63,6 @@ spotify_52_shuffled <- combined_sample |>
 # 
 
 usethis::use_data(spotify_by_genre, overwrite = TRUE)
+usethis::use_data(spotify_52_original, overwrite = TRUE)
 usethis::use_data(spotify_52_shuffled, overwrite = TRUE)
 # usethis::use_data(spotify_random, overwrite = TRUE)
