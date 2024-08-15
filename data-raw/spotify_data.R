@@ -12,7 +12,7 @@ spotify_metal_deephouse <- spotify_by_genre |>
   filter(track_genre %in% c("metal", "deep-house")) |> 
   select(track_id, track_genre, artists, track_name, popularity, popular_or_not) 
 
-set.seed(2024)
+set.seed(2)
 
 # Calculate the number of "popular" songs to sample for each genre
 metal_popular_n <- round(26 * 0.563)
