@@ -1,7 +1,7 @@
 library(tidyverse)
 
-# Unzip spotify data used to save space
-unzip("data-raw/spotify_dataset.csv.zip", exdir = "data-raw")
+download.file("https://ismayc.github.io/spotify_dataset.csv",
+              "data-raw/spotify_dataset.csv")
 
 spotify <- read_csv("data-raw/spotify_dataset.csv") |> 
   select(-`...1`)
