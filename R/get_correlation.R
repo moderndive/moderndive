@@ -55,10 +55,11 @@ get_correlation <- function(data, formula, na.rm = FALSE, ...) {
   # variables)
   if (length(grouping_variables) == 0) {
     correlation <- data %>%
-      select(outcome_variable, explanatory_variable)
+      select(all_of(outcome_variable), all_of(explanatory_variable))
   } else {
     correlation <- data %>%
-      select(outcome_variable, explanatory_variable, grouping_variables)
+      select(all_of(outcome_variable), all_of(explanatory_variable), 
+             all_of(grouping_variables))
   }
 
   # handle missing data
