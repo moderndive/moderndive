@@ -14,6 +14,7 @@
 #' @importFrom magrittr "%>%"
 #' @importFrom formula.tools lhs
 #' @importFrom formula.tools rhs
+#' @importFrom dplyr all_of
 #' @importFrom dplyr group_vars
 #' @importFrom dplyr select
 #' @importFrom dplyr summarize

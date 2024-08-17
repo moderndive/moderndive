@@ -34,12 +34,19 @@ This function calculates the five-number summary (minimum, first quartile, media
 # Example usage with a simple data frame
 df <- tibble::tibble(
   category = factor(c("A", "B", "A", "C")),
-  values = c(10, 15, 7, NA),
+  int_values = c(10, 15, 7, 8),
+  num_values = c(8.2, 0.3, -2.1, 5.5),
+  one_missing_value = c(NA, 1, 2, 3),
   flag = c(TRUE, FALSE, TRUE, TRUE)
 )
 
-tidy_summary(df, columns = c(category, values, flag))
+# Specify columns
+tidy_summary(df, columns = c(category, int_values, num_values, flag))
+
+# Defaults to full data frame (note an error will be given without
+# specifying `na.rm = TRUE` since `one_missing_value` has an `NA`)
+tidy_summary(df, na.rm = TRUE)
 
 # Example with additional arguments for quantile functions
-tidy_summary(df, columns = c(values), na.rm = TRUE)
+tidy_summary(df, columns = c(one_missing_value), na.rm = TRUE)
 }

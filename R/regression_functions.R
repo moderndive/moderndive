@@ -119,6 +119,7 @@ get_regression_table <- function(model, conf.level = 0.95, digits = 3, print = F
 #' @importFrom knitr kable
 #' @importFrom rlang sym
 #' @importFrom rlang ":="
+#' @importFrom stats na.omit
 #' @export
 #' @seealso [`augment()`][broom::reexports], [get_regression_table()], [get_regression_summaries()]
 #'

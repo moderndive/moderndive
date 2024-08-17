@@ -59,6 +59,8 @@ BugReports: https://github.com/moderndive/moderndive/issues
 Imports: 
     magrittr,
     dplyr,
+    purrr,
+    tidyr,
     ggplot2,
     tibble,
     janitor,
