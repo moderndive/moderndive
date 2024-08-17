@@ -756,6 +756,7 @@
 #' @examples
 #' data(un_member_states_2024)
 #' head(un_member_states_2024)
+"un_member_states_2024" 
 
 #' Spotify by Genre Dataset
 #'
@@ -789,6 +790,7 @@
 #' @examples
 #' data(spotify_by_genre)
 #' head(spotify_by_genre)
+"spotify_by_genre"
 
 #' Spotify 52-Track Sample Dataset
 #'
@@ -807,6 +809,7 @@
 #' @examples
 #' data(spotify_52_original)
 #' head(spotify_52_original)
+"spotify_52_original"
 
 #' Spotify 52-Track Sample Dataset ('popular or not' shuffled)
 #'
@@ -819,8 +822,9 @@
 #'   \item{artists}{\code{character}. Names of the artists associated with the track.}
 #'   \item{track_name}{\code{character}. Name of the track.}
 #'   \item{popularity}{\code{numeric}. Popularity score of the track (0-100). See: \url{https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track}}
-#'   \item{popular_or_not}{\code{character}. NOTE this column is a scambled version of the same column in \code{spotify_52|original}. It is used to demonstrate the idea of permutation testing with a deck of cards.}
+#'   \item{popular_or_not}{\code{character}. NOTE this column is a scrambled version of the same column in spotify_52_original. It is used to demonstrate the idea of permutation testing with a deck of cards.}
 #' @source \url{https://developer.spotify.com/documentation/web-api/}
 #' @examples
 #' data(spotify_52_shuffled)
 #' head(spotify_52_shuffled)
+"spotify_52_shuffled"
