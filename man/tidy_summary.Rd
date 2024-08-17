@@ -22,9 +22,11 @@ A tibble in long format with columns:
 \item{type}{The type of data in the column (numeric, character, factor, or logical).}
 \item{min}{The minimum value (for numeric columns).}
 \item{Q1}{The first quartile (for numeric columns).}
+\item{mean}{The mean value (for numeric columns).}
 \item{median}{The median value (for numeric columns).}
 \item{Q3}{The third quartile (for numeric columns).}
 \item{max}{The maximum value (for numeric columns).}
+\item{sd}{The standard deviation (for numeric columns).}
 }
 }
 \description{

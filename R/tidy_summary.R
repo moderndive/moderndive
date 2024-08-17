@@ -12,9 +12,11 @@
 #'   \item{type}{The type of data in the column (numeric, character, factor, or logical).}
 #'   \item{min}{The minimum value (for numeric columns).}
 #'   \item{Q1}{The first quartile (for numeric columns).}
+#'   \item{mean}{The mean value (for numeric columns).}
 #'   \item{median}{The median value (for numeric columns).}
 #'   \item{Q3}{The third quartile (for numeric columns).}
 #'   \item{max}{The maximum value (for numeric columns).}
+#'   \item{sd}{The standard deviation (for numeric columns).}
 #' }
 #'
 #' @importFrom dplyr reframe tibble across group_by count mutate bind_rows
@@ -95,9 +97,11 @@ tidy_summary <- function(df, columns = names(df), ...) {
             type = "numeric",
             min = min(.x, ...),
             Q1 = quantile(.x, 0.25, ...),
+            mean = mean(.x, ...),
             median = median(.x, ...),
             Q3 = quantile(.x, 0.75, ...),
-            max = max(.x, ...)
+            max = max(.x, ...),
+            sd = sd(.x, ...)
           )
         } else {
           NULL
@@ -127,9 +131,11 @@ tidy_summary <- function(df, columns = names(df), ...) {
             type = original_types |> dplyr::filter(column == .x) |> dplyr::pull(type),
             min = NA_real_,
             Q1 = NA_real_,
+            mean = NA_real_,
             median = NA_real_,
             Q3 = NA_real_,
-            max = NA_real_
+            max = NA_real_,
+            sd = NA_real_
           )
       })
   }
