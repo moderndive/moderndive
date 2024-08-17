@@ -811,7 +811,7 @@
 #' head(spotify_52_original)
 "spotify_52_original"
 
-#' Spotify 52-Track Sample Dataset ('popular or not' shuffled)
+#' Spotify 52-Track Sample Dataset with 'popular or not' shuffled
 #'
 #' This dataset contains a sample of 52 tracks from Spotify, focusing on two genres: deep-house and metal. It includes metadata about the tracks, the artists, and a shuffled indicator of whether each track is considered popular.
 #'
@@ -822,7 +822,8 @@
 #'   \item{artists}{\code{character}. Names of the artists associated with the track.}
 #'   \item{track_name}{\code{character}. Name of the track.}
 #'   \item{popularity}{\code{numeric}. Popularity score of the track (0-100). See: \url{https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track}}
-#'   \item{popular_or_not}{\code{character}. NOTE this column is a scrambled version of the same column in spotify_52_original. It is used to demonstrate the idea of permutation testing with a deck of cards.}
+#'   \item{popular_or_not}{\code{character}. A shuffled version of the column of the same name in the \code{spotify_52_original} data frame.}
+#' }
 #' @source \url{https://developer.spotify.com/documentation/web-api/}
 #' @examples
 #' data(spotify_52_shuffled)
