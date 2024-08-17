@@ -103,7 +103,7 @@ x axis as the explanatory variable, and visualizes the model's fitted values
 as piece-wise horizontal line segments. Confidence interval bands can be
 included in the visualization of the model. Like \code{\link[=geom_parallel_slopes]{geom_parallel_slopes()}},
 this function has the same nature as \code{geom_smooth()} from
-the \code{{ggplot2}} package, but provides functionality that \code{geom_smooth()}
+the \code{ggplot2} package, but provides functionality that \code{geom_smooth()}
 currently doesn't have. When using a categorical predictor variable,
 the intercept corresponds to the mean for the baseline group, while
 coefficients for the non-baseline groups are offsets from this baseline.
