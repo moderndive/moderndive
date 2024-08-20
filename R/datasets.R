@@ -697,11 +697,23 @@
 #' }
 "almonds_bowl" 
 
-#' Chocolate-covered almonds data sample
+#' Chocolate-covered almonds data sample of size 25
+#' 
+#' A sample of 25 chocolate-covered almonds, weighed in grams.
+#' @format A data frame with 25 observations on the following 2 variables
+#' \describe{
+#' \item{replicate}{Replicate number set to 1 since there is only one sample}
+#' \item{ID}{Identification value for a given chocolate-covered almond} 
+#' \item{weight}{Weight of the chocolate-covered almond in grams (to the nearest tenth)}
+#' }
+"almonds_sample" 
+
+#' Chocolate-covered almonds data sample of size 100
 #' 
 #' A sample of 100 chocolate-covered almonds, weighed in grams.
 #' @format A data frame with 100 observations on the following 2 variables
 #' \describe{
+#' \item{replicate}{Replicate number set to 1 since there is only one sample}
 #' \item{ID}{Identification value for a given chocolate-covered almond} 
 #' \item{weight}{Weight of the chocolate-covered almond in grams (to the nearest tenth)}
 #' }
