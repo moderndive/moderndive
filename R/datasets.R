@@ -841,3 +841,63 @@
 #' data(spotify_52_shuffled)
 #' head(spotify_52_shuffled)
 "spotify_52_shuffled"
+
+#' Coffee Quality Dataset
+#'
+#' This dataset contains detailed information about coffee quality evaluations from various origins. 
+#' It includes data on the country and continent of origin, farm name, lot number, and various quality metrics.
+#' The dataset also includes attributes related to coffee processing, grading, and specific sensory attributes.
+#'
+#' @format A data frame with 207 rows and 30 variables:
+#' \describe{
+#'   \item{country_of_origin}{\code{character}. The country where the coffee originated.}
+#'   \item{continent_of_origin}{\code{character}. The continent where the coffee originated.}
+#'   \item{farm_name}{\code{character}. The name of the farm where the coffee was grown.}
+#'   \item{lot_number}{\code{character}. The lot number assigned to the batch of coffee.}
+#'   \item{mill}{\code{character}. The name of the mill where the coffee was processed.}
+#'   \item{company}{\code{character}. The company associated with the coffee batch.}
+#'   \item{altitude}{\code{character}. The altitude range (in meters) where the coffee was grown.}
+#'   \item{region}{\code{character}. The specific region within the country where the coffee was grown.}
+#'   \item{producer}{\code{character}. The name of the coffee producer.}
+#'   \item{in_country_partner}{\code{character}. The in-country partner organization associated with the coffee batch.}
+#'   \item{harvest_year}{\code{character}. The year or range of years during which the coffee was harvested.}
+#'   \item{grading_date}{\code{date}. The date when the coffee was graded.}
+#'   \item{owner}{\code{character}. The owner of the coffee batch.}
+#'   \item{variety}{\code{character}. The variety of the coffee plant.}
+#'   \item{processing_method}{\code{character}. The method used to process the coffee beans.}
+#'   \item{aroma}{\code{numeric}. The aroma score of the coffee, on a scale from 0 to 10.}
+#'   \item{flavor}{\code{numeric}. The flavor score of the coffee, on a scale from 0 to 10.}
+#'   \item{aftertaste}{\code{numeric}. The aftertaste score of the coffee, on a scale from 0 to 10.}
+#'   \item{acidity}{\code{numeric}. The acidity score of the coffee, on a scale from 0 to 10.}
+#'   \item{body}{\code{numeric}. The body score of the coffee, on a scale from 0 to 10.}
+#'   \item{balance}{\code{numeric}. The balance score of the coffee, on a scale from 0 to 10.}
+#'   \item{uniformity}{\code{numeric}. The uniformity score of the coffee, on a scale from 0 to 10.}
+#'   \item{clean_cup}{\code{numeric}. The clean cup score of the coffee, on a scale from 0 to 10.}
+#'   \item{sweetness}{\code{numeric}. The sweetness score of the coffee, on a scale from 0 to 10.}
+#'   \item{overall}{\code{numeric}. The overall score of the coffee, on a scale from 0 to 10.}
+#'   \item{total_cup_points}{\code{numeric}. The total cup points awarded to the coffee, representing the sum of various quality metrics.}
+#'   \item{moisture_percentage}{\code{numeric}. The moisture percentage of the coffee beans.}
+#'   \item{color}{\code{character}. The color description of the coffee beans.}
+#'   \item{expiration}{\code{character}. The expiration date of the coffee batch.}
+#'   \item{certification_body}{\code{character}. The body that certified the coffee batch.}
+#' }
+#' @source Coffee Quality Institute
+"coffee_quality"
+
+#' Old Faithful Eruptions Dataset (2024)
+#'
+#' This dataset contains records of eruptions from the Old Faithful geyser in Yellowstone National Park, recorded in 2024. 
+#' It includes details such as the eruption ID, date and time of eruption, waiting time between eruptions, webcam availability, 
+#' and the duration of each eruption.
+#'
+#' @format A data frame with 114 rows and 6 variables:
+#' \describe{
+#'   \item{eruption_id}{\code{numeric}. A unique identifier for each eruption.}
+#'   \item{date}{\code{date}. The date of the eruption.}
+#'   \item{time}{\code{numeric}. The time of the eruption in HHMM format (e.g., 538 corresponds to 5:38 AM, 1541 corresponds to 3:41 PM).}
+#'   \item{waiting}{\code{numeric}. The waiting time in minutes until the next eruption.}
+#'   \item{webcam}{\code{character}. Indicates whether the eruption was captured on webcam ("Yes" or "No").}
+#'   \item{duration}{\code{numeric}. The duration of the eruption in seconds.}
+#' }
+#' @source Volunteer information from https://geysertimes.org/retrieve.php
+"old_faithful_2024"
