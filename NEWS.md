@@ -1,4 +1,4 @@
-# moderndive 0.6.1.9000
+# moderndive 0.7.0
 
 -   Added `un_member_states_2024` data for upcoming ModernDive v2 updates
 -   Added `spotify_to_genre` data for upcoming ModernDive v2 updates
