@@ -1,18 +1,15 @@
 ## Submission
 
--   Updating datasets
--   Fixed redundant ORCID number in DESCRIPTION
--   winbuild yielded the following NOTES, but all the URL's worked in my browser
+-   Adding more datasets and functions in preparation for ModernDive v2
+-   Only one NOTE regarding URLs that all work
 
-Found the following (possibly) invalid URLs: URL: <https://mhd.public.ms2soft.com/tcds/tsearch.asp?loc=Mhd&mod=> From: man/ma_traffic_2020_vs_2019.Rd Status: 403 Message: Forbidden
+Found the following (possibly) invalid URLs:
 
-URL: <https://www.kaggle.com/c/house-prices-advanced-regression-techniques> From: inst/doc/moderndive.html Status: 404 Message: Not Found
+URL: <https://mhd.public.ms2soft.com/tcds/tsearch.asp?loc=Mhd&mod=> From: man/ma_traffic_2020_vs_2019.Rd Status: 403 Message: Forbidden
 
-URL: <https://www.kaggle.com/harlfoxem/housesalesprediction> From: man/house_prices.Rd Status: 404 Message: Not Found
+URL: <https://www.imdb.com/> From: man/movies_sample.Rd Status: 403 Message: Forbidden
 
-URL: <https://www.kaggle.com/harlfoxem/housesalesprediction/data> From: man/house_prices.Rd Status: 404 Message: Not Found
-
-URL: <https://www.kaggle.com/ndalziel/massachusetts-public-schools-data> From: man/MA_schools.Rd Status: 404 Message: Not Found
+URL: <https://www.imdb.com/title/tt0768479/> From: man/mythbusters_yawn.Rd Status: 403 Message: Forbidden
 
 ## Test environments
 

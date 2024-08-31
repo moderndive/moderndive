@@ -736,12 +736,12 @@
 #'   \item{capital_data_year}{\code{integer}. Year the capital population data was collected.}
 #'   \item{gdp_per_capita}{\code{numeric}. GDP per capita in USD. See: \url{https://data.worldbank.org/indicator/NY.GDP.PCAP.CD}}
 #'   \item{gdp_per_capita_year}{\code{numeric}. Year the GDP per capita data was collected.}
-#'   \item{summers_competed_in}{\code{numeric}. Number of times the country has competed in the Summer Olympics. See: \url{https://olympics.com/ioc/summer-olympics}}
+#'   \item{summers_competed_in}{\code{numeric}. Number of times the country has competed in the Summer Olympics}
 #'   \item{summer_golds}{\code{integer}. Number of gold medals won in the Summer Olympics.}
 #'   \item{summer_silvers}{\code{integer}. Number of silver medals won in the Summer Olympics.}
 #'   \item{summer_bronzes}{\code{integer}. Number of bronze medals won in the Summer Olympics.}
 #'   \item{summer_total}{\code{integer}. Total number of medals won in the Summer Olympics.}
-#'   \item{winters_competed_in}{\code{integer}. Number of times the country has competed in the Winter Olympics. See: \url{https://olympics.com/ioc/winter-olympics}}
+#'   \item{winters_competed_in}{\code{integer}. Number of times the country has competed in the Winter Olympics}
 #'   \item{winter_golds}{\code{integer}. Number of gold medals won in the Winter Olympics.}
 #'   \item{winter_silvers}{\code{integer}. Number of silver medals won in the Winter Olympics.}
 #'   \item{winter_bronzes}{\code{integer}. Number of bronze medals won in the Winter Olympics.}
