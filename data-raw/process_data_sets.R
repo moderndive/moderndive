@@ -424,3 +424,10 @@ almonds_sample_100 <- "data-raw/almonds_sample_100.rds" |>
   ungroup() |> 
   select(ID, weight)
 usethis::use_data(almonds_sample_100, overwrite = TRUE)
+
+# old_faithful_2024
+old_faithful_2024 <- read_csv("data-raw/old_faithful_2024.csv") |> 
+  select(-Geyser) |> 
+  mutate(Date = lubridate::mdy(Date)) |> 
+  janitor::clean_names()
+usethis::use_data(old_faithful_2024, overwrite = TRUE)

@@ -5,3 +5,5 @@ message_wrap <- function(...) {
   wrapped <- strwrap(msg, width = getOption("width") - 2)
   message(paste0(wrapped, collapse = "\n"))
 }
+
+utils::globalVariables(c("type", "column"))

@@ -119,6 +119,7 @@ get_regression_table <- function(model, conf.level = 0.95, digits = 3, print = F
 #' @importFrom knitr kable
 #' @importFrom rlang sym
 #' @importFrom rlang ":="
+#' @importFrom stats na.omit
 #' @export
 #' @seealso [`augment()`][broom::reexports], [get_regression_table()], [get_regression_summaries()]
 #'
@@ -207,6 +208,7 @@ get_regression_points <-
       # Case 1: If ID argument is not specified, set as ID variable as 1 through
       # number of rows
       regression_points <- regression_points %>%
+        na.omit() %>%
         mutate(ID = 1:n()) %>%
         select(ID, everything())
     } else {
@@ -224,6 +226,7 @@ get_regression_points <-
       }
       # Set ID variable
       regression_points <- regression_points %>%
+        na.omit() %>%
         mutate(ID = identification_variable) %>%
         select(ID, everything()) %>%
         rename_at(vars("ID"), ~ID)

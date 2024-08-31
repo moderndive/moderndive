@@ -84,7 +84,7 @@ Other contributors:
   \item Kate Phan \email{kphan@smith.edu} [contributor]
   \item Grace Hartley \email{grace.hartley@gmail.com} [contributor]
   \item Silas Weden \email{silasweden@gmail.com} [contributor]
-  \item Emma Vejcik \email{evejcik@gmail.com} (\href{https://orcid.org/0000-0001-5093-6462}{ORCID}) [contributor]
+  \item Emma Vejcik \email{evejcik@gmail.com} [contributor]
   \item Nikki Schuldt \email{nikkischuldt@gmail.com} [contributor]
   \item Tess Goldmann \email{tessgoldmann@aol.com} [contributor]
   \item Hongtong Lin \email{cccynthialht@gmail.com} [contributor]

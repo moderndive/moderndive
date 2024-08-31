@@ -697,12 +697,207 @@
 #' }
 "almonds_bowl" 
 
-#' Chocolate-covered almonds data sample
+#' Chocolate-covered almonds data sample of size 25
+#' 
+#' A sample of 25 chocolate-covered almonds, weighed in grams.
+#' @format A data frame with 25 observations on the following 2 variables
+#' \describe{
+#' \item{replicate}{Replicate number set to 1 since there is only one sample}
+#' \item{ID}{Identification value for a given chocolate-covered almond} 
+#' \item{weight}{Weight of the chocolate-covered almond in grams (to the nearest tenth)}
+#' }
+"almonds_sample" 
+
+#' Chocolate-covered almonds data sample of size 100
 #' 
 #' A sample of 100 chocolate-covered almonds, weighed in grams.
 #' @format A data frame with 100 observations on the following 2 variables
 #' \describe{
+#' \item{replicate}{Replicate number set to 1 since there is only one sample}
 #' \item{ID}{Identification value for a given chocolate-covered almond} 
 #' \item{weight}{Weight of the chocolate-covered almond in grams (to the nearest tenth)}
 #' }
 "almonds_sample_100" 
+
+#' UN Member States 2024 Dataset
+#'
+#' This dataset contains information on 193 United Nations member states as of 2024. It includes various attributes such as country names, ISO codes, official state names, geographic and demographic data, economic indicators, and participation in the Olympic Games. The data is designed for use in statistical analysis, data visualization, and educational purposes.
+#'
+#' @format A data frame with 193 rows and 39 columns:
+#' \describe{
+#'   \item{country}{\code{character}. Name of the country.}
+#'   \item{iso}{\code{character}. ISO 3166-1 alpha-3 country code. See: \url{https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3}}
+#'   \item{official_state_name}{\code{character}. Official name of the country. See: \url{https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_and_their_capitals_in_native_languages}}
+#'   \item{continent}{\code{factor}. Continent where the country is located. See: \url{https://en.wikipedia.org/wiki/Continent}}
+#'   \item{region}{\code{character}. Specific region within the continent.}
+#'   \item{capital_city}{\code{character}. Name of the capital city. See: \url{https://en.wikipedia.org/wiki/List_of_national_capitals_by_population}}
+#'   \item{capital_population}{\code{numeric}. Population of the capital city.}
+#'   \item{capital_perc_of_country}{\code{numeric}. Percentage of the country’s population living in the capital.}
+#'   \item{capital_data_year}{\code{integer}. Year the capital population data was collected.}
+#'   \item{gdp_per_capita}{\code{numeric}. GDP per capita in USD. See: \url{https://data.worldbank.org/indicator/NY.GDP.PCAP.CD}}
+#'   \item{gdp_per_capita_year}{\code{numeric}. Year the GDP per capita data was collected.}
+#'   \item{summers_competed_in}{\code{numeric}. Number of times the country has competed in the Summer Olympics. See: \url{https://olympics.com/ioc/summer-olympics}}
+#'   \item{summer_golds}{\code{integer}. Number of gold medals won in the Summer Olympics.}
+#'   \item{summer_silvers}{\code{integer}. Number of silver medals won in the Summer Olympics.}
+#'   \item{summer_bronzes}{\code{integer}. Number of bronze medals won in the Summer Olympics.}
+#'   \item{summer_total}{\code{integer}. Total number of medals won in the Summer Olympics.}
+#'   \item{winters_competed_in}{\code{integer}. Number of times the country has competed in the Winter Olympics. See: \url{https://olympics.com/ioc/winter-olympics}}
+#'   \item{winter_golds}{\code{integer}. Number of gold medals won in the Winter Olympics.}
+#'   \item{winter_silvers}{\code{integer}. Number of silver medals won in the Winter Olympics.}
+#'   \item{winter_bronzes}{\code{integer}. Number of bronze medals won in the Winter Olympics.}
+#'   \item{winter_total}{\code{integer}. Total number of medals won in the Winter Olympics.}
+#'   \item{combined_competed_ins}{\code{integer}. Total number of times the country has competed in both Summer and Winter Olympics. See: \url{https://en.wikipedia.org/wiki/All-time_Olympic_Games_medal_table}}
+#'   \item{combined_golds}{\code{integer}. Total number of gold medals won in both Summer and Winter Olympics.}
+#'   \item{combined_silvers}{\code{integer}. Total number of silver medals won in both Summer and Winter Olympics.}
+#'   \item{combined_bronzes}{\code{integer}. Total number of bronze medals won in both Summer and Winter Olympics.}
+#'   \item{combined_total}{\code{integer}. Total number of medals won in both Summer and Winter Olympics.}
+#'   \item{driving_side}{\code{character}. Indicates whether the country drives on the left or right side of the road. See: \url{https://en.wikipedia.org/wiki/Left-_and_right-hand_traffic}}
+#'   \item{obesity_rate_2024}{\code{numeric}. Percentage of the population classified as obese in 2024. See: \url{https://en.wikipedia.org/wiki/List_of_countries_by_obesity_rate}}
+#'   \item{obesity_rate_2016}{\code{numeric}. Percentage of the population classified as obese in 2016.}
+#'   \item{has_nuclear_weapons_2024}{\code{logical}. Indicates whether the country has nuclear weapons as of 2024. See: \url{https://en.wikipedia.org/wiki/List_of_states_with_nuclear_weapons}}
+#'   \item{population_2024}{\code{numeric}. Population of the country in 2024. See: \url{https://data.worldbank.org/indicator/SP.POP.TOTL}}
+#'   \item{area_in_square_km}{\code{numeric}. Area of the country in square kilometers. See: \url{https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_area}}
+#'   \item{area_in_square_miles}{\code{numeric}. Area of the country in square miles.}
+#'   \item{population_density_in_square_km}{\code{numeric}. Population density in square kilometers.}
+#'   \item{population_density_in_square_miles}{\code{numeric}. Population density in square miles.}
+#'   \item{income_group_2024}{\code{factor}. World Bank income group classification in 2024. See: \url{https://data.worldbank.org/indicator/NY.GNP.PCAP.CD}}
+#'   \item{life_expectancy_2022}{\code{numeric}. Life expectancy at birth in 2022. See: \url{https://en.wikipedia.org/wiki/List_of_countries_by_life_expectancy}}
+#'   \item{fertility_rate_2022}{\code{numeric}. Fertility rate in 2022 (average number of children per woman). See: \url{https://en.wikipedia.org/wiki/List_of_countries_by_total_fertility_rate}}
+#'   \item{hdi_2022}{\code{numeric}. Human Development Index in 2022. See: \url{https://en.wikipedia.org/wiki/List_of_countries_by_Human_Development_Index}}
+#' }
+#' @examples
+#' data(un_member_states_2024)
+#' head(un_member_states_2024)
+"un_member_states_2024" 
+
+#' Spotify by Genre Dataset
+#'
+#' This dataset contains information on 6,000 tracks from Spotify, categorized by one of six genres. It includes various audio features, metadata about the tracks, and an indicator of popularity. The dataset is useful for analysis of music trends, popularity prediction, and genre-specific characteristics.
+#'
+#' @format A data frame with 6,000 rows and 21 columns:
+#' \describe{
+#'   \item{track_id}{\code{character}. Spotify ID for the track. See: \url{https://developer.spotify.com/documentation/web-api/}}
+#'   \item{artists}{\code{character}. Names of the artists associated with the track.}
+#'   \item{album_name}{\code{character}. Name of the album on which the track appears.}
+#'   \item{track_name}{\code{character}. Name of the track.}
+#'   \item{popularity}{\code{numeric}. Popularity score of the track (0-100). See: \url{https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track}}
+#'   \item{duration_ms}{\code{numeric}. Duration of the track in milliseconds.}
+#'   \item{explicit}{\code{logical}. Whether the track has explicit content.}
+#'   \item{danceability}{\code{numeric}. Danceability score of the track (0-1). See: \url{https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-features}}
+#'   \item{energy}{\code{numeric}. Energy score of the track (0-1).}
+#'   \item{key}{\code{numeric}. The key the track is in (0-11 where 0 = C, 1 = C#/Db, etc.).}
+#'   \item{loudness}{\code{numeric}. The loudness of the track in decibels (dB).}
+#'   \item{mode}{\code{numeric}. Modality of the track (0 = minor, 1 = major).}
+#'   \item{speechiness}{\code{numeric}. Speechiness score of the track (0-1).}
+#'   \item{acousticness}{\code{numeric}. Acousticness score of the track (0-1).}
+#'   \item{instrumentalness}{\code{numeric}. Instrumentalness score of the track (0-1).}
+#'   \item{liveness}{\code{numeric}. Liveness score of the track (0-1).}
+#'   \item{valence}{\code{numeric}. Valence score of the track (0-1), indicating the musical positiveness.}
+#'   \item{tempo}{\code{numeric}. Tempo of the track in beats per minute (BPM).}
+#'   \item{time_signature}{\code{numeric}. Time signature of the track (typically 3, 4, or 5).}
+#'   \item{track_genre}{\code{character}. Genre of the track (country, deep-house, dubstep, hip-hop, metal, and rock).}
+#'   \item{popular_or_not}{\code{character}. Indicates whether the track is considered popular ("popular") or not ("not popular"). Popularity is defined as a score of 50 or higher which corresponds to the 75th percentile of the \code{popularity} column.}
+#' }
+#' @source \url{https://developer.spotify.com/documentation/web-api/}
+#' @examples
+#' data(spotify_by_genre)
+#' head(spotify_by_genre)
+"spotify_by_genre"
+
+#' Spotify 52-Track Sample Dataset
+#'
+#' This dataset contains a sample of 52 tracks from Spotify, focusing on two genres: deep-house and metal. It includes metadata about the tracks, the artists, and an indicator of whether each track is considered popular. This dataset is useful for comparative analysis between genres and for studying the characteristics of popular versus non-popular tracks within these genres.
+#'
+#' @format A data frame with 52 rows and 6 columns:
+#' \describe{
+#'   \item{track_id}{\code{character}. Spotify ID for the track. See: \url{https://developer.spotify.com/documentation/web-api/}}
+#'   \item{track_genre}{\code{character}. Genre of the track, either "deep-house" or "metal".}
+#'   \item{artists}{\code{character}. Names of the artists associated with the track.}
+#'   \item{track_name}{\code{character}. Name of the track.}
+#'   \item{popularity}{\code{numeric}. Popularity score of the track (0-100). See: \url{https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track}}
+#'   \item{popular_or_not}{\code{character}. Indicates whether the track is considered popular ("popular") or not ("not popular"). Popularity is defined as a score of 50 or higher which corresponds to the 75th percentile of the \code{popularity} column.}
+#' }
+#' @source \url{https://developer.spotify.com/documentation/web-api/}
+#' @examples
+#' data(spotify_52_original)
+#' head(spotify_52_original)
+"spotify_52_original"
+
+#' Spotify 52-Track Sample Dataset with 'popular or not' shuffled
+#'
+#' This dataset contains a sample of 52 tracks from Spotify, focusing on two genres: deep-house and metal. It includes metadata about the tracks, the artists, and a shuffled indicator of whether each track is considered popular.
+#'
+#' @format A data frame with 52 rows and 6 columns:
+#' \describe{
+#'   \item{track_id}{\code{character}. Spotify ID for the track. See: \url{https://developer.spotify.com/documentation/web-api/}}
+#'   \item{track_genre}{\code{character}. Genre of the track, either "deep-house" or "metal".}
+#'   \item{artists}{\code{character}. Names of the artists associated with the track.}
+#'   \item{track_name}{\code{character}. Name of the track.}
+#'   \item{popularity}{\code{numeric}. Popularity score of the track (0-100). See: \url{https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track}}
+#'   \item{popular_or_not}{\code{character}. A shuffled version of the column of the same name in the \code{spotify_52_original} data frame.}
+#' }
+#' @source \url{https://developer.spotify.com/documentation/web-api/}
+#' @examples
+#' data(spotify_52_shuffled)
+#' head(spotify_52_shuffled)
+"spotify_52_shuffled"
+
+#' Coffee Quality Dataset
+#'
+#' This dataset contains detailed information about coffee quality evaluations from various origins. 
+#' It includes data on the country and continent of origin, farm name, lot number, and various quality metrics.
+#' The dataset also includes attributes related to coffee processing, grading, and specific sensory attributes.
+#'
+#' @format A data frame with 207 rows and 30 variables:
+#' \describe{
+#'   \item{country_of_origin}{\code{character}. The country where the coffee originated.}
+#'   \item{continent_of_origin}{\code{character}. The continent where the coffee originated.}
+#'   \item{farm_name}{\code{character}. The name of the farm where the coffee was grown.}
+#'   \item{lot_number}{\code{character}. The lot number assigned to the batch of coffee.}
+#'   \item{mill}{\code{character}. The name of the mill where the coffee was processed.}
+#'   \item{company}{\code{character}. The company associated with the coffee batch.}
+#'   \item{altitude}{\code{character}. The altitude range (in meters) where the coffee was grown.}
+#'   \item{region}{\code{character}. The specific region within the country where the coffee was grown.}
+#'   \item{producer}{\code{character}. The name of the coffee producer.}
+#'   \item{in_country_partner}{\code{character}. The in-country partner organization associated with the coffee batch.}
+#'   \item{harvest_year}{\code{character}. The year or range of years during which the coffee was harvested.}
+#'   \item{grading_date}{\code{date}. The date when the coffee was graded.}
+#'   \item{owner}{\code{character}. The owner of the coffee batch.}
+#'   \item{variety}{\code{character}. The variety of the coffee plant.}
+#'   \item{processing_method}{\code{character}. The method used to process the coffee beans.}
+#'   \item{aroma}{\code{numeric}. The aroma score of the coffee, on a scale from 0 to 10.}
+#'   \item{flavor}{\code{numeric}. The flavor score of the coffee, on a scale from 0 to 10.}
+#'   \item{aftertaste}{\code{numeric}. The aftertaste score of the coffee, on a scale from 0 to 10.}
+#'   \item{acidity}{\code{numeric}. The acidity score of the coffee, on a scale from 0 to 10.}
+#'   \item{body}{\code{numeric}. The body score of the coffee, on a scale from 0 to 10.}
+#'   \item{balance}{\code{numeric}. The balance score of the coffee, on a scale from 0 to 10.}
+#'   \item{uniformity}{\code{numeric}. The uniformity score of the coffee, on a scale from 0 to 10.}
+#'   \item{clean_cup}{\code{numeric}. The clean cup score of the coffee, on a scale from 0 to 10.}
+#'   \item{sweetness}{\code{numeric}. The sweetness score of the coffee, on a scale from 0 to 10.}
+#'   \item{overall}{\code{numeric}. The overall score of the coffee, on a scale from 0 to 10.}
+#'   \item{total_cup_points}{\code{numeric}. The total cup points awarded to the coffee, representing the sum of various quality metrics.}
+#'   \item{moisture_percentage}{\code{numeric}. The moisture percentage of the coffee beans.}
+#'   \item{color}{\code{character}. The color description of the coffee beans.}
+#'   \item{expiration}{\code{character}. The expiration date of the coffee batch.}
+#'   \item{certification_body}{\code{character}. The body that certified the coffee batch.}
+#' }
+#' @source Coffee Quality Institute
+"coffee_quality"
+
+#' Old Faithful Eruptions Dataset (2024)
+#'
+#' This dataset contains records of eruptions from the Old Faithful geyser in Yellowstone National Park, recorded in 2024. 
+#' It includes details such as the eruption ID, date and time of eruption, waiting time between eruptions, webcam availability, 
+#' and the duration of each eruption.
+#'
+#' @format A data frame with 114 rows and 6 variables:
+#' \describe{
+#'   \item{eruption_id}{\code{numeric}. A unique identifier for each eruption.}
+#'   \item{date}{\code{date}. The date of the eruption.}
+#'   \item{time}{\code{numeric}. The time of the eruption in HHMM format (e.g., 538 corresponds to 5:38 AM, 1541 corresponds to 3:41 PM).}
+#'   \item{waiting}{\code{numeric}. The waiting time in minutes until the next eruption.}
+#'   \item{webcam}{\code{character}. Indicates whether the eruption was captured on webcam ("Yes" or "No").}
+#'   \item{duration}{\code{numeric}. The duration of the eruption in seconds.}
+#' }
+#' @source Volunteer information from https://geysertimes.org/retrieve.php
+"old_faithful_2024"
