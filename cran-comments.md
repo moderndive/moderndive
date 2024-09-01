@@ -1,6 +1,9 @@
 ## Submission
 
+-   THIS IS A RESUBMISSION FIXING A FEW PREVIOUSLY NON-WORKING URL'S
+
 -   Adding more datasets and functions in preparation for ModernDive v2
+
 -   Only one NOTE regarding URLs that all work
 
 Found the following (possibly) invalid URLs:
