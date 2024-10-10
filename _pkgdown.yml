@@ -1,4 +1,6 @@
 url: "moderndive.github.io/moderndive/"
+template:
+  bootstrap: 5
 
 reference:
 - title: Functions
@@ -10,6 +12,8 @@ reference:
   - '`get_regression_summaries`'
   - '`get_regression_table`'
   - '`gg_parallel_slopes`'
+  - '`pop_sd`'
+  - '`tidy_summary`'
 - title: Datasets
   contents:
   - '`alaska_flights`' 
@@ -44,6 +48,13 @@ reference:
   - '`almonds_bowl`'
   - '`almonds_sample_100`'
   - '`early_january_2023_weather`'
+  - '`almonds_sample`'
+  - '`coffee_quality`'
+  - '`old_faithful_2024`'
+  - '`spotify_52_original`'
+  - '`spotify_52_shuffled`'
+  - '`spotify_by_genre`'
+  - '`un_member_states_2024`'
 - title: Misc
   contents:
   - '`moderndive`'
