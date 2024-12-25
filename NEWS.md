@@ -5,7 +5,7 @@
 # moderndive 0.7.0
 
 -   Added `un_member_states_2024` data for upcoming ModernDive v2 updates
--   Added `spotify_to_genre` data for upcoming ModernDive v2 updates
+-   Added `spotify_by_genre` data for upcoming ModernDive v2 updates
 -   Added `tidy_summary()` function to summarize data frame columns for upcoming ModernDive v2 updates
 -   Added `old_faithful_2024` data for upcoming ModernDive v2 updates
 -   Added `coffee_quality` data for upcoming ModernDive v2 updates
