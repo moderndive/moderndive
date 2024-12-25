@@ -1,6 +1,4 @@
-# moderndive 0.7.0.9000
 
--   
 
 # moderndive 0.7.0
 
