@@ -30,6 +30,9 @@ globalVariables(c(
 #' @importFrom tibble as_tibble
 #' @importFrom janitor clean_names
 #' @importFrom knitr kable
+#' @importFrom purrr imap
+#' @importFrom stringr str_replace_all
+#' @importFrom stringr coll
 #' @export
 #' @seealso [`tidy()`][broom::reexports], [get_regression_points()], [get_regression_summaries()]
 #'
@@ -47,15 +50,16 @@ globalVariables(c(
 get_regression_table <- function(model, conf.level = 0.95, digits = 3, print = FALSE, default_categorical_levels = FALSE) {
   # Check inputs
   input_checks(model, digits, print)
-
-  # Define outcome and explanatory/predictor variables
-  outcome_variable <- formula(model) %>%
-    lhs() %>%
-    all.vars()
-  explanatory_variable <- formula(model) %>%
-    rhs() %>%
-    all.vars()
-  cat_explanatory_variable <- names(model[["xlevels"]])
+  
+  if (!default_categorical_levels & length(model[["xlevels"]]) > 0) {
+    # Add delimiter in dummy-coded categorical variables, as in "var-level"
+    delim <- "-"
+    old_names <- unlist(imap(model[["xlevels"]], ~ paste0(.y, .x)))
+    new_names <- unlist(imap(model[["xlevels"]], ~ paste0(.y, delim, .x)))
+    names(new_names) <- old_names
+    names(model[["coefficients"]]) <- names(model[["coefficients"]]) %>% 
+      str_replace_all(coll(new_names))
+  }
 
   # Create output tibble
   regression_table <- model %>%
@@ -67,15 +71,14 @@ get_regression_table <- function(model, conf.level = 0.95, digits = 3, print = F
     rename(
       lower_ci = conf_low,
       upper_ci = conf_high
-    ) %>% mutate(term = extract_cat_names(term, cat_explanatory_variable,
-                                          default_categorical_levels))
-
+    )
+  
   # Transform to markdown
   if (print) {
     regression_table <- regression_table %>%
       kable()
   }
-
+  
   return(regression_table)
 }
 
@@ -333,36 +336,6 @@ remove_re_char <- function(string){
   # taken from the `escapeRegex` function in the Hmisc package
   gsub("([.|()\\^{}+$*?]|\\[|\\])", "\\\\\\1", string)
 }
-
-extract_cat_names <- function(term, cat_names, default_categorical_levels) {
-    if ((!default_categorical_levels) & (length(cat_names) > 0)) {
-      # if none of the x variables are categorical, do nothing
-      # only change how we display non-baseline levels of categorical variables
-      # if at least one of the x variables are categorical AND the user
-      # does not want the default categorical levels
-      
-      # we need to handle the case where a factor is defined within the regression
-      # equation
-      cat_names <- remove_re_char(cat_names)
-      cat_names <- cat_names[order(nchar(cat_names), decreasing = T)]
-      
-      # the xlevels should only be matched at the beginning of the term
-      matches <-
-        as.character(stringr::str_extract(term, paste0("(", "^", cat_names, ")", collapse = "|")))
-      not_matched <- c(1, which(is.na(matches)))
-      # force intercept term to always be in the not_matched group
-      if (length(matches) > 0) {
-        matches <-
-          paste0(matches, ": ", stringr::str_sub(term, nchar(matches) + 1, nchar(term)))
-        matches[not_matched] <- term[not_matched]
-        return(matches)
-      } else{
-        return(term)
-      }
-    } else {
-      return(term)
-    }
-  }
 
 
 # Check input functions ----
