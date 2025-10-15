@@ -18,10 +18,13 @@ globalVariables(c(
 #'  categorical variables in the term column. Otherwise non-baseline 
 #'  categorical variables will be displayed in the format 
 #'  "categorical_variable_name: level_name"
+#'  categorical variables will be displayed in the format
+#'  "categorical_variable_name-level_name"
 #'
 #' @return A tibble-formatted regression table along with lower and upper end
 #' points of all confidence intervals for all parameters `lower_ci` and
 #' `upper_ci`; the confidence levels default to 95\%. 
+#' `upper_ci`; the confidence levels default to 95\%.
 #' @importFrom stats lm
 #' @importFrom stats predict
 #' @importFrom formula.tools lhs
@@ -44,20 +47,20 @@ globalVariables(c(
 #'
 #' # Get regression table:
 #' get_regression_table(mpg_model)
-#' 
+#'
 #' # Vary confidence level of confidence intervals
 #' get_regression_table(mpg_model, conf.level = 0.99)
 get_regression_table <- function(model, conf.level = 0.95, digits = 3, print = FALSE, default_categorical_levels = FALSE) {
   # Check inputs
   input_checks(model, digits, print)
-  
+
   if (!default_categorical_levels & length(model[["xlevels"]]) > 0) {
     # Add delimiter in dummy-coded categorical variables, as in "var-level"
     delim <- "-"
     old_names <- unlist(imap(model[["xlevels"]], ~ paste0(.y, .x)))
     new_names <- unlist(imap(model[["xlevels"]], ~ paste0(.y, delim, .x)))
     names(new_names) <- old_names
-    names(model[["coefficients"]]) <- names(model[["coefficients"]]) %>% 
+    names(model[["coefficients"]]) <- names(model[["coefficients"]]) %>%
       str_replace_all(coll(new_names))
   }
 
@@ -72,13 +75,13 @@ get_regression_table <- function(model, conf.level = 0.95, digits = 3, print = F
       lower_ci = conf_low,
       upper_ci = conf_high
     )
-  
+
   # Transform to markdown
   if (print) {
     regression_table <- regression_table %>%
       kable()
   }
-  
+
   return(regression_table)
 }
 
@@ -250,7 +253,6 @@ get_regression_points <-
   }
 
 
-
 #' Get regression summary values
 #'
 #' Output scalar summary statistics for an `lm()` regression in "tidy"
@@ -333,6 +335,7 @@ get_regression_summaries <-
 
 # helper function to escape regex characters from a variable name
 remove_re_char <- function(string){
+remove_re_char <- function(string) {
   # taken from the `escapeRegex` function in the Hmisc package
   gsub("([.|()\\^{}+$*?]|\\[|\\])", "\\\\\\1", string)
 }
@@ -340,6 +343,7 @@ remove_re_char <- function(string){
 
 # Check input functions ----
 input_checks <- function(model, digits = 3, print = FALSE, default_categorical_levels= FALSE) {
+input_checks <- function(model, digits = 3, print = FALSE, default_categorical_levels = FALSE) {
   # Since the `"glm"` class also contains the `"lm"` class
   if (length(class(model)) != 1 | !("lm" %in% class(model))) {
     stop(paste(
