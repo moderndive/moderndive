@@ -15,15 +15,12 @@ globalVariables(c(
 #' @param digits number of digits precision in output table
 #' @param print If TRUE, return in print format suitable for R Markdown
 #' @param default_categorical_levels If TRUE, do not change the non-baseline
-#'  categorical variables in the term column. Otherwise non-baseline 
-#'  categorical variables will be displayed in the format 
-#'  "categorical_variable_name: level_name"
+#'  categorical variables in the term column. Otherwise non-baseline
 #'  categorical variables will be displayed in the format
 #'  "categorical_variable_name-level_name"
 #'
 #' @return A tibble-formatted regression table along with lower and upper end
 #' points of all confidence intervals for all parameters `lower_ci` and
-#' `upper_ci`; the confidence levels default to 95\%. 
 #' `upper_ci`; the confidence levels default to 95\%.
 #' @importFrom stats lm
 #' @importFrom stats predict
@@ -334,7 +331,6 @@ get_regression_summaries <-
 # Extract explanatory categorical variable levels ----
 
 # helper function to escape regex characters from a variable name
-remove_re_char <- function(string){
 remove_re_char <- function(string) {
   # taken from the `escapeRegex` function in the Hmisc package
   gsub("([.|()\\^{}+$*?]|\\[|\\])", "\\\\\\1", string)
@@ -342,7 +338,6 @@ remove_re_char <- function(string) {
 
 
 # Check input functions ----
-input_checks <- function(model, digits = 3, print = FALSE, default_categorical_levels= FALSE) {
 input_checks <- function(model, digits = 3, print = FALSE, default_categorical_levels = FALSE) {
   # Since the `"glm"` class also contains the `"lm"` class
   if (length(class(model)) != 1 | !("lm" %in% class(model))) {
