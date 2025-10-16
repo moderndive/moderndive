@@ -328,15 +328,6 @@ get_regression_summaries <-
   }
 
 
-# Extract explanatory categorical variable levels ----
-
-# helper function to escape regex characters from a variable name
-remove_re_char <- function(string) {
-  # taken from the `escapeRegex` function in the Hmisc package
-  gsub("([.|()\\^{}+$*?]|\\[|\\])", "\\\\\\1", string)
-}
-
-
 # Check input functions ----
 input_checks <- function(model, digits = 3, print = FALSE, default_categorical_levels = FALSE) {
   # Since the `"glm"` class also contains the `"lm"` class
