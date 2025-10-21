@@ -51,7 +51,7 @@ get_regression_table <- function(model, conf.level = 0.95, digits = 3, print = F
   # Check inputs
   input_checks(model, digits, print)
 
-  if (!default_categorical_levels & length(model[["xlevels"]]) > 0) {
+  if (!default_categorical_levels && length(model[["xlevels"]]) > 0) {
     # Add delimiter in dummy-coded categorical variables, as in "var-level"
     delim <- "-"
     old_names <- unlist(imap(model[["xlevels"]], ~ paste0(.y, .x)))
