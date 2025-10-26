@@ -121,27 +121,51 @@ test_that("README code works", {
 
 test_that("pretty printing xlevels used in `get_regression_table` 
           does not give unexpected outputs", {
-  terms <-
-    c("intercept",
-      "aaaa",
-      "babab",
-      "c_c-x",
-      "xx-xx",
-      "not intercept and not categorical",
-      "as.factor(cyl)6",
-      "factor(cyl)6")
-  xlevels <- c("a", "b", "i", "c", "x", "as.factor(cyl)", "factor(cyl)")
+  no_cat <- lm(Sepal.Length ~ Sepal.Width, data = iris)
   expect_equal(
-    moderndive:::extract_cat_names(terms, xlevels, FALSE),
+    get_regression_table(no_cat)$term,
+    c("intercept", "Sepal.Width")
+  )
+
+  iris_multi_cat <- iris %>% 
+    mutate(petal_width = if_else(
+      Petal.Width > 0.2,
+      "wide", "narrow"))
+  multi_cat <- lm(Sepal.Length ~ Sepal.Width + Species + petal_width,
+                  data = iris_multi_cat)
+  expect_equal(
+    get_regression_table(multi_cat)$term,
+    c("intercept", "Sepal.Width", "Species-versicolor", "Species-virginica", "petal_width-wide")
+  )
+  int_cat <- lm(Sepal.Length ~ Sepal.Width * Species * petal_width,
+                  data = iris_multi_cat)
+  expect_equal(
+    get_regression_table(int_cat)$term,
     c(
       "intercept",
-      "a: aaa",
-      "b: abab",
-      "c: _c-x",
-      "x: x-xx",
-      "not intercept and not categorical",
-      "as.factor(cyl): 6",
-      "factor(cyl): 6"
+      "Sepal.Width",
+      "Species-versicolor",
+      "Species-virginica",
+      "petal_width-wide",
+      "Sepal.Width:Species-versicolor",
+      "Sepal.Width:Species-virginica",
+      "Sepal.Width:petal_width-wide",
+      "Species-versicolor:petal_width-wide",
+      "Species-virginica:petal_width-wide",
+      "Sepal.Width:Species-versicolor:petal_width-wide",
+      "Sepal.Width:Species-virginica:petal_width-wide"
+    )
+  )
+  weird_cat <- lm(Sepal.Length ~ Sepal.Width + factor(Species) + as.factor(petal_width),
+                  data = iris_multi_cat)
+  expect_equal(
+    get_regression_table(weird_cat)$term,
+    c(
+      "intercept",
+      "Sepal.Width",
+      "factor(Species)-versicolor",
+      "factor(Species)-virginica",
+      "as.factor(petal_width)-wide"
     )
   )
 })
