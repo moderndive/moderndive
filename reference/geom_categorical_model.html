@@ -182,7 +182,7 @@ display.</p></dd>
 <dd><p>If <code>FALSE</code>, overrides the default aesthetics,
 rather than combining with them. This is most useful for helper functions
 that define both data and aesthetics and shouldn't inherit behaviour from
-the default plot specification, e.g. <code><a href="https://ggplot2.tidyverse.org/reference/borders.html" class="external-link">borders()</a></code>.</p></dd>
+the default plot specification, e.g. <code><a href="https://ggplot2.tidyverse.org/reference/annotation_borders.html" class="external-link">borders()</a></code>.</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -220,11 +220,13 @@ the default plot specification, e.g. <code><a href="https://ggplot2.tidyverse.or
 <span class="r-out co"><span class="r-pr">#&gt;</span>   term      estimate std_error statistic p_value lower_ci upper_ci</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span> intercept    19.2      0.404     47.5    0       18.4      20.0 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> drv: f        8.99     0.567     15.9    0        7.87     10.1 </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> drv: r        1.82     0.913      2.00   0.047    0.026     3.62</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span> drv-f         8.99     0.567     15.9    0        7.87     10.1 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span> drv-r         1.82     0.913      2.00   0.047    0.026     3.62</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># You can use different colors for each categorical level</span></span></span>
 <span class="r-in"><span><span class="va">p</span> <span class="op"><a href="https://ggplot2.tidyverse.org/reference/gg-add.html" class="external-link">%+%</a></span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>color <span class="op">=</span> <span class="va">drv</span><span class="op">)</span></span></span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>&lt;ggplot&gt; %+% x was deprecated in ggplot2 4.0.0.</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span style="color: #00BBBB;">ℹ</span> Please use &lt;ggplot&gt; + x instead.</span>
 <span class="r-plt img"><img src="geom_categorical_model-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># But mapping the color aesthetic doesn't change the model that is fit</span></span></span>
@@ -241,7 +243,7 @@ the default plot specification, e.g. <code><a href="https://ggplot2.tidyverse.or
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer></div>
