@@ -90,13 +90,13 @@ test_that("tidy_summary default columns matches explicit columns", {
   )
   
   res_default <- tidy_summary(df_small, na.rm = TRUE) |>
-    dplyr::arrange(column, group %||% "")
+    dplyr::arrange(column, ifelse(is.na(group), "", group))
   res_explicit <- tidy_summary(
     df_small,
     columns = c(category, value, flag),
     na.rm = TRUE
   ) |>
-    dplyr::arrange(column, group %||% "")
+    dplyr::arrange(column, ifelse(is.na(group), "", group))
   
   expect_equal(res_default, res_explicit)
 })
