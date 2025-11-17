@@ -24,7 +24,7 @@ test_that("geom_categorical_model works", {
   )
 
   expect_doppelganger(
-    "geom_categorical_model_basic_color_and_size",
+    "geom_categorical_model-basic-color-and-size",
     viz %+% aes(color = drv) +
       geom_categorical_model(linewidth = 3) +
       labs(title = "geom_categorical_model() with extra aesthetics")
