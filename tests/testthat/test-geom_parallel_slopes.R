@@ -93,7 +93,7 @@ test_that("geom_parallel_slopes works", {
 test_that("geom_parallel_slopes works in edge cases", {
   # Non-factor grouping
   expect_doppelganger(
-    "geom_parallel_slopes-non-factor-grouping",
+    "geom_parallel_slopes-edge-non-factor-grouping",
     test_df %>%
       dplyr::mutate(gr = as.integer(gr)) %>%
       ggplot(aes(a, b, colour = gr, group = gr)) +
