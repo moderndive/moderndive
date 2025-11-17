@@ -24,12 +24,12 @@ obtain new fitted values and/or predicted values y-hat. Note the format of
 \code{newdata} must match the format of the original \code{data} used to fit
 \code{model}.}
 
-\item{ID}{A string indicating which variable in either the original data used to fit
-\code{model} or \code{newdata} should be used as
+\item{ID}{A string indicating which variable in either the original data used
+to fit \code{model} or \code{newdata} should be used as
 an identification variable to distinguish the observational units
 in each row. This variable will be the left-most variable in the output data
-frame. If \code{ID} is unspecified, a column \code{ID} with values 1 through the number of
-rows is returned as the identification variable.}
+frame. If \code{ID} is unspecified, a column \code{ID} with values 1 through the number
+of rows is returned as the identification variable.}
 }
 \value{
 A tibble-formatted regression table of outcome/response variable,

@@ -26,7 +26,7 @@ Defaults to 0.95, which corresponds to a 95 percent confidence interval.}
 \item{default_categorical_levels}{If TRUE, do not change the non-baseline
 categorical variables in the term column. Otherwise non-baseline
 categorical variables will be displayed in the format
-"categorical_variable_name: level_name"}
+"categorical_variable_name-level_name"}
 }
 \value{
 A tibble-formatted regression table along with lower and upper end
