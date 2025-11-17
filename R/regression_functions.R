@@ -330,12 +330,6 @@ get_regression_summaries <-
     explanatory_vars_aug <- make.names(term_labels)
     
     # Compute mean-squared error and root mean-squared error
-    # Define outcome variable
-    outcome_variable <- formula(model) %>%
-      lhs() %>%
-      all.vars()
-    
-    # Compute mean-squared error and root mean-squared error
     mse_and_rmse <- model %>%
       augment() %>%
       # Note: no explanatory vars here at all
