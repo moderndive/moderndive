@@ -1,6 +1,7 @@
 # moderndive 0.7.0.9000
 
--   
+-   Fix issue [#58](https://github.com/moderndive/moderndive/issues/58)
+-   Add in unit tests to bring test coverage back to 100%
 
 # moderndive 0.7.0
 

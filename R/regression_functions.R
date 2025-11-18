@@ -47,10 +47,12 @@ globalVariables(c(
 #'
 #' # Vary confidence level of confidence intervals
 #' get_regression_table(mpg_model, conf.level = 0.99)
-get_regression_table <- function(model, conf.level = 0.95, digits = 3, print = FALSE, default_categorical_levels = FALSE) {
+get_regression_table <- function(model, conf.level = 0.95, digits = 3, 
+                                 print = FALSE, 
+                                 default_categorical_levels = FALSE) {
   # Check inputs
   input_checks(model, digits, print)
-
+  
   if (!default_categorical_levels && length(model[["xlevels"]]) > 0) {
     # Add delimiter in dummy-coded categorical variables, as in "var-level"
     delim <- "-"
@@ -60,7 +62,7 @@ get_regression_table <- function(model, conf.level = 0.95, digits = 3, print = F
     names(model[["coefficients"]]) <- names(model[["coefficients"]]) %>%
       str_replace_all(coll(new_names))
   }
-
+  
   # Create output tibble
   regression_table <- model %>%
     tidy(conf.int = TRUE, conf.level) %>%
@@ -72,13 +74,13 @@ get_regression_table <- function(model, conf.level = 0.95, digits = 3, print = F
       lower_ci = conf_low,
       upper_ci = conf_high
     )
-
+  
   # Transform to markdown
   if (print) {
     regression_table <- regression_table %>%
       kable()
   }
-
+  
   return(regression_table)
 }
 
@@ -94,12 +96,12 @@ get_regression_table <- function(model, conf.level = 0.95, digits = 3, print = F
 #' obtain new fitted values and/or predicted values y-hat. Note the format of
 #' `newdata` must match the format of the original `data` used to fit
 #' `model`.
-#' @param ID A string indicating which variable in either the original data used to fit
-#' `model` or `newdata` should be used as
+#' @param ID A string indicating which variable in either the original data used
+#'  to fit `model` or `newdata` should be used as
 #' an identification variable to distinguish the observational units
 #' in each row. This variable will be the left-most variable in the output data
-#' frame. If `ID` is unspecified, a column `ID` with values 1 through the number of
-#' rows is returned as the identification variable.
+#' frame. If `ID` is unspecified, a column `ID` with values 1 through the number 
+#' of rows is returned as the identification variable.
 #'
 #' @return A tibble-formatted regression table of outcome/response variable,
 #' all explanatory/predictor variables, the fitted/predicted value, and residual.
@@ -123,6 +125,7 @@ get_regression_table <- function(model, conf.level = 0.95, digits = 3, print = F
 #' @importFrom rlang sym
 #' @importFrom rlang ":="
 #' @importFrom stats na.omit
+#' @importFrom stats terms
 #' @export
 #' @seealso [`augment()`][broom::reexports], [get_regression_table()], [get_regression_summaries()]
 #'
@@ -161,26 +164,48 @@ get_regression_points <-
     if (!is.null(newdata)) {
       check_data_frame(newdata)
     }
-
-    # Define outcome and explanatory/predictor variables
+    
+    # Define outcome variable
     outcome_variable <- formula(model) %>%
       lhs() %>%
       all.vars()
     outcome_variable_hat <- str_c(outcome_variable, "_hat")
-    explanatory_variable <- formula(model) %>%
+    
+    # Predictor names in the *data*
+    explanatory_vars_data <- formula(model) %>%
       rhs() %>%
       all.vars()
-
+    
+    # Term labels used in the model matrix / potentially in broom::augment()
+    term_labels <- attr(terms(model), "term.labels")
+    explanatory_vars_aug <- make.names(term_labels)
+    
     # Compute all fitted/predicted values and residuals for three possible
     # cases/scenarios
     if (is.null(newdata)) {
-      # Case 1: For the same data set used to fit model, compute fitted values
-      # and residuals
-      regression_points <- model %>%
-        augment() %>%
-        select(!!c(outcome_variable, explanatory_variable, ".fitted", ".resid")) %>%
-        rename_at(vars(".fitted"), ~outcome_variable_hat) %>%
-        rename(residual = .resid)
+      # Case 1: same data set used to fit model
+      
+      aug <- broom::augment(model)
+      
+      # columns that broom uses for meta information
+      broom_meta_cols <- c(
+        ".fitted", ".se.fit", ".resid",
+        ".hat", ".sigma", ".cooksd", ".std.resid"
+      )
+      
+      # treat everything that is not the outcome and not meta as a predictor
+      predictor_cols <- setdiff(
+        names(aug),
+        c(outcome_variable, broom_meta_cols)
+      )
+      
+      # final column order: outcome, predictors, fitted, residual
+      cols_to_keep <- c(outcome_variable, predictor_cols, ".fitted", ".resid")
+      
+      regression_points <- aug %>%
+        dplyr::select(dplyr::all_of(cols_to_keep)) %>%
+        dplyr::rename_with(~ outcome_variable_hat, ".fitted") %>%
+        dplyr::rename(residual = .resid)
     } else {
       # Two cases when we wanted to return point information on a new data set,
       # newdata, different than the one used to fit the model with:
@@ -188,12 +213,14 @@ get_regression_points <-
         # Case 2.a) If outcome variable is included, we can compute both fitted
         # values and residuals.
         regression_points <- newdata %>%
-          select(!!c(outcome_variable, explanatory_variable)) %>%
+          select(!!c(outcome_variable, explanatory_vars_data)) %>%
           # Compute fitted values
           mutate(y_hat = predict(model, newdata = newdata)) %>%
           rename_at(vars("y_hat"), ~outcome_variable_hat) %>%
           # Compute residuals
-          mutate(residual := !!sym(outcome_variable) - !!sym(outcome_variable_hat))
+          mutate(
+            residual := !!sym(outcome_variable) - !!sym(outcome_variable_hat)
+          )
       } else {
         # Case 2.b) If outcome variable is not included, we can only return
         # predicted values and not the residuals. This corresponds to typical
@@ -201,11 +228,11 @@ get_regression_points <-
         regression_points <- model %>%
           # Compute fitted values:
           augment(newdata = newdata) %>%
-          select(!!c(explanatory_variable, ".fitted")) %>%
+          select(!!c(explanatory_vars_aug, ".fitted")) %>%
           rename_at(vars(".fitted"), ~ str_c(outcome_variable, "_hat"))
       }
     }
-
+    
     # Set identification variable for three possible cases/scenarios
     if (is.null(ID)) {
       # Case 1: If ID argument is not specified, set as ID variable as 1 through
@@ -219,11 +246,12 @@ get_regression_points <-
       if (is.null(newdata)) {
         # Case 2.a) When computing fitted values and residuals for the same data
         # used to fit the model, extract ID variable from original model fit.
-        identification_variable <- eval(model$call$data, environment(formula(model))) %>%
+        identification_variable <- eval(model$call$data, 
+                                        environment(formula(model))) %>%
           pull(!!ID)
       } else {
-        # Case 2.b) When computing predicted values for a new dataset newdata than
-        # the one used to fit the model, extract ID variable from newdata.
+        # Case 2.b) When computing predicted values for a new dataset newdata 
+        # than the one used to fit the model, extract ID variable from newdata.
         identification_variable <- newdata %>%
           pull(!!ID)
       }
@@ -234,18 +262,18 @@ get_regression_points <-
         select(ID, everything()) %>%
         rename_at(vars("ID"), ~ID)
     }
-
+    
     # Final clean-up
     regression_points <- regression_points %>%
       mutate_if(is.double, round, digits = digits) %>%
       as_tibble()
-
+    
     # Transform to markdown
     if (print) {
       regression_points <- regression_points %>%
         kable()
     }
-
+    
     return(regression_points)
   }
 
@@ -291,23 +319,28 @@ get_regression_summaries <-
   function(model, digits = 3, print = FALSE) {
     # Check inputs
     input_checks(model, digits, print)
-
-    # Define outcome and explanatory/predictor variables
+    
+    # Define outcome variable
     outcome_variable <- formula(model) %>%
       lhs() %>%
       all.vars()
-    explanatory_variable <- formula(model) %>%
-      rhs() %>%
-      all.vars()
-
+    
+    # Use term labels for augment() columns
+    term_labels <- attr(terms(model), "term.labels")
+    explanatory_vars_aug <- make.names(term_labels)
+    
     # Compute mean-squared error and root mean-squared error
     mse_and_rmse <- model %>%
       augment() %>%
-      select(!!c(outcome_variable, explanatory_variable, ".fitted", ".resid")) %>%
+      # Note: no explanatory vars here at all
+      select(!!c(outcome_variable, ".fitted", ".resid")) %>%
       rename_at(vars(".fitted"), ~ str_c(outcome_variable, "_hat")) %>%
       rename(residual = .resid) %>%
-      summarise(mse = mean(residual^2), rmse = sqrt(mse))
-
+      summarise(
+        mse  = mean(residual^2, na.rm = TRUE),
+        rmse = sqrt(mse)
+      )
+    
     # Create output tibble
     regression_summaries <- model %>%
       glance() %>%
@@ -317,19 +350,20 @@ get_regression_summaries <-
       clean_names() %>%
       bind_cols(mse_and_rmse) %>%
       select(r_squared, adj_r_squared, mse, rmse, everything())
-
+    
     # Transform to markdown
     if (print) {
       regression_summaries <- regression_summaries %>%
         kable()
     }
-
+    
     return(regression_summaries)
   }
 
 
 # Check input functions ----
-input_checks <- function(model, digits = 3, print = FALSE, default_categorical_levels = FALSE) {
+input_checks <- function(model, digits = 3, print = FALSE, 
+                         default_categorical_levels = FALSE) {
   # Since the `"glm"` class also contains the `"lm"` class
   if (length(class(model)) != 1 | !("lm" %in% class(model))) {
     stop(paste(

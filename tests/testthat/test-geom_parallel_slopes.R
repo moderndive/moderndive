@@ -40,7 +40,7 @@ test_that("geom_parallel_slopes works", {
     "geom_parallel_slopes-basic-3",
     viz +
       geom_parallel_slopes(
-        mapping = aes(group = gr), color = "red", size = 3
+        mapping = aes(group = gr), color = "red", linewidth = 3
       ) +
       labs(title = "geom_parallel_slopes() with extra aesthetics")
   )
@@ -137,4 +137,51 @@ test_that("geom_parallel_slopes works in edge cases", {
     ),
     regexp = "doesn't need a `method`"
   )
+})
+
+test_that("gg_parallel_slopes returns ggplot and warns about deprecation", {
+  skip_if_not_installed("ggplot2")
+  skip_if_not_installed("dplyr")
+  skip_if_not_installed("moderndive")
+  
+  data("house_prices", package = "moderndive")
+  
+  # Create transformed variables as in the examples
+  hp_small <- dplyr::mutate(
+    house_prices,
+    log10_price = log10(price),
+    log10_size  = log10(sqft_living)
+  )[1:200, ]
+  
+  # Capture both the deprecation warning and the guidance message
+  expect_warning(
+    p <- expect_message(
+      gg_parallel_slopes(
+        y = "log10_price",
+        num_x = "log10_size",
+        cat_x = "condition",
+        data = hp_small,
+        alpha = 0.3
+      ),
+      regexp = "geom_parallel_slopes",
+      all = FALSE
+    ),
+    regexp = "geom_parallel_slopes",
+    all = FALSE
+  )
+  
+  # Basic structure: should be a ggplot
+  expect_s3_class(p, "ggplot")
+  
+  # The base mapping should use the requested variables
+  expect_equal(rlang::as_label(p$mapping$x), "log10_size")
+  expect_equal(rlang::as_label(p$mapping$y), "log10_price")
+  expect_equal(rlang::as_label(p$mapping$colour), "condition")
+  
+  # First layer is points, second is lines
+  expect_s3_class(p$layers[[1]]$geom, "GeomPoint")
+  expect_s3_class(p$layers[[2]]$geom, "GeomLine")
+  
+  # The alpha in the point layer should match the argument
+  expect_equal(p$layers[[1]]$aes_params$alpha, 0.3)
 })
