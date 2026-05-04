@@ -21,12 +21,17 @@ species_glm <- glm(virginica ~ Sepal.Width, data = iris_binary)
 test_that("function inputs are valid", {
   vec <- 1:10
   
-  # Check `model`
+  # Check `model` — non-model objects are still rejected
   expect_error(
     get_regression_table(model = vec)
   )
-  expect_error(
+  # glm objects are now accepted (issue #20). Verify no error and a tibble.
+  expect_silent(
     get_regression_summaries(model = species_glm)
+  )
+  expect_s3_class(
+    get_regression_summaries(model = species_glm),
+    "tbl_df"
   )
   
   # Check `digits`
@@ -379,3 +384,289 @@ test_that("get_regression_points works with poly() term", {
       any(grepl("sqft_living", non_core_cols, fixed = TRUE))
   )
 })
+
+# In-formula transforms ----
+
+test_that("get_regression_points handles LHS transform like log(y) ~ x", {
+  m <- lm(log(mpg) ~ hp, data = mtcars)
+
+  pts <- get_regression_points(m)
+
+  expect_s3_class(pts, "tbl_df")
+  expect_equal(nrow(pts), nrow(mtcars))
+  # outcome column is sanitized to log_mpg, hp is the original predictor
+  expect_true(all(c("ID", "log_mpg", "hp", "log_mpg_hat", "residual") %in% names(pts)))
+  # ugly columns must not leak
+  expect_false(".rownames" %in% names(pts))
+  expect_false("mpg" %in% names(pts))
+
+  # residuals are on the model's (log) scale and match residuals(model)
+  # Rounded outcome minus rounded fit can drift by 1e-3 from the rounded raw
+  # residual, so use a slightly looser tolerance than for direct equality.
+  expect_equal(
+    pts$log_mpg - pts$log_mpg_hat,
+    pts$residual,
+    tolerance = 5e-3
+  )
+  expect_equal(
+    pts$residual,
+    unname(round(as.numeric(residuals(m)), 3)),
+    tolerance = 1e-3
+  )
+})
+
+test_that("get_regression_summaries handles LHS transform like log(y) ~ x", {
+  m <- lm(log(mpg) ~ hp, data = mtcars)
+
+  summ <- get_regression_summaries(m)
+
+  expect_s3_class(summ, "tbl_df")
+  expect_identical(nrow(summ), 1L)
+
+  # mse/rmse are computed on the model scale (log)
+  resids <- residuals(m)
+  expect_equal(summ$mse[[1]], mean(resids^2), tolerance = 1e-3)
+  expect_equal(summ$rmse[[1]], sqrt(mean(resids^2)), tolerance = 1e-3)
+})
+
+test_that("get_regression_points handles LHS+RHS transforms like log(y) ~ log(x)", {
+  m <- lm(log(mpg) ~ log(hp), data = mtcars)
+
+  pts <- get_regression_points(m)
+
+  # both sides sanitized; original predictor `hp` shown rather than log(hp)
+  expect_true(all(c("log_mpg", "hp", "log_mpg_hat", "residual") %in% names(pts)))
+  expect_false("log(hp)" %in% names(pts))
+  expect_false(".rownames" %in% names(pts))
+
+  # Rounded outcome minus rounded fit can drift by 1e-3 from the rounded raw
+  # residual, so use a slightly looser tolerance than for direct equality.
+  expect_equal(
+    pts$log_mpg - pts$log_mpg_hat,
+    pts$residual,
+    tolerance = 5e-3
+  )
+})
+
+test_that("get_regression_points with newdata containing outcome computes residuals on model scale", {
+  m <- lm(log(mpg) ~ hp, data = mtcars)
+  nd <- mtcars[1:5, ]
+
+  pts <- get_regression_points(m, newdata = nd)
+
+  expect_equal(nrow(pts), 5L)
+  expect_true(all(c("log_mpg", "hp", "log_mpg_hat", "residual") %in% names(pts)))
+  # residuals are log(y) - log_y_hat, NOT y - log_y_hat
+  # Rounded outcome minus rounded fit can drift by 1e-3 from the rounded raw
+  # residual, so use a slightly looser tolerance than for direct equality.
+  expect_equal(
+    pts$log_mpg - pts$log_mpg_hat,
+    pts$residual,
+    tolerance = 5e-3
+  )
+  expect_equal(
+    pts$log_mpg,
+    round(log(nd$mpg), 3),
+    tolerance = 1e-3
+  )
+})
+
+test_that("get_regression_points with newdata missing outcome returns predictions on model scale", {
+  m <- lm(log(mpg) ~ hp, data = mtcars)
+  nd <- mtcars[1:5, !names(mtcars) %in% "mpg"]
+
+  pts <- get_regression_points(m, newdata = nd)
+
+  expect_equal(nrow(pts), 5L)
+  expect_true("log_mpg_hat" %in% names(pts))
+  expect_false("residual" %in% names(pts))
+  expect_false("log_mpg" %in% names(pts))
+})
+
+test_that("get_regression_points cleans up basis-matrix columns from poly/scale/I", {
+  for (formula_obj in list(
+    mpg ~ poly(hp, 2),
+    mpg ~ scale(hp),
+    mpg ~ I(hp^2)
+  )) {
+    m <- lm(formula_obj, data = mtcars)
+    pts <- get_regression_points(m)
+
+    # original predictor is present, transformed/basis columns are not
+    expect_true("hp" %in% names(pts), info = deparse(formula_obj))
+    # no leaked basis matrix or wrapper columns
+    expect_false(any(grepl("poly|scale|I\\(", names(pts))),
+                 info = deparse(formula_obj))
+    expect_false(".rownames" %in% names(pts), info = deparse(formula_obj))
+    # all output columns are atomic vectors (no matrix-columns from poly/scale)
+    for (col in names(pts)) {
+      expect_null(dim(pts[[col]]), info = paste(deparse(formula_obj), col))
+    }
+  }
+})
+
+test_that("get_regression_points does not leak .rownames when source data has rownames", {
+  # mtcars has named row names — old code passed these through as a column
+  m <- lm(mpg ~ hp, data = mtcars)
+  pts <- get_regression_points(m)
+  expect_false(".rownames" %in% names(pts))
+})
+
+test_that("get_regression_points ID arg works with LHS transforms", {
+  mt <- tibble::rownames_to_column(mtcars, "auto")
+  m  <- lm(log(mpg) ~ hp, data = mt)
+
+  pts <- get_regression_points(m, ID = "auto")
+
+  expect_true("auto" %in% names(pts))
+  expect_equal(pts$auto[1:3], rownames(mtcars)[1:3])
+  expect_true(all(c("log_mpg", "hp", "log_mpg_hat", "residual") %in% names(pts)))
+})
+
+test_that("get_regression_points errors helpfully on bad newdata/ID inputs", {
+  m <- lm(mpg ~ hp, data = mtcars)
+
+  # 1) newdata missing a required predictor
+  nd_no_hp <- mtcars[, c("automobile", "mpg")]
+  expect_error(
+    get_regression_points(m, newdata = nd_no_hp),
+    "missing required predictor"
+  )
+
+  # 2) ID arg refers to a column not present in newdata
+  nd_no_auto <- mtcars[, c("mpg", "hp")]
+  expect_error(
+    get_regression_points(m, newdata = nd_no_auto, ID = "automobile"),
+    "not found in `newdata`"
+  )
+
+  # 3) ID arg refers to a column not present in source data
+  expect_error(
+    get_regression_points(m, ID = "doesnotexist"),
+    "not found in source data"
+  )
+
+  # 4) Source data isn't reachable from the model call (e.g. anonymous data)
+  m_no_src <- m
+  m_no_src$call$data <- NULL
+  expect_error(
+    get_regression_points(m_no_src, ID = "automobile"),
+    "Could not locate source data"
+  )
+})
+
+# glm support (issue #20) ----
+
+test_that("get_regression_table works on a logistic glm", {
+  m <- glm(am ~ mpg + wt, data = mtcars, family = binomial())
+
+  tbl <- get_regression_table(m)
+  expect_s3_class(tbl, "tbl_df")
+  expect_setequal(tbl$term, c("intercept", "mpg", "wt"))
+  expect_named(tbl, c("term", "estimate", "std_error", "statistic",
+                      "p_value", "lower_ci", "upper_ci"))
+})
+
+test_that("get_regression_table exponentiate=TRUE returns odds ratios", {
+  m <- glm(am ~ mpg + wt, data = mtcars, family = binomial())
+
+  tbl_log  <- get_regression_table(m)
+  tbl_odds <- get_regression_table(m, exponentiate = TRUE)
+
+  # exp(estimate) of the log-odds matches the exponentiated estimate
+  # (within rounding tolerance — both are independently rounded to 3 dp).
+  expect_equal(
+    tbl_odds$estimate[tbl_log$term == "mpg"],
+    round(exp(tbl_log$estimate[tbl_log$term == "mpg"]), 3),
+    tolerance = 1e-2
+  )
+})
+
+test_that("get_regression_table validates exponentiate arg", {
+  m <- glm(am ~ mpg, data = mtcars, family = binomial())
+  expect_error(get_regression_table(m, exponentiate = "yes"))
+})
+
+test_that("get_regression_points on a logistic glm returns response-scale fitted/residual", {
+  m <- glm(am ~ mpg + wt, data = mtcars, family = binomial())
+
+  pts <- get_regression_points(m)
+
+  expect_s3_class(pts, "tbl_df")
+  expect_equal(nrow(pts), nrow(mtcars))
+  expect_true(all(c("ID", "am", "mpg", "wt", "am_hat", "residual") %in% names(pts)))
+
+  # am_hat is a probability in [0, 1]
+  expect_true(all(pts$am_hat >= 0 & pts$am_hat <= 1))
+
+  # residual = am - am_hat (within rounding tolerance)
+  expect_equal(
+    pts$am - pts$am_hat,
+    pts$residual,
+    tolerance = 5e-3
+  )
+})
+
+test_that("get_regression_points on a glm with newdata predicts on response scale", {
+  m  <- glm(am ~ mpg + wt, data = mtcars, family = binomial())
+  nd <- mtcars[1:5, ]
+
+  pts <- get_regression_points(m, newdata = nd)
+  expect_equal(nrow(pts), 5L)
+  expect_true(all(pts$am_hat >= 0 & pts$am_hat <= 1))
+  expect_equal(
+    pts$am - pts$am_hat,
+    pts$residual,
+    tolerance = 5e-3
+  )
+
+  # newdata WITHOUT the outcome — only fitted column, no residual
+  nd2 <- mtcars[1:5, !names(mtcars) %in% "am"]
+  pts2 <- get_regression_points(m, newdata = nd2)
+  expect_true("am_hat" %in% names(pts2))
+  expect_false("residual" %in% names(pts2))
+})
+
+test_that("get_regression_summaries on a glm returns glm-shaped summary", {
+  m <- glm(am ~ mpg + wt, data = mtcars, family = binomial())
+
+  summ <- get_regression_summaries(m)
+
+  expect_s3_class(summ, "tbl_df")
+  expect_identical(nrow(summ), 1L)
+
+  # mse / rmse computed from response-scale residuals
+  resid_resp <- residuals(m, type = "response")
+  expect_equal(summ$mse[[1]], round(mean(resid_resp^2), 3), tolerance = 1e-3)
+  expect_equal(summ$rmse[[1]], round(sqrt(mean(resid_resp^2)), 3), tolerance = 1e-3)
+
+  # glm-shaped: deviance / aic / bic should be present, R^2 columns absent
+  expect_true(all(c("mse", "rmse", "deviance", "aic", "bic",
+                    "null_deviance", "log_lik", "nobs") %in% names(summ)))
+  expect_false("r_squared" %in% names(summ))
+  expect_false("adj_r_squared" %in% names(summ))
+})
+
+test_that("get_regression_summaries on a Poisson glm works", {
+  # The file-level `mtcars` has `cyl` coerced to a factor — Poisson needs
+  # a numeric count outcome, so use a fresh copy of `mtcars` here.
+  raw_mtcars <- datasets::mtcars
+  m <- glm(carb ~ mpg + wt, data = raw_mtcars, family = poisson())
+
+  summ <- get_regression_summaries(m)
+  expect_s3_class(summ, "tbl_df")
+  expect_true(all(is.finite(c(summ$mse, summ$rmse, summ$deviance, summ$aic))))
+})
+
+test_that("get_regression_table renders factor levels for glm with default delimiter", {
+  # mtcars$cyl is set up as a factor at the top of this test file. Use a
+  # non-degenerate predictor combination (NOT one where the outcome is
+  # perfectly determined by the factor — that breaks profile-likelihood CIs).
+  m <- glm(am ~ mpg + cyl, data = mtcars, family = binomial())
+
+  tbl <- get_regression_table(m)
+  # cyl has levels "4", "6", "8" — baseline is "4", non-baseline are "6", "8"
+  expect_true(any(grepl("cyl-6", tbl$term, fixed = TRUE)))
+  expect_true(any(grepl("cyl-8", tbl$term, fixed = TRUE)))
+})
+

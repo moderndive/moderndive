@@ -7,7 +7,7 @@
 get_regression_summaries(model, digits = 3, print = FALSE)
 }
 \arguments{
-\item{model}{an \code{lm()} model object}
+\item{model}{an \code{lm()} or \code{glm()} model object}
 
 \item{digits}{number of digits precision in output table}
 

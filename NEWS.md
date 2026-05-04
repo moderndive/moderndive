@@ -2,6 +2,9 @@
 
 -   Fix issue [#58](https://github.com/moderndive/moderndive/issues/58)
 -   Add in unit tests to bring test coverage back to 100%
+-   `get_regression_points()` and `get_regression_summaries()` now handle in-formula transformations on either side of the model formula (e.g. `lm(log(y) ~ poly(x, 2))`). LHS transforms previously errored; they now produce a sanitized outcome column on the model's scale (e.g. `log_mpg`, `log_mpg_hat`). RHS transforms no longer leak basis matrices or wrapper columns (`poly()` matrix columns, `scale()`, `I()`) into the points table; the original predictor variable is shown instead. The `.rownames` column is no longer leaked into the output.
+-   `get_regression_table()`, `get_regression_points()`, and `get_regression_summaries()` now accept `glm()` model objects (resolves issue [#20](https://github.com/moderndive/moderndive/issues/20)). For `glm()` models, `get_regression_points()` returns fitted values and residuals on the response scale (e.g. probabilities for logistic regression). `get_regression_summaries()` returns a glm-shaped summary (`mse`, `rmse`, `deviance`, `null_deviance`, `aic`, `bic`, `log_lik`, `df_residual`, `df_null`, `nobs`) — R² columns are not included since they don't apply to glm. `get_regression_table()` gains an `exponentiate` argument (default `FALSE`) for returning odds/rate ratios for log/logit-link models.
+-   Internal: factor-level pretty-printing in `get_regression_table()` is now applied to the tidy output's `term` column rather than `model$coefficients` names, which avoids breaking `confint.glm`'s profile-likelihood refits.
 
 # moderndive 0.7.0
 
