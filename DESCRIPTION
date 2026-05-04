@@ -72,7 +72,7 @@ Imports:
     rlang (>= 0.2.0),
     glue
 RoxygenNote: 7.3.3
-Suggests: 
+Suggests:
     testthat,
     covr,
     rmarkdown,
@@ -82,6 +82,7 @@ Suggests:
     viridis,
     readr,
     nycflights13,
-    nycflights23
+    nycflights23,
+    plotly
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
