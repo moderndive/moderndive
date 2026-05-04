@@ -4,7 +4,6 @@
 #' regression, used in "Statistical Inference via Data Science: A ModernDive
 #' into R and the tidyverse" available at <https://moderndive.com/>.
 #'
-#' @docType package
 #' @name moderndive
 #' @examples
 #' library(moderndive)
