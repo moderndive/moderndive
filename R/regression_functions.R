@@ -43,13 +43,16 @@ globalVariables(c(
 #' library(moderndive)
 #'
 #' # Fit lm() regression:
-#' mpg_model <- lm(mpg ~ cyl, data = mtcars)
+#' life_exp_model <- lm(
+#'   life_expectancy_2022 ~ gdp_per_capita,
+#'   data = un_member_states_2024
+#' )
 #'
 #' # Get regression table:
-#' get_regression_table(mpg_model)
+#' get_regression_table(life_exp_model)
 #'
 #' # Vary confidence level of confidence intervals
-#' get_regression_table(mpg_model, conf.level = 0.99)
+#' get_regression_table(life_exp_model, conf.level = 0.99)
 get_regression_table <- function(model, conf.level = 0.95, digits = 3,
                                  print = FALSE,
                                  default_categorical_levels = FALSE,
@@ -138,29 +141,31 @@ get_regression_table <- function(model, conf.level = 0.95, digits = 3,
 #'
 #' @examples
 #' library(dplyr)
-#' library(tibble)
-#'
-#' # Convert rownames to column
-#' mtcars <- mtcars %>%
-#'   rownames_to_column(var = "automobile")
+#' library(moderndive)
 #'
 #' # Fit lm() regression:
-#' mpg_model <- lm(mpg ~ cyl, data = mtcars)
+#' life_exp_model <- lm(
+#'   life_expectancy_2022 ~ gdp_per_capita,
+#'   data = un_member_states_2024
+#' )
 #'
 #' # Get information on all points in regression:
-#' get_regression_points(mpg_model, ID = "automobile")
+#' get_regression_points(life_exp_model, ID = "country")
 #'
-#' # Create training and test set based on mtcars:
-#' training_set <- mtcars %>%
+#' # Create training and test set based on un_member_states_2024:
+#' training_set <- un_member_states_2024 %>%
 #'   sample_frac(0.5)
-#' test_set <- mtcars %>%
-#'   anti_join(training_set, by = "automobile")
+#' test_set <- un_member_states_2024 %>%
+#'   anti_join(training_set, by = "country")
 #'
 #' # Fit model to training set:
-#' mpg_model_train <- lm(mpg ~ cyl, data = training_set)
+#' life_exp_model_train <- lm(
+#'   life_expectancy_2022 ~ gdp_per_capita,
+#'   data = training_set
+#' )
 #'
 #' # Make predictions on test set:
-#' get_regression_points(mpg_model_train, newdata = test_set, ID = "automobile")
+#' get_regression_points(life_exp_model_train, newdata = test_set, ID = "country")
 get_regression_points <-
   function(model, digits = 3, print = FALSE, newdata = NULL, ID = NULL) {
     input_checks(model, digits, print)
@@ -299,10 +304,13 @@ get_regression_points <-
 #' library(moderndive)
 #'
 #' # Fit lm() regression:
-#' mpg_model <- lm(mpg ~ cyl, data = mtcars)
+#' life_exp_model <- lm(
+#'   life_expectancy_2022 ~ gdp_per_capita,
+#'   data = un_member_states_2024
+#' )
 #'
 #' # Get regression summaries:
-#' get_regression_summaries(mpg_model)
+#' get_regression_summaries(life_exp_model)
 get_regression_summaries <-
   function(model, digits = 3, print = FALSE) {
     input_checks(model, digits, print)

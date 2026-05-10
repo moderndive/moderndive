@@ -47,13 +47,16 @@ confidence intervals in the output table by default.
 library(moderndive)
 
 # Fit lm() regression:
-mpg_model <- lm(mpg ~ cyl, data = mtcars)
+life_exp_model <- lm(
+  life_expectancy_2022 ~ gdp_per_capita,
+  data = un_member_states_2024
+)
 
 # Get regression table:
-get_regression_table(mpg_model)
+get_regression_table(life_exp_model)
 
 # Vary confidence level of confidence intervals
-get_regression_table(mpg_model, conf.level = 0.99)
+get_regression_table(life_exp_model, conf.level = 0.99)
 }
 \seealso{
 \code{\link[broom:reexports]{tidy()}}, \code{\link[=get_regression_points]{get_regression_points()}}, \code{\link[=get_regression_summaries]{get_regression_summaries()}}

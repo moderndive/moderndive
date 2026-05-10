@@ -24,10 +24,13 @@ format. This function is a wrapper function for \code{broom::glance()}.
 library(moderndive)
 
 # Fit lm() regression:
-mpg_model <- lm(mpg ~ cyl, data = mtcars)
+life_exp_model <- lm(
+  life_expectancy_2022 ~ gdp_per_capita,
+  data = un_member_states_2024
+)
 
 # Get regression summaries:
-get_regression_summaries(mpg_model)
+get_regression_summaries(life_exp_model)
 }
 \seealso{
 \code{\link[broom:reexports]{glance()}}, \code{\link[=get_regression_table]{get_regression_table()}}, \code{\link[=get_regression_points]{get_regression_points()}}

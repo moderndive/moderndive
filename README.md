@@ -1,5 +1,5 @@
 
-## moderndive R Package <img src="https://github.com/moderndive/moderndive/blob/master/images/hex_blue_text.png?raw=true" align="right" width=125 />
+## moderndive R Package <img src="https://github.com/moderndive/moderndive/blob/master/images/hex_blue_text.png?raw=true" align="right" width=125 alt="moderndive hex sticker logo" />
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive)
 [![DOI](https://zenodo.org/badge/115030738.svg)](https://zenodo.org/badge/latestdoi/115030738)

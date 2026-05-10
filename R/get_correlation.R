@@ -49,30 +49,35 @@
 #' library(dplyr)
 #'
 #' # Single explanatory variable:
-#' mtcars %>%
-#'   get_correlation(formula = mpg ~ cyl)
+#' un_member_states_2024 %>%
+#'   get_correlation(formula = life_expectancy_2022 ~ gdp_per_capita, na.rm = TRUE)
 #'
 #' # Multiple explanatory variables — long format:
-#' mtcars %>%
-#'   get_correlation(formula = mpg ~ hp + cyl + wt, quiet = TRUE)
+#' un_member_states_2024 %>%
+#'   get_correlation(
+#'     formula = life_expectancy_2022 ~ gdp_per_capita + fertility_rate_2022 + hdi_2022,
+#'     na.rm   = TRUE,
+#'     quiet   = TRUE
+#'   )
 #'
 #' # Multiple explanatory variables — wide format:
-#' mtcars %>%
+#' un_member_states_2024 %>%
 #'   get_correlation(
-#'     formula = mpg ~ hp + cyl + wt,
+#'     formula = life_expectancy_2022 ~ gdp_per_capita + fertility_rate_2022 + hdi_2022,
 #'     wide    = TRUE,
+#'     na.rm   = TRUE,
 #'     quiet   = TRUE
 #'   )
 #'
 #' # Group by one variable:
-#' mtcars %>%
-#'   group_by(am) %>%
-#'   get_correlation(formula = mpg ~ cyl)
+#' un_member_states_2024 %>%
+#'   group_by(continent) %>%
+#'   get_correlation(formula = life_expectancy_2022 ~ gdp_per_capita, na.rm = TRUE)
 #'
 #' # Group by two variables:
-#' mtcars %>%
-#'   group_by(am, gear) %>%
-#'   get_correlation(formula = mpg ~ cyl)
+#' un_member_states_2024 %>%
+#'   group_by(continent, income_group_2024) %>%
+#'   get_correlation(formula = life_expectancy_2022 ~ gdp_per_capita, na.rm = TRUE)
 get_correlation <- function(data, formula, na.rm = FALSE,
                             wide = FALSE, quiet = FALSE, ...) {
   check_correlation_args(data, formula)

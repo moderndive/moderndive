@@ -34,7 +34,10 @@ Requires the suggested package \code{plotly}. Install it with
 \examples{
 \dontrun{
   library(moderndive)
-  plot_3d_regression(mtcars, mpg ~ hp + wt)
+  plot_3d_regression(
+    un_member_states_2024,
+    life_expectancy_2022 ~ gdp_per_capita + fertility_rate_2022
+  )
 }
 }
 \seealso{
