@@ -132,10 +132,10 @@ model <- lm(score ~ rank, data = evals)
 get_regression_table(model)
 
 # You can use different colors for each categorical level
-p \%+\% aes(color = rank)
+p + aes(color = rank)
 
 # But mapping the color aesthetic doesn't change the model that is fit
-p \%+\% aes(color = ethnicity)
+p + aes(color = ethnicity)
 }
 \seealso{
 \code{\link[=geom_parallel_slopes]{geom_parallel_slopes()}}

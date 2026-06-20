@@ -43,10 +43,10 @@
 #' get_regression_table(model)
 #'
 #' # You can use different colors for each categorical level
-#' p %+% aes(color = rank)
+#' p + aes(color = rank)
 #'
 #' # But mapping the color aesthetic doesn't change the model that is fit
-#' p %+% aes(color = ethnicity)
+#' p + aes(color = ethnicity)
 geom_categorical_model <- function(mapping = NULL, data = NULL,
                                    position = "identity", ...,
                                    se = TRUE, level = 0.95,
