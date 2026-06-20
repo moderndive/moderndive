@@ -189,11 +189,9 @@ get_regression_table(model)
 #> 3 rank-tenured        -0.145     0.064     -2.28   0.023   -0.27    -0.02 
 
 # You can use different colors for each categorical level
-p %+% aes(color = rank)
-#> Warning: <ggplot> %+% x was deprecated in ggplot2 4.0.0.
-#> ℹ Please use <ggplot> + x instead.
+p + aes(color = rank)
 
 
 # But mapping the color aesthetic doesn't change the model that is fit
-p %+% aes(color = ethnicity)
+p + aes(color = ethnicity)
 ```
