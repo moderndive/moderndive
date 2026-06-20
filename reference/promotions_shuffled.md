@@ -28,4 +28,4 @@ A data frame with 48 observations on the following 3 variables.
 
 ## See also
 
-[`promotions()`](moderndive.github.io/moderndive/reference/promotions.md).
+[`promotions()`](https://moderndive.github.io/moderndive/reference/promotions.md).

@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Take a `moderndive` into introductory linear regression with R • moderndive</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="../deps/bootstrap-5.3.8/bootstrap.min.css" rel="stylesheet">
+<script src="../deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Take a `moderndive` into introductory linear regression with R">
 </head>
@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">moderndive</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.7.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.0.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -61,7 +61,7 @@
                         <h4 data-toc-skip class="author">Albert Y. Kim,
 Chester Ismay, and Max Kuhn</h4>
             
-            <h4 data-toc-skip class="date">2025-11-18</h4>
+            <h4 data-toc-skip class="date">2026-06-20</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/moderndive/moderndive/blob/master/vignettes/paper.Rmd" class="external-link"><code>vignettes/paper.Rmd</code></a></small>
       <div class="d-none name"><code>paper.Rmd</code></div>
@@ -121,10 +121,9 @@ likely to be new to statistical computation with R; we designed
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/" class="external-link">broom</a></span><span class="op">)</span></span></code></pre></div>
 <p>Let’s consider data gathered from end of semester student evaluations
 for a sample of 463 courses taught by 94 professors from the University
-of Texas at Austin <span class="citation">(Diez, Barr, and
-Çetinkaya-Rundel 2015)</span>. This data is included in the
-<code>evals</code> data frame from the <code>moderndive</code>
-package.</p>
+of Texas at Austin <span class="citation">(Diez et al. 2015)</span>.
+This data is included in the <code>evals</code> data frame from the
+<code>moderndive</code> package.</p>
 <p>In the following table, we present a subset of 9 of the 14 variables
 included for a random sample of 5 courses<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;For details on the remaining 5 variables, see the help
 file by running &lt;code&gt;&lt;a href="../reference/evals.html"&gt;?evals&lt;/a&gt;&lt;/code&gt;.&lt;/p&gt;'><sup>1</sup></a>:</p>
@@ -413,13 +412,13 @@ support to disclose.</p>
 <div class="section level2">
 <h2 class="unnumbered" id="references">References<a class="anchor" aria-label="anchor" href="#references"></a>
 </h2>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="refs" class="references csl-bib-body hanging-indent">
 <div id="ref-ASAGuidelines" class="csl-entry">
 American Statistical Association Undergraduate Guidelines Workgroup.
-2016. <span>“<span><span>‘Guidelines for Assessment and Instruction in
+2016. <em><span><span>“Guidelines for Assessment and Instruction in
 Statistics Education (GAISE) in Statistics Education (GAISE) College
-Report College Report 2016’</span></span>.”</span> Alexandria, VA:
-American Statistical Association.
+Report College Report 2016”</span></span></em>. American Statistical
+Association.
 </div>
 <div id="ref-diez2015openintro" class="csl-entry">
 Diez, D. M., C. D. Barr, and M. Çetinkaya-Rundel. 2015. <em>OpenIntro
@@ -435,16 +434,13 @@ Robinson, David, and Alex Hayes. 2019. <em>Broom: Convert Statistical
 Analysis Objects into Tidy Tibbles</em>. <a href="https://CRAN.R-project.org/package=broom" class="external-link">https://CRAN.R-project.org/package=broom</a>.
 </div>
 <div id="ref-tidyverse2019" class="csl-entry">
-Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy
-D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019.
+Wickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019.
 <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span>
 <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686" class="external-link">https://doi.org/10.21105/joss.01686</a>.
 </div>
 <div id="ref-R-ggplot2" class="csl-entry">
-Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen,
-Kohske Takahashi, Claus Wilke, Kara Woo, and Hiroaki Yutani. 2019.
-<em><span class="nocase">ggplot2</span>: Create Elegant Data
-Visualisations Using the Grammar of Graphics</em>. <a href="https://doi.org/10.1007/978-0-387-98141-3" class="external-link">https://doi.org/10.1007/978-0-387-98141-3</a>.
+Wickham, Hadley, Winston Chang, Lionel Henry, et al. 2019. <em><span class="nocase">ggplot2</span>: Create Elegant Data Visualisations Using
+the Grammar of Graphics</em>. <a href="https://doi.org/10.1007/978-0-387-98141-3" class="external-link">https://doi.org/10.1007/978-0-387-98141-3</a>.
 </div>
 </div>
 </div>

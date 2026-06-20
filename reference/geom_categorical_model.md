@@ -4,7 +4,7 @@
 x axis as the explanatory variable, and visualizes the model's fitted
 values as piece-wise horizontal line segments. Confidence interval bands
 can be included in the visualization of the model. Like
-[`geom_parallel_slopes()`](moderndive.github.io/moderndive/reference/geom_parallel_slopes.md),
+[`geom_parallel_slopes()`](https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.md),
 this function has the same nature as
 [`geom_smooth()`](https://ggplot2.tidyverse.org/reference/geom_smooth.html)
 from the `ggplot2` package, but provides functionality that
@@ -137,7 +137,9 @@ geom_categorical_model(
   logical. Should this layer be included in the legends? `NA`, the
   default, includes if any aesthetics are mapped. `FALSE` never
   includes, and `TRUE` always includes. It can also be a named logical
-  vector to finely select the aesthetics to display.
+  vector to finely select the aesthetics to display. To include legend
+  keys for all levels, even when no data exists, use `TRUE`. If `NA`,
+  all levels are shown in legend, but unobserved levels are omitted.
 
 - inherit.aes:
 
@@ -145,11 +147,11 @@ geom_categorical_model(
   with them. This is most useful for helper functions that define both
   data and aesthetics and shouldn't inherit behaviour from the default
   plot specification, e.g.
-  [`borders()`](https://ggplot2.tidyverse.org/reference/annotation_borders.html).
+  [`annotation_borders()`](https://ggplot2.tidyverse.org/reference/annotation_borders.html).
 
 ## See also
 
-[`geom_parallel_slopes()`](moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
+[`geom_parallel_slopes()`](https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
 
 ## Examples
 
@@ -164,33 +166,34 @@ library(dplyr)
 #> 
 #>     intersect, setdiff, setequal, union
 library(ggplot2)
+library(moderndive)
 
-p <- ggplot(mpg, aes(x = drv, y = hwy)) +
+p <- ggplot(evals, aes(x = rank, y = score)) +
   geom_point() +
   geom_categorical_model()
 p
 
 
-# In the above visualization, the solid line corresponds to the mean of 19.2
-# for the baseline group "4", whereas the dashed lines correspond to the
-# means of 28.19 and 21.02 for the non-baseline groups "f" and "r" respectively.
-# In the corresponding regression table however the coefficients for "f" and "r"
-# are presented as offsets from the mean for "4":
-model <- lm(hwy ~ drv, data = mpg)
+# In the above visualization, the solid line corresponds to the mean score
+# for the baseline group "teaching", whereas the dashed lines correspond to
+# the means for the non-baseline groups "tenure track" and "tenured".
+# In the corresponding regression table the coefficients for "tenure track"
+# and "tenured" are presented as offsets from the mean for "teaching":
+model <- lm(score ~ rank, data = evals)
 get_regression_table(model)
 #> # A tibble: 3 × 7
-#>   term      estimate std_error statistic p_value lower_ci upper_ci
-#>   <chr>        <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
-#> 1 intercept    19.2      0.404     47.5    0       18.4      20.0 
-#> 2 drv-f         8.99     0.567     15.9    0        7.87     10.1 
-#> 3 drv-r         1.82     0.913      2.00   0.047    0.026     3.62
+#>   term              estimate std_error statistic p_value lower_ci upper_ci
+#>   <chr>                <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
+#> 1 intercept            4.28      0.054     79.9    0        4.18     4.39 
+#> 2 rank-tenure track   -0.13      0.075     -1.73   0.084   -0.277    0.017
+#> 3 rank-tenured        -0.145     0.064     -2.28   0.023   -0.27    -0.02 
 
 # You can use different colors for each categorical level
-p %+% aes(color = drv)
+p %+% aes(color = rank)
 #> Warning: <ggplot> %+% x was deprecated in ggplot2 4.0.0.
 #> ℹ Please use <ggplot> + x instead.
 
 
 # But mapping the color aesthetic doesn't change the model that is fit
-p %+% aes(color = class)
+p %+% aes(color = ethnicity)
 ```

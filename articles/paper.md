@@ -10,7 +10,7 @@ well-developed `tidyverse` and `broom` packages to facilitate 1) working
 with regression tables that include confidence intervals, 2) accessing
 regression outputs on an observation level (e.g. fitted/predicted values
 and residuals), 3) inspecting scalar summaries of regression fit
-(e.g. $R^{2}$, $R_{adj}^{2}$, and mean squared error), and 4)
+(e.g. $`R^2`$, $`R^2_{adj}`$, and mean squared error), and 4)
 visualizing parallel slopes regression models using `ggplot2`-like
 syntax (Wickham, Chang, et al. 2019; Robinson and Hayes 2019). This R
 package is designed to supplement the book “Statistical Inference via
@@ -39,6 +39,7 @@ are likely to be new to statistical computation with R; we designed
 Let’s load all the R packages we are going to need.
 
 ``` r
+
 library(moderndive)
 library(ggplot2)
 library(dplyr)
@@ -48,11 +49,11 @@ library(broom)
 
 Let’s consider data gathered from end of semester student evaluations
 for a sample of 463 courses taught by 94 professors from the University
-of Texas at Austin (Diez, Barr, and Çetinkaya-Rundel 2015). This data is
-included in the `evals` data frame from the `moderndive` package.
+of Texas at Austin (Diez et al. 2015). This data is included in the
+`evals` data frame from the `moderndive` package.
 
 In the following table, we present a subset of 9 of the 14 variables
-included for a random sample of 5 courses[¹](#fn1):
+included for a random sample of 5 courses[^1]:
 
 1.  `ID` uniquely identifies the course whereas `prof_ID` identifies the
     professor who taught this course. This distinction is important
@@ -61,7 +62,7 @@ included for a random sample of 5 courses[¹](#fn1):
     evaluation score out of 5 as given by the students in this course.
 3.  The remaining variables are demographic variables describing that
     course’s instructor, including `bty_avg` (average “beauty” score)
-    for that professor as given by a panel of 6 students.[²](#fn2)
+    for that professor as given by a panel of 6 students.[^2]
 
 |  ID | prof_ID | score | age | bty_avg | gender | ethnicity    | language | rank    |
 |----:|--------:|------:|----:|--------:|:-------|:-------------|:---------|:--------|
@@ -78,6 +79,7 @@ function of instructor `age` using the
 [`lm()`](https://rdrr.io/r/stats/lm.html) function.
 
 ``` r
+
 score_model <- lm(score ~ age, data = evals)
 ```
 
@@ -88,6 +90,7 @@ old-fashioned way”: using
 scenes (we’ll refer to them interchangeably throughout this paper).
 
 ``` r
+
 summary(score_model)
 ## 
 ## Call:
@@ -124,6 +127,7 @@ statistics student in mind (Robinson and Hayes 2019).
 1.  Get a tidy regression table **with confidence intervals**:
 
     ``` r
+
     get_regression_table(score_model)
     ## # A tibble: 2 × 7
     ##   term      estimate std_error statistic p_value lower_ci upper_ci
@@ -137,6 +141,7 @@ statistics student in mind (Robinson and Hayes 2019).
     frame:
 
     ``` r
+
     get_regression_points(score_model)
     ## # A tibble: 463 × 5
     ##       ID score   age score_hat residual
@@ -154,10 +159,11 @@ statistics student in mind (Robinson and Hayes 2019).
     ## # ℹ 453 more rows
     ```
 
-3.  Get scalar summaries of a regression fit including $R^{2}$ and
-    $R_{adj}^{2}$ but also the (root) mean-squared error:
+3.  Get scalar summaries of a regression fit including $`R^2`$ and
+    $`R^2_{adj}`$ but also the (root) mean-squared error:
 
     ``` r
+
     get_regression_summaries(score_model)
     ## # A tibble: 1 × 9
     ##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df
@@ -168,15 +174,16 @@ statistics student in mind (Robinson and Hayes 2019).
 
 Furthermore, say you would like to create a visualization of the
 relationship between two numerical variables and a third categorical
-variable with $k$ levels. Let’s create this using a colored scatterplot
-via the `ggplot2` package for data visualization (Wickham, Chang, et al.
-2019). Using `geom_smooth(method = "lm", se = FALSE)` yields a
-visualization of an *interaction model* where each of the $k$ regression
-lines has their own intercept and slope. For example in , we extend our
-previous regression model by now mapping the categorical variable
-`ethnicity` to the `color` aesthetic.
+variable with $`k`$ levels. Let’s create this using a colored
+scatterplot via the `ggplot2` package for data visualization (Wickham,
+Chang, et al. 2019). Using `geom_smooth(method = "lm", se = FALSE)`
+yields a visualization of an *interaction model* where each of the $`k`$
+regression lines has their own intercept and slope. For example in , we
+extend our previous regression model by now mapping the categorical
+variable `ethnicity` to the `color` aesthetic.
 
 ``` r
+
 # Code to visualize interaction model:
 ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
@@ -197,14 +204,15 @@ exists within
 
 [Evgeni Chasnovski](https://github.com/echasnovski) thus wrote a custom
 `geom_` extension to `ggplot2` called
-[`geom_parallel_slopes()`](moderndive.github.io/moderndive/reference/geom_parallel_slopes.md);
+[`geom_parallel_slopes()`](https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.md);
 this extension is included in the `moderndive` package. Much like
 [`geom_smooth()`](https://ggplot2.tidyverse.org/reference/geom_smooth.html)
 from the `ggplot2` package, you add
-[`geom_parallel_slopes()`](moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
+[`geom_parallel_slopes()`](https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
 as a layer to the code, resulting in .
 
 ``` r
+
 # Code to visualize parallel slopes model:
 ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
   geom_point() +
@@ -234,7 +242,7 @@ Furthermore, we discuss the inner-workings of the `moderndive` package:
 
 1.  It leverages the `broom` package in its wrappers
 2.  It builds a custom `ggplot2` geometry for the
-    [`geom_parallel_slopes()`](moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
+    [`geom_parallel_slopes()`](https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
     function that allows for quick visualization of parallel slopes
     models in regression.
 
@@ -254,7 +262,7 @@ Many thanks to Jenny Smetzer
 [@lisamr](https://github.com/lisamr) for their helpful feedback for this
 paper and to Evgeni Chasnovski
 [@echasnovski](https://github.com/echasnovski) for contributing the
-[`geom_parallel_slopes()`](moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
+[`geom_parallel_slopes()`](https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
 function via GitHub [pull
 request](https://github.com/moderndive/moderndive/pull/55). The authors
 do not have any financial support to disclose.
@@ -262,9 +270,9 @@ do not have any financial support to disclose.
 ## References
 
 American Statistical Association Undergraduate Guidelines Workgroup.
-2016. “‘Guidelines for Assessment and Instruction in Statistics
+2016. *“Guidelines for Assessment and Instruction in Statistics
 Education (GAISE) in Statistics Education (GAISE) College Report College
-Report 2016’.” Alexandria, VA: American Statistical Association.
+Report 2016”*. American Statistical Association.
 
 Diez, D. M., C. D. Barr, and M. Çetinkaya-Rundel. 2015. *OpenIntro
 Statistics*. OpenIntro, Incorporated.
@@ -279,21 +287,17 @@ Robinson, David, and Alex Hayes. 2019. *Broom: Convert Statistical
 Analysis Objects into Tidy Tibbles*.
 <https://CRAN.R-project.org/package=broom>.
 
-Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy
-D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019.
-“Welcome to the tidyverse.” *Journal of Open Source Software* 4 (43):
-1686. <https://doi.org/10.21105/joss.01686>.
+Wickham, Hadley, Mara Averick, Jennifer Bryan, et al. 2019. “Welcome to
+the tidyverse.” *Journal of Open Source Software* 4 (43): 1686.
+<https://doi.org/10.21105/joss.01686>.
 
-Wickham, Hadley, Winston Chang, Lionel Henry, Thomas Lin Pedersen,
-Kohske Takahashi, Claus Wilke, Kara Woo, and Hiroaki Yutani. 2019.
-*ggplot2: Create Elegant Data Visualisations Using the Grammar of
-Graphics*. <https://doi.org/10.1007/978-0-387-98141-3>.
+Wickham, Hadley, Winston Chang, Lionel Henry, et al. 2019. *ggplot2:
+Create Elegant Data Visualisations Using the Grammar of Graphics*.
+<https://doi.org/10.1007/978-0-387-98141-3>.
 
-------------------------------------------------------------------------
-
-1.  For details on the remaining 5 variables, see the help file by
+[^1]: For details on the remaining 5 variables, see the help file by
     running
-    [`?evals`](moderndive.github.io/moderndive/reference/evals.md).
+    [`?evals`](https://moderndive.github.io/moderndive/reference/evals.md).
 
-2.  Note that `gender` was collected as a binary variable at the time of
-    the study (2005).
+[^2]: Note that `gender` was collected as a binary variable at the time
+    of the study (2005).

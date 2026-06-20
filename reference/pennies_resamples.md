@@ -5,7 +5,7 @@ contained in a 50 cent roll from Florence Bank on Friday February 1,
 2019 in downtown Northampton, Massachusetts, USA
 <https://goo.gl/maps/AF88fpvVfm12>. The original sample of 50 pennies is
 available in
-[`pennies_sample()`](moderndive.github.io/moderndive/reference/pennies_sample.md)
+[`pennies_sample()`](https://moderndive.github.io/moderndive/reference/pennies_sample.md)
 .
 
 ## Usage
@@ -33,4 +33,4 @@ of size 50 and 3 variables
 
 ## See also
 
-[`pennies_sample()`](moderndive.github.io/moderndive/reference/pennies_sample.md)
+[`pennies_sample()`](https://moderndive.github.io/moderndive/reference/pennies_sample.md)

@@ -22,7 +22,8 @@ get_regression_points(
 
 - model:
 
-  an [`lm()`](https://rdrr.io/r/stats/lm.html) model object
+  an [`lm()`](https://rdrr.io/r/stats/lm.html) or
+  [`glm()`](https://rdrr.io/r/stats/glm.html) model object
 
 - digits:
 
@@ -57,67 +58,66 @@ residual.
 ## See also
 
 [`augment()`](https://broom.tidymodels.org/reference/reexports.html),
-[`get_regression_table()`](moderndive.github.io/moderndive/reference/get_regression_table.md),
-[`get_regression_summaries()`](moderndive.github.io/moderndive/reference/get_regression_summaries.md)
+[`get_regression_table()`](https://moderndive.github.io/moderndive/reference/get_regression_table.md),
+[`get_regression_summaries()`](https://moderndive.github.io/moderndive/reference/get_regression_summaries.md)
 
 ## Examples
 
 ``` r
 library(dplyr)
-library(tibble)
-
-# Convert rownames to column
-mtcars <- mtcars %>%
-  rownames_to_column(var = "automobile")
+library(moderndive)
 
 # Fit lm() regression:
-mpg_model <- lm(mpg ~ cyl, data = mtcars)
+life_exp_model <- lm(
+  life_expectancy_2022 ~ gdp_per_capita,
+  data = un_member_states_2024
+)
 
 # Get information on all points in regression:
-get_regression_points(mpg_model, ID = "automobile")
-#> # A tibble: 32 × 5
-#>    automobile          mpg   cyl mpg_hat residual
-#>    <chr>             <dbl> <dbl>   <dbl>    <dbl>
-#>  1 Mazda RX4          21       6    20.6    0.37 
-#>  2 Mazda RX4 Wag      21       6    20.6    0.37 
-#>  3 Datsun 710         22.8     4    26.4   -3.58 
-#>  4 Hornet 4 Drive     21.4     6    20.6    0.77 
-#>  5 Hornet Sportabout  18.7     8    14.9    3.82 
-#>  6 Valiant            18.1     6    20.6   -2.53 
-#>  7 Duster 360         14.3     8    14.9   -0.578
-#>  8 Merc 240D          24.4     4    26.4   -1.98 
-#>  9 Merc 230           22.8     4    26.4   -3.58 
-#> 10 Merc 280           19.2     6    20.6   -1.43 
-#> # ℹ 22 more rows
+get_regression_points(life_exp_model, ID = "country")
+#> # A tibble: 188 × 5
+#>    country   life_expectancy_2022 gdp_per_capita life_expectancy_2022…¹ residual
+#>    <chr>                    <dbl>          <dbl>                  <dbl>    <dbl>
+#>  1 Afghanis…                 53.6           356.                   71.5   -17.8 
+#>  2 Albania                   79.5          6810.                   72.3     7.17
+#>  3 Algeria                   78.0          4343.                   72.0     6.05
+#>  4 Andorra                   83.4         41993.                   76.9     6.49
+#>  5 Angola                    62.1          3000.                   71.8    -9.69
+#>  6 Antigua …                 77.8         19920.                   74.0     3.77
+#>  7 Argentina                 78.3         13651.                   73.2     5.11
+#>  8 Armenia                   76.1          7018.                   72.3     3.80
+#>  9 Australia                 83.1         65100.                   80.0     3.13
+#> 10 Austria                   82.3         52085.                   78.3     4.02
+#> # ℹ 178 more rows
+#> # ℹ abbreviated name: ¹​life_expectancy_2022_hat
 
-# Create training and test set based on mtcars:
-training_set <- mtcars %>%
+# Create training and test set based on un_member_states_2024:
+training_set <- un_member_states_2024 %>%
   sample_frac(0.5)
-test_set <- mtcars %>%
-  anti_join(training_set, by = "automobile")
+test_set <- un_member_states_2024 %>%
+  anti_join(training_set, by = "country")
 
 # Fit model to training set:
-mpg_model_train <- lm(mpg ~ cyl, data = training_set)
+life_exp_model_train <- lm(
+  life_expectancy_2022 ~ gdp_per_capita,
+  data = training_set
+)
 
 # Make predictions on test set:
-get_regression_points(mpg_model_train, newdata = test_set, ID = "automobile")
-#> # A tibble: 16 × 5
-#>    automobile            mpg   cyl mpg_hat residual
-#>    <chr>               <dbl> <dbl>   <dbl>    <dbl>
-#>  1 Mazda RX4            21       6    20.4    0.629
-#>  2 Datsun 710           22.8     4    25.8   -2.96 
-#>  3 Duster 360           14.3     8    15.0   -0.684
-#>  4 Merc 240D            24.4     4    25.8   -1.36 
-#>  5 Merc 280             19.2     6    20.4   -1.17 
-#>  6 Merc 450SLC          15.2     8    15.0    0.216
-#>  7 Lincoln Continental  10.4     8    15.0   -4.58 
-#>  8 Chrysler Imperial    14.7     8    15.0   -0.284
-#>  9 Fiat 128             32.4     4    25.8    6.64 
-#> 10 Honda Civic          30.4     4    25.8    4.64 
-#> 11 Toyota Corolla       33.9     4    25.8    8.14 
-#> 12 Toyota Corona        21.5     4    25.8   -4.26 
-#> 13 Pontiac Firebird     19.2     8    15.0    4.22 
-#> 14 Fiat X1-9            27.3     4    25.8    1.54 
-#> 15 Ford Pantera L       15.8     8    15.0    0.816
-#> 16 Volvo 142E           21.4     4    25.8   -4.36 
+get_regression_points(life_exp_model_train, newdata = test_set, ID = "country")
+#> # A tibble: 94 × 5
+#>    country   life_expectancy_2022 gdp_per_capita life_expectancy_2022…¹ residual
+#>    <chr>                    <dbl>          <dbl>                  <dbl>    <dbl>
+#>  1 Afghanis…                 53.6           356.                   72.4  -18.7  
+#>  2 Algeria                   78.0          4343.                   72.9    5.14 
+#>  3 Antigua …                 77.8         19920.                   74.8    3.00 
+#>  4 Barbados                  78.6         20239.                   74.8    3.71 
+#>  5 Belarus                   74.3          7888.                   73.3    0.96 
+#>  6 Belize                    75.8          6984.                   73.2    2.61 
+#>  7 Benin                     62.2          1303.                   72.5  -10.3  
+#>  8 Bhutan                    72.3          3560.                   72.8   -0.479
+#>  9 Bolivia                   72.5          3600.                   72.8   -0.294
+#> 10 Burkina …                 63.4           830.                   72.5   -9.01 
+#> # ℹ 84 more rows
+#> # ℹ abbreviated name: ¹​life_expectancy_2022_hat
 ```

@@ -1,4 +1,4 @@
-## moderndive R Package ![](https://github.com/moderndive/moderndive/blob/master/images/hex_blue_text.png?raw=true)
+## moderndive R Package ![moderndive hex sticker logo](https://github.com/moderndive/moderndive/blob/master/images/hex_blue_text.png?raw=true)
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive)
 [![DOI](https://zenodo.org/badge/115030738.svg)](https://zenodo.org/badge/latestdoi/115030738)
@@ -38,12 +38,14 @@ paper](https://doi.org/10.21105/jose.00115).
 Get the released version from CRAN:
 
 ``` r
+
 install.packages("moderndive")
 ```
 
 Or the development version from GitHub:
 
 ``` r
+
 # If you haven't installed remotes yet, do so:
 # install.packages("remotes")
 remotes::install_github("moderndive/moderndive")
@@ -52,6 +54,7 @@ remotes::install_github("moderndive/moderndive")
 ## Basic usage
 
 ``` r
+
 library(moderndive)
 score_model <- lm(score ~ age, data = evals)
 ```
@@ -59,6 +62,7 @@ score_model <- lm(score ~ age, data = evals)
 1.  Get a tidy regression table **with confidence intervals**:
 
     ``` r
+
     get_regression_table(score_model)
     ```
 
@@ -75,6 +79,7 @@ score_model <- lm(score ~ age, data = evals)
     frame:
 
     ``` r
+
     get_regression_points(score_model)
     ```
 
@@ -99,6 +104,7 @@ score_model <- lm(score ~ age, data = evals)
     R-squared adjusted but also the (root) mean-squared error:
 
     ``` r
+
     get_regression_summaries(score_model)
     ```
 
@@ -110,10 +116,11 @@ score_model <- lm(score ~ age, data = evals)
     ```
 
 4.  Visualize parallel slopes models using the
-    [`geom_parallel_slopes()`](moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
+    [`geom_parallel_slopes()`](https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
     custom `ggplot2` geometry:
 
     ``` r
+
     library(ggplot2)
     ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
       geom_point() +
@@ -140,7 +147,7 @@ designed `moderndive` with these students in mind.
 ## Contributor code of conduct
 
 Please note that this project is released with a [Contributor Code of
-Conduct](moderndive.github.io/moderndive/CONTRIBUTING.md). By
+Conduct](https://moderndive.github.io/moderndive/CONTRIBUTING.md). By
 participating in this project you agree to abide by its terms.
 
 ------------------------------------------------------------------------
@@ -205,10 +212,11 @@ deficient in an introductory statistics setting because:
 
 Instead of [`summary()`](https://rdrr.io/r/base/summary.html), let’s use
 the
-[`get_regression_table()`](moderndive.github.io/moderndive/reference/get_regression_table.md)
+[`get_regression_table()`](https://moderndive.github.io/moderndive/reference/get_regression_table.md)
 function:
 
 ``` r
+
 get_regression_table(score_model)
 ```
 
@@ -228,6 +236,7 @@ column. Note the confidence level is defaulted to 95%; this default can
 be changed using the `conf.level` argument:
 
 ``` r
+
 get_regression_table(score_model, conf.level = 0.99)
 ```
 
@@ -252,6 +261,7 @@ Validated](https://stats.stackexchange.com/questions/27511/extract-standard-erro
 suggesting we run:
 
 ``` r
+
 sqrt(diag(vcov(score_model)))
 ```
 
@@ -269,6 +279,7 @@ columns using the
 from the `dplyr` package:
 
 ``` r
+
 library(dplyr)
 get_regression_table(score_model) %>%
   pull(std_error)
@@ -281,6 +292,7 @@ get_regression_table(score_model) %>%
 or equivalently you can use the `$` sign operator from base R:
 
 ``` r
+
 get_regression_table(score_model)$std_error
 ```
 
@@ -295,6 +307,7 @@ regression tables in R Markdown documents, instead of tables written in
 jarring computer output font:
 
 ``` r
+
 library(knitr)
 get_regression_table(score_model) %>%
   kable()
@@ -312,6 +325,7 @@ such as the fitted/predicted values and the residuals? (Note we only
 display the first 10 out of 463 of such values for brevity’s sake.)
 
 ``` r
+
 fitted(score_model)
 ```
 
@@ -323,6 +337,7 @@ fitted(score_model)
 ```
 
 ``` r
+
 residuals(score_model)
 ```
 
@@ -338,9 +353,10 @@ variable `score` in `evals`, the fitted/predicted values `score_hat`,
 and `residual` floating around in separate vectors? Since each
 observation relates to the same course, we argue it makes more sense to
 organize them together in the same data frame using
-[`get_regression_points()`](moderndive.github.io/moderndive/reference/get_regression_points.md):
+[`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md):
 
 ``` r
+
 score_model_points <- get_regression_points(score_model)
 score_model_points
 ```
@@ -376,6 +392,7 @@ example, we can check for the normality of residuals using the histogram
 of residuals shown in .
 
 ``` r
+
 # Code to visualize distribution of residuals:
 ggplot(score_model_points, aes(x = residual)) +
   geom_histogram(bins = 20) +
@@ -397,6 +414,7 @@ heteroskedasticity violates one of the assumptions of inference for
 linear regression.
 
 ``` r
+
 # Code to visualize partial residual plot over age:
 ggplot(score_model_points, aes(x = age, y = residual)) +
   geom_point() +
@@ -413,18 +431,19 @@ Partial residual residual plot over age.
 With the fields of machine learning and artificial intelligence gaining
 prominence, the importance of predictive modeling cannot be understated.
 Therefore, we’ve designed the
-[`get_regression_points()`](moderndive.github.io/moderndive/reference/get_regression_points.md)
+[`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md)
 function to allow for a `newdata` argument to quickly apply a previously
 fitted model to new observations.
 
 Let’s create an artificial “new” dataset consisting of two instructors
 of age 39 and 42 and save it in a tibble data frame called `new_prof`.
 We then set the `newdata` argument to
-[`get_regression_points()`](moderndive.github.io/moderndive/reference/get_regression_points.md)
+[`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md)
 to apply our previously fitted model `score_model` to this new data,
 where `score_hat` holds the corresponding fitted/predicted values.
 
 ``` r
+
 new_prof <- tibble(age = c(39, 42))
 get_regression_points(score_model, newdata = new_prof)
 ```
@@ -450,7 +469,7 @@ House prices Kaggle competition homepage.
 This Kaggle competition requires you to fit/train a model to the
 provided `train.csv` training set to make predictions of house prices in
 the provided `test.csv` test set. We present an application of the
-[`get_regression_points()`](moderndive.github.io/moderndive/reference/get_regression_points.md)
+[`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md)
 function allowing students to participate in this Kaggle competition. It
 will:
 
@@ -459,12 +478,13 @@ will:
     the training data.
 3.  Make predictions on the test data and write them to a
     `submission.csv` file that can be submitted to Kaggle using
-    [`get_regression_points()`](moderndive.github.io/moderndive/reference/get_regression_points.md).
+    [`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md).
     Note the use of the `ID` argument to use the `id` variable in `test`
     to identify the rows (a requirement of Kaggle competition
     submissions).
 
 ``` r
+
 library(readr)
 library(dplyr)
 library(moderndive)
@@ -516,6 +536,7 @@ we define model “complexity/simplicity” in terms of the number of
 parameters in the corresponding regression tables:
 
 ``` r
+
 # Regression table for interaction model:
 interaction_evals <- lm(score ~ age * ethnicity, data = evals)
 get_regression_table(interaction_evals)
@@ -532,6 +553,7 @@ get_regression_table(interaction_evals)
 ```
 
 ``` r
+
 # Regression table for parallel slopes model:
 parallel_slopes_evals <- lm(score ~ age + ethnicity, data = evals)
 get_regression_table(parallel_slopes_evals)
@@ -560,6 +582,7 @@ involving Massachusetts USA public high schools.\[3\] Let’s plot both
 the interaction and parallel slopes models in .
 
 ``` r
+
 # Code to plot interaction and parallel slopes models for MA_schools
 ggplot(
   MA_schools,
@@ -597,6 +620,7 @@ as opposed to the 6 for the interaction model, reflecting its higher
 degree of “model simplicity.”
 
 ``` r
+
 # Regression table for interaction model:
 interaction_MA <-
   lm(average_sat_math ~ perc_disadvan * size, data = MA_schools)
@@ -616,6 +640,7 @@ get_regression_table(interaction_MA)
 ```
 
 ``` r
+
 # Regression table for parallel slopes model:
 parallel_slopes_MA <-
   lm(average_sat_math ~ perc_disadvan + size, data = MA_schools)
@@ -680,10 +705,11 @@ Recall the output of the standard
 Say we wanted to extract the scalar model summaries at the bottom of
 this output, such as R-squared, R-squared adjusted, the F-statistic, and
 the degrees of freedom `df`. We can do so using the
-[`get_regression_summaries()`](moderndive.github.io/moderndive/reference/get_regression_summaries.md)
+[`get_regression_summaries()`](https://moderndive.github.io/moderndive/reference/get_regression_summaries.md)
 function.
 
 ``` r
+
 get_regression_summaries(score_model)
 ```
 
@@ -710,10 +736,10 @@ wrappers of functions from the `broom` package for converting
 statistical analysis objects into tidy tibbles along with a few added
 tweaks, but with the introductory statistics student in mind:
 
-1.  [`get_regression_table()`](moderndive.github.io/moderndive/reference/get_regression_table.md)
+1.  [`get_regression_table()`](https://moderndive.github.io/moderndive/reference/get_regression_table.md)
     is a wrapper for
     [`broom::tidy()`](https://generics.r-lib.org/reference/tidy.html).
-2.  [`get_regression_points()`](moderndive.github.io/moderndive/reference/get_regression_points.md)
+2.  [`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md)
     is a wrapper for
     [`broom::augment()`](https://generics.r-lib.org/reference/augment.html).
 3.  `get_regression_summaries` is a wrapper for
@@ -729,22 +755,23 @@ questions at the outset of the article?
     `broom` package function names `tidy()`, `augment()`, and
     `glance()`. To make them more user-friendly, the `moderndive`
     package wrappers have much more intuitively named
-    [`get_regression_table()`](moderndive.github.io/moderndive/reference/get_regression_table.md),
-    [`get_regression_points()`](moderndive.github.io/moderndive/reference/get_regression_points.md),
+    [`get_regression_table()`](https://moderndive.github.io/moderndive/reference/get_regression_table.md),
+    [`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md),
     and
-    [`get_regression_summaries()`](moderndive.github.io/moderndive/reference/get_regression_summaries.md).
+    [`get_regression_summaries()`](https://moderndive.github.io/moderndive/reference/get_regression_summaries.md).
 3.  The variables included in the outputs of the above 3 `broom`
     functions are not all applicable to an introductory statistics
     students and of those that were, we found they were not intuitive
     for new R users. We therefore cut out some of the variables from the
     output and renamed some of the remaining variables. For example,
     compare the outputs of the
-    [`get_regression_points()`](moderndive.github.io/moderndive/reference/get_regression_points.md)
+    [`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md)
     wrapper function and the parent
     [`broom::augment()`](https://generics.r-lib.org/reference/augment.html)
     function.
 
 ``` r
+
 get_regression_points(score_model)
 broom::augment(score_model)
 ```
@@ -756,55 +783,58 @@ found on
 ### Custom geometries
 
 The
-[`geom_parallel_slopes()`](moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
+[`geom_parallel_slopes()`](https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
 is a custom built `geom` extension to the `ggplot2` package. For
 example, the `ggplot2` webpage page gives
 [instructions](https://ggplot2.tidyverse.org/articles/extending-ggplot2.html)
 on how to create such extensions. The source code for
-[`geom_parallel_slopes()`](moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
+[`geom_parallel_slopes()`](https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
 written by [Evgeni Chasnovski](https://github.com/echasnovski) can be
 found on
 [GitHub](https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R).
 
 1.  For details on the remaining 5 variables, see the help file by
     running
-    [`?evals`](moderndive.github.io/moderndive/reference/evals.md).
+    [`?evals`](https://moderndive.github.io/moderndive/reference/evals.md).
 
 2.  Note that `gender` was collected as a binary variable at the time of
     the study (2005).
 
 3.  For more details on this dataset, see the help file by running
-    [`?MA_schools`](moderndive.github.io/moderndive/reference/MA_schools.md).
+    [`?MA_schools`](https://moderndive.github.io/moderndive/reference/MA_schools.md).
 
 # Package index
 
 ## Functions
 
-- [`geom_categorical_model()`](moderndive.github.io/moderndive/reference/geom_categorical_model.md)
+- [`geom_categorical_model()`](https://moderndive.github.io/moderndive/reference/geom_categorical_model.md)
   : Regression model with one categorical explanatory/predictor variable
 
-- [`geom_parallel_slopes()`](moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
+- [`geom_parallel_slopes()`](https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
   : Parallel slopes regression model
 
-- [`get_correlation()`](moderndive.github.io/moderndive/reference/get_correlation.md)
+- [`get_correlation()`](https://moderndive.github.io/moderndive/reference/get_correlation.md)
   : Get correlation value in a tidy way
 
-- [`get_regression_points()`](moderndive.github.io/moderndive/reference/get_regression_points.md)
+- [`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md)
   : Get regression points
 
-- [`get_regression_summaries()`](moderndive.github.io/moderndive/reference/get_regression_summaries.md)
+- [`get_regression_summaries()`](https://moderndive.github.io/moderndive/reference/get_regression_summaries.md)
   : Get regression summary values
 
-- [`get_regression_table()`](moderndive.github.io/moderndive/reference/get_regression_table.md)
+- [`get_regression_table()`](https://moderndive.github.io/moderndive/reference/get_regression_table.md)
   : Get regression table
 
-- [`gg_parallel_slopes()`](moderndive.github.io/moderndive/reference/gg_parallel_slopes.md)
+- [`gg_parallel_slopes()`](https://moderndive.github.io/moderndive/reference/gg_parallel_slopes.md)
   : Plot parallel slopes model
 
-- [`pop_sd()`](moderndive.github.io/moderndive/reference/pop_sd.md) :
-  Calculate Population Standard Deviation
+- [`plot_3d_regression()`](https://moderndive.github.io/moderndive/reference/plot_3d_regression.md)
+  : Interactive 3D scatterplot with a fitted regression plane
 
-- [`tidy_summary()`](moderndive.github.io/moderndive/reference/tidy_summary.md)
+- [`pop_sd()`](https://moderndive.github.io/moderndive/reference/pop_sd.md)
+  : Calculate Population Standard Deviation
+
+- [`tidy_summary()`](https://moderndive.github.io/moderndive/reference/tidy_summary.md)
   :
 
   This function calculates the five-number summary (minimum, first
@@ -815,134 +845,137 @@ found on
   summary. The `type` column indicates whether the data is numeric,
   character, factor, or logical.
 
+- [`View()`](https://moderndive.github.io/moderndive/reference/View.md)
+  : View a data object inline when not in an interactive R session
+
 ## Datasets
 
-- [`alaska_flights`](moderndive.github.io/moderndive/reference/alaska_flights.md)
+- [`alaska_flights`](https://moderndive.github.io/moderndive/reference/alaska_flights.md)
   : Alaska flights data
 
-- [`amazon_books`](moderndive.github.io/moderndive/reference/amazon_books.md)
+- [`amazon_books`](https://moderndive.github.io/moderndive/reference/amazon_books.md)
   : Sample of Amazon books
 
-- [`avocados`](moderndive.github.io/moderndive/reference/avocados.md) :
-  Avocado Prices by US Region
+- [`avocados`](https://moderndive.github.io/moderndive/reference/avocados.md)
+  : Avocado Prices by US Region
 
-- [`babies`](moderndive.github.io/moderndive/reference/babies.md) : Data
-  on maternal smoking and infant health
+- [`babies`](https://moderndive.github.io/moderndive/reference/babies.md)
+  : Data on maternal smoking and infant health
 
-- [`coffee_ratings`](moderndive.github.io/moderndive/reference/coffee_ratings.md)
+- [`coffee_ratings`](https://moderndive.github.io/moderndive/reference/coffee_ratings.md)
   : Data from the Coffee Quality Institute's review pages in January
   2018
 
-- [`early_january_weather`](moderndive.github.io/moderndive/reference/early_january_weather.md)
+- [`early_january_weather`](https://moderndive.github.io/moderndive/reference/early_january_weather.md)
   : Early January hourly weather data
 
-- [`ev_charging`](moderndive.github.io/moderndive/reference/ev_charging.md)
+- [`ev_charging`](https://moderndive.github.io/moderndive/reference/ev_charging.md)
   : Electric vehicle charging sessions for a workplace charging program
 
-- [`ipf_lifts`](moderndive.github.io/moderndive/reference/ipf_lifts.md)
+- [`ipf_lifts`](https://moderndive.github.io/moderndive/reference/ipf_lifts.md)
   : International Power Lifting Results A subset of international
   powerlifting results.
 
-- [`ma_traffic_2020_vs_2019`](moderndive.github.io/moderndive/reference/ma_traffic_2020_vs_2019.md)
+- [`ma_traffic_2020_vs_2019`](https://moderndive.github.io/moderndive/reference/ma_traffic_2020_vs_2019.md)
   : Massachusetts 2020 vs. 2019 Traffic Data Comparison
 
-- [`mario_kart_auction`](moderndive.github.io/moderndive/reference/mario_kart_auction.md)
+- [`mario_kart_auction`](https://moderndive.github.io/moderndive/reference/mario_kart_auction.md)
   : Data from Mario Kart Ebay auctions
 
-- [`mass_traffic_2020`](moderndive.github.io/moderndive/reference/mass_traffic_2020.md)
+- [`mass_traffic_2020`](https://moderndive.github.io/moderndive/reference/mass_traffic_2020.md)
   : 2020 road traffic volume and crash level date for 13 Massachusetts
   counties
 
-- [`saratoga_houses`](moderndive.github.io/moderndive/reference/saratoga_houses.md)
+- [`saratoga_houses`](https://moderndive.github.io/moderndive/reference/saratoga_houses.md)
   : House Prices and Properties in Saratoga, New York
 
-- [`DD_vs_SB`](moderndive.github.io/moderndive/reference/DD_vs_SB.md) :
-  Dunkin Donuts vs Starbucks
+- [`DD_vs_SB`](https://moderndive.github.io/moderndive/reference/DD_vs_SB.md)
+  : Dunkin Donuts vs Starbucks
 
-- [`MA_schools`](moderndive.github.io/moderndive/reference/MA_schools.md)
+- [`MA_schools`](https://moderndive.github.io/moderndive/reference/MA_schools.md)
   : Massachusetts Public High Schools Data
 
-- [`bowl`](moderndive.github.io/moderndive/reference/bowl.md) : A
-  sampling bowl of red and white balls
+- [`bowl`](https://moderndive.github.io/moderndive/reference/bowl.md) :
+  A sampling bowl of red and white balls
 
-- [`bowl_sample_1`](moderndive.github.io/moderndive/reference/bowl_sample_1.md)
+- [`bowl_sample_1`](https://moderndive.github.io/moderndive/reference/bowl_sample_1.md)
   : Tactile sample of size 50 from a bowl of balls
 
-- [`bowl_samples`](moderndive.github.io/moderndive/reference/bowl_samples.md)
+- [`bowl_samples`](https://moderndive.github.io/moderndive/reference/bowl_samples.md)
   : Sampling from a bowl of balls
 
-- [`evals`](moderndive.github.io/moderndive/reference/evals.md) :
-  Teaching evaluations at the UT Austin
+- [`evals`](https://moderndive.github.io/moderndive/reference/evals.md)
+  : Teaching evaluations at the UT Austin
 
-- [`movies_sample`](moderndive.github.io/moderndive/reference/movies_sample.md)
+- [`movies_sample`](https://moderndive.github.io/moderndive/reference/movies_sample.md)
   : Random sample of 68 action and romance movies
 
-- [`mythbusters_yawn`](moderndive.github.io/moderndive/reference/mythbusters_yawn.md)
+- [`mythbusters_yawn`](https://moderndive.github.io/moderndive/reference/mythbusters_yawn.md)
   : Data from Mythbusters' study on contagiousness of yawning
 
-- [`orig_pennies_sample`](moderndive.github.io/moderndive/reference/orig_pennies_sample.md)
+- [`orig_pennies_sample`](https://moderndive.github.io/moderndive/reference/orig_pennies_sample.md)
   :
 
   A random sample of 40 pennies sampled from the `pennies` data frame
 
-- [`pennies`](moderndive.github.io/moderndive/reference/pennies.md) : A
-  population of 800 pennies sampled in 2011
+- [`pennies`](https://moderndive.github.io/moderndive/reference/pennies.md)
+  : A population of 800 pennies sampled in 2011
 
-- [`pennies_resamples`](moderndive.github.io/moderndive/reference/pennies_resamples.md)
+- [`pennies_resamples`](https://moderndive.github.io/moderndive/reference/pennies_resamples.md)
   : Bootstrap resamples of a sample of 50 pennies
 
-- [`pennies_sample`](moderndive.github.io/moderndive/reference/pennies_sample.md)
+- [`pennies_sample`](https://moderndive.github.io/moderndive/reference/pennies_sample.md)
   : A sample of 50 pennies
 
-- [`promotions`](moderndive.github.io/moderndive/reference/promotions.md)
+- [`promotions`](https://moderndive.github.io/moderndive/reference/promotions.md)
   : Bank manager recommendations based on (binary) gender
 
-- [`promotions_shuffled`](moderndive.github.io/moderndive/reference/promotions_shuffled.md)
+- [`promotions_shuffled`](https://moderndive.github.io/moderndive/reference/promotions_shuffled.md)
   : One permutation/shuffle of promotions
 
-- [`tactile_prop_red`](moderndive.github.io/moderndive/reference/tactile_prop_red.md)
+- [`tactile_prop_red`](https://moderndive.github.io/moderndive/reference/tactile_prop_red.md)
   : Tactile sampling from a tub of balls
 
-- [`house_prices`](moderndive.github.io/moderndive/reference/house_prices.md)
+- [`house_prices`](https://moderndive.github.io/moderndive/reference/house_prices.md)
   : House Sales in King County, USA
 
-- [`envoy_flights`](moderndive.github.io/moderndive/reference/envoy_flights.md)
+- [`envoy_flights`](https://moderndive.github.io/moderndive/reference/envoy_flights.md)
   : Envoy Air flights data for 2023
 
-- [`almonds_bowl`](moderndive.github.io/moderndive/reference/almonds_bowl.md)
+- [`almonds_bowl`](https://moderndive.github.io/moderndive/reference/almonds_bowl.md)
   : Chocolate-covered almonds data
 
-- [`almonds_sample_100`](moderndive.github.io/moderndive/reference/almonds_sample_100.md)
+- [`almonds_sample_100`](https://moderndive.github.io/moderndive/reference/almonds_sample_100.md)
   : Chocolate-covered almonds data sample of size 100
 
-- [`early_january_2023_weather`](moderndive.github.io/moderndive/reference/early_january_2023_weather.md)
+- [`early_january_2023_weather`](https://moderndive.github.io/moderndive/reference/early_january_2023_weather.md)
   : Early January hourly weather data for 2023
 
-- [`almonds_sample`](moderndive.github.io/moderndive/reference/almonds_sample.md)
+- [`almonds_sample`](https://moderndive.github.io/moderndive/reference/almonds_sample.md)
   : Chocolate-covered almonds data sample of size 25
 
-- [`coffee_quality`](moderndive.github.io/moderndive/reference/coffee_quality.md)
+- [`coffee_quality`](https://moderndive.github.io/moderndive/reference/coffee_quality.md)
   : Coffee Quality Dataset
 
-- [`old_faithful_2024`](moderndive.github.io/moderndive/reference/old_faithful_2024.md)
+- [`old_faithful_2024`](https://moderndive.github.io/moderndive/reference/old_faithful_2024.md)
   : Old Faithful Eruptions Dataset (2024)
 
-- [`spotify_52_original`](moderndive.github.io/moderndive/reference/spotify_52_original.md)
+- [`spotify_52_original`](https://moderndive.github.io/moderndive/reference/spotify_52_original.md)
   : Spotify 52-Track Sample Dataset
 
-- [`spotify_52_shuffled`](moderndive.github.io/moderndive/reference/spotify_52_shuffled.md)
+- [`spotify_52_shuffled`](https://moderndive.github.io/moderndive/reference/spotify_52_shuffled.md)
   : Spotify 52-Track Sample Dataset with 'popular or not' shuffled
 
-- [`spotify_by_genre`](moderndive.github.io/moderndive/reference/spotify_by_genre.md)
+- [`spotify_by_genre`](https://moderndive.github.io/moderndive/reference/spotify_by_genre.md)
   : Spotify by Genre Dataset
 
-- [`un_member_states_2024`](moderndive.github.io/moderndive/reference/un_member_states_2024.md)
+- [`un_member_states_2024`](https://moderndive.github.io/moderndive/reference/un_member_states_2024.md)
   : UN Member States 2024 Dataset
 
 ## Misc
 
-- [`moderndive-package`](moderndive.github.io/moderndive/reference/moderndive.md)
-  [`moderndive`](moderndive.github.io/moderndive/reference/moderndive.md)
+- [`moderndive-package`](https://moderndive.github.io/moderndive/reference/moderndive.md)
+  [`moderndive`](https://moderndive.github.io/moderndive/reference/moderndive.md)
   : moderndive - Tidyverse-Friendly Introductory Linear Regression
 
 # Articles
@@ -951,6 +984,6 @@ found on
 
 - [\`moderndive\`: Datasets and functions for \`tidyverse\`-friendly
   introductory linear
-  regression](moderndive.github.io/moderndive/articles/moderndive.md):
+  regression](https://moderndive.github.io/moderndive/articles/moderndive.md):
 - [Take a \`moderndive\` into introductory linear regression with
-  R](moderndive.github.io/moderndive/articles/paper.md):
+  R](https://moderndive.github.io/moderndive/articles/paper.md):

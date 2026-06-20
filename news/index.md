@@ -1,9 +1,108 @@
 # Changelog
 
-## moderndive 0.7.0.9000
+## moderndive 0.8.0.9000
 
 - Fix issue [\#58](https://github.com/moderndive/moderndive/issues/58)
 - Add in unit tests to bring test coverage back to 100%
+- [`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md)
+  and
+  [`get_regression_summaries()`](https://moderndive.github.io/moderndive/reference/get_regression_summaries.md)
+  now handle in-formula transformations on either side of the model
+  formula (e.g. `lm(log(y) ~ poly(x, 2))`). LHS transforms previously
+  errored; they now produce a sanitized outcome column on the model’s
+  scale (e.g. `log_mpg`, `log_mpg_hat`). RHS transforms no longer leak
+  basis matrices or wrapper columns
+  ([`poly()`](https://rdrr.io/r/stats/poly.html) matrix columns,
+  [`scale()`](https://rdrr.io/r/base/scale.html),
+  [`I()`](https://rdrr.io/r/base/AsIs.html)) into the points table; the
+  original predictor variable is shown instead. The `.rownames` column
+  is no longer leaked into the output.
+- [`get_regression_table()`](https://moderndive.github.io/moderndive/reference/get_regression_table.md),
+  [`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md),
+  and
+  [`get_regression_summaries()`](https://moderndive.github.io/moderndive/reference/get_regression_summaries.md)
+  now accept [`glm()`](https://rdrr.io/r/stats/glm.html) model objects
+  (resolves issue
+  [\#20](https://github.com/moderndive/moderndive/issues/20)). For
+  [`glm()`](https://rdrr.io/r/stats/glm.html) models,
+  [`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md)
+  returns fitted values and residuals on the response scale
+  (e.g. probabilities for logistic regression).
+  [`get_regression_summaries()`](https://moderndive.github.io/moderndive/reference/get_regression_summaries.md)
+  returns a glm-shaped summary (`mse`, `rmse`, `deviance`,
+  `null_deviance`, `aic`, `bic`, `log_lik`, `df_residual`, `df_null`,
+  `nobs`) — R² columns are not included since they don’t apply to glm.
+  [`get_regression_table()`](https://moderndive.github.io/moderndive/reference/get_regression_table.md)
+  gains an `exponentiate` argument (default `FALSE`) for returning
+  odds/rate ratios for log/logit-link models.
+- Internal: factor-level pretty-printing in
+  [`get_regression_table()`](https://moderndive.github.io/moderndive/reference/get_regression_table.md)
+  is now applied to the tidy output’s `term` column rather than
+  `model$coefficients` names, which avoids breaking `confint.glm`’s
+  profile-likelihood refits.
+- Drop redundant `@docType package` tag from `R/moderndive.R` (resolves
+  issue [\#133](https://github.com/moderndive/moderndive/issues/133)).
+  The `"_PACKAGE"` sentinel was already in place, so the
+  `moderndive-package` alias is generated correctly.
+- Fix `pennies_resamples` so the `replicate` column is correctly
+  numbered 1..35 instead of being uniformly `1` (resolves issue
+  [\#130](https://github.com/moderndive/moderndive/issues/130)). The bug
+  was an
+  [`ungroup()`](https://dplyr.tidyverse.org/reference/group_by.html)
+  missing in the `data-raw/process_data_sets.R` pipeline, so
+  `mutate(replicate = 1:n())` ran per-group on a single-row nested
+  tibble. The dataset has been regenerated; row count and structure are
+  otherwise unchanged.
+- New
+  [`View()`](https://moderndive.github.io/moderndive/reference/View.md)
+  wrapper (resolves issue
+  [\#99](https://github.com/moderndive/moderndive/issues/99)). In an
+  interactive R session it behaves identically to
+  [`utils::View()`](https://rdrr.io/r/utils/View.html). In
+  non-interactive contexts (R Markdown, Quarto, scripts) where
+  [`utils::View()`](https://rdrr.io/r/utils/View.html) typically errors,
+  it instead renders an interactive
+  [`DT::datatable()`](https://rdrr.io/pkg/DT/man/datatable.html) inline
+  so documents can still knit/render. `DT` is now in `Imports`. A short
+  [`packageStartupMessage()`](https://rdrr.io/r/base/message.html) is
+  emitted only on non-interactive attach to explain the override;
+  interactive sessions see no extra message. Attaching `moderndive`
+  masks [`utils::View`](https://rdrr.io/r/utils/View.html).
+- Documentation examples now use `moderndive` datasets instead of base R
+  / `ggplot2` ones.
+  [`View()`](https://moderndive.github.io/moderndive/reference/View.md),
+  [`get_correlation()`](https://moderndive.github.io/moderndive/reference/get_correlation.md),
+  [`get_regression_table()`](https://moderndive.github.io/moderndive/reference/get_regression_table.md),
+  [`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md),
+  [`get_regression_summaries()`](https://moderndive.github.io/moderndive/reference/get_regression_summaries.md),
+  [`plot_3d_regression()`](https://moderndive.github.io/moderndive/reference/plot_3d_regression.md),
+  and the package-level overview now use `un_member_states_2024` (with
+  `life_expectancy_2022 ~ gdp_per_capita`-style models).
+  [`geom_categorical_model()`](https://moderndive.github.io/moderndive/reference/geom_categorical_model.md)
+  now uses `evals` (`score ~ rank`) instead of
+  [`ggplot2::mpg`](https://ggplot2.tidyverse.org/reference/mpg.html)
+  (`hwy ~ drv`).
+- `_pkgdown.yml`: site `url:` now includes the `https://` scheme so
+  [`pkgdown::check_pkgdown()`](https://pkgdown.r-lib.org/reference/check_pkgdown.html)
+  matches it against the URL listed in `DESCRIPTION`.
+- `README`: added descriptive `alt` text to the hex-sticker image.
+- [`get_correlation()`](https://moderndive.github.io/moderndive/reference/get_correlation.md)
+  now accepts multiple right-hand-side variables in the formula
+  (e.g. `mpg ~ hp + cyl + wt`) (resolves issue
+  [\#29](https://github.com/moderndive/moderndive/issues/29)). The
+  default output is a long tibble with one row per predictor; pass
+  `wide = TRUE` for one column per predictor. Single-RHS behavior is
+  unchanged. A one-time message points users to `corrr::correlate()` if
+  they want a full pairwise correlation matrix; suppress it with
+  `quiet = TRUE`.
+- New
+  [`plot_3d_regression()`](https://moderndive.github.io/moderndive/reference/plot_3d_regression.md)
+  function for interactive 3D scatterplots with a fitted regression
+  plane (resolves issue
+  [\#27](https://github.com/moderndive/moderndive/issues/27)). Pass a
+  formula `z ~ x + y` and the function returns a
+  \[`plotly`\]\[plotly::plotly\] htmlwidget. `plotly` is in `Suggests`;
+  install it with `install.packages("plotly")` to use this function.
 
 ## moderndive 0.7.0
 
@@ -12,7 +111,7 @@ CRAN release: 2024-09-01
 - Added `un_member_states_2024` data for upcoming ModernDive v2 updates
 - Added `spotify_by_genre` data for upcoming ModernDive v2 updates
 - Added
-  [`tidy_summary()`](moderndive.github.io/moderndive/reference/tidy_summary.md)
+  [`tidy_summary()`](https://moderndive.github.io/moderndive/reference/tidy_summary.md)
   function to summarize data frame columns for upcoming ModernDive v2
   updates
 - Added `old_faithful_2024` data for upcoming ModernDive v2 updates
@@ -106,7 +205,7 @@ CRAN release: 2021-07-21
   regression table to be cleaner
   [\#102](https://github.com/moderndive/moderndive/issues/102)
 - Added explicit `conf.level` argument to
-  [`get_regression_table()`](moderndive.github.io/moderndive/reference/get_regression_table.md)
+  [`get_regression_table()`](https://moderndive.github.io/moderndive/reference/get_regression_table.md)
   inherited from
   [`broom::tidy.lm()`](https://broom.tidymodels.org/reference/tidy.lm.html)
 - Improved main package vignette based on feedback from
@@ -127,21 +226,21 @@ CRAN release: 2020-07-19
 
 - Modified `vignettes/why-moderndive.Rmd` main vignette
 - Updated
-  [`geom_parallel_slopes()`](moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
+  [`geom_parallel_slopes()`](https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
   with new arguments:
   - Use `fullrange=TRUE` to draw regression lines over the entire
     support of the x-axis (by [@wjhopper](https://github.com/wjhopper))
   - Use `level` to set different level of confidence interval shading
     (by [@echasnovski](https://github.com/echasnovski))
 - Added new function
-  [`geom_categorical_model()`](moderndive.github.io/moderndive/reference/geom_categorical_model.md)
+  [`geom_categorical_model()`](https://moderndive.github.io/moderndive/reference/geom_categorical_model.md)
   for visualizing regression models with one categorical
   explanatory/predictor variable (by
   [@wjhopper](https://github.com/wjhopper))
 - Add deprecation warning message to
-  [`gg_parallel_slopes()`](moderndive.github.io/moderndive/reference/gg_parallel_slopes.md)
+  [`gg_parallel_slopes()`](https://moderndive.github.io/moderndive/reference/gg_parallel_slopes.md)
   directing users to use
-  [`geom_parallel_slopes()`](moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
+  [`geom_parallel_slopes()`](https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
   instead (by [@mariumtapal](https://github.com/mariumtapal))
 
 ## moderndive 0.4.0
@@ -149,20 +248,20 @@ CRAN release: 2020-07-19
 CRAN release: 2019-11-04
 
 - Added
-  [`geom_parallel_slopes()`](moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
+  [`geom_parallel_slopes()`](https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
   geom extension to `ggplot2` package to plot parallel slopes regression
   models with one numerical and one categorical variable (this is not
   possible using
   [`ggplot2::geom_smooth()`](https://ggplot2.tidyverse.org/reference/geom_smooth.html)).
   Note this renders
-  [`gg_parallel_slopes()`](moderndive.github.io/moderndive/reference/gg_parallel_slopes.md)
+  [`gg_parallel_slopes()`](https://moderndive.github.io/moderndive/reference/gg_parallel_slopes.md)
   function added in v0.3.0 obsolete.
 - Added example of
-  [`geom_parallel_slopes()`](moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
+  [`geom_parallel_slopes()`](https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
   to “Why `moderndive`?” vignette
 - Added student names (permission obtained in all cases) to
   `pennies_resamples` data frame columns
-- [`get_correlation()`](moderndive.github.io/moderndive/reference/get_correlation.md)
+- [`get_correlation()`](https://moderndive.github.io/moderndive/reference/get_correlation.md)
   now:
   - Respects
     [`dplyr::group_by()`](https://dplyr.tidyverse.org/reference/group_by.html)
@@ -177,11 +276,11 @@ CRAN release: 2019-07-18
 
 - Added minimally viable “parallel slopes” regression model plotting
   function
-  [`gg_parallel_slopes()`](moderndive.github.io/moderndive/reference/gg_parallel_slopes.md).
+  [`gg_parallel_slopes()`](https://moderndive.github.io/moderndive/reference/gg_parallel_slopes.md).
   In the future we hope to define a new `ggplot2` geom.
 - Added “Why `moderndive`?” vignette
 - Added ID argument to
-  [`get_regression_points()`](moderndive.github.io/moderndive/reference/get_regression_points.md)
+  [`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md)
   to return a column that identifies the observational units/rows
 - Datasets:
   - Added `DD_vs_SB`: Dunkin Donuts and Starbucks in Eastern
@@ -217,16 +316,16 @@ Updated package for:
 
 - Use in DataCamp’s Modeling with Data in the Tidyverse, in particular
   added `evals` and `house_prices` datasets and updated
-  [`get_regression_table()`](moderndive.github.io/moderndive/reference/get_regression_table.md)
+  [`get_regression_table()`](https://moderndive.github.io/moderndive/reference/get_regression_table.md)
   and
-  [`get_regression_points()`](moderndive.github.io/moderndive/reference/get_regression_points.md)
+  [`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md)
   functions.
 - v0.4.0 of [ModernDive](https://moderndive.com/) textbook
 
 Details:
 
 - Created
-  [`get_correlation()`](moderndive.github.io/moderndive/reference/get_correlation.md)
+  [`get_correlation()`](https://moderndive.github.io/moderndive/reference/get_correlation.md)
   function to omit `$` syntax and return a data frame
 - Import
   [`infer::rep_sample_n()`](https://infer.tidymodels.org/reference/rep_sample_n.html)
@@ -235,9 +334,9 @@ Details:
 - Added `evals`, `house_prices`, `tactile_prop_red`, `pennies_sample`
   and `mythbusters_yawn` datasets
 - Added mean squared error and root mean squared error to output of
-  [`get_regression_summaries()`](moderndive.github.io/moderndive/reference/get_regression_summaries.md)
+  [`get_regression_summaries()`](https://moderndive.github.io/moderndive/reference/get_regression_summaries.md)
 - Added `newdata` argument to
-  [`get_regression_points()`](moderndive.github.io/moderndive/reference/get_regression_points.md).
+  [`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md).
   When:
   - Original outcome variable is included in `newdata`, output it as
     well as `residual` (See Issue 17).
@@ -249,7 +348,7 @@ Details:
 CRAN release: 2018-01-22
 
 Fixed broken url in
-[`?bowl_samples`](moderndive.github.io/moderndive/reference/bowl_samples.md)
+[`?bowl_samples`](https://moderndive.github.io/moderndive/reference/bowl_samples.md)
 
 ## moderndive 0.1.0
 

@@ -1,4 +1,4 @@
-## moderndive R Package ![](https://github.com/moderndive/moderndive/blob/master/images/hex_blue_text.png?raw=true)
+## moderndive R Package ![moderndive hex sticker logo](https://github.com/moderndive/moderndive/blob/master/images/hex_blue_text.png?raw=true)
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive)
 [![DOI](https://zenodo.org/badge/115030738.svg)](https://zenodo.org/badge/latestdoi/115030738)
@@ -38,12 +38,14 @@ paper](https://doi.org/10.21105/jose.00115).
 Get the released version from CRAN:
 
 ``` r
+
 install.packages("moderndive")
 ```
 
 Or the development version from GitHub:
 
 ``` r
+
 # If you haven't installed remotes yet, do so:
 # install.packages("remotes")
 remotes::install_github("moderndive/moderndive")
@@ -52,6 +54,7 @@ remotes::install_github("moderndive/moderndive")
 ## Basic usage
 
 ``` r
+
 library(moderndive)
 score_model <- lm(score ~ age, data = evals)
 ```
@@ -59,6 +62,7 @@ score_model <- lm(score ~ age, data = evals)
 1.  Get a tidy regression table **with confidence intervals**:
 
     ``` r
+
     get_regression_table(score_model)
     ```
 
@@ -75,6 +79,7 @@ score_model <- lm(score ~ age, data = evals)
     frame:
 
     ``` r
+
     get_regression_points(score_model)
     ```
 
@@ -99,6 +104,7 @@ score_model <- lm(score ~ age, data = evals)
     R-squared adjusted but also the (root) mean-squared error:
 
     ``` r
+
     get_regression_summaries(score_model)
     ```
 
@@ -110,10 +116,11 @@ score_model <- lm(score ~ age, data = evals)
     ```
 
 4.  Visualize parallel slopes models using the
-    [`geom_parallel_slopes()`](moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
+    [`geom_parallel_slopes()`](https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
     custom `ggplot2` geometry:
 
     ``` r
+
     library(ggplot2)
     ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
       geom_point() +
@@ -140,7 +147,7 @@ designed `moderndive` with these students in mind.
 ## Contributor code of conduct
 
 Please note that this project is released with a [Contributor Code of
-Conduct](moderndive.github.io/moderndive/CONTRIBUTING.md). By
+Conduct](https://moderndive.github.io/moderndive/CONTRIBUTING.md). By
 participating in this project you agree to abide by its terms.
 
 ------------------------------------------------------------------------
@@ -205,10 +212,11 @@ deficient in an introductory statistics setting because:
 
 Instead of [`summary()`](https://rdrr.io/r/base/summary.html), let’s use
 the
-[`get_regression_table()`](moderndive.github.io/moderndive/reference/get_regression_table.md)
+[`get_regression_table()`](https://moderndive.github.io/moderndive/reference/get_regression_table.md)
 function:
 
 ``` r
+
 get_regression_table(score_model)
 ```
 
@@ -228,6 +236,7 @@ column. Note the confidence level is defaulted to 95%; this default can
 be changed using the `conf.level` argument:
 
 ``` r
+
 get_regression_table(score_model, conf.level = 0.99)
 ```
 
@@ -252,6 +261,7 @@ Validated](https://stats.stackexchange.com/questions/27511/extract-standard-erro
 suggesting we run:
 
 ``` r
+
 sqrt(diag(vcov(score_model)))
 ```
 
@@ -269,6 +279,7 @@ columns using the
 from the `dplyr` package:
 
 ``` r
+
 library(dplyr)
 get_regression_table(score_model) %>%
   pull(std_error)
@@ -281,6 +292,7 @@ get_regression_table(score_model) %>%
 or equivalently you can use the `$` sign operator from base R:
 
 ``` r
+
 get_regression_table(score_model)$std_error
 ```
 
@@ -295,6 +307,7 @@ regression tables in R Markdown documents, instead of tables written in
 jarring computer output font:
 
 ``` r
+
 library(knitr)
 get_regression_table(score_model) %>%
   kable()
@@ -312,6 +325,7 @@ such as the fitted/predicted values and the residuals? (Note we only
 display the first 10 out of 463 of such values for brevity’s sake.)
 
 ``` r
+
 fitted(score_model)
 ```
 
@@ -323,6 +337,7 @@ fitted(score_model)
 ```
 
 ``` r
+
 residuals(score_model)
 ```
 
@@ -338,9 +353,10 @@ variable `score` in `evals`, the fitted/predicted values `score_hat`,
 and `residual` floating around in separate vectors? Since each
 observation relates to the same course, we argue it makes more sense to
 organize them together in the same data frame using
-[`get_regression_points()`](moderndive.github.io/moderndive/reference/get_regression_points.md):
+[`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md):
 
 ``` r
+
 score_model_points <- get_regression_points(score_model)
 score_model_points
 ```
@@ -376,6 +392,7 @@ example, we can check for the normality of residuals using the histogram
 of residuals shown in .
 
 ``` r
+
 # Code to visualize distribution of residuals:
 ggplot(score_model_points, aes(x = residual)) +
   geom_histogram(bins = 20) +
@@ -397,6 +414,7 @@ heteroskedasticity violates one of the assumptions of inference for
 linear regression.
 
 ``` r
+
 # Code to visualize partial residual plot over age:
 ggplot(score_model_points, aes(x = age, y = residual)) +
   geom_point() +
@@ -413,18 +431,19 @@ Partial residual residual plot over age.
 With the fields of machine learning and artificial intelligence gaining
 prominence, the importance of predictive modeling cannot be understated.
 Therefore, we’ve designed the
-[`get_regression_points()`](moderndive.github.io/moderndive/reference/get_regression_points.md)
+[`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md)
 function to allow for a `newdata` argument to quickly apply a previously
 fitted model to new observations.
 
 Let’s create an artificial “new” dataset consisting of two instructors
 of age 39 and 42 and save it in a tibble data frame called `new_prof`.
 We then set the `newdata` argument to
-[`get_regression_points()`](moderndive.github.io/moderndive/reference/get_regression_points.md)
+[`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md)
 to apply our previously fitted model `score_model` to this new data,
 where `score_hat` holds the corresponding fitted/predicted values.
 
 ``` r
+
 new_prof <- tibble(age = c(39, 42))
 get_regression_points(score_model, newdata = new_prof)
 ```
@@ -450,7 +469,7 @@ House prices Kaggle competition homepage.
 This Kaggle competition requires you to fit/train a model to the
 provided `train.csv` training set to make predictions of house prices in
 the provided `test.csv` test set. We present an application of the
-[`get_regression_points()`](moderndive.github.io/moderndive/reference/get_regression_points.md)
+[`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md)
 function allowing students to participate in this Kaggle competition. It
 will:
 
@@ -459,12 +478,13 @@ will:
     the training data.
 3.  Make predictions on the test data and write them to a
     `submission.csv` file that can be submitted to Kaggle using
-    [`get_regression_points()`](moderndive.github.io/moderndive/reference/get_regression_points.md).
+    [`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md).
     Note the use of the `ID` argument to use the `id` variable in `test`
     to identify the rows (a requirement of Kaggle competition
     submissions).
 
 ``` r
+
 library(readr)
 library(dplyr)
 library(moderndive)
@@ -516,6 +536,7 @@ we define model “complexity/simplicity” in terms of the number of
 parameters in the corresponding regression tables:
 
 ``` r
+
 # Regression table for interaction model:
 interaction_evals <- lm(score ~ age * ethnicity, data = evals)
 get_regression_table(interaction_evals)
@@ -532,6 +553,7 @@ get_regression_table(interaction_evals)
 ```
 
 ``` r
+
 # Regression table for parallel slopes model:
 parallel_slopes_evals <- lm(score ~ age + ethnicity, data = evals)
 get_regression_table(parallel_slopes_evals)
@@ -560,6 +582,7 @@ involving Massachusetts USA public high schools.\[3\] Let’s plot both
 the interaction and parallel slopes models in .
 
 ``` r
+
 # Code to plot interaction and parallel slopes models for MA_schools
 ggplot(
   MA_schools,
@@ -597,6 +620,7 @@ as opposed to the 6 for the interaction model, reflecting its higher
 degree of “model simplicity.”
 
 ``` r
+
 # Regression table for interaction model:
 interaction_MA <-
   lm(average_sat_math ~ perc_disadvan * size, data = MA_schools)
@@ -616,6 +640,7 @@ get_regression_table(interaction_MA)
 ```
 
 ``` r
+
 # Regression table for parallel slopes model:
 parallel_slopes_MA <-
   lm(average_sat_math ~ perc_disadvan + size, data = MA_schools)
@@ -680,10 +705,11 @@ Recall the output of the standard
 Say we wanted to extract the scalar model summaries at the bottom of
 this output, such as R-squared, R-squared adjusted, the F-statistic, and
 the degrees of freedom `df`. We can do so using the
-[`get_regression_summaries()`](moderndive.github.io/moderndive/reference/get_regression_summaries.md)
+[`get_regression_summaries()`](https://moderndive.github.io/moderndive/reference/get_regression_summaries.md)
 function.
 
 ``` r
+
 get_regression_summaries(score_model)
 ```
 
@@ -710,10 +736,10 @@ wrappers of functions from the `broom` package for converting
 statistical analysis objects into tidy tibbles along with a few added
 tweaks, but with the introductory statistics student in mind:
 
-1.  [`get_regression_table()`](moderndive.github.io/moderndive/reference/get_regression_table.md)
+1.  [`get_regression_table()`](https://moderndive.github.io/moderndive/reference/get_regression_table.md)
     is a wrapper for
     [`broom::tidy()`](https://generics.r-lib.org/reference/tidy.html).
-2.  [`get_regression_points()`](moderndive.github.io/moderndive/reference/get_regression_points.md)
+2.  [`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md)
     is a wrapper for
     [`broom::augment()`](https://generics.r-lib.org/reference/augment.html).
 3.  `get_regression_summaries` is a wrapper for
@@ -729,22 +755,23 @@ questions at the outset of the article?
     `broom` package function names `tidy()`, `augment()`, and
     `glance()`. To make them more user-friendly, the `moderndive`
     package wrappers have much more intuitively named
-    [`get_regression_table()`](moderndive.github.io/moderndive/reference/get_regression_table.md),
-    [`get_regression_points()`](moderndive.github.io/moderndive/reference/get_regression_points.md),
+    [`get_regression_table()`](https://moderndive.github.io/moderndive/reference/get_regression_table.md),
+    [`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md),
     and
-    [`get_regression_summaries()`](moderndive.github.io/moderndive/reference/get_regression_summaries.md).
+    [`get_regression_summaries()`](https://moderndive.github.io/moderndive/reference/get_regression_summaries.md).
 3.  The variables included in the outputs of the above 3 `broom`
     functions are not all applicable to an introductory statistics
     students and of those that were, we found they were not intuitive
     for new R users. We therefore cut out some of the variables from the
     output and renamed some of the remaining variables. For example,
     compare the outputs of the
-    [`get_regression_points()`](moderndive.github.io/moderndive/reference/get_regression_points.md)
+    [`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md)
     wrapper function and the parent
     [`broom::augment()`](https://generics.r-lib.org/reference/augment.html)
     function.
 
 ``` r
+
 get_regression_points(score_model)
 broom::augment(score_model)
 ```
@@ -756,22 +783,22 @@ found on
 ### Custom geometries
 
 The
-[`geom_parallel_slopes()`](moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
+[`geom_parallel_slopes()`](https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
 is a custom built `geom` extension to the `ggplot2` package. For
 example, the `ggplot2` webpage page gives
 [instructions](https://ggplot2.tidyverse.org/articles/extending-ggplot2.html)
 on how to create such extensions. The source code for
-[`geom_parallel_slopes()`](moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
+[`geom_parallel_slopes()`](https://moderndive.github.io/moderndive/reference/geom_parallel_slopes.md)
 written by [Evgeni Chasnovski](https://github.com/echasnovski) can be
 found on
 [GitHub](https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R).
 
 1.  For details on the remaining 5 variables, see the help file by
     running
-    [`?evals`](moderndive.github.io/moderndive/reference/evals.md).
+    [`?evals`](https://moderndive.github.io/moderndive/reference/evals.md).
 
 2.  Note that `gender` was collected as a binary variable at the time of
     the study (2005).
 
 3.  For more details on this dataset, see the help file by running
-    [`?MA_schools`](moderndive.github.io/moderndive/reference/MA_schools.md).
+    [`?MA_schools`](https://moderndive.github.io/moderndive/reference/MA_schools.md).

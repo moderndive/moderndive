@@ -36,4 +36,4 @@ of size n = 50 and 5 variables
 
 ## See also
 
-[`bowl()`](moderndive.github.io/moderndive/reference/bowl.md)
+[`bowl()`](https://moderndive.github.io/moderndive/reference/bowl.md)

@@ -128,39 +128,42 @@ Other contributors:
 library(moderndive)
 
 # Fit regression model:
-mpg_model <- lm(mpg ~ hp, data = mtcars)
+life_exp_model <- lm(
+  life_expectancy_2022 ~ gdp_per_capita,
+  data = un_member_states_2024
+)
 
 # Regression tables:
-get_regression_table(mpg_model)
+get_regression_table(life_exp_model)
 #> # A tibble: 2 × 7
-#>   term      estimate std_error statistic p_value lower_ci upper_ci
-#>   <chr>        <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
-#> 1 intercept   30.1        1.63     18.4        0   26.8     33.4  
-#> 2 hp          -0.068      0.01     -6.74       0   -0.089   -0.048
+#>   term           estimate std_error statistic p_value lower_ci upper_ci
+#>   <chr>             <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
+#> 1 intercept          71.4     0.479    149.         0     70.5     72.4
+#> 2 gdp_per_capita      0       0          9.85       0      0        0  
 
 # Information on each point in a regression:
-get_regression_points(mpg_model)
-#> # A tibble: 32 × 6
-#>       ID   mpg .rownames            hp mpg_hat residual
-#>    <int> <dbl> <chr>             <dbl>   <dbl>    <dbl>
-#>  1     1  21   Mazda RX4           110    22.6   -1.59 
-#>  2     2  21   Mazda RX4 Wag       110    22.6   -1.59 
-#>  3     3  22.8 Datsun 710           93    23.8   -0.954
-#>  4     4  21.4 Hornet 4 Drive      110    22.6   -1.19 
-#>  5     5  18.7 Hornet Sportabout   175    18.2    0.541
-#>  6     6  18.1 Valiant             105    22.9   -4.84 
-#>  7     7  14.3 Duster 360          245    13.4    0.917
-#>  8     8  24.4 Merc 240D            62    25.9   -1.47 
-#>  9     9  22.8 Merc 230             95    23.6   -0.817
-#> 10    10  19.2 Merc 280            123    21.7   -2.51 
-#> # ℹ 22 more rows
+get_regression_points(life_exp_model)
+#> # A tibble: 188 × 5
+#>       ID life_expectancy_2022 gdp_per_capita life_expectancy_2022_hat residual
+#>    <int>                <dbl>          <dbl>                    <dbl>    <dbl>
+#>  1     1                 53.6           356.                     71.5   -17.8 
+#>  2     2                 79.5          6810.                     72.3     7.17
+#>  3     3                 78.0          4343.                     72.0     6.05
+#>  4     4                 83.4         41993.                     76.9     6.49
+#>  5     5                 62.1          3000.                     71.8    -9.69
+#>  6     6                 77.8         19920.                     74.0     3.77
+#>  7     7                 78.3         13651.                     73.2     5.11
+#>  8     8                 76.1          7018.                     72.3     3.80
+#>  9     9                 83.1         65100.                     80.0     3.13
+#> 10    10                 82.3         52085.                     78.3     4.02
+#> # ℹ 178 more rows
 
 # Regression summaries
-get_regression_summaries(mpg_model)
+get_regression_summaries(life_exp_model)
 #> # A tibble: 1 × 9
 #>   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df  nobs
 #>       <dbl>         <dbl> <dbl> <dbl> <dbl>     <dbl>   <dbl> <dbl> <dbl>
-#> 1     0.602         0.589  14.0  3.74  3.86      45.5       0     1    32
+#> 1     0.343         0.339  31.4  5.60  5.63      97.0       0     1   188
 
 # Plotting parallel slopes models
 library(ggplot2)

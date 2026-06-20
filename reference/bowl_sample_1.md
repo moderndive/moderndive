@@ -19,4 +19,4 @@ A data frame of 50 rows representing different balls and 1 variable.
 
 ## See also
 
-[`bowl()`](moderndive.github.io/moderndive/reference/bowl.md)
+[`bowl()`](https://moderndive.github.io/moderndive/reference/bowl.md)

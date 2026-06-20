@@ -25,5 +25,5 @@ A data frame of 50 rows representing 50 sampled pennies and 2 variables
 ## Note
 
 The original `pennies_sample` has been renamed
-[`orig_pennies_sample()`](moderndive.github.io/moderndive/reference/orig_pennies_sample.md)
+[`orig_pennies_sample()`](https://moderndive.github.io/moderndive/reference/orig_pennies_sample.md)
 as of `moderndive` v0.3.0.
