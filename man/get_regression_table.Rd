@@ -9,11 +9,12 @@ get_regression_table(
   conf.level = 0.95,
   digits = 3,
   print = FALSE,
-  default_categorical_levels = FALSE
+  default_categorical_levels = FALSE,
+  exponentiate = FALSE
 )
 }
 \arguments{
-\item{model}{an \code{lm()} model object}
+\item{model}{an \code{lm()} or \code{glm()} model object}
 
 \item{conf.level}{The confidence level to use for the confidence interval
 if \code{conf.int = TRUE}. Must be strictly greater than 0 and less than 1.
@@ -27,6 +28,10 @@ Defaults to 0.95, which corresponds to a 95 percent confidence interval.}
 categorical variables in the term column. Otherwise non-baseline
 categorical variables will be displayed in the format
 "categorical_variable_name-level_name"}
+
+\item{exponentiate}{If TRUE, exponentiate the coefficient estimates and
+confidence intervals. Useful for \code{glm()} models with log or logit links
+(returns rate or odds ratios respectively). Default \code{FALSE}.}
 }
 \value{
 A tibble-formatted regression table along with lower and upper end
@@ -34,21 +39,24 @@ points of all confidence intervals for all parameters \code{lower_ci} and
 \code{upper_ci}; the confidence levels default to 95\\%.
 }
 \description{
-Output regression table for an \code{lm()} regression in "tidy" format. This function
-is a wrapper function for \code{broom::tidy()} and includes confidence
-intervals in the output table by default.
+Output regression table for an \code{lm()} or \code{glm()} model in "tidy" format.
+This function is a wrapper function for \code{broom::tidy()} and includes
+confidence intervals in the output table by default.
 }
 \examples{
 library(moderndive)
 
 # Fit lm() regression:
-mpg_model <- lm(mpg ~ cyl, data = mtcars)
+life_exp_model <- lm(
+  life_expectancy_2022 ~ gdp_per_capita,
+  data = un_member_states_2024
+)
 
 # Get regression table:
-get_regression_table(mpg_model)
+get_regression_table(life_exp_model)
 
 # Vary confidence level of confidence intervals
-get_regression_table(mpg_model, conf.level = 0.99)
+get_regression_table(life_exp_model, conf.level = 0.99)
 }
 \seealso{
 \code{\link[broom:reexports]{tidy()}}, \code{\link[=get_regression_points]{get_regression_points()}}, \code{\link[=get_regression_summaries]{get_regression_summaries()}}

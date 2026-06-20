@@ -284,6 +284,7 @@ pennies_resamples <-
   gather(name, year) %>%
   group_by(name) %>%
   nest() %>%
+  ungroup() %>%
   mutate(replicate = 1:n()) %>%
   select(replicate, everything()) %>%
   unnest(cols = c(data))

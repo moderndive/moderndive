@@ -56,9 +56,18 @@ test_that("variables are in data frame", {
     expected = cor(mtcars$mpg, mtcars$disp)
   )
 
+  # Multi-RHS is supported as of #29 — should NOT error
+  expect_silent(
+    suppressMessages(
+      mtcars %>% get_correlation(formula = mpg ~ disp + hp, quiet = TRUE)
+    )
+  )
+
+  # Multi-RHS still errors when one of the RHS variables is missing
   expect_error(
     mtcars %>%
-      get_correlation(formula = mpg ~ disp + hp)
+      get_correlation(formula = mpg ~ disp + nonexistent, quiet = TRUE),
+    "nonexistent"
   )
 })
 
@@ -145,6 +154,12 @@ test_that("check_formula_args errors on missing lhs or rhs", {
       explanatory_variable = "disp"
     )
   )
+
+  # Multi-variable LHS (e.g. `mpg + cyl ~ disp`) is rejected
+  expect_error(
+    mtcars %>% get_correlation(formula = mpg + cyl ~ disp),
+    "exactly one outcome"
+  )
 })
 
 test_that("get_correlation works with grouped data", {
@@ -175,13 +190,106 @@ test_that("get_correlation forwards extra arguments to cor()", {
   # Use `method = "spearman"` to check that ... is passed through
   out_pearson <- mtcars %>%
     get_correlation(formula = mpg ~ disp)
-  
+
   out_spearman <- mtcars %>%
     get_correlation(formula = mpg ~ disp, method = "spearman")
-  
+
   expect_false(is.na(out_pearson$cor))
   expect_false(is.na(out_spearman$cor))
-  
+
   # Spearman and Pearson should generally differ for these variables
   expect_false(isTRUE(all.equal(out_pearson$cor, out_spearman$cor)))
+})
+
+## ------------------------------------------------------------------
+## Multi-RHS support (issue #29)
+## ------------------------------------------------------------------
+
+test_that("get_correlation with multi-RHS returns long format by default", {
+  res <- suppressMessages(
+    mtcars %>% get_correlation(formula = mpg ~ hp + cyl + wt)
+  )
+
+  expect_s3_class(res, "tbl_df")
+  expect_equal(nrow(res), 3L)
+  expect_named(res, c("predictor", "cor"))
+  expect_setequal(res$predictor, c("hp", "cyl", "wt"))
+
+  # Each correlation matches stats::cor() directly
+  for (v in c("hp", "cyl", "wt")) {
+    expect_equal(
+      res$cor[res$predictor == v],
+      cor(mtcars$mpg, mtcars[[v]]),
+      tolerance = 1e-10
+    )
+  }
+})
+
+test_that("get_correlation with multi-RHS pivots to wide when wide = TRUE", {
+  res <- suppressMessages(
+    mtcars %>% get_correlation(
+      formula = mpg ~ hp + cyl + wt,
+      wide    = TRUE
+    )
+  )
+
+  expect_s3_class(res, "tbl_df")
+  expect_identical(nrow(res), 1L)
+  expect_named(res, c("hp", "cyl", "wt"))
+  expect_equal(res$hp[1], cor(mtcars$mpg, mtcars$hp))
+})
+
+test_that("get_correlation emits corrr message on multi-RHS, suppressible via quiet", {
+  expect_message(
+    mtcars %>% get_correlation(formula = mpg ~ hp + cyl),
+    "corrr::correlate"
+  )
+
+  expect_silent(
+    mtcars %>% get_correlation(formula = mpg ~ hp + cyl, quiet = TRUE)
+  )
+})
+
+test_that("get_correlation single-RHS does NOT emit the corrr message", {
+  # Single-RHS path should be unchanged — no multi-RHS hint
+  expect_silent(
+    mtcars %>% get_correlation(formula = mpg ~ disp)
+  )
+})
+
+test_that("get_correlation multi-RHS works with grouped data", {
+  res_long <- suppressMessages(
+    mtcars %>%
+      group_by(cyl) %>%
+      get_correlation(formula = mpg ~ hp + wt)
+  )
+
+  expect_named(res_long, c("cyl", "predictor", "cor"))
+  expect_equal(nrow(res_long), dplyr::n_distinct(mtcars$cyl) * 2)
+
+  # Wide form: rows = groups, columns = grouping var + predictors
+  res_wide <- suppressMessages(
+    mtcars %>%
+      group_by(cyl) %>%
+      get_correlation(formula = mpg ~ hp + wt, wide = TRUE)
+  )
+  expect_named(res_wide, c("cyl", "hp", "wt"))
+  expect_equal(nrow(res_wide), dplyr::n_distinct(mtcars$cyl))
+})
+
+test_that("get_correlation multi-RHS handles na.rm", {
+  df_na <- mtcars
+  df_na$hp[1:5] <- NA
+
+  res_with_na <- suppressMessages(
+    df_na %>% get_correlation(formula = mpg ~ hp + cyl)
+  )
+  res_no_na <- suppressMessages(
+    df_na %>% get_correlation(formula = mpg ~ hp + cyl, na.rm = TRUE)
+  )
+
+  # Without na.rm, cor with hp is NA (default `use = "everything"`)
+  expect_true(is.na(res_with_na$cor[res_with_na$predictor == "hp"]))
+  # With na.rm, cor with hp is finite
+  expect_false(is.na(res_no_na$cor[res_no_na$predictor == "hp"]))
 })

@@ -4,41 +4,79 @@
 \alias{get_correlation}
 \title{Get correlation value in a tidy way}
 \usage{
-get_correlation(data, formula, na.rm = FALSE, ...)
+get_correlation(data, formula, na.rm = FALSE, wide = FALSE, quiet = FALSE, ...)
 }
 \arguments{
 \item{data}{a data frame object}
 
-\item{formula}{a formula with the response variable name on the left and
-the explanatory variable name on the right}
+\item{formula}{a formula with the outcome variable on the left and one
+or more explanatory variables on the right (e.g. \code{y ~ x} or
+\code{y ~ x1 + x2 + x3}).}
 
-\item{na.rm}{a logical value indicating whether NA values should be stripped
-before the computation proceeds.}
+\item{na.rm}{a logical value indicating whether NA values should be
+stripped before the computation proceeds.}
+
+\item{wide}{if \code{TRUE} and the formula has more than one right-hand-side
+variable, pivot the result wider so that each predictor becomes a
+column. Has no effect on single-predictor formulas. Default \code{FALSE}.}
+
+\item{quiet}{if \code{TRUE}, suppress the informational message that points
+to \code{corrr::correlate()} for full pairwise correlation matrices.
+Default \code{FALSE}.}
 
 \item{...}{further arguments passed to \code{\link[stats:cor]{stats::cor()}}}
 }
 \value{
-A 1x1 data frame storing the correlation value
+A tibble. For a single right-hand side variable, a 1×1 tibble
+(or 1 row per group) with column \code{cor}. For multiple right-hand side
+variables: long format (default) with columns \code{predictor} and \code{cor}
+(plus any grouping variables), or wide format (\code{wide = TRUE}) with
+one column per predictor.
 }
 \description{
-Determine the Pearson correlation coefficient between two variables in
-a data frame using pipeable and formula-friendly syntax
+Determine the Pearson correlation coefficient between an outcome variable
+on the left-hand side of \code{formula} and one or more explanatory variables
+on the right-hand side, using pipeable and formula-friendly syntax.
+}
+\details{
+For a single right-hand side variable, the result is a 1-column tibble
+(or one row per group if \code{data} is grouped) named \code{cor}. For multiple
+right-hand side variables, the result is a long tibble with one row per
+(predictor, group) combination by default; pass \code{wide = TRUE} to pivot
+it to one column per predictor.
 }
 \examples{
 library(moderndive)
+library(dplyr)
 
-# Compute correlation between mpg and cyl:
-mtcars \%>\%
-  get_correlation(formula = mpg ~ cyl)
+# Single explanatory variable:
+un_member_states_2024 \%>\%
+  get_correlation(formula = life_expectancy_2022 ~ gdp_per_capita, na.rm = TRUE)
+
+# Multiple explanatory variables — long format:
+un_member_states_2024 \%>\%
+  get_correlation(
+    formula = life_expectancy_2022 ~ gdp_per_capita + fertility_rate_2022 + hdi_2022,
+    na.rm   = TRUE,
+    quiet   = TRUE
+  )
+
+# Multiple explanatory variables — wide format:
+un_member_states_2024 \%>\%
+  get_correlation(
+    formula = life_expectancy_2022 ~ gdp_per_capita + fertility_rate_2022 + hdi_2022,
+    wide    = TRUE,
+    na.rm   = TRUE,
+    quiet   = TRUE
+  )
 
 # Group by one variable:
-library(dplyr)
-mtcars \%>\%
-  group_by(am) \%>\%
-  get_correlation(formula = mpg ~ cyl)
+un_member_states_2024 \%>\%
+  group_by(continent) \%>\%
+  get_correlation(formula = life_expectancy_2022 ~ gdp_per_capita, na.rm = TRUE)
 
 # Group by two variables:
-mtcars \%>\%
-  group_by(am, gear) \%>\%
-  get_correlation(formula = mpg ~ cyl)
+un_member_states_2024 \%>\%
+  group_by(continent, income_group_2024) \%>\%
+  get_correlation(formula = life_expectancy_2022 ~ gdp_per_capita, na.rm = TRUE)
 }

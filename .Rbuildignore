@@ -27,3 +27,4 @@
 ^paper\.Rmd$
 ^CITATION\.cff$
 ^CRAN-SUBMISSION$
+^\.claude$

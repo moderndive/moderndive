@@ -4,22 +4,24 @@
 #' regression, used in "Statistical Inference via Data Science: A ModernDive
 #' into R and the tidyverse" available at <https://moderndive.com/>.
 #'
-#' @docType package
 #' @name moderndive
 #' @examples
 #' library(moderndive)
 #'
 #' # Fit regression model:
-#' mpg_model <- lm(mpg ~ hp, data = mtcars)
+#' life_exp_model <- lm(
+#'   life_expectancy_2022 ~ gdp_per_capita,
+#'   data = un_member_states_2024
+#' )
 #'
 #' # Regression tables:
-#' get_regression_table(mpg_model)
+#' get_regression_table(life_exp_model)
 #'
 #' # Information on each point in a regression:
-#' get_regression_points(mpg_model)
+#' get_regression_points(life_exp_model)
 #'
 #' # Regression summaries
-#' get_regression_summaries(mpg_model)
+#' get_regression_summaries(life_exp_model)
 #'
 #' # Plotting parallel slopes models
 #' library(ggplot2)

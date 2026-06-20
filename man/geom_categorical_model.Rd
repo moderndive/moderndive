@@ -90,12 +90,14 @@ a warning. If \code{TRUE}, missing values are silently removed.}
 \code{NA}, the default, includes if any aesthetics are mapped.
 \code{FALSE} never includes, and \code{TRUE} always includes.
 It can also be a named logical vector to finely select the aesthetics to
-display.}
+display. To include legend keys for all levels, even
+when no data exists, use \code{TRUE}.  If \code{NA}, all levels are shown in legend,
+but unobserved levels are omitted.}
 
 \item{inherit.aes}{If \code{FALSE}, overrides the default aesthetics,
 rather than combining with them. This is most useful for helper functions
 that define both data and aesthetics and shouldn't inherit behaviour from
-the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
+the default plot specification, e.g. \code{\link[ggplot2:annotation_borders]{annotation_borders()}}.}
 }
 \description{
 \code{geom_categorical_model()} fits a regression model using the categorical
@@ -114,25 +116,26 @@ dashed lines.
 \examples{
 library(dplyr)
 library(ggplot2)
+library(moderndive)
 
-p <- ggplot(mpg, aes(x = drv, y = hwy)) +
+p <- ggplot(evals, aes(x = rank, y = score)) +
   geom_point() +
   geom_categorical_model()
 p
 
-# In the above visualization, the solid line corresponds to the mean of 19.2
-# for the baseline group "4", whereas the dashed lines correspond to the
-# means of 28.19 and 21.02 for the non-baseline groups "f" and "r" respectively.
-# In the corresponding regression table however the coefficients for "f" and "r"
-# are presented as offsets from the mean for "4":
-model <- lm(hwy ~ drv, data = mpg)
+# In the above visualization, the solid line corresponds to the mean score
+# for the baseline group "teaching", whereas the dashed lines correspond to
+# the means for the non-baseline groups "tenure track" and "tenured".
+# In the corresponding regression table the coefficients for "tenure track"
+# and "tenured" are presented as offsets from the mean for "teaching":
+model <- lm(score ~ rank, data = evals)
 get_regression_table(model)
 
 # You can use different colors for each categorical level
-p \%+\% aes(color = drv)
+p \%+\% aes(color = rank)
 
 # But mapping the color aesthetic doesn't change the model that is fit
-p \%+\% aes(color = class)
+p \%+\% aes(color = ethnicity)
 }
 \seealso{
 \code{\link[=geom_parallel_slopes]{geom_parallel_slopes()}}
