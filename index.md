@@ -29,8 +29,8 @@ regression. These tools leverage the well-developed `tidyverse` and
 
 This R package is designed to supplement the book “Statistical Inference
 via Data Science: A ModernDive into R and the Tidyverse” available at
-[ModernDive.com](https://moderndive.com/). For more background, read our
-[Journal of Open Source Education
+[ModernDive.com/v2/](https://moderndive.com/v2/). For more background,
+read our [Journal of Open Source Education
 paper](https://doi.org/10.21105/jose.00115).
 
 ## Installation
