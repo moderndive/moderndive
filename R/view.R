@@ -74,7 +74,7 @@ View <- function(x, title = NULL, n = 1000L, full = FALSE, seed = NULL,
 # the DT path via `testthat::local_mocked_bindings(.package = "moderndive")`.
 # Per the testthat mocking guidance, mocking namespaced calls
 # (`utils::View(...)`, `DT::datatable(...)`) from within this package is
-# unreliable — wrapping them in package-local helpers makes the mocks
+# unreliable -- wrapping them in package-local helpers makes the mocks
 # straightforward.
 is_interactive <- function() {
   interactive()
@@ -103,7 +103,7 @@ view_datatable <- function(x, title, n = 1000L, full = FALSE, seed = NULL,
     title <- paste0(
       title,
       sprintf(
-        " — random sample of %s of %s rows",
+        " \u2014 random sample of %s of %s rows",
         format(n, big.mark = ","), format(n_rows, big.mark = ",")
       )
     )
