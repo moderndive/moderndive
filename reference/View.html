@@ -59,7 +59,7 @@ can still inspect the data without their document failing to render.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">View</span><span class="op">(</span><span class="va">x</span>, title <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">View</span><span class="op">(</span><span class="va">x</span>, title <span class="op">=</span> <span class="cn">NULL</span>, n <span class="op">=</span> <span class="fl">1000L</span>, full <span class="op">=</span> <span class="cn">FALSE</span>, seed <span class="op">=</span> <span class="cn">NULL</span>, quiet <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -74,12 +74,46 @@ can still inspect the data without their document failing to render.</p>
 <dd><p>title for the viewer window. Defaults to the name of <code>x</code>
 prefixed by <code>Data: </code>, matching the convention used by <code><a href="https://rdrr.io/r/utils/View.html" class="external-link">utils::View()</a></code>.</p></dd>
 
+
+<dt id="arg-n">n<a class="anchor" aria-label="anchor" href="#arg-n"></a></dt>
+<dd><p>maximum number of rows to show in the inline <code><a href="https://rdrr.io/pkg/DT/man/datatable.html" class="external-link">DT::datatable()</a></code>.
+When <code>x</code> has more than <code>n</code> rows and <code>full = FALSE</code>, a random sample of
+<code>n</code> rows is shown instead of the whole data frame. Default <code>1000</code>.</p></dd>
+
+
+<dt id="arg-full">full<a class="anchor" aria-label="anchor" href="#arg-full"></a></dt>
+<dd><p>if <code>TRUE</code>, show every row of <code>x</code> in the inline table instead of
+sampling (may be slow, and <code>DT</code> may warn, for very large data).
+Default <code>FALSE</code>.</p></dd>
+
+
+<dt id="arg-seed">seed<a class="anchor" aria-label="anchor" href="#arg-seed"></a></dt>
+<dd><p>optional integer seed making the random sample reproducible.
+The global random-number stream is left unchanged regardless of whether
+<code>seed</code> is supplied. Default <code>NULL</code> (a fresh sample each call).</p></dd>
+
+
+<dt id="arg-quiet">quiet<a class="anchor" aria-label="anchor" href="#arg-quiet"></a></dt>
+<dd><p>if <code>TRUE</code>, suppress the message announcing that a random
+sample is being shown. Default <code>FALSE</code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>In an interactive session, invisibly returns <code>NULL</code> (called for
 the side effect of displaying <code>x</code> in a viewer). In a non-interactive
 session, returns a <code><a href="https://rdrr.io/pkg/DT/man/datatable.html" class="external-link">DT::datatable()</a></code> htmlwidget.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
+    <p>For large data frames a client-side <code><a href="https://rdrr.io/pkg/DT/man/datatable.html" class="external-link">DT::datatable()</a></code> is slow and warns
+that the data is too big. So in non-interactive contexts, when <code>x</code> has more
+than <code>n</code> rows and <code>full = FALSE</code>, <code>View()</code> shows a <strong>random sample</strong> of <code>n</code>
+rows and emits a message saying so. This keeps "just look at the data" fast
+for beginners while making the size limitation explicit. The interactive
+<code><a href="https://rdrr.io/r/utils/View.html" class="external-link">utils::View()</a></code> path is unaffected (RStudio's viewer handles large data
+natively), so <code>n</code> / <code>full</code> / <code>seed</code> / <code>quiet</code> apply only to the inline <code>DT</code>
+rendering.</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -95,6 +129,12 @@ session, returns a <code><a href="https://rdrr.io/pkg/DT/man/datatable.html" cla
 <span class="r-in"><span>  <span class="co"># In an R Markdown or Quarto document, renders an interactive</span></span></span>
 <span class="r-in"><span>  <span class="co"># DT::datatable() inline instead of erroring:</span></span></span>
 <span class="r-in"><span>  <span class="fu">View</span><span class="op">(</span><span class="va">un_member_states_2024</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span>  <span class="co"># For large data a random sample is shown by default; override with:</span></span></span>
+<span class="r-in"><span>  <span class="fu">View</span><span class="op">(</span><span class="va">some_big_data</span>, full <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>   <span class="co"># all rows (may be slow)</span></span></span>
+<span class="r-in"><span>  <span class="fu">View</span><span class="op">(</span><span class="va">some_big_data</span>, n <span class="op">=</span> <span class="fl">500</span><span class="op">)</span>       <span class="co"># sample 500 rows instead of 1000</span></span></span>
+<span class="r-in"><span>  <span class="fu">View</span><span class="op">(</span><span class="va">some_big_data</span>, seed <span class="op">=</span> <span class="fl">42</span><span class="op">)</span>     <span class="co"># reproducible random sample</span></span></span>
+<span class="r-in"><span>  <span class="fu">View</span><span class="op">(</span><span class="va">some_big_data</span>, quiet <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>  <span class="co"># no "random sample" message</span></span></span>
 <span class="r-in"><span><span class="op">}</span> <span class="co"># }</span></span></span>
 </code></pre></div>
     </div>

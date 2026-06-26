@@ -67,7 +67,19 @@
   [`packageStartupMessage()`](https://rdrr.io/r/base/message.html) is
   emitted only on non-interactive attach to explain the override;
   interactive sessions see no extra message. Attaching `moderndive`
-  masks [`utils::View`](https://rdrr.io/r/utils/View.html).
+  masks [`utils::View`](https://rdrr.io/r/utils/View.html). For large
+  data frames the inline
+  [`DT::datatable()`](https://rdrr.io/pkg/DT/man/datatable.html) is slow
+  and warns that the data is too big for a client-side table, so in
+  non-interactive contexts
+  [`View()`](https://moderndive.github.io/moderndive/reference/View.md)
+  now shows a **random sample** of `n` rows (default `1000`) when `x` is
+  larger, emitting a message that says so. New arguments `n` (sample
+  size), `full = FALSE` (set `TRUE` to show every row), `seed`
+  (reproducible sample), and `quiet = FALSE` (silence the message)
+  control this; the sample never disturbs the caller’s RNG stream, and
+  the interactive [`utils::View()`](https://rdrr.io/r/utils/View.html)
+  path is unchanged.
 - Documentation examples now use `moderndive` datasets instead of base R
   / `ggplot2` ones.
   [`View()`](https://moderndive.github.io/moderndive/reference/View.md),
