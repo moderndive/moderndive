@@ -4,13 +4,28 @@
 \alias{View}
 \title{View a data object inline when not in an interactive R session}
 \usage{
-View(x, title = NULL)
+View(x, title = NULL, n = 1000L, full = FALSE, seed = NULL, quiet = FALSE)
 }
 \arguments{
 \item{x}{an \R object which can be coerced to a data frame.}
 
 \item{title}{title for the viewer window. Defaults to the name of \code{x}
 prefixed by \verb{Data: }, matching the convention used by \code{\link[utils:View]{utils::View()}}.}
+
+\item{n}{maximum number of rows to show in the inline \code{DT::datatable()}.
+When \code{x} has more than \code{n} rows and \code{full = FALSE}, a random sample of
+\code{n} rows is shown instead of the whole data frame. Default \code{1000}.}
+
+\item{full}{if \code{TRUE}, show every row of \code{x} in the inline table instead of
+sampling (may be slow, and \code{DT} may warn, for very large data).
+Default \code{FALSE}.}
+
+\item{seed}{optional integer seed making the random sample reproducible.
+The global random-number stream is left unchanged regardless of whether
+\code{seed} is supplied. Default \code{NULL} (a fresh sample each call).}
+
+\item{quiet}{if \code{TRUE}, suppress the message announcing that a random
+sample is being shown. Default \code{FALSE}.}
 }
 \value{
 In an interactive session, invisibly returns \code{NULL} (called for
@@ -25,6 +40,16 @@ R Markdown or Quarto document, where \code{utils::View()} typically errors,
 it instead renders an interactive \code{\link[DT:datatable]{DT::datatable()}} inline so users
 can still inspect the data without their document failing to render.
 }
+\details{
+For large data frames a client-side \code{\link[DT:datatable]{DT::datatable()}} is slow and warns
+that the data is too big. So in non-interactive contexts, when \code{x} has more
+than \code{n} rows and \code{full = FALSE}, \code{View()} shows a \strong{random sample} of \code{n}
+rows and emits a message saying so. This keeps "just look at the data" fast
+for beginners while making the size limitation explicit. The interactive
+\code{utils::View()} path is unaffected (RStudio's viewer handles large data
+natively), so \code{n} / \code{full} / \code{seed} / \code{quiet} apply only to the inline \code{DT}
+rendering.
+}
 \examples{
 \dontrun{
   # In an interactive R session, behaves like utils::View():
@@ -33,6 +58,12 @@ can still inspect the data without their document failing to render.
   # In an R Markdown or Quarto document, renders an interactive
   # DT::datatable() inline instead of erroring:
   View(un_member_states_2024)
+
+  # For large data a random sample is shown by default; override with:
+  View(some_big_data, full = TRUE)   # all rows (may be slow)
+  View(some_big_data, n = 500)       # sample 500 rows instead of 1000
+  View(some_big_data, seed = 42)     # reproducible random sample
+  View(some_big_data, quiet = TRUE)  # no "random sample" message
 }
 }
 \seealso{
