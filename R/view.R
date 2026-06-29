@@ -33,7 +33,9 @@
 #'
 #' @return In an interactive session, invisibly returns `NULL` (called for
 #'   the side effect of displaying `x` in a viewer). In a non-interactive
-#'   session, returns a [DT::datatable()] htmlwidget.
+#'   session, returns a [DT::datatable()] htmlwidget -- except inside webR
+#'   (where pandoc is unavailable), where it renders a self-contained static
+#'   HTML table through the browser viewer and invisibly returns `NULL`.
 #' @export
 #' @seealso [utils::View()], [DT::datatable()]
 #'
@@ -108,7 +110,85 @@ view_datatable <- function(x, title, n = 1000L, full = FALSE, seed = NULL,
       )
     )
   }
+  if (in_webr()) {
+    # webR has no pandoc, so a DT/htmlwidget cannot be saved as the
+    # self-contained HTML the cell needs (DT::saveWidget() errors), and the
+    # auto-print path is gated by interactive() == FALSE. Render a
+    # self-contained static HTML table and push it through webR's viewer hook,
+    # which quarto-webr turns into an inline iframe.
+    return(view_webr_table(x, title))
+  }
   DT::datatable(x, caption = title)
+}
+
+# TRUE when running inside webR (wasm R in the browser), where the DT path is
+# unavailable (no pandoc); see view_webr_table().
+in_webr <- function() {
+  nzchar(Sys.getenv("WEBR")) || identical(R.version$os, "emscripten")
+}
+
+# Render `x` as a self-contained static HTML table and hand it to webR's viewer
+# (installed by `webr::viewer_install()`), which emits a 'browse' message that
+# the quarto-webr cell renders in an iframe. Needs no pandoc / htmlwidget deps.
+view_webr_table <- function(x, title) {
+  viewer <- getOption("viewer")
+  if (!is.function(viewer)) {
+    return(DT::datatable(x, caption = title))  # no webR viewer hook; fall back
+  }
+  f <- tempfile(fileext = ".html")
+  writeLines(enc2utf8(webr_html_table(x, title)), f, useBytes = TRUE)
+  viewer(f)
+  invisible(NULL)
+}
+
+# Build a single self-contained HTML document: a scrollable, styled <table>
+# with inline CSS only (no external JS/CSS), so it renders inside the cell's
+# iframe verbatim.
+webr_html_table <- function(x, caption) {
+  x <- as.data.frame(x)
+  esc <- function(s) {
+    s <- gsub("&", "&amp;", s, fixed = TRUE)
+    s <- gsub("<", "&lt;", s, fixed = TRUE)
+    gsub(">", "&gt;", s, fixed = TRUE)
+  }
+  col_cells <- function(col) {
+    out <- if (is.numeric(col)) {
+      format(col, trim = TRUE, big.mark = ",", justify = "none")
+    } else {
+      as.character(col)
+    }
+    out[is.na(col)] <- "NA"
+    esc(out)
+  }
+  cols <- lapply(x, col_cells)
+  header <- paste0("<th>", esc(names(x)), "</th>", collapse = "")
+  rows <- vapply(seq_len(nrow(x)), function(i) {
+    cells <- paste0("<td>", vapply(cols, `[[`, character(1), i), "</td>",
+                    collapse = "")
+    paste0("<tr>", cells, "</tr>")
+  }, character(1))
+  style <- paste0(
+    "<style>",
+    "*{box-sizing:border-box}",
+    "body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;",
+    "margin:0;padding:0;color:#1b1b1b}",
+    ".md-cap{font-weight:600;padding:8px 10px 4px;font-size:14px}",
+    ".md-wrap{overflow:auto;max-height:460px;border:1px solid #e1e4e8;",
+    "border-radius:6px;margin:6px}",
+    "table{border-collapse:collapse;width:100%;font-size:13px}",
+    "thead th{position:sticky;top:0;background:#1F3A6B;color:#fff;",
+    "text-align:left;padding:6px 10px;white-space:nowrap}",
+    "tbody td{border-top:1px solid #eaecef;padding:4px 10px;white-space:nowrap}",
+    "tbody tr:nth-child(even){background:#f6f8fa}",
+    "</style>"
+  )
+  paste0(
+    "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"utf-8\">", style,
+    "</head><body><div class=\"md-cap\">", esc(caption), "</div>",
+    "<div class=\"md-wrap\"><table><thead><tr>", header,
+    "</tr></thead><tbody>", paste0(rows, collapse = ""),
+    "</tbody></table></div></body></html>"
+  )
 }
 
 # Draw `size` row indices from seq_len(n_rows) -- optionally reproducibly via
