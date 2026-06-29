@@ -30,7 +30,9 @@ sample is being shown. Default \code{FALSE}.}
 \value{
 In an interactive session, invisibly returns \code{NULL} (called for
 the side effect of displaying \code{x} in a viewer). In a non-interactive
-session, returns a \code{\link[DT:datatable]{DT::datatable()}} htmlwidget.
+session, returns a \code{\link[DT:datatable]{DT::datatable()}} htmlwidget -- except inside webR
+(where pandoc is unavailable), where it renders a self-contained static
+HTML table through the browser viewer and invisibly returns \code{NULL}.
 }
 \description{
 A drop-in replacement for \code{\link[utils:View]{utils::View()}}. In an interactive R session

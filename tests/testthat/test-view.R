@@ -160,3 +160,45 @@ test_that("sample_rows() preserves RNG and honours seed", {
   b <- runif(1)
   expect_equal(a, b)
 })
+
+test_that("webr_html_table() builds a self-contained HTML table", {
+  html <- webr_html_table(head(mtcars, 3), "Data: mtcars")
+  expect_true(grepl("<table", html, fixed = TRUE))
+  expect_true(grepl("Data: mtcars", html, fixed = TRUE))
+  expect_true(grepl("<th>mpg</th>", html, fixed = TRUE))
+  # self-contained: no external scripts or resources
+  expect_false(grepl("<script", html, fixed = TRUE))
+  expect_false(grepl("src=", html, fixed = TRUE))
+  expect_false(grepl("href=", html, fixed = TRUE))
+  # HTML-special characters in cells are escaped
+  esc <- webr_html_table(data.frame(x = "a<b>&c", stringsAsFactors = FALSE), "t")
+  expect_true(grepl("a&lt;b&gt;&amp;c", esc, fixed = TRUE))
+})
+
+test_that("in webR, view_datatable() pushes a static table through the viewer", {
+  old_env <- Sys.getenv("WEBR", unset = NA)
+  old_viewer <- getOption("viewer")
+  Sys.setenv(WEBR = "1")
+  on.exit({
+    if (is.na(old_env)) Sys.unsetenv("WEBR") else Sys.setenv(WEBR = old_env)
+    options(viewer = old_viewer)
+  }, add = TRUE)
+  pushed <- NULL
+  options(viewer = function(url, ...) pushed <<- url)
+  out <- view_datatable(head(mtcars, 3), "Data: mtcars")
+  expect_null(out)
+  expect_true(!is.null(pushed) && file.exists(pushed))
+  expect_true(grepl("<table",
+                    paste(readLines(pushed), collapse = ""), fixed = TRUE))
+})
+
+test_that("outside webR, view_datatable() still returns a DT widget", {
+  skip_if_not_installed("DT")
+  old_env <- Sys.getenv("WEBR", unset = NA)
+  Sys.setenv(WEBR = "")
+  on.exit(
+    if (is.na(old_env)) Sys.unsetenv("WEBR") else Sys.setenv(WEBR = old_env),
+    add = TRUE
+  )
+  expect_s3_class(view_datatable(head(mtcars, 3), "x"), "datatables")
+})
