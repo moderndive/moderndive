@@ -1,5 +1,23 @@
 # Changelog
 
+## moderndive 0.8.0.9001
+
+- [`View()`](https://moderndive.github.io/moderndive/reference/View.md)
+  now renders correctly inside **webR** (the in-browser R that powers
+  the ModernDive book’s live exercises). webR has no pandoc, so a
+  [`DT::datatable()`](https://rdrr.io/pkg/DT/man/datatable.html)
+  htmlwidget cannot be saved as the self-contained HTML the cell needs
+  ([`DT::saveWidget()`](https://rdrr.io/pkg/htmlwidgets/man/saveWidget.html)
+  errors), and the auto-print path is gated by
+  [`interactive()`](https://rdrr.io/r/base/interactive.html) being
+  `FALSE`. In webR,
+  [`View()`](https://moderndive.github.io/moderndive/reference/View.md)
+  now builds a self-contained static HTML table and pushes it through
+  webR’s viewer hook, so the data displays inline instead of only
+  printing the explanatory message. Outside webR the
+  [`DT::datatable()`](https://rdrr.io/pkg/DT/man/datatable.html)
+  behaviour is unchanged.
+
 ## moderndive 0.8.0.9000
 
 - Fix issue [\#58](https://github.com/moderndive/moderndive/issues/58)

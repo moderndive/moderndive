@@ -17,7 +17,7 @@ can still inspect the data without their document failing to render."></head><bo
 
     <a class="navbar-brand me-2" href="../index.html">moderndive</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.0.9001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -102,7 +102,9 @@ sample is being shown. Default <code>FALSE</code>.</p></dd>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>In an interactive session, invisibly returns <code>NULL</code> (called for
 the side effect of displaying <code>x</code> in a viewer). In a non-interactive
-session, returns a <code><a href="https://rdrr.io/pkg/DT/man/datatable.html" class="external-link">DT::datatable()</a></code> htmlwidget.</p>
+session, returns a <code><a href="https://rdrr.io/pkg/DT/man/datatable.html" class="external-link">DT::datatable()</a></code> htmlwidget – except inside webR
+(where pandoc is unavailable), where it renders a self-contained static
+HTML table through the browser viewer and invisibly returns <code>NULL</code>.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>

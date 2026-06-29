@@ -59,7 +59,9 @@ View(x, title = NULL, n = 1000L, full = FALSE, seed = NULL, quiet = FALSE)
 In an interactive session, invisibly returns `NULL` (called for the side
 effect of displaying `x` in a viewer). In a non-interactive session,
 returns a [`DT::datatable()`](https://rdrr.io/pkg/DT/man/datatable.html)
-htmlwidget.
+htmlwidget – except inside webR (where pandoc is unavailable), where it
+renders a self-contained static HTML table through the browser viewer
+and invisibly returns `NULL`.
 
 ## Details
 

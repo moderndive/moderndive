@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">moderndive</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.0.9001</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,6 +37,11 @@
       <small>Source: <a href="https://github.com/moderndive/moderndive/blob/master/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.8.0.9001" id="moderndive-0809001">moderndive 0.8.0.9001<a class="anchor" aria-label="anchor" href="#moderndive-0809001"></a></h2>
+<ul><li>
+<code><a href="../reference/View.html">View()</a></code> now renders correctly inside <strong>webR</strong> (the in-browser R that powers the ModernDive book’s live exercises). webR has no pandoc, so a <code><a href="https://rdrr.io/pkg/DT/man/datatable.html" class="external-link">DT::datatable()</a></code> htmlwidget cannot be saved as the self-contained HTML the cell needs (<code><a href="https://rdrr.io/pkg/htmlwidgets/man/saveWidget.html" class="external-link">DT::saveWidget()</a></code> errors), and the auto-print path is gated by <code><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive()</a></code> being <code>FALSE</code>. In webR, <code><a href="../reference/View.html">View()</a></code> now builds a self-contained static HTML table and pushes it through webR’s viewer hook, so the data displays inline instead of only printing the explanatory message. Outside webR the <code><a href="https://rdrr.io/pkg/DT/man/datatable.html" class="external-link">DT::datatable()</a></code> behaviour is unchanged.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.8.0.9000" id="moderndive-0809000">moderndive 0.8.0.9000<a class="anchor" aria-label="anchor" href="#moderndive-0809000"></a></h2>
 <ul><li>Fix issue <a href="https://github.com/moderndive/moderndive/issues/58" class="external-link">#58</a>
