@@ -4,7 +4,7 @@
 
 We present the [`moderndive`](https://moderndive.github.io/moderndive/)
 R package of datasets and functions for
-[tidyverse](https://www.tidyverse.org/)-friendly introductory linear
+[tidyverse](https://tidyverse.org/)-friendly introductory linear
 regression (Wickham, Averick, et al. 2019). These tools leverage the
 well-developed `tidyverse` and `broom` packages to facilitate 1) working
 with regression tables that include confidence intervals, 2) accessing

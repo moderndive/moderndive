@@ -1,6 +1,6 @@
 # Changelog
 
-## moderndive 0.8.0.9001
+## moderndive 0.8.0
 
 - [`View()`](https://moderndive.github.io/moderndive/reference/View.md)
   now renders correctly inside **webR** (the in-browser R that powers
@@ -17,9 +17,6 @@
   printing the explanatory message. Outside webR the
   [`DT::datatable()`](https://rdrr.io/pkg/DT/man/datatable.html)
   behaviour is unchanged.
-
-## moderndive 0.8.0.9000
-
 - Fix issue [\#58](https://github.com/moderndive/moderndive/issues/58)
 - Add in unit tests to bring test coverage back to 100%
 - [`get_regression_points()`](https://moderndive.github.io/moderndive/reference/get_regression_points.md)

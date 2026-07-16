@@ -20,7 +20,7 @@ reading the comment in the first line.
 If you want to make a bigger change, it’s a good idea to first file an
 issue and make sure someone from the team agrees that it’s needed. If
 you’ve found a bug, please file an issue that illustrates the bug with a
-minimal [reprex](https://www.tidyverse.org/help/#reprex) (this will also
+minimal [reprex](https://tidyverse.org/help/#reprex) (this will also
 help you write a unit test, if needed).
 
 ### Pull request process
