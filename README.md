@@ -2,7 +2,7 @@
 ## moderndive R Package <img src="https://github.com/moderndive/moderndive/blob/master/images/hex_blue_text.png?raw=true" align="right" width=125 alt="moderndive hex sticker logo" />
 
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3951512.svg)](https://doi.org/10.5281/zenodo.3951512)
+[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.3951512-blue.svg)](https://doi.org/10.5281/zenodo.3951512)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![GitHub Actions
