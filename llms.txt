@@ -1,7 +1,7 @@
 ## moderndive R Package ![moderndive hex sticker logo](https://github.com/moderndive/moderndive/blob/master/images/hex_blue_text.png?raw=true)
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive)
-[![DOI](https://zenodo.org/badge/115030738.svg)](https://zenodo.org/badge/latestdoi/115030738)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3951512.svg)](https://doi.org/10.5281/zenodo.3951512)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
 [![GitHub Actions
