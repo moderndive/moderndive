@@ -1,9 +1,6 @@
-# moderndive 0.8.0.9001
+# moderndive 0.8.0
 
 -   `View()` now renders correctly inside **webR** (the in-browser R that powers the ModernDive book's live exercises). webR has no pandoc, so a `DT::datatable()` htmlwidget cannot be saved as the self-contained HTML the cell needs (`DT::saveWidget()` errors), and the auto-print path is gated by `interactive()` being `FALSE`. In webR, `View()` now builds a self-contained static HTML table and pushes it through webR's viewer hook, so the data displays inline instead of only printing the explanatory message. Outside webR the `DT::datatable()` behaviour is unchanged.
-
-# moderndive 0.8.0.9000
-
 -   Fix issue [#58](https://github.com/moderndive/moderndive/issues/58)
 -   Add in unit tests to bring test coverage back to 100%
 -   `get_regression_points()` and `get_regression_summaries()` now handle in-formula transformations on either side of the model formula (e.g. `lm(log(y) ~ poly(x, 2))`). LHS transforms previously errored; they now produce a sanitized outcome column on the model's scale (e.g. `log_mpg`, `log_mpg_hat`). RHS transforms no longer leak basis matrices or wrapper columns (`poly()` matrix columns, `scale()`, `I()`) into the points table; the original predictor variable is shown instead. The `.rownames` column is no longer leaked into the output.

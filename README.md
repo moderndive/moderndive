@@ -1,22 +1,22 @@
 
 ## moderndive R Package <img src="https://github.com/moderndive/moderndive/blob/master/images/hex_blue_text.png?raw=true" align="right" width=125 alt="moderndive hex sticker logo" />
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive)
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.3951512-blue.svg)](https://doi.org/10.5281/zenodo.3951512)
 [![Lifecycle:
-stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://www.tidyverse.org/lifecycle/#stable)
+stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
 [![GitHub Actions
 Status](https://github.com/moderndive/moderndive/workflows/R-CMD-check/badge.svg)](https://github.com/moderndive/moderndive/actions)
 [![Codecov test
-coverage](https://codecov.io/gh/moderndive/moderndive/branch/master/graph/badge.svg)](https://codecov.io/gh/moderndive/moderndive?branch=master)
+coverage](https://codecov.io/gh/moderndive/moderndive/branch/master/graph/badge.svg)](https://app.codecov.io/gh/moderndive/moderndive?branch=master)
 [![CRAN RStudio mirror
-downloads](http://cranlogs.r-pkg.org/badges/moderndive)](http://www.r-pkg.org/pkg/moderndive)
+downloads](https://cranlogs.r-pkg.org/badges/moderndive)](https://www.r-pkg.org/pkg/moderndive)
 
 ## Overview
 
 The [`moderndive`](https://moderndive.github.io/moderndive/) R package
 consists of datasets and functions for
-[tidyverse](https://www.tidyverse.org/)-friendly introductory linear
+[tidyverse](https://tidyverse.org/)-friendly introductory linear
 regression. These tools leverage the well-developed `tidyverse` and
 `broom` packages to facilitate
 
