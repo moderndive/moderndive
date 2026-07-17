@@ -49,4 +49,7 @@ moderndive 0.8.0
 
 ## Reverse dependencies
 
-Checked with `revdepcheck::revdep_check()` — no new problems.
+We checked the 2 reverse dependencies (LSTbook, pdxTrees) with
+`revdepcheck::revdep_check()`, comparing R CMD check results across the CRAN
+and dev versions of this package. We saw 0 new problems and failed to check
+0 packages.
