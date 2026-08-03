@@ -5,6 +5,11 @@ on:
   pull_request:
     branches:
       - master
+  # Weekly: a CRAN-facing package should notice R-devel/dependency drift
+  # between pushes, not on the next one.
+  schedule:
+    - cron: "45 7 * * 1"
+  workflow_dispatch:
 
 name: R-CMD-check
 

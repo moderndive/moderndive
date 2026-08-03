@@ -1,0 +1,8 @@
+# Keep GitHub Actions current (the workflows had drifted to mixed
+# checkout@v5 / upload-artifact@v7 generations before this existed).
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
