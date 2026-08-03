@@ -27,4 +27,5 @@
 ^paper\.Rmd$
 ^CITATION\.cff$
 ^CRAN-SUBMISSION$
+^RELEASE-0\.8\.0-RUNBOOK\.md$
 ^\.claude$
