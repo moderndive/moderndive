@@ -19,7 +19,7 @@ A data frame with 6,000 rows and 21 columns:
 - track_id:
 
   `character`. Spotify ID for the track. See:
-  <https://developer.spotify.com/documentation/web-api/>
+  <https://developer.spotify.com/documentation/web-api>
 
 - artists:
 
@@ -36,7 +36,7 @@ A data frame with 6,000 rows and 21 columns:
 - popularity:
 
   `numeric`. Popularity score of the track (0-100). See:
-  <https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track>
+  <https://developer.spotify.com/documentation/web-api/reference/get-track>
 
 - duration_ms:
 
@@ -49,7 +49,7 @@ A data frame with 6,000 rows and 21 columns:
 - danceability:
 
   `numeric`. Danceability score of the track (0-1). See:
-  <https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-features>
+  <https://developer.spotify.com/documentation/web-api/reference/get-audio-features>
 
 - energy:
 
@@ -111,7 +111,7 @@ A data frame with 6,000 rows and 21 columns:
 
 ## Source
 
-<https://developer.spotify.com/documentation/web-api/>
+<https://developer.spotify.com/documentation/web-api>
 
 ## Examples
 

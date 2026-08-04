@@ -22,6 +22,9 @@ Useful links:
 
 Authors:
 
+- Albert Y. Kim <albert.ys.kim@gmail.com>
+  ([ORCID](https://orcid.org/0000-0001-7824-306X))
+
 - Chester Ismay <chester.ismay@gmail.com>
   ([ORCID](https://orcid.org/0000-0003-2820-2547))
 

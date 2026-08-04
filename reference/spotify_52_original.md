@@ -20,7 +20,7 @@ A data frame with 52 rows and 6 columns:
 - track_id:
 
   `character`. Spotify ID for the track. See:
-  <https://developer.spotify.com/documentation/web-api/>
+  <https://developer.spotify.com/documentation/web-api>
 
 - track_genre:
 
@@ -37,7 +37,7 @@ A data frame with 52 rows and 6 columns:
 - popularity:
 
   `numeric`. Popularity score of the track (0-100). See:
-  <https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track>
+  <https://developer.spotify.com/documentation/web-api/reference/get-track>
 
 - popular_or_not:
 
@@ -48,7 +48,7 @@ A data frame with 52 rows and 6 columns:
 
 ## Source
 
-<https://developer.spotify.com/documentation/web-api/>
+<https://developer.spotify.com/documentation/web-api>
 
 ## Examples
 

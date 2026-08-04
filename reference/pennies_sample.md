@@ -2,7 +2,7 @@
 
 A sample of 50 pennies contained in a 50 cent roll from Florence Bank on
 Friday February 1, 2019 in downtown Northampton, Massachusetts, USA
-<https://goo.gl/maps/AF88fpvVfm12>.
+<https://www.google.com/maps/place/Florence+Bank+-+Downtown+Northampton/@42.3194512,-72.6337622,16z/data=!4m5!3m4!1s0x89e6d7465ea57a19:0xc901966a46d8ceab!8m2!3d42.3194512!4d-72.6293848>.
 
 ## Usage
 

@@ -37,4 +37,4 @@ variables
 The original source of the data are Massachusetts Department of
 Education reports <https://profiles.doe.mass.edu/state_report/>, however
 the data was downloaded from Kaggle at
-<https://www.kaggle.com/ndalziel/massachusetts-public-schools-data>
+<https://www.kaggle.com/datasets/ndalziel/massachusetts-public-schools-data>

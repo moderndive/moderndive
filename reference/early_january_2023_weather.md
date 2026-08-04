@@ -54,8 +54,8 @@ variables
 
 ## Source
 
-ASOS download from Iowa Environmental Mesonet,
-<https://mesonet.agron.iastate.edu/request/download.phtml>.
+ASOS download from Iowa Environmental Mesonet, archived copy at
+<https://web.archive.org/web/20221024033531/https://mesonet.agron.iastate.edu/request/download.phtml>.
 
 ## See also
 
