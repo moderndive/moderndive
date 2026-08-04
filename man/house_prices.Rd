@@ -31,7 +31,7 @@ A data frame with 21613 observations on the following 21 variables.
 }
 }
 \source{
-Kaggle \url{https://www.kaggle.com/harlfoxem/housesalesprediction}.
+Kaggle \url{https://www.kaggle.com/datasets/harlfoxem/housesalesprediction}.
 Note data is released under a CC0: Public Domain license.
 }
 \usage{
@@ -40,6 +40,6 @@ house_prices
 \description{
 This dataset contains house sale prices for King County, which includes
 Seattle. It includes homes sold between May 2014 and May 2015. This dataset
-was obtained from Kaggle.com \url{https://www.kaggle.com/harlfoxem/housesalesprediction/data}
+was obtained from Kaggle.com \url{https://www.kaggle.com/datasets/harlfoxem/housesalesprediction/data}
 }
 \keyword{datasets}

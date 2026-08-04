@@ -12,6 +12,6 @@ These objects are imported from other packages. Follow the links
 below to see their documentation.
 
 \describe{
-  \item{infer}{\code{\link[infer]{rep_sample_n}}, \code{\link[infer:rep_sample_n]{rep_slice_sample}}}
+  \item{infer}{\code{\link[infer:rep_sample_n]{rep_sample_n()}}, \code{\link[infer:rep_slice_sample]{rep_slice_sample()}}}
 }}
 

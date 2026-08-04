@@ -7,14 +7,14 @@
 \format{
 A data frame with 6,000 rows and 21 columns:
 \describe{
-\item{track_id}{\code{character}. Spotify ID for the track. See: \url{https://developer.spotify.com/documentation/web-api/}}
+\item{track_id}{\code{character}. Spotify ID for the track. See: \url{https://developer.spotify.com/documentation/web-api}}
 \item{artists}{\code{character}. Names of the artists associated with the track.}
 \item{album_name}{\code{character}. Name of the album on which the track appears.}
 \item{track_name}{\code{character}. Name of the track.}
-\item{popularity}{\code{numeric}. Popularity score of the track (0-100). See: \url{https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track}}
+\item{popularity}{\code{numeric}. Popularity score of the track (0-100). See: \url{https://developer.spotify.com/documentation/web-api/reference/get-track}}
 \item{duration_ms}{\code{numeric}. Duration of the track in milliseconds.}
 \item{explicit}{\code{logical}. Whether the track has explicit content.}
-\item{danceability}{\code{numeric}. Danceability score of the track (0-1). See: \url{https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-features}}
+\item{danceability}{\code{numeric}. Danceability score of the track (0-1). See: \url{https://developer.spotify.com/documentation/web-api/reference/get-audio-features}}
 \item{energy}{\code{numeric}. Energy score of the track (0-1).}
 \item{key}{\code{numeric}. The key the track is in (0-11 where 0 = C, 1 = C#/Db, etc.).}
 \item{loudness}{\code{numeric}. The loudness of the track in decibels (dB).}
@@ -31,7 +31,7 @@ A data frame with 6,000 rows and 21 columns:
 }
 }
 \source{
-\url{https://developer.spotify.com/documentation/web-api/}
+\url{https://developer.spotify.com/documentation/web-api}
 }
 \usage{
 spotify_by_genre

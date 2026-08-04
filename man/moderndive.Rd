@@ -48,6 +48,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Albert Y. Kim \email{albert.ys.kim@gmail.com} (\href{https://orcid.org/0000-0001-7824-306X}{ORCID})
   \item Chester Ismay \email{chester.ismay@gmail.com} (\href{https://orcid.org/0000-0003-2820-2547}{ORCID})
 }
 

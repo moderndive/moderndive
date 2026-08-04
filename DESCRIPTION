@@ -72,7 +72,6 @@ Imports:
     rlang (>= 0.2.0),
     glue,
     DT
-RoxygenNote: 7.3.3
 Suggests:
     testthat,
     covr,
@@ -87,3 +86,4 @@ Suggests:
     plotly
 VignetteBuilder: knitr
 Roxygen: list(markdown = TRUE)
+Config/roxygen2/version: 8.0.0

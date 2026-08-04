@@ -7,16 +7,16 @@
 \format{
 A data frame with 52 rows and 6 columns:
 \describe{
-\item{track_id}{\code{character}. Spotify ID for the track. See: \url{https://developer.spotify.com/documentation/web-api/}}
+\item{track_id}{\code{character}. Spotify ID for the track. See: \url{https://developer.spotify.com/documentation/web-api}}
 \item{track_genre}{\code{character}. Genre of the track, either "deep-house" or "metal".}
 \item{artists}{\code{character}. Names of the artists associated with the track.}
 \item{track_name}{\code{character}. Name of the track.}
-\item{popularity}{\code{numeric}. Popularity score of the track (0-100). See: \url{https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track}}
+\item{popularity}{\code{numeric}. Popularity score of the track (0-100). See: \url{https://developer.spotify.com/documentation/web-api/reference/get-track}}
 \item{popular_or_not}{\code{character}. Indicates whether the track is considered popular ("popular") or not ("not popular"). Popularity is defined as a score of 50 or higher which corresponds to the 75th percentile of the \code{popularity} column.}
 }
 }
 \source{
-\url{https://developer.spotify.com/documentation/web-api/}
+\url{https://developer.spotify.com/documentation/web-api}
 }
 \usage{
 spotify_52_original

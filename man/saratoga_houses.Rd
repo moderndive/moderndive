@@ -18,7 +18,9 @@ A data frame with 1057 observations on the following 8 variables
 }
 }
 \source{
-Gathered from \url{https://docs.google.com/spreadsheets/d/1AY5eECqNIggKpYF3kYzJQBIuuOdkiclFhbjAmY3Yc8E/edit#gid=622599674}
+Data on 2006 house prices in Saratoga County, New York,
+USA. Originally gathered from a publicly shared Google Sheet that is
+no longer publicly accessible.
 }
 \usage{
 saratoga_houses

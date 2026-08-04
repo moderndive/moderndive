@@ -22,7 +22,8 @@ and gust speed (in mph).}
 }
 \source{
 ASOS download from Iowa Environmental Mesonet,
-\url{https://mesonet.agron.iastate.edu/request/download.phtml}.
+archived copy at
+\url{https://web.archive.org/web/20221024033531/https://mesonet.agron.iastate.edu/request/download.phtml}.
 }
 \usage{
 early_january_2023_weather

@@ -19,7 +19,8 @@
 #' }
 #' @seealso [`nycflights13::weather`].
 #' @source ASOS download from Iowa Environmental Mesonet,
-#'   <https://mesonet.agron.iastate.edu/request/download.phtml>.
+#'   archived copy at
+#'   <https://web.archive.org/web/20221024033531/https://mesonet.agron.iastate.edu/request/download.phtml>.
 "early_january_weather"
 
 #' Early January hourly weather data for 2023
@@ -43,7 +44,8 @@
 #' }
 #' @seealso [`nycflights23::weather`].
 #' @source ASOS download from Iowa Environmental Mesonet,
-#'   <https://mesonet.agron.iastate.edu/request/download.phtml>.
+#'   archived copy at
+#'   <https://web.archive.org/web/20221024033531/https://mesonet.agron.iastate.edu/request/download.phtml>.
 "early_january_2023_weather"
 
 
@@ -108,7 +110,7 @@
 #'
 #' A sample of 50 pennies contained in a 50 cent roll from Florence Bank on
 #' Friday February 1, 2019 in downtown Northampton, Massachusetts, USA
-#' <https://goo.gl/maps/AF88fpvVfm12>.
+#' <https://www.google.com/maps/place/Florence+Bank+-+Downtown+Northampton/@42.3194512,-72.6337622,16z/data=!4m5!3m4!1s0x89e6d7465ea57a19:0xc901966a46d8ceab!8m2!3d42.3194512!4d-72.6293848>.
 #'
 #' @format A data frame of 50 rows representing 50 sampled pennies and 2 variables
 #' \describe{
@@ -125,7 +127,7 @@
 #'
 #' 35 bootstrap resamples with replacement of sample of 50 pennies contained in
 #' a 50 cent roll from Florence Bank on Friday February 1, 2019 in downtown Northampton,
-#' Massachusetts, USA <https://goo.gl/maps/AF88fpvVfm12>. The original sample
+#' Massachusetts, USA <https://www.google.com/maps/place/Florence+Bank+-+Downtown+Northampton/@42.3194512,-72.6337622,16z/data=!4m5!3m4!1s0x89e6d7465ea57a19:0xc901966a46d8ceab!8m2!3d42.3194512!4d-72.6293848>. The original sample
 #' of 50 pennies is available in [pennies_sample()] .
 #'
 #' @format A data frame of 1750 rows representing 35 students' bootstrap
@@ -286,7 +288,7 @@
 #' }
 #' @source The original source of the data are Massachusetts Department of
 #' Education reports <https://profiles.doe.mass.edu/state_report/>, however
-#' the data was downloaded from Kaggle at <https://www.kaggle.com/ndalziel/massachusetts-public-schools-data>
+#' the data was downloaded from Kaggle at <https://www.kaggle.com/datasets/ndalziel/massachusetts-public-schools-data>
 "MA_schools"
 
 
@@ -314,7 +316,7 @@
 #'
 #' This dataset contains house sale prices for King County, which includes
 #' Seattle. It includes homes sold between May 2014 and May 2015. This dataset
-#' was obtained from Kaggle.com <https://www.kaggle.com/harlfoxem/housesalesprediction/data>
+#' was obtained from Kaggle.com <https://www.kaggle.com/datasets/harlfoxem/housesalesprediction/data>
 #'
 #' @format A data frame with 21613 observations on the following 21 variables.
 #' \describe{
@@ -340,7 +342,7 @@
 #'   \item{sqft_living15}{Living room area in 2015 (implies-- some renovations) This might or might not have affected the lotsize area}
 #'   \item{sqft_lot15}{lotSize area in 2015 (implies-- some renovations)}
 #' }
-#' @source Kaggle <https://www.kaggle.com/harlfoxem/housesalesprediction>.
+#' @source Kaggle <https://www.kaggle.com/datasets/harlfoxem/housesalesprediction>.
 #' Note data is released under a CC0: Public Domain license.
 "house_prices"
 
@@ -622,7 +624,7 @@
 #' }
 #' @source 
 #' \url{https://massdot-impact-crashes-vhb.opendata.arcgis.com/datasets/MassDOT::2020-vehicle-level-crash-details/explore}
-#' \url{https://mhd.public.ms2soft.com/tcds/tsearch.asp?loc=Mhd&mod=}
+#' and the MassDOT Transportation Data Management System (TDMS).
 "ma_traffic_2020_vs_2019"
 
 #' Data from Mario Kart Ebay auctions 
@@ -684,7 +686,9 @@
 #' \item{age}{Age of House (years)}
 #' \item{fireplace}{Whether the house has a Fireplace}
 #' }
-#' @source Gathered from <https://docs.google.com/spreadsheets/d/1AY5eECqNIggKpYF3kYzJQBIuuOdkiclFhbjAmY3Yc8E/edit#gid=622599674>
+#' @source Data on 2006 house prices in Saratoga County, New York,
+#' USA. Originally gathered from a publicly shared Google Sheet that is
+#' no longer publicly accessible.
 "saratoga_houses" 
 
 #' Chocolate-covered almonds data
@@ -776,14 +780,14 @@
 #'
 #' @format A data frame with 6,000 rows and 21 columns:
 #' \describe{
-#'   \item{track_id}{\code{character}. Spotify ID for the track. See: \url{https://developer.spotify.com/documentation/web-api/}}
+#'   \item{track_id}{\code{character}. Spotify ID for the track. See: \url{https://developer.spotify.com/documentation/web-api}}
 #'   \item{artists}{\code{character}. Names of the artists associated with the track.}
 #'   \item{album_name}{\code{character}. Name of the album on which the track appears.}
 #'   \item{track_name}{\code{character}. Name of the track.}
-#'   \item{popularity}{\code{numeric}. Popularity score of the track (0-100). See: \url{https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track}}
+#'   \item{popularity}{\code{numeric}. Popularity score of the track (0-100). See: \url{https://developer.spotify.com/documentation/web-api/reference/get-track}}
 #'   \item{duration_ms}{\code{numeric}. Duration of the track in milliseconds.}
 #'   \item{explicit}{\code{logical}. Whether the track has explicit content.}
-#'   \item{danceability}{\code{numeric}. Danceability score of the track (0-1). See: \url{https://developer.spotify.com/documentation/web-api/reference/#/operations/get-audio-features}}
+#'   \item{danceability}{\code{numeric}. Danceability score of the track (0-1). See: \url{https://developer.spotify.com/documentation/web-api/reference/get-audio-features}}
 #'   \item{energy}{\code{numeric}. Energy score of the track (0-1).}
 #'   \item{key}{\code{numeric}. The key the track is in (0-11 where 0 = C, 1 = C#/Db, etc.).}
 #'   \item{loudness}{\code{numeric}. The loudness of the track in decibels (dB).}
@@ -798,7 +802,7 @@
 #'   \item{track_genre}{\code{character}. Genre of the track (country, deep-house, dubstep, hip-hop, metal, and rock).}
 #'   \item{popular_or_not}{\code{character}. Indicates whether the track is considered popular ("popular") or not ("not popular"). Popularity is defined as a score of 50 or higher which corresponds to the 75th percentile of the \code{popularity} column.}
 #' }
-#' @source \url{https://developer.spotify.com/documentation/web-api/}
+#' @source \url{https://developer.spotify.com/documentation/web-api}
 #' @examples
 #' data(spotify_by_genre)
 #' head(spotify_by_genre)
@@ -810,14 +814,14 @@
 #'
 #' @format A data frame with 52 rows and 6 columns:
 #' \describe{
-#'   \item{track_id}{\code{character}. Spotify ID for the track. See: \url{https://developer.spotify.com/documentation/web-api/}}
+#'   \item{track_id}{\code{character}. Spotify ID for the track. See: \url{https://developer.spotify.com/documentation/web-api}}
 #'   \item{track_genre}{\code{character}. Genre of the track, either "deep-house" or "metal".}
 #'   \item{artists}{\code{character}. Names of the artists associated with the track.}
 #'   \item{track_name}{\code{character}. Name of the track.}
-#'   \item{popularity}{\code{numeric}. Popularity score of the track (0-100). See: \url{https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track}}
+#'   \item{popularity}{\code{numeric}. Popularity score of the track (0-100). See: \url{https://developer.spotify.com/documentation/web-api/reference/get-track}}
 #'   \item{popular_or_not}{\code{character}. Indicates whether the track is considered popular ("popular") or not ("not popular"). Popularity is defined as a score of 50 or higher which corresponds to the 75th percentile of the \code{popularity} column.}
 #' }
-#' @source \url{https://developer.spotify.com/documentation/web-api/}
+#' @source \url{https://developer.spotify.com/documentation/web-api}
 #' @examples
 #' data(spotify_52_original)
 #' head(spotify_52_original)
@@ -829,14 +833,14 @@
 #'
 #' @format A data frame with 52 rows and 6 columns:
 #' \describe{
-#'   \item{track_id}{\code{character}. Spotify ID for the track. See: \url{https://developer.spotify.com/documentation/web-api/}}
+#'   \item{track_id}{\code{character}. Spotify ID for the track. See: \url{https://developer.spotify.com/documentation/web-api}}
 #'   \item{track_genre}{\code{character}. Genre of the track, either "deep-house" or "metal".}
 #'   \item{artists}{\code{character}. Names of the artists associated with the track.}
 #'   \item{track_name}{\code{character}. Name of the track.}
-#'   \item{popularity}{\code{numeric}. Popularity score of the track (0-100). See: \url{https://developer.spotify.com/documentation/web-api/reference/#/operations/get-track}}
+#'   \item{popularity}{\code{numeric}. Popularity score of the track (0-100). See: \url{https://developer.spotify.com/documentation/web-api/reference/get-track}}
 #'   \item{popular_or_not}{\code{character}. A shuffled version of the column of the same name in the \code{spotify_52_original} data frame.}
 #' }
-#' @source \url{https://developer.spotify.com/documentation/web-api/}
+#' @source \url{https://developer.spotify.com/documentation/web-api}
 #' @examples
 #' data(spotify_52_shuffled)
 #' head(spotify_52_shuffled)
