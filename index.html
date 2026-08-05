@@ -66,7 +66,9 @@
 <li>Working with regression tables that include confidence intervals</li>
 <li>Accessing regression outputs on an observation level (e.g. fitted/predicted values and residuals)</li>
 <li>Inspecting scalar summaries of regression fit (e.g. R-squared, R-squared adjusted, and mean squared error)</li>
-<li>Visualizing parallel slopes regression models using <code>ggplot2</code>-like syntax.</li>
+<li>Visualizing parallel slopes regression models using <code>ggplot2</code>-like syntax</li>
+<li>Computing correlation coefficients from a formula interface, for one predictor or several at once</li>
+<li>Viewing data frames inline in contexts where <code><a href="https://rdrr.io/r/utils/View.html" class="external-link">utils::View()</a></code> cannot open a viewer pane, such as R Markdown, Quarto, and webR</li>
 </ol>
 <p>This R package is designed to supplement the book “Statistical Inference via Data Science: A ModernDive into R and the Tidyverse” available at <a href="https://moderndive.com/v2/" class="external-link">ModernDive.com/v2/</a>. For more background, read our <a href="https://doi.org/10.21105/jose.00115" class="external-link">Journal of Open Source Education paper</a>.</p>
 </div>
@@ -83,53 +85,78 @@
 <span><span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"moderndive/moderndive"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="basic-usage">Basic usage<a class="anchor" aria-label="anchor" href="#basic-usage"></a>
+<h2 id="whats-new-in-080">What’s new in 0.8.0<a class="anchor" aria-label="anchor" href="#whats-new-in-080"></a>
 </h2>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Correlation for several predictors at once, not just one</span></span>
+<span><span class="co"># (one row per predictor; pass wide = TRUE for one column per predictor)</span></span>
+<span><span class="fu"><a href="reference/get_correlation.html">get_correlation</a></span><span class="op">(</span><span class="va">un_member_states_2024</span>,</span>
+<span>                <span class="va">life_expectancy_2022</span> <span class="op">~</span> <span class="va">gdp_per_capita</span> <span class="op">+</span> <span class="va">fertility_rate_2022</span>,</span>
+<span>                na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Regression wrappers now accept glm() models. For logistic regression,</span></span>
+<span><span class="co"># get_regression_points() returns fitted values on the response scale, and</span></span>
+<span><span class="co"># get_regression_table(exponentiate = TRUE) gives odds ratios.</span></span>
+<span><span class="va">glm_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html" class="external-link">glm</a></span><span class="op">(</span><span class="va">am</span> <span class="op">~</span> <span class="va">wt</span>, data <span class="op">=</span> <span class="va">mtcars</span>, family <span class="op">=</span> <span class="va">binomial</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">glm_model</span>, exponentiate <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Interactive 3D scatterplot with a fitted regression plane (needs plotly)</span></span>
+<span><span class="fu"><a href="reference/plot_3d_regression.html">plot_3d_regression</a></span><span class="op">(</span><span class="va">un_member_states_2024</span>,</span>
+<span>                   <span class="va">life_expectancy_2022</span> <span class="op">~</span> <span class="va">gdp_per_capita</span> <span class="op">+</span> <span class="va">fertility_rate_2022</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># View() renders an inline table when there is no viewer pane to open --</span></span>
+<span><span class="co"># in R Markdown, Quarto, and the book's in-browser webR cells</span></span>
+<span><span class="fu"><a href="reference/View.html">View</a></span><span class="op">(</span><span class="va">un_member_states_2024</span><span class="op">)</span></span></code></pre></div>
+<p>In-formula transformations such as <code>lm(log(y) ~ poly(x, 2))</code> are also handled throughout, on either side of the formula. See <a href="https://github.com/moderndive/moderndive/blob/master/NEWS.md" class="external-link">NEWS.md</a> for the full list.</p>
+</div>
+<div class="section level2">
+<h2 id="basic-usage">Basic usage<a class="anchor" aria-label="anchor" href="#basic-usage"></a>
+</h2>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://moderndive.github.io/moderndive/">moderndive</a></span><span class="op">)</span></span>
 <span><span class="va">score_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">score</span> <span class="op">~</span> <span class="va">age</span>, data <span class="op">=</span> <span class="va">evals</span><span class="op">)</span></span></code></pre></div>
 <ol style="list-style-type: decimal">
 <li>
 <p>Get a tidy regression table <strong>with confidence intervals</strong>:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb5"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a><span class="do">## # A tibble: 2 × 7</span></span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="do">##   term      estimate std_error statistic p_value lower_ci upper_ci</span></span>
-<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="do">## 1 intercept    4.46      0.127     35.2    0        4.21     4.71 </span></span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="do">## 2 age         -0.006     0.003     -2.31   0.021   -0.011   -0.001</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a><span class="do">## # A tibble: 2 × 7</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1"></a><span class="do">##   term      estimate std_error statistic p_value lower_ci upper_ci</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1"></a><span class="do">## 1 intercept    4.46      0.127     35.2    0        4.21     4.71 </span></span>
+<span id="cb6-5"><a href="#cb6-5" tabindex="-1"></a><span class="do">## 2 age         -0.006     0.003     -2.31   0.021   -0.011   -0.001</span></span></code></pre></div>
 </li>
 <li>
 <p>Get information on each point/observation in your regression, including fitted/predicted values and residuals, in a single data frame:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/get_regression_points.html">get_regression_points</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a><span class="do">## # A tibble: 463 × 5</span></span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1"></a><span class="do">##       ID score   age score_hat residual</span></span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1"></a><span class="do">##    &lt;int&gt; &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb7-4"><a href="#cb7-4" tabindex="-1"></a><span class="do">##  1     1   4.7    36      4.25    0.452</span></span>
-<span id="cb7-5"><a href="#cb7-5" tabindex="-1"></a><span class="do">##  2     2   4.1    36      4.25   -0.148</span></span>
-<span id="cb7-6"><a href="#cb7-6" tabindex="-1"></a><span class="do">##  3     3   3.9    36      4.25   -0.348</span></span>
-<span id="cb7-7"><a href="#cb7-7" tabindex="-1"></a><span class="do">##  4     4   4.8    36      4.25    0.552</span></span>
-<span id="cb7-8"><a href="#cb7-8" tabindex="-1"></a><span class="do">##  5     5   4.6    59      4.11    0.488</span></span>
-<span id="cb7-9"><a href="#cb7-9" tabindex="-1"></a><span class="do">##  6     6   4.3    59      4.11    0.188</span></span>
-<span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="do">##  7     7   2.8    59      4.11   -1.31 </span></span>
-<span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="do">##  8     8   4.1    51      4.16   -0.059</span></span>
-<span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="do">##  9     9   3.4    51      4.16   -0.759</span></span>
-<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="do">## 10    10   4.5    40      4.22    0.276</span></span>
-<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="do">## # … with 453 more rows</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="do">## # A tibble: 463 × 5</span></span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a><span class="do">##       ID score   age score_hat residual</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="do">##    &lt;int&gt; &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="do">##  1     1   4.7    36      4.25    0.452</span></span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="do">##  2     2   4.1    36      4.25   -0.148</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="do">##  3     3   3.9    36      4.25   -0.348</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="do">##  4     4   4.8    36      4.25    0.552</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="do">##  5     5   4.6    59      4.11    0.488</span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="do">##  6     6   4.3    59      4.11    0.188</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="do">##  7     7   2.8    59      4.11   -1.31 </span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="do">##  8     8   4.1    51      4.16   -0.059</span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="do">##  9     9   3.4    51      4.16   -0.759</span></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="do">## 10    10   4.5    40      4.22    0.276</span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="do">## # … with 453 more rows</span></span></code></pre></div>
 </li>
 <li>
 <p>Get scalar summaries of a regression fit including R-squared and R-squared adjusted but also the (root) mean-squared error:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/get_regression_summaries.html">get_regression_summaries</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="do">## # A tibble: 1 × 9</span></span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="do">##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df  nobs</span></span>
-<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="do">##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="do">## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     1   463</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="do">## # A tibble: 1 × 9</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a><span class="do">##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df  nobs</span></span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a><span class="do">##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a><span class="do">## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     1   463</span></span></code></pre></div>
 </li>
 <li>
 <p>Visualize parallel slopes models using the <code><a href="reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> custom <code>ggplot2</code> geometry:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">evals</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">score</span>, color <span class="op">=</span> <span class="va">ethnicity</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -267,42 +294,42 @@
 <li>While not a silver bullet for eliminating misinterpretations of statistical inference, confidence intervals present students with a sense of the associated effect sizes of any explanatory variables. Thus, practical as well as statistical significance is emphasized. These are not included by default in the output of <code><a href="https://rdrr.io/r/stats/summary.lm.html" class="external-link">summary.lm()</a></code>.</li>
 </ol>
 <p>Instead of <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code>, let’s use the <code><a href="reference/get_regression_table.html">get_regression_table()</a></code> function:</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb12"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="do">## # A tibble: 2 × 7</span></span>
-<span id="cb12-2"><a href="#cb12-2" tabindex="-1"></a><span class="do">##   term      estimate std_error statistic p_value lower_ci upper_ci</span></span>
-<span id="cb12-3"><a href="#cb12-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb12-4"><a href="#cb12-4" tabindex="-1"></a><span class="do">## 1 intercept    4.46      0.127     35.2    0        4.21     4.71 </span></span>
-<span id="cb12-5"><a href="#cb12-5" tabindex="-1"></a><span class="do">## 2 age         -0.006     0.003     -2.31   0.021   -0.011   -0.001</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="do">## # A tibble: 2 × 7</span></span>
+<span id="cb13-2"><a href="#cb13-2" tabindex="-1"></a><span class="do">##   term      estimate std_error statistic p_value lower_ci upper_ci</span></span>
+<span id="cb13-3"><a href="#cb13-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4" tabindex="-1"></a><span class="do">## 1 intercept    4.46      0.127     35.2    0        4.21     4.71 </span></span>
+<span id="cb13-5"><a href="#cb13-5" tabindex="-1"></a><span class="do">## 2 age         -0.006     0.003     -2.31   0.021   -0.011   -0.001</span></span></code></pre></div>
 <p>Observe how the p-value stars are omitted and confidence intervals for the point estimates of all regression parameters are included by default. By including them in the output, we can then emphasize to students that they “surround” the point estimates in the <code>estimate</code> column. Note the confidence level is defaulted to 95%; this default can be changed using the <code>conf.level</code> argument:</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">score_model</span>, conf.level <span class="op">=</span> <span class="fl">0.99</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb14"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="do">## # A tibble: 2 × 7</span></span>
-<span id="cb14-2"><a href="#cb14-2" tabindex="-1"></a><span class="do">##   term      estimate std_error statistic p_value lower_ci upper_ci</span></span>
-<span id="cb14-3"><a href="#cb14-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb14-4"><a href="#cb14-4" tabindex="-1"></a><span class="do">## 1 intercept    4.46      0.127     35.2    0        4.13     4.79 </span></span>
-<span id="cb14-5"><a href="#cb14-5" tabindex="-1"></a><span class="do">## 2 age         -0.006     0.003     -2.31   0.021   -0.013    0.001</span></span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a><span class="do">## # A tibble: 2 × 7</span></span>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a><span class="do">##   term      estimate std_error statistic p_value lower_ci upper_ci</span></span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;        &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1"></a><span class="do">## 1 intercept    4.46      0.127     35.2    0        4.13     4.79 </span></span>
+<span id="cb15-5"><a href="#cb15-5" tabindex="-1"></a><span class="do">## 2 age         -0.006     0.003     -2.31   0.021   -0.013    0.001</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="id_2-outputs-as-tibbles">2. Outputs as tibbles<a class="anchor" aria-label="anchor" href="#id_2-outputs-as-tibbles"></a>
 </h3>
 <p>While one might argue that extracting the intercept and slope coefficients can be “simply” done using <code>coefficients(score_model)</code>, what about the standard errors? For example, a Google query of “<em>how do I extract standard errors from lm in R</em>” yielded results from <a href="https://stat.ethz.ch/pipermail/r-help/2008-April/160538.html" class="external-link">the R mailing list</a> and from <a href="https://stats.stackexchange.com/questions/27511/extract-standard-errors-of-coefficient-linear-regression-r" class="external-link">Cross Validated</a> suggesting we run:</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb16"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" tabindex="-1"></a><span class="do">## (Intercept)         age </span></span>
-<span id="cb16-2"><a href="#cb16-2" tabindex="-1"></a><span class="do">## 0.126778499 0.002569157</span></span></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="do">## (Intercept)         age </span></span>
+<span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="do">## 0.126778499 0.002569157</span></span></code></pre></div>
 <p>We argue that this task shouldn’t be this hard, especially in an introductory statistics setting. To rectify this, the three <code>get_regression_*</code> functions all return data frames in the tidyverse-style tibble (tidy table) format. Therefore you can extract columns using the <code><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull()</a></code> function from the <code>dplyr</code> package:</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/pull.html" class="external-link">pull</a></span><span class="op">(</span><span class="va">std_error</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" tabindex="-1"></a><span class="do">## [1] 0.127 0.003</span></span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a><span class="do">## [1] 0.127 0.003</span></span></code></pre></div>
 <p>or equivalently you can use the <code>$</code> sign operator from base R:</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span><span class="op">$</span><span class="va">std_error</span></span></code></pre></div>
-<div class="sourceCode" id="cb20"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="do">## [1] 0.127 0.003</span></span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" tabindex="-1"></a><span class="do">## [1] 0.127 0.003</span></span></code></pre></div>
 <p>Furthermore, by piping the above <code>get_regression_table(score_model)</code> output into the <code><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable()</a></code> function from the <code>knitr</code> package, you can obtain aesthetically pleasing regression tables in R Markdown documents, instead of tables written in jarring computer output font:</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/" class="external-link">knitr</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
@@ -352,38 +379,38 @@
 <a class="anchor" aria-label="anchor" href="#id_3-produce-residual-analysis-plots-from-scratch-using-ggplot2"></a>
 </h3>
 <p>How can we extract point-by-point information from a regression model, such as the fitted/predicted values and the residuals? (Note we only display the first 10 out of 463 of such values for brevity’s sake.)</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/fitted.values.html" class="external-link">fitted</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb23"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a><span class="do">##        1        2        3        4        5        6        7        8 </span></span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a><span class="do">## 4.248156 4.248156 4.248156 4.248156 4.111577 4.111577 4.111577 4.159083 </span></span>
-<span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a><span class="do">##        9       10 </span></span>
-<span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a><span class="do">## 4.159083 4.224403</span></span></code></pre></div>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a><span class="do">##        1        2        3        4        5        6        7        8 </span></span>
+<span id="cb24-2"><a href="#cb24-2" tabindex="-1"></a><span class="do">## 4.248156 4.248156 4.248156 4.248156 4.111577 4.111577 4.111577 4.159083 </span></span>
+<span id="cb24-3"><a href="#cb24-3" tabindex="-1"></a><span class="do">##        9       10 </span></span>
+<span id="cb24-4"><a href="#cb24-4" tabindex="-1"></a><span class="do">## 4.159083 4.224403</span></span></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/stats/residuals.html" class="external-link">residuals</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb25"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a><span class="do">##           1           2           3           4           5           6 </span></span>
-<span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a><span class="do">##  0.45184376 -0.14815624 -0.34815624  0.55184376  0.48842294  0.18842294 </span></span>
-<span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a><span class="do">##           7           8           9          10 </span></span>
-<span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a><span class="do">## -1.31157706 -0.05908286 -0.75908286  0.27559666</span></span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" tabindex="-1"></a><span class="do">##           1           2           3           4           5           6 </span></span>
+<span id="cb26-2"><a href="#cb26-2" tabindex="-1"></a><span class="do">##  0.45184376 -0.14815624 -0.34815624  0.55184376  0.48842294  0.18842294 </span></span>
+<span id="cb26-3"><a href="#cb26-3" tabindex="-1"></a><span class="do">##           7           8           9          10 </span></span>
+<span id="cb26-4"><a href="#cb26-4" tabindex="-1"></a><span class="do">## -1.31157706 -0.05908286 -0.75908286  0.27559666</span></span></code></pre></div>
 <p>But why have the original explanatory/predictor <code>age</code> and outcome variable <code>score</code> in <code>evals</code>, the fitted/predicted values <code>score_hat</code>, and <code>residual</code> floating around in separate vectors? Since each observation relates to the same course, we argue it makes more sense to organize them together in the same data frame using <code><a href="reference/get_regression_points.html">get_regression_points()</a></code>:</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">score_model_points</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/get_regression_points.html">get_regression_points</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span>
 <span><span class="va">score_model_points</span></span></code></pre></div>
-<div class="sourceCode" id="cb27"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" tabindex="-1"></a><span class="do">## # A tibble: 10 × 5</span></span>
-<span id="cb27-2"><a href="#cb27-2" tabindex="-1"></a><span class="do">##       ID score   age score_hat residual</span></span>
-<span id="cb27-3"><a href="#cb27-3" tabindex="-1"></a><span class="do">##    &lt;int&gt; &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb27-4"><a href="#cb27-4" tabindex="-1"></a><span class="do">##  1     1   4.7    36      4.25    0.452</span></span>
-<span id="cb27-5"><a href="#cb27-5" tabindex="-1"></a><span class="do">##  2     2   4.1    36      4.25   -0.148</span></span>
-<span id="cb27-6"><a href="#cb27-6" tabindex="-1"></a><span class="do">##  3     3   3.9    36      4.25   -0.348</span></span>
-<span id="cb27-7"><a href="#cb27-7" tabindex="-1"></a><span class="do">##  4     4   4.8    36      4.25    0.552</span></span>
-<span id="cb27-8"><a href="#cb27-8" tabindex="-1"></a><span class="do">##  5     5   4.6    59      4.11    0.488</span></span>
-<span id="cb27-9"><a href="#cb27-9" tabindex="-1"></a><span class="do">##  6     6   4.3    59      4.11    0.188</span></span>
-<span id="cb27-10"><a href="#cb27-10" tabindex="-1"></a><span class="do">##  7     7   2.8    59      4.11   -1.31 </span></span>
-<span id="cb27-11"><a href="#cb27-11" tabindex="-1"></a><span class="do">##  8     8   4.1    51      4.16   -0.059</span></span>
-<span id="cb27-12"><a href="#cb27-12" tabindex="-1"></a><span class="do">##  9     9   3.4    51      4.16   -0.759</span></span>
-<span id="cb27-13"><a href="#cb27-13" tabindex="-1"></a><span class="do">## 10    10   4.5    40      4.22    0.276</span></span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" tabindex="-1"></a><span class="do">## # A tibble: 10 × 5</span></span>
+<span id="cb28-2"><a href="#cb28-2" tabindex="-1"></a><span class="do">##       ID score   age score_hat residual</span></span>
+<span id="cb28-3"><a href="#cb28-3" tabindex="-1"></a><span class="do">##    &lt;int&gt; &lt;dbl&gt; &lt;int&gt;     &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb28-4"><a href="#cb28-4" tabindex="-1"></a><span class="do">##  1     1   4.7    36      4.25    0.452</span></span>
+<span id="cb28-5"><a href="#cb28-5" tabindex="-1"></a><span class="do">##  2     2   4.1    36      4.25   -0.148</span></span>
+<span id="cb28-6"><a href="#cb28-6" tabindex="-1"></a><span class="do">##  3     3   3.9    36      4.25   -0.348</span></span>
+<span id="cb28-7"><a href="#cb28-7" tabindex="-1"></a><span class="do">##  4     4   4.8    36      4.25    0.552</span></span>
+<span id="cb28-8"><a href="#cb28-8" tabindex="-1"></a><span class="do">##  5     5   4.6    59      4.11    0.488</span></span>
+<span id="cb28-9"><a href="#cb28-9" tabindex="-1"></a><span class="do">##  6     6   4.3    59      4.11    0.188</span></span>
+<span id="cb28-10"><a href="#cb28-10" tabindex="-1"></a><span class="do">##  7     7   2.8    59      4.11   -1.31 </span></span>
+<span id="cb28-11"><a href="#cb28-11" tabindex="-1"></a><span class="do">##  8     8   4.1    51      4.16   -0.059</span></span>
+<span id="cb28-12"><a href="#cb28-12" tabindex="-1"></a><span class="do">##  9     9   3.4    51      4.16   -0.759</span></span>
+<span id="cb28-13"><a href="#cb28-13" tabindex="-1"></a><span class="do">## 10    10   4.5    40      4.22    0.276</span></span></code></pre></div>
 <p>Observe that the original outcome variable <code>score</code> and explanatory/predictor variable <code>age</code> are now supplemented with the fitted/predicted values <code>score_hat</code> and <code>residual</code> columns. By putting the fitted values, predicted values, and residuals next to the original data, we argue that the computation of these values is less opaque. For example, instructors can emphasize how all values in the first row of output are computed.</p>
 <p>Furthermore, recall that since all outputs in the <code>moderndive</code> package are tibble data frames, custom residual analysis plots can be created instead of relying on the default plots yielded by <code>plot.lm()</code>. For example, we can check for the normality of residuals using the histogram of residuals shown in .</p>
-<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Code to visualize distribution of residuals:</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">score_model_points</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">residual</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">20</span><span class="op">)</span> <span class="op">+</span></span>
@@ -392,7 +419,7 @@
 <img src="reference/figures/residuals-1-1.png" alt="Histogram visualizing distribution of residuals."><div class="figcaption">Histogram visualizing distribution of residuals.</div>
 </div>
 <p>As another example, we can investigate potential relationships between the residuals and all explanatory/predictor variables and the presence of heteroskedasticity using partial residual plots, like the partial residual plot over age shown in . If the term “heteroskedasticity” is new to you, it corresponds to the variability of one variable being unequal across the range of values of another variable. The presence of heteroskedasticity violates one of the assumptions of inference for linear regression.</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Code to visualize partial residual plot over age:</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">score_model_points</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">residual</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -406,14 +433,14 @@
 </h3>
 <p>With the fields of machine learning and artificial intelligence gaining prominence, the importance of predictive modeling cannot be understated. Therefore, we’ve designed the <code><a href="reference/get_regression_points.html">get_regression_points()</a></code> function to allow for a <code>newdata</code> argument to quickly apply a previously fitted model to new observations.</p>
 <p>Let’s create an artificial “new” dataset consisting of two instructors of age 39 and 42 and save it in a tibble data frame called <code>new_prof</code>. We then set the <code>newdata</code> argument to <code><a href="reference/get_regression_points.html">get_regression_points()</a></code> to apply our previously fitted model <code>score_model</code> to this new data, where <code>score_hat</code> holds the corresponding fitted/predicted values.</p>
-<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">new_prof</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">39</span>, <span class="fl">42</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/get_regression_points.html">get_regression_points</a></span><span class="op">(</span><span class="va">score_model</span>, newdata <span class="op">=</span> <span class="va">new_prof</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb31"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" tabindex="-1"></a><span class="do">## # A tibble: 2 × 3</span></span>
-<span id="cb31-2"><a href="#cb31-2" tabindex="-1"></a><span class="do">##      ID   age score_hat</span></span>
-<span id="cb31-3"><a href="#cb31-3" tabindex="-1"></a><span class="do">##   &lt;int&gt; &lt;dbl&gt;     &lt;dbl&gt;</span></span>
-<span id="cb31-4"><a href="#cb31-4" tabindex="-1"></a><span class="do">## 1     1    39      4.23</span></span>
-<span id="cb31-5"><a href="#cb31-5" tabindex="-1"></a><span class="do">## 2     2    42      4.21</span></span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" tabindex="-1"></a><span class="do">## # A tibble: 2 × 3</span></span>
+<span id="cb32-2"><a href="#cb32-2" tabindex="-1"></a><span class="do">##      ID   age score_hat</span></span>
+<span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a><span class="do">##   &lt;int&gt; &lt;dbl&gt;     &lt;dbl&gt;</span></span>
+<span id="cb32-4"><a href="#cb32-4" tabindex="-1"></a><span class="do">## 1     1    39      4.23</span></span>
+<span id="cb32-5"><a href="#cb32-5" tabindex="-1"></a><span class="do">## 2     2    42      4.21</span></span></code></pre></div>
 <p>Let’s do another example, this time using the Kaggle <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques" class="external-link">House Prices: Advanced Regression Techniques</a> practice competition ( displays the homepage for this competition).</p>
 <div class="figure" style="text-align: center">
 <p><img src="reference/figures/kaggle.jpeg" alt="House prices Kaggle competition homepage." width="95%"></p>
@@ -428,7 +455,7 @@
 <li>Fit a naive model of house sale price as a function of year sold to the training data.</li>
 <li>Make predictions on the test data and write them to a <code>submission.csv</code> file that can be submitted to Kaggle using <code><a href="reference/get_regression_points.html">get_regression_points()</a></code>. Note the use of the <code>ID</code> argument to use the <code>id</code> variable in <code>test</code> to identify the rows (a requirement of Kaggle competition submissions).</li>
 </ol>
-<!-- end list --><div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
+<!-- end list --><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://moderndive.github.io/moderndive/">moderndive</a></span><span class="op">)</span></span>
@@ -464,30 +491,30 @@
 <img src="reference/figures/interaction-and-parallel-slopes-model-1-1.png" alt="Interaction (left) and parallel slopes (right) models."><div class="figcaption">Interaction (left) and parallel slopes (right) models.</div>
 </div>
 <p>Students might be wondering “Why would you use the parallel slopes model on the right when the data clearly form an”X” pattern as seen in the interaction model on the left?” This is an excellent opportunity to gently introduce the notion of <em>model selection</em> and <em>Occam’s Razor</em>: an interaction model should only be used over a parallel slopes model <strong>if the additional complexity of the interaction model is warranted</strong>. Here, we define model “complexity/simplicity” in terms of the number of parameters in the corresponding regression tables:</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Regression table for interaction model:</span></span>
 <span><span class="va">interaction_evals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">score</span> <span class="op">~</span> <span class="va">age</span> <span class="op">*</span> <span class="va">ethnicity</span>, data <span class="op">=</span> <span class="va">evals</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">interaction_evals</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb34"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" tabindex="-1"></a><span class="do">## # A tibble: 4 × 7</span></span>
-<span id="cb34-2"><a href="#cb34-2" tabindex="-1"></a><span class="do">##   term                    estimate std_error statistic p_value lower_ci upper_ci</span></span>
-<span id="cb34-3"><a href="#cb34-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb34-4"><a href="#cb34-4" tabindex="-1"></a><span class="do">## 1 intercept                  2.61      0.518      5.04   0        1.59     3.63 </span></span>
-<span id="cb34-5"><a href="#cb34-5" tabindex="-1"></a><span class="do">## 2 age                        0.032     0.011      2.84   0.005    0.01     0.054</span></span>
-<span id="cb34-6"><a href="#cb34-6" tabindex="-1"></a><span class="do">## 3 ethnicity: not minority    2.00      0.534      3.74   0        0.945    3.04 </span></span>
-<span id="cb34-7"><a href="#cb34-7" tabindex="-1"></a><span class="do">## 4 age:ethnicitynot minor…   -0.04      0.012     -3.51   0       -0.063   -0.018</span></span></code></pre></div>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" tabindex="-1"></a><span class="do">## # A tibble: 4 × 7</span></span>
+<span id="cb35-2"><a href="#cb35-2" tabindex="-1"></a><span class="do">##   term                    estimate std_error statistic p_value lower_ci upper_ci</span></span>
+<span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb35-4"><a href="#cb35-4" tabindex="-1"></a><span class="do">## 1 intercept                  2.61      0.518      5.04   0        1.59     3.63 </span></span>
+<span id="cb35-5"><a href="#cb35-5" tabindex="-1"></a><span class="do">## 2 age                        0.032     0.011      2.84   0.005    0.01     0.054</span></span>
+<span id="cb35-6"><a href="#cb35-6" tabindex="-1"></a><span class="do">## 3 ethnicity: not minority    2.00      0.534      3.74   0        0.945    3.04 </span></span>
+<span id="cb35-7"><a href="#cb35-7" tabindex="-1"></a><span class="do">## 4 age:ethnicitynot minor…   -0.04      0.012     -3.51   0       -0.063   -0.018</span></span></code></pre></div>
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Regression table for parallel slopes model:</span></span>
 <span><span class="va">parallel_slopes_evals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">score</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">ethnicity</span>, data <span class="op">=</span> <span class="va">evals</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">parallel_slopes_evals</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb36"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" tabindex="-1"></a><span class="do">## # A tibble: 3 × 7</span></span>
-<span id="cb36-2"><a href="#cb36-2" tabindex="-1"></a><span class="do">##   term                    estimate std_error statistic p_value lower_ci upper_ci</span></span>
-<span id="cb36-3"><a href="#cb36-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb36-4"><a href="#cb36-4" tabindex="-1"></a><span class="do">## 1 intercept                  4.37      0.136     32.1    0        4.1      4.63 </span></span>
-<span id="cb36-5"><a href="#cb36-5" tabindex="-1"></a><span class="do">## 2 age                       -0.006     0.003     -2.5    0.013   -0.012   -0.001</span></span>
-<span id="cb36-6"><a href="#cb36-6" tabindex="-1"></a><span class="do">## 3 ethnicity: not minority    0.138     0.073      1.89   0.059   -0.005    0.282</span></span></code></pre></div>
+<div class="sourceCode" id="cb37"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="do">## # A tibble: 3 × 7</span></span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a><span class="do">##   term                    estimate std_error statistic p_value lower_ci upper_ci</span></span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a><span class="do">## 1 intercept                  4.37      0.136     32.1    0        4.1      4.63 </span></span>
+<span id="cb37-5"><a href="#cb37-5" tabindex="-1"></a><span class="do">## 2 age                       -0.006     0.003     -2.5    0.013   -0.012   -0.001</span></span>
+<span id="cb37-6"><a href="#cb37-6" tabindex="-1"></a><span class="do">## 3 ethnicity: not minority    0.138     0.073      1.89   0.059   -0.005    0.282</span></span></code></pre></div>
 <p>The interaction model is “more complex” as evidenced by its regression table involving 4 rows of parameter estimates whereas the parallel slopes model is “simpler” as evidenced by its regression table involving only 3 parameter estimates. It can be argued however that this additional complexity is warranted given the clearly different slopes in the left-hand plot of .</p>
 <p>We now present a contrasting example, this time from Chapter 6 of the online version of <a href="https://moderndive.com/6-multiple-regression.html#model-selection" class="external-link">ModernDive Subsection 6.3.1</a> involving Massachusetts USA public high schools.[3] Let’s plot both the interaction and parallel slopes models in .</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Code to plot interaction and parallel slopes models for MA_schools</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span></span>
 <span>  <span class="va">MA_schools</span>,</span>
@@ -516,32 +543,32 @@
 <img src="reference/figures/interaction-and-parallel-slopes-model-2-1.png" alt="Interaction (left) and parallel slopes (right) models."><div class="figcaption">Interaction (left) and parallel slopes (right) models.</div>
 </div>
 <p>In terms of the corresponding regression tables, observe that the corresponding regression table for the parallel slopes model has 4 rows as opposed to the 6 for the interaction model, reflecting its higher degree of “model simplicity.”</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Regression table for interaction model:</span></span>
 <span><span class="va">interaction_MA</span> <span class="op">&lt;-</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">average_sat_math</span> <span class="op">~</span> <span class="va">perc_disadvan</span> <span class="op">*</span> <span class="va">size</span>, data <span class="op">=</span> <span class="va">MA_schools</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">interaction_MA</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb39"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" tabindex="-1"></a><span class="do">## # A tibble: 6 × 7</span></span>
-<span id="cb39-2"><a href="#cb39-2" tabindex="-1"></a><span class="do">##   term                    estimate std_error statistic p_value lower_ci upper_ci</span></span>
-<span id="cb39-3"><a href="#cb39-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb39-4"><a href="#cb39-4" tabindex="-1"></a><span class="do">## 1 intercept                594.       13.3      44.7     0      568.     620.   </span></span>
-<span id="cb39-5"><a href="#cb39-5" tabindex="-1"></a><span class="do">## 2 perc_disadvan             -2.93      0.294    -9.96    0       -3.51    -2.35 </span></span>
-<span id="cb39-6"><a href="#cb39-6" tabindex="-1"></a><span class="do">## 3 size: medium             -17.8      15.8      -1.12    0.263  -48.9     13.4  </span></span>
-<span id="cb39-7"><a href="#cb39-7" tabindex="-1"></a><span class="do">## 4 size: large              -13.3      13.8      -0.962   0.337  -40.5     13.9  </span></span>
-<span id="cb39-8"><a href="#cb39-8" tabindex="-1"></a><span class="do">## 5 perc_disadvan:sizemedi…    0.146     0.371     0.393   0.694   -0.585    0.877</span></span>
-<span id="cb39-9"><a href="#cb39-9" tabindex="-1"></a><span class="do">## 6 perc_disadvan:sizelarge    0.189     0.323     0.586   0.559   -0.446    0.824</span></span></code></pre></div>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb40"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" tabindex="-1"></a><span class="do">## # A tibble: 6 × 7</span></span>
+<span id="cb40-2"><a href="#cb40-2" tabindex="-1"></a><span class="do">##   term                    estimate std_error statistic p_value lower_ci upper_ci</span></span>
+<span id="cb40-3"><a href="#cb40-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb40-4"><a href="#cb40-4" tabindex="-1"></a><span class="do">## 1 intercept                594.       13.3      44.7     0      568.     620.   </span></span>
+<span id="cb40-5"><a href="#cb40-5" tabindex="-1"></a><span class="do">## 2 perc_disadvan             -2.93      0.294    -9.96    0       -3.51    -2.35 </span></span>
+<span id="cb40-6"><a href="#cb40-6" tabindex="-1"></a><span class="do">## 3 size: medium             -17.8      15.8      -1.12    0.263  -48.9     13.4  </span></span>
+<span id="cb40-7"><a href="#cb40-7" tabindex="-1"></a><span class="do">## 4 size: large              -13.3      13.8      -0.962   0.337  -40.5     13.9  </span></span>
+<span id="cb40-8"><a href="#cb40-8" tabindex="-1"></a><span class="do">## 5 perc_disadvan:sizemedi…    0.146     0.371     0.393   0.694   -0.585    0.877</span></span>
+<span id="cb40-9"><a href="#cb40-9" tabindex="-1"></a><span class="do">## 6 perc_disadvan:sizelarge    0.189     0.323     0.586   0.559   -0.446    0.824</span></span></code></pre></div>
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Regression table for parallel slopes model:</span></span>
 <span><span class="va">parallel_slopes_MA</span> <span class="op">&lt;-</span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">average_sat_math</span> <span class="op">~</span> <span class="va">perc_disadvan</span> <span class="op">+</span> <span class="va">size</span>, data <span class="op">=</span> <span class="va">MA_schools</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">parallel_slopes_MA</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb41"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" tabindex="-1"></a><span class="do">## # A tibble: 4 × 7</span></span>
-<span id="cb41-2"><a href="#cb41-2" tabindex="-1"></a><span class="do">##   term          estimate std_error statistic p_value lower_ci upper_ci</span></span>
-<span id="cb41-3"><a href="#cb41-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb41-4"><a href="#cb41-4" tabindex="-1"></a><span class="do">## 1 intercept       588.       7.61     77.3     0       573.     603.  </span></span>
-<span id="cb41-5"><a href="#cb41-5" tabindex="-1"></a><span class="do">## 2 perc_disadvan    -2.78     0.106   -26.1     0        -2.99    -2.57</span></span>
-<span id="cb41-6"><a href="#cb41-6" tabindex="-1"></a><span class="do">## 3 size: medium    -11.9      7.54     -1.58    0.115   -26.7      2.91</span></span>
-<span id="cb41-7"><a href="#cb41-7" tabindex="-1"></a><span class="do">## 4 size: large      -6.36     6.92     -0.919   0.359   -20.0      7.26</span></span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a><span class="do">## # A tibble: 4 × 7</span></span>
+<span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a><span class="do">##   term          estimate std_error statistic p_value lower_ci upper_ci</span></span>
+<span id="cb42-3"><a href="#cb42-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb42-4"><a href="#cb42-4" tabindex="-1"></a><span class="do">## 1 intercept       588.       7.61     77.3     0       573.     603.  </span></span>
+<span id="cb42-5"><a href="#cb42-5" tabindex="-1"></a><span class="do">## 2 perc_disadvan    -2.78     0.106   -26.1     0        -2.99    -2.57</span></span>
+<span id="cb42-6"><a href="#cb42-6" tabindex="-1"></a><span class="do">## 3 size: medium    -11.9      7.54     -1.58    0.115   -26.7      2.91</span></span>
+<span id="cb42-7"><a href="#cb42-7" tabindex="-1"></a><span class="do">## 4 size: large      -6.36     6.92     -0.919   0.359   -20.0      7.26</span></span></code></pre></div>
 <p>Unlike our earlier comparison of interaction and parallel slopes models in , in this case it could be argued that the additional complexity of the interaction model is <em>not</em> warranted since the 3 three regression lines in the left-hand interaction are already somewhat parallel. Therefore the simpler parallel slopes model should be favored.</p>
 <p>Going one step further, notice how the three regression lines in the visualization of the parallel slopes model in the right-hand plot of have similar intercepts. In can thus be argued that the additional model complexity induced by introducing the categorical variable school <code>size</code> is not warranted. Therefore, a simple linear regression model using only <code>perc_disadvan</code> percent of the student body that are economically disadvantaged should be favored.</p>
 <p>While many students will inevitably find these results depressing, in our opinion, it is important to additionally emphasize that such regression analyses can be used as an empowering tool to bring to light inequities in access to education and inform policy decisions.</p>
@@ -550,31 +577,31 @@
 <h3 id="id_6-produce-metrics-on-the-quality-of-regression-model-fits">6. Produce metrics on the quality of regression model fits<a class="anchor" aria-label="anchor" href="#id_6-produce-metrics-on-the-quality-of-regression-model-fits"></a>
 </h3>
 <p>Recall the output of the standard <code><a href="https://rdrr.io/r/stats/summary.lm.html" class="external-link">summary.lm()</a></code> from earlier:</p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb42-2"><a href="#cb42-2" tabindex="-1"></a><span class="do">## Call:</span></span>
-<span id="cb42-3"><a href="#cb42-3" tabindex="-1"></a><span class="do">## lm(formula = score ~ age, data = evals)</span></span>
-<span id="cb42-4"><a href="#cb42-4" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb42-5"><a href="#cb42-5" tabindex="-1"></a><span class="do">## Residuals:</span></span>
-<span id="cb42-6"><a href="#cb42-6" tabindex="-1"></a><span class="do">##     Min      1Q  Median      3Q     Max </span></span>
-<span id="cb42-7"><a href="#cb42-7" tabindex="-1"></a><span class="do">## -1.9185 -0.3531  0.1172  0.4172  0.8825 </span></span>
-<span id="cb42-8"><a href="#cb42-8" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb42-9"><a href="#cb42-9" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
-<span id="cb42-10"><a href="#cb42-10" tabindex="-1"></a><span class="do">##              Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
-<span id="cb42-11"><a href="#cb42-11" tabindex="-1"></a><span class="do">## (Intercept)  4.461932   0.126778  35.195   &lt;2e-16 ***</span></span>
-<span id="cb42-12"><a href="#cb42-12" tabindex="-1"></a><span class="do">## age         -0.005938   0.002569  -2.311   0.0213 *  </span></span>
-<span id="cb42-13"><a href="#cb42-13" tabindex="-1"></a><span class="do">## ---</span></span>
-<span id="cb42-14"><a href="#cb42-14" tabindex="-1"></a><span class="do">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
-<span id="cb42-15"><a href="#cb42-15" tabindex="-1"></a><span class="do">## </span></span>
-<span id="cb42-16"><a href="#cb42-16" tabindex="-1"></a><span class="do">## Residual standard error: 0.5413 on 461 degrees of freedom</span></span>
-<span id="cb42-17"><a href="#cb42-17" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.01146,    Adjusted R-squared:  0.009311 </span></span>
-<span id="cb42-18"><a href="#cb42-18" tabindex="-1"></a><span class="do">## F-statistic: 5.342 on 1 and 461 DF,  p-value: 0.02125</span></span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb43-2"><a href="#cb43-2" tabindex="-1"></a><span class="do">## Call:</span></span>
+<span id="cb43-3"><a href="#cb43-3" tabindex="-1"></a><span class="do">## lm(formula = score ~ age, data = evals)</span></span>
+<span id="cb43-4"><a href="#cb43-4" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb43-5"><a href="#cb43-5" tabindex="-1"></a><span class="do">## Residuals:</span></span>
+<span id="cb43-6"><a href="#cb43-6" tabindex="-1"></a><span class="do">##     Min      1Q  Median      3Q     Max </span></span>
+<span id="cb43-7"><a href="#cb43-7" tabindex="-1"></a><span class="do">## -1.9185 -0.3531  0.1172  0.4172  0.8825 </span></span>
+<span id="cb43-8"><a href="#cb43-8" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb43-9"><a href="#cb43-9" tabindex="-1"></a><span class="do">## Coefficients:</span></span>
+<span id="cb43-10"><a href="#cb43-10" tabindex="-1"></a><span class="do">##              Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb43-11"><a href="#cb43-11" tabindex="-1"></a><span class="do">## (Intercept)  4.461932   0.126778  35.195   &lt;2e-16 ***</span></span>
+<span id="cb43-12"><a href="#cb43-12" tabindex="-1"></a><span class="do">## age         -0.005938   0.002569  -2.311   0.0213 *  </span></span>
+<span id="cb43-13"><a href="#cb43-13" tabindex="-1"></a><span class="do">## ---</span></span>
+<span id="cb43-14"><a href="#cb43-14" tabindex="-1"></a><span class="do">## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</span></span>
+<span id="cb43-15"><a href="#cb43-15" tabindex="-1"></a><span class="do">## </span></span>
+<span id="cb43-16"><a href="#cb43-16" tabindex="-1"></a><span class="do">## Residual standard error: 0.5413 on 461 degrees of freedom</span></span>
+<span id="cb43-17"><a href="#cb43-17" tabindex="-1"></a><span class="do">## Multiple R-squared:  0.01146,    Adjusted R-squared:  0.009311 </span></span>
+<span id="cb43-18"><a href="#cb43-18" tabindex="-1"></a><span class="do">## F-statistic: 5.342 on 1 and 461 DF,  p-value: 0.02125</span></span></code></pre></div>
 <p>Say we wanted to extract the scalar model summaries at the bottom of this output, such as R-squared, R-squared adjusted, the F-statistic, and the degrees of freedom <code>df</code>. We can do so using the <code><a href="reference/get_regression_summaries.html">get_regression_summaries()</a></code> function.</p>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/get_regression_summaries.html">get_regression_summaries</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb44"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" tabindex="-1"></a><span class="do">## # A tibble: 1 × 9</span></span>
-<span id="cb44-2"><a href="#cb44-2" tabindex="-1"></a><span class="do">##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df  nobs</span></span>
-<span id="cb44-3"><a href="#cb44-3" tabindex="-1"></a><span class="do">##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
-<span id="cb44-4"><a href="#cb44-4" tabindex="-1"></a><span class="do">## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     1   463</span></span></code></pre></div>
+<div class="sourceCode" id="cb45"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" tabindex="-1"></a><span class="do">## # A tibble: 1 × 9</span></span>
+<span id="cb45-2"><a href="#cb45-2" tabindex="-1"></a><span class="do">##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df  nobs</span></span>
+<span id="cb45-3"><a href="#cb45-3" tabindex="-1"></a><span class="do">##       &lt;dbl&gt;         &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb45-4"><a href="#cb45-4" tabindex="-1"></a><span class="do">## 1     0.011         0.009 0.292 0.540 0.541      5.34   0.021     1   463</span></span></code></pre></div>
 <p>We’ve supplemented the standard scalar summaries output yielded by <code><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary()</a></code> with the mean squared error <code>mse</code> and root mean squared error <code>rmse</code> given their popularity in machine learning settings.</p>
 </div>
 </div>
@@ -600,7 +627,7 @@
 <li>In our experience, novice R users had a hard time understanding the <code>broom</code> package function names <code>tidy()</code>, <code>augment()</code>, and <code>glance()</code>. To make them more user-friendly, the <code>moderndive</code> package wrappers have much more intuitively named <code><a href="reference/get_regression_table.html">get_regression_table()</a></code>, <code><a href="reference/get_regression_points.html">get_regression_points()</a></code>, and <code><a href="reference/get_regression_summaries.html">get_regression_summaries()</a></code>.</li>
 <li>The variables included in the outputs of the above 3 <code>broom</code> functions are not all applicable to an introductory statistics students and of those that were, we found they were not intuitive for new R users. We therefore cut out some of the variables from the output and renamed some of the remaining variables. For example, compare the outputs of the <code><a href="reference/get_regression_points.html">get_regression_points()</a></code> wrapper function and the parent <code><a href="https://generics.r-lib.org/reference/augment.html" class="external-link">broom::augment()</a></code> function.</li>
 </ol>
-<!-- end list --><div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<!-- end list --><div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/get_regression_points.html">get_regression_points</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span>
 <span><span class="fu">broom</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/augment.html" class="external-link">augment</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span></code></pre></div>
 <p>The source code for these three <code>get_regression_*</code> functions can be found on <a href="https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R" class="external-link">here</a>.</p>

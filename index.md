@@ -25,7 +25,12 @@ regression. These tools leverage the well-developed `tidyverse` and
 3.  Inspecting scalar summaries of regression fit (e.g. R-squared,
     R-squared adjusted, and mean squared error)
 4.  Visualizing parallel slopes regression models using `ggplot2`-like
-    syntax.
+    syntax
+5.  Computing correlation coefficients from a formula interface, for one
+    predictor or several at once
+6.  Viewing data frames inline in contexts where
+    [`utils::View()`](https://rdrr.io/r/utils/View.html) cannot open a
+    viewer pane, such as R Markdown, Quarto, and webR
 
 This R package is designed to supplement the book “Statistical Inference
 via Data Science: A ModernDive into R and the Tidyverse” available at
@@ -50,6 +55,36 @@ Or the development version from GitHub:
 # install.packages("remotes")
 remotes::install_github("moderndive/moderndive")
 ```
+
+## What’s new in 0.8.0
+
+``` r
+
+# Correlation for several predictors at once, not just one
+# (one row per predictor; pass wide = TRUE for one column per predictor)
+get_correlation(un_member_states_2024,
+                life_expectancy_2022 ~ gdp_per_capita + fertility_rate_2022,
+                na.rm = TRUE)
+
+# Regression wrappers now accept glm() models. For logistic regression,
+# get_regression_points() returns fitted values on the response scale, and
+# get_regression_table(exponentiate = TRUE) gives odds ratios.
+glm_model <- glm(am ~ wt, data = mtcars, family = binomial)
+get_regression_table(glm_model, exponentiate = TRUE)
+
+# Interactive 3D scatterplot with a fitted regression plane (needs plotly)
+plot_3d_regression(un_member_states_2024,
+                   life_expectancy_2022 ~ gdp_per_capita + fertility_rate_2022)
+
+# View() renders an inline table when there is no viewer pane to open --
+# in R Markdown, Quarto, and the book's in-browser webR cells
+View(un_member_states_2024)
+```
+
+In-formula transformations such as `lm(log(y) ~ poly(x, 2))` are also
+handled throughout, on either side of the formula. See
+[NEWS.md](https://github.com/moderndive/moderndive/blob/master/NEWS.md)
+for the full list.
 
 ## Basic usage
 
