@@ -8,6 +8,28 @@ than reconstructed.
 Each step says whether it is **manual** or **automatic**. Do not do the
 automatic ones by hand.
 
+------------------------------------------------------------------------
+
+## EXECUTED 2026-08-04 — what actually happened
+
+CRAN published **0.8.0 on 2026-08-04** (`cran-watch-moderndive` caught
+it at the 20:00 run: `pub=0.7.0;queue=archive -> pub=0.8.0;queue=none`,
+day 19). Steps 1–8 and 10 are **done**; step 9 remains blocked. Three
+corrections to what is written below, discovered while executing it:
+
+- **Step 1 tags the wrong commit.** The runbook says `9ea51de` — that is
+  the *first*, rejected submission. The accepted tarball is
+  **`f26c48a`** (the post-Uwe URL-fix resubmit). `v0.8.0` was tagged
+  there and the GitHub release cut from it. Steps 3 and 4 landed in
+  `66808a9`.
+- **Step 5’s roxygen2 warning is moot.**
+  `Config/roxygen2/version: 8.0.0` in `DESCRIPTION` is the deliberate
+  regeneration that shipped to CRAN, not churn to revert.
+- **Step 6’s premise is wrong, and step 8 is a no-op.** See the notes
+  inline on those steps.
+
+------------------------------------------------------------------------
+
 ## Where things stood on 2026-08-03
 
 Facts checked that day, not recalled:
@@ -82,19 +104,68 @@ applies: it needs a fresh `submit_cran()` from a bumped version first.
 ## 2. `ModernDive_book` (branch `v2`) — manual
 
 6.  **Bump the renv pin.** `renv.lock` currently pins moderndive `0.7.0`
-    (`Source: Repository`, `Repository: CRAN`). CI renders against the
-    lockfile, so until this moves the book keeps building against 0.7.0.
+    (`Source: Repository`, `Repository: CRAN`). ~~CI renders against the
+    lockfile, so until this moves the book keeps building against
+    0.7.0.~~
 
-7.  **Publish the draft release `v2.9.0`.** It already exists as a draft
+    **CORRECTION (2026-08-04): that reason is wrong — the bump is
+    cosmetic.** `quarto-publish.yml` disables renv entirely and installs
+    the lockfile’s CRAN packages by name from a dated P3M snapshot, with
+    `need <- setdiff(need, "moderndive")` (line 76) explicitly dropping
+    moderndive, then clones **dev moderndive from GitHub `main`** (line
+    125). `pr-preview.yml:60` and `audits.yml:304` do the same. So the
+    lockfile is a *manifest* (which packages), not the *pin* (which
+    versions) — the workflow even prints a “renv.lock version drift
+    (informational)” report about exactly this gap. Bumped to `0.8.0`
+    anyway so the manifest is accurate and that drift line goes quiet.
+    No `Hash` fields exist in this lockfile (checked: 0 of 190 entries),
+    so a Version-only edit is a complete edit.
+
+    **The real follow-up this exposes:** now that 0.8.0 carries both
+    multi-predictor
+    [`get_correlation()`](https://moderndive.github.io/moderndive/reference/get_correlation.md)
+    and
+    [`View()`](https://moderndive.github.io/moderndive/reference/View.md),
+    the “Install dev moderndive from GitHub” step and its stale comment
+    (“multi-predictor
+    [`get_correlation()`](https://moderndive.github.io/moderndive/reference/get_correlation.md)
+    is not in the CRAN release yet”) could be retired in favor of the
+    CRAN build across all three workflows. Deliberately **not** done as
+    part of the release — it changes what production builds against and
+    deserves its own change. Note it interacts with step 9: the webR
+    side still needs the r-universe dev build for
+    [`View()`](https://moderndive.github.io/moderndive/reference/View.md).
+
+7.  **DONE 2026-08-04.** Published after all four `v2` workflows went
+    green on `7ec85475c` (Quarto Publish, Audits, Spell check,
+    node-guard) and after the new footnote was confirmed live at
+    `moderndive.com/v2/01-getting-started.html` — the tag landed on
+    `7ec85475c` as intended. The checklist HTML comment was stripped
+    from the notes before publishing; the notes’ “0.8.0 on CRAN” claim
+    is now true.
+
+    **Publish the draft release `v2.9.0`.** It already exists as a draft
     targeting the `v2` **branch**, so publishing creates the tag at
     whatever `v2`’s tip is at that moment — confirm `v2` CI is green
     first. Its notes already claim “0.8.0 on CRAN”, which is why it was
     held back. A pre-publish checklist sits in an HTML comment at the
     top of the notes.
 
-8.  **Optionally** bump `latest_release_version` / date in
+8.  ~~**Optionally** bump `latest_release_version` / date in
     `scripts/image_functions.R` if the preface should cite this release
-    (called out by the draft’s own checklist).
+    (called out by the draft’s own checklist).~~
+
+    **NO-OP — do not do this (checked 2026-08-04).**
+    `latest_release_version` / `latest_release_date` refer specifically
+    to the **CRC Press print edition**, as the comment above them in
+    `image_functions.R` says, and they feed one preface sentence: “The
+    CRC Press print edition corresponds to Version 2.0.0 and released on
+    `r latest_release_date`” (`00-preface.qmd:235`). v2.9.0 is an
+    *online* release, so bumping these would make the preface claim a
+    print edition that does not exist. The sibling constants
+    `version <- "2.1.0"` / `date <- "April 27, 2026"` (“current online
+    build”) are not referenced by any `.qmd`, `.yml`, or script — dead
+    constants, left alone.
 
 9.  **The webR cleanup is NOT automated — this is the trap.**
     `.github/workflows/webr-watch.yml` prunes graduated packages, but
@@ -119,7 +190,26 @@ applies: it needs a fresh `submit_cran()` from a bumped version first.
     Do **not** do this on CRAN publication alone: CRAN and the webR wasm
     build are separate availability questions, and the wasm build lags.
 
-10. **Unblock the Ch1 cheatsheet footnote.** The deferred backlog item —
+    **STILL BLOCKED as of 2026-08-04.**
+    `repo.r-wasm.org/bin/emscripten/contrib/ {4.4,4.5,4.6}/PACKAGES` all
+    still carry moderndive **0.7.0** — checked per R version, not
+    inferred. Re-check before touching any of the three sub-items. P3M
+    was likewise still on 0.7.0 the day of publication (~1-day sync lag,
+    nothing to do).
+
+10. **DONE 2026-08-04** (`7ec85475c` on `v2`). The row had drifted to
+    `01-getting-started.qmd:631`; the footnote is a reference-style
+    `[^view-in-browser]` defined just after the callout closes, matching
+    the `[^1]:` style already used in `07-sampling.qmd`.
+    Footnote-inside-a-table- cell-inside-a-callout was verified by
+    running pandoc on the extracted block rather than assumed. Not
+    touched: the
+    [`library(moderndive)`](https://moderndive.github.io/moderndive/)
+    comment in the chapter’s `#| context: setup` cell (lines 649–650)
+    still describes the r-universe shim — that wording belongs to step
+    9.
+
+    **Unblock the Ch1 cheatsheet footnote.** The deferred backlog item —
     footnote the `View(df)` row so it says that in the browser cells
     [`View()`](https://moderndive.github.io/moderndive/reference/View.md)
     comes from `moderndive` and renders an inline DT table. It was
