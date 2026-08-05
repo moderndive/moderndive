@@ -39,7 +39,9 @@
 
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.8.0.9000" id="moderndive-0809000-development-version">moderndive 0.8.0.9000 (development version)<a class="anchor" aria-label="anchor" href="#moderndive-0809000-development-version"></a></h2>
-</div>
+<ul><li>
+<code><a href="../reference/plot_3d_regression.html">plot_3d_regression()</a></code> no longer emits a <code>plotly</code> warning when the plot is printed. The scatter3d trace’s <code>mode</code> and <code>marker</code> settings were passed to <code><a href="https://rdrr.io/pkg/plotly/man/plot_ly.html" class="external-link">plotly::plot_ly()</a></code>, which makes them <em>plot-level</em> attributes that every later trace inherits; the regression plane added by <code><a href="https://rdrr.io/pkg/plotly/man/add_trace.html" class="external-link">plotly::add_surface()</a></code> then inherited them and warned <code>'surface' objects don't have these attributes: 'mode', 'marker'</code> at build time. They now go on the scatter3d trace itself via <code><a href="https://rdrr.io/pkg/plotly/man/add_trace.html" class="external-link">plotly::add_trace()</a></code>. The rendered plot is unchanged.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.8.0" id="moderndive-080">moderndive 0.8.0<a class="anchor" aria-label="anchor" href="#moderndive-080"></a></h2><p class="text-muted">CRAN release: 2026-08-04</p>
 <ul><li>

@@ -2,6 +2,19 @@
 
 ## moderndive 0.8.0.9000 (development version)
 
+- [`plot_3d_regression()`](https://moderndive.github.io/moderndive/reference/plot_3d_regression.md)
+  no longer emits a `plotly` warning when the plot is printed. The
+  scatter3d trace’s `mode` and `marker` settings were passed to
+  [`plotly::plot_ly()`](https://rdrr.io/pkg/plotly/man/plot_ly.html),
+  which makes them *plot-level* attributes that every later trace
+  inherits; the regression plane added by
+  [`plotly::add_surface()`](https://rdrr.io/pkg/plotly/man/add_trace.html)
+  then inherited them and warned
+  `'surface' objects don't have these attributes: 'mode', 'marker'` at
+  build time. They now go on the scatter3d trace itself via
+  [`plotly::add_trace()`](https://rdrr.io/pkg/plotly/man/add_trace.html).
+  The rendered plot is unchanged.
+
 ## moderndive 0.8.0
 
 CRAN release: 2026-08-04

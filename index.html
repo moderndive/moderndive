@@ -143,7 +143,7 @@
 <span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="do">##  8     8   4.1    51      4.16   -0.059</span></span>
 <span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="do">##  9     9   3.4    51      4.16   -0.759</span></span>
 <span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="do">## 10    10   4.5    40      4.22    0.276</span></span>
-<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="do">## # … with 453 more rows</span></span></code></pre></div>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="do">## # ℹ 453 more rows</span></span></code></pre></div>
 </li>
 <li>
 <p>Get scalar summaries of a regression fit including R-squared and R-squared adjusted but also the (root) mean-squared error:</p>
@@ -194,25 +194,26 @@
 <h3 id="data-background">Data background<a class="anchor" aria-label="anchor" href="#data-background"></a>
 </h3>
 <p>We first discuss the model and data background. The data consists of end of semester student evaluations for a sample of 463 courses taught by 94 professors from the University of Texas at Austin. This data is included in the <code>evals</code> data frame from the <code>moderndive</code> package.</p>
-<p>In the following table, we present a subset of 9 of the 14 variables included for a random sample of 5 courses[1]:</p>
+<p>In the following table, we present a subset of 9 of the 14 variables included for a random sample of 5 courses<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;For details on the remaining 5 variables, see the help file by running &lt;code&gt;&lt;a href="reference/evals.html"&gt;?evals&lt;/a&gt;&lt;/code&gt;.&lt;/p&gt;'><sup>1</sup></a>:</p>
 <ol style="list-style-type: decimal">
 <li>
 <code>ID</code> uniquely identifies the course whereas <code>prof_ID</code> identifies the professor who taught this course. This distinction is important since many professors taught more than one course.</li>
 <li>
 <code>score</code> is the outcome variable of interest: average professor evaluation score out of 5 as given by the students in this course.</li>
-<li>The remaining variables are demographic variables describing that course’s instructor, including <code>bty_avg</code> (average “beauty” score) for that professor as given by a panel of 6 students.[2]</li>
+<li>The remaining variables are demographic variables describing that course’s instructor, including <code>bty_avg</code> (average “beauty” score) for that professor as given by a panel of 6 students.<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content="&lt;p&gt;Note that &lt;code&gt;gender&lt;/code&gt; was collected as a binary variable at the time of the study (2005).&lt;/p&gt;"><sup>2</sup></a>
+</li>
 </ol>
-<table class="table">
+<table style="width:100%;" class="table">
 <colgroup>
-<col width="4%">
-<col width="12%">
-<col width="7%">
-<col width="4%">
-<col width="12%">
+<col width="6%">
+<col width="11%">
+<col width="8%">
+<col width="6%">
+<col width="11%">
 <col width="9%">
-<col width="18%">
+<col width="17%">
 <col width="12%">
-<col width="18%">
+<col width="17%">
 </colgroup>
 <thead><tr>
 <th align="right">ID</th>
@@ -227,59 +228,59 @@
 </tr></thead>
 <tbody>
 <tr>
-<td align="right">355</td>
-<td align="right">71</td>
-<td align="right">4.9</td>
-<td align="right">50</td>
-<td align="right">3.333</td>
-<td align="left">male</td>
-<td align="left">minority</td>
-<td align="left">english</td>
-<td align="left">teaching</td>
-</tr>
-<tr>
-<td align="right">262</td>
-<td align="right">49</td>
-<td align="right">4.3</td>
-<td align="right">52</td>
-<td align="right">3.167</td>
+<td align="right">221</td>
+<td align="right">40</td>
+<td align="right">4.4</td>
+<td align="right">42</td>
+<td align="right">4.000</td>
 <td align="left">male</td>
 <td align="left">not minority</td>
-<td align="left">english</td>
-<td align="left">tenured</td>
-</tr>
-<tr>
-<td align="right">441</td>
-<td align="right">89</td>
-<td align="right">3.7</td>
-<td align="right">35</td>
-<td align="right">7.833</td>
-<td align="left">female</td>
-<td align="left">minority</td>
 <td align="left">english</td>
 <td align="left">tenure track</td>
 </tr>
 <tr>
-<td align="right">51</td>
-<td align="right">10</td>
-<td align="right">4.3</td>
-<td align="right">47</td>
-<td align="right">5.500</td>
-<td align="left">male</td>
+<td align="right">121</td>
+<td align="right">21</td>
+<td align="right">3.7</td>
+<td align="right">52</td>
+<td align="right">4.833</td>
+<td align="left">female</td>
 <td align="left">not minority</td>
 <td align="left">english</td>
 <td align="left">teaching</td>
 </tr>
 <tr>
-<td align="right">49</td>
+<td align="right">294</td>
+<td align="right">56</td>
+<td align="right">4.4</td>
+<td align="right">32</td>
+<td align="right">3.833</td>
+<td align="left">male</td>
+<td align="left">not minority</td>
+<td align="left">english</td>
+<td align="left">tenure track</td>
+</tr>
+<tr>
+<td align="right">45</td>
 <td align="right">9</td>
-<td align="right">4.5</td>
+<td align="right">4.4</td>
 <td align="right">33</td>
 <td align="right">4.667</td>
 <td align="left">female</td>
 <td align="left">not minority</td>
 <td align="left">english</td>
 <td align="left">tenure track</td>
+</tr>
+<tr>
+<td align="right">111</td>
+<td align="right">20</td>
+<td align="right">3.5</td>
+<td align="right">57</td>
+<td align="right">4.333</td>
+<td align="left">female</td>
+<td align="left">not minority</td>
+<td align="left">english</td>
+<td align="left">teaching</td>
 </tr>
 </tbody>
 </table>
@@ -289,7 +290,7 @@
 </h3>
 <p>We argue that the <code><a href="https://rdrr.io/r/stats/summary.lm.html" class="external-link">summary.lm()</a></code> output is deficient in an introductory statistics setting because:</p>
 <ol style="list-style-type: decimal">
-<li>The <code>Signif. codes: 0 '' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code> only encourage <strong>p-hacking</strong>. In case you have not yet been convinced of the perniciousness of p-hacking, perhaps comedian <a href="https://www.youtube.com/watch?v=0Rnq1NpHdmw" class="external-link">John Oliver can convince you</a>.<br>
+<li>The <code>Signif. codes:  0 '' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code> only encourage <strong>p-hacking</strong>. In case you have not yet been convinced of the perniciousness of p-hacking, perhaps comedian <a href="https://www.youtube.com/watch?v=0Rnq1NpHdmw" target="_blank" class="external-link">John Oliver can convince you</a>.<br>
 </li>
 <li>While not a silver bullet for eliminating misinterpretations of statistical inference, confidence intervals present students with a sense of the associated effect sizes of any explanatory variables. Thus, practical as well as statistical significance is emphasized. These are not included by default in the output of <code><a href="https://rdrr.io/r/stats/summary.lm.html" class="external-link">summary.lm()</a></code>.</li>
 </ol>
@@ -313,7 +314,7 @@
 <div class="section level3">
 <h3 id="id_2-outputs-as-tibbles">2. Outputs as tibbles<a class="anchor" aria-label="anchor" href="#id_2-outputs-as-tibbles"></a>
 </h3>
-<p>While one might argue that extracting the intercept and slope coefficients can be “simply” done using <code>coefficients(score_model)</code>, what about the standard errors? For example, a Google query of “<em>how do I extract standard errors from lm in R</em>” yielded results from <a href="https://stat.ethz.ch/pipermail/r-help/2008-April/160538.html" class="external-link">the R mailing list</a> and from <a href="https://stats.stackexchange.com/questions/27511/extract-standard-errors-of-coefficient-linear-regression-r" class="external-link">Cross Validated</a> suggesting we run:</p>
+<p>While one might argue that extracting the intercept and slope coefficients can be “simply” done using <code>coefficients(score_model)</code>, what about the standard errors? For example, a Google query of “<em>how do I extract standard errors from lm in R</em>” yielded results from <a href="https://stat.ethz.ch/pipermail/r-help/2008-April/160538.html" target="_blank" class="external-link">the R mailing list</a> and from <a href="https://stats.stackexchange.com/questions/27511/extract-standard-errors-of-coefficient-linear-regression-r" target="_blank" class="external-link">Cross Validated</a> suggesting we run:</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/diag.html" class="external-link">diag</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/vcov.html" class="external-link">vcov</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb17"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a><span class="do">## (Intercept)         age </span></span>
@@ -333,15 +334,15 @@
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://yihui.org/knitr/" class="external-link">knitr</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span> <span class="op"><a href="reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/knitr/man/kable.html" class="external-link">kable</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<table style="width:100%;" class="table">
+<table class="table">
 <colgroup>
-<col width="14%">
+<col width="15%">
+<col width="13%">
+<col width="15%">
+<col width="15%">
 <col width="12%">
-<col width="16%">
-<col width="14%">
-<col width="12%">
-<col width="14%">
-<col width="14%">
+<col width="13%">
+<col width="13%">
 </colgroup>
 <thead><tr>
 <th align="left">term</th>
@@ -415,18 +416,17 @@
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">score_model_points</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">residual</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>bins <span class="op">=</span> <span class="fl">20</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Residual"</span>, y <span class="op">=</span> <span class="st">"Count"</span><span class="op">)</span></span></code></pre></div>
-<div class="float">
-<img src="reference/figures/residuals-1-1.png" alt="Histogram visualizing distribution of residuals."><div class="figcaption">Histogram visualizing distribution of residuals.</div>
-</div>
-<p>As another example, we can investigate potential relationships between the residuals and all explanatory/predictor variables and the presence of heteroskedasticity using partial residual plots, like the partial residual plot over age shown in . If the term “heteroskedasticity” is new to you, it corresponds to the variability of one variable being unequal across the range of values of another variable. The presence of heteroskedasticity violates one of the assumptions of inference for linear regression.</p>
+<figure><img src="reference/figures/residuals-1-1.png" alt="Histogram visualizing distribution of residuals."><figcaption aria-hidden="true">
+Histogram visualizing distribution of residuals.
+</figcaption></figure><p>As another example, we can investigate potential relationships between the residuals and all explanatory/predictor variables and the presence of heteroskedasticity using partial residual plots, like the partial residual plot over age shown in . If the term “heteroskedasticity” is new to you, it corresponds to the variability of one variable being unequal across the range of values of another variable. The presence of heteroskedasticity violates one of the assumptions of inference for linear regression.</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Code to visualize partial residual plot over age:</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">score_model_points</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">age</span>, y <span class="op">=</span> <span class="va">residual</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html" class="external-link">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Age"</span>, y <span class="op">=</span> <span class="st">"Residual"</span><span class="op">)</span></span></code></pre></div>
-<div class="float">
-<img src="reference/figures/residuals-2-1.png" alt="Partial residual residual plot over age."><div class="figcaption">Partial residual residual plot over age.</div>
-</div>
+<figure><img src="reference/figures/residuals-2-1.png" alt="Partial residual residual plot over age."><figcaption aria-hidden="true">
+Partial residual residual plot over age.
+</figcaption></figure>
 </div>
 <div class="section level3">
 <h3 id="id_4-a-quick-and-easy-kaggle-predictive-modeling-competition-submission">4. A quick-and-easy Kaggle predictive modeling competition submission!<a class="anchor" aria-label="anchor" href="#id_4-a-quick-and-easy-kaggle-predictive-modeling-competition-submission"></a>
@@ -441,13 +441,11 @@
 <span id="cb32-3"><a href="#cb32-3" tabindex="-1"></a><span class="do">##   &lt;int&gt; &lt;dbl&gt;     &lt;dbl&gt;</span></span>
 <span id="cb32-4"><a href="#cb32-4" tabindex="-1"></a><span class="do">## 1     1    39      4.23</span></span>
 <span id="cb32-5"><a href="#cb32-5" tabindex="-1"></a><span class="do">## 2     2    42      4.21</span></span></code></pre></div>
-<p>Let’s do another example, this time using the Kaggle <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques" class="external-link">House Prices: Advanced Regression Techniques</a> practice competition ( displays the homepage for this competition).</p>
+<p>Let’s do another example, this time using the Kaggle <a href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques" target="_blank" class="external-link">House Prices: Advanced Regression Techniques</a> practice competition ( displays the homepage for this competition).</p>
 <div class="figure" style="text-align: center">
-<p><img src="reference/figures/kaggle.jpeg" alt="House prices Kaggle competition homepage." width="95%"></p>
-<p class="caption">
+<img src="reference/figures/kaggle.jpeg" alt="House prices Kaggle competition homepage." width="95%"><p class="caption">
+House prices Kaggle competition homepage.
 </p>
-<p>House prices Kaggle competition homepage.</p>
-
 </div>
 <p>This Kaggle competition requires you to fit/train a model to the provided <code>train.csv</code> training set to make predictions of house prices in the provided <code>test.csv</code> test set. We present an application of the <code><a href="reference/get_regression_points.html">get_regression_points()</a></code> function allowing students to participate in this Kaggle competition. It will:</p>
 <ol style="list-style-type: decimal">
@@ -455,7 +453,7 @@
 <li>Fit a naive model of house sale price as a function of year sold to the training data.</li>
 <li>Make predictions on the test data and write them to a <code>submission.csv</code> file that can be submitted to Kaggle using <code><a href="reference/get_regression_points.html">get_regression_points()</a></code>. Note the use of the <code>ID</code> argument to use the <code>id</code> variable in <code>test</code> to identify the rows (a requirement of Kaggle competition submissions).</li>
 </ol>
-<!-- end list --><div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://readr.tidyverse.org" class="external-link">readr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://moderndive.github.io/moderndive/">moderndive</a></span><span class="op">)</span></span>
@@ -475,22 +473,17 @@
 <span><span class="co"># Write predictions to csv:</span></span>
 <span><span class="fu"><a href="https://readr.tidyverse.org/reference/write_delim.html" class="external-link">write_csv</a></span><span class="op">(</span><span class="va">submission</span>, <span class="st">"submission.csv"</span><span class="op">)</span></span></code></pre></div>
 <p>After submitting <code>submission.csv</code> to the leaderboard for this Kaggle competition, we obtain a “root mean squared logarithmic error” (RMSLE) score of 0.42918 as seen in .</p>
-<div class="figure">
-<p><img src="reference/figures/leaderboard_orig.jpeg" alt="Resulting Kaggle RMSLE score." width="3326"></p>
-<p class="caption">
-</p>
-<p>Resulting Kaggle RMSLE score.</p>
-
-</div>
+<figure><img src="reference/figures/leaderboard_orig.jpeg" alt="Resulting Kaggle RMSLE score."><figcaption aria-hidden="true">
+Resulting Kaggle RMSLE score.
+</figcaption></figure>
 </div>
 <div class="section level3">
 <h3 id="id_5-visual-model-selection-plot-parallel-slopes--interaction-regression-models">5. Visual model selection: plot parallel slopes &amp; interaction regression models<a class="anchor" aria-label="anchor" href="#id_5-visual-model-selection-plot-parallel-slopes--interaction-regression-models"></a>
 </h3>
 <p>For example, recall the earlier visualizations of the interaction and parallel slopes models for teaching score as a function of age and ethnicity we saw in Figures and . Let’s present both visualizations side-by-side in .</p>
-<div class="float">
-<img src="reference/figures/interaction-and-parallel-slopes-model-1-1.png" alt="Interaction (left) and parallel slopes (right) models."><div class="figcaption">Interaction (left) and parallel slopes (right) models.</div>
-</div>
-<p>Students might be wondering “Why would you use the parallel slopes model on the right when the data clearly form an”X” pattern as seen in the interaction model on the left?” This is an excellent opportunity to gently introduce the notion of <em>model selection</em> and <em>Occam’s Razor</em>: an interaction model should only be used over a parallel slopes model <strong>if the additional complexity of the interaction model is warranted</strong>. Here, we define model “complexity/simplicity” in terms of the number of parameters in the corresponding regression tables:</p>
+<figure><img src="reference/figures/interaction-and-parallel-slopes-model-1-1.png" alt="Interaction (left) and parallel slopes (right) models."><figcaption aria-hidden="true">
+Interaction (left) and parallel slopes (right) models.
+</figcaption></figure><p>Students might be wondering “Why would you use the parallel slopes model on the right when the data clearly form an”X” pattern as seen in the interaction model on the left?” This is an excellent opportunity to gently introduce the notion of <em>model selection</em> and <em>Occam’s Razor</em>: an interaction model should only be used over a parallel slopes model <strong>if the additional complexity of the interaction model is warranted</strong>. Here, we define model “complexity/simplicity” in terms of the number of parameters in the corresponding regression tables:</p>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Regression table for interaction model:</span></span>
 <span><span class="va">interaction_evals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">score</span> <span class="op">~</span> <span class="va">age</span> <span class="op">*</span> <span class="va">ethnicity</span>, data <span class="op">=</span> <span class="va">evals</span><span class="op">)</span></span>
@@ -500,20 +493,20 @@
 <span id="cb35-3"><a href="#cb35-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
 <span id="cb35-4"><a href="#cb35-4" tabindex="-1"></a><span class="do">## 1 intercept                  2.61      0.518      5.04   0        1.59     3.63 </span></span>
 <span id="cb35-5"><a href="#cb35-5" tabindex="-1"></a><span class="do">## 2 age                        0.032     0.011      2.84   0.005    0.01     0.054</span></span>
-<span id="cb35-6"><a href="#cb35-6" tabindex="-1"></a><span class="do">## 3 ethnicity: not minority    2.00      0.534      3.74   0        0.945    3.04 </span></span>
-<span id="cb35-7"><a href="#cb35-7" tabindex="-1"></a><span class="do">## 4 age:ethnicitynot minor…   -0.04      0.012     -3.51   0       -0.063   -0.018</span></span></code></pre></div>
+<span id="cb35-6"><a href="#cb35-6" tabindex="-1"></a><span class="do">## 3 ethnicity-not minority     2.00      0.534      3.74   0        0.945    3.04 </span></span>
+<span id="cb35-7"><a href="#cb35-7" tabindex="-1"></a><span class="do">## 4 age:ethnicity-not mino…   -0.04      0.012     -3.51   0       -0.063   -0.018</span></span></code></pre></div>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Regression table for parallel slopes model:</span></span>
 <span><span class="va">parallel_slopes_evals</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">score</span> <span class="op">~</span> <span class="va">age</span> <span class="op">+</span> <span class="va">ethnicity</span>, data <span class="op">=</span> <span class="va">evals</span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/get_regression_table.html">get_regression_table</a></span><span class="op">(</span><span class="va">parallel_slopes_evals</span><span class="op">)</span></span></code></pre></div>
 <div class="sourceCode" id="cb37"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" tabindex="-1"></a><span class="do">## # A tibble: 3 × 7</span></span>
-<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a><span class="do">##   term                    estimate std_error statistic p_value lower_ci upper_ci</span></span>
-<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
-<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a><span class="do">## 1 intercept                  4.37      0.136     32.1    0        4.1      4.63 </span></span>
-<span id="cb37-5"><a href="#cb37-5" tabindex="-1"></a><span class="do">## 2 age                       -0.006     0.003     -2.5    0.013   -0.012   -0.001</span></span>
-<span id="cb37-6"><a href="#cb37-6" tabindex="-1"></a><span class="do">## 3 ethnicity: not minority    0.138     0.073      1.89   0.059   -0.005    0.282</span></span></code></pre></div>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1"></a><span class="do">##   term                   estimate std_error statistic p_value lower_ci upper_ci</span></span>
+<span id="cb37-3"><a href="#cb37-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
+<span id="cb37-4"><a href="#cb37-4" tabindex="-1"></a><span class="do">## 1 intercept                 4.37      0.136     32.1    0        4.1      4.63 </span></span>
+<span id="cb37-5"><a href="#cb37-5" tabindex="-1"></a><span class="do">## 2 age                      -0.006     0.003     -2.5    0.013   -0.012   -0.001</span></span>
+<span id="cb37-6"><a href="#cb37-6" tabindex="-1"></a><span class="do">## 3 ethnicity-not minority    0.138     0.073      1.89   0.059   -0.005    0.282</span></span></code></pre></div>
 <p>The interaction model is “more complex” as evidenced by its regression table involving 4 rows of parameter estimates whereas the parallel slopes model is “simpler” as evidenced by its regression table involving only 3 parameter estimates. It can be argued however that this additional complexity is warranted given the clearly different slopes in the left-hand plot of .</p>
-<p>We now present a contrasting example, this time from Chapter 6 of the online version of <a href="https://moderndive.com/6-multiple-regression.html#model-selection" class="external-link">ModernDive Subsection 6.3.1</a> involving Massachusetts USA public high schools.[3] Let’s plot both the interaction and parallel slopes models in .</p>
+<p>We now present a contrasting example, this time from Chapter 6 of the online version of <a href="https://moderndive.com/6-multiple-regression.html#model-selection" class="external-link">ModernDive Subsection 6.3.1</a> involving Massachusetts USA public high schools.<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;For more details on this dataset, see the help file by running &lt;code&gt;&lt;a href="reference/MA_schools.html"&gt;?MA_schools&lt;/a&gt;&lt;/code&gt;.&lt;/p&gt;'><sup>3</sup></a> Let’s plot both the interaction and parallel slopes models in .</p>
 <div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Code to plot interaction and parallel slopes models for MA_schools</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span></span>
@@ -539,10 +532,9 @@
 <span>    color <span class="op">=</span> <span class="st">"School size"</span></span>
 <span>  <span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="reference/geom_parallel_slopes.html">geom_parallel_slopes</a></span><span class="op">(</span>se <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
-<div class="float">
-<img src="reference/figures/interaction-and-parallel-slopes-model-2-1.png" alt="Interaction (left) and parallel slopes (right) models."><div class="figcaption">Interaction (left) and parallel slopes (right) models.</div>
-</div>
-<p>In terms of the corresponding regression tables, observe that the corresponding regression table for the parallel slopes model has 4 rows as opposed to the 6 for the interaction model, reflecting its higher degree of “model simplicity.”</p>
+<figure><img src="reference/figures/interaction-and-parallel-slopes-model-2-1.png" alt="Interaction (left) and parallel slopes (right) models."><figcaption aria-hidden="true">
+Interaction (left) and parallel slopes (right) models.
+</figcaption></figure><p>In terms of the corresponding regression tables, observe that the corresponding regression table for the parallel slopes model has 4 rows as opposed to the 6 for the interaction model, reflecting its higher degree of “model simplicity.”</p>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Regression table for interaction model:</span></span>
 <span><span class="va">interaction_MA</span> <span class="op">&lt;-</span></span>
@@ -553,10 +545,10 @@
 <span id="cb40-3"><a href="#cb40-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;                      &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
 <span id="cb40-4"><a href="#cb40-4" tabindex="-1"></a><span class="do">## 1 intercept                594.       13.3      44.7     0      568.     620.   </span></span>
 <span id="cb40-5"><a href="#cb40-5" tabindex="-1"></a><span class="do">## 2 perc_disadvan             -2.93      0.294    -9.96    0       -3.51    -2.35 </span></span>
-<span id="cb40-6"><a href="#cb40-6" tabindex="-1"></a><span class="do">## 3 size: medium             -17.8      15.8      -1.12    0.263  -48.9     13.4  </span></span>
-<span id="cb40-7"><a href="#cb40-7" tabindex="-1"></a><span class="do">## 4 size: large              -13.3      13.8      -0.962   0.337  -40.5     13.9  </span></span>
-<span id="cb40-8"><a href="#cb40-8" tabindex="-1"></a><span class="do">## 5 perc_disadvan:sizemedi…    0.146     0.371     0.393   0.694   -0.585    0.877</span></span>
-<span id="cb40-9"><a href="#cb40-9" tabindex="-1"></a><span class="do">## 6 perc_disadvan:sizelarge    0.189     0.323     0.586   0.559   -0.446    0.824</span></span></code></pre></div>
+<span id="cb40-6"><a href="#cb40-6" tabindex="-1"></a><span class="do">## 3 size-medium              -17.8      15.8      -1.12    0.263  -48.9     13.4  </span></span>
+<span id="cb40-7"><a href="#cb40-7" tabindex="-1"></a><span class="do">## 4 size-large               -13.3      13.8      -0.962   0.337  -40.5     13.9  </span></span>
+<span id="cb40-8"><a href="#cb40-8" tabindex="-1"></a><span class="do">## 5 perc_disadvan:size-med…    0.146     0.371     0.393   0.694   -0.585    0.877</span></span>
+<span id="cb40-9"><a href="#cb40-9" tabindex="-1"></a><span class="do">## 6 perc_disadvan:size-lar…    0.189     0.323     0.586   0.559   -0.446    0.824</span></span></code></pre></div>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Regression table for parallel slopes model:</span></span>
 <span><span class="va">parallel_slopes_MA</span> <span class="op">&lt;-</span></span>
@@ -567,8 +559,8 @@
 <span id="cb42-3"><a href="#cb42-3" tabindex="-1"></a><span class="do">##   &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;</span></span>
 <span id="cb42-4"><a href="#cb42-4" tabindex="-1"></a><span class="do">## 1 intercept       588.       7.61     77.3     0       573.     603.  </span></span>
 <span id="cb42-5"><a href="#cb42-5" tabindex="-1"></a><span class="do">## 2 perc_disadvan    -2.78     0.106   -26.1     0        -2.99    -2.57</span></span>
-<span id="cb42-6"><a href="#cb42-6" tabindex="-1"></a><span class="do">## 3 size: medium    -11.9      7.54     -1.58    0.115   -26.7      2.91</span></span>
-<span id="cb42-7"><a href="#cb42-7" tabindex="-1"></a><span class="do">## 4 size: large      -6.36     6.92     -0.919   0.359   -20.0      7.26</span></span></code></pre></div>
+<span id="cb42-6"><a href="#cb42-6" tabindex="-1"></a><span class="do">## 3 size-medium     -11.9      7.54     -1.58    0.115   -26.7      2.91</span></span>
+<span id="cb42-7"><a href="#cb42-7" tabindex="-1"></a><span class="do">## 4 size-large       -6.36     6.92     -0.919   0.359   -20.0      7.26</span></span></code></pre></div>
 <p>Unlike our earlier comparison of interaction and parallel slopes models in , in this case it could be argued that the additional complexity of the interaction model is <em>not</em> warranted since the 3 three regression lines in the left-hand interaction are already somewhat parallel. Therefore the simpler parallel slopes model should be favored.</p>
 <p>Going one step further, notice how the three regression lines in the visualization of the parallel slopes model in the right-hand plot of have similar intercepts. In can thus be argued that the additional model complexity induced by introducing the categorical variable school <code>size</code> is not warranted. Therefore, a simple linear regression model using only <code>perc_disadvan</code> percent of the student body that are economically disadvantaged should be favored.</p>
 <p>While many students will inevitably find these results depressing, in our opinion, it is important to additionally emphasize that such regression analyses can be used as an empowering tool to bring to light inequities in access to education and inform policy decisions.</p>
@@ -627,22 +619,18 @@
 <li>In our experience, novice R users had a hard time understanding the <code>broom</code> package function names <code>tidy()</code>, <code>augment()</code>, and <code>glance()</code>. To make them more user-friendly, the <code>moderndive</code> package wrappers have much more intuitively named <code><a href="reference/get_regression_table.html">get_regression_table()</a></code>, <code><a href="reference/get_regression_points.html">get_regression_points()</a></code>, and <code><a href="reference/get_regression_summaries.html">get_regression_summaries()</a></code>.</li>
 <li>The variables included in the outputs of the above 3 <code>broom</code> functions are not all applicable to an introductory statistics students and of those that were, we found they were not intuitive for new R users. We therefore cut out some of the variables from the output and renamed some of the remaining variables. For example, compare the outputs of the <code><a href="reference/get_regression_points.html">get_regression_points()</a></code> wrapper function and the parent <code><a href="https://generics.r-lib.org/reference/augment.html" class="external-link">broom::augment()</a></code> function.</li>
 </ol>
-<!-- end list --><div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="reference/get_regression_points.html">get_regression_points</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span>
 <span><span class="fu">broom</span><span class="fu">::</span><span class="fu"><a href="https://generics.r-lib.org/reference/augment.html" class="external-link">augment</a></span><span class="op">(</span><span class="va">score_model</span><span class="op">)</span></span></code></pre></div>
-<p>The source code for these three <code>get_regression_*</code> functions can be found on <a href="https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R" class="external-link">here</a>.</p>
+<p>The source code for these three <code>get_regression_*</code> functions can be found on <a href="https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R" target="_blank" class="external-link">here</a>.</p>
 </div>
 <div class="section level3">
 <h3 id="custom-geometries">Custom geometries<a class="anchor" aria-label="anchor" href="#custom-geometries"></a>
 </h3>
-<p>The <code><a href="reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> is a custom built <code>geom</code> extension to the <code>ggplot2</code> package. For example, the <code>ggplot2</code> webpage page gives <a href="https://ggplot2.tidyverse.org/articles/extending-ggplot2.html" class="external-link">instructions</a> on how to create such extensions. The source code for <code><a href="reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> written by <a href="https://github.com/echasnovski" class="external-link">Evgeni Chasnovski</a> can be found on <a href="https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R" class="external-link">GitHub</a>.</p>
-<ol style="list-style-type: decimal">
-<li><p>For details on the remaining 5 variables, see the help file by running <code><a href="reference/evals.html">?evals</a></code>.</p></li>
-<li><p>Note that <code>gender</code> was collected as a binary variable at the time of the study (2005).</p></li>
-<li><p>For more details on this dataset, see the help file by running <code><a href="reference/MA_schools.html">?MA_schools</a></code>.</p></li>
-</ol>
+<p>The <code><a href="reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> is a custom built <code>geom</code> extension to the <code>ggplot2</code> package. For example, the <code>ggplot2</code> webpage page gives <a href="https://ggplot2.tidyverse.org/articles/extending-ggplot2.html" target="_blank" class="external-link">instructions</a> on how to create such extensions. The source code for <code><a href="reference/geom_parallel_slopes.html">geom_parallel_slopes()</a></code> written by <a href="https://github.com/echasnovski" target="_blank" class="external-link">Evgeni Chasnovski</a> can be found on <a href="https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R" target="_blank" class="external-link">GitHub</a>.</p>
 </div>
 </div>
+
 
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>

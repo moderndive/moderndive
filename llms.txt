@@ -132,7 +132,7 @@ score_model <- lm(score ~ age, data = evals)
     ##  8     8   4.1    51      4.16   -0.059
     ##  9     9   3.4    51      4.16   -0.759
     ## 10    10   4.5    40      4.22    0.276
-    ## # … with 453 more rows
+    ## # ℹ 453 more rows
     ```
 
 3.  Get scalar summaries of a regression fit including R-squared and
@@ -208,7 +208,7 @@ professors from the University of Texas at Austin. This data is included
 in the `evals` data frame from the `moderndive` package.
 
 In the following table, we present a subset of 9 of the 14 variables
-included for a random sample of 5 courses\[1\]:
+included for a random sample of 5 courses[^1]:
 
 1.  `ID` uniquely identifies the course whereas `prof_ID` identifies the
     professor who taught this course. This distinction is important
@@ -217,15 +217,15 @@ included for a random sample of 5 courses\[1\]:
     evaluation score out of 5 as given by the students in this course.
 3.  The remaining variables are demographic variables describing that
     course’s instructor, including `bty_avg` (average “beauty” score)
-    for that professor as given by a panel of 6 students.\[2\]
+    for that professor as given by a panel of 6 students.[^2]
 
 |  ID | prof_ID | score | age | bty_avg | gender | ethnicity    | language | rank         |
 |----:|--------:|------:|----:|--------:|:-------|:-------------|:---------|:-------------|
-| 355 |      71 |   4.9 |  50 |   3.333 | male   | minority     | english  | teaching     |
-| 262 |      49 |   4.3 |  52 |   3.167 | male   | not minority | english  | tenured      |
-| 441 |      89 |   3.7 |  35 |   7.833 | female | minority     | english  | tenure track |
-|  51 |      10 |   4.3 |  47 |   5.500 | male   | not minority | english  | teaching     |
-|  49 |       9 |   4.5 |  33 |   4.667 | female | not minority | english  | tenure track |
+| 221 |      40 |   4.4 |  42 |   4.000 | male   | not minority | english  | tenure track |
+| 121 |      21 |   3.7 |  52 |   4.833 | female | not minority | english  | teaching     |
+| 294 |      56 |   4.4 |  32 |   3.833 | male   | not minority | english  | tenure track |
+|  45 |       9 |   4.4 |  33 |   4.667 | female | not minority | english  | tenure track |
+| 111 |      20 |   3.5 |  57 |   4.333 | female | not minority | english  | teaching     |
 
 ### 1. Focus less on p-value stars, more confidence intervals
 
@@ -583,8 +583,8 @@ get_regression_table(interaction_evals)
 ##   <chr>                      <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
 ## 1 intercept                  2.61      0.518      5.04   0        1.59     3.63 
 ## 2 age                        0.032     0.011      2.84   0.005    0.01     0.054
-## 3 ethnicity: not minority    2.00      0.534      3.74   0        0.945    3.04 
-## 4 age:ethnicitynot minor…   -0.04      0.012     -3.51   0       -0.063   -0.018
+## 3 ethnicity-not minority     2.00      0.534      3.74   0        0.945    3.04 
+## 4 age:ethnicity-not mino…   -0.04      0.012     -3.51   0       -0.063   -0.018
 ```
 
 ``` r
@@ -596,11 +596,11 @@ get_regression_table(parallel_slopes_evals)
 
 ``` R
 ## # A tibble: 3 × 7
-##   term                    estimate std_error statistic p_value lower_ci upper_ci
-##   <chr>                      <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
-## 1 intercept                  4.37      0.136     32.1    0        4.1      4.63 
-## 2 age                       -0.006     0.003     -2.5    0.013   -0.012   -0.001
-## 3 ethnicity: not minority    0.138     0.073      1.89   0.059   -0.005    0.282
+##   term                   estimate std_error statistic p_value lower_ci upper_ci
+##   <chr>                     <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
+## 1 intercept                 4.37      0.136     32.1    0        4.1      4.63 
+## 2 age                      -0.006     0.003     -2.5    0.013   -0.012   -0.001
+## 3 ethnicity-not minority    0.138     0.073      1.89   0.059   -0.005    0.282
 ```
 
 The interaction model is “more complex” as evidenced by its regression
@@ -613,8 +613,8 @@ the left-hand plot of .
 We now present a contrasting example, this time from Chapter 6 of the
 online version of [ModernDive Subsection
 6.3.1](https://moderndive.com/6-multiple-regression.html#model-selection)
-involving Massachusetts USA public high schools.\[3\] Let’s plot both
-the interaction and parallel slopes models in .
+involving Massachusetts USA public high schools.[^3] Let’s plot both the
+interaction and parallel slopes models in .
 
 ``` r
 
@@ -668,10 +668,10 @@ get_regression_table(interaction_MA)
 ##   <chr>                      <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
 ## 1 intercept                594.       13.3      44.7     0      568.     620.   
 ## 2 perc_disadvan             -2.93      0.294    -9.96    0       -3.51    -2.35 
-## 3 size: medium             -17.8      15.8      -1.12    0.263  -48.9     13.4  
-## 4 size: large              -13.3      13.8      -0.962   0.337  -40.5     13.9  
-## 5 perc_disadvan:sizemedi…    0.146     0.371     0.393   0.694   -0.585    0.877
-## 6 perc_disadvan:sizelarge    0.189     0.323     0.586   0.559   -0.446    0.824
+## 3 size-medium              -17.8      15.8      -1.12    0.263  -48.9     13.4  
+## 4 size-large               -13.3      13.8      -0.962   0.337  -40.5     13.9  
+## 5 perc_disadvan:size-med…    0.146     0.371     0.393   0.694   -0.585    0.877
+## 6 perc_disadvan:size-lar…    0.189     0.323     0.586   0.559   -0.446    0.824
 ```
 
 ``` r
@@ -688,8 +688,8 @@ get_regression_table(parallel_slopes_MA)
 ##   <chr>            <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
 ## 1 intercept       588.       7.61     77.3     0       573.     603.  
 ## 2 perc_disadvan    -2.78     0.106   -26.1     0        -2.99    -2.57
-## 3 size: medium    -11.9      7.54     -1.58    0.115   -26.7      2.91
-## 4 size: large      -6.36     6.92     -0.919   0.359   -20.0      7.26
+## 3 size-medium     -11.9      7.54     -1.58    0.115   -26.7      2.91
+## 4 size-large       -6.36     6.92     -0.919   0.359   -20.0      7.26
 ```
 
 Unlike our earlier comparison of interaction and parallel slopes models
@@ -828,14 +828,14 @@ written by [Evgeni Chasnovski](https://github.com/echasnovski) can be
 found on
 [GitHub](https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R).
 
-1.  For details on the remaining 5 variables, see the help file by
+[^1]: For details on the remaining 5 variables, see the help file by
     running
     [`?evals`](https://moderndive.github.io/moderndive/reference/evals.md).
 
-2.  Note that `gender` was collected as a binary variable at the time of
-    the study (2005).
+[^2]: Note that `gender` was collected as a binary variable at the time
+    of the study (2005).
 
-3.  For more details on this dataset, see the help file by running
+[^3]: For more details on this dataset, see the help file by running
     [`?MA_schools`](https://moderndive.github.io/moderndive/reference/MA_schools.md).
 
 # Package index
