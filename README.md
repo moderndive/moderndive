@@ -1,7 +1,7 @@
 
 ## moderndive R Package <img src="https://github.com/moderndive/moderndive/blob/master/images/hex_blue_text.png?raw=true" align="right" width=125 alt="moderndive hex sticker logo" />
 
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/moderndive)](https://cran.r-project.org/package=moderndive)
 [![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.3951512-blue.svg)](https://doi.org/10.5281/zenodo.3951512)
 [![Lifecycle:
 stable](https://img.shields.io/badge/lifecycle-stable-brightgreen.svg)](https://lifecycle.r-lib.org/articles/stages.html#stable)
@@ -34,8 +34,8 @@ regression. These tools leverage the well-developed `tidyverse` and
 
 This R package is designed to supplement the book “Statistical Inference
 via Data Science: A ModernDive into R and the Tidyverse” available at
-[ModernDive.com/v2/](https://moderndive.com/v2/). For more background, read our
-[Journal of Open Source Education
+[ModernDive.com/v2/](https://moderndive.com/v2/). For more background,
+read our [Journal of Open Source Education
 paper](https://doi.org/10.21105/jose.00115).
 
 ## Installation
@@ -91,11 +91,11 @@ score_model <- lm(score ~ age, data = evals)
 ```
 
 1.  Get a tidy regression table **with confidence intervals**:
-    
+
     ``` r
     get_regression_table(score_model)
     ```
-    
+
         ## # A tibble: 2 × 7
         ##   term      estimate std_error statistic p_value lower_ci upper_ci
         ##   <chr>        <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
@@ -105,11 +105,11 @@ score_model <- lm(score ~ age, data = evals)
 2.  Get information on each point/observation in your regression,
     including fitted/predicted values and residuals, in a single data
     frame:
-    
+
     ``` r
     get_regression_points(score_model)
     ```
-    
+
         ## # A tibble: 463 × 5
         ##       ID score   age score_hat residual
         ##    <int> <dbl> <int>     <dbl>    <dbl>
@@ -123,15 +123,15 @@ score_model <- lm(score ~ age, data = evals)
         ##  8     8   4.1    51      4.16   -0.059
         ##  9     9   3.4    51      4.16   -0.759
         ## 10    10   4.5    40      4.22    0.276
-        ## # … with 453 more rows
+        ## # ℹ 453 more rows
 
 3.  Get scalar summaries of a regression fit including R-squared and
     R-squared adjusted but also the (root) mean-squared error:
-    
+
     ``` r
     get_regression_summaries(score_model)
     ```
-    
+
         ## # A tibble: 1 × 9
         ##   r_squared adj_r_squared   mse  rmse sigma statistic p_value    df  nobs
         ##       <dbl>         <dbl> <dbl> <dbl> <dbl>     <dbl>   <dbl> <dbl> <dbl>
@@ -139,7 +139,7 @@ score_model <- lm(score ~ age, data = evals)
 
 4.  Visualize parallel slopes models using the `geom_parallel_slopes()`
     custom `ggplot2` geometry:
-    
+
     ``` r
     library(ggplot2)
     ggplot(evals, aes(x = age, y = score, color = ethnicity)) +
@@ -147,7 +147,7 @@ score_model <- lm(score ~ age, data = evals)
       geom_parallel_slopes(se = FALSE) +
       labs(x = "Age", y = "Teaching score", color = "Ethnicity")
     ```
-    
+
     ![](man/figures/unnamed-chunk-7-1.png)<!-- -->
 
 ## Statement of Need
@@ -170,7 +170,7 @@ Please note that this project is released with a [Contributor Code of
 Conduct](CONTRIBUTING.md). By participating in this project you agree to
 abide by its terms.
 
------
+------------------------------------------------------------------------
 
 ## Six features
 
@@ -180,7 +180,7 @@ regression? Here are six features:
 1.  Focus less on p-value stars, more confidence intervals
 2.  Outputs as tibbles
 3.  Produce residual analysis plots from scratch using `ggplot2`
-4.  A quick-and-easy Kaggle predictive modeling competition submission\!
+4.  A quick-and-easy Kaggle predictive modeling competition submission!
 5.  Visual model selection: plot parallel slopes & interaction
     regression models
 6.  Produce metrics on the quality of regression model fits
@@ -193,7 +193,7 @@ professors from the University of Texas at Austin. This data is included
 in the `evals` data frame from the `moderndive` package.
 
 In the following table, we present a subset of 9 of the 14 variables
-included for a random sample of 5 courses\[1\]:
+included for a random sample of 5 courses[^1]:
 
 1.  `ID` uniquely identifies the course whereas `prof_ID` identifies the
     professor who taught this course. This distinction is important
@@ -202,26 +202,26 @@ included for a random sample of 5 courses\[1\]:
     evaluation score out of 5 as given by the students in this course.
 3.  The remaining variables are demographic variables describing that
     course’s instructor, including `bty_avg` (average “beauty” score)
-    for that professor as given by a panel of 6 students.\[2\]
+    for that professor as given by a panel of 6 students.[^2]
 
-|  ID | prof\_ID | score | age | bty\_avg | gender | ethnicity    | language | rank         |
-| --: | -------: | ----: | --: | -------: | :----- | :----------- | :------- | :----------- |
-| 355 |       71 |   4.9 |  50 |    3.333 | male   | minority     | english  | teaching     |
-| 262 |       49 |   4.3 |  52 |    3.167 | male   | not minority | english  | tenured      |
-| 441 |       89 |   3.7 |  35 |    7.833 | female | minority     | english  | tenure track |
-|  51 |       10 |   4.3 |  47 |    5.500 | male   | not minority | english  | teaching     |
-|  49 |        9 |   4.5 |  33 |    4.667 | female | not minority | english  | tenure track |
+|  ID | prof_ID | score | age | bty_avg | gender | ethnicity    | language | rank         |
+|----:|--------:|------:|----:|--------:|:-------|:-------------|:---------|:-------------|
+| 221 |      40 |   4.4 |  42 |   4.000 | male   | not minority | english  | tenure track |
+| 121 |      21 |   3.7 |  52 |   4.833 | female | not minority | english  | teaching     |
+| 294 |      56 |   4.4 |  32 |   3.833 | male   | not minority | english  | tenure track |
+|  45 |       9 |   4.4 |  33 |   4.667 | female | not minority | english  | tenure track |
+| 111 |      20 |   3.5 |  57 |   4.333 | female | not minority | english  | teaching     |
 
-### 1\. Focus less on p-value stars, more confidence intervals
+### 1. Focus less on p-value stars, more confidence intervals
 
 We argue that the `summary.lm()` output is deficient in an introductory
 statistics setting because:
 
-1.  The `Signif. codes: 0 '' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1`
+1.  The `Signif. codes:  0 '' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1`
     only encourage **p-hacking**. In case you have not yet been
-    convinced of the perniciousness of p-hacking, perhaps comedian [John
-    Oliver can convince
-    you](https://www.youtube.com/watch?v=0Rnq1NpHdmw).  
+    convinced of the perniciousness of p-hacking, perhaps comedian
+    <a href="https://www.youtube.com/watch?v=0Rnq1NpHdmw"
+    target="_blank">John Oliver can convince you</a>.  
 2.  While not a silver bullet for eliminating misinterpretations of
     statistical inference, confidence intervals present students with a
     sense of the associated effect sizes of any explanatory variables.
@@ -257,17 +257,16 @@ get_regression_table(score_model, conf.level = 0.99)
     ## 1 intercept    4.46      0.127     35.2    0        4.13     4.79 
     ## 2 age         -0.006     0.003     -2.31   0.021   -0.013    0.001
 
-### 2\. Outputs as tibbles
+### 2. Outputs as tibbles
 
 While one might argue that extracting the intercept and slope
 coefficients can be “simply” done using `coefficients(score_model)`,
 what about the standard errors? For example, a Google query of “*how do
-I extract standard errors from lm in R*” yielded results from [the R
-mailing
-list](https://stat.ethz.ch/pipermail/r-help/2008-April/160538.html) and
-from [Cross
-Validated](https://stats.stackexchange.com/questions/27511/extract-standard-errors-of-coefficient-linear-regression-r)
-suggesting we run:
+I extract standard errors from lm in R*” yielded results from
+<a href="https://stat.ethz.ch/pipermail/r-help/2008-April/160538.html"
+target="_blank">the R mailing list</a> and from <a
+href="https://stats.stackexchange.com/questions/27511/extract-standard-errors-of-coefficient-linear-regression-r"
+target="_blank">Cross Validated</a> suggesting we run:
 
 ``` r
 sqrt(diag(vcov(score_model)))
@@ -309,12 +308,12 @@ get_regression_table(score_model) %>%
   kable()
 ```
 
-| term      | estimate | std\_error | statistic | p\_value | lower\_ci | upper\_ci |
-| :-------- | -------: | ---------: | --------: | -------: | --------: | --------: |
-| intercept |    4.462 |      0.127 |    35.195 |    0.000 |     4.213 |     4.711 |
-| age       |  \-0.006 |      0.003 |   \-2.311 |    0.021 |   \-0.011 |   \-0.001 |
+| term      | estimate | std_error | statistic | p_value | lower_ci | upper_ci |
+|:----------|---------:|----------:|----------:|--------:|---------:|---------:|
+| intercept |    4.462 |     0.127 |    35.195 |   0.000 |    4.213 |    4.711 |
+| age       |   -0.006 |     0.003 |    -2.311 |   0.021 |   -0.011 |   -0.001 |
 
-### 3\. Produce residual analysis plots from scratch using `ggplot2`
+### 3. Produce residual analysis plots from scratch using `ggplot2`
 
 How can we extract point-by-point information from a regression model,
 such as the fitted/predicted values and the residuals? (Note we only
@@ -385,8 +384,12 @@ ggplot(score_model_points, aes(x = residual)) +
   labs(x = "Residual", y = "Count")
 ```
 
-![Histogram visualizing distribution of
-residuals.](man/figures/residuals-1-1.png)
+<figure>
+<img src="man/figures/residuals-1-1.png"
+alt="Histogram visualizing distribution of residuals." />
+<figcaption aria-hidden="true">Histogram visualizing distribution of
+residuals.</figcaption>
+</figure>
 
 As another example, we can investigate potential relationships between
 the residuals and all explanatory/predictor variables and the presence
@@ -404,10 +407,14 @@ ggplot(score_model_points, aes(x = age, y = residual)) +
   labs(x = "Age", y = "Residual")
 ```
 
-![Partial residual residual plot over
-age.](man/figures/residuals-2-1.png)
+<figure>
+<img src="man/figures/residuals-2-1.png"
+alt="Partial residual residual plot over age." />
+<figcaption aria-hidden="true">Partial residual residual plot over
+age.</figcaption>
+</figure>
 
-### 4\. A quick-and-easy Kaggle predictive modeling competition submission\!
+### 4. A quick-and-easy Kaggle predictive modeling competition submission!
 
 With the fields of machine learning and artificial intelligence gaining
 prominence, the importance of predictive modeling cannot be understated.
@@ -432,19 +439,17 @@ get_regression_points(score_model, newdata = new_prof)
     ## 1     1    39      4.23
     ## 2     2    42      4.21
 
-Let’s do another example, this time using the Kaggle [House Prices:
-Advanced Regression
-Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques)
+Let’s do another example, this time using the Kaggle <a
+href="https://www.kaggle.com/c/house-prices-advanced-regression-techniques"
+target="_blank">House Prices: Advanced Regression Techniques</a>
 practice competition ( displays the homepage for this competition).
 
 <div class="figure" style="text-align: center">
 
 <img src="man/figures/kaggle.jpeg" alt="House prices Kaggle competition homepage." width="95%" />
-
 <p class="caption">
 
 House prices Kaggle competition homepage.
-
 </p>
 
 </div>
@@ -463,8 +468,6 @@ this Kaggle competition. It will:
     `get_regression_points()`. Note the use of the `ID` argument to use
     the `id` variable in `test` to identify the rows (a requirement of
     Kaggle competition submissions).
-
-<!-- end list -->
 
 ``` r
 library(readr)
@@ -491,31 +494,30 @@ After submitting `submission.csv` to the leaderboard for this Kaggle
 competition, we obtain a “root mean squared logarithmic error” (RMSLE)
 score of 0.42918 as seen in .
 
-<div class="figure">
+<figure>
+<img src="man/figures/leaderboard_orig.jpeg"
+alt="Resulting Kaggle RMSLE score." />
+<figcaption aria-hidden="true">Resulting Kaggle RMSLE
+score.</figcaption>
+</figure>
 
-<img src="man/figures/leaderboard_orig.jpeg" alt="Resulting Kaggle RMSLE score." width="3326" />
-
-<p class="caption">
-
-Resulting Kaggle RMSLE score.
-
-</p>
-
-</div>
-
-### 5\. Visual model selection: plot parallel slopes & interaction regression models
+### 5. Visual model selection: plot parallel slopes & interaction regression models
 
 For example, recall the earlier visualizations of the interaction and
 parallel slopes models for teaching score as a function of age and
-ethnicity we saw in Figures  and . Let’s present both visualizations
+ethnicity we saw in Figures and . Let’s present both visualizations
 side-by-side in .
 
-![Interaction (left) and parallel slopes (right)
-models.](man/figures/interaction-and-parallel-slopes-model-1-1.png)
+<figure>
+<img src="man/figures/interaction-and-parallel-slopes-model-1-1.png"
+alt="Interaction (left) and parallel slopes (right) models." />
+<figcaption aria-hidden="true">Interaction (left) and parallel slopes
+(right) models.</figcaption>
+</figure>
 
 Students might be wondering “Why would you use the parallel slopes model
-on the right when the data clearly form an”X" pattern as seen in the
-interaction model on the left?" This is an excellent opportunity to
+on the right when the data clearly form an”X” pattern as seen in the
+interaction model on the left?” This is an excellent opportunity to
 gently introduce the notion of *model selection* and *Occam’s Razor*: an
 interaction model should only be used over a parallel slopes model **if
 the additional complexity of the interaction model is warranted**. Here,
@@ -533,8 +535,8 @@ get_regression_table(interaction_evals)
     ##   <chr>                      <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
     ## 1 intercept                  2.61      0.518      5.04   0        1.59     3.63 
     ## 2 age                        0.032     0.011      2.84   0.005    0.01     0.054
-    ## 3 ethnicity: not minority    2.00      0.534      3.74   0        0.945    3.04 
-    ## 4 age:ethnicitynot minor…   -0.04      0.012     -3.51   0       -0.063   -0.018
+    ## 3 ethnicity-not minority     2.00      0.534      3.74   0        0.945    3.04 
+    ## 4 age:ethnicity-not mino…   -0.04      0.012     -3.51   0       -0.063   -0.018
 
 ``` r
 # Regression table for parallel slopes model:
@@ -543,11 +545,11 @@ get_regression_table(parallel_slopes_evals)
 ```
 
     ## # A tibble: 3 × 7
-    ##   term                    estimate std_error statistic p_value lower_ci upper_ci
-    ##   <chr>                      <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
-    ## 1 intercept                  4.37      0.136     32.1    0        4.1      4.63 
-    ## 2 age                       -0.006     0.003     -2.5    0.013   -0.012   -0.001
-    ## 3 ethnicity: not minority    0.138     0.073      1.89   0.059   -0.005    0.282
+    ##   term                   estimate std_error statistic p_value lower_ci upper_ci
+    ##   <chr>                     <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
+    ## 1 intercept                 4.37      0.136     32.1    0        4.1      4.63 
+    ## 2 age                      -0.006     0.003     -2.5    0.013   -0.012   -0.001
+    ## 3 ethnicity-not minority    0.138     0.073      1.89   0.059   -0.005    0.282
 
 The interaction model is “more complex” as evidenced by its regression
 table involving 4 rows of parameter estimates whereas the parallel
@@ -557,10 +559,10 @@ additional complexity is warranted given the clearly different slopes in
 the left-hand plot of .
 
 We now present a contrasting example, this time from Chapter 6 of the
-online version of [ModernDive
-Subsection 6.3.1](https://moderndive.com/6-multiple-regression.html#model-selection)
-involving Massachusetts USA public high schools.\[3\] Let’s plot both
-the interaction and parallel slopes models in .
+online version of [ModernDive Subsection
+6.3.1](https://moderndive.com/6-multiple-regression.html#model-selection)
+involving Massachusetts USA public high schools.[^3] Let’s plot both the
+interaction and parallel slopes models in .
 
 ``` r
 # Code to plot interaction and parallel slopes models for MA_schools
@@ -589,8 +591,12 @@ ggplot(
   geom_parallel_slopes(se = FALSE)
 ```
 
-![Interaction (left) and parallel slopes (right)
-models.](man/figures/interaction-and-parallel-slopes-model-2-1.png)
+<figure>
+<img src="man/figures/interaction-and-parallel-slopes-model-2-1.png"
+alt="Interaction (left) and parallel slopes (right) models." />
+<figcaption aria-hidden="true">Interaction (left) and parallel slopes
+(right) models.</figcaption>
+</figure>
 
 In terms of the corresponding regression tables, observe that the
 corresponding regression table for the parallel slopes model has 4 rows
@@ -609,10 +615,10 @@ get_regression_table(interaction_MA)
     ##   <chr>                      <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
     ## 1 intercept                594.       13.3      44.7     0      568.     620.   
     ## 2 perc_disadvan             -2.93      0.294    -9.96    0       -3.51    -2.35 
-    ## 3 size: medium             -17.8      15.8      -1.12    0.263  -48.9     13.4  
-    ## 4 size: large              -13.3      13.8      -0.962   0.337  -40.5     13.9  
-    ## 5 perc_disadvan:sizemedi…    0.146     0.371     0.393   0.694   -0.585    0.877
-    ## 6 perc_disadvan:sizelarge    0.189     0.323     0.586   0.559   -0.446    0.824
+    ## 3 size-medium              -17.8      15.8      -1.12    0.263  -48.9     13.4  
+    ## 4 size-large               -13.3      13.8      -0.962   0.337  -40.5     13.9  
+    ## 5 perc_disadvan:size-med…    0.146     0.371     0.393   0.694   -0.585    0.877
+    ## 6 perc_disadvan:size-lar…    0.189     0.323     0.586   0.559   -0.446    0.824
 
 ``` r
 # Regression table for parallel slopes model:
@@ -626,8 +632,8 @@ get_regression_table(parallel_slopes_MA)
     ##   <chr>            <dbl>     <dbl>     <dbl>   <dbl>    <dbl>    <dbl>
     ## 1 intercept       588.       7.61     77.3     0       573.     603.  
     ## 2 perc_disadvan    -2.78     0.106   -26.1     0        -2.99    -2.57
-    ## 3 size: medium    -11.9      7.54     -1.58    0.115   -26.7      2.91
-    ## 4 size: large      -6.36     6.92     -0.919   0.359   -20.0      7.26
+    ## 3 size-medium     -11.9      7.54     -1.58    0.115   -26.7      2.91
+    ## 4 size-large       -6.36     6.92     -0.919   0.359   -20.0      7.26
 
 Unlike our earlier comparison of interaction and parallel slopes models
 in , in this case it could be argued that the additional complexity of
@@ -636,7 +642,7 @@ lines in the left-hand interaction are already somewhat parallel.
 Therefore the simpler parallel slopes model should be favored.
 
 Going one step further, notice how the three regression lines in the
-visualization of the parallel slopes model in the right-hand plot of 
+visualization of the parallel slopes model in the right-hand plot of
 have similar intercepts. In can thus be argued that the additional model
 complexity induced by introducing the categorical variable school `size`
 is not warranted. Therefore, a simple linear regression model using only
@@ -648,7 +654,7 @@ our opinion, it is important to additionally emphasize that such
 regression analyses can be used as an empowering tool to bring to light
 inequities in access to education and inform policy decisions.
 
-### 6\. Produce metrics on the quality of regression model fits
+### 6. Produce metrics on the quality of regression model fits
 
 Recall the output of the standard `summary.lm()` from earlier:
 
@@ -724,32 +730,33 @@ questions at the outset of the article?
     compare the outputs of the `get_regression_points()` wrapper
     function and the parent `broom::augment()` function.
 
-<!-- end list -->
-
 ``` r
 get_regression_points(score_model)
 broom::augment(score_model)
 ```
 
 The source code for these three `get_regression_*` functions can be
-found on
-[here](https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R).
+found on <a
+href="https://github.com/moderndive/moderndive/blob/master/R/regression_functions.R"
+target="_blank">here</a>.
 
 ### Custom geometries
 
 The `geom_parallel_slopes()` is a custom built `geom` extension to the
 `ggplot2` package. For example, the `ggplot2` webpage page gives
-[instructions](https://ggplot2.tidyverse.org/articles/extending-ggplot2.html)
-on how to create such extensions. The source code for
-`geom_parallel_slopes()` written by [Evgeni
-Chasnovski](https://github.com/echasnovski) can be found on
-[GitHub](https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R).
+<a href="https://ggplot2.tidyverse.org/articles/extending-ggplot2.html"
+target="_blank">instructions</a> on how to create such extensions. The
+source code for `geom_parallel_slopes()` written by
+<a href="https://github.com/echasnovski" target="_blank">Evgeni
+Chasnovski</a> can be found on <a
+href="https://github.com/moderndive/moderndive/blob/master/R/geom_parallel_slopes.R"
+target="_blank">GitHub</a>.
 
-1.  For details on the remaining 5 variables, see the help file by
+[^1]: For details on the remaining 5 variables, see the help file by
     running `?evals`.
 
-2.  Note that `gender` was collected as a binary variable at the time of
-    the study (2005).
+[^2]: Note that `gender` was collected as a binary variable at the time
+    of the study (2005).
 
-3.  For more details on this dataset, see the help file by running
+[^3]: For more details on this dataset, see the help file by running
     `?MA_schools`.
