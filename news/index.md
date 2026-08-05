@@ -1,6 +1,10 @@
 # Changelog
 
+## moderndive 0.8.0.9000 (development version)
+
 ## moderndive 0.8.0
+
+CRAN release: 2026-08-04
 
 - [`View()`](https://moderndive.github.io/moderndive/reference/View.md)
   now renders correctly inside **webR** (the in-browser R that powers
