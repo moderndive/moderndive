@@ -145,16 +145,23 @@ is_plotly_available <- function() {
 build_3d_plot <- function(data, outcome_var, predictor_vars,
                           x_seq, y_seq, z_pred) {
   # nocov start
-  plotly::plot_ly(
-    x    = data[[predictor_vars[1]]],
-    y    = data[[predictor_vars[2]]],
-    z    = data[[outcome_var]],
-    type = "scatter3d",
-    mode = "markers",
-    marker = list(size = 4),
-    name = "data",
-    showlegend = FALSE
-  ) %>%
+  # Trace-level attributes (`mode`, `marker`) must go on the scatter3d trace
+  # itself, NOT on plot_ly(). Anything passed to plot_ly() becomes a plot-level
+  # attribute that plotly applies to every subsequent trace, so `add_surface()`
+  # below would inherit them and warn at build time (i.e. when the widget is
+  # printed, not when it is constructed): "'surface' objects don't have these
+  # attributes: 'mode', 'marker'".
+  plotly::plot_ly() %>%
+    plotly::add_trace(
+      x    = data[[predictor_vars[1]]],
+      y    = data[[predictor_vars[2]]],
+      z    = data[[outcome_var]],
+      type = "scatter3d",
+      mode = "markers",
+      marker = list(size = 4),
+      name = "data",
+      showlegend = FALSE
+    ) %>%
     plotly::add_surface(
       x         = x_seq,
       y         = y_seq,

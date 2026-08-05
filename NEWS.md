@@ -1,5 +1,7 @@
 # moderndive 0.8.0.9000 (development version)
 
+-   `plot_3d_regression()` no longer emits a `plotly` warning when the plot is printed. The scatter3d trace's `mode` and `marker` settings were passed to `plotly::plot_ly()`, which makes them *plot-level* attributes that every later trace inherits; the regression plane added by `plotly::add_surface()` then inherited them and warned `'surface' objects don't have these attributes: 'mode', 'marker'` at build time. They now go on the scatter3d trace itself via `plotly::add_trace()`. The rendered plot is unchanged.
+
 # moderndive 0.8.0
 
 -   `View()` now renders correctly inside **webR** (the in-browser R that powers the ModernDive book's live exercises). webR has no pandoc, so a `DT::datatable()` htmlwidget cannot be saved as the self-contained HTML the cell needs (`DT::saveWidget()` errors), and the auto-print path is gated by `interactive()` being `FALSE`. In webR, `View()` now builds a self-contained static HTML table and pushes it through webR's viewer hook, so the data displays inline instead of only printing the explanatory message. Outside webR the `DT::datatable()` behaviour is unchanged.
