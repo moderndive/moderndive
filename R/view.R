@@ -82,7 +82,20 @@ is_interactive <- function() {
   interactive()
 }
 view_dispatch <- function(x, title) {
-  utils::View(x, title)  # nocov
+  # When using RStudio, the util package's exported package environment gets "monkey patched"
+  # and the View() function therein gets replaced with thin wrapper that calls a function
+  # from the tools:rstudio environment the RStudio data viewer instead of an external window.
+  
+  # This thin wrapper placed in the util package's exported package environment is **bypassed** 
+  # by calling utils::View(), which access the View() function from the packages' namespace
+  # environment instead.
+  
+  # Thus, to maintain the default behavior of View() inside of RStudio (i.e., opening the data
+  # in the data viewer), we retrieve copy of the View function from the exported package
+  # environment and call that function, as opposed to calling utils::View().
+  
+  view <- get("View", as.environment("package:utils"))  # nocov
+  view(x, title)
 }
 view_datatable <- function(x, title, n = 1000L, full = FALSE, seed = NULL,
                            quiet = FALSE) {
