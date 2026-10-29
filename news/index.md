@@ -2,6 +2,27 @@
 
 ## moderndive 0.8.0.9000 (development version)
 
+- In an interactive session,
+  [`View()`](https://moderndive.github.io/moderndive/reference/View.md)
+  now opens RStudio’s data viewer again, both from the console and when
+  you click a data set in the Environment pane (resolves issue
+  [\#150](https://github.com/moderndive/moderndive/issues/150), thanks
+  to [@wjhopper](https://github.com/wjhopper)). It called
+  [`utils::View()`](https://rdrr.io/r/utils/View.html), which reads the
+  utils *namespace* and so bypasses the
+  [`View()`](https://moderndive.github.io/moderndive/reference/View.md)
+  shim that RStudio installs in the attached `package:utils`
+  environment; users got the classic external window instead, and on
+  macOS an error about missing XQuartz libraries.
+  [`View()`](https://moderndive.github.io/moderndive/reference/View.md)
+  now calls the
+  [`View()`](https://moderndive.github.io/moderndive/reference/View.md)
+  attached in `package:utils`, which is RStudio’s shim inside RStudio
+  and the same function as
+  [`utils::View()`](https://rdrr.io/r/utils/View.html) elsewhere. It
+  falls back to [`utils::View()`](https://rdrr.io/r/utils/View.html)
+  when `package:utils` is not attached.
+
 - [`plot_3d_regression()`](https://moderndive.github.io/moderndive/reference/plot_3d_regression.md)
   no longer emits a `plotly` warning when the plot is printed. The
   scatter3d trace’s `mode` and `marker` settings were passed to

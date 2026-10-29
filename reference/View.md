@@ -2,10 +2,9 @@
 
 A drop-in replacement for
 [`utils::View()`](https://rdrr.io/r/utils/View.html). In an interactive
-R session it behaves identically to
-[`utils::View()`](https://rdrr.io/r/utils/View.html), opening the
-RStudio / R Console data viewer. In a non-interactive context such as an
-R Markdown or Quarto document, where
+R session it behaves identically to typing `View()` without moderndive
+attached, opening the RStudio / R Console data viewer. In a
+non-interactive context such as an R Markdown or Quarto document, where
 [`utils::View()`](https://rdrr.io/r/utils/View.html) typically errors,
 it instead renders an interactive
 [`DT::datatable()`](https://rdrr.io/pkg/DT/man/datatable.html) inline so
