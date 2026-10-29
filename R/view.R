@@ -1,8 +1,8 @@
 #' View a data object inline when not in an interactive R session
 #'
 #' A drop-in replacement for [utils::View()]. In an interactive R session
-#' it behaves identically to `utils::View()`, opening the RStudio /
-#' R Console data viewer. In a non-interactive context such as an
+#' it behaves identically to typing `View()` without moderndive attached,
+#' opening the RStudio / R Console data viewer. In a non-interactive context such as an
 #' R Markdown or Quarto document, where `utils::View()` typically errors,
 #' it instead renders an interactive [DT::datatable()] inline so users
 #' can still inspect the data without their document failing to render.
@@ -82,20 +82,22 @@ is_interactive <- function() {
   interactive()
 }
 view_dispatch <- function(x, title) {
-  # When using RStudio, the util package's exported package environment gets "monkey patched"
-  # and the View() function therein gets replaced with thin wrapper that calls a function
-  # from the tools:rstudio environment the RStudio data viewer instead of an external window.
-  
-  # This thin wrapper placed in the util package's exported package environment is **bypassed** 
-  # by calling utils::View(), which access the View() function from the packages' namespace
-  # environment instead.
-  
-  # Thus, to maintain the default behavior of View() inside of RStudio (i.e., opening the data
-  # in the data viewer), we retrieve copy of the View function from the exported package
-  # environment and call that function, as opposed to calling utils::View().
-  
-  view <- get("View", as.environment("package:utils"))  # nocov
-  view(x, title)
+  utils_view()(x, title)  # nocov
+}
+
+# Return the `View()` a user gets by typing `View()` at the console (issue
+# #150). RStudio replaces `View` in the attached `package:utils` environment
+# with a shim that opens its data viewer, but `utils::View` reads the utils
+# *namespace*, which bypasses that shim and opens the classic X11 / XQuartz
+# window instead. Outside RStudio the two are the same function. Fall back to
+# `utils::View` when `package:utils` is not attached (e.g. R started with
+# `--default-packages=base`), where `as.environment("package:utils")` errors.
+utils_view <- function(attached = search()) {
+  if ("package:utils" %in% attached) {
+    get("View", envir = as.environment("package:utils"))
+  } else {
+    utils::View
+  }
 }
 view_datatable <- function(x, title, n = 1000L, full = FALSE, seed = NULL,
                            quiet = FALSE) {

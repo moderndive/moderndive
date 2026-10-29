@@ -94,6 +94,19 @@ test_that("View() forwards an explicit title to utils::View() interactively", {
   expect_identical(captured$title, "my custom title")
 })
 
+test_that("utils_view() uses the View() attached in package:utils (#150)", {
+  # RStudio patches `View` in the attached package:utils environment, so that
+  # binding, not utils::View, is what the interactive path must call.
+  expect_identical(
+    utils_view(),
+    get("View", envir = as.environment("package:utils"))
+  )
+})
+
+test_that("utils_view() falls back to utils::View when utils is not attached", {
+  expect_identical(utils_view(attached = "package:base"), utils::View)
+})
+
 test_that("view_datatable() returns a DT htmlwidget", {
   result <- view_datatable(un_member_states_2024, title = "Data: un_member_states_2024")
   expect_s3_class(result, "datatables")
@@ -190,6 +203,19 @@ test_that("in webR, view_datatable() pushes a static table through the viewer", 
   expect_true(!is.null(pushed) && file.exists(pushed))
   expect_true(grepl("<table",
                     paste(readLines(pushed), collapse = ""), fixed = TRUE))
+})
+
+test_that("in webR without a viewer hook, view_datatable() falls back to DT", {
+  skip_if_not_installed("DT")
+  old_env <- Sys.getenv("WEBR", unset = NA)
+  old_viewer <- getOption("viewer")
+  Sys.setenv(WEBR = "1")
+  on.exit({
+    if (is.na(old_env)) Sys.unsetenv("WEBR") else Sys.setenv(WEBR = old_env)
+    options(viewer = old_viewer)
+  }, add = TRUE)
+  options(viewer = NULL)
+  expect_s3_class(view_datatable(head(mtcars, 3), "x"), "datatables")
 })
 
 test_that("outside webR, view_datatable() still returns a DT widget", {

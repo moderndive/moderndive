@@ -36,8 +36,8 @@ HTML table through the browser viewer and invisibly returns \code{NULL}.
 }
 \description{
 A drop-in replacement for \code{\link[utils:View]{utils::View()}}. In an interactive R session
-it behaves identically to \code{utils::View()}, opening the RStudio /
-R Console data viewer. In a non-interactive context such as an
+it behaves identically to typing \code{View()} without moderndive attached,
+opening the RStudio / R Console data viewer. In a non-interactive context such as an
 R Markdown or Quarto document, where \code{utils::View()} typically errors,
 it instead renders an interactive \code{\link[DT:datatable]{DT::datatable()}} inline so users
 can still inspect the data without their document failing to render.
