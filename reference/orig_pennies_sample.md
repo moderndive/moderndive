@@ -26,7 +26,7 @@ and 2 variables
 
 ## Source
 
-StatCrunch <https://www.statcrunch.com:443/app/index.html?dataid=301596>
+StatCrunch <https://statcrunch.pearson.com/app/index.html?dataid=301596>
 
 ## See also
 

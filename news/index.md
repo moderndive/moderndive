@@ -1,6 +1,6 @@
 # Changelog
 
-## moderndive 0.8.0.9000 (development version)
+## moderndive 0.8.1
 
 - In an interactive session,
   [`View()`](https://moderndive.github.io/moderndive/reference/View.md)
@@ -35,6 +35,10 @@
   build time. They now go on the scatter3d trace itself via
   [`plotly::add_trace()`](https://rdrr.io/pkg/plotly/man/add_trace.html).
   The rendered plot is unchanged.
+
+- The StatCrunch source links for `pennies` and `orig_pennies_sample`
+  now point to `statcrunch.pearson.com`, where the old
+  `www.statcrunch.com` address redirects.
 
 ## moderndive 0.8.0
 
