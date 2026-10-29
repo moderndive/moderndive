@@ -1,8 +1,10 @@
-# moderndive 0.8.0.9000 (development version)
+# moderndive 0.8.1
 
 -   In an interactive session, `View()` now opens RStudio's data viewer again, both from the console and when you click a data set in the Environment pane (resolves issue [#150](https://github.com/moderndive/moderndive/issues/150), thanks to @wjhopper). It called `utils::View()`, which reads the utils *namespace* and so bypasses the `View()` shim that RStudio installs in the attached `package:utils` environment; users got the classic external window instead, and on macOS an error about missing XQuartz libraries. `View()` now calls the `View()` attached in `package:utils`, which is RStudio's shim inside RStudio and the same function as `utils::View()` elsewhere. It falls back to `utils::View()` when `package:utils` is not attached.
 
 -   `plot_3d_regression()` no longer emits a `plotly` warning when the plot is printed. The scatter3d trace's `mode` and `marker` settings were passed to `plotly::plot_ly()`, which makes them *plot-level* attributes that every later trace inherits; the regression plane added by `plotly::add_surface()` then inherited them and warned `'surface' objects don't have these attributes: 'mode', 'marker'` at build time. They now go on the scatter3d trace itself via `plotly::add_trace()`. The rendered plot is unchanged.
+
+-   The StatCrunch source links for `pennies` and `orig_pennies_sample` now point to `statcrunch.pearson.com`, where the old `www.statcrunch.com` address redirects.
 
 # moderndive 0.8.0
 

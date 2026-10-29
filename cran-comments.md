@@ -1,61 +1,34 @@
 ## Submission
 
-moderndive 0.8.0
+moderndive 0.8.1
 
--   New `View()` wrapper that works in non-interactive contexts (R Markdown,
-    Quarto, webR) by rendering an inline `DT::datatable()` or static HTML
-    table; `utils::View()` behavior is unchanged in interactive sessions.
--   `get_regression_table()`, `get_regression_points()`, and
-    `get_regression_summaries()` now support `glm()` models and in-formula
-    transformations.
--   `get_correlation()` now accepts multiple right-hand-side variables.
--   New `plot_3d_regression()` function (uses `plotly`, in Suggests).
--   Fixed `pennies_resamples` dataset (`replicate` column numbering).
--   Documentation examples now use package datasets.
+This is a patch release with two bug fixes and one documentation link fix:
+
+-   In an interactive RStudio session, `View()` now opens RStudio's data
+    viewer again. It called `utils::View()`, which bypasses the `View()` that
+    RStudio attaches in `package:utils`, so users got the external data
+    editor window, and on macOS an error about a missing XQuartz library.
+    `View()` now calls the `View()` attached in `package:utils` and falls
+    back to `utils::View()` when `package:utils` is not attached.
+-   `plot_3d_regression()` no longer emits a `plotly` warning when the plot
+    is printed.
+-   The StatCrunch source URL in `man/pennies.Rd` and
+    `man/orig_pennies_sample.Rd` now points to its new host, since the old
+    one redirects (301).
 
 ## Test environments
 
--   local macOS install, R 4.5.x
--   win-builder (release, devel, oldrelease)
+-   local macOS Tahoe 26.6 (aarch64), R 4.6.1
 -   GitHub Actions
-    -   windows: latest
-    -   macOS: latest
+    -   windows: latest (release)
+    -   macOS: latest (release)
     -   ubuntu: latest (release, devel, oldrel-1)
-
-## Resubmission
-
-This is a resubmission. As requested by Uwe Ligges (2026-08-02), the three
-"Moved Permanently" URLs have been fixed:
-
--   The bare <https://doi.org/> link and <https://www.tidyverse.org/> inside
-    inst/doc/paper.pdf now point to their 301 targets
-    (<https://www.doi.org/> and <https://tidyverse.org/>); the full DOI
-    links in the paper's references are unchanged.
--   The Iowa Environmental Mesonet source citation in
-    man/early_january_weather.Rd and man/early_january_2023_weather.Rd now
-    links an Internet Archive snapshot of the download page, since the live
-    site redirects all automated user agents to a block page (the redirect
-    target CRAN's checker sees is that block page, not a moved resource).
-
-We additionally audited every URL in the package and preemptively fixed all
-other redirecting or inaccessible links (permanently-redirected Spotify
-developer-documentation and Kaggle dataset paths, a retired goo.gl short
-link, an http:// Creative Commons link in inst/doc/paper.pdf, and two
-source links that now reject automated requests or are no longer publicly
-accessible, which were replaced with unlinked source descriptions).
-`urlchecker::url_check()` now reports all URLs correct.
 
 ## R CMD check results
 
-0 errors | 0 warnings | 1 note
+0 errors | 0 warnings | 0 notes
 
--   Possible NOTE on "(possibly) invalid URLs": in past pre-tests,
-    <https://en.wikipedia.org/wiki/Urn_problem> and
-    <https://en.wikipedia.org/wiki/List_of_states_with_nuclear_weapons>
-    intermittently returned HTTP 429 (rate limiting) to the automated
-    checker, and <https://database.coffeeinstitute.org/> intermittently
-    reported an expired SSL certificate on the Debian check. All are valid
-    dataset source citations that return 200 in a browser.
+`urlchecker::url_check()` reports all URLs correct.
 
 ## Reverse dependencies
 

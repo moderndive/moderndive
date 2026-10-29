@@ -152,7 +152,7 @@
 #'   \item{year}{Year of minting}
 #'   \item{age_in_2011}{Age in 2011}
 #' }
-#' @source StatCrunch <https://www.statcrunch.com:443/app/index.html?dataid=301596>
+#' @source StatCrunch <https://statcrunch.pearson.com/app/index.html?dataid=301596>
 "pennies"
 
 
@@ -167,7 +167,7 @@
 #'   \item{year}{Year of minting}
 #'   \item{age_in_2011}{Age in 2011}
 #' }
-#' @source StatCrunch <https://www.statcrunch.com:443/app/index.html?dataid=301596>
+#' @source StatCrunch <https://statcrunch.pearson.com/app/index.html?dataid=301596>
 #' @seealso [pennies()]
 "orig_pennies_sample"
 
