@@ -107,6 +107,59 @@ test_that("utils_view() falls back to utils::View when utils is not attached", {
   expect_identical(utils_view(attached = "package:base"), utils::View)
 })
 
+# Outside RStudio the attached `View` and `utils::View` are the same function,
+# so the test above cannot tell them apart. Install a stand-in for RStudio's
+# shim in package:utils (as RStudio does) to check that the shim, not the
+# namespace `utils::View`, is what gets called.
+# Returns a function that restores the original binding.
+set_rstudio_view_shim <- function(shim) {
+  utils_env <- as.environment("package:utils")
+  original <- get("View", envir = utils_env)
+  unlockBinding("View", utils_env)
+  assign("View", shim, envir = utils_env)
+  function() {
+    assign("View", original, envir = utils_env)
+    lockBinding("View", utils_env)
+  }
+}
+
+test_that("utils_view() returns an RStudio-style shim, not utils::View (#150)", {
+  shim <- function(x, title) invisible(NULL)
+  restore <- set_rstudio_view_shim(shim)
+  on.exit(restore(), add = TRUE)
+  # identical() rather than expect_identical(): on failure, testthat's
+  # all.equal() comparison of utils::View errors on an external pointer.
+  expect_true(identical(utils_view(), shim))
+  expect_false(identical(utils_view(), utils::View))
+})
+
+test_that("interactive View() calls the shim with x and the title (#150)", {
+  captured <- NULL
+  restore <- set_rstudio_view_shim(function(x, title) {
+    captured <<- list(x = x, title = title)
+    invisible(NULL)
+  })
+  on.exit(restore(), add = TRUE)
+  testthat::local_mocked_bindings(
+    is_interactive = function() TRUE,
+    .package = "moderndive"
+  )
+
+  expect_null(View(un_member_states_2024))
+  expect_identical(captured$x, un_member_states_2024)
+  expect_identical(captured$title, "Data: un_member_states_2024")
+
+  View(un_member_states_2024, title = "my custom title")
+  expect_identical(captured$title, "my custom title")
+})
+
+test_that("the RStudio shim is restored after the tests above", {
+  expect_identical(
+    get("View", envir = as.environment("package:utils")),
+    utils::View
+  )
+})
+
 test_that("view_datatable() returns a DT htmlwidget", {
   result <- view_datatable(un_member_states_2024, title = "Data: un_member_states_2024")
   expect_s3_class(result, "datatables")

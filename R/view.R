@@ -82,7 +82,7 @@ is_interactive <- function() {
   interactive()
 }
 view_dispatch <- function(x, title) {
-  utils_view()(x, title)  # nocov
+  utils_view()(x, title)
 }
 
 # Return the `View()` a user gets by typing `View()` at the console (issue
