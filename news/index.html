@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">moderndive</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.8.1.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,6 +37,9 @@
       <small>Source: <a href="https://github.com/moderndive/moderndive/blob/master/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.8.1.9000" id="moderndive-0819000-development-version">moderndive 0.8.1.9000 (development version)<a class="anchor" aria-label="anchor" href="#moderndive-0819000-development-version"></a></h2>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.8.1" id="moderndive-081">moderndive 0.8.1<a class="anchor" aria-label="anchor" href="#moderndive-081"></a></h2>
 <ul><li><p>In an interactive session, <code><a href="../reference/View.html">View()</a></code> now opens RStudio’s data viewer again, both from the console and when you click a data set in the Environment pane (resolves issue <a href="https://github.com/moderndive/moderndive/issues/150" class="external-link">#150</a>, thanks to <a href="https://github.com/wjhopper" class="external-link">@wjhopper</a>). It called <code><a href="https://rdrr.io/r/utils/View.html" class="external-link">utils::View()</a></code>, which reads the utils <em>namespace</em> and so bypasses the <code><a href="../reference/View.html">View()</a></code> shim that RStudio installs in the attached <code>package:utils</code> environment; users got the classic external window instead, and on macOS an error about missing XQuartz libraries. <code><a href="../reference/View.html">View()</a></code> now calls the <code><a href="../reference/View.html">View()</a></code> attached in <code>package:utils</code>, which is RStudio’s shim inside RStudio and the same function as <code><a href="https://rdrr.io/r/utils/View.html" class="external-link">utils::View()</a></code> elsewhere. It falls back to <code><a href="https://rdrr.io/r/utils/View.html" class="external-link">utils::View()</a></code> when <code>package:utils</code> is not attached.</p></li>
